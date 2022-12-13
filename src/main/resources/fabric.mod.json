@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "pyrite",
+  "version": "${version}",
+  "name": "Pyrite",
+  "description": "",
+  "authors": ["Con Godsted"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/pyrite/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.congodsted.pyrite.client.PyriteClient"
+    ],
+    "main": [
+      "com.congodsted.pyrite.Pyrite"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.11",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}

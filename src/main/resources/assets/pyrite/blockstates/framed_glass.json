@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "pyrite:block/framed_glass" }
+  }
+}
