@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pyrite:block/polished_deepslate_slab"
+    },
+    "type=double": {
+      "model": "pyrite:block/polished_deepslate"
+    },
+    "type=top": {
+      "model": "pyrite:block/polished_deepslate_slab_top"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "variants": {
+    "axis=x": [
+      {
+        "model": "pyrite:block/deepslate",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "pyrite:block/deepslate_mirrored",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "pyrite:block/deepslate",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "pyrite:block/deepslate_mirrored",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "axis=y": [
+      {
+        "model": "pyrite:block/deepslate"
+      },
+      {
+        "model": "pyrite:block/deepslate_mirrored"
+      },
+      {
+        "model": "pyrite:block/deepslate",
+        "y": 180
+      },
+      {
+        "model": "pyrite:block/deepslate_mirrored",
+        "y": 180
+      }
+    ],
+    "axis=z": [
+      {
+        "model": "pyrite:block/deepslate",
+        "x": 90
+      },
+      {
+        "model": "pyrite:block/deepslate_mirrored",
+        "x": 90
+      },
+      {
+        "model": "pyrite:block/deepslate",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "pyrite:block/deepslate_mirrored",
+        "x": 90,
+        "y": 180
+      }
+    ]
+  }
+}

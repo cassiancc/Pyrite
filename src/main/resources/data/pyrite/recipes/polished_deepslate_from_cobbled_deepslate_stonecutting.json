@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "pyrite:cobbled_deepslate"
+  },
+  "result": "pyrite:polished_deepslate"
+}

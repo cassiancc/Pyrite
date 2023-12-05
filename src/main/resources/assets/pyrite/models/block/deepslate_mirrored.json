@@ -1,0 +1,7 @@
+{
+  "parent": "pyrite:block/cube_column_mirrored",
+  "textures": {
+    "end": "pyrite:block/deepslate_top",
+    "side": "pyrite:block/deepslate"
+  }
+}

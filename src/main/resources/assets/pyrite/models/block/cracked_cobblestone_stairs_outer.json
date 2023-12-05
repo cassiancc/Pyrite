@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "pyrite:block/cracked_cobblestone",
+    "top": "pyrite:block/cracked_cobblestone",
+    "side": "pyrite:block/cracked_cobblestone"
+  }
+}

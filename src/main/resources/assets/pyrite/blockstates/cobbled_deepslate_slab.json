@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pyrite:block/cobbled_deepslate_slab"
+    },
+    "type=double": {
+      "model": "pyrite:block/cobbled_deepslate"
+    },
+    "type=top": {
+      "model": "pyrite:block/cobbled_deepslate_slab_top"
+    }
+  }
+}

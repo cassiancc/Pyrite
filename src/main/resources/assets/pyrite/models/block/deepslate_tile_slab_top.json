@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "pyrite:block/deepslate_tiles",
+    "side": "pyrite:block/deepslate_tiles",
+    "top": "pyrite:block/deepslate_tiles"
+  }
+}

@@ -5,5 +5,5 @@ import net.minecraft.block.Material;
 
 public class ModGlass extends GlassBlock {
     public ModGlass() {
-        super(Settings.of(Material.GLASS).nonOpaque().strength(2.0f)); }
+        super(Settings.of(Material.GLASS).nonOpaque().strength(1.8f, 1.5f)); }
 }

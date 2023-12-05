@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "pyrite:block/deepslate_bricks",
+    "side": "pyrite:block/deepslate_bricks",
+    "top": "pyrite:block/deepslate_bricks"
+  }
+}
