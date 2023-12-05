@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pyrite:block/charred_slab"
+    },
+    "type=double": {
+      "model": "pyrite:block/charred_planks"
+    },
+    "type=top": {
+      "model": "pyrite:block/charred_slab_top"
+    }
+  }
+}

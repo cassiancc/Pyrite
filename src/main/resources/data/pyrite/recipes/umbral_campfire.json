@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SCS",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "item": "pyrite:charred_stem"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "C": {
+      "item": "pyrite:umbral_charcoal"
+    }
+  },
+  "result": {
+    "item": "pyrite:umbral_campfire"
+  }
+}

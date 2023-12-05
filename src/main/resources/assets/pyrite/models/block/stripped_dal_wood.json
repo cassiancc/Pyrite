@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "pyrite:block/stripped_dal_log",
+    "side": "pyrite:block/stripped_dal_log"
+  }
+}

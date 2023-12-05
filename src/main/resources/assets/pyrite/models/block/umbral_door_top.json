@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "pyrite:block/umbral_door_top",
+    "bottom": "pyrite:block/umbral_door_bottom"
+  }
+}

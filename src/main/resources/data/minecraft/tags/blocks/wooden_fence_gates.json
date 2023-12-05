@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+	"pyrite:astral_fence_gate",
+	"pyrite:umbral_fence_gate",
+	"pyrite:charred_fence_gate",
+	"pyrite:origin_oak_fence_gate",
+	"pyrite:mangrove_fence_gate"
+	
+  ]
+}

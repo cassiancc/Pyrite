@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "pyrite:block/charred_planks",
+    "top": "pyrite:block/charred_planks",
+    "side": "pyrite:block/charred_planks"
+  }
+}

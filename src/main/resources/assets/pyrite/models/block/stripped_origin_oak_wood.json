@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "pyrite:block/stripped_origin_oak_log",
+    "side": "pyrite:block/stripped_origin_oak_log"
+  }
+}

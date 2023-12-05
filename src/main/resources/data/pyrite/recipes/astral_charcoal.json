@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pyrite:astral_stem"
+  },
+  "result": "pyrite:astral_charcoal",
+  "experience": 0.15,
+  "cookingtime": 200
+}

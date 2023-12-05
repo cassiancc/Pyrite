@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "result": "pyrite:charred_stem",
+  "cookingtime": 100
+}

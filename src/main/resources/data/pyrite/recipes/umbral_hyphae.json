@@ -1,0 +1,17 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CC",
+        "CC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:umbral_stem"
+        }
+      },
+      "result": {
+        "item": "pyrite:umbral_hyphae",
+        "count": 3
+      }
+    }
+

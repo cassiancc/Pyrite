@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "pyrite:block/origin_oak_planks",
+    "top": "pyrite:block/origin_oak_planks",
+    "side": "pyrite:block/origin_oak_planks"
+  }
+}

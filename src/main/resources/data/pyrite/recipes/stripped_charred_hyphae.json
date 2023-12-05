@@ -1,0 +1,17 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CC",
+        "CC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:stripped_charred_stem"
+        }
+      },
+      "result": {
+        "item": "pyrite:stripped_charred_hyphae",
+        "count": 3
+      }
+    }
+

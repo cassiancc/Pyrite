@@ -1,0 +1,17 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CC",
+        "CC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:astral_stem"
+        }
+      },
+      "result": {
+        "item": "pyrite:astral_hyphae",
+        "count": 3
+      }
+    }
+

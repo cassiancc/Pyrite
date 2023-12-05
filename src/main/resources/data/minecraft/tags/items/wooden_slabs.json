@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+	"pyrite:astral_slab",
+	"pyrite:umbral_slab",
+	"pyrite:charred_slab",
+	"pyrite:origin_oak_slab",
+	"pyrite:mangrove_slab"
+	
+  ]
+}

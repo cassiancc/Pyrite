@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "pyrite:block/stripped_astral_stem_top",
+    "side": "pyrite:block/stripped_astral_stem"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+	"pyrite:astral_button",
+	"pyrite:umbral_button",
+	"pyrite:charred_button",
+	"pyrite:origin_oak_button",
+	"pyrite:mangrove_button"
+	
+  ]
+}

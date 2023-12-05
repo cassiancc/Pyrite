@@ -1,0 +1,17 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC",
+		"CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:charred_planks"
+        }
+      },
+      "result": {
+        "item": "pyrite:charred_trapdoor",
+        "count": 2
+      }
+    }
+

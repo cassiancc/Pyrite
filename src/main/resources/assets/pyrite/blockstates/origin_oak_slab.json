@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pyrite:block/origin_oak_slab"
+    },
+    "type=double": {
+      "model": "pyrite:block/origin_oak_planks"
+    },
+    "type=top": {
+      "model": "pyrite:block/origin_oak_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:umbral_stem"
+  },
+  "result": "pyrite:stripped_umbral_stem",
+  "count": 1
+}

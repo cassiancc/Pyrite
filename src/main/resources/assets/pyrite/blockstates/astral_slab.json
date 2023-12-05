@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pyrite:block/astral_slab"
+    },
+    "type=double": {
+      "model": "pyrite:block/astral_planks"
+    },
+    "type=top": {
+      "model": "pyrite:block/astral_slab_top"
+    }
+  }
+}

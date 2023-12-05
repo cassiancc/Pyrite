@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "pyrite:block/dal_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "pyrite:block/dal_log"
+    },
+    "axis=z": {
+      "model": "pyrite:block/dal_log_horizontal",
+      "x": 90
+    }
+  }
+}

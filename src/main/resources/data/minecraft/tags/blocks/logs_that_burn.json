@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:mangrove_log",
+	"pyrite:mangrove_wood",
+	"pyrite:stripped_mangrove_log",
+	"pyrite:stripped_mangrove_wood",
+	"pyrite:origin_oak_log",
+	"pyrite:origin_oak_wood",
+	"pyrite:stripped_origin_oak_log",
+	"pyrite:stripped_origin_oak_wood"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "pyrite:block/stripped_astral_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "pyrite:block/stripped_astral_stem"
+    },
+    "axis=z": {
+      "model": "pyrite:block/stripped_astral_stem",
+      "x": 90
+    }
+  }
+}

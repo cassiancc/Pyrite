@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "pyrite:astral_planks"
+    }
+  ],
+  "result": {
+    "item": "pyrite:astral_button",
+    "count": 1
+  }
+}

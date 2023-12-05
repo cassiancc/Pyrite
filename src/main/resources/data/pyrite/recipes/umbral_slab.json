@@ -1,0 +1,16 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:umbral_planks"
+        }
+      },
+      "result": {
+        "item": "pyrite:umbral_slab",
+        "count": 6
+      }
+    }
+

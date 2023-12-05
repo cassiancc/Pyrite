@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+	"pyrite:astral_door",
+	"pyrite:umbral_door",
+	"pyrite:charred_door",
+	"pyrite:origin_oak_door",
+	"pyrite:mangrove_door"
+	
+  ]
+}

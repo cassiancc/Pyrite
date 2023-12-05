@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pyrite:umbral_stem"
+  },
+  "result": "pyrite:umbral_charcoal",
+  "experience": 0.15,
+  "cookingtime": 200
+}

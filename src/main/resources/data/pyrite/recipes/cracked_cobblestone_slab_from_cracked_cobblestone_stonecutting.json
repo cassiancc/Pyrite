@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:cracked_cobblestone"
+  },
+  "result": "pyrite:cracked_cobblestone_slab",
+  "count": 2
+}

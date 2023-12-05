@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+	"pyrite:astral_pressure_plate",
+	"pyrite:umbral_pressure_plate",
+	"pyrite:charred_pressure_plate",
+	"pyrite:origin_oak_pressure_plate",
+	"pyrite:mangrove_pressure_plate"
+	
+  ]
+}

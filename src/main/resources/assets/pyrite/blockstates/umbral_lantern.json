@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "pyrite:block/umbral_lantern"
+    },
+    "hanging=true": {
+      "model": "pyrite:block/umbral_lantern_hanging"
+    }
+  }
+}

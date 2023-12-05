@@ -1,0 +1,17 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC",
+		"CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:umbral_planks"
+        }
+      },
+      "result": {
+        "item": "pyrite:umbral_trapdoor",
+        "count": 2
+      }
+    }
+

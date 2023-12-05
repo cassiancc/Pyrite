@@ -1,0 +1,16 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:origin_oak_planks"
+        }
+      },
+      "result": {
+        "item": "pyrite:origin_oak_slab",
+        "count": 6
+      }
+    }
+

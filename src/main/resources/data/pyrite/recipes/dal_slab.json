@@ -1,0 +1,16 @@
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:dal_planks"
+        }
+      },
+      "result": {
+        "item": "pyrite:dal_slab",
+        "count": 6
+      }
+    }
+
