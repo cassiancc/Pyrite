@@ -1,6 +1,6 @@
-package com.congodsted.pyrite.client;
+package cc.cassian.pyrite.client;
 
-import com.congodsted.pyrite.Pyrite;
+import cc.cassian.pyrite.Pyrite;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

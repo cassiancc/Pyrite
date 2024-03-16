@@ -3,23 +3,23 @@
   "id": "pyrite",
   "version": "${version}",
   "name": "Pyrite",
-  "description": "",
-  "authors": ["Con Godsted"],
+  "description": "Implements mainstay features into Wish Fulfillment packs.",
+  "authors": ["cassiancc"],
   "contact": {},
   "license": "MIT",
   "icon": "assets/pyrite/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.congodsted.pyrite.client.PyriteClient"
+      "cc.cassian.pyrite.client.PyriteClient"
     ],
     "main": [
-      "com.congodsted.pyrite.Pyrite"
+      "cc.cassian.pyrite.Pyrite"
     ]
   },
   "depends": {
     "fabricloader": ">=0.14.11",
     "fabric": "*",
-    "minecraft": "1.19.2"
+    "minecraft": "1.20.1"
   }
 }
