@@ -1,4 +1,3 @@
-    {
-    "parent": "pyrite:block/lime_stained_slab"
-  }
-
+{
+        "parent": "pyrite:block/lime_stained_slab"
+      }

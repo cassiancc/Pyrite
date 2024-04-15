@@ -1,4 +1,3 @@
-    {
-    "parent": "pyrite:block/cyan_stained_stairs"
-  }
-
+{
+        "parent": "pyrite:block/cyan_stained_stairs"
+      }

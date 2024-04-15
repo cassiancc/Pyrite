@@ -1,13 +1,13 @@
 {
-    "variants": {
-      "type=bottom": {
-        "model": "pyrite:block/cyan_stained_slab"
-      },
-      "type=double": {
-        "model": "pyrite:block/cyan_stained_planks"
-      },
-      "type=top": {
-        "model": "pyrite:block/cyan_stained_slab_top"
+        "variants": {
+          "type=bottom": {
+            "model": "pyrite:block/cyan_stained_slab"
+          },
+          "type=double": {
+            "model": "pyrite:block/cyan_stained_slab"
+          },
+          "type=top": {
+            "model": "pyrite:block/cyan_stained_slab_top"
+          }
+        }
       }
-    }
-  }
