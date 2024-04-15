@@ -9,9 +9,23 @@
 "block.pyrite.mossy_cobblestone_brick_stairs": "Mossy Cobblestone Brick Stairs",
 "block.pyrite.mossy_cobblestone_brick_slab": "Mossy Cobblestone Brick Slab",
 "block.pyrite.cobblestone_brick_wall": "Cobblestone Brick Wall",
-"block.pyrite.mossy_cobblestone_brick_wall": "Mossy Cobblestone Brick Wall"
-
-
+"block.pyrite.mossy_cobblestone_brick_wall": "Mossy Cobblestone Brick Wall",
+"block.pyrite.white_stained_planks": "White Stained Planks",
+"block.pyrite.orange_stained_planks": "Orange Stained Planks",
+"block.pyrite.magenta_stained_planks": "Magenta Stained Planks",
+"block.pyrite.light_blue_stained_planks": "Light Blue Stained Planks",
+"block.pyrite.yellow_stained_planks": "Yellow Stained Planks",
+"block.pyrite.lime_stained_planks": "Lime Stained Planks",
+"block.pyrite.pink_stained_planks": "Pink Stained Planks",
+"block.pyrite.gray_stained_planks": "Gray Stained Planks",
+"block.pyrite.light_gray_stained_planks": "Light Gray Stained Planks",
+"block.pyrite.cyan_stained_planks": "Cyan Stained Planks",
+"block.pyrite.purple_stained_planks": "Purple Stained Planks",
+"block.pyrite.blue_stained_planks": "Blue Stained Planks",
+"block.pyrite.brown_stained_planks": "Brown Stained Planks",
+"block.pyrite.green_stained_planks": "Green Stained Planks",
+"block.pyrite.red_stained_planks": "Red Stained Planks",
+"block.pyrite.black_stained_planks": "Black Stained Planks"
 
 
 }

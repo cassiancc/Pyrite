@@ -42,6 +42,27 @@ public class Pyrite implements ModInitializer {
 
     };
 
+    String[] dyes = {
+            "white",
+            "orange",
+            "magenta",
+            "light_blue",
+            "yellow",
+            "lime",
+            "pink",
+            "gray",
+            "light_gray",
+            "cyan",
+            "purple",
+            "blue",
+            "brown",
+            "green",
+            "red",
+            "black"
+    };
+
+
+
     private static final ItemGroup PYRITE_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(FRAMED_GLASS))
             .displayName(Text.translatable("itemGroup.pyrite.group"))
@@ -54,6 +75,15 @@ public class Pyrite implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
+        for (int i = 0; i < dyes.length; i++) {
+            Block DYE_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
+            Registry.register(Registries.BLOCK, new Identifier("pyrite", dyes[i] + "_stained_planks"), DYE_BLOCK);
+            Registry.register(Registries.ITEM, new Identifier("pyrite", dyes[i] + "_stained_planks"), new BlockItem(DYE_BLOCK, new FabricItemSettings()));
+        };
+
+
+
         for (int i = 0; i < pyriteBlockIDs.length; i++) {
             Registry.register(Registries.BLOCK, new Identifier("pyrite", pyriteBlockIDs[i]), pyriteBlocks[i]);
             Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteBlockIDs[i]), new BlockItem(pyriteBlocks[i], new FabricItemSettings()));
