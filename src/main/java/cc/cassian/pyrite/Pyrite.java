@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -80,26 +79,20 @@ public class Pyrite implements ModInitializer {
 
     static ArrayList<Block> generatedBlocks = new ArrayList<Block>();
 
-    public static final BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", "dyed_wood"));
-
-
     @Override
     public void onInitialize() {
         int x = 0;
         int blockLux;
         DyeColor color;
         for (String dye : dyes) {
+            //Glow planks overrides
             if (Objects.equals(dye, "glow")) {
-                blockLux = 1;
-            }
-            else {
-                blockLux = 0;
-            }
-            if (Objects.equals(dye, "glow")) {
+                blockLux = 8;
                 color = DyeColor.GREEN;
             }
             else {
                 color = DyeColor.valueOf(dye.toUpperCase());
+                blockLux = 0;
             }
             BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", dye + "wood"));
             //PLANKS
