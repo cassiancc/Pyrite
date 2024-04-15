@@ -4,7 +4,7 @@
             "model": "pyrite:block/red_stained_slab"
           },
           "type=double": {
-            "model": "pyrite:block/red_stained_slab"
+            "model": "pyrite:block/red_stained_planks"
           },
           "type=top": {
             "model": "pyrite:block/red_stained_slab_top"

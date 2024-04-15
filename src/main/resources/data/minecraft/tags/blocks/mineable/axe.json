@@ -1,6 +1,6 @@
 {
-  "replace": false,
-  "values": [
+    "replace": false,
+    "values": [
     "pyrite:white_stained_button",
     "pyrite:white_stained_stairs",
     "pyrite:white_stained_slab",
@@ -81,5 +81,5 @@
     "pyrite:black_stained_slab",
     "pyrite:black_stained_planks",
     "pyrite:black_stained_fence"
-  ]
-}
+    ]
+  }
