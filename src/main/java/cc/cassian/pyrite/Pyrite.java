@@ -99,6 +99,11 @@ public class Pyrite implements ModInitializer {
             generatedBlocks.add(DYE_BUTTONS);
             Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_button"), DYE_BUTTONS);
             Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_button"), new BlockItem(DYE_BUTTONS, new FabricItemSettings()));
+            //FENCE
+            Block DYE_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE));
+            generatedBlocks.add(DYE_FENCE);
+            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_fence"), DYE_FENCE);
+            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_fence"), new BlockItem(DYE_FENCE, new FabricItemSettings()));
 
         }
 
