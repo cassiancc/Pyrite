@@ -26,6 +26,7 @@
 "block.pyrite.green_stained_planks": "Green Stained Planks",
 "block.pyrite.red_stained_planks": "Red Stained Planks",
 "block.pyrite.black_stained_planks": "Black Stained Planks",
+"block.pyrite.glow_stained_planks": "Glow Stained Planks",
 "block.pyrite.white_stained_stairs": "White Stained Stairs",
 "block.pyrite.orange_stained_stairs": "Orange Stained Stairs",
 "block.pyrite.magenta_stained_stairs": "Magenta Stained Stairs",
@@ -42,6 +43,7 @@
 "block.pyrite.green_stained_stairs": "Green Stained Stairs",
 "block.pyrite.red_stained_stairs": "Red Stained Stairs",
 "block.pyrite.black_stained_stairs": "Black Stained Stairs",
+"block.pyrite.glow_stained_stairs": "Glow Stained Stairs",
   "block.pyrite.white_stained_slab": "White Stained Slab",
   "block.pyrite.orange_stained_slab": "Orange Stained Slab",
   "block.pyrite.magenta_stained_slab": "Magenta Stained Slab",
@@ -58,6 +60,7 @@
   "block.pyrite.green_stained_slab": "Green Stained Slab",
   "block.pyrite.red_stained_slab": "Red Stained Slab",
   "block.pyrite.black_stained_slab": "Black Stained Slab",
+  "block.pyrite.glow_stained_slab": "Glow Stained Slab",
   "block.pyrite.white_stained_button": "White Stained Button",
   "block.pyrite.orange_stained_button": "Orange Stained Button",
   "block.pyrite.magenta_stained_button": "Magenta Stained Button",
@@ -74,6 +77,7 @@
   "block.pyrite.green_stained_button": "Green Stained Button",
   "block.pyrite.red_stained_button": "Red Stained Button",
   "block.pyrite.black_stained_button": "Black Stained Button",
+  "block.pyrite.glow_stained_button": "Glow Stained Button",
   "block.pyrite.white_stained_pressure_plate": "White Stained Pressure Plate",
   "block.pyrite.orange_stained_pressure_plate": "Orange Stained Pressure Plate",
   "block.pyrite.magenta_stained_pressure_plate": "Magenta Stained Pressure Plate",
@@ -90,6 +94,7 @@
   "block.pyrite.green_stained_pressure_plate": "Green Stained Pressure Plate",
   "block.pyrite.red_stained_pressure_plate": "Red Stained Pressure Plate",
   "block.pyrite.black_stained_pressure_plate": "Black Stained Pressure Plate",
+  "block.pyrite.glow_stained_pressure_plate": "Glow Stained Pressure Plate",
   "block.pyrite.white_stained_fence": "White Stained Fence",
   "block.pyrite.orange_stained_fence": "Orange Stained Fence",
   "block.pyrite.magenta_stained_fence": "Magenta Stained Fence",
@@ -105,7 +110,9 @@
   "block.pyrite.brown_stained_fence": "Brown Stained Fence",
   "block.pyrite.green_stained_fence": "Green Stained Fence",
   "block.pyrite.red_stained_fence": "Red Stained Fence",
-  "block.pyrite.black_stained_fence": "Black Stained Fence"
+  "block.pyrite.black_stained_fence": "Black Stained Fence",
+  "block.pyrite.glow_stained_fence": "Glow Stained Fence"
+
 
 
 }
