@@ -41,7 +41,23 @@
 "block.pyrite.brown_stained_stairs": "Brown Stained Stairs",
 "block.pyrite.green_stained_stairs": "Green Stained Stairs",
 "block.pyrite.red_stained_stairs": "Red Stained Stairs",
-"block.pyrite.black_stained_stairs": "Black Stained Stairs"
+"block.pyrite.black_stained_stairs": "Black Stained Stairs",
+  "block.pyrite.white_stained_slab": "White Stained Slab",
+  "block.pyrite.orange_stained_slab": "Orange Stained Slab",
+  "block.pyrite.magenta_stained_slab": "Magenta Stained Slab",
+  "block.pyrite.light_blue_stained_slab": "Light Blue Stained Slab",
+  "block.pyrite.yellow_stained_slab": "Yellow Stained Slab",
+  "block.pyrite.lime_stained_slab": "Lime Stained Slab",
+  "block.pyrite.pink_stained_slab": "Pink Stained Slab",
+  "block.pyrite.gray_stained_slab": "Gray Stained Slab",
+  "block.pyrite.light_gray_stained_slab": "Light Gray Stained Slab",
+  "block.pyrite.cyan_stained_slab": "Cyan Stained Slab",
+  "block.pyrite.purple_stained_slab": "Purple Stained Slab",
+  "block.pyrite.blue_stained_slab": "Blue Stained Slab",
+  "block.pyrite.brown_stained_slab": "Brown Stained Slab",
+  "block.pyrite.green_stained_slab": "Green Stained Slab",
+  "block.pyrite.red_stained_slab": "Red Stained Slab",
+  "block.pyrite.black_stained_slab": "Black Stained Slab"
 
 
 }
