@@ -25,7 +25,23 @@
 "block.pyrite.brown_stained_planks": "Brown Stained Planks",
 "block.pyrite.green_stained_planks": "Green Stained Planks",
 "block.pyrite.red_stained_planks": "Red Stained Planks",
-"block.pyrite.black_stained_planks": "Black Stained Planks"
+"block.pyrite.black_stained_planks": "Black Stained Planks",
+"block.pyrite.white_stained_stairs": "White Stained Stairs",
+"block.pyrite.orange_stained_stairs": "Orange Stained Stairs",
+"block.pyrite.magenta_stained_stairs": "Magenta Stained Stairs",
+"block.pyrite.light_blue_stained_stairs": "Light Blue Stained Stairs",
+"block.pyrite.yellow_stained_stairs": "Yellow Stained Stairs",
+"block.pyrite.lime_stained_stairs": "Lime Stained Stairs",
+"block.pyrite.pink_stained_stairs": "Pink Stained Stairs",
+"block.pyrite.gray_stained_stairs": "Gray Stained Stairs",
+"block.pyrite.light_gray_stained_stairs": "Light Gray Stained Stairs",
+"block.pyrite.cyan_stained_stairs": "Cyan Stained Stairs",
+"block.pyrite.purple_stained_stairs": "Purple Stained Stairs",
+"block.pyrite.blue_stained_stairs": "Blue Stained Stairs",
+"block.pyrite.brown_stained_stairs": "Brown Stained Stairs",
+"block.pyrite.green_stained_stairs": "Green Stained Stairs",
+"block.pyrite.red_stained_stairs": "Red Stained Stairs",
+"block.pyrite.black_stained_stairs": "Black Stained Stairs"
 
 
 }

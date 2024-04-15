@@ -75,6 +75,12 @@ public class Pyrite implements ModInitializer {
             generatedBlocks.add(DYE_PLANKS);
             Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_planks"), DYE_PLANKS);
             Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_planks"), new BlockItem(DYE_PLANKS, new FabricItemSettings()));
+            //STAIRS
+            Block DYE_STAIRS = new ModStairs(DYE_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
+            generatedBlocks.add(DYE_STAIRS);
+            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_stairs"), DYE_STAIRS);
+            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_stairs"), new BlockItem(DYE_STAIRS, new FabricItemSettings()));
+
         }
 
 
