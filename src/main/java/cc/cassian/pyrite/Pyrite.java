@@ -16,6 +16,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import java.util.ArrayList; // import the ArrayList class
+import java.util.Objects;
 
 public class Pyrite implements ModInitializer {
 
@@ -63,7 +64,8 @@ public class Pyrite implements ModInitializer {
             "brown",
             "green",
             "red",
-            "black"
+            "black",
+            "glow"
     };
 
     String[] woodItems = {
@@ -84,25 +86,39 @@ public class Pyrite implements ModInitializer {
     @Override
     public void onInitialize() {
         int x = 0;
+        int blockLux;
+        DyeColor color;
         for (String dye : dyes) {
+            if (Objects.equals(dye, "glow")) {
+                blockLux = 15;
+            }
+            else {
+                blockLux = 0;
+            }
+            if (Objects.equals(dye, "glow")) {
+                color = DyeColor.GREEN;
+            }
+            else {
+                color = DyeColor.valueOf(dye.toUpperCase());
+            }
             BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", dye + "wood"));
             //PLANKS
-            Block DYE_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
+            Block DYE_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).luminance(blockLux).mapColor(color));
             generatedBlocks.add(DYE_PLANKS);
             //STAIRS
-            Block DYE_STAIRS = new ModStairs(DYE_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
+            Block DYE_STAIRS = new ModStairs(DYE_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).luminance(blockLux).mapColor(color));
             generatedBlocks.add(DYE_STAIRS);
             //SLABS
-            Block DYE_SLABS = new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
+            Block DYE_SLABS = new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).luminance(blockLux).mapColor(color));
             generatedBlocks.add(DYE_SLABS);
             //PRESSURE PLATES
-            Block DYE_PLATES = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), DYED_WOOD_SET);
+            Block DYE_PLATES = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).luminance(blockLux).mapColor(color), DYED_WOOD_SET);
             generatedBlocks.add(DYE_PLATES);
             //BUTTON
-            Block DYE_BUTTONS = new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), DYED_WOOD_SET, 40, true);
+            Block DYE_BUTTONS = new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).mapColor(color).luminance(blockLux), DYED_WOOD_SET, 40, true);
             generatedBlocks.add(DYE_BUTTONS);
             //FENCE
-            Block DYE_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE));
+            Block DYE_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux));
             generatedBlocks.add(DYE_FENCE);
             //Register
             for (String blockItem : woodItems) {

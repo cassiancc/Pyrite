@@ -1,4 +1,3 @@
 {
-  "parent": "pyrite:block/black_stained_planks"
-}
-
+        "parent": "pyrite:block/black_stained_planks"
+      }

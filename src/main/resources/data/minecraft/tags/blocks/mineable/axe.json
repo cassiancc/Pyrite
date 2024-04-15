@@ -80,6 +80,11 @@
     "pyrite:black_stained_stairs",
     "pyrite:black_stained_slab",
     "pyrite:black_stained_planks",
-    "pyrite:black_stained_fence"
+    "pyrite:black_stained_fence",
+    "pyrite:glow_stained_button",
+    "pyrite:glow_stained_stairs",
+    "pyrite:glow_stained_slab",
+    "pyrite:glow_stained_planks",
+    "pyrite:glow_stained_fence"
     ]
   }
