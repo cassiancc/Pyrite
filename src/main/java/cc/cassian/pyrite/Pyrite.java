@@ -85,6 +85,11 @@ public class Pyrite implements ModInitializer {
             generatedBlocks.add(DYE_SLABS);
             Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_slab"), DYE_SLABS);
             Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_slab"), new BlockItem(DYE_SLABS, new FabricItemSettings()));
+            //PRESSURE PLATES
+            Block DYE_PLATES = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK);
+            generatedBlocks.add(DYE_PLATES);
+            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_pressure_plate"), DYE_PLATES);
+            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_pressure_plate"), new BlockItem(DYE_PLATES, new FabricItemSettings()));
 
         }
 

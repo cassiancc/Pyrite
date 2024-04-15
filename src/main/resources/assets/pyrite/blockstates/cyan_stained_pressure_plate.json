@@ -1,0 +1,10 @@
+{
+        "variants": {
+          "powered=false": {
+            "model": "pyrite:block/cyan_stained_pressure_plate"
+          },
+          "powered=true": {
+            "model": "pyrite:block/cyan_stained_pressure_plate_down"
+          }
+        }
+      }
