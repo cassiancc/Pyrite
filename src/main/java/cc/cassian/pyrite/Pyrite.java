@@ -12,6 +12,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
+import java.util.ArrayList; // import the ArrayList class
+
 public class Pyrite implements ModInitializer {
 
     //FRAMED GLASS
@@ -60,24 +62,15 @@ public class Pyrite implements ModInitializer {
             "red",
             "black"
     };
+    static ArrayList<Block> generatedBlocks = new ArrayList<Block>();
 
-
-
-    private static final ItemGroup PYRITE_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(FRAMED_GLASS))
-            .displayName(Text.translatable("itemGroup.pyrite.group"))
-            .entries((context, entries) -> {
-                for (Block pyriteBlock : pyriteBlocks) {
-                    entries.add(pyriteBlock);
-                }
-            })
-            .build();
 
     @Override
     public void onInitialize() {
 
         for (int i = 0; i < dyes.length; i++) {
             Block DYE_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
+            generatedBlocks.add(DYE_BLOCK);
             Registry.register(Registries.BLOCK, new Identifier("pyrite", dyes[i] + "_stained_planks"), DYE_BLOCK);
             Registry.register(Registries.ITEM, new Identifier("pyrite", dyes[i] + "_stained_planks"), new BlockItem(DYE_BLOCK, new FabricItemSettings()));
         };
@@ -98,6 +91,18 @@ public class Pyrite implements ModInitializer {
 
 
         });
-
     }
+
+    private static final ItemGroup PYRITE_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(FRAMED_GLASS))
+            .displayName(Text.translatable("itemGroup.pyrite.group"))
+            .entries((context, entries) -> {
+                for (Block block : pyriteBlocks) {
+                    entries.add(block);
+                }
+                for (Block block : generatedBlocks) {
+                    entries.add(block);
+                }
+            })
+            .build();
 }
