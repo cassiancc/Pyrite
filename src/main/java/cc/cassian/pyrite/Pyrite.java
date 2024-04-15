@@ -10,6 +10,7 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import java.util.ArrayList; // import the ArrayList class
@@ -68,12 +69,13 @@ public class Pyrite implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        for (int i = 0; i < dyes.length; i++) {
-            Block DYE_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
-            generatedBlocks.add(DYE_BLOCK);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dyes[i] + "_stained_planks"), DYE_BLOCK);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dyes[i] + "_stained_planks"), new BlockItem(DYE_BLOCK, new FabricItemSettings()));
-        };
+        for (String dye : dyes) {
+            //PLANKS
+            Block DYE_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
+            generatedBlocks.add(DYE_PLANKS);
+            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_planks"), DYE_PLANKS);
+            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_planks"), new BlockItem(DYE_PLANKS, new FabricItemSettings()));
+        }
 
 
 
@@ -94,7 +96,7 @@ public class Pyrite implements ModInitializer {
     }
 
     private static final ItemGroup PYRITE_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(FRAMED_GLASS))
+            .icon(() -> new ItemStack(COBBLESTONE_BRICKS))
             .displayName(Text.translatable("itemGroup.pyrite.group"))
             .entries((context, entries) -> {
                 for (Block block : pyriteBlocks) {

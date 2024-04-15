@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "pyrite:block/grey_stained_planks"
+    "all": "pyrite:block/gray_stained_planks"
   }
 }
