@@ -90,7 +90,7 @@ public class Pyrite implements ModInitializer {
         DyeColor color;
         for (String dye : dyes) {
             if (Objects.equals(dye, "glow")) {
-                blockLux = 15;
+                blockLux = 1;
             }
             else {
                 blockLux = 0;
