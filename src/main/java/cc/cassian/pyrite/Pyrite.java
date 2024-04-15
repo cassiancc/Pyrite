@@ -65,6 +65,17 @@ public class Pyrite implements ModInitializer {
             "red",
             "black"
     };
+
+    String[] woodItems = {
+            "planks",
+            "stairs",
+            "slab",
+            "pressure_plate",
+            "button",
+            "fence"
+    };
+
+
     static ArrayList<Block> generatedBlocks = new ArrayList<Block>();
 
     public static final BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", "dyed_wood"));
@@ -72,42 +83,34 @@ public class Pyrite implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        int x = 0;
         for (String dye : dyes) {
             BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", dye + "wood"));
             //PLANKS
             Block DYE_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
             generatedBlocks.add(DYE_PLANKS);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_planks"), DYE_PLANKS);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_planks"), new BlockItem(DYE_PLANKS, new FabricItemSettings()));
             //STAIRS
             Block DYE_STAIRS = new ModStairs(DYE_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
             generatedBlocks.add(DYE_STAIRS);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_stairs"), DYE_STAIRS);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_stairs"), new BlockItem(DYE_STAIRS, new FabricItemSettings()));
             //SLABS
             Block DYE_SLABS = new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
             generatedBlocks.add(DYE_SLABS);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_slab"), DYE_SLABS);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_slab"), new BlockItem(DYE_SLABS, new FabricItemSettings()));
             //PRESSURE PLATES
             Block DYE_PLATES = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), DYED_WOOD_SET);
             generatedBlocks.add(DYE_PLATES);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_pressure_plate"), DYE_PLATES);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_pressure_plate"), new BlockItem(DYE_PLATES, new FabricItemSettings()));
             //BUTTON
             Block DYE_BUTTONS = new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), DYED_WOOD_SET, 40, true);
             generatedBlocks.add(DYE_BUTTONS);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_button"), DYE_BUTTONS);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_button"), new BlockItem(DYE_BUTTONS, new FabricItemSettings()));
             //FENCE
             Block DYE_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE));
             generatedBlocks.add(DYE_FENCE);
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_fence"), DYE_FENCE);
-            Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_fence"), new BlockItem(DYE_FENCE, new FabricItemSettings()));
-
+            //Register
+            for (String blockItem : woodItems) {
+                Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_" + blockItem), generatedBlocks.get(x));
+                Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_" + blockItem), new BlockItem(generatedBlocks.get(x), new FabricItemSettings()));
+                x = x + 1;
+            }
         }
-
-
 
         for (int i = 0; i < pyriteBlockIDs.length; i++) {
             Registry.register(Registries.BLOCK, new Identifier("pyrite", pyriteBlockIDs[i]), pyriteBlocks[i]);
