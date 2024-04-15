@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -65,11 +67,13 @@ public class Pyrite implements ModInitializer {
     };
     static ArrayList<Block> generatedBlocks = new ArrayList<Block>();
 
+    public static final BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", "dyed_wood"));
+
 
     @Override
     public void onInitialize() {
-
         for (String dye : dyes) {
+            BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", dye + "wood"));
             //PLANKS
             Block DYE_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).mapColor(DyeColor.valueOf(dye.toUpperCase())));
             generatedBlocks.add(DYE_PLANKS);
@@ -86,7 +90,7 @@ public class Pyrite implements ModInitializer {
             Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_slab"), DYE_SLABS);
             Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_slab"), new BlockItem(DYE_SLABS, new FabricItemSettings()));
             //PRESSURE PLATES
-            Block DYE_PLATES = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK);
+            Block DYE_PLATES = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), DYED_WOOD_SET);
             generatedBlocks.add(DYE_PLATES);
             Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_pressure_plate"), DYE_PLATES);
             Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_pressure_plate"), new BlockItem(DYE_PLATES, new FabricItemSettings()));
