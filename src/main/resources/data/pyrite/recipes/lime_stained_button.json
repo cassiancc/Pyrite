@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:lime_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:lime_stained_button",
+          "count": 1
+        }
+      }
