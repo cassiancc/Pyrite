@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+      "bottom": "pyrite:block/light_blue_stained_planks",
+      "top": "pyrite:block/light_blue_stained_planks",
+      "side": "pyrite:block/light_blue_stained_planks"
+    }
+  }
