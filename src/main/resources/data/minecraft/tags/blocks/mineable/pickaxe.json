@@ -2,8 +2,9 @@
       "replace": false,
       "values": [
         "pyrite:framed_glass",
-		"pyrite:framed_glass_pane",
-		"#pyrite:bricks"
+        "pyrite:framed_glass_pane",
+        "#pyrite:bricks",
+        "#pyrite:wall_gates"
       ]
     }
 
