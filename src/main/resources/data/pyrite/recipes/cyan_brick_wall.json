@@ -1,0 +1,16 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:cyan_bricks"
+      }
+    },
+    "result": {
+      "item": "pyrite:cyan_brick_wall",
+      "count": 6
+    }
+}

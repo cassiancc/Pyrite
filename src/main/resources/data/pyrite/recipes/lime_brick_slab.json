@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:lime_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:lime_brick_slab",
+          "count": 6
+        }
+      }

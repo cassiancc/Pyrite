@@ -1,0 +1,17 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:red_bricks"
+        }
+      },
+      "result": {
+        "item": "pyrite:red_brick_stairs",
+        "count": 4
+      }
+  }

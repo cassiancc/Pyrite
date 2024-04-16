@@ -53,7 +53,10 @@ public class Pyrite implements ModInitializer {
             "stained_button",
             "stained_fence",
             "stained_fence_gate",
-            "bricks"
+            "bricks",
+            "brick_stairs",
+            "brick_slab",
+            "brick_wall"
     };
     //List of Wall Block IDs to generated Wall Gates for.
     String[] walls = {
@@ -186,8 +189,15 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux)));
             //Stained Fence Gates
             pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux), DYED_WOOD_TYPE));
-            //Stained Bricks
-            pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).mapColor(color)));
+            //Dyed Bricks
+            pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(blockLux).mapColor(color)));
+            //Dyed Brick Stairs
+            pyriteBlocks.add(new ModStairs(pyriteBlocks.get(pyriteBlocks.size()-1).getDefaultState(), FabricBlockSettings.copyOf(Blocks.BRICK_STAIRS).luminance(blockLux).mapColor(color)));
+            //Dyed Brick Slab
+            pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.BRICK_SLAB).luminance(blockLux).mapColor(color)));
+            //Dyed Brick Wall
+            pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.BRICK_WALL).luminance(blockLux).mapColor(color)));
+
             //Generate Block IDs
             for (String generatedID : generated) {
                 pyriteBlockIDs.add(dye + "_" + generatedID);

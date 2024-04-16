@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:dragon_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:dragon_brick_slab",
+          "count": 6
+        }
+      }
