@@ -102,6 +102,18 @@
     "pyrite:glow_stained_slab",
     "pyrite:glow_stained_planks",
     "pyrite:glow_stained_pressure_plate",
-    "pyrite:glow_stained_fence"
+    "pyrite:glow_stained_fence",
+    "pyrite:dragon_stained_button",
+    "pyrite:dragon_stained_stairs",
+    "pyrite:dragon_stained_slab",
+    "pyrite:dragon_stained_planks",
+    "pyrite:dragon_stained_pressure_plate",
+    "pyrite:dragon_stained_fence",
+    "pyrite:star_stained_button",
+    "pyrite:star_stained_stairs",
+    "pyrite:star_stained_slab",
+    "pyrite:star_stained_planks",
+    "pyrite:star_stained_pressure_plate",
+    "pyrite:star_stained_fence"
     ]
   }

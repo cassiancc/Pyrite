@@ -17,7 +17,11 @@
     "pyrite:green_stained_fence",
     "pyrite:red_stained_fence",
     "pyrite:black_stained_fence",
-    "pyrite:glow_stained_fence"
+    "pyrite:glow_stained_fence",
+    "pyrite:dragon_stained_fence",
+    "pyrite:star_stained_fence"
+
+
 
   ]
 }

@@ -64,7 +64,9 @@ public class Pyrite implements ModInitializer {
             "green",
             "red",
             "black",
-            "glow"
+            "glow",
+            "dragon",
+            "star"
     };
 
     String[] woodItems = {
@@ -89,6 +91,14 @@ public class Pyrite implements ModInitializer {
             if (Objects.equals(dye, "glow")) {
                 blockLux = 8;
                 color = DyeColor.GREEN;
+            }
+            else if (Objects.equals(dye, "dragon")) {
+                blockLux = 0;
+                color = DyeColor.PURPLE;
+            }
+            else if (Objects.equals(dye, "star")) {
+                blockLux = 15;
+                color = DyeColor.LIGHT_BLUE;
             }
             else {
                 color = DyeColor.valueOf(dye.toUpperCase());
