@@ -1,8 +1,6 @@
 {
-    "replace": false,
-    "values": [
-    "pyrite:grass_carpet",
-    "pyrite:mycelium_carpet",
-    "pyrite:podzol_carpet"
-    ]
-  }
+  "replace": false,
+  "values": [
+  "#pyrite:carpet"
+  ]
+}
