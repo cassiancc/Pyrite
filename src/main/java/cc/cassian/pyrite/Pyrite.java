@@ -70,14 +70,15 @@ public class Pyrite implements ModInitializer {
             "star"
     };
 
-    String[] woodItems = {
-            "planks",
-            "stairs",
-            "slab",
-            "pressure_plate",
-            "button",
-            "fence",
-            "fence_gate"
+    String[] generated = {
+            "stained_planks",
+            "stained_stairs",
+            "stained_slab",
+            "stained_pressure_plate",
+            "stained_button",
+            "stained_fence",
+            "stained_fence_gate",
+            "bricks"
     };
 
 
@@ -129,10 +130,13 @@ public class Pyrite implements ModInitializer {
             //FENCE GATES
             Block DYE_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux), DYED_WOOD_TYPE);
             generatedBlocks.add(DYE_FENCE_GATE);
+            //Bricks
+            Block DYE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).mapColor(color));
+            generatedBlocks.add(DYE_BRICKS);
             //Register
-            for (String blockItem : woodItems) {
-                Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_" + blockItem), generatedBlocks.get(x));
-                Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_stained_" + blockItem), new BlockItem(generatedBlocks.get(x), new FabricItemSettings()));
+            for (String generatedID : generated) {
+                Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_" + generatedID), generatedBlocks.get(x));
+                Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_" + generatedID), new BlockItem(generatedBlocks.get(x), new FabricItemSettings()));
                 x = x + 1;
             }
         }

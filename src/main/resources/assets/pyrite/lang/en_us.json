@@ -142,9 +142,24 @@
   "block.pyrite.black_stained_fence_gate": "Black Stained Fence Gate",
   "block.pyrite.dragon_stained_fence_gate": "Dragon Stained Fence Gate",
   "block.pyrite.star_stained_fence_gate": "Star Stained Fence Gate",
-  "block.pyrite.glow_stained_fence_gate": "Glow Stained Fence Gate"
-
-
-
-
+  "block.pyrite.glow_stained_fence_gate": "Glow Stained Fence Gate",
+  "block.pyrite.white_bricks": "White Bricks",
+  "block.pyrite.orange_bricks": "Orange Bricks",
+  "block.pyrite.magenta_bricks": "Magenta Bricks",
+  "block.pyrite.light_blue_bricks": "Light Blue Bricks",
+  "block.pyrite.yellow_bricks": "Yellow Bricks",
+  "block.pyrite.lime_bricks": "Lime Bricks",
+  "block.pyrite.pink_bricks": "Pink Bricks",
+  "block.pyrite.gray_bricks": "Gray Bricks",
+  "block.pyrite.light_gray_bricks": "Light Gray Bricks",
+  "block.pyrite.cyan_bricks": "Cyan Bricks",
+  "block.pyrite.purple_bricks": "Purple Bricks",
+  "block.pyrite.blue_bricks": "Blue Bricks",
+  "block.pyrite.brown_bricks": "Brown Bricks",
+  "block.pyrite.green_bricks": "Green Bricks",
+  "block.pyrite.red_bricks": "Red Bricks",
+  "block.pyrite.black_bricks": "Black Bricks",
+  "block.pyrite.glow_bricks": "Glow Bricks",
+  "block.pyrite.dragon_bricks": "Dragon Bricks",
+  "block.pyrite.star_bricks": "Star Bricks"
 }
