@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:orange_bricks"
+    },
+    "result": "pyrite:orange_brick_slab",
+    "count": 2
+  }
