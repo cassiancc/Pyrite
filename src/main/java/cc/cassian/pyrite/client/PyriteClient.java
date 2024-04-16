@@ -14,15 +14,17 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.ColorResolver;
 
+import static cc.cassian.pyrite.Pyrite.pyriteBlocks;
+
 
 @Environment(EnvType.CLIENT)
 public class PyriteClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(Pyrite.FRAMED_GLASS, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(Pyrite.FRAMED_GLASS_PANE, RenderLayer.getCutout());
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), Pyrite.GRASS_CARPET);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 5730613, Pyrite.GRASS_CARPET);
+        BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlocks.get(0), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlocks.get(1), RenderLayer.getCutout());
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), pyriteBlocks.get(10));
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 5730613, pyriteBlocks.get(10));
 
     }
 }
