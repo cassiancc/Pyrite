@@ -39,17 +39,18 @@ public class Pyrite implements ModInitializer {
     public static final Block GRASS_CARPET = new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET));
     public static final Block MYCELIUM_CARPET = new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET));
     public static final Block PODZOL_CARPET = new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET));
+    public static final Block NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE), WoodType.CRIMSON  );
 
 
     static Block[] pyriteBlocks = {
             COBBLESTONE_BRICKS, COBBLESTONE_BRICK_STAIRS,COBBLESTONE_BRICK_SLAB,COBBLESTONE_BRICK_WALL,
             MOSSY_COBBLESTONE_BRICKS, MOSSY_COBBLESTONE_BRICK_STAIRS,MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_WALL,
-            FRAMED_GLASS, FRAMED_GLASS_PANE, GRASS_CARPET, MYCELIUM_CARPET, PODZOL_CARPET
+            FRAMED_GLASS, FRAMED_GLASS_PANE, GRASS_CARPET, MYCELIUM_CARPET, PODZOL_CARPET, NETHER_BRICK_FENCE_GATE
     };
     String[] pyriteBlockIDs = {
             "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab","cobblestone_brick_wall",
             "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall",
-            "framed_glass", "framed_glass_pane", "grass_carpet", "mycelium_carpet", "podzol_carpet"
+            "framed_glass", "framed_glass_pane", "grass_carpet", "mycelium_carpet", "podzol_carpet", "nether_brick_fence_gate"
 
     };
 

@@ -164,5 +164,7 @@
   "block.pyrite.star_bricks": "Star Bricks",
   "block.pyrite.grass_carpet": "Grass Carpet",
   "block.pyrite.mycelium_carpet": "Mycelium Carpet",
-  "block.pyrite.podzol_carpet": "Podzol Carpet"
+  "block.pyrite.podzol_carpet": "Podzol Carpet",
+  "block.pyrite.nether_brick_fence_gate": "Nether Brick Fence Gate"
+
 }
