@@ -19,7 +19,6 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Pyrite implements ModInitializer {
-
     //List of Blocks and Block IDS.
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
@@ -111,25 +110,34 @@ public class Pyrite implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        //FRAMED GLASS
-        pyriteBlocks.add(new ModGlass()); //0 Framed Glass
-        pyriteBlocks.add(new PaneBlock(FabricBlockSettings.create().nonOpaque().strength(2.0f).sounds(BlockSoundGroup.GLASS))); //1 Framed Glass Pane
-        //COBBLESTONE BRICKS
-        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS))); //2 Cobblestone Bricks
-        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(2).getDefaultState(),FabricBlockSettings.copyOf(Blocks.STONE_BRICK_STAIRS))); //3 Cobblestone Brick Stairs
-        pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_SLAB))); //4
-        pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_WALL))); //5
-        //MOSSY COBBLESTONE BRICKS
-        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS).strength(3.0f)));//6 Mossy Cobblestone Bricks
-        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(6).getDefaultState(),FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_STAIRS).strength(3.0f))); //7
-        pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_SLAB).strength(3.0f)));//8
-        pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_WALL)));//9
-        //GRASS/MYCELIUM/PODZOL CARPETS
-        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));//10
-        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));//11
-        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));//12
-        //NETHER BRICK FENCE GATES
-        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE), WoodType.CRIMSON));//13
+        //Framed Glass - 0
+        pyriteBlocks.add(new ModGlass());
+        //Framed Glass Pane - 1
+        pyriteBlocks.add(new PaneBlock(FabricBlockSettings.create().nonOpaque().strength(2.0f).sounds(BlockSoundGroup.GLASS)));
+        //Cobblestone Bricks - 2
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS)));
+        //Cobblestone Brick Stairs - 3
+        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(2).getDefaultState(),FabricBlockSettings.copyOf(Blocks.STONE_BRICK_STAIRS)));
+        //Cobblestone Brick Stairs - 4
+        pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_SLAB)));
+        //Cobblestone Brick Walls - 5
+        pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_WALL)));
+        //Mossy Cobblestone Bricks - 6
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS).strength(3.0f)));
+        //Mossy Cobblestone Brick Stairs - 7
+        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(6).getDefaultState(),FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_STAIRS).strength(3.0f)));
+        //Mossy Cobblestone Brick Slabs - 8
+        pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_SLAB).strength(3.0f)));
+        //Mossy Cobblestone Brick Walls - 9
+        pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_WALL)));
+        //Grass Carpet - 10
+        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
+        //Mycelium Carpet - 11
+        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
+        //Podzol Carpet - 12
+        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
+        //Nether Brick Fence Gate - 13
+        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE), WoodType.CRIMSON));
         //Add all manually generated block IDs.
         pyriteBlockIDs.addAll(Arrays.asList(
                 "framed_glass", "framed_glass_pane",
@@ -174,7 +182,7 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).luminance(blockLux).mapColor(color), DYED_WOOD_SET));
             //Stained Buttons
             pyriteBlocks.add(new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).mapColor(color).luminance(blockLux), DYED_WOOD_SET, 40, true));
-            //Staineed Fences
+            //Stained Fences
             pyriteBlocks.add(new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux)));
             //Stained Fence Gates
             pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux), DYED_WOOD_TYPE));
