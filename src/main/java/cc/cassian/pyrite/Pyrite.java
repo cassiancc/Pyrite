@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -75,7 +76,8 @@ public class Pyrite implements ModInitializer {
             "slab",
             "pressure_plate",
             "button",
-            "fence"
+            "fence",
+            "fence_gate"
     };
 
 
@@ -105,6 +107,7 @@ public class Pyrite implements ModInitializer {
                 blockLux = 0;
             }
             BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", dye + "wood"));
+            WoodType DYED_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CHERRY).register(new Identifier("pyrite", dye + "wood"), DYED_WOOD_SET);
             //PLANKS
             Block DYE_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).luminance(blockLux).mapColor(color));
             generatedBlocks.add(DYE_PLANKS);
@@ -123,6 +126,9 @@ public class Pyrite implements ModInitializer {
             //FENCE
             Block DYE_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux));
             generatedBlocks.add(DYE_FENCE);
+            //FENCE GATES
+            Block DYE_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux), DYED_WOOD_TYPE);
+            generatedBlocks.add(DYE_FENCE_GATE);
             //Register
             for (String blockItem : woodItems) {
                 Registry.register(Registries.BLOCK, new Identifier("pyrite", dye + "_stained_" + blockItem), generatedBlocks.get(x));

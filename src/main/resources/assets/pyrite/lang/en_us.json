@@ -123,7 +123,26 @@
   "block.pyrite.black_stained_fence": "Black Stained Fence",
   "block.pyrite.dragon_stained_fence": "Dragon Stained Fence",
   "block.pyrite.star_stained_fence": "Star Stained Fence",
-  "block.pyrite.glow_stained_fence": "Glow Stained Fence"
+  "block.pyrite.glow_stained_fence": "Glow Stained Fence",
+  "block.pyrite.white_stained_fence_gate": "White Stained Fence Gate",
+  "block.pyrite.orange_stained_fence_gate": "Orange Stained Fence Gate",
+  "block.pyrite.magenta_stained_fence_gate": "Magenta Stained Fence Gate",
+  "block.pyrite.light_blue_stained_fence_gate": "Light Blue Stained Fence Gate",
+  "block.pyrite.yellow_stained_fence_gate": "Yellow Stained Fence Gate",
+  "block.pyrite.lime_stained_fence_gate": "Lime Stained Fence Gate",
+  "block.pyrite.pink_stained_fence_gate": "Pink Stained Fence Gate",
+  "block.pyrite.gray_stained_fence_gate": "Gray Stained Fence Gate",
+  "block.pyrite.light_gray_stained_fence_gate": "Light Gray Stained Fence Gate",
+  "block.pyrite.cyan_stained_fence_gate": "Cyan Stained Fence Gate",
+  "block.pyrite.purple_stained_fence_gate": "Purple Stained Fence Gate",
+  "block.pyrite.blue_stained_fence_gate": "Blue Stained Fence Gate",
+  "block.pyrite.brown_stained_fence_gate": "Brown Stained Fence Gate",
+  "block.pyrite.green_stained_fence_gate": "Green Stained Fence Gate",
+  "block.pyrite.red_stained_fence_gate": "Red Stained Fence Gate",
+  "block.pyrite.black_stained_fence_gate": "Black Stained Fence Gate",
+  "block.pyrite.dragon_stained_fence_gate": "Dragon Stained Fence Gate",
+  "block.pyrite.star_stained_fence_gate": "Star Stained Fence Gate",
+  "block.pyrite.glow_stained_fence_gate": "Glow Stained Fence Gate"
 
 
 

@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:green_stained_planks"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "result": {
+          "item": "pyrite:green_stained_fence_gate",
+          "count": 1
+        }
+      }
