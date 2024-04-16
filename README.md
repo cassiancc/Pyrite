@@ -8,4 +8,5 @@ Pyrite is available for Minecraft Fabric 1.20.1. While legacy versions are on Gi
 
 ## Features
 - Stained Planks, in every colour of dye (and more!)
+- Dyed Bricks, in every colour of dye (and more!)
 - Cobblestone Bricks
