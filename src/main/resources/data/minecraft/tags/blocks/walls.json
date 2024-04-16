@@ -1,8 +1,7 @@
 {
   "replace": false,
   "values": [
-    "pyrite:cobblestone_brick_wall",
-    "pyrite:mossy_cobblestone_brick_wall"
+    "#pyrite:walls"
 
 
 

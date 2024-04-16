@@ -1,0 +1,26 @@
+{
+    "replace": false,
+    "values": [
+        "pyrite:white_brick_wall",
+        "pyrite:orange_brick_wall",
+        "pyrite:magenta_brick_wall",
+        "pyrite:light_blue_brick_wall",
+        "pyrite:yellow_brick_wall",
+        "pyrite:lime_brick_wall",
+        "pyrite:pink_brick_wall",
+        "pyrite:gray_brick_wall",
+        "pyrite:light_gray_brick_wall",
+        "pyrite:cyan_brick_wall",
+        "pyrite:purple_brick_wall",
+        "pyrite:blue_brick_wall",
+        "pyrite:brown_brick_wall",
+        "pyrite:green_brick_wall",
+        "pyrite:red_brick_wall",
+        "pyrite:black_brick_wall",
+        "pyrite:glow_brick_wall",
+        "pyrite:dragon_brick_wall",
+        "pyrite:star_brick_wall",
+        "pyrite:cobblestone_brick_wall",
+        "pyrite:mossy_cobblestone_brick_wall"
+    
+]}
