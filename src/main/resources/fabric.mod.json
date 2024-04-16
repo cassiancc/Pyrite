@@ -3,9 +3,13 @@
   "id": "pyrite",
   "version": "${version}",
   "name": "Pyrite",
-  "description": "Implements mainstay features into Wish Fulfillment packs.",
+  "description": "Pyrite is a Fabric mod that aims to expand on Vanilla's block palette with new wood types, bricks, and more.",
   "authors": ["cassiancc"],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/pyrite",
+    "issues": "https://github.com/cassiancc/Pyrite/issues",
+    "sources": "https://github.com/cassiancc/Pyrite"
+  },
   "license": "MIT",
   "icon": "assets/pyrite/icon.png",
   "environment": "*",
