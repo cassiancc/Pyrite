@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:prismarine"
+          },
+          "S": {
+            "item": "minecraft:prismarine_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:prismarine_wall_gate",
+          "count": 6
+        }
+      }

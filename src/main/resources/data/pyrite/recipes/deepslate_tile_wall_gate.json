@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:deepslate_tiles"
+          },
+          "S": {
+            "item": "minecraft:deepslate_tile_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:deepslate_tile_wall_gate",
+          "count": 6
+        }
+      }

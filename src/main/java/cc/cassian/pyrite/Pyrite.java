@@ -15,7 +15,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
-import java.util.ArrayList; // import the ArrayList class
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Pyrite implements ModInitializer {
@@ -74,6 +74,58 @@ public class Pyrite implements ModInitializer {
             "glow",
             "dragon",
             "star"
+    };
+
+    String[] walls = {
+            "cobblestone",
+            "mossy_cobblestone",
+            "stone_brick",
+            "mossy_stone_brick",
+            "granite",
+            "diorite",
+            "andesite",
+            "cobbled_deepslate",
+            "polished_deepslate",
+            "deepslate_brick",
+            "deepslate_tile",
+            "brick",
+            "mud_brick",
+            "sandstone",
+            "red_sandstone",
+            "prismarine",
+            "nether_brick",
+            "red_nether_brick",
+            "blackstone",
+            "polished_blackstone",
+            "polished_blackstone_brick",
+            "end_stone_brick"
+
+    };
+
+    Block[] walls_blocks = {
+            Blocks.COBBLESTONE_WALL,
+            Blocks.MOSSY_COBBLESTONE_WALL,
+            Blocks.STONE_BRICK_WALL,
+            Blocks.MOSSY_STONE_BRICK_WALL,
+            Blocks.GRANITE_WALL,
+            Blocks.DIORITE_WALL,
+            Blocks.ANDESITE_WALL,
+            Blocks.COBBLED_DEEPSLATE_WALL,
+            Blocks.POLISHED_DEEPSLATE_WALL,
+            Blocks.DEEPSLATE_BRICK_WALL,
+            Blocks.DEEPSLATE_TILE_WALL,
+            Blocks.BRICK_WALL,
+            Blocks.MUD_BRICK_WALL,
+            Blocks.SANDSTONE_WALL,
+            Blocks.RED_SANDSTONE_WALL,
+            Blocks.PRISMARINE_WALL,
+            Blocks.NETHER_BRICK_WALL,
+            Blocks.RED_NETHER_BRICK_WALL,
+            Blocks.BLACKSTONE_WALL,
+            Blocks.POLISHED_BLACKSTONE_WALL,
+            Blocks.POLISHED_BLACKSTONE_BRICK_WALL,
+            Blocks.END_STONE_BRICK_WALL
+
     };
 
     String[] generated = {
@@ -145,6 +197,20 @@ public class Pyrite implements ModInitializer {
                 Registry.register(Registries.ITEM, new Identifier("pyrite", dye + "_" + generatedID), new BlockItem(generatedBlocks.get(x), new FabricItemSettings()));
                 x = x + 1;
             }
+        }
+
+        //Wall Gates
+        int w = 0;
+        for (String wall : walls) {
+            //WALL GATES
+            Block DYE_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(walls_blocks[w]), WoodType.CRIMSON);
+            generatedBlocks.add(DYE_FENCE_GATE);
+            //Register
+            Registry.register(Registries.BLOCK, new Identifier("pyrite", wall + "_wall_gate"), generatedBlocks.get(x));
+            Registry.register(Registries.ITEM, new Identifier("pyrite", wall + "_wall_gate"), new BlockItem(generatedBlocks.get(x), new FabricItemSettings()));
+            x = x + 1;
+            w = w + 1;
+
         }
 
         for (int i = 0; i < pyriteBlockIDs.length; i++) {
