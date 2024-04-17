@@ -4,7 +4,7 @@ Pyrite aims to expand on Vanilla's block palette with new wood types, bricks, an
 
 It's inspired by mods like Quark and Charm that expand on Minecraft without feeling too unfamiliar.
 
-Pyrite is available for Minecraft Fabric 1.20.1. While legacy versions are on GitHub, they are not recommended for use at this time as they are missing core features and reflect an older idea for the mod. While I haven't ruled out backports, my current focus is the 1.20.1 version. No Forge port is planned.
+Pyrite is available for Minecraft Fabric 1.20.1. Legacy versions are available on GitHub, but are not as actively updated as the 1.20.1 version and may be missing features. No Forge port is planned.
 
 ## Features
 - Stained Planks, in every colour of dye (and more!)
