@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:glow_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:glow_stained_pressure_plate",
+          "count": 1
+        }
+      }

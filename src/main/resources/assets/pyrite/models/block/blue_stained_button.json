@@ -1,0 +1,6 @@
+{
+        "parent": "minecraft:block/button",
+        "textures": {
+          "texture": "pyrite:block/blue_stained_planks"
+        }
+      }

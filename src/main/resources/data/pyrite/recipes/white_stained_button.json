@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:white_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:white_stained_button",
+          "count": 1
+        }
+      }

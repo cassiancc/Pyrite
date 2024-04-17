@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:light_gray_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:light_gray_stained_slab",
+          "count": 6
+        }
+      }

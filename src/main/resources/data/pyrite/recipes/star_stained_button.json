@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:star_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:star_stained_button",
+          "count": 1
+        }
+      }

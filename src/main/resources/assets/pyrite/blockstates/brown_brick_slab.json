@@ -1,0 +1,13 @@
+{
+        "variants": {
+          "type=bottom": {
+            "model": "pyrite:block/brown_brick_slab"
+          },
+          "type=double": {
+            "model": "pyrite:block/brown_bricks"
+          },
+          "type=top": {
+            "model": "pyrite:block/brown_brick_slab_top"
+          }
+        }
+      }

@@ -1,28 +1,29 @@
 {
   "schemaVersion": 1,
   "id": "pyrite",
-  "version": "${version}+0.14",
+  "version": "${version}",
   "name": "Pyrite",
-  "description": "Vanilla+ Tweaks, mostly based off other mods.",
-  "authors": ["congodsted, cassphodel"],
+  "description": "Pyrite is a Fabric mod that aims to expand on Vanilla's block palette with new wood types, bricks, and more.",
+  "authors": ["cassiancc"],
   "contact": {
-    "homepage": "https://github.com/congodsted/Pyrite",
-    "sources": "https://github.com/congodsted/Pyrite"
+    "homepage": "https://modrinth.com/mod/pyrite",
+    "issues": "https://github.com/cassiancc/Pyrite/issues",
+    "sources": "https://github.com/cassiancc/Pyrite"
   },
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "assets/pyrite/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.pyrite.client.PyriteClient"
+      "cc.cassian.pyrite.client.PyriteClient"
     ],
     "main": [
-      "com.pyrite.Pyrite"
+      "cc.cassian.pyrite.Pyrite"
     ]
   },
   "depends": {
-    "fabricloader": ">=0.14.3",
+    "fabricloader": ">=0.14.11",
     "fabric": "*",
-    "minecraft": "1.18.2"
+    "minecraft": "1.19.2"
   }
 }

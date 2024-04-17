@@ -1,15 +1,10 @@
     {
       "replace": false,
       "values": [
-        "pyrite:cobblestone_bricks",
-		"pyrite:cobblestone_brick_slab",
-		"pyrite:cobblestone_brick_stairs",
-		"pyrite:mossy_cobblestone_bricks",
-		"pyrite:mossy_cobblestone_brick_slab",
-		"pyrite:mossy_cobblestone_brick_stairs",
-		"pyrite:cracked_cobblestone",
-		"pyrite:cracked_cobblestone_slab",
-		"pyrite:cracked_cobblestone_stairs"
+        "pyrite:framed_glass",
+        "pyrite:framed_glass_pane",
+        "#pyrite:bricks",
+        "#pyrite:wall_gates"
       ]
     }
 
