@@ -70,7 +70,6 @@ public class Pyrite implements ModInitializer {
             Blocks.DEEPSLATE_BRICK_WALL,
             Blocks.DEEPSLATE_TILE_WALL,
             Blocks.BRICK_WALL,
-            Blocks.MUD_BRICK_WALL,
             Blocks.SANDSTONE_WALL,
             Blocks.RED_SANDSTONE_WALL,
             Blocks.PRISMARINE_WALL,

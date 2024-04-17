@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/main/java/com/pyrite/blocks/ModStairs.java
-package com.pyrite.blocks;
-========
 package cc.cassian.pyrite;
->>>>>>>> 1.19.2:src/main/java/cc/cassian/pyrite/ModStairs.java
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;
