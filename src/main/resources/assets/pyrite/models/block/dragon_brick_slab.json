@@ -1,0 +1,8 @@
+{
+        "parent": "minecraft:block/slab",
+        "textures": {
+        "bottom": "pyrite:block/dragon_bricks",
+        "top": "pyrite:block/dragon_bricks",
+        "side": "pyrite:block/dragon_bricks"
+        }
+    }

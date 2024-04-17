@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:mycelium"
+          }
+        },
+        "result": {
+          "item": "pyrite:mycelium_carpet",
+          "count": 3
+        }
+      }

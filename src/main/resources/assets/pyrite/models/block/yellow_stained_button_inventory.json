@@ -1,0 +1,6 @@
+{
+        "parent": "minecraft:block/button_inventory",
+        "textures": {
+            "texture": "pyrite:block/yellow_stained_planks"
+        }
+      }

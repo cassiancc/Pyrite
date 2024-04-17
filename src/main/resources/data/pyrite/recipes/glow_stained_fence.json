@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CSC",
+          "CSC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:glow_stained_planks"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "result": {
+          "item": "pyrite:glow_stained_fence",
+          "count": 1
+        }
+      }

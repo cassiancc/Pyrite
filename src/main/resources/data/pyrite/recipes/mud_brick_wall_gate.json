@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:mud_bricks"
+          },
+          "S": {
+            "item": "minecraft:mud_brick_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:mud_brick_wall_gate",
+          "count": 6
+        }
+      }

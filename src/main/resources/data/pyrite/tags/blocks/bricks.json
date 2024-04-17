@@ -1,0 +1,31 @@
+{
+    "replace": false,
+    "values": [
+      "pyrite:cobblestone_bricks",
+      "pyrite:cobblestone_brick_slab",
+      "pyrite:cobblestone_brick_stairs",
+      "pyrite:mossy_cobblestone_bricks",
+      "pyrite:mossy_cobblestone_brick_slab",
+      "pyrite:mossy_cobblestone_brick_stairs",
+      "pyrite:white_bricks",
+      "pyrite:orange_bricks",
+      "pyrite:magenta_bricks",
+      "pyrite:light_blue_bricks",
+      "pyrite:yellow_bricks",
+      "pyrite:lime_bricks",
+      "pyrite:pink_bricks",
+      "pyrite:gray_bricks",
+      "pyrite:light_gray_bricks",
+      "pyrite:cyan_bricks",
+      "pyrite:purple_bricks",
+      "pyrite:blue_bricks",
+      "pyrite:brown_bricks",
+      "pyrite:green_bricks",
+      "pyrite:red_bricks",
+      "pyrite:black_bricks",
+      "pyrite:glow_bricks",
+      "pyrite:dragon_bricks",
+      "pyrite:star_bricks"
+    ]
+  }
+

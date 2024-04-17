@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cut_iron"
+          }
+        },
+        "result": {
+          "item": "pyrite:cut_iron_slab",
+          "count": 6
+        }
+      }

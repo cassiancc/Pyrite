@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:stone_bricks"
+          },
+          "S": {
+            "item": "minecraft:stone_brick_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:stone_brick_wall_gate",
+          "count": 6
+        }
+      }

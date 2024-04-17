@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:podzol"
+          }
+        },
+        "result": {
+          "item": "pyrite:podzol_carpet",
+          "count": 3
+        }
+      }
