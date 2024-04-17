@@ -244,5 +244,10 @@
   "block.pyrite.black_brick_slab": "Black Brick Slab",
   "block.pyrite.glow_brick_slab": "Glow Brick Slab",
   "block.pyrite.dragon_brick_slab": "Dragon Brick Slab",
-  "block.pyrite.star_brick_slab": "Star Brick Slab"
+  "block.pyrite.star_brick_slab": "Star Brick Slab",
+  "block.pyrite.cut_iron": "Cut Iron",
+  "block.pyrite.cut_iron_slab": "Cut Iron Wall Slab",
+  "block.pyrite.cut_iron_stairs": "Cut Iron Wall Stairs",
+  "block.pyrite.cut_iron_wall": "Cut Iron Wall",
+  "block.pyrite.cut_iron_wall_gate": "Cut Iron Wall Gate"
 }

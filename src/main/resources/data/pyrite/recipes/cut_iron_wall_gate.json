@@ -1,0 +1,20 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cut_iron"
+          },
+          "S": {
+            "item": "pyrite:cut_iron_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:cut_iron_wall_gate",
+          "count": 6
+        }
+      }

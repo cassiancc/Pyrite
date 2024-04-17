@@ -58,32 +58,7 @@ public class Pyrite implements ModInitializer {
             "brick_slab",
             "brick_wall"
     };
-    //List of Wall Block IDs to generated Wall Gates for.
-    String[] walls = {
-            "cobblestone",
-            "mossy_cobblestone",
-            "stone_brick",
-            "mossy_stone_brick",
-            "granite",
-            "diorite",
-            "andesite",
-            "cobbled_deepslate",
-            "polished_deepslate",
-            "deepslate_brick",
-            "deepslate_tile",
-            "brick",
-            "mud_brick",
-            "sandstone",
-            "red_sandstone",
-            "prismarine",
-            "nether_brick",
-            "red_nether_brick",
-            "blackstone",
-            "polished_blackstone",
-            "polished_blackstone_brick",
-            "end_stone_brick"
 
-    };
     //List of Wall Blocks to generated Wall Gates for.
     Block[] walls_blocks = {
             Blocks.COBBLESTONE_WALL,
@@ -141,13 +116,27 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Nether Brick Fence Gate - 13
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE), WoodType.CRIMSON));
+        //Cut Iron - 14
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        //Cut Iron Stairs - 15
+        pyriteBlocks.add(new StairsBlock(pyriteBlocks.get(14).getDefaultState(),FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        //Cut Iron Slab - 16
+        pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        //Cut Iron Wall - 16
+        pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        //Cut Iron Wall Gate - 16
+        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), WoodType.CRIMSON));
+
+
+
         //Add all manually generated block IDs.
         pyriteBlockIDs.addAll(Arrays.asList(
                 "framed_glass", "framed_glass_pane",
                 "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab", "cobblestone_brick_wall",
                 "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall",
                 "grass_carpet", "mycelium_carpet", "podzol_carpet",
-                "nether_brick_fence_gate"
+                "nether_brick_fence_gate",
+                "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate"
         ));
         int blockLux;
         DyeColor color;
@@ -204,11 +193,16 @@ public class Pyrite implements ModInitializer {
             }
         }
         //Autogenerate Wall Gates
-        for (int w = 0; w < walls.length; w++) {
+        for (int w = 0; w < walls_blocks.length; w++) {
             //WALL GATES
             pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(walls_blocks[w]), WoodType.CRIMSON));
             //Register
-            pyriteBlockIDs.add(walls[w] + "_wall_gate");
+            String block = walls_blocks[w].toString();
+            block = block.substring(block.indexOf(":")+1,block.indexOf("}"));
+            if (!block.contains("wall")) {
+                block = block + "_wall";
+            }
+            pyriteBlockIDs.add(block + "_gate");
         }
         //Register blocks, block items, and the Pyrite item group.
         for (int x = 0; x < pyriteBlockIDs.size(); x++) {

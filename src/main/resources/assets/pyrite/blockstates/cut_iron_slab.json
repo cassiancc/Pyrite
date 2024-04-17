@@ -1,0 +1,13 @@
+{
+        "variants": {
+          "type=bottom": {
+            "model": "pyrite:block/cut_iron_slab"
+          },
+          "type=double": {
+            "model": "pyrite:block/cut_iron"
+          },
+          "type=top": {
+            "model": "pyrite:block/cut_iron_slab_top"
+          }
+        }
+      }
