@@ -1,14 +1,10 @@
 {
+  "replace": false,
   "values": [
-    "pyrite:cobblestone_brick_wall",
-    "pyrite:mossy_cobblestone_brick_wall",
-    "pyrite:blackstone_wall",
-    "pyrite:polished_blackstone_brick_wall",
-    "pyrite:polished_blackstone_wall",
-    "pyrite:cobbled_deepslate_wall",
-    "pyrite:polished_deepslate_wall",
-    "pyrite:deepslate_tile_wall",
-    "pyrite:deepslate_brick_wall",
-    "pyrite:cracked_cobblestone_wall"
-    ]
+    "#pyrite:walls"
+
+
+
+  ]
 }
+

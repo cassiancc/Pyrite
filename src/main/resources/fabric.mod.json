@@ -3,24 +3,26 @@
   "id": "pyrite",
   "version": "${version}",
   "name": "Pyrite",
-  "description": "Feature backports for the Simply Infinite modpack.",
-  "authors": ["Con Godsted"],
+  "description": "Pyrite is a Fabric mod that aims to expand on Vanilla's block palette with new wood types, bricks, and more.",
+  "authors": ["cassiancc"],
   "contact": {
-    "repo": "https://github.com/ConGodsted/Pyrite"
+    "homepage": "https://modrinth.com/mod/pyrite",
+    "issues": "https://github.com/cassiancc/Pyrite/issues",
+    "sources": "https://github.com/cassiancc/Pyrite"
   },
-  "license": "GPL-3.0",
+  "license": "MIT",
   "icon": "assets/pyrite/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.congodsted.pyrite.client.PyriteClient"
+      "cc.cassian.pyrite.client.PyriteClient"
     ],
     "main": [
-      "com.congodsted.pyrite.Pyrite"
+      "cc.cassian.pyrite.Pyrite"
     ]
   },
   "depends": {
-    "fabricloader": ">=0.11.7",
+    "fabricloader": "*",
     "fabric": "*",
     "minecraft": "*"
   }

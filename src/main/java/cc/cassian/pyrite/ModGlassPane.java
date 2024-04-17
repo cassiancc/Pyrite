@@ -1,4 +1,4 @@
-package com.congodsted.pyrite;
+package cc.cassian.pyrite;
 
 import net.minecraft.block.GlassBlock;
 import net.minecraft.block.Material;

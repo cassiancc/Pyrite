@@ -1,18 +1,16 @@
-{
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "key": {
-    "#": {
-      "item": "pyrite:cobblestone_bricks"
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:cobblestone_bricks"
+      }
+    },
+    "result": {
+      "item": "pyrite:cobblestone_brick_wall",
+      "count": 6
     }
-  },
-  "pattern": [
-    "###",
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "item": "pyrite:cobblestone_brick_wall"
-  },
-  "show_notification": true
 }

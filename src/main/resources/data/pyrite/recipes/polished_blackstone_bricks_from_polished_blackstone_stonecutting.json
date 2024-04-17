@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "pyrite:polished_blackstone"
-  },
-  "result": "pyrite:polished_blackstone_bricks"
-}

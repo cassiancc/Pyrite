@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "pyrite:block/cobbled_deepslate",
-    "side": "pyrite:block/cobbled_deepslate",
-    "top": "pyrite:block/cobbled_deepslate"
-  }
-}
