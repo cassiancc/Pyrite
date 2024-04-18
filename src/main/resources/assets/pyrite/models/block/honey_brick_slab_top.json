@@ -1,0 +1,8 @@
+{
+        "parent": "minecraft:block/slab_top",
+        "textures": {
+        "bottom": "pyrite:block/undefined",
+        "top": "pyrite:block/undefined",
+        "side": "pyrite:block/undefined"
+        }
+    }

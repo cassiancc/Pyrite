@@ -250,5 +250,16 @@
   "block.pyrite.cut_iron_slab": "Cut Iron Wall Slab",
   "block.pyrite.cut_iron_stairs": "Cut Iron Wall Stairs",
   "block.pyrite.cut_iron_wall": "Cut Iron Wall",
-  "block.pyrite.cut_iron_wall_gate": "Cut Iron Wall Gate"
+  "block.pyrite.cut_iron_wall_gate": "Cut Iron Wall Gate",
+  "block.pyrite.honey_stained_planks": "Honey Stained Planks",
+  "block.pyrite.honey_stained_button": "Honey Stained Button",
+  "block.pyrite.honey_stained_stairs": "Honey Stained Stairs",
+  "block.pyrite.honey_stained_slab": "Honey Stained Slab",
+  "block.pyrite.honey_stained_pressure_plate": "Honey Stained Pressure Plate",
+  "block.pyrite.honey_stained_fence": "Honey Stained Fence",
+  "block.pyrite.honey_stained_fence_gate": "Honey Stained Fence Gate",
+  "block.pyrite.honey_bricks": "Honey Bricks",
+  "block.pyrite.honey_brick_slab": "Honey Brick Slab",
+  "block.pyrite.honey_brick_stairs": "Honey Brick Stairs",
+  "block.pyrite.honey_brick_wall": "Honey Brick Wall"
 }

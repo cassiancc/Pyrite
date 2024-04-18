@@ -42,7 +42,8 @@ public class Pyrite implements ModInitializer {
             "black",
             "glow",
             "dragon",
-            "star"
+            "star",
+            "honey"
     };
     //List of blocks to be created for dyes.
     String[] generated = {
@@ -158,6 +159,11 @@ public class Pyrite implements ModInitializer {
             else if (Objects.equals(dye, "star")) {
                 blockLux = 15;
                 color = DyeColor.LIGHT_BLUE;
+            }
+            //Honey planks overrides
+            else if (Objects.equals(dye, "honey")) {
+                blockLux = 15;
+                color = DyeColor.YELLOW;
             }
             //Normal dye colours.
             else {

@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:undefined"
+          }
+        },
+        "result": {
+          "item": "pyrite:honey_brick_slab",
+          "count": 6
+        }
+      }
