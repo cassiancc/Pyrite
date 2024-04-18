@@ -114,17 +114,19 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Podzol Carpet - 12
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
-        //Nether Brick Fence Gate - 13
+        //Path Carpet - 13
+        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
+        //Nether Brick Fence Gate - 14
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE), WoodType.CRIMSON));
-        //Cut Iron - 14
+        //Cut Iron - 15
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Stairs - 15
+        //Cut Iron Stairs - 16
         pyriteBlocks.add(new StairsBlock(pyriteBlocks.get(14).getDefaultState(),FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Slab - 16
+        //Cut Iron Slab - 17
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Wall - 16
+        //Cut Iron Wall - 18
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Wall Gate - 16
+        //Cut Iron Wall Gate - 19
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), WoodType.CRIMSON));
 
 
@@ -134,7 +136,7 @@ public class Pyrite implements ModInitializer {
                 "framed_glass", "framed_glass_pane",
                 "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab", "cobblestone_brick_wall",
                 "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall",
-                "grass_carpet", "mycelium_carpet", "podzol_carpet",
+                "grass_carpet", "mycelium_carpet", "podzol_carpet", "path_carpet",
                 "nether_brick_fence_gate",
                 "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate"
         ));
