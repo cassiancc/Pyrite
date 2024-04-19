@@ -12,7 +12,8 @@ _296 blocks and counting..._
   - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)
   - This includes dyed brick slabs, stairs, and walls!
-- Wall Gates, for every Vanilla wall.
+- Wall Gates, because your walls deserve matching gates just like your fences have!
+  - This includes wall gates for every vanilla wall type.
 - Cobblestone Bricks
   - This includes Mossy Cobblestone Bricks, as well as slabs, stairs, and walls for both.
 - Framed Glass
