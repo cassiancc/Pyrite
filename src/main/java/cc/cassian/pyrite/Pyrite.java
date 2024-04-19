@@ -162,7 +162,7 @@ public class Pyrite implements ModInitializer {
             }
             //Honey planks overrides
             else if (Objects.equals(dye, "honey")) {
-                blockLux = 15;
+                blockLux = 0;
                 color = DyeColor.YELLOW;
             }
             //Normal dye colours.
