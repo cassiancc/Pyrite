@@ -1,0 +1,20 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "tag": "minecraft:planks"
+      },
+      "D": {
+        "item": "minecraft:honeycomb"
+      }
+    },
+    "result": {
+      "item": "pyrite:honey_stained_planks",
+      "count": 8
+    }
+}

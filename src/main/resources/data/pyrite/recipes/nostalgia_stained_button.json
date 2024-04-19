@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:nostalgia_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:nostalgia_stained_button",
+          "count": 1
+        }
+      }

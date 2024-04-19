@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/door_top_left",
+    "textures": {
+      "bottom": "pyrite:block/brown_stained_door_bottom",
+      "top": "pyrite:block/brown_stained_door_top"
+    }
+  }

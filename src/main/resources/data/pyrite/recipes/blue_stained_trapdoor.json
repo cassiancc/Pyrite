@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:blue_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:blue_stained_trapdoor",
+          "count": 2
+        }
+      }

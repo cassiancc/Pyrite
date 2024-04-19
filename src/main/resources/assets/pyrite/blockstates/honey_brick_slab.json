@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/honey_brick_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/honey_bricks"
+      },
+      "type=top": {
+        "model": "pyrite:block/honey_brick_slab_top"
+      }
+    }
+  }

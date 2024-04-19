@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/door_bottom_left",
+    "textures": {
+      "bottom": "pyrite:block/magenta_stained_door_bottom",
+      "top": "pyrite:block/magenta_stained_door_top"
+    }
+  }
