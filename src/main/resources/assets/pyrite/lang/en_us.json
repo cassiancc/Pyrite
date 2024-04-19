@@ -272,6 +272,26 @@
   "block.pyrite.nostalgia_bricks": "Nostalgia Bricks",
   "block.pyrite.nostalgia_brick_slab": "Nostalgia Brick Slab",
   "block.pyrite.nostalgia_brick_stairs": "Nostalgia Brick Stairs",
-  "block.pyrite.nostalgia_brick_wall": "Nostalgia Brick Wall"
-
+  "block.pyrite.nostalgia_brick_wall": "Nostalgia Brick Wall",
+  "block.pyrite.white_stained_door": "White Stained Door",
+  "block.pyrite.orange_stained_door": "Orange Stained Door",
+  "block.pyrite.magenta_stained_door": "Magenta Stained Door",
+  "block.pyrite.light_blue_stained_door": "Light Blue Stained Door",
+  "block.pyrite.yellow_stained_door": "Yellow Stained Door",
+  "block.pyrite.lime_stained_door": "Lime Stained Door",
+  "block.pyrite.pink_stained_door": "Pink Stained Door",
+  "block.pyrite.gray_stained_door": "Gray Stained Door",
+  "block.pyrite.light_gray_stained_door": "Light Gray Stained Door",
+  "block.pyrite.cyan_stained_door": "Cyan Stained Door",
+  "block.pyrite.purple_stained_door": "Purple Stained Door",
+  "block.pyrite.blue_stained_door": "Blue Stained Door",
+  "block.pyrite.brown_stained_door": "Brown Stained Door",
+  "block.pyrite.green_stained_door": "Green Stained Door",
+  "block.pyrite.red_stained_door": "Red Stained Door",
+  "block.pyrite.black_stained_door": "Black Stained Door",
+  "block.pyrite.glow_stained_door": "Glow Stained Door",
+  "block.pyrite.dragon_stained_door": "Dragon Stained Door",
+  "block.pyrite.star_stained_door": "Star Stained Door",
+  "block.pyrite.honey_stained_door": "Honey Stained Door",
+  "block.pyrite.nostalgia_stained_door": "Nostalgia Stained Door"
 }
