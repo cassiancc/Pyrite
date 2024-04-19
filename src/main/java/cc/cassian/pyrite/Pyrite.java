@@ -39,7 +39,9 @@ public class Pyrite implements ModInitializer {
             "black",
             "glow",
             "dragon",
-            "star"
+            "star",
+            "honey",
+            "nostalgia"
     };
     //List of blocks to be created for dyes.
     String[] generated = {
@@ -50,10 +52,13 @@ public class Pyrite implements ModInitializer {
             "stained_button",
             "stained_fence",
             "stained_fence_gate",
+            "stained_door",
+            "stained_trapdoor",
             "bricks",
             "brick_stairs",
             "brick_slab",
-            "brick_wall"
+            "brick_wall",
+            "lamp"
     };
 
     //List of Wall Blocks to generated Wall Gates for.
@@ -97,43 +102,52 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_SLAB)));
         //Cobblestone Brick Walls - 5
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_WALL)));
+        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(pyriteBlocks.get(2))));
         //Mossy Cobblestone Bricks - 6
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS).strength(3.0f)));
         //Mossy Cobblestone Brick Stairs - 7
-        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(6).getDefaultState(),FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_STAIRS).strength(3.0f)));
+        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(7).getDefaultState(),FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_STAIRS).strength(3.0f)));
         //Mossy Cobblestone Brick Slabs - 8
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_SLAB).strength(3.0f)));
         //Mossy Cobblestone Brick Walls - 9
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_WALL)));
+        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(pyriteBlocks.get(7))));
         //Grass Carpet - 10
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Mycelium Carpet - 11
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Podzol Carpet - 12
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
-        //Nether Brick Fence Gate - 13
+        //Path Carpet - 13
+        pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
+        //Nether Brick Fence Gate - 14
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE)));
-        //Cut Iron - 14
+        //Cut Iron - 15
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Stairs - 15
-        pyriteBlocks.add(new StairsBlock(pyriteBlocks.get(14).getDefaultState(),FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Slab - 16
+        //Cut Iron Stairs - 16
+        pyriteBlocks.add(new StairsBlock(pyriteBlocks.get(16).getDefaultState(),FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        //Cut Iron Slab - 17
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Wall - 16
+        //Cut Iron Wall - 18
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-        //Cut Iron Wall Gate - 16
+        //Cut Iron Wall Gate - 19
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        //Glowstone Lamp
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(15).mapColor(MapColor.YELLOW)));
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.CRYING_OBSIDIAN).luminance(15).mapColor(MapColor.RED)));
+
 
 
 
         //Add all manually generated block IDs.
         pyriteBlockIDs.addAll(Arrays.asList(
                 "framed_glass", "framed_glass_pane",
-                "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab", "cobblestone_brick_wall",
-                "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall",
-                "grass_carpet", "mycelium_carpet", "podzol_carpet",
+                "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab", "cobblestone_brick_wall", "cobblestone_brick_wall_gate",
+                "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall", "mossy_cobblestone_brick_wall_gate",
+                "grass_carpet", "mycelium_carpet", "podzol_carpet", "path_carpet",
                 "nether_brick_fence_gate",
-                "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate"
+                "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate",
+                "glowstone_lamp", "glowing_obsidian"
         ));
         int blockLux;
         DyeColor color;
@@ -154,6 +168,15 @@ public class Pyrite implements ModInitializer {
                 blockLux = 15;
                 color = DyeColor.LIGHT_BLUE;
             }
+            //Honey planks overrides
+            else if (Objects.equals(dye, "honey")) {
+                blockLux = 0;
+                color = DyeColor.YELLOW;
+            }
+            else if (Objects.equals(dye, "nostalgia")) {
+                blockLux = 0;
+                color = DyeColor.BROWN;
+            }
             //Normal dye colours.
             else {
                 color = DyeColor.valueOf(dye.toUpperCase());
@@ -173,6 +196,10 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux)));
             //Stained Fence Gates
             pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux)));
+            //Stained Doors
+            pyriteBlocks.add(new DoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR)));
+            //Stained Trapdoors
+            pyriteBlocks.add(new TrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)));
             //Dyed Bricks
             pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(blockLux).mapColor(color)));
             //Dyed Brick Stairs
@@ -181,6 +208,8 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.BRICK_SLAB).luminance(blockLux).mapColor(color)));
             //Dyed Brick Wall
             pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.BRICK_WALL).luminance(blockLux).mapColor(color)));
+            //Dyed Lamps
+            pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(15).mapColor(color)));
 
             //Generate Block IDs
             for (String generatedID : generated) {
