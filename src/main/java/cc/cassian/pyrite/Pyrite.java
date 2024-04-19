@@ -55,6 +55,8 @@ public class Pyrite implements ModInitializer {
             "stained_button",
             "stained_fence",
             "stained_fence_gate",
+            "stained_door",
+            "stained_trapdoor",
             "bricks",
             "brick_stairs",
             "brick_slab",
@@ -191,6 +193,10 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux)));
             //Stained Fence Gates
             pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux), DYED_WOOD_TYPE));
+            //Stained Doors
+            pyriteBlocks.add(new DoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR), DYED_WOOD_SET));
+            //Stained Trapdoors
+            pyriteBlocks.add(new TrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR), DYED_WOOD_SET));
             //Dyed Bricks
             pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(blockLux).mapColor(color)));
             //Dyed Brick Stairs
