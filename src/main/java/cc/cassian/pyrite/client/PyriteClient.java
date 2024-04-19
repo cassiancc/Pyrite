@@ -23,7 +23,7 @@ public class PyriteClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlocks.get(1), RenderLayer.getCutout());
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), pyriteBlocks.get(10));
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 3955507, pyriteBlocks.get(10));
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7183658, pyriteBlocks.get(10));
 
         for (Block pyriteBlock : pyriteBlocks) {
             if (pyriteBlock instanceof DoorBlock) {
