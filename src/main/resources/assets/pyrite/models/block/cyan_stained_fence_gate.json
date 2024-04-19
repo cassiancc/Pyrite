@@ -1,6 +1,6 @@
 {
-      "parent": "minecraft:block/template_fence_gate",
-      "textures": {
-        "texture": "pyrite:block/cyan_stained_planks"
-      }
+    "parent": "minecraft:block/template_fence_gate",
+    "textures": {
+      "texture": "pyrite:block/cyan_stained_planks"
     }
+  }
