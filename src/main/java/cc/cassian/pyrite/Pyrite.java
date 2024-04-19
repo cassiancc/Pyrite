@@ -133,6 +133,8 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Cut Iron Wall Gate - 19
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), WoodType.CRIMSON));
+        //Glowstone Lamp
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(15).mapColor(MapColor.YELLOW)));
 
 
 
@@ -143,7 +145,8 @@ public class Pyrite implements ModInitializer {
                 "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall",
                 "grass_carpet", "mycelium_carpet", "podzol_carpet", "path_carpet",
                 "nether_brick_fence_gate",
-                "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate"
+                "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate",
+                "glowstone_lamp"
         ));
         int blockLux;
         DyeColor color;
