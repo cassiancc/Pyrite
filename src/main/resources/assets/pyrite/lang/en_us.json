@@ -261,5 +261,17 @@
   "block.pyrite.honey_bricks": "Honey Bricks",
   "block.pyrite.honey_brick_slab": "Honey Brick Slab",
   "block.pyrite.honey_brick_stairs": "Honey Brick Stairs",
-  "block.pyrite.honey_brick_wall": "Honey Brick Wall"
+  "block.pyrite.honey_brick_wall": "Honey Brick Wall",
+  "block.pyrite.nostalgia_stained_planks": "Nostalgia Stained Planks",
+  "block.pyrite.nostalgia_stained_button": "Nostalgia Stained Button",
+  "block.pyrite.nostalgia_stained_stairs": "Nostalgia Stained Stairs",
+  "block.pyrite.nostalgia_stained_slab": "Nostalgia Stained Slab",
+  "block.pyrite.nostalgia_stained_pressure_plate": "Nostalgia Stained Pressure Plate",
+  "block.pyrite.nostalgia_stained_fence": "Nostalgia Stained Fence",
+  "block.pyrite.nostalgia_stained_fence_gate": "Nostalgia Stained Fence Gate",
+  "block.pyrite.nostalgia_bricks": "Nostalgia Bricks",
+  "block.pyrite.nostalgia_brick_slab": "Nostalgia Brick Slab",
+  "block.pyrite.nostalgia_brick_stairs": "Nostalgia Brick Stairs",
+  "block.pyrite.nostalgia_brick_wall": "Nostalgia Brick Wall"
+
 }
