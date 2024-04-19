@@ -60,7 +60,8 @@ public class Pyrite implements ModInitializer {
             "bricks",
             "brick_stairs",
             "brick_slab",
-            "brick_wall"
+            "brick_wall",
+            "lamp"
     };
 
     //List of Wall Blocks to generated Wall Gates for.
@@ -205,6 +206,8 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.BRICK_SLAB).luminance(blockLux).mapColor(color)));
             //Dyed Brick Wall
             pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.BRICK_WALL).luminance(blockLux).mapColor(color)));
+            //Dyed Lamps
+            pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(15).mapColor(color)));
 
             //Generate Block IDs
             for (String generatedID : generated) {
