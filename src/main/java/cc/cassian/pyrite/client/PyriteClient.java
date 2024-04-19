@@ -29,6 +29,9 @@ public class PyriteClient implements ClientModInitializer {
             if (pyriteBlock instanceof DoorBlock) {
                 BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock, RenderLayer.getCutout());
             }
+            else if (pyriteBlock instanceof TrapdoorBlock) {
+                BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock, RenderLayer.getCutout());
+            }
             else if (pyriteBlock instanceof GlassBlock) {
                 BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock, RenderLayer.getCutout());
             }
