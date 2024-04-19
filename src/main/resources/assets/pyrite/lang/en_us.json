@@ -315,5 +315,6 @@
   "block.pyrite.star_lamp": "Star Lamp",
   "block.pyrite.honey_lamp": "Honey Lamp",
   "block.pyrite.nostalgia_lamp": "Nostalgia Lamp",
-  "block.pyrite.glowstone_lamp": "Glowstone Lamp"
+  "block.pyrite.glowstone_lamp": "Glowstone Lamp",
+  "block.pyrite.glowing_obsidian": "Glowing Obsidian"
 }

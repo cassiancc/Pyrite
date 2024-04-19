@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.BlockSoundGroup;
@@ -135,6 +136,7 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), WoodType.CRIMSON));
         //Glowstone Lamp
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(15).mapColor(MapColor.YELLOW)));
+        pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.CRYING_OBSIDIAN).luminance(15).mapColor(MapColor.RED).pistonBehavior(PistonBehavior.BLOCK)));
 
 
 
@@ -146,7 +148,7 @@ public class Pyrite implements ModInitializer {
                 "grass_carpet", "mycelium_carpet", "podzol_carpet", "path_carpet",
                 "nether_brick_fence_gate",
                 "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate",
-                "glowstone_lamp"
+                "glowstone_lamp", "glowing_obsidian"
         ));
         int blockLux;
         DyeColor color;
