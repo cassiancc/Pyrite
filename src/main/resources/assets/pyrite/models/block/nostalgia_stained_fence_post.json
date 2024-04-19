@@ -1,6 +1,6 @@
 {
-        "parent": "minecraft:block/fence_post",
-        "textures": {
-          "texture": "pyrite:block/nostalgia_stained_planks"
-        }
-      }
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "pyrite:block/nostalgia_stained_planks"
+  }
+}
