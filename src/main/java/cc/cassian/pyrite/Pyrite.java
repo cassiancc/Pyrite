@@ -106,14 +106,16 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_SLAB)));
         //Cobblestone Brick Walls - 5
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_WALL)));
+        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(pyriteBlocks.get(2)), WoodType.CRIMSON));
         //Mossy Cobblestone Bricks - 6
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS).strength(3.0f)));
         //Mossy Cobblestone Brick Stairs - 7
-        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(6).getDefaultState(),FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_STAIRS).strength(3.0f)));
+        pyriteBlocks.add(new ModStairs(pyriteBlocks.get(7).getDefaultState(),FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_STAIRS).strength(3.0f)));
         //Mossy Cobblestone Brick Slabs - 8
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_SLAB).strength(3.0f)));
         //Mossy Cobblestone Brick Walls - 9
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_WALL)));
+        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(pyriteBlocks.get(7)), WoodType.CRIMSON));
         //Grass Carpet - 10
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Mycelium Carpet - 11
@@ -127,7 +129,7 @@ public class Pyrite implements ModInitializer {
         //Cut Iron - 15
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Cut Iron Stairs - 16
-        pyriteBlocks.add(new StairsBlock(pyriteBlocks.get(14).getDefaultState(),FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        pyriteBlocks.add(new StairsBlock(pyriteBlocks.get(16).getDefaultState(),FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Cut Iron Slab - 17
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Cut Iron Wall - 18
@@ -143,8 +145,8 @@ public class Pyrite implements ModInitializer {
         //Add all manually generated block IDs.
         pyriteBlockIDs.addAll(Arrays.asList(
                 "framed_glass", "framed_glass_pane",
-                "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab", "cobblestone_brick_wall",
-                "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall",
+                "cobblestone_bricks", "cobblestone_brick_stairs", "cobblestone_brick_slab", "cobblestone_brick_wall", "cobblestone_brick_wall_gate",
+                "mossy_cobblestone_bricks", "mossy_cobblestone_brick_stairs", "mossy_cobblestone_brick_slab", "mossy_cobblestone_brick_wall", "mossy_cobblestone_brick_wall_gate",
                 "grass_carpet", "mycelium_carpet", "podzol_carpet", "path_carpet",
                 "nether_brick_fence_gate",
                 "cut_iron", "cut_iron_stairs", "cut_iron_slab", "cut_iron_wall", "cut_iron_wall_gate",

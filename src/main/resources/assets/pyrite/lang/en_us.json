@@ -337,5 +337,7 @@
   "block.pyrite.dragon_stained_trapdoor": "Dragon Stained Trapdoor",
   "block.pyrite.star_stained_trapdoor": "Star Stained Trapdoor",
   "block.pyrite.honey_stained_trapdoor": "Honey Stained Trapdoor",
-  "block.pyrite.nostalgia_stained_trapdoor": "Nostalgia Stained Trapdoor"
+  "block.pyrite.nostalgia_stained_trapdoor": "Nostalgia Stained Trapdoor",
+  "block.pyrite.cobblestone_brick_wall_gate": "Cobblestone Brick Wall Gate",
+  "block.pyrite.mossy_cobblestone_brick_wall_gate": "Mossy Cobblestone Brick Wall Gate"
 }
