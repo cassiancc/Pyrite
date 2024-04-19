@@ -1,3 +1,6 @@
 {
-        "parent": "pyrite:block/blue_stained_door"
-      }
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "pyrite:item/blue_stained_door"
+    }
+  }

@@ -1,3 +1,6 @@
 {
-        "parent": "pyrite:block/glow_stained_door"
-      }
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "pyrite:item/glow_stained_door"
+    }
+  }

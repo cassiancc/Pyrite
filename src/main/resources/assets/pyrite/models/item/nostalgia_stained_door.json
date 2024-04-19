@@ -1,3 +1,6 @@
 {
-        "parent": "pyrite:block/nostalgia_stained_door"
-      }
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "pyrite:item/nostalgia_stained_door"
+    }
+  }
