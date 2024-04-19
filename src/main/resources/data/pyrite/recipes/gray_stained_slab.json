@@ -10,7 +10,7 @@
           }
         },
         "result": {
-          "item": "pyrite:gray_stained_slab",
+          "id": "pyrite:gray_stained_slab",
           "count": 6
         }
       }

@@ -10,7 +10,7 @@
           }
         },
         "result": {
-          "item": "pyrite:purple_brick_slab",
+          "id": "pyrite:purple_brick_slab",
           "count": 6
         }
       }

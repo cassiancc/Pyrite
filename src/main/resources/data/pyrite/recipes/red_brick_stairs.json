@@ -11,7 +11,7 @@
         }
       },
       "result": {
-        "item": "pyrite:red_brick_stairs",
+        "id": "pyrite:red_brick_stairs",
         "count": 4
       }
   }

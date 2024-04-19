@@ -12,7 +12,7 @@
           }
         },
         "result": {
-          "item": "pyrite:honey_stained_door",
+          "id": "pyrite:honey_stained_door",
           "count": 3
         }
       }

@@ -14,7 +14,7 @@
           }
         },
         "result": {
-          "item": "pyrite:red_nether_brick_wall_gate",
+          "id": "pyrite:red_nether_brick_wall_gate",
           "count": 6
         }
       }

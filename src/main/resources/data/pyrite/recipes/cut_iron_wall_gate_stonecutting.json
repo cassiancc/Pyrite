@@ -14,7 +14,7 @@
           }
         },
         "result": {
-          "item": "pyrite:cut_iron_wall_gate",
+          "id": "pyrite:cut_iron_wall_gate",
           "count": 1
         }
       }

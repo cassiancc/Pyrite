@@ -14,7 +14,7 @@
           }
         },
         "result": {
-          "item": "pyrite:light_blue_stained_fence",
+          "id": "pyrite:light_blue_stained_fence",
           "count": 1
         }
       }

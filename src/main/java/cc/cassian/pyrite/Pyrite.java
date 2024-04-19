@@ -1,7 +1,6 @@
 package cc.cassian.pyrite;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
@@ -106,7 +105,7 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_SLAB)));
         //Cobblestone Brick Walls - 5
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICK_WALL)));
-        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(pyriteBlocks.get(2)), WoodType.CRIMSON));
+        pyriteBlocks.add(new FenceGateBlock(WoodType.CRIMSON, FabricBlockSettings.copyOf(pyriteBlocks.get(2))));
         //Mossy Cobblestone Bricks - 6
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS).strength(3.0f)));
         //Mossy Cobblestone Brick Stairs - 7
@@ -115,7 +114,7 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_SLAB).strength(3.0f)));
         //Mossy Cobblestone Brick Walls - 9
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICK_WALL)));
-        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(pyriteBlocks.get(7)), WoodType.CRIMSON));
+        pyriteBlocks.add(new FenceGateBlock(WoodType.CRIMSON, FabricBlockSettings.copyOf(pyriteBlocks.get(7))));
         //Grass Carpet - 10
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Mycelium Carpet - 11
@@ -125,7 +124,7 @@ public class Pyrite implements ModInitializer {
         //Path Carpet - 13
         pyriteBlocks.add(new CarpetBlock(FabricBlockSettings.copyOf(Blocks.MOSS_CARPET)));
         //Nether Brick Fence Gate - 14
-        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE), WoodType.CRIMSON));
+        pyriteBlocks.add(new FenceGateBlock(WoodType.CRIMSON, FabricBlockSettings.copyOf(Blocks.NETHER_BRICK_FENCE)));
         //Cut Iron - 15
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Cut Iron Stairs - 16
@@ -135,7 +134,7 @@ public class Pyrite implements ModInitializer {
         //Cut Iron Wall - 18
         pyriteBlocks.add(new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Cut Iron Wall Gate - 19
-        pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), WoodType.CRIMSON));
+        pyriteBlocks.add(new FenceGateBlock(WoodType.CRIMSON, FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
         //Glowstone Lamp
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(15).mapColor(MapColor.YELLOW)));
         pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.CRYING_OBSIDIAN).luminance(15).mapColor(MapColor.RED).pistonBehavior(PistonBehavior.BLOCK)));
@@ -194,17 +193,17 @@ public class Pyrite implements ModInitializer {
             //Stained Slabs
             pyriteBlocks.add(new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).luminance(blockLux).mapColor(color)));
             //Stained Pressure Plates
-            pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).luminance(blockLux).mapColor(color), DYED_WOOD_SET));
+            pyriteBlocks.add(new PressurePlateBlock(DYED_WOOD_SET, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).luminance(blockLux).mapColor(color)));
             //Stained Buttons
-            pyriteBlocks.add(new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).mapColor(color).luminance(blockLux), DYED_WOOD_SET, 40, true));
+            pyriteBlocks.add(new ButtonBlock(DYED_WOOD_SET, 40, FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).mapColor(color).luminance(blockLux)));
             //Stained Fences
             pyriteBlocks.add(new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(color).luminance(blockLux)));
             //Stained Fence Gates
-            pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux), DYED_WOOD_TYPE));
+            pyriteBlocks.add(new FenceGateBlock(DYED_WOOD_TYPE, FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(color).luminance(blockLux)));
             //Stained Doors
-            pyriteBlocks.add(new DoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR), DYED_WOOD_SET));
+            pyriteBlocks.add(new DoorBlock(DYED_WOOD_SET, FabricBlockSettings.copy(Blocks.OAK_DOOR)));
             //Stained Trapdoors
-            pyriteBlocks.add(new TrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR), DYED_WOOD_SET));
+            pyriteBlocks.add(new TrapdoorBlock(DYED_WOOD_SET, FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)));
             //Dyed Bricks
             pyriteBlocks.add(new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(blockLux).mapColor(color)));
             //Dyed Brick Stairs
@@ -224,7 +223,7 @@ public class Pyrite implements ModInitializer {
         //Autogenerate Wall Gates
         for (int w = 0; w < walls_blocks.length; w++) {
             //WALL GATES
-            pyriteBlocks.add(new FenceGateBlock(FabricBlockSettings.copyOf(walls_blocks[w]), WoodType.CRIMSON));
+            pyriteBlocks.add(new FenceGateBlock(WoodType.CRIMSON, FabricBlockSettings.copyOf(walls_blocks[w])));
             //Register
             String block = walls_blocks[w].toString();
             block = block.substring(block.indexOf(":")+1,block.indexOf("}"));
@@ -236,7 +235,7 @@ public class Pyrite implements ModInitializer {
         //Register blocks, block items, and the Pyrite item group.
         for (int x = 0; x < pyriteBlockIDs.size(); x++) {
             Registry.register(Registries.BLOCK, new Identifier("pyrite", pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
-            Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new FabricItemSettings()));
+            Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
         }
         Registry.register(Registries.ITEM_GROUP, new Identifier("pyrite", "pyrite_group"), PYRITE_GROUP);
     }

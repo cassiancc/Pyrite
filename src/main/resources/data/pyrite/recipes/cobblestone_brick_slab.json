@@ -9,7 +9,7 @@
         }
       },
       "result": {
-        "item": "pyrite:cobblestone_brick_slab",
+        "id": "pyrite:cobblestone_brick_slab",
         "count": 6
       }
     }

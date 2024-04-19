@@ -14,7 +14,7 @@
           }
         },
         "result": {
-          "item": "pyrite:deepslate_brick_wall_gate",
+          "id": "pyrite:deepslate_brick_wall_gate",
           "count": 6
         }
       }

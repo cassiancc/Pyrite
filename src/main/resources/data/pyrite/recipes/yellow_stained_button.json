@@ -10,7 +10,7 @@
           }
         },
         "result": {
-          "item": "pyrite:yellow_stained_button",
+          "id": "pyrite:yellow_stained_button",
           "count": 1
         }
       }

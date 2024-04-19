@@ -14,7 +14,7 @@
           }
         },
         "result": {
-          "item": "pyrite:mud_brick_wall_gate",
+          "id": "pyrite:mud_brick_wall_gate",
           "count": 6
         }
       }

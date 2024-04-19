@@ -11,7 +11,7 @@
           }
         },
         "result": {
-          "item": "pyrite:light_gray_stained_trapdoor",
+          "id": "pyrite:light_gray_stained_trapdoor",
           "count": 2
         }
       }

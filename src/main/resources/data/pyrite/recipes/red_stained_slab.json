@@ -10,7 +10,7 @@
           }
         },
         "result": {
-          "item": "pyrite:red_stained_slab",
+          "id": "pyrite:red_stained_slab",
           "count": 6
         }
       }

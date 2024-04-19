@@ -10,7 +10,7 @@
       }
     },
     "result": {
-      "item": "pyrite:light_gray_brick_wall",
+      "id": "pyrite:light_gray_brick_wall",
       "count": 6
     }
 }
