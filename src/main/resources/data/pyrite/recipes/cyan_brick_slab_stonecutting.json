@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:cyan_bricks"
     },
-    "result": "pyrite:cyan_brick_slab",
+    "result": {"id": "pyrite:cyan_brick_slab",
     "count": 2
-  }
+  }}

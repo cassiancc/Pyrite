@@ -3,6 +3,6 @@
   "ingredient": {
     "item": "pyrite:mossy_cobblestone_bricks"
   },
-  "result": "pyrite:mossy_cobblestone_brick_stairs",
+  "result": {"id": "pyrite:mossy_cobblestone_brick_stairs",
   "count": 1
 }

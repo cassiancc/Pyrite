@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:glow_bricks"
     },
-    "result": "pyrite:glow_brick_wall",
-    "count": 1
-  }
+    "result": {"id": "pyrite:glow_brick_wall",
+    "count": 2
+  }}

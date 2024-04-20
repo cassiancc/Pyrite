@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:yellow_bricks"
     },
-    "result": "pyrite:yellow_brick_slab",
+    "result": {"id": "pyrite:yellow_brick_slab",
     "count": 2
-  }
+  }}
