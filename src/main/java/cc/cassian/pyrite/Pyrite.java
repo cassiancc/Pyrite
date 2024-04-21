@@ -245,6 +245,8 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock( "charred_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLACK, 0);
         //Charred Nether Bricks Wall
         createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
+        createPyriteBlock("red_mushroom_stem", "block", Blocks.MUSHROOM_STEM);
+        createPyriteBlock("brown_mushroom_stem", "block", Blocks.MUSHROOM_STEM);
 
 
         int blockLux = 0;
