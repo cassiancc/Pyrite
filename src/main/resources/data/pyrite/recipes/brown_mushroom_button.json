@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:brown_mushroom_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:brown_mushroom_button",
+          "count": 1
+        }
+      }

@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "tag": "minecraft:planks"
+      },
+      "D": {
+        "item": "minecraft:mushroom_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:red_mushroom_planks",
+      "id": "pyrite:red_mushroom_planks",
+      "count": 8
+    }
+}
