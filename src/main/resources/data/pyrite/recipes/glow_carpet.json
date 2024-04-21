@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:glow_wool"
+          }
+        },
+        "result": {
+          "item": "pyrite:glow_carpet",
+          "id": "pyrite:glow_carpet",
+          "count": 3
+        }
+      }
