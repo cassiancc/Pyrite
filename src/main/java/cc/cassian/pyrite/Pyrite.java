@@ -134,6 +134,9 @@ public class Pyrite implements ModInitializer {
         if (Objects.equals(blockType, "block")) {
             pyriteBlocks.add(new Block(blockSettings));
         }
+        if (Objects.equals(blockType, "carpet")) {
+            pyriteBlocks.add(new CarpetBlock(blockSettings));
+        }
         else if (Objects.equals(blockType, "slab")) {
             pyriteBlocks.add(new SlabBlock(blockSettings));
         }
@@ -280,6 +283,7 @@ public class Pyrite implements ModInitializer {
                 createPyriteBlock(dye + "_wool", "block", Blocks.WHITE_WOOL, color, blockLux);
                 //Terracotta Block
                 //Carpet block
+                createPyriteBlock(dye + "_carpet", "carpet", Blocks.WHITE_WOOL, color, blockLux);
 
 
             }

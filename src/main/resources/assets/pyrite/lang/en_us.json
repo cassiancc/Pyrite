@@ -369,5 +369,11 @@
   "block.pyrite.rose_brick_wall": "Rose Brick Wall",
   "block.pyrite.rose_stained_door": "Rose Stained Door",
   "block.pyrite.rose_stained_trapdoor": "Rose Stained Trapdoor",
-  "block.pyrite.rose_lamp": "Rose Lamp"
+  "block.pyrite.rose_lamp": "Rose Lamp",
+  "block.pyrite.glow_carpet": "Glow Carpet",
+  "block.pyrite.dragon_carpet": "Dragon Carpet",
+  "block.pyrite.star_carpet": "Star Carpet",
+  "block.pyrite.honey_carpet": "Honey Carpet",
+  "block.pyrite.nostalgia_carpet": "Nostalgia Carpet",
+  "block.pyrite.rose_carpet": "Rose Carpet"
 }
