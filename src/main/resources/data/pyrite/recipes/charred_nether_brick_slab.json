@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:charred_nether_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:charred_nether_brick_slab",
+          "count": 6
+        }
+      }

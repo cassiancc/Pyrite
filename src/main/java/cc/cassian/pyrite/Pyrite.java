@@ -227,7 +227,14 @@ public class Pyrite implements ModInitializer {
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, 1200f, MapColor.RED, 15);
-
+        //Charred Nether Bricks
+        createPyriteBlock( "charred_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
+        //Charred Nether Bricks Stairs
+        createPyriteBlock( "charred_nether_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), MapColor.BLACK, 0);
+        //Charred Nether Bricks Slab
+        createPyriteBlock( "charred_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLACK, 0);
+        //Charred Nether Bricks Wall
+        createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
 
 
         int blockLux = 0;
@@ -264,7 +271,7 @@ public class Pyrite implements ModInitializer {
                     color = MapColor.BRIGHT_RED;
                 }
                 createPyriteBlock(dye + "_wool", "block", Blocks.WHITE_WOOL, color, blockLux);
-                
+
             }
             //Normal dye colours.
             else {

@@ -339,5 +339,10 @@
   "block.pyrite.honey_stained_trapdoor": "Honey Stained Trapdoor",
   "block.pyrite.nostalgia_stained_trapdoor": "Nostalgia Stained Trapdoor",
   "block.pyrite.cobblestone_brick_wall_gate": "Cobblestone Brick Wall Gate",
-  "block.pyrite.mossy_cobblestone_brick_wall_gate": "Mossy Cobblestone Brick Wall Gate"
+  "block.pyrite.mossy_cobblestone_brick_wall_gate": "Mossy Cobblestone Brick Wall Gate",
+  "block.pyrite.charred_nether_bricks": "Charred Nether Bricks",
+  "block.pyrite.charred_nether_brick_stairs": "Charred Nether Brick Stairs",
+  "block.pyrite.charred_nether_brick_slab": "Charred Nether Brick Slab",
+  "block.pyrite.charred_nether_brick_wall": "Charred Nether Brick Wall"
+
 }
