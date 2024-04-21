@@ -21,7 +21,10 @@
       "pyrite:dragon_stained_door",
       "pyrite:star_stained_door",
       "pyrite:honey_stained_door",
-      "pyrite:nostalgia_stained_door"
+      "pyrite:nostalgia_stained_door",
+      "pyrite:rose_stained_door",
+      "pyrite:red_mushroom_door",
+      "pyrite:brown_mushroom_door"
     ]
   }
 

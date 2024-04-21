@@ -25,7 +25,12 @@
       "pyrite:black_bricks",
       "pyrite:glow_bricks",
       "pyrite:dragon_bricks",
-      "pyrite:star_bricks"
+      "pyrite:star_bricks",
+      "pyrite:honey_bricks",
+      "pyrite:nostalgia_bricks",
+      "pyrite:rose_bricks",
+      "pyrite:charred_nether_bricks"
+
     ]
   }
 
