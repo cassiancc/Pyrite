@@ -19,8 +19,10 @@ import java.util.Objects;
 public class Pyrite implements ModInitializer {
     //List of Blocks and Block IDS.
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
+    public static ArrayList<Item> pyriteItems = new ArrayList<>();
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
+    static ArrayList<String> pyriteItemIDs = new ArrayList<>();
     //List of dyes to autogenerate blocks for.
     String[] dyes = {
             "white",
@@ -179,6 +181,11 @@ public class Pyrite implements ModInitializer {
 
     };
 
+    public void createPyriteItem(String itemID) {
+        pyriteItems.add(new Item(new Item.Settings()));
+        pyriteItemIDs.add(itemID);
+    }
+
     @Override
     public void onInitialize() {
         //Framed Glass - 0
@@ -243,9 +250,6 @@ public class Pyrite implements ModInitializer {
         for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
             String dye = dyes[dyeIndex];
             if (dyeIndex > 15) {
-                //Wool Block
-                //Terracotta Block
-                //Carpet block
                 //Glow planks overrides
                 if (Objects.equals(dye, "glow")) {
                     blockLux = 8;
@@ -270,7 +274,13 @@ public class Pyrite implements ModInitializer {
                 else if (Objects.equals(dye, "rose")) {
                     color = MapColor.BRIGHT_RED;
                 }
+                //Dye
+                createPyriteItem(dye + "_dye");
+                //Dyed Wool
                 createPyriteBlock(dye + "_wool", "block", Blocks.WHITE_WOOL, color, blockLux);
+                //Terracotta Block
+                //Carpet block
+
 
             }
             //Normal dye colours.
@@ -322,13 +332,20 @@ public class Pyrite implements ModInitializer {
             //Create block.
             createPyriteBlock(block + "_gate","fence_gate", wallsBlock);
         }
-        //Register blocks, block items, and the Pyrite item group.
+
+
+        //Register blocks and block items.
         for (int x = 0; x < pyriteBlockIDs.size(); x++) {
             Registry.register(Registries.BLOCK, new Identifier("pyrite", pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
             Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
             System.out.println(pyriteBlocks.get(x) + pyriteBlockIDs.get(x));
 
         }
+        //Registers items.
+        for (int x = 0; x < pyriteItemIDs.size(); x++) {
+            Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteItemIDs.get(x)), pyriteItems.get(x));
+        }
+        //Registers the Pyrite item group.
         Registry.register(Registries.ITEM_GROUP, new Identifier("pyrite", "pyrite_group"), PYRITE_GROUP);
     }
     //Add items to the Pyrite Item Group
@@ -338,6 +355,9 @@ public class Pyrite implements ModInitializer {
             .entries((context, entries) -> {
                 for (Block block : pyriteBlocks) {
                     entries.add(block);
+                }
+                for (Item item : pyriteItems) {
+                    entries.add(item);
                 }
             })
             .build();

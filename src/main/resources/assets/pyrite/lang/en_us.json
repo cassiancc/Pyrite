@@ -343,6 +343,11 @@
   "block.pyrite.charred_nether_bricks": "Charred Nether Bricks",
   "block.pyrite.charred_nether_brick_stairs": "Charred Nether Brick Stairs",
   "block.pyrite.charred_nether_brick_slab": "Charred Nether Brick Slab",
-  "block.pyrite.charred_nether_brick_wall": "Charred Nether Brick Wall"
-
+  "block.pyrite.charred_nether_brick_wall": "Charred Nether Brick Wall",
+  "item.pyrite.glow_dye": "Glow Dye",
+  "item.pyrite.dragon_dye": "Dragon Dye",
+  "item.pyrite.star_dye": "Star Dye",
+  "item.pyrite.honey_dye": "Honey Dye",
+  "item.pyrite.nostalgia_dye": "Nostalgia Dye",
+  "item.pyrite.rose_dye": "Rose Dye"
 }
