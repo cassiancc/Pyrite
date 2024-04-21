@@ -308,6 +308,7 @@ public class Pyrite implements ModInitializer {
                 //Dragon planks overrides
                 else if (Objects.equals(dye, "dragon")) {
                     color = MapColor.BLACK;
+                    blockLux = 0;
                 }
                 //Star planks overrides
                 else if (Objects.equals(dye, "star")) {
@@ -317,12 +318,17 @@ public class Pyrite implements ModInitializer {
                 //Honey planks overrides
                 else if (Objects.equals(dye, "honey")) {
                     color = MapColor.YELLOW;
+                    blockLux = 0;
+
                 }
                 else if (Objects.equals(dye, "nostalgia")) {
                     color = MapColor.BROWN;
+                    blockLux = 0;
                 }
                 else if (Objects.equals(dye, "rose")) {
                     color = MapColor.BRIGHT_RED;
+                    blockLux = 0;
+
                 }
                 //Dye
                 createPyriteItem(dye + "_dye");
