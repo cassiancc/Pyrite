@@ -10,7 +10,7 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:honeycomb"
+        "item": "pyrite:honey_dye"
       }
     },
     "result": {

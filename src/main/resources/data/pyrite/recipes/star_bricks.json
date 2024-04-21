@@ -10,7 +10,7 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:nether_star"
+        "item": "pyrite:star_dye"
       }
     },
     "result": {
