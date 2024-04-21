@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:white_stained_fence_gate",
+    "pyrite:orange_stained_fence_gate",
+    "pyrite:magenta_stained_fence_gate",
+    "pyrite:light_blue_stained_fence_gate",
+    "pyrite:yellow_stained_fence_gate",
+    "pyrite:lime_stained_fence_gate",
+    "pyrite:pink_stained_fence_gate",
+    "pyrite:gray_stained_fence_gate",
+    "pyrite:light_gray_stained_fence_gate",
+    "pyrite:cyan_stained_fence_gate",
+    "pyrite:purple_stained_fence_gate",
+    "pyrite:blue_stained_fence_gate",
+    "pyrite:brown_stained_fence_gate",
+    "pyrite:green_stained_fence_gate",
+    "pyrite:red_stained_fence_gate",
+    "pyrite:black_stained_fence_gate",
+    "pyrite:glow_stained_fence_gate",
+    "pyrite:dragon_stained_fence_gate",
+    "pyrite:star_stained_fence_gate",
+    "pyrite:honey_stained_fence_gate",
+    "pyrite:nostalgia_stained_fence_gate",
+    "pyrite:rose_stained_fence_gate",
+    "pyrite:red_mushroom_fence_gate",
+    "pyrite:brown_mushroom_fence_gate"
+  ]
+}
+
