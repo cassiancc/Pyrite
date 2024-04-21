@@ -43,7 +43,8 @@ public class Pyrite implements ModInitializer {
             "dragon",
             "star",
             "honey",
-            "nostalgia"
+            "nostalgia",
+            "rose"
     };
 
     //List of Wall Blocks to generated Wall Gates for.
@@ -124,7 +125,7 @@ public class Pyrite implements ModInitializer {
 
     };
 
-    //Most of the stained blocks.
+    //Most of the generic Stained Blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
         pyriteBlockIDs.add(blockID);
         AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock).mapColor(color).luminance(state -> lux);
@@ -137,18 +138,12 @@ public class Pyrite implements ModInitializer {
         else if (Objects.equals(blockType, "wall")) {
             pyriteBlocks.add(new WallBlock(blockSettings));
         }
-        else if (Objects.equals(blockType, "fence_gate")) {
-            pyriteBlocks.add(new FenceGateBlock(blockSettings, WoodType.CRIMSON));
-        }
         else if (Objects.equals(blockType, "stairs")) {
             pyriteBlocks.add(new ModStairs(copyBlock.getDefaultState(), blockSettings));
         }
-        else if (Objects.equals(blockType, "fence")) {
-            pyriteBlocks.add(new FenceBlock(blockSettings));
-        }
     };
 
-    //The rest of the stained blocks.
+    //Stained blocks that require a wood set or wood type.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type) {
         pyriteBlockIDs.add(blockID);
         AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock).mapColor(color).luminance(state -> lux);
@@ -235,38 +230,45 @@ public class Pyrite implements ModInitializer {
 
 
 
-        int blockLux;
-        MapColor color;
+        int blockLux = 0;
+        MapColor color = null;
         //Autogenerate dye blocks.
-        for (String dye : dyes) {
-            //Glow planks overrides
-            if (Objects.equals(dye, "glow")) {
-                blockLux = 8;
-                color = DyeColor.GREEN.getMapColor();
-            }
-            //Dragon planks overrides
-            else if (Objects.equals(dye, "dragon")) {
-                blockLux = 0;
-                color = DyeColor.PURPLE.getMapColor();
-            }
-            //Star planks overrides
-            else if (Objects.equals(dye, "star")) {
-                blockLux = 15;
-                color = DyeColor.LIGHT_BLUE.getMapColor();
-            }
-            //Honey planks overrides
-            else if (Objects.equals(dye, "honey")) {
-                blockLux = 0;
-                color = DyeColor.YELLOW.getMapColor();
-            }
-            else if (Objects.equals(dye, "nostalgia")) {
-                blockLux = 0;
-                color = DyeColor.BROWN.getMapColor();
+        for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
+            String dye = dyes[dyeIndex];
+            if (dyeIndex > 15) {
+                //Wool Block
+                //Terracotta Block
+                //Carpet block
+                //Glow planks overrides
+                if (Objects.equals(dye, "glow")) {
+                    blockLux = 8;
+                    color = MapColor.CYAN;
+                }
+                //Dragon planks overrides
+                else if (Objects.equals(dye, "dragon")) {
+                    color = MapColor.BLACK;
+                }
+                //Star planks overrides
+                else if (Objects.equals(dye, "star")) {
+                    blockLux = 15;
+                    color = MapColor.OFF_WHITE;
+                }
+                //Honey planks overrides
+                else if (Objects.equals(dye, "honey")) {
+                    color = MapColor.YELLOW;
+                }
+                else if (Objects.equals(dye, "nostalgia")) {
+                    color = MapColor.BROWN;
+                }
+                else if (Objects.equals(dye, "rose")) {
+                    color = MapColor.BRIGHT_RED;
+                }
+                createPyriteBlock(dye + "_wool", "block", Blocks.WHITE_WOOL, color, blockLux);
+                
             }
             //Normal dye colours.
             else {
                 color = DyeColor.valueOf(dye.toUpperCase()).getMapColor();
-                blockLux = 0;
             }
 
             BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier("pyrite", dye + "wood"));
