@@ -246,11 +246,51 @@ public class Pyrite implements ModInitializer {
         //Charred Nether Bricks Wall
         createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
         createPyriteBlock("red_mushroom_stem", "block", Blocks.MUSHROOM_STEM);
+        BlockSetType DYED_WOOD_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"));
+        WoodType DYED_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"), DYED_WOOD_SET);
+        int blockLux = 0;
+        MapColor color = MapColor.RED;
+        //Stained Planks
+        createPyriteBlock( "red_mushroom_planks", "block", Blocks.RED_MUSHROOM_BLOCK, color, blockLux);
+        //Stained Stairs
+        createPyriteBlock("red_mushroom_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), color, blockLux);
+        //Stained Slabs
+        createPyriteBlock( "red_mushroom_slab", "slab", pyriteBlocks.get(pyriteBlocks.size()-2), color, blockLux);
+        //Stained Pressure Plates
+        createPyriteBlock( "red_mushroom_pressure_plate", "pressure_plate", pyriteBlocks.get(pyriteBlocks.size()-3), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Buttons
+        createPyriteBlock("red_mushroom_button", "button", pyriteBlocks.get(pyriteBlocks.size()-4), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Fences
+        createPyriteBlock("red_mushroom_fence", "fence", pyriteBlocks.get(pyriteBlocks.size()-5), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Fence Gates
+        createPyriteBlock("red_mushroom_fence_gate", "fence_gate", pyriteBlocks.get(pyriteBlocks.size()-5), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Doors
+        createPyriteBlock("red_mushroom_door", "door", pyriteBlocks.get(pyriteBlocks.size()-6), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Trapdoors
+        createPyriteBlock("red_mushroom_trapdoor", "trapdoor", pyriteBlocks.get(pyriteBlocks.size()-7), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
         createPyriteBlock("brown_mushroom_stem", "block", Blocks.MUSHROOM_STEM);
 
+        //Stained Planks
+        createPyriteBlock( "brown_mushroom_planks", "block", Blocks.BROWN_MUSHROOM_BLOCK, color, blockLux);
+        //Stained Stairs
+        createPyriteBlock("brown_mushroom_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), color, blockLux);
+        //Stained Slabs
+        createPyriteBlock( "brown_mushroom_slab", "slab", pyriteBlocks.get(pyriteBlocks.size()-2), color, blockLux);
+        //Stained Pressure Plates
+        createPyriteBlock( "brown_mushroom_pressure_plate", "pressure_plate", pyriteBlocks.get(pyriteBlocks.size()-3), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Buttons
+        createPyriteBlock("brown_mushroom_button", "button", pyriteBlocks.get(pyriteBlocks.size()-4), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Fences
+        createPyriteBlock("brown_mushroom_fence", "fence", pyriteBlocks.get(pyriteBlocks.size()-5), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Fence Gates
+        createPyriteBlock("brown_mushroom_fence_gate", "fence_gate", pyriteBlocks.get(pyriteBlocks.size()-5), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Doors
+        createPyriteBlock("brown_mushroom_door", "door", pyriteBlocks.get(pyriteBlocks.size()-6), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
+        //Stained Trapdoors
+        createPyriteBlock("brown_mushroom_trapdoor", "trapdoor", pyriteBlocks.get(pyriteBlocks.size()-7), color, blockLux, DYED_WOOD_SET, DYED_WOOD_TYPE);
 
-        int blockLux = 0;
-        MapColor color = null;
+
+
         //Autogenerate dye blocks.
         for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
             String dye = dyes[dyeIndex];
