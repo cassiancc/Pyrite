@@ -112,6 +112,9 @@ public class Pyrite implements ModInitializer {
         if (Objects.equals(blockType, "block")) {
             pyriteBlocks.add(new Block(AbstractBlock.Settings.copy(copyBlock)));
         }
+        else if (Objects.equals(blockType, "log")) {
+            pyriteBlocks.add(new PillarBlock(AbstractBlock.Settings.copy(copyBlock)));
+        }
         else if (Objects.equals(blockType, "slab")) {
             pyriteBlocks.add(new SlabBlock(AbstractBlock.Settings.copy(copyBlock)));
         }
@@ -245,9 +248,11 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock( "charred_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLACK, 0);
         //Charred Nether Bricks Wall
         createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
-        createPyriteBlock("red_mushroom_stem", "block", Blocks.MUSHROOM_STEM);
+
+        //Red Mushroom Blocks
         BlockSetType MUSHROOM_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"));
         WoodType MUSHROOM_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"), MUSHROOM_SET);
+        createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         int blockLux = 0;
         MapColor color = MapColor.RED;
         //Stained Planks

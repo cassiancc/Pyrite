@@ -1,21 +1,13 @@
-        {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-      "CCC",
-      "CDC",
-      "CCC"
-    ],
-    "key": {
-      "C": {
-        "tag": "minecraft:planks"
-      },
-      "D": {
-        "item": "minecraft:mushroom_dye"
-      }
-    },
-    "result": {
-      "item": "pyrite:brown_mushroom_planks",
-      "id": "pyrite:brown_mushroom_planks",
-      "count": 8
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pyrite:brown_mushroom_stem"
     }
+  ],
+  "result": {
+    "item": "pyrite:brown_mushroom_planks",
+    "id": "pyrite:brown_mushroom_planks",
+    "count": 4
+  }
 }
