@@ -273,7 +273,7 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("red_mushroom_door", "door", pyriteBlocks.get(pyriteBlocks.size()-6), color, blockLux, MUSHROOM_SET, MUSHROOM_TYPE);
         //Stained Trapdoors
         createPyriteBlock("red_mushroom_trapdoor", "trapdoor", pyriteBlocks.get(pyriteBlocks.size()-7), color, blockLux, MUSHROOM_SET, MUSHROOM_TYPE);
-        createPyriteBlock("brown_mushroom_stem", "block", Blocks.MUSHROOM_STEM);
+        createPyriteBlock("brown_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
 
         //Stained Planks
         createPyriteBlock( "brown_mushroom_planks", "block", Blocks.BROWN_MUSHROOM_BLOCK, color, blockLux);
