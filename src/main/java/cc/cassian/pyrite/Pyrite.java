@@ -85,7 +85,7 @@ public class Pyrite implements ModInitializer {
         //Framed Glass Pane - 1
         pyriteBlocks.add(new ModGlassPane());
         //Cobblestone Bricks - 2
-        pyriteBlocks.add(new Block(FabricBlockSettings.of(Material.STONE).strength(1.75f,6).build()));
+        pyriteBlocks.add(new Block(AbstractBlock.Settings.of(Material.STONE).strength(1.75f,6)));
         //Cobblestone Brick Stairs - 3
         pyriteBlocks.add(new ModStairs(pyriteBlocks.get(2).getDefaultState(), FabricBlockSettings.copy(Blocks.STONE_BRICK_STAIRS).build()));
         //Cobblestone Brick Stairs - 4
