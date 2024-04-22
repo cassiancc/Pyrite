@@ -88,7 +88,7 @@ public class Pyrite implements ModInitializer {
             transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
 
         }
-    };
+    }
 
     //Primarily used for Glowstone/Dyed Lamps
     public void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
@@ -96,7 +96,7 @@ public class Pyrite implements ModInitializer {
         if (Objects.equals(blockType, "block")) {
             pyriteBlocks.add(new Block(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
         }
-    };
+    }
 
     //Used for Glowing Obsidian
     public void createPyriteBlock(String blockID, String blockType, Float strength, Float blastResistance, MapColor color, int lightLevel) {
@@ -104,7 +104,7 @@ public class Pyrite implements ModInitializer {
         if (Objects.equals(blockType, "obsidian")) {
             pyriteBlocks.add(new Block(AbstractBlock.Settings.create().strength(strength, blastResistance).luminance(state -> lightLevel).mapColor(color).pistonBehavior(PistonBehavior.BLOCK)));
         }
-    };
+    }
 
     //Most of the manually generated blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock) {
@@ -128,7 +128,7 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new CarpetBlock(AbstractBlock.Settings.copy(copyBlock)));
         }
 
-    };
+    }
 
     //Most of the generic Stained Blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
@@ -149,7 +149,7 @@ public class Pyrite implements ModInitializer {
         else if (Objects.equals(blockType, "stairs")) {
             pyriteBlocks.add(new ModStairs(copyBlock.getDefaultState(), blockSettings));
         }
-    };
+    }
 
     //Stained blocks that require a wood set or wood type.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type) {
@@ -175,7 +175,7 @@ public class Pyrite implements ModInitializer {
         else if (Objects.equals(blockType, "fence")) {
             pyriteBlocks.add(new FenceBlock(blockSettings));
         }
-    };
+    }
 
     //Various stair blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, Integer baseBlock) {
@@ -185,7 +185,7 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new ModStairs(pyriteBlocks.get(baseBlock).getDefaultState(), blockSettings));
         }
 
-    };
+    }
 
     public void createPyriteItem(String itemID) {
         pyriteItems.add(new Item(new Item.Settings()));
