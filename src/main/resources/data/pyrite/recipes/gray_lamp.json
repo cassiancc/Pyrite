@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:gray_lamp",
+=======
+      "item": "pyrite:gray_lamp",
+      "id": "pyrite:gray_lamp",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

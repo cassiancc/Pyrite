@@ -10,6 +10,10 @@
           }
         },
         "result": {
+<<<<<<< HEAD
+=======
+          "item": "pyrite:purple_stained_pressure_plate",
+>>>>>>> 1.20.1
           "id": "pyrite:purple_stained_pressure_plate",
           "count": 1
         }

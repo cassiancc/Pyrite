@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:orange_stained_planks",
+=======
+      "item": "pyrite:orange_stained_planks",
+      "id": "pyrite:orange_stained_planks",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

@@ -10,6 +10,10 @@
           }
         },
         "result": {
+<<<<<<< HEAD
+=======
+          "item": "pyrite:cyan_stained_slab",
+>>>>>>> 1.20.1
           "id": "pyrite:cyan_stained_slab",
           "count": 6
         }

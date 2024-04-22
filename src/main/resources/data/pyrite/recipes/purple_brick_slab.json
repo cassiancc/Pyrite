@@ -10,6 +10,10 @@
           }
         },
         "result": {
+<<<<<<< HEAD
+=======
+          "item": "pyrite:purple_brick_slab",
+>>>>>>> 1.20.1
           "id": "pyrite:purple_brick_slab",
           "count": 6
         }

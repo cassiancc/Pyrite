@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:red_mushroom_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:red_mushroom_trapdoor",
+          "id": "pyrite:red_mushroom_trapdoor",
+          "count": 2
+        }
+      }

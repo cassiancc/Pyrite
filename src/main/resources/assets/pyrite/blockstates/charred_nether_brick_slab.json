@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/charred_nether_brick_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/charred_nether_bricks"
+      },
+      "type=top": {
+        "model": "pyrite:block/charred_nether_brick_slab_top"
+      }
+    }
+  }

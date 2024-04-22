@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:red_bricks",
+=======
+      "item": "pyrite:red_bricks",
+      "id": "pyrite:red_bricks",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

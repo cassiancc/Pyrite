@@ -1,0 +1,8 @@
+{
+        "parent": "minecraft:block/slab",
+        "textures": {
+        "bottom": "pyrite:block/rose_stained_planks",
+        "top": "pyrite:block/rose_stained_planks",
+        "side": "pyrite:block/rose_stained_planks"
+        }
+    }

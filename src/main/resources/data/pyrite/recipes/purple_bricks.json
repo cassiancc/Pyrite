@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:purple_bricks",
+=======
+      "item": "pyrite:purple_bricks",
+      "id": "pyrite:purple_bricks",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

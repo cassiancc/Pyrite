@@ -11,6 +11,10 @@
           }
         },
         "result": {
+<<<<<<< HEAD
+=======
+          "item": "pyrite:yellow_stained_trapdoor",
+>>>>>>> 1.20.1
           "id": "pyrite:yellow_stained_trapdoor",
           "count": 2
         }

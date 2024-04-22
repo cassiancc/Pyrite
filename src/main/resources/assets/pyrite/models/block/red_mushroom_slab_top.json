@@ -1,0 +1,8 @@
+{
+        "parent": "minecraft:block/slab_top",
+        "textures": {
+        "bottom": "pyrite:block/red_mushroom_planks",
+        "top": "pyrite:block/red_mushroom_planks",
+        "side": "pyrite:block/red_mushroom_planks"
+        }
+    }

@@ -10,11 +10,16 @@
         "item": "pyrite:glowstone_lamp"
       },
       "D": {
-        "item": "minecraft:glow_ink_sac"
+        "item": "pyrite:glow_dye"
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:glow_lamp",
+=======
+      "item": "pyrite:glow_lamp",
+      "id": "pyrite:glow_lamp",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

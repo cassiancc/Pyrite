@@ -1,0 +1,17 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:brown_mushroom_planks"
+        }
+      },
+      "result": {
+        "item": "pyrite:brown_mushroom_stairs",
+        "count": 4
+      }
+  }

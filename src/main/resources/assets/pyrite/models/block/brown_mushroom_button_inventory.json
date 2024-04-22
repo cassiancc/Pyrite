@@ -1,0 +1,6 @@
+{
+        "parent": "minecraft:block/button_inventory",
+        "textures": {
+            "texture": "pyrite:block/brown_mushroom_planks"
+        }
+      }

@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:black_stained_planks",
+=======
+      "item": "pyrite:black_stained_planks",
+      "id": "pyrite:black_stained_planks",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

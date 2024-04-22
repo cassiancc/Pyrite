@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:cyan_lamp",
+=======
+      "item": "pyrite:cyan_lamp",
+      "id": "pyrite:cyan_lamp",
+>>>>>>> 1.20.1
       "count": 8
     }
 }

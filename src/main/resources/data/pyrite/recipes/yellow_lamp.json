@@ -14,7 +14,12 @@
       }
     },
     "result": {
+<<<<<<< HEAD
     "id": "pyrite:yellow_lamp",
+=======
+      "item": "pyrite:yellow_lamp",
+      "id": "pyrite:yellow_lamp",
+>>>>>>> 1.20.1
       "count": 8
     }
 }
