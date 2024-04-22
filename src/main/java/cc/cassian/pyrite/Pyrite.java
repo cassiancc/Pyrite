@@ -82,6 +82,12 @@ public class Pyrite implements ModInitializer {
         if (Objects.equals(blockType, "block")) {
             pyriteBlocks.add(new Block(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
         }
+        else if (Objects.equals(blockType, "glass")) {
+            pyriteBlocks.add(new ModGlass(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
+        }
+        else if (Objects.equals(blockType, "glass_pane")) {
+            pyriteBlocks.add(new PaneBlock(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
+        }
     }
 
     //Used for Glowing Obsidian
