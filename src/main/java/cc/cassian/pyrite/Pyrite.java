@@ -75,22 +75,8 @@ public class Pyrite implements ModInitializer {
             Blocks.END_STONE_BRICK_WALL
 
     };
-    //Primarily used for Framed Glass/Glass Panes
-    public void createPyriteBlock(String blockID, String blockType, Float strength) {
-        pyriteBlockIDs.add(blockID);
-        if (Objects.equals(blockType, "glass")) {
-            pyriteBlocks.add(new ModGlass(AbstractBlock.Settings.create().nonOpaque().strength(strength).sounds(BlockSoundGroup.GLASS)));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
 
-        }
-        else if (Objects.equals(blockType, "glass_pane")) {
-            pyriteBlocks.add(new PaneBlock(AbstractBlock.Settings.create().nonOpaque().strength(strength).sounds(BlockSoundGroup.GLASS)));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-
-        }
-    }
-
-    //Primarily used for Glowstone/Dyed Lamps
+    //Primarily used for Framed Glass and Glowstone/Dyed Lamps
     public void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
         pyriteBlockIDs.add(blockID);
         if (Objects.equals(blockType, "block")) {
@@ -195,9 +181,9 @@ public class Pyrite implements ModInitializer {
     @Override
     public void onInitialize() {
         //Framed Glass - 0
-        createPyriteBlock("framed_glass","glass", 2.0f);
+        createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0);
         //Framed Glass Pane - 1
-        createPyriteBlock( "framed_glass_pane","glass_pane", 2.0f);
+        createPyriteBlock( "framed_glass_pane","glass_pane", 2.0f, MapColor.CLEAR, 0);
         //Cobblestone Bricks - 2
         createPyriteBlock("cobblestone_bricks","block", Blocks.STONE_BRICKS);
         //Cobblestone Brick Stairs - 3
