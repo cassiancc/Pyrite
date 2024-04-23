@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "pyrite:block/podzol_carpet"
+    "variants": {
+      "": {
+        "model": "pyrite:block/podzol_carpet"
+      }
     }
   }
-}

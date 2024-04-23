@@ -1,4 +1,3 @@
-    {
-      "parent": "pyrite:block/framed_glass"
-    }
-
+{
+        "parent": "pyrite:block/framed_glass"
+      }
