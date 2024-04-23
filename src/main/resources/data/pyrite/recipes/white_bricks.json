@@ -14,12 +14,8 @@
       }
     },
     "result": {
-<<<<<<< HEAD
-    "id": "pyrite:white_bricks",
-=======
       "item": "pyrite:white_bricks",
       "id": "pyrite:white_bricks",
->>>>>>> 1.20.1
       "count": 8
     }
 }

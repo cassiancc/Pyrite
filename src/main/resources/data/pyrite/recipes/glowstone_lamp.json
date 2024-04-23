@@ -1,25 +1,4 @@
 {
-<<<<<<< HEAD
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "X#X",
-    "#X#",
-    "X#X"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:glowstone"
-    },
-    "X": {
-      "item": "minecraft:iron_nugget"
-    }
-  },
-  "result": {
-    "id": "pyrite:glowstone_lamp",
-	"count": 4
-  }
-}
-=======
         "type": "minecraft:crafting_shaped",
         "pattern": [
           "X#X",
@@ -36,7 +15,7 @@
         },
         "result": {
           "item": "pyrite:glowstone_lamp",
+          "id": "pyrite:glowstone_lamp",
         "count": 4
         }
       }
->>>>>>> 1.20.1

@@ -14,12 +14,8 @@
       }
     },
     "result": {
-<<<<<<< HEAD
-    "id": "pyrite:yellow_stained_planks",
-=======
       "item": "pyrite:yellow_stained_planks",
       "id": "pyrite:yellow_stained_planks",
->>>>>>> 1.20.1
       "count": 8
     }
 }

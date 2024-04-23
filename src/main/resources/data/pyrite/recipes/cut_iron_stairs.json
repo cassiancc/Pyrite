@@ -11,12 +11,8 @@
         }
       },
       "result": {
-<<<<<<< HEAD
-    "id": "pyrite:cut_iron_stairs",
-=======
         "item": "pyrite:cut_iron_stairs",
         "id": "pyrite:cut_iron_stairs",
->>>>>>> 1.20.1
         "count": 4
       }
   }

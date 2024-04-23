@@ -14,12 +14,8 @@
       }
     },
     "result": {
-<<<<<<< HEAD
-    "id": "pyrite:honey_bricks",
-=======
       "item": "pyrite:honey_bricks",
       "id": "pyrite:honey_bricks",
->>>>>>> 1.20.1
       "count": 8
     }
 }

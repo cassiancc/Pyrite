@@ -11,12 +11,8 @@
         }
       },
       "result": {
-<<<<<<< HEAD
-    "id": "pyrite:cobblestone_brick_stairs",
-=======
         "item": "pyrite:cobblestone_brick_stairs",
         "id": "pyrite:cobblestone_brick_stairs",
->>>>>>> 1.20.1
         "count": 4
       }
   }

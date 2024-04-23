@@ -14,12 +14,8 @@
       }
     },
     "result": {
-<<<<<<< HEAD
-    "id": "pyrite:cyan_bricks",
-=======
       "item": "pyrite:cyan_bricks",
       "id": "pyrite:cyan_bricks",
->>>>>>> 1.20.1
       "count": 8
     }
 }

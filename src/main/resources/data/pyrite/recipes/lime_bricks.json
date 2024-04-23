@@ -14,12 +14,8 @@
       }
     },
     "result": {
-<<<<<<< HEAD
-    "id": "pyrite:lime_bricks",
-=======
       "item": "pyrite:lime_bricks",
       "id": "pyrite:lime_bricks",
->>>>>>> 1.20.1
       "count": 8
     }
 }

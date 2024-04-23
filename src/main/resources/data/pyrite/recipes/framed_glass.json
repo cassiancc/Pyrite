@@ -15,15 +15,7 @@
       },
       "result": {
         "item": "pyrite:framed_glass",
+        "id": "pyrite:framed_glass",
       "count": 4
       }
     }
-<<<<<<< HEAD
-  },
-  "result": {
-    "id": "pyrite:framed_glass",
-	"count": 4
-  }
-}
-=======
->>>>>>> 1.20.1
