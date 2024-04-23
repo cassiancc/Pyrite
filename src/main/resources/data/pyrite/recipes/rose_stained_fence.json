@@ -7,15 +7,15 @@
         ],
         "key": {
           "C": {
-            "item": "pyrite:light_gray_stained_planks"
+            "item": "pyrite:rose_stained_planks"
           },
           "S": {
             "item": "minecraft:stick"
           }
         },
         "result": {
-          "item": "pyrite:light_gray_stained_fence",
-          "id": "pyrite:light_gray_stained_fence",
+          "item": "pyrite:rose_stained_fence",
+          "id": "pyrite:rose_stained_fence",
           "count": 1
         }
       }
