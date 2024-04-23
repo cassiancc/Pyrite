@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "pyrite:honey_dye"
-    },
-    {
-      "item": "minecraft:wool"
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:honey_dye"
+        },
+        {
+          "item": "minecraft:white_wool"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:honey_wool",
+        "id": "pyrite:honey_wool"
+      }
     }
-  ],
-  "result": {
-    "count": 1,
-    "item": "pyrite:honey_wool",
-    "id": "pyrite:honey_wool"
-  }
-}

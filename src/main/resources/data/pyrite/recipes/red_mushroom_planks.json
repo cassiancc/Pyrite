@@ -1,13 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "pyrite:red_mushroom_stem"
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "pyrite:red_mushroom_stem"
+        }
+      ],
+      "result": {
+        "item": "pyrite:red_mushroom_planks",
+        "id": "pyrite:red_mushroom_planks",
+        "count": 4
+      }
     }
-  ],
-  "result": {
-    "item": "pyrite:red_mushroom_planks",
-    "id": "pyrite:red_mushroom_planks",
-    "count": 4
-  }
-}

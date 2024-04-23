@@ -1,19 +1,19 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-      "X#",
-      "#X"
-    ],
-    "key": {
-      "#": {
-        "item": "minecraft:crying_obsidian"
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "X#",
+        "#X"
+      ],
+      "key": {
+        "#": {
+          "item": "minecraft:crying_obsidian"
+        },
+        "X": {
+          "item": "minecraft:magma_block"
+        }
       },
-      "X": {
-        "item": "minecraft:magma_block"
+      "result": {
+        "item": "pyrite:glowing_obsidian",
+        "count": 4
       }
-    },
-    "result": {
-      "item": "pyrite:glowing_obsidian",
-      "count": 4
     }
-  }
