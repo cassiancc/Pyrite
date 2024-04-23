@@ -1,11 +1,7 @@
 {
   "replace": false,
   "values": [
-	"pyrite:astral_stairs",
-	"pyrite:umbral_stairs",
-	"pyrite:charred_stairs",
-	"pyrite:origin_oak_stairs",
-	"pyrite:mangrove_stairs"
-	
+    "#pyrite:wooden_stairs"
   ]
 }
+

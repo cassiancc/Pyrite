@@ -1,0 +1,27 @@
+{
+    "replace": false,
+    "values": [
+      "pyrite:white_stained_door",
+      "pyrite:orange_stained_door",
+      "pyrite:magenta_stained_door",
+      "pyrite:light_blue_stained_door",
+      "pyrite:yellow_stained_door",
+      "pyrite:lime_stained_door",
+      "pyrite:pink_stained_door",
+      "pyrite:gray_stained_door",
+      "pyrite:light_gray_stained_door",
+      "pyrite:cyan_stained_door",
+      "pyrite:purple_stained_door",
+      "pyrite:blue_stained_door",
+      "pyrite:brown_stained_door",
+      "pyrite:green_stained_door",
+      "pyrite:red_stained_door",
+      "pyrite:black_stained_door",
+      "pyrite:glow_stained_door",
+      "pyrite:dragon_stained_door",
+      "pyrite:star_stained_door",
+      "pyrite:honey_stained_door",
+      "pyrite:nostalgia_stained_door"
+    ]
+  }
+

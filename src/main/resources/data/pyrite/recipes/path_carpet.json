@@ -1,0 +1,16 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:dirt_path"
+          }
+        },
+        "result": {
+          "item": "pyrite:path_carpet",
+          "count": 3
+        }
+      }

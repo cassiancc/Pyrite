@@ -1,13 +1,13 @@
 {
-        "variants": {
-          "type=bottom": {
-            "model": "pyrite:block/lime_brick_slab"
-          },
-          "type=double": {
-            "model": "pyrite:block/lime_bricks"
-          },
-          "type=top": {
-            "model": "pyrite:block/lime_brick_slab_top"
-          }
-        }
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/lime_brick_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/lime_bricks"
+      },
+      "type=top": {
+        "model": "pyrite:block/lime_brick_slab_top"
       }
+    }
+  }

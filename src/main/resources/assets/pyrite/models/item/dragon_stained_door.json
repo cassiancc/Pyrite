@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "pyrite:item/dragon_stained_door"
+    }
+  }
