@@ -76,7 +76,7 @@ public class Pyrite implements ModInitializer {
 
     };
 
-    //Primarily used for Framed Glass and Glowstone/Dyed Lamps
+    //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
     public void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
         pyriteBlockIDs.add(blockID);
         AbstractBlock.Settings settings = AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color);
@@ -91,36 +91,33 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new PaneBlock(settings.nonOpaque()));
             transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
         }
-    }
-
-    //Used for Glowing Obsidian
-    public void createPyriteBlock(String blockID, String blockType, Float strength, Float blastResistance, MapColor color, int lightLevel) {
-        pyriteBlockIDs.add(blockID);
-        if (Objects.equals(blockType, "obsidian")) {
-            pyriteBlocks.add(new Block(AbstractBlock.Settings.create().strength(strength, blastResistance).luminance(state -> lightLevel).mapColor(color).pistonBehavior(PistonBehavior.BLOCK)));
+        else if (Objects.equals(blockType, "obsidian")) {
+            pyriteBlocks.add(new Block(settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK)));
         }
+
     }
 
     //Most of the manually generated blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock) {
         pyriteBlockIDs.add(blockID);
+        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock);
         if (Objects.equals(blockType, "block")) {
-            pyriteBlocks.add(new Block(AbstractBlock.Settings.copy(copyBlock)));
+            pyriteBlocks.add(new Block(blockSettings));
         }
         else if (Objects.equals(blockType, "log")) {
-            pyriteBlocks.add(new PillarBlock(AbstractBlock.Settings.copy(copyBlock)));
+            pyriteBlocks.add(new PillarBlock(blockSettings));
         }
         else if (Objects.equals(blockType, "slab")) {
-            pyriteBlocks.add(new SlabBlock(AbstractBlock.Settings.copy(copyBlock)));
+            pyriteBlocks.add(new SlabBlock(blockSettings));
         }
         else if (Objects.equals(blockType, "wall")) {
-            pyriteBlocks.add(new WallBlock(AbstractBlock.Settings.copy(copyBlock)));
+            pyriteBlocks.add(new WallBlock(blockSettings));
         }
         else if (Objects.equals(blockType, "fence_gate")) {
-            pyriteBlocks.add(new FenceGateBlock(AbstractBlock.Settings.copy(copyBlock), WoodType.CRIMSON));
+            pyriteBlocks.add(new FenceGateBlock(blockSettings, WoodType.CRIMSON));
         }
         else if (Objects.equals(blockType, "carpet")) {
-            pyriteBlocks.add(new CarpetBlock(AbstractBlock.Settings.copy(copyBlock)));
+            pyriteBlocks.add(new CarpetBlock(blockSettings));
         }
 
     }
@@ -234,7 +231,7 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("cut_iron_wall_gate","fence_gate", Blocks.IRON_BLOCK);
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
-        createPyriteBlock("glowing_obsidian","obsidian", 50f, 1200f, MapColor.RED, 15);
+        createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
         //Charred Nether Bricks
         createPyriteBlock( "charred_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Charred Nether Bricks Stairs
