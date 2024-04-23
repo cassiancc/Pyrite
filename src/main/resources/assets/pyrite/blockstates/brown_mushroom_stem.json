@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "axis=x": {
+        "model": "pyrite:block/brown_mushroom_stem_horizontal",
+        "x": 90,
+        "y": 90
+      },
+      "axis=y": {
+        "model": "pyrite:block/brown_mushroom_stem"
+      },
+      "axis=z": {
+        "model": "pyrite:block/brown_mushroom_stem_horizontal",
+        "x": 90
+      }
+    }
+  }

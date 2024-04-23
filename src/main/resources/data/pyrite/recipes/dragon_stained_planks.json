@@ -10,11 +10,12 @@
         "tag": "minecraft:planks"
       },
       "D": {
-        "item": "minecraft:dragon_breath"
+        "item": "pyrite:dragon_dye"
       }
     },
     "result": {
       "item": "pyrite:dragon_stained_planks",
+      "id": "pyrite:dragon_stained_planks",
       "count": 8
     }
 }

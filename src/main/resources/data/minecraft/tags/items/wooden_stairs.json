@@ -1,11 +1,30 @@
 {
   "replace": false,
   "values": [
-	"pyrite:astral_stairs",
-	"pyrite:umbral_stairs",
-	"pyrite:charred_stairs",
-	"pyrite:origin_oak_stairs",
-	"pyrite:mangrove_stairs"
-	
+    "pyrite:white_stained_stairs",
+    "pyrite:orange_stained_stairs",
+    "pyrite:magenta_stained_stairs",
+    "pyrite:light_blue_stained_stairs",
+    "pyrite:yellow_stained_stairs",
+    "pyrite:lime_stained_stairs",
+    "pyrite:pink_stained_stairs",
+    "pyrite:gray_stained_stairs",
+    "pyrite:light_gray_stained_stairs",
+    "pyrite:cyan_stained_stairs",
+    "pyrite:purple_stained_stairs",
+    "pyrite:blue_stained_stairs",
+    "pyrite:brown_stained_stairs",
+    "pyrite:green_stained_stairs",
+    "pyrite:red_stained_stairs",
+    "pyrite:black_stained_stairs",
+    "pyrite:glow_stained_stairs",
+    "pyrite:dragon_stained_stairs",
+    "pyrite:star_stained_stairs",
+    "pyrite:honey_stained_stairs",
+    "pyrite:nostalgia_stained_stairs",
+    "pyrite:rose_stained_stairs",
+    "pyrite:red_mushroom_stairs",
+    "pyrite:brown_mushroom_stairs"
   ]
 }
+

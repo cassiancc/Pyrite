@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom",
-  "textures": {
-    "top": "pyrite:block/origin_oak_door_top",
-    "bottom": "pyrite:block/origin_oak_door_bottom"
-  }
-}

@@ -10,11 +10,12 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:dragon_breath"
+        "item": "pyrite:dragon_dye"
       }
     },
     "result": {
       "item": "pyrite:dragon_bricks",
+      "id": "pyrite:dragon_bricks",
       "count": 8
     }
 }

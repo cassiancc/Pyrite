@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "pyrite:astral_stem"
-  },
-  "result": "pyrite:stripped_astral_stem",
-  "count": 1
-}

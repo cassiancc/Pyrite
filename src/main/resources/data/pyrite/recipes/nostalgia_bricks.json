@@ -10,11 +10,12 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:apple"
+        "item": "pyrite:nostalgia_dye"
       }
     },
     "result": {
       "item": "pyrite:nostalgia_bricks",
+      "id": "pyrite:nostalgia_bricks",
       "count": 8
     }
 }

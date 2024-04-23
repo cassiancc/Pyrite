@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "pyrite:block/charred_stem_top",
-    "side": "pyrite:block/charred_stem"
-  }
-}

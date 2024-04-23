@@ -10,11 +10,12 @@
         "item": "pyrite:glowstone_lamp"
       },
       "D": {
-        "item": "minecraft:nether_star"
+        "item": "pyrite:star_dye"
       }
     },
     "result": {
       "item": "pyrite:star_lamp",
+      "id": "pyrite:star_lamp",
       "count": 8
     }
 }

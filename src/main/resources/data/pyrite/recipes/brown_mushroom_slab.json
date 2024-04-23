@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:brown_mushroom_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:brown_mushroom_slab",
+          "id": "pyrite:brown_mushroom_slab",
+          "count": 6
+        }
+      }

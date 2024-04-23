@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "pyrite:block/umbral_planks",
-    "top": "pyrite:block/umbral_planks",
-    "side": "pyrite:block/umbral_planks"
-  }
-}

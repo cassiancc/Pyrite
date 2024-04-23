@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "pyrite:block/astral_planks",
-    "top": "pyrite:block/astral_planks",
-    "side": "pyrite:block/astral_planks"
-  }
-}

@@ -10,11 +10,12 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:nether_star"
+        "item": "pyrite:star_dye"
       }
     },
     "result": {
       "item": "pyrite:star_bricks",
+      "id": "pyrite:star_bricks",
       "count": 8
     }
 }
