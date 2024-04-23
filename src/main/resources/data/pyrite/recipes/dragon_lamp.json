@@ -10,11 +10,12 @@
         "item": "pyrite:glowstone_lamp"
       },
       "D": {
-        "item": "minecraft:dragon_breath"
+        "item": "pyrite:dragon_dye"
       }
     },
     "result": {
       "item": "pyrite:dragon_lamp",
+      "id": "pyrite:dragon_lamp",
       "count": 8
     }
 }

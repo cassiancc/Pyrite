@@ -10,11 +10,12 @@
         "tag": "minecraft:planks"
       },
       "D": {
-        "item": "minecraft:apple"
+        "item": "pyrite:nostalgia_dye"
       }
     },
     "result": {
       "item": "pyrite:nostalgia_stained_planks",
+      "id": "pyrite:nostalgia_stained_planks",
       "count": 8
     }
 }

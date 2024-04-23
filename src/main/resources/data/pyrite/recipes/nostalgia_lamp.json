@@ -10,11 +10,12 @@
         "item": "pyrite:glowstone_lamp"
       },
       "D": {
-        "item": "minecraft:apple"
+        "item": "pyrite:nostalgia_dye"
       }
     },
     "result": {
       "item": "pyrite:nostalgia_lamp",
+      "id": "pyrite:nostalgia_lamp",
       "count": 8
     }
 }

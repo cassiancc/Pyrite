@@ -10,11 +10,12 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:honeycomb"
+        "item": "pyrite:honey_dye"
       }
     },
     "result": {
       "item": "pyrite:honey_bricks",
+      "id": "pyrite:honey_bricks",
       "count": 8
     }
 }

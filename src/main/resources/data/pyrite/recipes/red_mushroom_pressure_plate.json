@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:red_mushroom_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:red_mushroom_pressure_plate",
+          "id": "pyrite:red_mushroom_pressure_plate",
+          "count": 1
+        }
+      }

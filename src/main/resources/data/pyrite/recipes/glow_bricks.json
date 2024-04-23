@@ -10,11 +10,12 @@
         "item": "minecraft:bricks"
       },
       "D": {
-        "item": "minecraft:glow_ink_sac"
+        "item": "pyrite:glow_dye"
       }
     },
     "result": {
       "item": "pyrite:glow_bricks",
+      "id": "pyrite:glow_bricks",
       "count": 8
     }
 }

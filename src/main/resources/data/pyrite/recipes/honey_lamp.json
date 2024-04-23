@@ -10,11 +10,12 @@
         "item": "pyrite:glowstone_lamp"
       },
       "D": {
-        "item": "minecraft:honeycomb"
+        "item": "pyrite:honey_dye"
       }
     },
     "result": {
       "item": "pyrite:honey_lamp",
+      "id": "pyrite:honey_lamp",
       "count": 8
     }
 }

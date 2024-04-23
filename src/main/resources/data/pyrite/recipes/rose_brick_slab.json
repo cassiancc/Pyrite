@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:rose_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:rose_brick_slab",
+          "id": "pyrite:rose_brick_slab",
+          "count": 6
+        }
+      }
