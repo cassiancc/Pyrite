@@ -79,14 +79,17 @@ public class Pyrite implements ModInitializer {
     //Primarily used for Framed Glass and Glowstone/Dyed Lamps
     public void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
         pyriteBlockIDs.add(blockID);
+        AbstractBlock.Settings settings = AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "block")) {
-            pyriteBlocks.add(new Block(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
+            pyriteBlocks.add(new Block(settings));
         }
         else if (Objects.equals(blockType, "glass")) {
-            pyriteBlocks.add(new ModGlass(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
+            pyriteBlocks.add(new ModGlass(settings.nonOpaque()));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
         }
         else if (Objects.equals(blockType, "glass_pane")) {
-            pyriteBlocks.add(new PaneBlock(AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color)));
+            pyriteBlocks.add(new PaneBlock(settings.nonOpaque()));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
         }
     }
 

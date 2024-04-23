@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "pyrite:cobblestone_brick_slab"
+            "name": "pyrite:cobblestone_brick_wall"
           }
         ],
         "conditions": [

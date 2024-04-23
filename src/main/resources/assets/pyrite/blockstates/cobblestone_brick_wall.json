@@ -1,90 +1,90 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_post"
+    "multipart": [
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_post"
+        },
+        "when": {
+          "up": "true"
+        }
       },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side",
-        "uvlock": true
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side",
+          "uvlock": true
+        },
+        "when": {
+          "north": "low"
+        }
       },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side",
-        "uvlock": true,
-        "y": 90
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side",
+          "uvlock": true,
+          "y": 90
+        },
+        "when": {
+          "east": "low"
+        }
       },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side",
-        "uvlock": true,
-        "y": 180
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side",
+          "uvlock": true,
+          "y": 180
+        },
+        "when": {
+          "south": "low"
+        }
       },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side",
-        "uvlock": true,
-        "y": 270
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side",
+          "uvlock": true,
+          "y": 270
+        },
+        "when": {
+          "west": "low"
+        }
       },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side_tall",
-        "uvlock": true
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side_tall",
+          "uvlock": true
+        },
+        "when": {
+          "north": "tall"
+        }
       },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side_tall",
-        "uvlock": true,
-        "y": 90
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        "when": {
+          "east": "tall"
+        }
       },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side_tall",
-        "uvlock": true,
-        "y": 180
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        "when": {
+          "south": "tall"
+        }
       },
-      "when": {
-        "south": "tall"
+      {
+        "apply": {
+          "model": "pyrite:block/cobblestone_brick_wall_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        "when": {
+          "west": "tall"
+        }
       }
-    },
-    {
-      "apply": {
-        "model": "pyrite:block/cobblestone_brick_wall_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    }
-  ]
-}
+    ]
+  }

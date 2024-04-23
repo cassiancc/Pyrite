@@ -7,7 +7,7 @@
         ],
         "key": {
           "C": {
-            "item": "minecraft:nether_bricks"
+            "item": "pyrite:nether_bricks"
           },
           "S": {
             "item": "minecraft:stick"
@@ -15,6 +15,7 @@
         },
         "result": {
           "item": "pyrite:nether_brick_fence_gate",
+          "id": "pyrite:nether_brick_fence_gate",
           "count": 1
         }
       }

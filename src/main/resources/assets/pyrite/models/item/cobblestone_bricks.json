@@ -1,4 +1,3 @@
-    {
-      "parent": "pyrite:block/cobblestone_bricks"
-    }
-
+{
+        "parent": "pyrite:block/cobblestone_bricks"
+      }

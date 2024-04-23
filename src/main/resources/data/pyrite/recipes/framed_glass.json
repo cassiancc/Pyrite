@@ -1,20 +1,20 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "X#X",
-    "#X#",
-    "X#X"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:glass"
-    },
-    "X": {
-      "item": "minecraft:iron_nugget"
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "X#X",
+        "#X#",
+        "X#X"
+      ],
+      "key": {
+        "#": {
+          "item": "minecraft:glass"
+        },
+        "X": {
+          "item": "minecraft:iron_nugget"
+        }
+      },
+      "result": {
+        "item": "pyrite:framed_glass",
+      "count": 4
+      }
     }
-  },
-  "result": {
-    "item": "pyrite:framed_glass",
-	"count": 4
-  }
-}

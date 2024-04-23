@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "pyrite:block/mycelium_carpet"
+    "variants": {
+      "": {
+        "model": "pyrite:block/mycelium_carpet"
+      }
     }
   }
-}
