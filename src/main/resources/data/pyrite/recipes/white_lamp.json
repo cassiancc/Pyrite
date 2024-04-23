@@ -1,21 +1,21 @@
         {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-      "CCC",
-      "CDC",
-      "CCC"
-    ],
-    "key": {
-      "C": {
-        "item": "pyrite:glowstone_lamp"
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC",
+        "CDC",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:glowstone_lamp"
+        },
+        "D": {
+          "item": "minecraft:white_dye"
+        }
       },
-      "D": {
-        "item": "minecraft:white_dye"
+      "result": {
+        "item": "pyrite:white_lamp",
+        "id": "pyrite:white_lamp",
+        "count": 8
       }
-    },
-    "result": {
-      "item": "pyrite:white_lamp",
-      "id": "pyrite:white_lamp",
-      "count": 8
-    }
-}
+  }

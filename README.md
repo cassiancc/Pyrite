@@ -7,7 +7,7 @@ It's inspired by mods like Quark and Charm that expand on Minecraft without feel
 Pyrite is available for Minecraft Fabric 1.20.1. This is an experimental backport of Pyrite 0.9 to 1.18.2, and should not be considered stable. No Forge port is planned.
 
 ## Features
-_341 blocks and counting..._
+_378 blocks and counting..._
 - Stained Planks, in every colour of dye (and more!)
   - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)

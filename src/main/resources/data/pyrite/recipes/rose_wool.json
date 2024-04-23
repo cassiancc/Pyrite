@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "pyrite:rose_dye"
-    },
-    {
-      "item": "minecraft:wool"
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:rose_dye"
+        },
+        {
+          "item": "minecraft:white_wool"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:rose_wool",
+        "id": "pyrite:rose_wool"
+      }
     }
-  ],
-  "result": {
-    "count": 1,
-    "item": "pyrite:rose_wool",
-    "id": "pyrite:rose_wool"
-  }
-}
