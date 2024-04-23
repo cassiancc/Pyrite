@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "pyrite:block/grass_carpet"
+    "variants": {
+      "": {
+        "model": "pyrite:block/grass_carpet"
+      }
     }
   }
-}

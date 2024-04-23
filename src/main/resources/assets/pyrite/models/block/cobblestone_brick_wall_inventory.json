@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "pyrite:block/cobblestone_bricks"
+    "parent": "minecraft:block/wall_inventory",
+    "textures": {
+      "wall": "pyrite:block/cobblestone_bricks"
+    }
   }
-}

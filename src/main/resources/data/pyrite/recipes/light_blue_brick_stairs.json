@@ -11,6 +11,10 @@
         }
       },
       "result": {
+<<<<<<< HEAD
+=======
+        "item": "pyrite:light_blue_brick_stairs",
+>>>>>>> 1.20.1
         "id": "pyrite:light_blue_brick_stairs",
         "count": 4
       }

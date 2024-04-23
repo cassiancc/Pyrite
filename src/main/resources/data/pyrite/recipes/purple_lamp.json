@@ -1,17 +1,24 @@
         {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-      "CCC",
-      "CDC",
-      "CCC"
-    ],
-    "key": {
-      "C": {
-        "item": "pyrite:glowstone_lamp"
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC",
+        "CDC",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:glowstone_lamp"
+        },
+        "D": {
+          "item": "minecraft:purple_dye"
+        }
       },
-      "D": {
-        "item": "minecraft:purple_dye"
+      "result": {
+        "item": "pyrite:purple_lamp",
+        "id": "pyrite:purple_lamp",
+        "count": 8
       }
+<<<<<<< HEAD
     },
     "result": {
 <<<<<<< HEAD
@@ -23,3 +30,6 @@
       "count": 8
     }
 }
+=======
+  }
+>>>>>>> 1.20.1

@@ -1,7 +1,6 @@
-    {
-      "parent": "block/cube_all",
-      "textures": {
-        "all": "pyrite:block/mossy_cobblestone_bricks"
-      }
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+      "all": "pyrite:block/mossy_cobblestone_bricks"
     }
-
+  }

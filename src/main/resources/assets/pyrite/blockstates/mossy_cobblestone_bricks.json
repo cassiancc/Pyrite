@@ -1,5 +1,7 @@
 {
-  "variants": {
-    "": { "model": "pyrite:block/mossy_cobblestone_bricks" }
+    "variants": {
+      "": {
+        "model": "pyrite:block/mossy_cobblestone_bricks"
+      }
+    }
   }
-}

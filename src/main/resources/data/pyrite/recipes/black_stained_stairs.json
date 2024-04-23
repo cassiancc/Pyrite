@@ -11,6 +11,10 @@
         }
       },
       "result": {
+<<<<<<< HEAD
+=======
+        "item": "pyrite:black_stained_stairs",
+>>>>>>> 1.20.1
         "id": "pyrite:black_stained_stairs",
         "count": 4
       }

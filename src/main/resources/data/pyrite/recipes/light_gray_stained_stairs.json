@@ -11,6 +11,10 @@
         }
       },
       "result": {
+<<<<<<< HEAD
+=======
+        "item": "pyrite:light_gray_stained_stairs",
+>>>>>>> 1.20.1
         "id": "pyrite:light_gray_stained_stairs",
         "count": 4
       }

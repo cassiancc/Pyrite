@@ -10,6 +10,10 @@
           }
         },
         "result": {
+<<<<<<< HEAD
+=======
+          "item": "pyrite:lime_stained_button",
+>>>>>>> 1.20.1
           "id": "pyrite:lime_stained_button",
           "count": 1
         }

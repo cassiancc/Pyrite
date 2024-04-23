@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
@@ -15,3 +16,23 @@
     "count": 4
   }
 }
+=======
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:mossy_cobblestone_bricks"
+        }
+      },
+      "result": {
+        "item": "pyrite:mossy_cobblestone_brick_stairs",
+        "id": "pyrite:mossy_cobblestone_brick_stairs",
+        "count": 4
+      }
+  }
+>>>>>>> 1.20.1
