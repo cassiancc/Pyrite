@@ -5,6 +5,6 @@ import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
 
 public class ModGlass extends GlassBlock {
-    public ModGlass() {
-        super(Settings.of(Material.GLASS).nonOpaque().strength(2.0f).sounds(BlockSoundGroup.GLASS)); }
+    public ModGlass(Settings settings) {
+        super(settings); }
 }
