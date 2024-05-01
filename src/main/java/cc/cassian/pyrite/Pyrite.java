@@ -232,15 +232,22 @@ public class Pyrite implements ModInitializer {
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
-        //Charred Nether Bricks
+        //Charred Nether Brick
         createPyriteBlock( "charred_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
-        //Charred Nether Bricks Stairs
+        //Charred Nether Brick Stairs
         createPyriteBlock( "charred_nether_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), MapColor.BLACK, 0);
-        //Charred Nether Bricks Slab
+        //Charred Nether Brick Slab
         createPyriteBlock( "charred_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLACK, 0);
-        //Charred Nether Bricks Wall
+        //Charred Nether Brick Wall
         createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
-
+        //Blue Nether Bricks
+        createPyriteBlock( "blue_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
+        //Blue Nether Brick Stairs
+        createPyriteBlock( "blue_nether_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), MapColor.BLUE, 0);
+        //Blue Nether Brick Slab
+        createPyriteBlock( "blue_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLUE, 0);
+        //Blue Nether Brick Wall
+        createPyriteBlock( "blue_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLUE, 0);
         //Red Mushroom Blocks
         BlockSetType MUSHROOM_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"));
         WoodType MUSHROOM_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"), MUSHROOM_SET);
