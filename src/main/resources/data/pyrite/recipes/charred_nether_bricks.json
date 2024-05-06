@@ -1,10 +1,21 @@
-{
-        "type": "minecraft:smelting",
-        "category": "blocks",
-        "cookingtime": 200,
-        "experience": 0.1,
-        "ingredient": {
-          "item": "minecraft:nether_bricks"
-        },
-        "result": "pyrite:charred_nether_bricks"
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:bricks"
+      },
+      "D": {
+        "item": "minecraft:charred_nether_dye"
       }
+    },
+    "result": {
+      "item": "pyrite:charred_nether_bricks",
+      "id": "pyrite:charred_nether_bricks",
+      "count": 8
+    }
+}

@@ -394,8 +394,6 @@ public class Pyrite implements ModInitializer {
         for (int x = 0; x < pyriteBlockIDs.size(); x++) {
             Registry.register(Registries.BLOCK, new Identifier("pyrite", pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
             Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
-            System.out.println(pyriteBlocks.get(x) + pyriteBlockIDs.get(x));
-
         }
         //Registers items.
         for (int x = 0; x < pyriteItemIDs.size(); x++) {
