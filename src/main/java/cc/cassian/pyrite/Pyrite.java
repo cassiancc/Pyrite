@@ -247,7 +247,14 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock( "charred_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLACK, 0);
         //Charred Nether Bricks Wall
         createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
-
+        //Blue Nether Bricks
+        createPyriteBlock( "blue_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
+        //Blue Nether Brick Stairs
+        createPyriteBlock( "blue_nether_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), MapColor.BLUE, 0);
+        //Blue Nether Brick Slab
+        createPyriteBlock( "blue_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLUE, 0);
+        //Blue Nether Brick Wall
+        createPyriteBlock( "blue_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLUE, 0);
         //Red Mushroom Blocks
         BlockSetType MUSHROOM_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"));
         WoodType MUSHROOM_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(new Identifier("pyrite", "mushroom_wood"), MUSHROOM_SET);
