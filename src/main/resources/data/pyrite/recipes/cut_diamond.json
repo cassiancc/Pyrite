@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shaped",
+      "category": "building",
+      "key": {
+        "#": {
+          "item": "minecraft:diamond_block"
+        }
+      },
+      "pattern": [
+        "##",
+        "##"
+      ],
+      "result": {
+        "count": 4,
+        "item": "pyrite:cut_diamond"
+      }
+    }
