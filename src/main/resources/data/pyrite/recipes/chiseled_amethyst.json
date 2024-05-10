@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "D",
+      "D"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:amethyst_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:chiseled_amethyst",
+      "id": "pyrite:chiseled_amethyst",
+      "count": 4
+    }
+    }
