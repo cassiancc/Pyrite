@@ -184,6 +184,19 @@ public class Pyrite implements ModInitializer {
         pyriteItemIDs.add(itemID);
     }
 
+    public void createCutBlocks(String blockID, Block block) {
+        //Cut Iron - 15
+        createPyriteBlock("cut_" + blockID,"block", block);
+        //Cut Iron Stairs - 16
+        createPyriteBlock("cut_" + blockID + "_stairs", "stairs", block, 16);
+        //Cut Iron Slab - 17
+        createPyriteBlock("cut_"+blockID+"_slab", "slab", block);
+        //Cut Iron Wall - 18
+        createPyriteBlock("cut_"+blockID+"_wall", "wall", block);
+        //Cut Iron Wall Gate - 19
+        createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
+    }
+
     @Override
     public void onInitialize() {
         //Framed Glass - 0
@@ -219,16 +232,8 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("path_carpet","carpet", Blocks.MOSS_CARPET);
         //Nether Brick Fence Gate - 14
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
-        //Cut Iron - 15
-        createPyriteBlock("cut_iron","block", Blocks.IRON_BLOCK);
-        //Cut Iron Stairs - 16
-        createPyriteBlock("cut_iron_stairs", "stairs", Blocks.IRON_BLOCK, 16);
-        //Cut Iron Slab - 17
-        createPyriteBlock("cut_iron_slab", "slab", Blocks.IRON_BLOCK);
-        //Cut Iron Wall - 18
-        createPyriteBlock("cut_iron_wall", "wall", Blocks.IRON_BLOCK);
-        //Cut Iron Wall Gate - 19
-        createPyriteBlock("cut_iron_wall_gate","fence_gate", Blocks.IRON_BLOCK);
+        createCutBlocks("iron", Blocks.IRON_BLOCK);
+        createCutBlocks("gold", Blocks.GOLD_BLOCK);
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
