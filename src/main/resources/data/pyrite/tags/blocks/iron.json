@@ -7,7 +7,9 @@
     "pyrite:cut_iron_wall",
     "pyrite:cut_iron_wall_gate",
     "pyrite:iron_bricks",
-    "pyrite:chiseled_iron_block"
+    "pyrite:chiseled_iron_block",
+    "pyrite:iron_pillar",
+    "pyrite:smooth_iron"
 
   ]
 }

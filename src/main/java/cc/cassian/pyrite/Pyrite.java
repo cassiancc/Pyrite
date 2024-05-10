@@ -210,6 +210,8 @@ public class Pyrite implements ModInitializer {
         if (!Objects.equals(blockID, "quartz")) {
             createResourceBlock(blockID + "_bricks", block);
             createResourcePillarBlock("chiseled_"+blockID+"_block", block);
+            createResourcePillarBlock(blockID+"_pillar", block);
+            createResourceBlock("smooth_"+blockID, block);
         }
     }
 
