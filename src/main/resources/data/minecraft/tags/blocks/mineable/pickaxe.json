@@ -5,7 +5,8 @@
         "pyrite:framed_glass_pane",
         "#pyrite:bricks",
         "#pyrite:wall_gates",
-        "pyrite:glowing_obsidian"
+        "pyrite:glowing_obsidian",
+        "#pyrite:cut_blocks"
       ]
     }
 
