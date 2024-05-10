@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cut_lapis"
+          }
+        },
+        "result": {
+          "item": "pyrite:cut_lapis_slab",
+          "id": "pyrite:cut_lapis_slab",
+          "count": 6
+        }
+      }

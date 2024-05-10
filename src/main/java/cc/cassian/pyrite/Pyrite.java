@@ -234,6 +234,12 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
         createCutBlocks("iron", Blocks.IRON_BLOCK);
         createCutBlocks("gold", Blocks.GOLD_BLOCK);
+        createCutBlocks("emerald", Blocks.EMERALD_BLOCK);
+        createCutBlocks("lapis", Blocks.LAPIS_BLOCK);
+        createCutBlocks("diamond", Blocks.DIAMOND_BLOCK);
+        createCutBlocks("netherite", Blocks.NETHERITE_BLOCK);
+        createCutBlocks("quartz", Blocks.QUARTZ_BLOCK);
+        createCutBlocks("amethyst", Blocks.AMETHYST_BLOCK);
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);

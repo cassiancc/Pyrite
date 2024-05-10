@@ -1,6 +1,13 @@
     {
       "replace": false,
       "values": [
-        "pyrite:cut_iron"
+        "pyrite:cut_iron",
+        "pyrite:cut_gold",
+        "pyrite:cut_emerald",
+        "pyrite:cut_diamond",
+        "pyrite:cut_netherite",
+        "pyrite:cut_quartz",
+        "pyrite:cut_amethyst",
+        "pyrite:cut_lapis"
       ]
     }

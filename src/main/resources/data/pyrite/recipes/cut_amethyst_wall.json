@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:cut_amethyst"
+      }
+    },
+    "result": {
+      "item": "pyrite:cut_amethyst_wall",
+      "id": "pyrite:cut_amethyst_wall",
+      "count": 6
+    }
+}

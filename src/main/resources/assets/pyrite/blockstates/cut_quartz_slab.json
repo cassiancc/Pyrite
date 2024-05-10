@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/cut_quartz_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/cut_quartz"
+      },
+      "type=top": {
+        "model": "pyrite:block/cut_quartz_slab_top"
+      }
+    }
+  }
