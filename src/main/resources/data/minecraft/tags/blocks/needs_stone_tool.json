@@ -1,7 +1,7 @@
     {
       "replace": false,
       "values": [
-        "pyrite:cut_iron",
+        "#pyrite:iron",
         "pyrite:cut_lapis"
 
       ]

@@ -199,6 +199,9 @@ public class Pyrite implements ModInitializer {
     public void createResourceBlock(String blockID, Block block) {
         createPyriteBlock(blockID,"block", block);
     }
+    public void createResourcePillarBlock(String blockID, Block block) {
+        createPyriteBlock(blockID,"log", block);
+    }
 
     public void createResourceBlockSet(String blockID, Block block) {
         //Cut Blocks
@@ -206,7 +209,7 @@ public class Pyrite implements ModInitializer {
         //Brick Blocks
         if (!Objects.equals(blockID, "quartz")) {
             createResourceBlock(blockID + "_bricks", block);
-            createResourceBlock("chiseled_"+blockID+"_block", block);
+            createResourcePillarBlock("chiseled_"+blockID+"_block", block);
         }
     }
 

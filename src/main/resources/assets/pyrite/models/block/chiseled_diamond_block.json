@@ -1,6 +1,7 @@
 {
-    "parent": "minecraft:block/cube_all",
+    "parent": "minecraft:block/cube_column",
     "textures": {
-      "all": "pyrite:block/chiseled_diamond_block"
+      "end": "pyrite:block/chiseled_diamond_block_top",
+      "side": "pyrite:block/chiseled_diamond_block"
     }
   }
