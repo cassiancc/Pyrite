@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:lapis_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:lapis_bricks",
+      "id": "pyrite:lapis_bricks",
+      "count": 4
+    }
+    }

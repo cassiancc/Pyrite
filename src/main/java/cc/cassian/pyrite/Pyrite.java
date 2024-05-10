@@ -196,6 +196,18 @@ public class Pyrite implements ModInitializer {
         //Cut Wall Gate
         createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
     }
+    public void createResourceBlock(String blockID, Block block) {
+        createPyriteBlock(blockID,"block", block);
+    }
+
+    public void createResourceBlockSet(String blockID, Block block) {
+        //Cut Blocks
+        createCutBlocks(blockID, block);
+        //Brick Blocks
+        if (!Objects.equals(blockID, "quartz")) {
+            createResourceBlock(blockID + "_bricks", block);
+        }
+    }
 
     @Override
     public void onInitialize() {
@@ -232,14 +244,14 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("path_carpet","carpet", Blocks.MOSS_CARPET);
         //Nether Brick Fence Gate - 14
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
-        createCutBlocks("iron", Blocks.IRON_BLOCK);
-        createCutBlocks("gold", Blocks.GOLD_BLOCK);
-        createCutBlocks("emerald", Blocks.EMERALD_BLOCK);
-        createCutBlocks("lapis", Blocks.LAPIS_BLOCK);
-        createCutBlocks("diamond", Blocks.DIAMOND_BLOCK);
-        createCutBlocks("netherite", Blocks.NETHERITE_BLOCK);
-        createCutBlocks("quartz", Blocks.QUARTZ_BLOCK);
-        createCutBlocks("amethyst", Blocks.AMETHYST_BLOCK);
+        createResourceBlockSet("iron", Blocks.IRON_BLOCK);
+        createResourceBlockSet("gold", Blocks.GOLD_BLOCK);
+        createResourceBlockSet("emerald", Blocks.EMERALD_BLOCK);
+        createResourceBlockSet("lapis", Blocks.LAPIS_BLOCK);
+        createResourceBlockSet("diamond", Blocks.DIAMOND_BLOCK);
+        createResourceBlockSet("netherite", Blocks.NETHERITE_BLOCK);
+        createResourceBlockSet("quartz", Blocks.QUARTZ_BLOCK);
+        createResourceBlockSet("amethyst", Blocks.AMETHYST_BLOCK);
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);

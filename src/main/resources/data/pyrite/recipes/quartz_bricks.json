@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:quartz_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:quartz_bricks",
+      "id": "pyrite:quartz_bricks",
+      "count": 4
+    }
+    }

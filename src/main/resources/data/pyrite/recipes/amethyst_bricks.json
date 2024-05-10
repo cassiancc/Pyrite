@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:amethyst_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:amethyst_bricks",
+      "id": "pyrite:amethyst_bricks",
+      "count": 4
+    }
+    }

@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:netherite_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:netherite_bricks",
+      "id": "pyrite:netherite_bricks",
+      "count": 4
+    }
+    }

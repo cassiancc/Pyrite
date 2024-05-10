@@ -251,6 +251,13 @@
   "block.pyrite.cut_iron_stairs": "Cut Iron Wall Stairs",
   "block.pyrite.cut_iron_wall": "Cut Iron Wall",
   "block.pyrite.cut_iron_wall_gate": "Cut Iron Wall Gate",
+  "block.pyrite.cut_gold": "Cut Gold",
+  "block.pyrite.cut_emerald": "Cut Emerald",
+  "block.pyrite.cut_diamond": "Cut Diamond",
+  "block.pyrite.cut_netherite": "Cut Netherite",
+  "block.pyrite.cut_quartz": "Cut Quartz",
+  "block.pyrite.cut_amethyst": "Cut Amethyst",
+  "block.pyrite.cut_lapis": "Cut Lapis",
   "block.pyrite.honey_stained_planks": "Honey Stained Planks",
   "block.pyrite.honey_stained_button": "Honey Stained Button",
   "block.pyrite.honey_stained_stairs": "Honey Stained Stairs",
@@ -400,5 +407,13 @@
   "block.pyrite.brown_mushroom_fence": "Brown Mushroom Fence",
   "block.pyrite.brown_mushroom_fence_gate": "Brown Mushroom Fence Gate",
   "block.pyrite.brown_mushroom_door": "Brown Mushroom Door",
-  "block.pyrite.brown_mushroom_trapdoor": "Brown Mushroom Trapdoor"
+  "block.pyrite.brown_mushroom_trapdoor": "Brown Mushroom Trapdoor",
+  "block.pyrite.iron_bricks": "Iron Bricks",
+  "block.pyrite.gold_bricks": "Gold Bricks",
+  "block.pyrite.emerald_bricks": "Emerald Bricks",
+  "block.pyrite.diamond_bricks": "Diamond Bricks",
+  "block.pyrite.netherite_bricks": "Netherite Bricks",
+  "block.pyrite.quartz_bricks": "Quartz Bricks",
+  "block.pyrite.amethyst_bricks": "Amethyst Bricks",
+  "block.pyrite.lapis_bricks": "Lapis Bricks"
 }
