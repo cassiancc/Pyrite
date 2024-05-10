@@ -185,15 +185,15 @@ public class Pyrite implements ModInitializer {
     }
 
     public void createCutBlocks(String blockID, Block block) {
-        //Cut Iron - 15
+        //Cut Block
         createPyriteBlock("cut_" + blockID,"block", block);
-        //Cut Iron Stairs - 16
+        //Cut Stairs
         createPyriteBlock("cut_" + blockID + "_stairs", "stairs", block, 16);
-        //Cut Iron Slab - 17
+        //Cut Slab
         createPyriteBlock("cut_"+blockID+"_slab", "slab", block);
-        //Cut Iron Wall - 18
+        //Cut Wall
         createPyriteBlock("cut_"+blockID+"_wall", "wall", block);
-        //Cut Iron Wall Gate - 19
+        //Cut Wall Gate
         createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
     }
 
