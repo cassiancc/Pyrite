@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:weathered_copper"
+          }
+        },
+        "result": {
+          "item": "pyrite:weathered_copper_button",
+          "id": "pyrite:weathered_copper_button",
+          "count": 1
+        }
+      }

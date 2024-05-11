@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:emerald_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:emerald_button",
+          "id": "pyrite:emerald_button",
+          "count": 1
+        }
+      }

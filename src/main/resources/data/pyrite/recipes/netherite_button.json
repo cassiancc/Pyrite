@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:netherite_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:netherite_button",
+          "id": "pyrite:netherite_button",
+          "count": 1
+        }
+      }

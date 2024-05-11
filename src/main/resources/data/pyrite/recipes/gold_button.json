@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:gold_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:gold_button",
+          "id": "pyrite:gold_button",
+          "count": 1
+        }
+      }

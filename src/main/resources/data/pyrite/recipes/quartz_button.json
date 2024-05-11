@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:quartz_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:quartz_button",
+          "id": "pyrite:quartz_button",
+          "count": 1
+        }
+      }

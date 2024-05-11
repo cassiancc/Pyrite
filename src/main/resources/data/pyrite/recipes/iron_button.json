@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:iron_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:iron_button",
+          "id": "pyrite:iron_button",
+          "count": 1
+        }
+      }

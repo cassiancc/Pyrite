@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:copper"
+          }
+        },
+        "result": {
+          "item": "pyrite:copper_pressure_plate",
+          "id": "pyrite:copper_pressure_plate",
+          "count": 1
+        }
+      }

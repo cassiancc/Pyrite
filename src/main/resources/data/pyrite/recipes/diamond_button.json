@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:diamond_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:diamond_button",
+          "id": "pyrite:diamond_button",
+          "count": 1
+        }
+      }

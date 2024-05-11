@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:amethyst_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:amethyst_pressure_plate",
+          "id": "pyrite:amethyst_pressure_plate",
+          "count": 1
+        }
+      }

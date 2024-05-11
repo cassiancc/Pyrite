@@ -144,6 +144,12 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), set));
             transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
         }
+        else if (Objects.equals(blockType, "plate")) {
+            pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings.nonOpaque(), set));
+        }
+        else if (Objects.equals(blockType, "button")) {
+            pyriteBlocks.add(new ButtonBlock(blockSettings.nonOpaque(), set, 100, false));
+        }
 
     }
 
@@ -240,16 +246,20 @@ public class Pyrite implements ModInitializer {
             //Smooth Blocks
             createPyriteBlock("smooth_"+blockID,"block", block);
         }
+        boolean openByHand;
+        openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
+        BlockSetType set = BlockSetTypeBuilder.copyOf(BlockSetType.GOLD).openableByHand(openByHand).register(new Identifier("pyrite", blockID+"_set"));
         if (!Objects.equals(blockID, "iron")) {
             //Bars
-            boolean openByHand;
-            openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
-            BlockSetType set = BlockSetTypeBuilder.copyOf(BlockSetType.GOLD).openableByHand(openByHand).register(new Identifier("pyrite", blockID+"_set"));
             createPyriteBlock(blockID+"_bars","bars", block);
             createPyriteBlock(blockID+"_door","door", block, set);
             createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set);
+            if (!Objects.equals(blockID, "gold")) {
+                createPyriteBlock(blockID+"_pressure_plate","plate", block, set);
+            }
         }
-        }
+        createPyriteBlock(blockID+"_button","button", block, set);
+    }
 
     @Override
     public void onInitialize() {

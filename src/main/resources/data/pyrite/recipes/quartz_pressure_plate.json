@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:quartz_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:quartz_pressure_plate",
+          "id": "pyrite:quartz_pressure_plate",
+          "count": 1
+        }
+      }
