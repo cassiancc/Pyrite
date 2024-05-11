@@ -259,6 +259,7 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("path_carpet","carpet", Blocks.MOSS_CARPET);
         //Nether Brick Fence Gate - 14
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
+        //Resource Blocks
         createResourceBlockSet("iron", Blocks.IRON_BLOCK);
         createResourceBlockSet("gold", Blocks.GOLD_BLOCK);
         createResourceBlockSet("emerald", Blocks.EMERALD_BLOCK);
@@ -271,7 +272,6 @@ public class Pyrite implements ModInitializer {
         createResourceBlockSet("exposed_copper", Blocks.EXPOSED_COPPER);
         createResourceBlockSet("weathered_copper", Blocks.WEATHERED_COPPER);
         createResourceBlockSet("oxidized_copper", Blocks.OXIDIZED_COPPER);
-
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
