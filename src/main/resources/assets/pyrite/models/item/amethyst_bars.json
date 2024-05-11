@@ -1,3 +1,6 @@
 {
-        "parent": "pyrite:block/amethyst_bars"
-      }
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "pyrite:block/amethyst_bars"
+    }
+  }

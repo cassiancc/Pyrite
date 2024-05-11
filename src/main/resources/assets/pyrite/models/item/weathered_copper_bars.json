@@ -1,3 +1,6 @@
 {
-        "parent": "pyrite:block/weathered_copper_bars"
-      }
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "pyrite:block/weathered_copper_bars"
+    }
+  }
