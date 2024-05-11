@@ -515,5 +515,16 @@
   "block.pyrite.copper_door": "Copper Door",
   "block.pyrite.exposed_copper_door": "Exposed Copper Door",
   "block.pyrite.weathered_copper_door": "Weathered Copper Door",
-  "block.pyrite.oxidized_copper_door": "Oxidized Copper Door"
+  "block.pyrite.oxidized_copper_door": "Oxidized Copper Door",
+  "block.pyrite.gold_trapdoor": "Gold Trapdoor",
+"block.pyrite.emerald_trapdoor": "Emerald Trapdoor",
+"block.pyrite.diamond_trapdoor": "Diamond Trapdoor",
+"block.pyrite.netherite_trapdoor": "Netherite Trapdoor",
+"block.pyrite.quartz_trapdoor": "Quartz Trapdoor",
+"block.pyrite.amethyst_trapdoor": "Amethyst Trapdoor",
+"block.pyrite.lapis_trapdoor": "Lapis Trapdoor",
+"block.pyrite.copper_trapdoor": "Copper Trapdoor",
+"block.pyrite.exposed_copper_trapdoor": "Exposed Copper Trapdoor",
+"block.pyrite.weathered_copper_trapdoor": "Weathered Copper Trapdoor",
+"block.pyrite.oxidized_copper_trapdoor": "Oxidized Copper Trapdoor"
 }
