@@ -133,6 +133,19 @@ public class Pyrite implements ModInitializer {
         }
 
     }
+    public void createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set) {
+        pyriteBlockIDs.add(blockID);
+        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock);
+        if (Objects.equals(blockType, "trapdoor")) {
+            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), set));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+        }
+        else if (Objects.equals(blockType, "door")) {
+            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), set));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+        }
+
+    }
 
     //Most of the generic Stained Blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
@@ -229,9 +242,12 @@ public class Pyrite implements ModInitializer {
         }
         if (!Objects.equals(blockID, "iron")) {
             //Bars
+            boolean openByHand;
+            openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
+            BlockSetType set = BlockSetTypeBuilder.copyOf(BlockSetType.GOLD).openableByHand(openByHand).register(new Identifier("pyrite", blockID+"_set"));
             createPyriteBlock(blockID+"_bars","bars", block);
-            createPyriteBlock(blockID+"_door","door", block);
-            createPyriteBlock(blockID+"_trapdoor","trapdoor", block);
+            createPyriteBlock(blockID+"_door","door", block, set);
+            createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set);
         }
         }
 
