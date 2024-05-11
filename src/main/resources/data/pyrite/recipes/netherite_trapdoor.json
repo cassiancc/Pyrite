@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:netherite_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:netherite_trapdoor",
+          "id": "pyrite:netherite_trapdoor",
+          "count": 2
+        }
+      }

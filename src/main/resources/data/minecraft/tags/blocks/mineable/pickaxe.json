@@ -14,7 +14,8 @@
         "#pyrite:emerald",
         "#pyrite:gold",
         "#pyrite:iron",
-        "#pyrite:copper"
+        "#pyrite:copper",
+        "#pyrite:metal_trapdoors"
       ]
     }
 

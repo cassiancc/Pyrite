@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:emerald_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:emerald_trapdoor",
+          "id": "pyrite:emerald_trapdoor",
+          "count": 2
+        }
+      }

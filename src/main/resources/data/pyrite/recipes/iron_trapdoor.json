@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:iron_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:iron_trapdoor",
+          "id": "pyrite:iron_trapdoor",
+          "count": 2
+        }
+      }

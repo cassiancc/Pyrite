@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:oxidized_copper"
+          }
+        },
+        "result": {
+          "item": "pyrite:oxidized_copper_trapdoor",
+          "id": "pyrite:oxidized_copper_trapdoor",
+          "count": 2
+        }
+      }

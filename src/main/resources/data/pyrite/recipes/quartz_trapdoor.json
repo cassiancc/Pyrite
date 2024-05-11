@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:quartz_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:quartz_trapdoor",
+          "id": "pyrite:quartz_trapdoor",
+          "count": 2
+        }
+      }

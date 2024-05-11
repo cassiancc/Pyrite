@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:gold_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:gold_trapdoor",
+          "id": "pyrite:gold_trapdoor",
+          "count": 2
+        }
+      }
