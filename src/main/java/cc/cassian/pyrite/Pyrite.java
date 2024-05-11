@@ -120,7 +120,9 @@ public class Pyrite implements ModInitializer {
             pyriteBlocks.add(new CarpetBlock(blockSettings));
         }
         else if (Objects.equals(blockType, "bars")) {
-            pyriteBlocks.add(new PaneBlock(blockSettings));
+            pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+
         }
 
     }
