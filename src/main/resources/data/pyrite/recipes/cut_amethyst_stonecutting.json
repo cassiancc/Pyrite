@@ -1,8 +1,8 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:amethyst_block"
     },
-    "result": "pyrite:cut_iron",
+    "result": "pyrite:cut_amethyst",
     "count": 4
   }
