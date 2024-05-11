@@ -10,11 +10,7 @@
 </div>
 
 ## About
-Pyrite aims to expand on Vanilla's block palette with new wood types, bricks, and more.
-
-It's inspired by mods like [Quark](https://quarkmod.net), [Stoneworks](https://modrinth.com/mod/stoneworks), and [Charm](https://modrinth.com/mod/charm) that expand on Minecraft without feeling too unfamiliar.
-
-Pyrite is available for Minecraft Fabric 1.20.1. Legacy versions are available on GitHub and Modrinth, but are not as actively updated as the 1.20.1 version and may be missing features. No Forge port is planned.
+Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include stairs, slabs, fences, fence gates, walls, wall gates, trapdoors, pressure plates, buttons - everything you need to decorate as _you_ want. 
 
 ## Features
 _550 blocks and counting..._
@@ -31,3 +27,10 @@ _550 blocks and counting..._
 - Framed Glass
 - Grass Carpets
   - This includes grass, podzol, mycelium, and dirt path carpets as well!
+
+## Installation
+Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates.
+- Requires Fabric Loader and Fabric API.
+
+## Credits
+Pyrite is inspired by mods like [Quark](https://quarkmod.net), [Stoneworks](https://modrinth.com/mod/stoneworks), and [Charm](https://modrinth.com/mod/charm) that expand on Minecraft's block palette.
