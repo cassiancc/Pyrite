@@ -119,6 +119,9 @@ public class Pyrite implements ModInitializer {
         else if (Objects.equals(blockType, "carpet")) {
             pyriteBlocks.add(new CarpetBlock(blockSettings));
         }
+        else if (Objects.equals(blockType, "bars")) {
+            pyriteBlocks.add(new PaneBlock(blockSettings));
+        }
 
     }
 
@@ -196,9 +199,6 @@ public class Pyrite implements ModInitializer {
         //Cut Wall Gate
         createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
     }
-    public void createResourceBlock(String blockID, Block block) {
-        createPyriteBlock(blockID,"block", block);
-    }
     public void createResourcePillarBlock(String blockID, Block block) {
         createPyriteBlock(blockID,"log", block);
     }
@@ -208,12 +208,15 @@ public class Pyrite implements ModInitializer {
         createCutBlocks(blockID, block);
         //Brick Blocks
         if (!Objects.equals(blockID, "quartz")) {
-            createResourceBlock(blockID + "_bricks", block);
+            createPyriteBlock(blockID+"_bricks","block", block);
             createResourcePillarBlock("chiseled_"+blockID+"_block", block);
             createResourcePillarBlock(blockID+"_pillar", block);
-            createResourceBlock("smooth_"+blockID, block);
+            createPyriteBlock("smooth_"+blockID,"block", block);
         }
-    }
+        if (!Objects.equals(blockID, "iron")) {
+            createPyriteBlock(blockID+"_bars","bars", block);
+        }
+        }
 
     @Override
     public void onInitialize() {
