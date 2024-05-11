@@ -1,14 +1,13 @@
-<img align='center' src='https://github.com/cassiancc/Pyrite/assets/106419675/5307c101-0b87-4d0e-b4a0-7778e7ce64be'>
+<div align='center'><img  src='https://github.com/cassiancc/Pyrite/assets/106419675/5307c101-0b87-4d0e-b4a0-7778e7ce64be'></div>
 
-<hr>
 
 <div align='center'>
+  <br>
+
 <a href='https://modrinth.com/mod/fabric-api'><img alt="fabric" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg"></a>
 <a href='https://modrinth.com/mod/pyrite'><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
 
 </div>
-
-<br>
 
 ## About
 Pyrite aims to expand on Vanilla's block palette with new wood types, bricks, and more.
