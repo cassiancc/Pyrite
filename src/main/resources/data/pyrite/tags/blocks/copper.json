@@ -5,7 +5,22 @@
     "pyrite:chiseled_copper_block",
     "pyrite:copper_pillar",
     "pyrite:smooth_copper",
-    "pyrite:copper_bars"
+    "pyrite:copper_bars",
+    "pyrite:oxidized_copper_bricks",
+    "pyrite:chiseled_oxidized_copper_block",
+    "pyrite:oxidized_copper_pillar",
+    "pyrite:smooth_oxidized_copper",
+    "pyrite:oxidized_copper_bars",
+    "pyrite:exposed_copper_bricks",
+    "pyrite:chiseled_exposed_copper_block",
+    "pyrite:exposed_copper_pillar",
+    "pyrite:smooth_exposed_copper",
+    "pyrite:exposed_copper_bars",
+    "pyrite:weathered_copper_bricks",
+    "pyrite:chiseled_weathered_copper_block",
+    "pyrite:weathered_copper_pillar",
+    "pyrite:smooth_weathered_copper",
+    "pyrite:weathered_copper_bars"
 
 
   ]
