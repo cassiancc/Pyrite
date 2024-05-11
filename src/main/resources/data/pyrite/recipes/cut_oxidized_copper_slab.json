@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cut_oxidized_copper"
+          }
+        },
+        "result": {
+          "item": "pyrite:cut_oxidized_copper_slab",
+          "id": "pyrite:cut_oxidized_copper_slab",
+          "count": 6
+        }
+      }

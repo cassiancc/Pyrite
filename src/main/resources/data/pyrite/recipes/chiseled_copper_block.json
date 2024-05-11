@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "D",
+      "D"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:copper"
+      }
+    },
+    "result": {
+      "item": "pyrite:chiseled_copper_block",
+      "id": "pyrite:chiseled_copper_block",
+      "count": 4
+    }
+    }

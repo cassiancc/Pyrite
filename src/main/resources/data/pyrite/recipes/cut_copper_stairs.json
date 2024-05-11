@@ -1,0 +1,18 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:cut_copper"
+        }
+      },
+      "result": {
+        "item": "pyrite:cut_copper_stairs",
+        "id": "pyrite:cut_copper_stairs",
+        "count": 4
+      }
+  }

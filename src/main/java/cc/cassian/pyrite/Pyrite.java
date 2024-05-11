@@ -205,15 +205,21 @@ public class Pyrite implements ModInitializer {
 
     public void createResourceBlockSet(String blockID, Block block) {
         //Cut Blocks
-        createCutBlocks(blockID, block);
-        //Brick Blocks
+        if (!(Objects.equals(blockID, "copper") || Objects.equals(blockID, "oxidized_copper") || Objects.equals(blockID, "exposed_copper") || Objects.equals(blockID, "weathered_copper"))) {
+            createCutBlocks(blockID, block);
+        }
         if (!Objects.equals(blockID, "quartz")) {
+            //Brick Blocks
             createPyriteBlock(blockID+"_bricks","block", block);
+            //Chiseled Blocks
             createResourcePillarBlock("chiseled_"+blockID+"_block", block);
+            //Pillar Blocks
             createResourcePillarBlock(blockID+"_pillar", block);
+            //Smooth Blocks
             createPyriteBlock("smooth_"+blockID,"block", block);
         }
         if (!Objects.equals(blockID, "iron")) {
+            //Bars
             createPyriteBlock(blockID+"_bars","bars", block);
         }
         }
@@ -261,6 +267,11 @@ public class Pyrite implements ModInitializer {
         createResourceBlockSet("netherite", Blocks.NETHERITE_BLOCK);
         createResourceBlockSet("quartz", Blocks.QUARTZ_BLOCK);
         createResourceBlockSet("amethyst", Blocks.AMETHYST_BLOCK);
+        createResourceBlockSet("copper", Blocks.COPPER_BLOCK);
+        createResourceBlockSet("exposed_copper", Blocks.EXPOSED_COPPER);
+        createResourceBlockSet("weathered_copper", Blocks.WEATHERED_COPPER);
+        createResourceBlockSet("oxidized_copper", Blocks.OXIDIZED_COPPER);
+
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
