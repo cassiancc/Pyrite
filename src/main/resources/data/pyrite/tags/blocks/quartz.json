@@ -6,8 +6,7 @@
     "pyrite:cut_quartz_slab",
     "pyrite:cut_quartz_wall",
     "pyrite:cut_quartz_wall_gate",
-    "pyrite:quartz_bars"
-
-
+    "pyrite:quartz_bars",
+    "pyrite:quartz_door"
   ]
 }

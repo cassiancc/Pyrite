@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:diamond_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:diamond_door",
+          "id": "pyrite:diamond_door",
+          "count": 3
+        }
+      }

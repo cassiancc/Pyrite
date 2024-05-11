@@ -10,8 +10,7 @@
     "pyrite:chiseled_lapis_block",
     "pyrite:lapis_pillar",
     "pyrite:smooth_lapis",
-    "pyrite:lapis_bars"
-
-
+    "pyrite:lapis_bars",
+    "pyrite:lapis_door"
   ]
 }

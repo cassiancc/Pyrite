@@ -503,5 +503,17 @@
   "block.pyrite.cut_netherite_slab": "Cut Netherite Slab",
   "block.pyrite.cut_quartz_slab": "Cut Quartz Slab",
   "block.pyrite.cut_amethyst_slab": "Cut Amethyst Slab",
-  "block.pyrite.cut_lapis_slab": "Cut Lapis Slab"
+  "block.pyrite.cut_lapis_slab": "Cut Lapis Slab",
+  "block.pyrite.iron_door": "Iron Door",
+  "block.pyrite.gold_door": "Gold Door",
+  "block.pyrite.emerald_door": "Emerald Door",
+  "block.pyrite.diamond_door": "Diamond Door",
+  "block.pyrite.netherite_door": "Netherite Door",
+  "block.pyrite.quartz_door": "Quartz Door",
+  "block.pyrite.amethyst_door": "Amethyst Door",
+  "block.pyrite.lapis_door": "Lapis Door",
+  "block.pyrite.copper_door": "Copper Door",
+  "block.pyrite.exposed_copper_door": "Exposed Copper Door",
+  "block.pyrite.weathered_copper_door": "Weathered Copper Door",
+  "block.pyrite.oxidized_copper_door": "Oxidized Copper Door"
 }

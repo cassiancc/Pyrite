@@ -122,7 +122,14 @@ public class Pyrite implements ModInitializer {
         else if (Objects.equals(blockType, "bars")) {
             pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
             transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-
+        }
+        else if (Objects.equals(blockType, "trapdoor")) {
+            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), BlockSetType.IRON));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+        }
+        else if (Objects.equals(blockType, "door")) {
+            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), BlockSetType.IRON));
+            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
         }
 
     }
@@ -223,6 +230,8 @@ public class Pyrite implements ModInitializer {
         if (!Objects.equals(blockID, "iron")) {
             //Bars
             createPyriteBlock(blockID+"_bars","bars", block);
+            createPyriteBlock(blockID+"_door","door", block);
+            createPyriteBlock(blockID+"_trapdoor","trapdoor", block);
         }
         }
 

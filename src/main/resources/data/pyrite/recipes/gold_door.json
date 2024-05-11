@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:gold_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:gold_door",
+          "id": "pyrite:gold_door",
+          "count": 3
+        }
+      }

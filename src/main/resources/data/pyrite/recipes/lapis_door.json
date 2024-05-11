@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:lapis_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:lapis_door",
+          "id": "pyrite:lapis_door",
+          "count": 3
+        }
+      }

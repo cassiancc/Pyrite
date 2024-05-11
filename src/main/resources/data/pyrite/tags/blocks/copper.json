@@ -20,8 +20,10 @@
     "pyrite:chiseled_weathered_copper_block",
     "pyrite:weathered_copper_pillar",
     "pyrite:smooth_weathered_copper",
-    "pyrite:weathered_copper_bars"
-
-
+    "pyrite:weathered_copper_bars",
+    "pyrite:copper_door",
+    "pyrite:exposed_copper_door",
+    "pyrite:weathered_copper_door",
+    "pyrite:oxidized_copper_door"
   ]
 }

@@ -10,8 +10,7 @@
     "pyrite:chiseled_netherite_block",
     "pyrite:netherite_pillar",
     "pyrite:smooth_netherite",
-    "pyrite:netherite_bars"
-
-
+    "pyrite:netherite_bars",
+    "pyrite:netherite_door"
   ]
 }
