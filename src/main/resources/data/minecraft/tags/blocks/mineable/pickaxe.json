@@ -6,7 +6,15 @@
         "#pyrite:bricks",
         "#pyrite:wall_gates",
         "pyrite:glowing_obsidian",
-        "#pyrite:iron"
+        "#pyrite:amethyst",
+        "#pyrite:quartz",
+        "#pyrite:netherite",
+        "#pyrite:diamond",
+        "#pyrite:lapis",
+        "#pyrite:emerald",
+        "#pyrite:gold",
+        "#pyrite:iron",
+        "#pyrite:copper"
       ]
     }
 

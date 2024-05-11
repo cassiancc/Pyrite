@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:cut_quartz",
+    "pyrite:cut_quartz_stairs",
+    "pyrite:cut_quartz_slab",
+    "pyrite:cut_quartz_wall",
+    "pyrite:cut_quartz_wall_gate",
+    "pyrite:quartz_bars"
+
+
+  ]
+}

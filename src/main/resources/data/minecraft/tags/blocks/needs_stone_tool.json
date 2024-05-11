@@ -2,7 +2,7 @@
       "replace": false,
       "values": [
         "#pyrite:iron",
-        "pyrite:cut_lapis"
+        "#pyrite:lapis"
 
       ]
     }

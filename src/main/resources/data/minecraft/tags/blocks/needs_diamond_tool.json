@@ -2,7 +2,7 @@
       "replace": false,
       "values": [
         "pyrite:glowing_obsidian",
-        "pyrite:cut_netherite"
+        "#pyrite:netherite"
 
       ]
     }

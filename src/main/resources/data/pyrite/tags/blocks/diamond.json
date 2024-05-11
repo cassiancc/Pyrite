@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:cut_diamond",
+    "pyrite:cut_diamond_stairs",
+    "pyrite:cut_diamond_slab",
+    "pyrite:cut_diamond_wall",
+    "pyrite:cut_diamond_wall_gate",
+    "pyrite:diamond_bricks",
+    "pyrite:chiseled_diamond_block",
+    "pyrite:diamond_pillar",
+    "pyrite:smooth_diamond",
+    "pyrite:diamond_bars"
+
+
+  ]
+}

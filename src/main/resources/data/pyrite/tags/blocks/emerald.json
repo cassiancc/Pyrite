@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:cut_emerald",
+    "pyrite:cut_emerald_stairs",
+    "pyrite:cut_emerald_slab",
+    "pyrite:cut_emerald_wall",
+    "pyrite:cut_emerald_wall_gate",
+    "pyrite:emerald_bricks",
+    "pyrite:chiseled_emerald_block",
+    "pyrite:emerald_pillar",
+    "pyrite:smooth_emerald",
+    "pyrite:emerald_bars"
+
+
+  ]
+}

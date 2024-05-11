@@ -7,7 +7,7 @@
         ],
         "key": {
           "C": {
-            "item": "pyrite:cut_copper"
+            "item": "minecraft:cut_copper"
           },
           "S": {
             "item": "pyrite:cut_copper_wall"

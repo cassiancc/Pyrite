@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:cut_lapis",
+    "pyrite:cut_lapis_stairs",
+    "pyrite:cut_lapis_slab",
+    "pyrite:cut_lapis_wall",
+    "pyrite:cut_lapis_wall_gate",
+    "pyrite:lapis_bricks",
+    "pyrite:chiseled_lapis_block",
+    "pyrite:lapis_pillar",
+    "pyrite:smooth_lapis",
+    "pyrite:lapis_bars"
+
+
+  ]
+}

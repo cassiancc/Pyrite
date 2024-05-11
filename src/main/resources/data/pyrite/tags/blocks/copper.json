@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:copper_bricks",
+    "pyrite:chiseled_copper_block",
+    "pyrite:copper_pillar",
+    "pyrite:smooth_copper",
+    "pyrite:copper_bars"
+
+
+  ]
+}

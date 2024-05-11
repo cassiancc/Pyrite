@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:cut_gold",
+    "pyrite:cut_gold_stairs",
+    "pyrite:cut_gold_slab",
+    "pyrite:cut_gold_wall",
+    "pyrite:cut_gold_wall_gate",
+    "pyrite:gold_bricks",
+    "pyrite:chiseled_gold_block",
+    "pyrite:gold_pillar",
+    "pyrite:smooth_gold",
+    "pyrite:gold_bars"
+
+
+  ]
+}
