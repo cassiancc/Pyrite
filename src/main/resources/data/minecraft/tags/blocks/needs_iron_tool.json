@@ -2,7 +2,8 @@
       "replace": false,
       "values": [
         "#pyrite:emerald",
-        "#pyrite:diamond"
+        "#pyrite:diamond",
+        "#pyrite:gold"
 
       ]
     }
