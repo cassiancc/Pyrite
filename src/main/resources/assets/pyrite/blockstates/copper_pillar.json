@@ -1,7 +1,16 @@
 {
     "variants": {
-      "": {
+      "axis=x": {
+        "model": "pyrite:block/copper_pillar_horizontal",
+        "x": 90,
+        "y": 90
+      },
+      "axis=y": {
         "model": "pyrite:block/copper_pillar"
+      },
+      "axis=z": {
+        "model": "pyrite:block/copper_pillar_horizontal",
+        "x": 90
       }
     }
   }
