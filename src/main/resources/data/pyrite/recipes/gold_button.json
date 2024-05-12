@@ -1,17 +1,17 @@
-        
-      {
-        "type": "minecraft:crafting_shaped",
-        "pattern": [
-          "C"
-        ],
-        "key": {
-          "C": {
-            "item": "pyrite:gold_block"
-          }
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "minecraft:gold_block"
         },
-        "result": {
-          "item": "pyrite:gold_button",
-          "id": "pyrite:gold_button",
-          "count": 1
+        {
+          "tag": "minecraft:buttons"
         }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:gold_button",
+        "id": "pyrite:gold_button"
       }
+    }

@@ -1,17 +1,17 @@
-        
-      {
-        "type": "minecraft:crafting_shaped",
-        "pattern": [
-          "C"
-        ],
-        "key": {
-          "C": {
-            "item": "pyrite:exposed_copper"
-          }
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "minecraft:exposed_copper"
         },
-        "result": {
-          "item": "pyrite:exposed_copper_button",
-          "id": "pyrite:exposed_copper_button",
-          "count": 1
+        {
+          "tag": "minecraft:buttons"
         }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:exposed_copper_button",
+        "id": "pyrite:exposed_copper_button"
       }
+    }

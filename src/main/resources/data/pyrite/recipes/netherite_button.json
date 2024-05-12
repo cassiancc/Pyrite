@@ -1,17 +1,17 @@
-        
-      {
-        "type": "minecraft:crafting_shaped",
-        "pattern": [
-          "C"
-        ],
-        "key": {
-          "C": {
-            "item": "pyrite:netherite_block"
-          }
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "minecraft:netherite_block"
         },
-        "result": {
-          "item": "pyrite:netherite_button",
-          "id": "pyrite:netherite_button",
-          "count": 1
+        {
+          "tag": "minecraft:buttons"
         }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:netherite_button",
+        "id": "pyrite:netherite_button"
       }
+    }
