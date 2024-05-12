@@ -17,7 +17,8 @@
         "#pyrite:copper",
         "#pyrite:metal_trapdoors",
         "#pyrite:metal_pressure_plates",
-        "#pyrite:metal_buttons"
+        "#pyrite:metal_buttons",
+        "pyrite:blue_nether_bricks"
 
       ]
     }
