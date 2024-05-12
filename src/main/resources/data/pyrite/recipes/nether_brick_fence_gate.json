@@ -10,7 +10,7 @@
             "item": "minecraft:nether_bricks"
           },
           "S": {
-            "item": "minecraft:stick"
+            "item": "minecraft:nether_brick"
           }
         },
         "result": {
