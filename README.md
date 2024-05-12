@@ -24,14 +24,15 @@ _550 blocks and counting..._
   - This includes wall gates for every vanilla wall type.
 - Cobblestone Bricks
   - This includes Mossy Cobblestone Bricks, as well as slabs, stairs, and walls for both.
-- Framed Glass
+- Framed Glass and Framed Glass Panes
+- New Nether Bricks, including Charred Nether Bricks and Blue Nether Bricks.
 - Grass Carpets
   - This includes grass, podzol, mycelium, and dirt path carpets as well!
 
 ## Installation
 <a href="https://modrinth.com/mod/fabric-api"><img alt="fabric-api" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/fabric-api_vector.svg"></a>
 
-Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates.
+Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
 - Requires Fabric Loader and Fabric API.
 
 ## Credits
