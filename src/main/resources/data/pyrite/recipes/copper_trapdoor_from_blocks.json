@@ -7,12 +7,12 @@
         ],
         "key": {
           "C": {
-            "item": "minecraft:diamond_block"
+            "item": "minecraft:copper_block"
           }
         },
         "result": {
-          "item": "pyrite:diamond_trapdoor",
-          "id": "pyrite:diamond_trapdoor",
+          "item": "pyrite:copper_trapdoor",
+          "id": "pyrite:copper_trapdoor",
           "count": 2
         }
       }
