@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:amethyst_block"
+    },
+    "result": "pyrite:amethyst_button",
+    "count": 1
+  }

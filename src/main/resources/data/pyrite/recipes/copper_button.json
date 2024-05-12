@@ -3,7 +3,7 @@
       "category": "misc",
       "ingredients": [
         {
-          "item": "minecraft:copper"
+          "item": "minecraft:copper_block"
         },
         {
           "tag": "minecraft:buttons"
