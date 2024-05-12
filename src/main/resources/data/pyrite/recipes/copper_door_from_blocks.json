@@ -8,12 +8,12 @@
         ],
         "key": {
           "C": {
-            "item": "minecraft:iron_ingot"
+            "item": "minecraft:copper_block"
           }
         },
         "result": {
-          "item": "pyrite:iron_door",
-          "id": "pyrite:iron_door",
+          "item": "pyrite:copper_door",
+          "id": "pyrite:copper_door",
           "count": 3
         }
       }
