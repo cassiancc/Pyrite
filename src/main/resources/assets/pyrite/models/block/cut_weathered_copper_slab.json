@@ -1,8 +1,0 @@
-{
-        "parent": "minecraft:block/slab",
-        "textures": {
-        "bottom": "pyrite:block/cut_weathered_copper",
-        "top": "pyrite:block/cut_weathered_copper",
-        "side": "pyrite:block/cut_weathered_copper"
-        }
-    }
