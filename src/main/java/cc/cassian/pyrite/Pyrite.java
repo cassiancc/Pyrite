@@ -1,5 +1,6 @@
 package cc.cassian.pyrite;
 
+import cc.cassian.pyrite.blocks.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
@@ -98,7 +99,15 @@ public class Pyrite implements ModInitializer {
         }
     }
 
-    //Most of the manually generated blocks.
+    //Create and then add carpets
+    private void createPyriteBlock(String blockID, String blockType) {
+        if (Objects.equals(blockType, "carpet")) {
+            AbstractBlock.Settings blockSettings = copyBlock(Blocks.MOSS_CARPET);
+            addPyriteBlock(blockID, blockType, blockSettings);
+        }
+    }
+
+    //Create and then add most of the manually generated blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
         switch (blockType) {
@@ -149,6 +158,9 @@ public class Pyrite implements ModInitializer {
                 break;
             case "log":
                 pyriteBlocks.add(new PillarBlock(blockSettings));
+                break;
+            case "facing":
+                pyriteBlocks.add(new ModFacingBlock(blockSettings));
                 break;
             case "bars", "glass_pane":
                 pyriteBlocks.add(new PaneBlock(blockSettings));
@@ -332,13 +344,13 @@ public class Pyrite implements ModInitializer {
         //Mossy Cobblestone Bricks
         createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Grass Carpet
-        createPyriteBlock("grass_carpet", "carpet", Blocks.MOSS_CARPET);
+        createPyriteBlock("grass_carpet", "carpet");
         //Mycelium Carpet
-        createPyriteBlock("mycelium_carpet", "carpet", Blocks.MOSS_CARPET);
+        createPyriteBlock("mycelium_carpet", "carpet");
         //Podzol Carpet
-        createPyriteBlock("podzol_carpet", "carpet", Blocks.MOSS_CARPET);
+        createPyriteBlock("podzol_carpet", "carpet");
         //Path Carpet
-        createPyriteBlock("path_carpet","carpet", Blocks.MOSS_CARPET);
+        createPyriteBlock("path_carpet","carpet");
         //Nether Brick Fence Gate
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
         //Resource Blocks
@@ -358,6 +370,8 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         //Glowing Obsidian
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
+        //Locked Chest
+        createPyriteBlock("locked_chest", "facing", Blocks.CHEST);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
@@ -442,6 +456,9 @@ public class Pyrite implements ModInitializer {
         //Registers the Pyrite item group.
         Registry.register(Registries.ITEM_GROUP, new Identifier("pyrite", "pyrite_group"), PYRITE_GROUP);
     }
+
+
+
     //Add items to the Pyrite Item Group
     private static final ItemGroup PYRITE_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(pyriteBlocks.get(2)))

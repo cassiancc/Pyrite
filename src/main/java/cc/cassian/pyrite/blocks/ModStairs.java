@@ -1,4 +1,4 @@
-package cc.cassian.pyrite;
+package cc.cassian.pyrite.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;

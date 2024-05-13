@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "pyrite:block/locked_chest",
+        "y": 90
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "pyrite:block/locked_chest"
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "pyrite:block/locked_chest",
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "pyrite:block/locked_chest",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -572,5 +572,7 @@
   "block.pyrite.star_brick_wall_gate": "Star Brick Wall Gate",
   "block.pyrite.honey_brick_wall_gate": "Honey Brick Wall Gate",
   "block.pyrite.nostalgia_brick_wall_gate": "Nostalgia Brick Wall Gate",
-  "block.pyrite.rose_brick_wall_gate": "Rose Brick Wall Gate"
+  "block.pyrite.rose_brick_wall_gate": "Rose Brick Wall Gate",
+  "block.pyrite.locked_chest": "Locked Chest"
+
 }

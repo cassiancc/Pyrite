@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "pyrite:block/locked_chest_top",
+    "front": "pyrite:block/locked_chest",
+    "side": "pyrite:block/locked_chest_side"
+  }
+}
