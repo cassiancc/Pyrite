@@ -444,7 +444,7 @@ public class Pyrite implements ModInitializer {
     }
     //Add items to the Pyrite Item Group
     private static final ItemGroup PYRITE_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(pyriteBlocks.get(0)))
+            .icon(() -> new ItemStack(pyriteBlocks.get(2)))
             .displayName(Text.translatable("itemGroup.pyrite.group"))
             .entries((context, entries) -> {
                 for (Block block : pyriteBlocks) {
