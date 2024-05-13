@@ -122,11 +122,19 @@ public class Pyrite implements ModInitializer {
                 break;
         }
     }
+
+    //Create blocks that require a change in light level, e.g. Locked Chests
+    public void createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux) {
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).luminance(state -> lux);
+        addPyriteBlock(blockID, blockType, blockSettings);
+    }
+
+    //Create blocks that require a Block Set.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set) {
         addPyriteBlock(blockID, blockType, copyBlock(copyBlock), set);
     }
 
-    //Most of the generic Stained Blocks.
+    //Create most of the generic Stained Blocks, then add them.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(state -> lux);
         if (Objects.equals(blockType, "stairs")) {
@@ -371,7 +379,7 @@ public class Pyrite implements ModInitializer {
         //Glowing Obsidian
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
         //Locked Chest
-        createPyriteBlock("locked_chest", "facing", Blocks.CHEST);
+        createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
