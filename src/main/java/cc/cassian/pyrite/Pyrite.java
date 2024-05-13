@@ -171,11 +171,11 @@ public class Pyrite implements ModInitializer {
                 pyriteBlocks.add(new ModFacingBlock(blockSettings));
                 break;
             case "bars", "glass_pane":
-                pyriteBlocks.add(new PaneBlock(blockSettings));
+                pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
                 addTransparentBlock();
                 break;
             case "glass":
-                pyriteBlocks.add(new ModGlass(blockSettings));
+                pyriteBlocks.add(new ModGlass(blockSettings.nonOpaque()));
                 addTransparentBlock();
                 break;
             default:
