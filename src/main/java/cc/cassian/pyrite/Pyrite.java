@@ -8,7 +8,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -17,6 +16,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Pyrite implements ModInitializer {
+    public AbstractBlock.Settings copyBlock(Block copyBlock) {
+        return AbstractBlock.Settings.copy(copyBlock);
+    }
+    public void addTransparentBlock() {
+        transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+    }
     //List of Blocks and Block IDS.
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     public static ArrayList<Item> pyriteItems = new ArrayList<>();
@@ -78,89 +83,50 @@ public class Pyrite implements ModInitializer {
 
     //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
     public void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
-        pyriteBlockIDs.add(blockID);
         AbstractBlock.Settings settings = AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color);
-        if (Objects.equals(blockType, "block")) {
-            pyriteBlocks.add(new Block(settings));
+        if (Objects.equals(blockType, "obsidian")) {
+            addGenericBlock(blockID, blockType, settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK));
         }
-        else if (Objects.equals(blockType, "glass")) {
-            pyriteBlocks.add(new ModGlass(settings.nonOpaque()));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+        else {
+            addGenericBlock(blockID, blockType, settings);
         }
-        else if (Objects.equals(blockType, "glass_pane")) {
-            pyriteBlocks.add(new PaneBlock(settings.nonOpaque()));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "obsidian")) {
-            pyriteBlocks.add(new Block(settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK)));
-        }
-
     }
 
     //Most of the manually generated blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock) {
-        pyriteBlockIDs.add(blockID);
-        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock);
-        if (Objects.equals(blockType, "block")) {
-            pyriteBlocks.add(new Block(blockSettings));
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
+        if (Objects.equals(blockType, "fence_gate")) {
+            addTypeBlock(blockID, blockType, blockSettings, WoodType.CRIMSON);
         }
-        else if (Objects.equals(blockType, "log")) {
-            pyriteBlocks.add(new PillarBlock(blockSettings));
+        else if (Objects.equals(blockType, "door") || Objects.equals(blockType, "trapdoor")) {
+            addSetBlock(blockID, blockType, blockSettings, BlockSetType.IRON);
         }
-        else if (Objects.equals(blockType, "slab")) {
-            pyriteBlocks.add(new SlabBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "wall")) {
-            pyriteBlocks.add(new WallBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "fence_gate")) {
-            pyriteBlocks.add(new FenceGateBlock(blockSettings, WoodType.CRIMSON));
-        }
-        else if (Objects.equals(blockType, "carpet")) {
-            pyriteBlocks.add(new CarpetBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "bars")) {
-            pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "trapdoor")) {
-            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), BlockSetType.IRON));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "door")) {
-            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), BlockSetType.IRON));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+        else {
+            addGenericBlock(blockID, blockType, blockSettings);
         }
 
     }
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set) {
-        pyriteBlockIDs.add(blockID);
-        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock);
-        if (Objects.equals(blockType, "trapdoor")) {
-            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), set));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "door")) {
-            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), set));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "plate")) {
-            pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings.nonOpaque(), set));
-        }
-        else if (Objects.equals(blockType, "button")) {
-            pyriteBlocks.add(new ButtonBlock(blockSettings.nonOpaque(), set, 100, false));
-        }
-
+        addSetBlock(blockID, blockType, copyBlock(copyBlock), set);
     }
 
     //Most of the generic Stained Blocks.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(state -> lux);
+        if (Objects.equals(blockType, "stairs")) {
+            addStairBlock(blockID, copyBlock, blockSettings);
+        }
+        else {
+            addGenericBlock(blockID, blockType, blockSettings);
+        }
+    }
+
+    public void addGenericBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings) {
         pyriteBlockIDs.add(blockID);
-        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock).mapColor(color).luminance(state -> lux);
         if (Objects.equals(blockType, "block")) {
             pyriteBlocks.add(new Block(blockSettings));
         }
-        if (Objects.equals(blockType, "carpet")) {
+        else if (Objects.equals(blockType, "carpet")) {
             pyriteBlocks.add(new CarpetBlock(blockSettings));
         }
         else if (Objects.equals(blockType, "slab")) {
@@ -169,45 +135,82 @@ public class Pyrite implements ModInitializer {
         else if (Objects.equals(blockType, "wall")) {
             pyriteBlocks.add(new WallBlock(blockSettings));
         }
-        else if (Objects.equals(blockType, "stairs")) {
-            pyriteBlocks.add(new ModStairs(copyBlock.getDefaultState(), blockSettings));
+        else if (Objects.equals(blockType, "fence")) {
+            pyriteBlocks.add(new FenceBlock(blockSettings));
         }
+        else if (Objects.equals(blockType, "log")) {
+            pyriteBlocks.add(new PillarBlock(blockSettings));
+        }
+        else if (Objects.equals(blockType, "bars") || Objects.equals(blockType, "glass_pane")) {
+            pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
+            addTransparentBlock();
+        }
+        else if (Objects.equals(blockType, "glass")) {
+            pyriteBlocks.add(new ModGlass(blockSettings.nonOpaque()));
+            addTransparentBlock();
+        }
+        else {
+            System.out.println(blockID + "created as a generic block, block provided" + blockType);
+            pyriteBlocks.add(new Block(blockSettings));
+        }
+
+    }
+    public void addTypeBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType type) {
+        pyriteBlockIDs.add(blockID);
+        if (Objects.equals(blockType, "fence_gate")) {
+            pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
+        }
+        else {
+            System.out.println(blockID + "created as a generic block.");
+            pyriteBlocks.add(new Block(blockSettings));
+        }
+    }
+
+    public void addSetBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, BlockSetType type) {
+        pyriteBlockIDs.add(blockID);
+        if (Objects.equals(blockType, "door")) {
+            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), type));
+            addTransparentBlock();
+        }
+        else if (Objects.equals(blockType, "trapdoor")) {
+            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), type));
+            addTransparentBlock();
+        }
+        else if (Objects.equals(blockType, "button")) {
+            pyriteBlocks.add(new ButtonBlock(blockSettings, type, 40, true));
+        }
+        else if (Objects.equals(blockType, "pressure_plate")) {
+            pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings, type));
+        }
+        else {
+            System.out.println(blockID + "created as a generic block.");
+            pyriteBlocks.add(new Block(blockSettings));
+        }
+    }
+
+
+    //Various stair blocks.
+    public void createPyriteBlock(String blockID, Block copyBlock, Integer baseBlock) {
+        addStairBlock(blockID, pyriteBlocks.get(baseBlock), copyBlock(copyBlock));
     }
 
     //Stained blocks that require a wood set or wood type.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type) {
-        pyriteBlockIDs.add(blockID);
-        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock).mapColor(color).luminance(state -> lux);
-        if (Objects.equals(blockType, "door")) {
-            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), set));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "trapdoor")) {
-            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), set));
-            transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
-        }
-        else if (Objects.equals(blockType, "pressure_plate")) {
-            pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings, set));
-        }
-        else if (Objects.equals(blockType, "button")) {
-            pyriteBlocks.add(new ButtonBlock(blockSettings, set, 40, true));
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(state -> lux);
+        if (Objects.equals(blockType, "door") || Objects.equals(blockType, "trapdoor") || Objects.equals(blockType, "button") || Objects.equals(blockType, "pressure_plate")) {
+            addSetBlock(blockID, blockType, blockSettings, set);
         }
         else if (Objects.equals(blockType, "fence_gate")) {
-            pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
+            addTypeBlock(blockID, blockType, blockSettings, type);
         }
-        else if (Objects.equals(blockType, "fence")) {
-            pyriteBlocks.add(new FenceBlock(blockSettings));
+        else {
+            addGenericBlock(blockID, blockType, blockSettings);
         }
     }
 
-    //Various stair blocks.
-    public void createPyriteBlock(String blockID, String blockType, Block copyBlock, Integer baseBlock) {
+    public void addStairBlock(String blockID, Block copyBlock, AbstractBlock.Settings blockSettings) {
         pyriteBlockIDs.add(blockID);
-        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.copy(copyBlock);
-        if (Objects.equals(blockType, "stairs")) {
-            pyriteBlocks.add(new ModStairs(pyriteBlocks.get(baseBlock).getDefaultState(), blockSettings));
-        }
-
+        pyriteBlocks.add(new ModStairs(copyBlock.getDefaultState(), blockSettings));
     }
 
     public void createPyriteItem(String itemID) {
@@ -219,7 +222,7 @@ public class Pyrite implements ModInitializer {
         //Cut Block
         createPyriteBlock("cut_" + blockID,"block", block);
         //Cut Stairs
-        createPyriteBlock("cut_" + blockID + "_stairs", "stairs", block, 16);
+        createPyriteBlock("cut_" + blockID + "_stairs", block, 16);
         //Cut Slab
         createPyriteBlock("cut_"+blockID+"_slab", "slab", block);
         //Cut Wall
@@ -255,7 +258,7 @@ public class Pyrite implements ModInitializer {
             createPyriteBlock(blockID+"_door","door", block, set);
             createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set);
             if (!Objects.equals(blockID, "gold")) {
-                createPyriteBlock(blockID+"_pressure_plate","plate", block, set);
+                createPyriteBlock(blockID+"_pressure_plate","pressure_plate", block, set);
             }
         }
         createPyriteBlock(blockID+"_button","button", block, set);
@@ -270,7 +273,7 @@ public class Pyrite implements ModInitializer {
         //Cobblestone Bricks - 2
         createPyriteBlock("cobblestone_bricks","block", Blocks.STONE_BRICKS);
         //Cobblestone Brick Stairs - 3
-        createPyriteBlock("cobblestone_brick_stairs","stairs", Blocks.STONE_BRICK_STAIRS, 2);
+        createPyriteBlock("cobblestone_brick_stairs", Blocks.STONE_BRICK_STAIRS, 2);
         //Cobblestone Brick Slab - 4
         createPyriteBlock("cobblestone_brick_slab", "slab", Blocks.STONE_BRICK_SLAB);
         //Cobblestone Brick Walls - 5
@@ -280,7 +283,7 @@ public class Pyrite implements ModInitializer {
         //Mossy Cobblestone Bricks - 6
         createPyriteBlock("mossy_cobblestone_bricks", "block", Blocks.MOSSY_STONE_BRICKS);
         //Mossy Cobblestone Brick Stairs - 7
-        createPyriteBlock( "mossy_cobblestone_brick_stairs","stairs", Blocks.MOSSY_STONE_BRICK_STAIRS, 2);
+        createPyriteBlock( "mossy_cobblestone_brick_stairs", Blocks.MOSSY_STONE_BRICK_STAIRS, 2);
         //Mossy Cobblestone Brick Slabs - 8
         createPyriteBlock("mossy_cobblestone_brick_slab","slab", Blocks.MOSSY_STONE_BRICK_SLAB);
         //Mossy Cobblestone Brick Walls - 9
