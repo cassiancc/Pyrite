@@ -1,7 +1,7 @@
 {
     "parent": "minecraft:block/cube_column",
     "textures": {
-      "end": "pyrite:block/chiseled_oxidized_copper_block_top",
+      "end": "pyrite:block/chiseled_oxidized_copper_block",
       "side": "pyrite:block/chiseled_oxidized_copper_block"
     }
   }
