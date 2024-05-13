@@ -20,7 +20,13 @@ public class Pyrite implements ModInitializer {
         return AbstractBlock.Settings.copy(copyBlock);
     }
     public void addTransparentBlock() {
-        transparentBlocks.add(pyriteBlocks.get(pyriteBlocks.size()-1));
+        transparentBlocks.add(getLastBlock());
+    }
+    public Block getLastBlock() {
+        return pyriteBlocks.get(pyriteBlocks.size()-1);
+    }
+    public Block getLastBlock(int index) {
+        return pyriteBlocks.get(pyriteBlocks.size()-index);
     }
     //List of Blocks and Block IDS.
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
@@ -217,6 +223,18 @@ public class Pyrite implements ModInitializer {
         pyriteItems.add(new Item(new Item.Settings()));
         pyriteItemIDs.add(itemID);
     }
+    public void createBrickSet(String blockID, Block copyBlock, MapColor color, int lux) {
+        //Bricks
+        createPyriteBlock( blockID+"s", "block", copyBlock, color, lux);
+        //Brick Stairs
+        createPyriteBlock( blockID+"_stairs", "stairs", getLastBlock(), color, lux);
+        //Brick Slab
+        createPyriteBlock( blockID+"_slab", "slab", copyBlock, color, lux);
+        //Brick Wall
+        createPyriteBlock( blockID+"_wall", "wall", copyBlock, color, lux);
+        //Brick Wall Gate
+        createPyriteBlock(blockID+"_wall_gate","fence_gate", copyBlock);
+    }
 
     public void createWoodSet(String blockID, MapColor color, int blockLux) {
         BlockSetType GENERATED_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier("pyrite", blockID));
@@ -224,21 +242,21 @@ public class Pyrite implements ModInitializer {
         //Stained Planks
         createPyriteBlock( blockID+"_planks", "block", Blocks.OAK_PLANKS, color, blockLux);
         //Stained Stairs
-        createPyriteBlock(blockID+"_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), color, blockLux);
+        createPyriteBlock(blockID+"_stairs", "stairs", getLastBlock(), color, blockLux);
         //Stained Slabs
-        createPyriteBlock( blockID+"_slab", "slab", pyriteBlocks.get(pyriteBlocks.size()-2), color, blockLux);
+        createPyriteBlock( blockID+"_slab", "slab", getLastBlock(2), color, blockLux);
         //Stained Pressure Plates
-        createPyriteBlock( blockID+"_pressure_plate", "pressure_plate", pyriteBlocks.get(pyriteBlocks.size()-3), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        createPyriteBlock( blockID+"_pressure_plate", "pressure_plate", getLastBlock(3), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Buttons
-        createPyriteBlock(blockID+"_button", "button", pyriteBlocks.get(pyriteBlocks.size()-4), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        createPyriteBlock(blockID+"_button", "button", getLastBlock(4), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Fences
-        createPyriteBlock(blockID+"_fence", "fence", pyriteBlocks.get(pyriteBlocks.size()-5), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        createPyriteBlock(blockID+"_fence", "fence", getLastBlock(5), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Fence Gates
-        createPyriteBlock(blockID+"_fence_gate", "fence_gate", pyriteBlocks.get(pyriteBlocks.size()-5), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        createPyriteBlock(blockID+"_fence_gate", "fence_gate", getLastBlock(5), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Doors
-        createPyriteBlock(blockID+"_door", "door", pyriteBlocks.get(pyriteBlocks.size()-6), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        createPyriteBlock(blockID+"_door", "door", getLastBlock(6), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Trapdoors
-        createPyriteBlock(blockID+"_trapdoor", "trapdoor", pyriteBlocks.get(pyriteBlocks.size()-7), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        createPyriteBlock(blockID+"_trapdoor", "trapdoor", getLastBlock(7), color, blockLux, GENERATED_SET, GENERATED_TYPE);
     }
 
     public void createCutBlocks(String blockID, Block block) {
@@ -253,6 +271,7 @@ public class Pyrite implements ModInitializer {
         //Cut Wall Gate
         createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
     }
+
     public void createResourcePillarBlock(String blockID, Block block) {
         createPyriteBlock(blockID,"log", block);
     }
@@ -289,38 +308,23 @@ public class Pyrite implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        //Framed Glass - 0
+        //Framed Glass
         createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0);
-        //Framed Glass Pane - 1
+        //Framed Glass Pane
         createPyriteBlock( "framed_glass_pane","glass_pane", 2.0f, MapColor.CLEAR, 0);
-        //Cobblestone Bricks - 2
-        createPyriteBlock("cobblestone_bricks","block", Blocks.STONE_BRICKS);
-        //Cobblestone Brick Stairs - 3
-        createPyriteBlock("cobblestone_brick_stairs", Blocks.STONE_BRICK_STAIRS, 2);
-        //Cobblestone Brick Slab - 4
-        createPyriteBlock("cobblestone_brick_slab", "slab", Blocks.STONE_BRICK_SLAB);
-        //Cobblestone Brick Walls - 5
-        createPyriteBlock("cobblestone_brick_wall","wall", Blocks.STONE_BRICK_WALL);
-        //Cobblestone Brick Wall Gate
-        createPyriteBlock("cobblestone_brick_wall_gate","fence_gate", Blocks.STONE_BRICK_WALL);
-        //Mossy Cobblestone Bricks - 6
-        createPyriteBlock("mossy_cobblestone_bricks", "block", Blocks.MOSSY_STONE_BRICKS);
-        //Mossy Cobblestone Brick Stairs - 7
-        createPyriteBlock( "mossy_cobblestone_brick_stairs", Blocks.MOSSY_STONE_BRICK_STAIRS, 2);
-        //Mossy Cobblestone Brick Slabs - 8
-        createPyriteBlock("mossy_cobblestone_brick_slab","slab", Blocks.MOSSY_STONE_BRICK_SLAB);
-        //Mossy Cobblestone Brick Walls - 9
-        createPyriteBlock("mossy_cobblestone_brick_wall","wall", Blocks.MOSSY_STONE_BRICK_WALL);
-        createPyriteBlock("mossy_cobblestone_brick_wall_gate","fence_gate", Blocks.MOSSY_STONE_BRICK_WALL);
-        //Grass Carpet - 10
+        //Cobblestone Bricks
+        createBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
+        //Mossy Cobblestone Bricks
+        createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
+        //Grass Carpet
         createPyriteBlock("grass_carpet", "carpet", Blocks.MOSS_CARPET);
-        //Mycelium Carpet - 11
+        //Mycelium Carpet
         createPyriteBlock("mycelium_carpet", "carpet", Blocks.MOSS_CARPET);
-        //Podzol Carpet - 12
+        //Podzol Carpet
         createPyriteBlock("podzol_carpet", "carpet", Blocks.MOSS_CARPET);
-        //Path Carpet - 13
+        //Path Carpet
         createPyriteBlock("path_carpet","carpet", Blocks.MOSS_CARPET);
-        //Nether Brick Fence Gate - 14
+        //Nether Brick Fence Gate
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
         //Resource Blocks
         createResourceBlockSet("iron", Blocks.IRON_BLOCK);
@@ -337,23 +341,12 @@ public class Pyrite implements ModInitializer {
         createResourceBlockSet("oxidized_copper", Blocks.OXIDIZED_COPPER);
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
+        //Glowing Obsidian
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
-        //Charred Nether Brick
-        createPyriteBlock( "charred_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
-        //Charred Nether Brick Stairs
-        createPyriteBlock( "charred_nether_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), MapColor.BLACK, 0);
-        //Charred Nether Brick Slab
-        createPyriteBlock( "charred_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLACK, 0);
-        //Charred Nether Brick Wall
-        createPyriteBlock( "charred_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLACK, 0);
+        //Charred Nether Bricks
+        createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
-        createPyriteBlock( "blue_nether_bricks", "block", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
-        //Blue Nether Brick Stairs
-        createPyriteBlock( "blue_nether_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), MapColor.BLUE, 0);
-        //Blue Nether Brick Slab
-        createPyriteBlock( "blue_nether_brick_slab", "slab", Blocks.NETHER_BRICK_SLAB, MapColor.BLUE, 0);
-        //Blue Nether Brick Wall
-        createPyriteBlock( "blue_nether_brick_wall", "wall", Blocks.NETHER_BRICK_WALL, MapColor.BLUE, 0);
+        createBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
         //Red Mushroom Blocks
         createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("red_mushroom", MapColor.RED, 0);
@@ -408,15 +401,10 @@ public class Pyrite implements ModInitializer {
             else {
                 color = DyeColor.valueOf(dye.toUpperCase()).getMapColor();
             }
+            //Planks and plank products
             createWoodSet(dye + "_stained", color, blockLux);
-            //Dyed Bricks
-            createPyriteBlock(dye + "_bricks", "block", Blocks.BRICKS, color, blockLux);
-            //Dyed Brick Stairs
-            createPyriteBlock(dye + "_brick_stairs", "stairs", pyriteBlocks.get(pyriteBlocks.size()-1), color, blockLux);
-            //Dyed Brick Slab
-            createPyriteBlock(dye + "_brick_slab", "slab", Blocks.BRICK_SLAB, color, blockLux);
-            //Dyed Brick Wall
-            createPyriteBlock(dye + "_brick_wall", "wall", Blocks.BRICK_WALL, color, blockLux);
+            //Bricks and brick products
+            createBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux);
             //Dyed Lamps
             createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15);
 
