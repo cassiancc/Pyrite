@@ -129,37 +129,38 @@ public class Pyrite implements ModInitializer {
 
     public void addGenericBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings) {
         pyriteBlockIDs.add(blockID);
-        if (Objects.equals(blockType, "block")) {
-            pyriteBlocks.add(new Block(blockSettings));
+        switch (blockType.toLowerCase()) {
+            case "block":
+                pyriteBlocks.add(new Block(blockSettings));
+                break;
+            case "carpet":
+                pyriteBlocks.add(new CarpetBlock(blockSettings));
+                break;
+            case "slab":
+                pyriteBlocks.add(new SlabBlock(blockSettings));
+                break;
+            case "wall":
+                pyriteBlocks.add(new WallBlock(blockSettings));
+                break;
+            case "fence":
+                pyriteBlocks.add(new FenceBlock(blockSettings));
+                break;
+            case "log":
+                pyriteBlocks.add(new PillarBlock(blockSettings));
+                break;
+            case "bars", "glass_pane":
+                pyriteBlocks.add(new PaneBlock(blockSettings));
+                addTransparentBlock();
+                break;
+            case "glass":
+                pyriteBlocks.add(new ModGlass(blockSettings));
+                addTransparentBlock();
+                break;
+            default:
+                System.out.println(blockID + "created as a generic block, block provided" + blockType);
+                pyriteBlocks.add(new Block(blockSettings));
+                break;
         }
-        else if (Objects.equals(blockType, "carpet")) {
-            pyriteBlocks.add(new CarpetBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "slab")) {
-            pyriteBlocks.add(new SlabBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "wall")) {
-            pyriteBlocks.add(new WallBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "fence")) {
-            pyriteBlocks.add(new FenceBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "log")) {
-            pyriteBlocks.add(new PillarBlock(blockSettings));
-        }
-        else if (Objects.equals(blockType, "bars") || Objects.equals(blockType, "glass_pane")) {
-            pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
-            addTransparentBlock();
-        }
-        else if (Objects.equals(blockType, "glass")) {
-            pyriteBlocks.add(new ModGlass(blockSettings.nonOpaque()));
-            addTransparentBlock();
-        }
-        else {
-            System.out.println(blockID + "created as a generic block, block provided" + blockType);
-            pyriteBlocks.add(new Block(blockSettings));
-        }
-
     }
     public void addTypeBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType type) {
         pyriteBlockIDs.add(blockID);
@@ -174,26 +175,27 @@ public class Pyrite implements ModInitializer {
 
     public void addSetBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, BlockSetType type) {
         pyriteBlockIDs.add(blockID);
-        if (Objects.equals(blockType, "door")) {
-            pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), type));
-            addTransparentBlock();
-        }
-        else if (Objects.equals(blockType, "trapdoor")) {
-            pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), type));
-            addTransparentBlock();
-        }
-        else if (Objects.equals(blockType, "button")) {
-            pyriteBlocks.add(new ButtonBlock(blockSettings, type, 40, true));
-        }
-        else if (Objects.equals(blockType, "pressure_plate")) {
-            pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings, type));
-        }
-        else {
-            System.out.println(blockID + "created as a generic block.");
-            pyriteBlocks.add(new Block(blockSettings));
+        switch (blockType) {
+            case "door":
+                pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), type));
+                addTransparentBlock();
+                break;
+            case "trapdoor":
+                pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), type));
+                addTransparentBlock();
+                break;
+            case "button":
+                pyriteBlocks.add(new ButtonBlock(blockSettings, type, 40, true));
+                break;
+            case "pressure_plate":
+                pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings, type));
+                break;
+            default:
+                System.out.println(blockID + "created as a generic block.");
+                pyriteBlocks.add(new Block(blockSettings));
+                break;
         }
     }
-
 
     //Various stair blocks.
     public void createPyriteBlock(String blockID, Block copyBlock, Integer baseBlock) {
@@ -203,14 +205,16 @@ public class Pyrite implements ModInitializer {
     //Stained blocks that require a wood set or wood type.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(state -> lux);
-        if (Objects.equals(blockType, "door") || Objects.equals(blockType, "trapdoor") || Objects.equals(blockType, "button") || Objects.equals(blockType, "pressure_plate")) {
-            addSetBlock(blockID, blockType, blockSettings, set);
-        }
-        else if (Objects.equals(blockType, "fence_gate")) {
-            addTypeBlock(blockID, blockType, blockSettings, type);
-        }
-        else {
-            addGenericBlock(blockID, blockType, blockSettings);
+        switch (blockType) {
+            case "door", "trapdoor", "button", "pressure_plate":
+                addSetBlock(blockID, blockType, blockSettings, set);
+                break;
+            case "fence_gate":
+                addTypeBlock(blockID, blockType, blockSettings, type);
+                break;
+            default:
+                addGenericBlock(blockID, blockType, blockSettings);
+                break;
         }
     }
 
@@ -353,42 +357,43 @@ public class Pyrite implements ModInitializer {
         //Brown Mushroom Blocks
         createPyriteBlock("brown_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("brown_mushroom", MapColor.BROWN, 0);
-        int blockLux = 0;
-        MapColor color = MapColor.RED;
+
         //Autogenerate dye blocks.
         for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
             String dye = dyes[dyeIndex];
+            int blockLux = 0;
+            MapColor color;
             if (dyeIndex > 15) {
-                //Glow planks overrides
-                if (Objects.equals(dye, "glow")) {
-                    blockLux = 8;
-                    color = MapColor.CYAN;
-                }
-                //Dragon planks overrides
-                else if (Objects.equals(dye, "dragon")) {
-                    color = MapColor.BLACK;
-                    blockLux = 0;
-                }
-                //Star planks overrides
-                else if (Objects.equals(dye, "star")) {
-                    blockLux = 15;
-                    color = MapColor.OFF_WHITE;
-                }
-                //Honey planks overrides
-                else if (Objects.equals(dye, "honey")) {
-                    color = MapColor.YELLOW;
-                    blockLux = 0;
-
-                }
-                else if (Objects.equals(dye, "nostalgia")) {
-                    color = MapColor.BROWN;
-                    blockLux = 0;
-                }
-                else if (Objects.equals(dye, "rose")) {
-                    color = MapColor.BRIGHT_RED;
-                    blockLux = 0;
-
-                }
+                color = switch (dye) {
+                    case "glow" -> {
+                        blockLux = 8;
+                        yield MapColor.CYAN;
+                    }
+                    case "dragon" -> {
+                        blockLux = 0;
+                        yield MapColor.BLACK;
+                    }
+                    case "star" -> {
+                        blockLux = 15;
+                        yield MapColor.OFF_WHITE;
+                    }
+                    case "honey" -> {
+                        blockLux = 0;
+                        yield MapColor.YELLOW;
+                    }
+                    case "nostalgia" -> {
+                        blockLux = 0;
+                        yield MapColor.BROWN;
+                    }
+                    case "rose" -> {
+                        blockLux = 0;
+                        yield MapColor.BRIGHT_RED;
+                    }
+                    default -> {
+                        blockLux = 0;
+                        yield MapColor.RED;
+                    }
+                };
                 //Dye
                 createPyriteItem(dye + "_dye");
                 //Dyed Wool
