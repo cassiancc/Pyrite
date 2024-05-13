@@ -22,6 +22,9 @@
     "pyrite:blackstone_wall_gate",
     "pyrite:polished_blackstone_wall_gate",
     "pyrite:polished_blackstone_brick_wall_gate",
-    "pyrite:end_stone_brick_wall_gate"
+    "pyrite:end_stone_brick_wall_gate",
+    "pyrite:blue_nether_brick_wall_gate",
+    "pyrite:charred_nether_brick_wall_gate"
+
     ]
   }

@@ -548,5 +548,8 @@
   "block.pyrite.copper_button": "Copper Button",
   "block.pyrite.exposed_copper_button": "Exposed Copper Button",
   "block.pyrite.weathered_copper_button": "Weathered Copper Button",
-  "block.pyrite.oxidized_copper_button": "Oxidized Copper Button"
+  "block.pyrite.oxidized_copper_button": "Oxidized Copper Button",
+  "block.pyrite.blue_nether_brick_wall_gate": "Blue Nether Brick Wall Gate",
+  "block.pyrite.charred_nether_brick_wall_gate": "Charred Nether Brick Wall Gate"
+
 }
