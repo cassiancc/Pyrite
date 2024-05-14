@@ -39,6 +39,7 @@ public class Pyrite implements ModInitializer {
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
     static ArrayList<String> pyriteItemIDs = new ArrayList<>();
+    static String modID = "pyrite";
     //List of dyes to autogenerate blocks for.
     String[] dyes = {
             "white",
@@ -104,11 +105,9 @@ public class Pyrite implements ModInitializer {
     }
 
     //Create and then add carpets
-    private void createPyriteBlock(String blockID, String blockType) {
-        if (Objects.equals(blockType, "carpet")) {
-            AbstractBlock.Settings blockSettings = copyBlock(Blocks.MOSS_CARPET);
-            addPyriteBlock(blockID, blockType, blockSettings);
-        }
+    private void createCarpet(String blockID) {
+        AbstractBlock.Settings blockSettings = copyBlock(Blocks.MOSS_CARPET);
+        addPyriteBlock(blockID, "carpet", blockSettings);
     }
 
     //Create and then add most of the manually generated blocks.
@@ -116,7 +115,7 @@ public class Pyrite implements ModInitializer {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
         switch (blockType) {
             case "fence_gate":
-                addPyriteBlock(blockID, blockType, blockSettings, WoodType.CRIMSON);
+                addPyriteBlock(blockID, blockSettings, WoodType.CRIMSON);
                 break;
             case "door", "trapdoor":
                 addPyriteBlock(blockID, blockType, blockSettings, BlockSetType.IRON);
@@ -125,6 +124,18 @@ public class Pyrite implements ModInitializer {
                 addPyriteBlock(blockID, blockType, blockSettings);
                 break;
         }
+    }
+
+    //Create a slab from the last block added.
+    public void createStair(String blockID) {
+        AbstractBlock.Settings blockSettings = copyBlock(getLastBlock());
+        addPyriteBlock(blockID+"_stairs", getLastBlock(), blockSettings);
+    }
+
+    //Create a slab from the last block added.
+    public void createSlab(String blockID) {
+        AbstractBlock.Settings blockSettings = copyBlock(getLastBlock());
+        addPyriteBlock(blockID+"_slab", "slab", blockSettings);
     }
 
     //Create blocks that require a change in light level, e.g. Locked Chests
@@ -157,7 +168,7 @@ public class Pyrite implements ModInitializer {
                 pyriteBlocks.add(new Block(blockSettings));
                 break;
             case "carpet":
-                pyriteBlocks.add(new CarpetBlock(blockSettings));
+                pyriteBlocks.add(new ModCarpet(blockSettings));
                 break;
             case "slab":
                 pyriteBlocks.add(new SlabBlock(blockSettings));
@@ -175,11 +186,11 @@ public class Pyrite implements ModInitializer {
                 pyriteBlocks.add(new ModFacingBlock(blockSettings));
                 break;
             case "bars", "glass_pane":
-                pyriteBlocks.add(new PaneBlock(blockSettings.nonOpaque()));
+                pyriteBlocks.add(new ModPane(blockSettings));
                 addTransparentBlock();
                 break;
             case "glass":
-                pyriteBlocks.add(new ModGlass(blockSettings.nonOpaque()));
+                pyriteBlocks.add(new ModGlass(blockSettings));
                 addTransparentBlock();
                 break;
             default:
@@ -189,16 +200,10 @@ public class Pyrite implements ModInitializer {
         }
     }
 
-    //Add Pyrite blocks that require Wood Types.
-    public void addPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType type) {
+    //Add Pyrite blocks that require Wood Types - Fence gates.
+    public void addPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
         pyriteBlockIDs.add(blockID);
-        if (Objects.equals(blockType, "fence_gate")) {
-            pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
-        }
-        else {
-            System.out.println(blockID + "created as a generic block.");
-            pyriteBlocks.add(new Block(blockSettings));
-        }
+        pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
     }
 
     //Add Pyrite blocks that require Block Sets.
@@ -214,10 +219,10 @@ public class Pyrite implements ModInitializer {
                 addTransparentBlock();
                 break;
             case "button":
-                pyriteBlocks.add(new ButtonBlock(blockSettings, type, 40, true));
+                pyriteBlocks.add(new ModWoodenButton(blockSettings, type));
                 break;
             case "pressure_plate":
-                pyriteBlocks.add(new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, blockSettings, type));
+                pyriteBlocks.add(new ModPressurePlate(blockSettings, type));
                 break;
             default:
                 System.out.println(blockID + "created as a generic block.");
@@ -232,11 +237,6 @@ public class Pyrite implements ModInitializer {
         pyriteBlocks.add(new ModStairs(copyBlock.getDefaultState(), blockSettings));
     }
 
-    //Create Pyrite Stair blocks, then add them.
-    public void createPyriteBlock(String blockID, Block copyBlock, Integer baseBlock) {
-        addPyriteBlock(blockID, pyriteBlocks.get(baseBlock), copyBlock(copyBlock));
-    }
-
     //Create Stained blocks that require a wood set or wood type, then add them.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
@@ -245,7 +245,7 @@ public class Pyrite implements ModInitializer {
                 addPyriteBlock(blockID, blockType, blockSettings, set);
                 break;
             case "fence_gate":
-                addPyriteBlock(blockID, blockType, blockSettings, type);
+                addPyriteBlock(blockID, blockSettings, type);
                 break;
             default:
                 addPyriteBlock(blockID, blockType, blockSettings);
@@ -275,8 +275,8 @@ public class Pyrite implements ModInitializer {
 
     //Generate an entire wood set.
     public void createWoodSet(String blockID, MapColor color, int blockLux) {
-        BlockSetType GENERATED_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier("pyrite", blockID));
-        WoodType GENERATED_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(new Identifier("pyrite", blockID), GENERATED_SET);
+        BlockSetType GENERATED_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier(modID, blockID));
+        WoodType GENERATED_TYPE = WoodTypeBuilder.copyOf(WoodType.CRIMSON).register(new Identifier(modID, blockID), GENERATED_SET);
         //Stained Planks
         createPyriteBlock( blockID+"_planks", "block", Blocks.OAK_PLANKS, color, blockLux);
         //Stained Stairs
@@ -299,34 +299,36 @@ public class Pyrite implements ModInitializer {
 
     //Generate an entire Cut Block set.
     public void createCutBlocks(String blockID, Block block) {
+        String cutBlockID = "cut_" + blockID;
         if (!blockID.contains("copper")) {
             //Cut Block
-            createPyriteBlock("cut_" + blockID,"block", block);
+            createPyriteBlock(cutBlockID,"block", block);
             //Cut Stairs
-            createPyriteBlock("cut_" + blockID + "_stairs", block, 16);
+            createStair(cutBlockID);
             //Cut Slab
-            createPyriteBlock("cut_"+blockID+"_slab", "slab", block);
+            createSlab(cutBlockID);
         }
         //Cut Wall
-        createPyriteBlock("cut_"+blockID+"_wall", "wall", block);
+        createPyriteBlock(cutBlockID+"_wall", "wall", block);
         //Cut Wall Gate
-        createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
+        createPyriteBlock(cutBlockID+"_wall_gate","fence_gate", block);
     }
 
     //Generate an entire Smooth Block set.
     public void createSmoothBlocks(String blockID, Block block) {
+        String smoothBlockID = "smooth_" + blockID;
         if (!Objects.equals(blockID, "quartz")) {
             //Smooth Block
-            createPyriteBlock("smooth_"+blockID,"block", block);
+            createPyriteBlock(smoothBlockID,"block", block);
             //Smooth Stairs
-            createPyriteBlock("smooth_" + blockID + "_stairs", block, 16);
+            createStair(smoothBlockID);
             //Smooth Slab
-            createPyriteBlock("smooth_"+blockID+"_slab", "slab", block);
+            createSlab(smoothBlockID);
         }
         //Smooth Wall
-        createPyriteBlock("smooth_"+blockID+"_wall", "wall", block);
+        createPyriteBlock(smoothBlockID+"_wall", "wall", block);
         //Smooth Wall Gate
-        createPyriteBlock("smooth_"+blockID+"_wall_gate","fence_gate", block);
+        createPyriteBlock(smoothBlockID+"_wall_gate","fence_gate", block);
     }
 
     //Create a set of Resource Blocks
@@ -373,13 +375,13 @@ public class Pyrite implements ModInitializer {
         //Mossy Cobblestone Bricks
         createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Grass Carpet
-        createPyriteBlock("grass_carpet", "carpet");
+        createCarpet("grass_carpet");
         //Mycelium Carpet
-        createPyriteBlock("mycelium_carpet", "carpet");
+        createCarpet("mycelium_carpet");
         //Podzol Carpet
-        createPyriteBlock("podzol_carpet", "carpet");
+        createCarpet("podzol_carpet");
         //Path Carpet
-        createPyriteBlock("path_carpet","carpet");
+        createCarpet("path_carpet");
         //Nether Brick Fence Gate
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
         //Resource Blocks
@@ -475,15 +477,15 @@ public class Pyrite implements ModInitializer {
 
         //Register blocks and block items.
         for (int x = 0; x < pyriteBlockIDs.size(); x++) {
-            Registry.register(Registries.BLOCK, new Identifier("pyrite", pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
-            Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
+            Registry.register(Registries.BLOCK, new Identifier(modID, pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
+            Registry.register(Registries.ITEM, new Identifier(modID, pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
         }
         //Registers items.
         for (int x = 0; x < pyriteItemIDs.size(); x++) {
-            Registry.register(Registries.ITEM, new Identifier("pyrite", pyriteItemIDs.get(x)), pyriteItems.get(x));
+            Registry.register(Registries.ITEM, new Identifier(modID, pyriteItemIDs.get(x)), pyriteItems.get(x));
         }
         //Registers the Pyrite item group.
-        Registry.register(Registries.ITEM_GROUP, new Identifier("pyrite", "pyrite_group"), PYRITE_GROUP);
+        Registry.register(Registries.ITEM_GROUP, new Identifier(modID, "pyrite_group"), PYRITE_GROUP);
     }
 
 
