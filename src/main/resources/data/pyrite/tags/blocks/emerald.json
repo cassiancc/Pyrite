@@ -10,6 +10,10 @@
     "pyrite:chiseled_emerald_block",
     "pyrite:emerald_pillar",
     "pyrite:smooth_emerald",
+    "pyrite:smooth_emerald_slab",
+    "pyrite:smooth_emerald_stairs",
+    "pyrite:smooth_emerald_wall_gate",
+    "pyrite:smooth_emerald_wall",
     "pyrite:emerald_bars",
     "pyrite:emerald_door"
   ]

@@ -10,6 +10,10 @@
     "pyrite:chiseled_diamond_block",
     "pyrite:diamond_pillar",
     "pyrite:smooth_diamond",
+    "pyrite:smooth_diamond_slab",
+    "pyrite:smooth_diamond_stairs",
+    "pyrite:smooth_diamond_wall_gate",
+    "pyrite:smooth_diamond_wall",
     "pyrite:diamond_bars",
     "pyrite:diamond_door"
   ]

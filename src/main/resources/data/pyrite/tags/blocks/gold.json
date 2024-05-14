@@ -10,6 +10,10 @@
     "pyrite:chiseled_gold_block",
     "pyrite:gold_pillar",
     "pyrite:smooth_gold",
+    "pyrite:smooth_gold_slab",
+    "pyrite:smooth_gold_stairs",
+    "pyrite:smooth_gold_wall_gate",
+    "pyrite:smooth_gold_wall",
     "pyrite:gold_bars",
     "pyrite:gold_door"
   ]
