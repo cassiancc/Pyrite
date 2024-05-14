@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/wall_inventory",
     "textures": {
-      "wall": "pyrite:block/cut_copper"
+      "wall": "minecraft:block/cut_copper"
     }
   }

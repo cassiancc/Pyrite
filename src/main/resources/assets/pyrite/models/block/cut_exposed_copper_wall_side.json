@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/template_wall_side",
     "textures": {
-      "wall": "pyrite:block/cut_exposed_copper"
+      "wall": "minecraft:block/exposed_cut_copper"
     }
   }

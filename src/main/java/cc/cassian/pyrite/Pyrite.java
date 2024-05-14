@@ -15,6 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.function.ToIntFunction;
 
 public class Pyrite implements ModInitializer {
     public AbstractBlock.Settings copyBlock(Block copyBlock) {
@@ -28,6 +29,9 @@ public class Pyrite implements ModInitializer {
     }
     public Block getLastBlock(int index) {
         return pyriteBlocks.get(pyriteBlocks.size()-index);
+    }
+    public ToIntFunction<BlockState> parseLux(int lux) {
+        return state -> lux;
     }
     //List of Blocks and Block IDS.
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
@@ -125,7 +129,7 @@ public class Pyrite implements ModInitializer {
 
     //Create blocks that require a change in light level, e.g. Locked Chests
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).luminance(state -> lux);
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).luminance(parseLux(lux));
         addPyriteBlock(blockID, blockType, blockSettings);
     }
 
@@ -136,7 +140,7 @@ public class Pyrite implements ModInitializer {
 
     //Create most of the generic Stained Blocks, then add them.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(state -> lux);
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
         if (Objects.equals(blockType, "stairs")) {
             addPyriteBlock(blockID, copyBlock, blockSettings);
         }
@@ -235,7 +239,7 @@ public class Pyrite implements ModInitializer {
 
     //Create Stained blocks that require a wood set or wood type, then add them.
     public void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(state -> lux);
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
         switch (blockType) {
             case "door", "trapdoor", "button", "pressure_plate":
                 addPyriteBlock(blockID, blockType, blockSettings, set);
@@ -295,12 +299,14 @@ public class Pyrite implements ModInitializer {
 
     //Generate an entire Cut Block set.
     public void createCutBlocks(String blockID, Block block) {
-        //Cut Block
-        createPyriteBlock("cut_" + blockID,"block", block);
-        //Cut Stairs
-        createPyriteBlock("cut_" + blockID + "_stairs", block, 16);
-        //Cut Slab
-        createPyriteBlock("cut_"+blockID+"_slab", "slab", block);
+        if (!blockID.contains("copper")) {
+            //Cut Block
+            createPyriteBlock("cut_" + blockID,"block", block);
+            //Cut Stairs
+            createPyriteBlock("cut_" + blockID + "_stairs", block, 16);
+            //Cut Slab
+            createPyriteBlock("cut_"+blockID+"_slab", "slab", block);
+        }
         //Cut Wall
         createPyriteBlock("cut_"+blockID+"_wall", "wall", block);
         //Cut Wall Gate
@@ -310,9 +316,7 @@ public class Pyrite implements ModInitializer {
     //Create a set of Resource Blocks
     public void createResourceBlockSet(String blockID, Block block) {
         //Create Cut Blocks for those that don't already exist (Copper)
-        if (!(Objects.equals(blockID, "copper") || Objects.equals(blockID, "oxidized_copper") || Objects.equals(blockID, "exposed_copper") || Objects.equals(blockID, "weathered_copper"))) {
-            createCutBlocks(blockID, block);
-        }
+        createCutBlocks(blockID, block);
         //Create Bricks/Chiseled/Pillar/Smooth for those that don't already exist (Quartz)
         if (!Objects.equals(blockID, "quartz")) {
             //Brick Blocks
