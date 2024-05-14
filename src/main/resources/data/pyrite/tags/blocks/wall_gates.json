@@ -46,6 +46,18 @@
     "pyrite:star_brick_wall_gate",
     "pyrite:honey_brick_wall_gate",
     "pyrite:nostalgia_brick_wall_gate",
-    "pyrite:rose_brick_wall_gate"
+    "pyrite:rose_brick_wall_gate",
+    "pyrite:smooth_iron_wall_gate",
+    "pyrite:smooth_gold_wall_gate",
+    "pyrite:smooth_emerald_wall_gate",
+    "pyrite:smooth_diamond_wall_gate",
+    "pyrite:smooth_netherite_wall_gate",
+    "pyrite:smooth_quartz_wall_gate",
+    "pyrite:smooth_amethyst_wall_gate",
+    "pyrite:smooth_lapis_wall_gate",
+    "pyrite:smooth_copper_wall_gate",
+    "pyrite:smooth_exposed_copper_wall_gate",
+    "pyrite:smooth_weathered_copper_wall_gate",
+    "pyrite:smooth_oxidized_copper_wall_gate"
     ]
   }

@@ -313,6 +313,22 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("cut_"+blockID+"_wall_gate","fence_gate", block);
     }
 
+    //Generate an entire Smooth Block set.
+    public void createSmoothBlocks(String blockID, Block block) {
+        if (!Objects.equals(blockID, "quartz")) {
+            //Smooth Block
+            createPyriteBlock("smooth_"+blockID,"block", block);
+            //Smooth Stairs
+            createPyriteBlock("smooth_" + blockID + "_stairs", block, 16);
+            //Smooth Slab
+            createPyriteBlock("smooth_"+blockID+"_slab", "slab", block);
+        }
+        //Smooth Wall
+        createPyriteBlock("smooth_"+blockID+"_wall", "wall", block);
+        //Smooth Wall Gate
+        createPyriteBlock("smooth_"+blockID+"_wall_gate","fence_gate", block);
+    }
+
     //Create a set of Resource Blocks
     public void createResourceBlockSet(String blockID, Block block) {
         //Create Cut Blocks for those that don't already exist (Copper)
@@ -325,9 +341,10 @@ public class Pyrite implements ModInitializer {
             createPyriteBlock("chiseled_"+blockID+"_block", "log", block);
             //Pillar Blocks
             createPyriteBlock(blockID+"_pillar", "log", block);
-            //Smooth Blocks
-            createPyriteBlock("smooth_"+blockID,"block", block);
         }
+        //Smooth Blocks
+        createSmoothBlocks(blockID, block);
+        //Block set for modded blocks
         boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
         BlockSetType set = BlockSetTypeBuilder.copyOf(BlockSetType.GOLD).openableByHand(openByHand).register(new Identifier("pyrite", blockID+"_set"));
         //Create Bars/Doors/Trapdoors/Plates for those that don't already exist (Iron)

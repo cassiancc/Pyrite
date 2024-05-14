@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:smooth_gold"
+      }
+    },
+    "result": {
+      "item": "pyrite:smooth_gold_wall",
+      "id": "pyrite:smooth_gold_wall",
+      "count": 6
+    }
+}

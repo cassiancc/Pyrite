@@ -1,0 +1,18 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:smooth_quartz"
+        }
+      },
+      "result": {
+        "item": "pyrite:smooth_quartz_stairs",
+        "id": "pyrite:smooth_quartz_stairs",
+        "count": 4
+      }
+  }

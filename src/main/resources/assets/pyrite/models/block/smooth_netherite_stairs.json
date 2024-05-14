@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/stairs",
+    "textures": {
+      "bottom": "pyrite:block/smooth_netherite",
+      "top": "pyrite:block/smooth_netherite",
+      "side": "pyrite:block/smooth_netherite"
+    }
+  }
