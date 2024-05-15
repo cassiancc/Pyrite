@@ -621,5 +621,26 @@
   "block.pyrite.smooth_weathered_copper_wall": "Smooth Weathered Copper Wall",
   "block.pyrite.smooth_weathered_copper_wall_gate": "Smooth Weathered Copper Wall Gate",
   "block.pyrite.smooth_oxidized_copper_wall": "Smooth Oxidized Copper Wall",
-  "block.pyrite.smooth_oxidized_copper_wall_gate": "Smooth Oxidized Copper Wall Gate"
+  "block.pyrite.smooth_oxidized_copper_wall_gate": "Smooth Oxidized Copper Wall Gate",
+  "block.pyrite.nostalgia_iron_block": "Nostalgia Iron Block",
+  "block.pyrite.nostalgia_gold_block": "Nostalgia Gold Block",
+  "block.pyrite.nostalgia_emerald_block": "Nostalgia Emerald Block",
+  "block.pyrite.nostalgia_diamond_block": "Nostalgia Diamond Block",
+  "block.pyrite.nostalgia_netherite_block": "Nostalgia Netherite Block",
+  "block.pyrite.nostalgia_quartz_block": "Nostalgia Quartz Block",
+  "block.pyrite.nostalgia_amethyst_block": "Nostalgia Amethyst Block",
+  "block.pyrite.nostalgia_lapis_block": "Nostalgia Lapis Block",
+  "block.pyrite.nostalgia_copper_block": "Nostalgia Copper Block",
+  "block.pyrite.nostalgia_exposed_copper_block": "Nostalgia Lightly Weathered Copper Block",
+  "block.pyrite.nostalgia_weathered_copper_block": "Nostalgia Semi-Weathered Copper Block",
+  "block.pyrite.nostalgia_oxidized_copper_block": "Nostalgia Weathered Copper Block",
+
+
+  "block.pyrite.nostalgia_grass_block": "Nostalgia Grass Block",
+  "block.pyrite.nostalgia_cobblestone": "Nostalgia Cobblestone",
+  "block.pyrite.nostalgia_netherrack": "Nostalgia Netherrack",
+  "block.pyrite.nostalgia_gravel": "Nostalgia Gravel",
+  "block.pyrite.nostalgia_mossy_cobblestone": "Nostalgia Mossy Cobblestone"
+
+
 }

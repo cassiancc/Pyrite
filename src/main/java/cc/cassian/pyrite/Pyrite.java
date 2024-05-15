@@ -160,6 +160,12 @@ public class Pyrite implements ModInitializer {
         }
     }
 
+    //Create basic blocks.
+    public void createPyriteBlock(String blockID, Block copyBlock) {
+        AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
+        addPyriteBlock(blockID, "block", blockSettings);
+    }
+
     //Add most Pyrite blocks.
     public void addPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings) {
         pyriteBlockIDs.add(blockID);
@@ -302,7 +308,7 @@ public class Pyrite implements ModInitializer {
         String cutBlockID = "cut_" + blockID;
         if (!blockID.contains("copper")) {
             //Cut Block
-            createPyriteBlock(cutBlockID,"block", block);
+            createPyriteBlock(cutBlockID, block);
             //Cut Stairs
             createStair(cutBlockID);
             //Cut Slab
@@ -319,7 +325,7 @@ public class Pyrite implements ModInitializer {
         String smoothBlockID = "smooth_" + blockID;
         if (!Objects.equals(blockID, "quartz")) {
             //Smooth Block
-            createPyriteBlock(smoothBlockID,"block", block);
+            createPyriteBlock(smoothBlockID, block);
             //Smooth Stairs
             createStair(smoothBlockID);
             //Smooth Slab
@@ -338,7 +344,7 @@ public class Pyrite implements ModInitializer {
         //Create Bricks/Chiseled/Pillar/Smooth for those that don't already exist (Quartz)
         if (!Objects.equals(blockID, "quartz")) {
             //Brick Blocks
-            createPyriteBlock(blockID+"_bricks","block", block);
+            createPyriteBlock(blockID+"_bricks", block);
             //Chiseled Blocks
             createPyriteBlock("chiseled_"+blockID+"_block", "log", block);
             //Pillar Blocks
@@ -346,6 +352,7 @@ public class Pyrite implements ModInitializer {
         }
         //Smooth Blocks
         createSmoothBlocks(blockID, block);
+        createPyriteBlock("nostalgia_"+blockID+"_block", block);
         //Block set for modded blocks
         boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
         BlockSetType set = BlockSetTypeBuilder.copyOf(BlockSetType.GOLD).openableByHand(openByHand).register(new Identifier("pyrite", blockID+"_set"));
@@ -403,6 +410,11 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
         //Locked Chest
         createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15);
+        createPyriteBlock("nostalgia_grass_block", Blocks.COBBLESTONE);
+        createPyriteBlock("nostalgia_cobblestone", Blocks.COBBLESTONE);
+        createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.COBBLESTONE);
+        createPyriteBlock("nostalgia_gravel", Blocks.COBBLESTONE);
+        createPyriteBlock("nostalgia_netherrack", Blocks.COBBLESTONE);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks

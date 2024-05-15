@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:nostalgia_dye"
+        },
+        {
+          "item": "minecraft:weathered_copper"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:nostalgia_weathered_copper_block",
+        "id": "pyrite:nostalgia_weathered_copper_block"
+      }
+    }
