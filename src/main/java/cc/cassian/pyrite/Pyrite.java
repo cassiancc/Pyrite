@@ -414,21 +414,22 @@ public class Pyrite implements ModInitializer {
         createResourceBlockSet("oxidized_copper", Blocks.OXIDIZED_COPPER);
         //Glowstone Lamp
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
-        //Glowing Obsidian
+        //Classic Features
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
         createPyriteBlock("nostalgia_glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
-        //Locked Chest
         createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15);
         createPyriteBlock("nostalgia_grass_block", Blocks.GRASS_BLOCK);
         createPyriteBlock("nostalgia_cobblestone", Blocks.COBBLESTONE);
         createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
         createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL);
         createPyriteBlock("nostalgia_netherrack", Blocks.NETHERRACK);
+        //Classic Flowers
         createPyriteBlock("rose", "flower", Blocks.POPPY);
         createPyriteBlock("orange_rose", "flower", Blocks.POPPY);
         createPyriteBlock("white_rose", "flower", Blocks.POPPY);
         createPyriteBlock("pink_rose", "flower", Blocks.POPPY);
         createPyriteBlock("blue_rose", "flower", Blocks.POPPY);
+        createPyriteBlock("paeonia", "flower", Blocks.PEONY);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
