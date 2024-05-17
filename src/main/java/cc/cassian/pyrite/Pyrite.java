@@ -199,6 +199,9 @@ public class Pyrite implements ModInitializer {
                 pyriteBlocks.add(new ModGlass(blockSettings));
                 addTransparentBlock();
                 break;
+            case "gravel":
+                pyriteBlocks.add(new GravelBlock(blockSettings));
+                break;
             default:
                 System.out.println(blockID + "created as a generic block, block provided" + blockType);
                 pyriteBlocks.add(new Block(blockSettings));
@@ -408,13 +411,14 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         //Glowing Obsidian
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
+        createPyriteBlock("nostalgia_glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
         //Locked Chest
         createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15);
-        createPyriteBlock("nostalgia_grass_block", Blocks.COBBLESTONE);
+        createPyriteBlock("nostalgia_grass_block", Blocks.GRASS_BLOCK);
         createPyriteBlock("nostalgia_cobblestone", Blocks.COBBLESTONE);
-        createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.COBBLESTONE);
-        createPyriteBlock("nostalgia_gravel", Blocks.COBBLESTONE);
-        createPyriteBlock("nostalgia_netherrack", Blocks.COBBLESTONE);
+        createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
+        createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL);
+        createPyriteBlock("nostalgia_netherrack", Blocks.NETHERRACK);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
