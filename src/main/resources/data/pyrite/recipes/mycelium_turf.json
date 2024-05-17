@@ -2,16 +2,17 @@
       {
         "type": "minecraft:crafting_shaped",
         "pattern": [
+          "CC",
           "CC"
         ],
         "key": {
           "C": {
-            "item": "pyrite:mycelium_turf"
+            "item": "minecraft:mycelium"
           }
         },
         "result": {
-          "item": "pyrite:mycelium_carpet",
-          "id": "pyrite:mycelium_carpet",
+          "item": "pyrite:mycelium_turf",
+          "id": "pyrite:mycelium_turf",
           "count": 3
         }
       }

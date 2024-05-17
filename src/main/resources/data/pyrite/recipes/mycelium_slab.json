@@ -2,7 +2,7 @@
       {
         "type": "minecraft:crafting_shaped",
         "pattern": [
-          "CC"
+          "CCC"
         ],
         "key": {
           "C": {
@@ -10,8 +10,8 @@
           }
         },
         "result": {
-          "item": "pyrite:mycelium_carpet",
-          "id": "pyrite:mycelium_carpet",
-          "count": 3
+          "item": "pyrite:mycelium_slab",
+          "id": "pyrite:mycelium_slab",
+          "count": 6
         }
       }

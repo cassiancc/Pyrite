@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
-    "pyrite:grass_slab"
+    "pyrite:grass_slab",
+    "pyrite:mycelium_slab"
+
   ]
 }
 

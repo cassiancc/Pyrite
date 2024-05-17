@@ -305,11 +305,9 @@ public class Pyrite implements ModInitializer {
     //Generate a block and its slab and stair variants.
     public void createTurfSet(String blockID, Block copyBlock) {
         createPyriteBlock( blockID+"_turf", "block", copyBlock);
-        addGrassBlock();
         createStair(blockID);
-        addGrassBlock();
         createSlab(blockID);
-        addGrassBlock();
+        createCarpet(blockID+"_carpet");
     }
 
     //Generate an entire wood set.
@@ -416,8 +414,8 @@ public class Pyrite implements ModInitializer {
         createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Grass Set
         createGrassTurfSet("grass", Blocks.GRASS_BLOCK);
-        //Mycelium Carpet
-        createCarpet("mycelium_carpet");
+        //Mycelium Set
+        createTurfSet("mycelium", Blocks.MYCELIUM);
         //Podzol Carpet
         createCarpet("podzol_carpet");
         //Path Carpet
