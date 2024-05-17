@@ -416,10 +416,10 @@ public class Pyrite implements ModInitializer {
         createGrassTurfSet("grass", Blocks.GRASS_BLOCK);
         //Mycelium Set
         createTurfSet("mycelium", Blocks.MYCELIUM);
-        //Podzol Carpet
-        createCarpet("podzol_carpet");
-        //Path Carpet
-        createCarpet("path_carpet");
+        //Podzol Set
+        createTurfSet("podzol", Blocks.PODZOL);
+        //Path Set
+        createTurfSet("path", Blocks.DIRT_PATH);
         //Nether Brick Fence Gate
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
         //Resource Blocks
@@ -442,6 +442,7 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("nostalgia_glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
         createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15);
         createPyriteBlock("nostalgia_grass_block", Blocks.GRASS_BLOCK);
+        createTurfSet("nostalgia_grass", getLastBlock());
         createPyriteBlock("nostalgia_cobblestone", Blocks.COBBLESTONE);
         createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
         createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL);
@@ -453,6 +454,8 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("pink_rose", "flower", Blocks.POPPY);
         createPyriteBlock("blue_rose", "flower", Blocks.POPPY);
         createPyriteBlock("paeonia", "flower", Blocks.PEONY);
+        createPyriteBlock("buttercup", "flower", Blocks.DANDELION);
+        createPyriteBlock("pink_daisy", "flower", Blocks.PINK_TULIP);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
