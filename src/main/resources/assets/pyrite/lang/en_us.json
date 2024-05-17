@@ -639,7 +639,12 @@
   "block.pyrite.nostalgia_netherrack": "Nostalgia Netherrack",
   "block.pyrite.nostalgia_gravel": "Nostalgia Gravel",
   "block.pyrite.nostalgia_mossy_cobblestone": "Nostalgia Mossy Cobblestone",
-  "block.pyrite.nostalgia_glowing_obsidian": "Nostalgia Glowing Obsidian"
+  "block.pyrite.nostalgia_glowing_obsidian": "Nostalgia Glowing Obsidian",
+  "block.pyrite.rose": "Rose",
+  "block.pyrite.blue_rose": "Blue Rose",
+  "block.pyrite.orange_rose": "Orange Rose",
+  "block.pyrite.white_rose": "White Rose",
+  "block.pyrite.pink_rose": "Pink Rose"
 
 
 

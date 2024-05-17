@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
@@ -201,6 +202,10 @@ public class Pyrite implements ModInitializer {
                 break;
             case "gravel":
                 pyriteBlocks.add(new GravelBlock(blockSettings));
+                break;
+            case "flower":
+                pyriteBlocks.add(new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
+                addTransparentBlock();
                 break;
             default:
                 System.out.println(blockID + "created as a generic block, block provided" + blockType);
@@ -419,6 +424,11 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
         createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL);
         createPyriteBlock("nostalgia_netherrack", Blocks.NETHERRACK);
+        createPyriteBlock("rose", "flower", Blocks.POPPY);
+        createPyriteBlock("orange_rose", "flower", Blocks.POPPY);
+        createPyriteBlock("white_rose", "flower", Blocks.POPPY);
+        createPyriteBlock("pink_rose", "flower", Blocks.POPPY);
+        createPyriteBlock("blue_rose", "flower", Blocks.POPPY);
         //Charred Nether Bricks
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
