@@ -25,6 +25,9 @@ public class Pyrite implements ModInitializer {
     public void addTransparentBlock() {
         transparentBlocks.add(getLastBlock());
     }
+    public void addGrassBlock() {
+        grassBlocks.add(getLastBlock());
+    }
     public Block getLastBlock() {
         return pyriteBlocks.get(pyriteBlocks.size()-1);
     }
@@ -38,6 +41,7 @@ public class Pyrite implements ModInitializer {
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     public static ArrayList<Item> pyriteItems = new ArrayList<>();
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
+    public static ArrayList<Block> grassBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
     static ArrayList<String> pyriteItemIDs = new ArrayList<>();
     static String modID = "pyrite";
@@ -287,6 +291,27 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock(blockID+"_wall_gate","fence_gate", copyBlock);
     }
 
+    //Generate a block and its slab and stair variants.
+    public void createGrassTurfSet(String blockID, Block copyBlock) {
+        createPyriteBlock( blockID+"_turf", "block", copyBlock);
+        addGrassBlock();
+        createStair(blockID);
+        addGrassBlock();
+        createSlab(blockID);
+        addGrassBlock();
+        createCarpet(blockID+"_carpet");
+        addGrassBlock();
+    }
+    //Generate a block and its slab and stair variants.
+    public void createTurfSet(String blockID, Block copyBlock) {
+        createPyriteBlock( blockID+"_turf", "block", copyBlock);
+        addGrassBlock();
+        createStair(blockID);
+        addGrassBlock();
+        createSlab(blockID);
+        addGrassBlock();
+    }
+
     //Generate an entire wood set.
     public void createWoodSet(String blockID, MapColor color, int blockLux) {
         BlockSetType GENERATED_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(new Identifier(modID, blockID));
@@ -389,8 +414,8 @@ public class Pyrite implements ModInitializer {
         createBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Mossy Cobblestone Bricks
         createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
-        //Grass Carpet
-        createCarpet("grass_carpet");
+        //Grass Set
+        createGrassTurfSet("grass", Blocks.GRASS_BLOCK);
         //Mycelium Carpet
         createCarpet("mycelium_carpet");
         //Podzol Carpet

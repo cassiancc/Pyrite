@@ -2,7 +2,7 @@
       {
         "type": "minecraft:crafting_shaped",
         "pattern": [
-          "CC"
+          "CCC"
         ],
         "key": {
           "C": {
@@ -10,8 +10,8 @@
           }
         },
         "result": {
-          "item": "pyrite:grass_carpet",
-          "id": "pyrite:grass_carpet",
-          "count": 3
+          "item": "pyrite:grass_slab",
+          "id": "pyrite:grass_slab",
+          "count": 6
         }
       }
