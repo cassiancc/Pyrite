@@ -13,7 +13,7 @@
 Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include stairs, slabs, fences, fence gates, walls, wall gates, trapdoors, pressure plates, buttons - everything you need to decorate as _you_ want. 
 
 ## Features
-_640 blocks and counting..._
+_646 blocks and counting..._
 - Stained Planks, in every colour of dye (and more!)
   - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)
@@ -22,6 +22,11 @@ _640 blocks and counting..._
   - Iron, Gold, Emerald, Diamond, Netherite, Quartz, Amethyst, Lapis, and Copper Blocks now have consistent block variations, including: Cut Blocks/Stairs/Slabs, Bricks, Chiseled, Pillar, Smooth, Bars, Doors, Trapdoors, Pressure Plates, and Buttons.
 - Wall Gates, because your walls deserve matching gates just like your fences have!
   - This includes wall gates for every vanilla wall type.
+- Nostalgic Features
+  - Roses, of a variety of new colours.
+  - Classic cobblestone, grass, gravel, and more.
+  - Glowing Obsidian from Pocket Edition.
+  - Locked Chests from Beta 1.4.
 - Cobblestone Bricks
   - This includes Mossy Cobblestone Bricks, as well as slabs, stairs, and walls for both.
 - Framed Glass and Framed Glass Panes
