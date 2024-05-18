@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:nostalgia_grass_top"
+          }
+        },
+        "result": {
+          "item": "pyrite:nostalgia_grass_slab",
+          "id": "pyrite:nostalgia_grass_slab",
+          "count": 6
+        }
+      }

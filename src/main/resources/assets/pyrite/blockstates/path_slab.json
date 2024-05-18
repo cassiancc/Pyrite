@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/path_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/path_top"
+      },
+      "type=top": {
+        "model": "pyrite:block/path_slab_top"
+      }
+    }
+  }

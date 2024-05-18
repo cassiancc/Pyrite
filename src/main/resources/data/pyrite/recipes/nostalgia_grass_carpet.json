@@ -6,12 +6,12 @@
         ],
         "key": {
           "C": {
-            "item": "pyrite:redstone_block"
+            "item": "pyrite:nostalgia_grass"
           }
         },
         "result": {
-          "item": "pyrite:redstone_pressure_plate",
-          "id": "pyrite:redstone_pressure_plate",
-          "count": 1
+          "item": "pyrite:nostalgia_grass_carpet",
+          "id": "pyrite:nostalgia_grass_carpet",
+          "count": 3
         }
-      }  }
+      }
