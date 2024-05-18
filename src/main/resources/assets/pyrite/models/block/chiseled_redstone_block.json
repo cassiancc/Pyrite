@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+      "end": "pyrite:block/chiseled_redstone_block_top",
+      "side": "pyrite:block/chiseled_redstone_block"
+    }
+  }

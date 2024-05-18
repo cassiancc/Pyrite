@@ -176,7 +176,12 @@ public class Pyrite implements ModInitializer {
         pyriteBlockIDs.add(blockID);
         switch (blockType.toLowerCase()) {
             case "block":
-                pyriteBlocks.add(new Block(blockSettings));
+                if (blockID.contains("redstone")) {
+                    pyriteBlocks.add(new RedstoneBlock(blockSettings));
+                }
+                else {
+                    pyriteBlocks.add(new Block(blockSettings));
+                }
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
@@ -427,6 +432,7 @@ public class Pyrite implements ModInitializer {
         createResourceBlockSet("gold", Blocks.GOLD_BLOCK);
         createResourceBlockSet("emerald", Blocks.EMERALD_BLOCK);
         createResourceBlockSet("lapis", Blocks.LAPIS_BLOCK);
+        createResourceBlockSet("redstone", Blocks.REDSTONE_BLOCK);
         createResourceBlockSet("diamond", Blocks.DIAMOND_BLOCK);
         createResourceBlockSet("netherite", Blocks.NETHERITE_BLOCK);
         createResourceBlockSet("quartz", Blocks.QUARTZ_BLOCK);

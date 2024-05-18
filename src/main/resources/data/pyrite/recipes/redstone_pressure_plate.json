@@ -2,16 +2,16 @@
       {
         "type": "minecraft:crafting_shaped",
         "pattern": [
-          "CCC"
+          "CC"
         ],
         "key": {
           "C": {
-            "item": "pyrite:mycelium_top"
+            "item": "minecraft:redstone_ingot"
           }
         },
         "result": {
-          "item": "pyrite:mycelium_slab",
-          "id": "pyrite:mycelium_slab",
-          "count": 6
+          "item": "pyrite:redstone_pressure_plate",
+          "id": "pyrite:redstone_pressure_plate",
+          "count": 1
         }
       }

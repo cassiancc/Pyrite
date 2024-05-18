@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:cut_redstone_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:redstone_bricks",
+      "id": "pyrite:redstone_bricks",
+      "count": 4
+    }
+    }

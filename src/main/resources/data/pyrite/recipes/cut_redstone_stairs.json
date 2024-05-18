@@ -7,12 +7,12 @@
       ],
       "key": {
         "C": {
-          "item": "pyrite:mycelium_top"
+          "item": "pyrite:cut_redstone"
         }
       },
       "result": {
-        "item": "pyrite:mycelium_stairs",
-        "id": "pyrite:mycelium_stairs",
+        "item": "pyrite:cut_redstone_stairs",
+        "id": "pyrite:cut_redstone_stairs",
         "count": 4
       }
   }

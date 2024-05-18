@@ -2,16 +2,18 @@
       {
         "type": "minecraft:crafting_shaped",
         "pattern": [
+          "CC",
+          "CC",
           "CC"
         ],
         "key": {
           "C": {
-            "item": "minecraft:mycelium"
+            "item": "pyrite:redstone_block"
           }
         },
         "result": {
-          "item": "pyrite:mycelium_carpet",
-          "id": "pyrite:mycelium_carpet",
+          "item": "pyrite:redstone_door",
+          "id": "pyrite:redstone_door",
           "count": 3
         }
       }

@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "D",
+      "D"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:redstone_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:chiseled_redstone_block",
+      "id": "pyrite:chiseled_redstone_block",
+      "count": 4
+    }
+    }
