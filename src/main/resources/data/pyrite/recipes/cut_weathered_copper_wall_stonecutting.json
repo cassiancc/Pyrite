@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:weathered_copper"
+    },
+    "result": "pyrite:cut_weathered_copper_wall",
+    "count": 1
+  }

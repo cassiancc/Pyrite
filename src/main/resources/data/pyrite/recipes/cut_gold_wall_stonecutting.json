@@ -1,7 +1,7 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "pyrite:cut_gold"
+      "item": "minecraft:gold_block"
     },
     "result": "pyrite:cut_gold_wall",
     "count": 1

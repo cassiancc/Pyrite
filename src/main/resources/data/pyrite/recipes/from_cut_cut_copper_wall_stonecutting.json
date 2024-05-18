@@ -1,8 +1,8 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:cut_copper"
     },
-    "result": "pyrite:cut_iron_wall",
+    "result": "pyrite:cut_copper_wall",
     "count": 1
   }

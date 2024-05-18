@@ -1,8 +1,8 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "minecraft:iron_block"
+      "item": "pyrite:cut_lapis"
     },
-    "result": "pyrite:cut_iron_wall",
+    "result": "pyrite:cut_lapis_wall",
     "count": 1
   }
