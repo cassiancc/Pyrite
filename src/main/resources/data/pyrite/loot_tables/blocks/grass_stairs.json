@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "pyrite:grass_turf_stairs"
+            "name": "pyrite:grass_stairs"
           }
         ],
         "conditions": [
