@@ -4,7 +4,7 @@
         "model": "pyrite:block/podzol_slab"
       },
       "type=double": {
-        "model": "pyrite:block/podzol_top"
+        "model": "pyrite:block/podzol_turf"
       },
       "type=top": {
         "model": "pyrite:block/podzol_slab_top"

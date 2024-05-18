@@ -13,6 +13,8 @@
     "pyrite:smooth_iron_slab",
     "pyrite:smooth_iron_stairs",
     "pyrite:smooth_iron_wall_gate",
-    "pyrite:smooth_iron_wall"
+    "pyrite:smooth_iron_wall",
+    "pyrite:nostalgia_iron_block"
+
   ]
 }

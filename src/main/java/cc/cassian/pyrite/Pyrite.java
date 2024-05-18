@@ -192,7 +192,7 @@ public class Pyrite implements ModInitializer {
                 pyriteBlocks.add(new ModSlab(blockSettings, power));
                 break;
             case "wall":
-                pyriteBlocks.add(new WallBlock(blockSettings));
+                pyriteBlocks.add(new ModWall(blockSettings, power));
                 break;
             case "fence":
                 pyriteBlocks.add(new FenceBlock(blockSettings));

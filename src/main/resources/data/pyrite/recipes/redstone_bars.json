@@ -1,8 +1,8 @@
         {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-      "DD",
-      "DD"
+      "DDD",
+      "DDD"
     ],
     "key": {
       "D": {
@@ -10,8 +10,8 @@
       }
     },
     "result": {
-      "item": "pyrite:redstone_bricks",
-      "id": "pyrite:redstone_bricks",
-      "count": 4
+      "item": "pyrite:redstone_bars",
+      "id": "pyrite:redstone_bars",
+      "count": 32
     }
     }

@@ -40,6 +40,12 @@
     "pyrite:copper_door",
     "pyrite:exposed_copper_door",
     "pyrite:weathered_copper_door",
-    "pyrite:oxidized_copper_door"
+    "pyrite:oxidized_copper_door",
+    "pyrite:nostalgia_copper_block",
+    "pyrite:nostalgia_exposed_copper_block",
+    "pyrite:nostalgia_weathered_copper_block",
+    "pyrite:nostalgia_oxidized_copper_block"
+
+
   ]
 }
