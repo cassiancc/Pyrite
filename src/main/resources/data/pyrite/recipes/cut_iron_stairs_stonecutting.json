@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "minecraft:iron_block"
     },
-    "result": "pyrite:cut_iron_slab",
-    "count": 2
+    "result": "pyrite:cut_iron_stairs",
+    "count": 1
   }

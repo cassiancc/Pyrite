@@ -1,8 +1,8 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "minecraft:iron_block"
+      "item": "pyrite:cut_amethyst"
     },
-    "result": "pyrite:cut_iron_slab",
+    "result": "pyrite:cut_amethyst_slab",
     "count": 2
   }

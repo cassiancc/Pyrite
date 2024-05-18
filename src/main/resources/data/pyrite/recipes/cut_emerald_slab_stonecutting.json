@@ -1,8 +1,8 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:emerald_block"
     },
-    "result": "pyrite:cut_iron_slab",
+    "result": "pyrite:cut_emerald_slab",
     "count": 2
   }
