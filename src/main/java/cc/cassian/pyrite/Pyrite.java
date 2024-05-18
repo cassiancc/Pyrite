@@ -174,20 +174,22 @@ public class Pyrite implements ModInitializer {
     //Add most Pyrite blocks.
     public void addPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings) {
         pyriteBlockIDs.add(blockID);
+        int power;
+        if (blockID.contains("redstone")) {
+            power = 15;
+        }
+        else {
+            power = 0;
+        }
         switch (blockType.toLowerCase()) {
             case "block":
-                if (blockID.contains("redstone")) {
-                    pyriteBlocks.add(new RedstoneBlock(blockSettings));
-                }
-                else {
-                    pyriteBlocks.add(new Block(blockSettings));
-                }
+                pyriteBlocks.add(new ModBlock(blockSettings, power));
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
                 break;
             case "slab":
-                pyriteBlocks.add(new SlabBlock(blockSettings));
+                pyriteBlocks.add(new ModSlab(blockSettings, power));
                 break;
             case "wall":
                 pyriteBlocks.add(new WallBlock(blockSettings));
@@ -196,13 +198,13 @@ public class Pyrite implements ModInitializer {
                 pyriteBlocks.add(new FenceBlock(blockSettings));
                 break;
             case "log":
-                pyriteBlocks.add(new PillarBlock(blockSettings));
+                pyriteBlocks.add(new ModPillar(blockSettings, power));
                 break;
             case "facing":
-                pyriteBlocks.add(new ModFacingBlock(blockSettings));
+                pyriteBlocks.add(new ModFacingBlock(blockSettings, power));
                 break;
             case "bars", "glass_pane":
-                pyriteBlocks.add(new ModPane(blockSettings));
+                pyriteBlocks.add(new ModPane(blockSettings, power));
                 addTransparentBlock();
                 break;
             case "glass":

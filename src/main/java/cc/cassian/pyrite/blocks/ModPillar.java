@@ -1,20 +1,21 @@
 package cc.cassian.pyrite.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.StairsBlock;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
-public class ModStairs extends StairsBlock {
+public class ModPillar extends PillarBlock {
     private final int power;
 
-    public ModStairs(BlockState baseblockstate, Settings settings) {
-        super(baseblockstate, settings);
+    public ModPillar(Settings settings) {
+        super(settings);
         this.power = 0;
     }
-    public ModStairs(BlockState baseblockstate, Settings settings, int power) {
-        super(baseblockstate, settings);
+    public ModPillar(Settings settings, int power) {
+        super(settings);
         this.power = power;
     }
 
