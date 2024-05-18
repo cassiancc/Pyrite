@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/template_fence_gate_wall",
     "textures": {
-      "texture": "minecraft:block/oxidized_cut_copper"
+      "texture": "minecraft:block/exposed_cut_copper"
     }
   }
