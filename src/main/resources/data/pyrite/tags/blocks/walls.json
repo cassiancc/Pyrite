@@ -49,5 +49,7 @@
         "pyrite:smooth_copper_wall",
         "pyrite:smooth_exposed_copper_wall",
         "pyrite:smooth_weathered_copper_wall",
-        "pyrite:smooth_oxidized_copper_wall"
+        "pyrite:smooth_oxidized_copper_wall",
+        "pyrite:smooth_stone_brick_wall"
+
     ]}

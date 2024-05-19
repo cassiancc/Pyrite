@@ -419,6 +419,7 @@ public class Pyrite implements ModInitializer {
         createBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Mossy Cobblestone Bricks
         createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
+        createBrickSet("smooth_stone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Grass Set
         createGrassTurfSet("grass", Blocks.GRASS_BLOCK);
         //Mycelium Set

@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
     "pyrite:cobblestone_wall_gate",
+    "pyrite:smooth_stone_brick_wall_gate",
     "pyrite:mossy_cobblestone_wall_gate",
     "pyrite:stone_brick_wall_gate",
     "pyrite:mossy_stone_brick_wall_gate",
