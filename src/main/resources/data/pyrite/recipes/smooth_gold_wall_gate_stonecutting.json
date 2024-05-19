@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:smooth_gold"
+    },
+    "result": "pyrite:smooth_gold_wall_gate",
+    "count": 1
+  }
