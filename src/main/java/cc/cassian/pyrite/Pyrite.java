@@ -1,6 +1,7 @@
 package cc.cassian.pyrite;
 
 import cc.cassian.pyrite.blocks.*;
+import com.mojang.serialization.MapCodec;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
@@ -212,7 +213,12 @@ public class Pyrite implements ModInitializer {
                 addTransparentBlock();
                 break;
             case "gravel":
-                pyriteBlocks.add(new GravelBlock(blockSettings));
+                pyriteBlocks.add(new FallingBlock(blockSettings) {
+                    @Override
+                    protected MapCodec<? extends FallingBlock> getCodec() {
+                        return null;
+                    }
+                });
                 break;
             case "flower":
                 pyriteBlocks.add(new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
@@ -228,7 +234,7 @@ public class Pyrite implements ModInitializer {
     //Add Pyrite blocks that require Wood Types - Fence gates.
     public void addPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
         pyriteBlockIDs.add(blockID);
-        pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
+        pyriteBlocks.add(new FenceGateBlock(type, blockSettings));
     }
 
     //Add Pyrite blocks that require Block Sets.
@@ -236,11 +242,11 @@ public class Pyrite implements ModInitializer {
         pyriteBlockIDs.add(blockID);
         switch (blockType) {
             case "door":
-                pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), type));
+                pyriteBlocks.add(new DoorBlock(type, blockSettings.nonOpaque()));
                 addTransparentBlock();
                 break;
             case "trapdoor":
-                pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), type));
+                pyriteBlocks.add(new TrapdoorBlock(type, blockSettings.nonOpaque()));
                 addTransparentBlock();
                 break;
             case "button":
