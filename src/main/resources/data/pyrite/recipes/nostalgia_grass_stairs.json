@@ -1,0 +1,18 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:nostalgia_grass_turf"
+        }
+      },
+      "result": {
+        "item": "pyrite:nostalgia_grass_stairs",
+        "id": "pyrite:nostalgia_grass_stairs",
+        "count": 4
+      }
+  }

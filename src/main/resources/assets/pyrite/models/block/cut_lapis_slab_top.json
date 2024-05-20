@@ -1,0 +1,8 @@
+{
+        "parent": "minecraft:block/slab_top",
+        "textures": {
+        "bottom": "pyrite:block/cut_lapis",
+        "top": "pyrite:block/cut_lapis",
+        "side": "pyrite:block/cut_lapis"
+        }
+    }

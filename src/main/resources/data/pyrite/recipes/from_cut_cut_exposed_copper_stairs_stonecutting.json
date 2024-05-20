@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:cut_exposed_copper"
+    },
+    "result": "pyrite:cut_exposed_copper_stairs",
+    "count": 1
+  }

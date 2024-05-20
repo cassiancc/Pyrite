@@ -9,16 +9,17 @@ import net.minecraft.block.*;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
 
-import static cc.cassian.pyrite.Pyrite.pyriteBlocks;
-import static cc.cassian.pyrite.Pyrite.transparentBlocks;
+import static cc.cassian.pyrite.Pyrite.*;
 
 
 @Environment(EnvType.CLIENT)
 public class PyriteClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), pyriteBlocks.get(12));
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7183658, pyriteBlocks.get(12));
+        for (Block pyriteBlock : grassBlocks) {
+            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), pyriteBlock);
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7183658, pyriteBlock);
+        }
         for (Block pyriteBlock : transparentBlocks) {
             BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock, RenderLayer.getCutout());
         }}

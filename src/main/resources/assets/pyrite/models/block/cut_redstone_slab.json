@@ -1,0 +1,8 @@
+{
+        "parent": "minecraft:block/slab",
+        "textures": {
+        "bottom": "pyrite:block/cut_redstone",
+        "top": "pyrite:block/cut_redstone",
+        "side": "pyrite:block/cut_redstone"
+        }
+    }

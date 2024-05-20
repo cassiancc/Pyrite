@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DDD",
+      "DDD"
+    ],
+    "key": {
+      "D": {
+        "item": "pyrite:cut_emerald"
+      }
+    },
+    "result": {
+      "item": "pyrite:emerald_bars",
+      "id": "pyrite:emerald_bars",
+      "count": 32
+    }
+    }

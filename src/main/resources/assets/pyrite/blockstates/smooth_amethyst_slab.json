@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/smooth_amethyst_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/smooth_amethyst"
+      },
+      "type=top": {
+        "model": "pyrite:block/smooth_amethyst_slab_top"
+      }
+    }
+  }

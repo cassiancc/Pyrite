@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:redstone_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:redstone_door",
+          "id": "pyrite:redstone_door",
+          "count": 3
+        }
+      }

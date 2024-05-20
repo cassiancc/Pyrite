@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:redstone_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:redstone_button",
+          "id": "pyrite:redstone_button",
+          "count": 1
+        }
+      }

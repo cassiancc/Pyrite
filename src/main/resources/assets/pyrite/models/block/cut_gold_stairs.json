@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/stairs",
+    "textures": {
+      "bottom": "pyrite:block/cut_gold",
+      "top": "pyrite:block/cut_gold",
+      "side": "pyrite:block/cut_gold"
+    }
+  }

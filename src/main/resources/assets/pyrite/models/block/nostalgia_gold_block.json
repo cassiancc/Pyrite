@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "pyrite:block/nostalgia_gold_block",
+    "bottom": "pyrite:block/nostalgia_gold_block_bottom",
+    "side": "pyrite:block/nostalgia_gold_block_side",
+    "front": "pyrite:block/nostalgia_gold_block_side",
+    "particle": "pyrite:block/nostalgia_gold_block"
+
+  }
+}

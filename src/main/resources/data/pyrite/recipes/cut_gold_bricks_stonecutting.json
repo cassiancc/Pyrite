@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:cut_gold"
+    },
+    "result": "pyrite:gold_bricks",
+    "count": 1
+  }

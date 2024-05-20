@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:cut_amethyst"
+    },
+    "result": "pyrite:cut_amethyst_stairs",
+    "count": 1
+  }

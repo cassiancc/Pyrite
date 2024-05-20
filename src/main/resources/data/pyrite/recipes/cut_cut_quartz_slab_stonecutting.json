@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:cut_quartz"
+    },
+    "result": "pyrite:cut_quartz_slab",
+    "count": 2
+  }

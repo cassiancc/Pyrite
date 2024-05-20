@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:smooth_quartz"
+      }
+    },
+    "result": {
+      "item": "pyrite:smooth_quartz_wall",
+      "id": "pyrite:smooth_quartz_wall",
+      "count": 6
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:charred_nether_bricks"
+    },
+    "result": "pyrite:charred_nether_brick_wall_gate",
+    "count": 1
+  }

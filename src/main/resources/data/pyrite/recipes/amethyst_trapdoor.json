@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:amethyst_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:amethyst_trapdoor",
+          "id": "pyrite:amethyst_trapdoor",
+          "count": 2
+        }
+      }

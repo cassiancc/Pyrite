@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:diamond_block"
+    },
+    "result": "pyrite:chiseled_diamond_block",
+    "count": 1
+  }

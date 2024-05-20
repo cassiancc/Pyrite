@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:redstone_block"
+    },
+    "result": "pyrite:cut_redstone_wall",
+    "count": 1
+  }

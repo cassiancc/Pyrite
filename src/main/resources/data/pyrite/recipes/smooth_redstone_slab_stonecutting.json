@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:smooth_redstone"
+    },
+    "result": "pyrite:smooth_redstone_slab",
+    "count": 2
+  }

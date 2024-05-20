@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:smooth_lapis"
+    },
+    "result": "pyrite:smooth_lapis_wall_gate",
+    "count": 1
+  }

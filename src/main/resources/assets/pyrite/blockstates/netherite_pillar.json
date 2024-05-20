@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "axis=x": {
+        "model": "pyrite:block/netherite_pillar_horizontal",
+        "x": 90,
+        "y": 90
+      },
+      "axis=y": {
+        "model": "pyrite:block/netherite_pillar"
+      },
+      "axis=z": {
+        "model": "pyrite:block/netherite_pillar_horizontal",
+        "x": 90
+      }
+    }
+  }
