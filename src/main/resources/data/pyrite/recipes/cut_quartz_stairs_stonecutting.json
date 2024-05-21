@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "minecraft:quartz_block"
-    },
-    "result": "pyrite:cut_quartz_stairs",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:quartz_block"},"result":{"id":"pyrite:cut_quartz_stairs","count":1}}

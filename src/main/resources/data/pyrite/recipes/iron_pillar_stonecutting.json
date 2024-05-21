@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "minecraft:iron_block"
-    },
-    "result": "pyrite:iron_pillar",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:iron_block"},"result":{"id":"pyrite:iron_pillar","count":1}}

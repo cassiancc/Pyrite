@@ -1,17 +1,1 @@
-{
-      "type": "minecraft:crafting_shaped",
-      "category": "building",
-      "key": {
-        "#": {
-          "item": "minecraft:lapis_block"
-        }
-      },
-      "pattern": [
-        "##",
-        "##"
-      ],
-      "result": {
-        "count": 4,
-        "item": "pyrite:cut_lapis"
-      }
-    }
+{"type":"minecraft:crafting_shaped","category":"building","key":{"#":{"item":"minecraft:lapis_block"}},"pattern":["##","##"],"result":{"id":"pyrite:cut_lapis"}}

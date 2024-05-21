@@ -1,8 +1,10 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-      "item": "pyrite:smooth_quartz"
+        "item": "minecraft:smooth_quartz"
     },
-    "result": "pyrite:smooth_quartz_wall_gate",
-    "count": 1
-  }
+    "result": {
+        "id": "pyrite:smooth_quartz_wall_gate",
+        "count": 1
+    }
+}

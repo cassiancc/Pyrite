@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "minecraft:amethyst_block"
-    },
-    "result": "pyrite:amethyst_bricks",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:amethyst_block"},"result":{"id":"pyrite:amethyst_bricks","count":1}}
