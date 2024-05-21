@@ -4,7 +4,7 @@
         "model": "pyrite:block/nostalgia_grass_slab"
       },
       "type=double": {
-        "model": "pyrite:block/nostalgia_grass_top"
+        "model": "pyrite:block/nostalgia_grass_turf"
       },
       "type=top": {
         "model": "pyrite:block/nostalgia_grass_slab_top"

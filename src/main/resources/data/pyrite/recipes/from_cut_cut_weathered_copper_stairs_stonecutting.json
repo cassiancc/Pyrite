@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "minecraft:cut_weathered_copper"
-    },
-    "result": "pyrite:cut_weathered_copper_stairs",
-    "count": 1
-  }
