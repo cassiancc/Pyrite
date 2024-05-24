@@ -25,9 +25,6 @@ public class Pyrite implements ModInitializer {
     public void addTransparentBlock() {
         transparentBlocks.add(getLastBlock());
     }
-    public void addCraftingTable() {
-        craftingTableBlocks.add(getLastBlock());
-    }
     public void addGrassBlock() {
         grassBlocks.add(getLastBlock());
     }
@@ -191,7 +188,6 @@ public class Pyrite implements ModInitializer {
                 break;
             case "crafting":
                 pyriteBlocks.add(new ModCraftingTable(blockSettings));
-                addCraftingTable();
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
