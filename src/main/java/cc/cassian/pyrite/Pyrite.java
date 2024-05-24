@@ -25,6 +25,9 @@ public class Pyrite implements ModInitializer {
     public void addTransparentBlock() {
         transparentBlocks.add(getLastBlock());
     }
+    public void addCraftingTable() {
+        craftingTableBlocks.add(getLastBlock());
+    }
     public void addGrassBlock() {
         grassBlocks.add(getLastBlock());
     }
@@ -41,6 +44,7 @@ public class Pyrite implements ModInitializer {
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     public static ArrayList<Item> pyriteItems = new ArrayList<>();
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
+    public static ArrayList<Block> craftingTableBlocks = new ArrayList<>();
     public static ArrayList<Block> grassBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
     static ArrayList<String> pyriteItemIDs = new ArrayList<>();
@@ -184,6 +188,10 @@ public class Pyrite implements ModInitializer {
         switch (blockType.toLowerCase()) {
             case "block":
                 pyriteBlocks.add(new ModBlock(blockSettings, power));
+                break;
+            case "crafting":
+                pyriteBlocks.add(new ModCraftingTable(blockSettings));
+                addCraftingTable();
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
@@ -339,6 +347,9 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock(blockID+"_door", "door", getLastBlock(6), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Trapdoors
         createPyriteBlock(blockID+"_trapdoor", "trapdoor", getLastBlock(7), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        //Crafting Tables
+        createPyriteBlock( blockID+"_crafting_table", "crafting", Blocks.CRAFTING_TABLE, color, blockLux);
+
     }
 
     //Generate an entire Cut Block set.
