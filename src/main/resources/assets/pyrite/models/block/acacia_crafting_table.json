@@ -7,6 +7,6 @@
       "east": "pyrite:block/acacia_crafting_table_side",
       "west": "pyrite:block/acacia_crafting_table_front",
       "up": "pyrite:block/acacia_crafting_table_top",
-      "down": "pyrite:block/acacia_planks"
+      "down": "minecraft:block/acacia_planks"
     }
   }

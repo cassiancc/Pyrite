@@ -7,6 +7,6 @@
       "east": "pyrite:block/jungle_crafting_table_side",
       "west": "pyrite:block/jungle_crafting_table_front",
       "up": "pyrite:block/jungle_crafting_table_top",
-      "down": "pyrite:block/jungle_planks"
+      "down": "minecraft:block/jungle_planks"
     }
   }

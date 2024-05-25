@@ -7,6 +7,6 @@
       "east": "pyrite:block/bamboo_crafting_table_side",
       "west": "pyrite:block/bamboo_crafting_table_front",
       "up": "pyrite:block/bamboo_crafting_table_top",
-      "down": "pyrite:block/bamboo_planks"
+      "down": "minecraft:block/bamboo_planks"
     }
   }

@@ -7,6 +7,6 @@
       "east": "pyrite:block/spruce_crafting_table_side",
       "west": "pyrite:block/spruce_crafting_table_front",
       "up": "pyrite:block/spruce_crafting_table_top",
-      "down": "pyrite:block/spruce_planks"
+      "down": "minecraft:block/spruce_planks"
     }
   }

@@ -7,6 +7,6 @@
       "east": "pyrite:block/warped_crafting_table_side",
       "west": "pyrite:block/warped_crafting_table_front",
       "up": "pyrite:block/warped_crafting_table_top",
-      "down": "pyrite:block/warped_planks"
+      "down": "minecraft:block/warped_planks"
     }
   }

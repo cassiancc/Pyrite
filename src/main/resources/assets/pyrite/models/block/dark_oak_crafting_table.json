@@ -7,6 +7,6 @@
       "east": "pyrite:block/dark_oak_crafting_table_side",
       "west": "pyrite:block/dark_oak_crafting_table_front",
       "up": "pyrite:block/dark_oak_crafting_table_top",
-      "down": "pyrite:block/dark_oak_planks"
+      "down": "minecraft:block/dark_oak_planks"
     }
   }
