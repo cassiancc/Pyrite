@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:oak_planks"
+      }
+    },
+    "result": {
+      "item": "minecraft:crafting_table",
+      "id": "minecraft:crafting_table",
+      "count": 1
+    }
+    }
