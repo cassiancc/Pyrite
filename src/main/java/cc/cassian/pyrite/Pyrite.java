@@ -42,7 +42,6 @@ public class Pyrite implements ModInitializer {
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     public static ArrayList<Item> pyriteItems = new ArrayList<>();
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
-    public static ArrayList<Block> craftingTableBlocks = new ArrayList<>();
     public static ArrayList<Block> grassBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
     static ArrayList<String> pyriteItemIDs = new ArrayList<>();
@@ -505,7 +504,7 @@ public class Pyrite implements ModInitializer {
                 block = block.substring(0, block.indexOf("_planks"));
             }
             //Create block.
-            createPyriteBlock(block + "_crafting_table","crafting_table", plankBlock);
+            createPyriteBlock(block + "_crafting_table","crafting", plankBlock);
         }
 
 
