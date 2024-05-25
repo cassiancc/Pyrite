@@ -687,8 +687,29 @@
   "block.pyrite.pink_rose": "Pink Rose",
   "block.pyrite.paeonia": "Paeonia",
   "block.pyrite.buttercup": "Buttercup",
-  "block.pyrite.pink_daisy": "Pink Daisy"
-
-
-
+  "block.pyrite.pink_daisy": "Pink Daisy",
+  "block.pyrite.white_stained_crafting_table": "White Stained Crafting Table",
+  "block.pyrite.orange_stained_crafting_table": "Orange Stained Crafting Table",
+  "block.pyrite.magenta_stained_crafting_table": "Magenta Stained Crafting Table",
+  "block.pyrite.light_blue_stained_crafting_table": "Light Blue Stained Crafting Table",
+  "block.pyrite.yellow_stained_crafting_table": "Yellow Stained Crafting Table",
+  "block.pyrite.lime_stained_crafting_table": "Lime Stained Crafting Table",
+  "block.pyrite.pink_stained_crafting_table": "Pink Stained Crafting Table",
+  "block.pyrite.gray_stained_crafting_table": "Gray Stained Crafting Table",
+  "block.pyrite.light_gray_stained_crafting_table": "Light Gray Stained Crafting Table",
+  "block.pyrite.cyan_stained_crafting_table": "Cyan Stained Crafting Table",
+  "block.pyrite.purple_stained_crafting_table": "Purple Stained Crafting Table",
+  "block.pyrite.blue_stained_crafting_table": "Blue Stained Crafting Table",
+  "block.pyrite.brown_stained_crafting_table": "Brown Stained Crafting Table",
+  "block.pyrite.green_stained_crafting_table": "Green Stained Crafting Table",
+  "block.pyrite.red_stained_crafting_table": "Red Stained Crafting Table",
+  "block.pyrite.black_stained_crafting_table": "Black Stained Crafting Table",
+  "block.pyrite.glow_stained_crafting_table": "Glow Stained Crafting Table",
+  "block.pyrite.dragon_stained_crafting_table": "Dragon Stained Crafting Table",
+  "block.pyrite.star_stained_crafting_table": "Star Stained Crafting Table",
+  "block.pyrite.honey_stained_crafting_table": "Honey Stained Crafting Table",
+  "block.pyrite.nostalgia_stained_crafting_table": "Workbench",
+  "block.pyrite.rose_stained_crafting_table": "Rose Stained Crafting Table",
+  "block.pyrite.red_mushroom_crafting_table": "Red Mushroom Crafting Table",
+  "block.pyrite.brown_mushroom_crafting_table": "Brown Mushroom Crafting Table"
 }
