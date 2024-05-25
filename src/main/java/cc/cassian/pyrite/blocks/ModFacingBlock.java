@@ -26,10 +26,10 @@ public class ModFacingBlock extends HorizontalFacingBlock {
         this.power = power;
 
     }
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-    }
+//    @Override
+//    public BlockState getPlacementState(ItemPlacementContext ctx) {
+//        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+//    }
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
