@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+      "particle": "pyrite:block/blue_stained_crafting_table_front",
+      "north": "pyrite:block/blue_stained_crafting_table_front",
+      "south": "pyrite:block/blue_stained_crafting_table_side",
+      "east": "pyrite:block/blue_stained_crafting_table_side",
+      "west": "pyrite:block/blue_stained_crafting_table_front",
+      "up": "pyrite:block/blue_stained_crafting_table_top",
+      "down": "pyrite:block/blue_stained_planks"
+    }
+  }

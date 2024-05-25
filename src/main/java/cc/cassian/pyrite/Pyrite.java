@@ -42,6 +42,7 @@ public class Pyrite implements ModInitializer {
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     public static ArrayList<Item> pyriteItems = new ArrayList<>();
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
+    public static ArrayList<Block> craftingTableBlocks = new ArrayList<>();
     public static ArrayList<Block> grassBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
     static ArrayList<String> pyriteItemIDs = new ArrayList<>();
@@ -70,6 +71,19 @@ public class Pyrite implements ModInitializer {
             "honey",
             "nostalgia",
             "rose"
+    };
+
+    Block[] vanillaWood = {
+            Blocks.SPRUCE_PLANKS,
+            Blocks.BIRCH_PLANKS,
+            Blocks.JUNGLE_PLANKS,
+            Blocks.ACACIA_PLANKS,
+            Blocks.DARK_OAK_PLANKS,
+            Blocks.MANGROVE_PLANKS,
+            Blocks.CHERRY_PLANKS,
+            Blocks.BAMBOO_PLANKS,
+            Blocks.CRIMSON_PLANKS,
+            Blocks.WARPED_PLANKS
     };
 
     //List of Wall Blocks to generated Wall Gates for.
@@ -185,6 +199,9 @@ public class Pyrite implements ModInitializer {
         switch (blockType.toLowerCase()) {
             case "block":
                 pyriteBlocks.add(new ModBlock(blockSettings, power));
+                break;
+            case "crafting":
+                pyriteBlocks.add(new ModCraftingTable(blockSettings));
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
@@ -345,6 +362,9 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock(blockID+"_door", "door", getLastBlock(6), color, blockLux, GENERATED_SET, GENERATED_TYPE);
         //Stained Trapdoors
         createPyriteBlock(blockID+"_trapdoor", "trapdoor", getLastBlock(7), color, blockLux, GENERATED_SET, GENERATED_TYPE);
+        //Crafting Tables
+        createPyriteBlock( blockID+"_crafting_table", "crafting", Blocks.CRAFTING_TABLE, color, blockLux);
+
     }
 
     //Generate an entire Cut Block set.
@@ -475,13 +495,26 @@ public class Pyrite implements ModInitializer {
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
         createBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
+
+        //Autogenerate Vanilla Crafting Tables
+        for (Block plankBlock : vanillaWood) {
+            //Find block ID
+            String block = plankBlock.toString().substring(plankBlock.toString().indexOf(":") + 1, plankBlock.toString().indexOf("}"));
+            //If the block provided isn't a wall block, add the wall tag.
+            if (block.contains("planks")) {
+                block = block.substring(0, block.indexOf("_planks"));
+            }
+            //Create block.
+            createPyriteBlock(block + "_crafting_table","crafting_table", plankBlock);
+        }
+
+
         //Red Mushroom Blocks
         createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("red_mushroom", MapColor.RED, 0);
         //Brown Mushroom Blocks
         createPyriteBlock("brown_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("brown_mushroom", MapColor.BROWN, 0);
-
         //Autogenerate dye blocks.
         for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
             String dye = dyes[dyeIndex];
