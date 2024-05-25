@@ -1,6 +1,1 @@
-{
-    "parent": "minecraft:block/template_fence_gate_wall",
-    "textures": {
-      "texture": "minecraft:block/quartz_block_bottom"
-    }
-  }
+{"parent":"pyrite:block/template_wall_gate_wall","textures":{"texture":"minecraft:block/quartz_block_bottom"}}
