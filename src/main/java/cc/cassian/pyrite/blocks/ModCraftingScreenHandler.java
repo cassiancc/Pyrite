@@ -12,13 +12,13 @@ public class ModCraftingScreenHandler extends CraftingScreenHandler {
     private final Block block;
 
     public ModCraftingScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, Block block) {
-        super(syncId, playerInventory);
+        super(syncId, playerInventory, context);
         this.context = context;
         this.block = block;
     }
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return CraftingScreenHandler.canUse(this.context, player, block);
+        return ModCraftingScreenHandler.canUse(this.context, player, block);
     }
 }
