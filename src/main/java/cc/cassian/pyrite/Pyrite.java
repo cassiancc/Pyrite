@@ -72,6 +72,19 @@ public class Pyrite implements ModInitializer {
             "rose"
     };
 
+    Block[] vanillaWood = {
+            Blocks.SPRUCE_PLANKS,
+            Blocks.BIRCH_PLANKS,
+            Blocks.JUNGLE_PLANKS,
+            Blocks.ACACIA_PLANKS,
+            Blocks.DARK_OAK_PLANKS,
+            Blocks.MANGROVE_PLANKS,
+            Blocks.CHERRY_PLANKS,
+            Blocks.BAMBOO_PLANKS,
+            Blocks.CRIMSON_PLANKS,
+            Blocks.WARPED_PLANKS
+    };
+
     //List of Wall Blocks to generated Wall Gates for.
     Block[] walls_blocks = {
             Blocks.COBBLESTONE_WALL,
@@ -476,13 +489,26 @@ public class Pyrite implements ModInitializer {
         createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
         createBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
+
+        //Autogenerate Vanilla Crafting Tables
+        for (Block plankBlock : vanillaWood) {
+            //Find block ID
+            String block = plankBlock.toString().substring(plankBlock.toString().indexOf(":") + 1, plankBlock.toString().indexOf("}"));
+            //If the block provided isn't a wall block, add the wall tag.
+            if (block.contains("planks")) {
+                block = block.substring(0, block.indexOf("_planks"));
+            }
+            //Create block.
+            createPyriteBlock(block + "_crafting_table","crafting_table", plankBlock);
+        }
+
+
         //Red Mushroom Blocks
         createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("red_mushroom", MapColor.RED, 0);
         //Brown Mushroom Blocks
         createPyriteBlock("brown_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("brown_mushroom", MapColor.BROWN, 0);
-
         //Autogenerate dye blocks.
         for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
             String dye = dyes[dyeIndex];

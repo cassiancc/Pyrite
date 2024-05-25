@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:spruce_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:spruce_crafting_table",
+          "id": "pyrite:spruce_crafting_table",
+          "count": 1
+        }
+      }
