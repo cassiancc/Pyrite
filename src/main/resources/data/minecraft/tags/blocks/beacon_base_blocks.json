@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#pyrite:diamond",
+    "#pyrite:netherite",
+    "#pyrite:gold",
+    "#pyrite:emerald",
+    "#pyrite:iron"
+
+
+  ]
+}

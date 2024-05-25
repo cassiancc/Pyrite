@@ -6,7 +6,7 @@
         ],
         "key": {
           "C": {
-            "item": "minecraft:grass_block"
+            "item": "pyrite:grass_turf"
           }
         },
         "result": {

@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "pyrite:cut_iron"
+      }
+    },
+    "result": {
+      "item": "pyrite:iron_bricks",
+      "id": "pyrite:iron_bricks",
+      "count": 4
+    }
+    }

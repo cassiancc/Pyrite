@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/mycelium_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/mycelium_turf"
+      },
+      "type=top": {
+        "model": "pyrite:block/mycelium_slab_top"
+      }
+    }
+  }

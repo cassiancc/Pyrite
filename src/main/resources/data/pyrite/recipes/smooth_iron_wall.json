@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:smooth_iron"
+      }
+    },
+    "result": {
+      "item": "pyrite:smooth_iron_wall",
+      "id": "pyrite:smooth_iron_wall",
+      "count": 6
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:cut_emerald"
+    },
+    "result": "pyrite:emerald_bricks",
+    "count": 1
+  }

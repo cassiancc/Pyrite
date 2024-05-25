@@ -3,7 +3,7 @@
   "id": "pyrite",
   "version": "${version}",
   "name": "Pyrite",
-  "description": "Pyrite is a Fabric mod that aims to expand on Vanilla's block palette with new wood types, bricks, and more.",
+  "description": "Variations of Vanilla blocks, including dyed wood, dyed bricks, new material blocks and more to complete your colourful builds.",
   "authors": ["cassiancc"],
   "contact": {
     "homepage": "https://modrinth.com/mod/pyrite",

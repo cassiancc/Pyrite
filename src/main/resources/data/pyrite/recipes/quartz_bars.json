@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DDD",
+      "DDD"
+    ],
+    "key": {
+      "D": {
+        "item": "pyrite:cut_quartz"
+      }
+    },
+    "result": {
+      "item": "pyrite:quartz_bars",
+      "id": "pyrite:quartz_bars",
+      "count": 32
+    }
+    }

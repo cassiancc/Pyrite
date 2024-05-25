@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:smooth_netherite"
+          }
+        },
+        "result": {
+          "item": "pyrite:smooth_netherite_slab",
+          "id": "pyrite:smooth_netherite_slab",
+          "count": 6
+        }
+      }

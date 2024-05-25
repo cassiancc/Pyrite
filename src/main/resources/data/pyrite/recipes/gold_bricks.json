@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DD",
+      "DD"
+    ],
+    "key": {
+      "D": {
+        "item": "pyrite:cut_gold"
+      }
+    },
+    "result": {
+      "item": "pyrite:gold_bricks",
+      "id": "pyrite:gold_bricks",
+      "count": 4
+    }
+    }

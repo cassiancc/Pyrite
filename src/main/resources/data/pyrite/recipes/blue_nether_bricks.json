@@ -1,0 +1,19 @@
+{
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "N": {
+            "item": "minecraft:nether_brick"
+          },
+          "W": {
+            "item": "minecraft:warped_fungus"
+          }
+        },
+        "pattern": [
+          "NW",
+          "WN"
+        ],
+        "result": {
+          "item": "pyrite:blue_nether_bricks"
+        }
+      }

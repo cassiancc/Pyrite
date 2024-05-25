@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/cut_redstone_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/cut_redstone"
+      },
+      "type=top": {
+        "model": "pyrite:block/cut_redstone_slab_top"
+      }
+    }
+  }

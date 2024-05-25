@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:lapis_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:lapis_trapdoor",
+          "id": "pyrite:lapis_trapdoor",
+          "count": 2
+        }
+      }

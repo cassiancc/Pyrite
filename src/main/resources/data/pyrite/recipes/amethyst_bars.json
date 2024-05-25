@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "DDD",
+      "DDD"
+    ],
+    "key": {
+      "D": {
+        "item": "pyrite:cut_amethyst"
+      }
+    },
+    "result": {
+      "item": "pyrite:amethyst_bars",
+      "id": "pyrite:amethyst_bars",
+      "count": 32
+    }
+    }

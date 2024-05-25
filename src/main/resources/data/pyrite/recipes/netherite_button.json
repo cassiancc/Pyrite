@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "minecraft:netherite_block"
+        },
+        {
+          "tag": "minecraft:buttons"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:netherite_button",
+        "id": "pyrite:netherite_button"
+      }
+    }

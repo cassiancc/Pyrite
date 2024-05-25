@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/smooth_netherite_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/smooth_netherite"
+      },
+      "type=top": {
+        "model": "pyrite:block/smooth_netherite_slab_top"
+      }
+    }
+  }

@@ -4,6 +4,9 @@
       "pyrite:cobblestone_bricks",
       "pyrite:cobblestone_brick_slab",
       "pyrite:cobblestone_brick_stairs",
+      "pyrite:smooth_stone_bricks",
+      "pyrite:smooth_stone_brick_slab",
+      "pyrite:smooth_stone_brick_stairs",
       "pyrite:mossy_cobblestone_bricks",
       "pyrite:mossy_cobblestone_brick_slab",
       "pyrite:mossy_cobblestone_brick_stairs",
@@ -28,9 +31,7 @@
       "pyrite:star_bricks",
       "pyrite:honey_bricks",
       "pyrite:nostalgia_bricks",
-      "pyrite:rose_bricks",
-      "pyrite:charred_nether_bricks"
-
+      "pyrite:rose_bricks"
     ]
   }
 

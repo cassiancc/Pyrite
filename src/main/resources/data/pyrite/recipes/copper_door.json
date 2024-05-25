@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:copper_ingot"
+          }
+        },
+        "result": {
+          "item": "pyrite:copper_door",
+          "id": "pyrite:copper_door",
+          "count": 3
+        }
+      }

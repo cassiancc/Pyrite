@@ -5,7 +5,27 @@
         "pyrite:framed_glass_pane",
         "#pyrite:bricks",
         "#pyrite:wall_gates",
-        "pyrite:glowing_obsidian"
+        "#pyrite:obsidian",
+        "#pyrite:amethyst",
+        "#pyrite:quartz",
+        "#pyrite:netherite",
+        "#pyrite:diamond",
+        "#pyrite:lapis",
+        "#pyrite:emerald",
+        "#pyrite:gold",
+        "#pyrite:iron",
+        "#pyrite:copper",
+        "#pyrite:redstone",
+        "#pyrite:metal_trapdoors",
+        "#pyrite:metal_pressure_plates",
+        "#pyrite:metal_buttons",
+        "pyrite:blue_nether_bricks",
+        "pyrite:charred_nether_bricks",
+        "pyrite:nostalgia_netherrack",
+        "pyrite:nostalgia_cobblestone",
+        "pyrite:nostalgia_mossy_cobblestone"
+
+
       ]
     }
 

@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:grass_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:grass_turf",
+          "id": "pyrite:grass_turf",
+          "count": 3
+        }
+      }

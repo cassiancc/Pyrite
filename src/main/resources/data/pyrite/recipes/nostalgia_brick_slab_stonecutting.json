@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:nostalgia_bricks"
+    },
+    "result": "pyrite:nostalgia_brick_slab",
+    "count": 2
+  }
