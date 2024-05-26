@@ -5,111 +5,58 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.function.ToIntFunction;
+
+import static cc.cassian.pyrite.functions.ModLists.*;
+import static cc.cassian.pyrite.functions.ModHelpers.*;
 
 public class Pyrite implements ModInitializer {
-    public AbstractBlock.Settings copyBlock(Block copyBlock) {
-        return AbstractBlock.Settings.copy(copyBlock);
-    }
-    public void addTransparentBlock() {
-        transparentBlocks.add(getLastBlock());
-    }
-    public void addGrassBlock() {
-        grassBlocks.add(getLastBlock());
-    }
-    public Block getLastBlock() {
-        return pyriteBlocks.get(pyriteBlocks.size()-1);
-    }
-    public Block getLastBlock(int index) {
-        return pyriteBlocks.get(pyriteBlocks.size()-index);
-    }
-    public ToIntFunction<BlockState> parseLux(int lux) {
-        return state -> lux;
-    }
+    public final static String modID = "pyrite";
     //List of Blocks and Block IDS.
     public static ArrayList<Block> pyriteBlocks = new ArrayList<>();
     public static ArrayList<Item> pyriteItems = new ArrayList<>();
-    public static ArrayList<Block> transparentBlocks = new ArrayList<>();
-    public static ArrayList<Block> grassBlocks = new ArrayList<>();
     static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
     static ArrayList<String> pyriteItemIDs = new ArrayList<>();
-    static String modID = "pyrite";
-    //List of dyes to autogenerate blocks for.
-    String[] dyes = {
-            "white",
-            "orange",
-            "magenta",
-            "light_blue",
-            "yellow",
-            "lime",
-            "pink",
-            "gray",
-            "light_gray",
-            "cyan",
-            "purple",
-            "blue",
-            "brown",
-            "green",
-            "red",
-            "black",
-            "glow",
-            "dragon",
-            "star",
-            "honey",
-            "nostalgia",
-            "rose"
-    };
+    //Lists of generated material.
+    String[] dyes = getDyes();
+    Block[] vanillaWood = getVanillaWood();
+    Block[] walls_blocks = getVanillaWalls();
+    Block[] resource_blocks = getVanillaResourceBlocks();
 
-    Block[] vanillaWood = {
-            Blocks.SPRUCE_PLANKS,
-            Blocks.BIRCH_PLANKS,
-            Blocks.JUNGLE_PLANKS,
-            Blocks.ACACIA_PLANKS,
-            Blocks.DARK_OAK_PLANKS,
-            Blocks.MANGROVE_PLANKS,
-            Blocks.CHERRY_PLANKS,
-            Blocks.BAMBOO_PLANKS,
-            Blocks.CRIMSON_PLANKS,
-            Blocks.WARPED_PLANKS
-    };
+    public void generateResourceBlocks() {
+        for (Block resourceBlock : resource_blocks) {
+            String block = findVanillaBlockID(resourceBlock);
+            //If the block provided isn't a wall block, add the wall tag.
+            if (block.contains("block")) {
+                block = block.substring(0, block.indexOf("_block"));
+            }
+            createResourceBlockSet(block, resourceBlock);
+        }
+    }
 
-    //List of Wall Blocks to generated Wall Gates for.
-    Block[] walls_blocks = {
-            Blocks.COBBLESTONE_WALL,
-            Blocks.MOSSY_COBBLESTONE_WALL,
-            Blocks.STONE_BRICK_WALL,
-            Blocks.MOSSY_STONE_BRICK_WALL,
-            Blocks.GRANITE_WALL,
-            Blocks.DIORITE_WALL,
-            Blocks.ANDESITE_WALL,
-            Blocks.COBBLED_DEEPSLATE_WALL,
-            Blocks.POLISHED_DEEPSLATE_WALL,
-            Blocks.DEEPSLATE_BRICK_WALL,
-            Blocks.DEEPSLATE_TILE_WALL,
-            Blocks.BRICK_WALL,
-            Blocks.MUD_BRICK_WALL,
-            Blocks.SANDSTONE_WALL,
-            Blocks.RED_SANDSTONE_WALL,
-            Blocks.PRISMARINE_WALL,
-            Blocks.NETHER_BRICK_WALL,
-            Blocks.RED_NETHER_BRICK_WALL,
-            Blocks.BLACKSTONE_WALL,
-            Blocks.POLISHED_BLACKSTONE_WALL,
-            Blocks.POLISHED_BLACKSTONE_BRICK_WALL,
-            Blocks.END_STONE_BRICK_WALL
-
-    };
+    public void generateVanillaCraftingTables() {
+        //Autogenerate Vanilla Crafting Tables
+        for (Block plankBlock : vanillaWood) {
+            //Find block ID
+            String block = findVanillaBlockID(plankBlock);
+            //If the block provided isn't a wall block, add the wall tag.
+            if (block.contains("planks")) {
+                block = block.substring(0, block.indexOf("_planks"));
+            }
+            //Create block.
+            createPyriteBlock(block + "_crafting_table","crafting", plankBlock);
+        }
+    }
 
     //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
     public void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
@@ -200,6 +147,7 @@ public class Pyrite implements ModInitializer {
                 break;
             case "crafting":
                 pyriteBlocks.add(new ModCraftingTable(blockSettings));
+                FuelRegistry.INSTANCE.add(getLastBlock(), 300);
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
@@ -301,7 +249,7 @@ public class Pyrite implements ModInitializer {
     }
 
     //Generate an entire brick set.
-    public void createBrickSet(String blockID, Block copyBlock, MapColor color, int lux) {
+    public void generateBrickSet(String blockID, Block copyBlock, MapColor color, int lux) {
         //Bricks
         createPyriteBlock( blockID+"s", "block", copyBlock, color, lux);
         //Brick Stairs
@@ -315,7 +263,7 @@ public class Pyrite implements ModInitializer {
     }
 
     //Generate a block and its slab and stair variants.
-    public void createGrassTurfSet(String blockID, Block copyBlock) {
+    public void generateGrassTurfSet(String blockID, Block copyBlock) {
         createPyriteBlock( blockID+"_turf", "block", copyBlock);
         addGrassBlock();
         createStair(blockID);
@@ -435,12 +383,12 @@ public class Pyrite implements ModInitializer {
         //Framed Glass Pane
         createPyriteBlock( "framed_glass_pane","glass_pane", 2.0f, MapColor.CLEAR, 0);
         //Cobblestone Bricks
-        createBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
+        generateBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Mossy Cobblestone Bricks
-        createBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
-        createBrickSet("smooth_stone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
+        generateBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
+        generateBrickSet("smooth_stone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
         //Grass Set
-        createGrassTurfSet("grass", Blocks.GRASS_BLOCK);
+        generateGrassTurfSet("grass", Blocks.GRASS_BLOCK);
         //Mycelium Set
         createTurfSet("mycelium", Blocks.MYCELIUM);
         //Podzol Set
@@ -450,20 +398,9 @@ public class Pyrite implements ModInitializer {
         //Nether Brick Fence Gate
         createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
         //Resource Blocks
-        createResourceBlockSet("iron", Blocks.IRON_BLOCK);
-        createResourceBlockSet("gold", Blocks.GOLD_BLOCK);
-        createResourceBlockSet("emerald", Blocks.EMERALD_BLOCK);
-        createResourceBlockSet("lapis", Blocks.LAPIS_BLOCK);
-        createResourceBlockSet("redstone", Blocks.REDSTONE_BLOCK);
-        createResourceBlockSet("diamond", Blocks.DIAMOND_BLOCK);
-        createResourceBlockSet("netherite", Blocks.NETHERITE_BLOCK);
-        createResourceBlockSet("quartz", Blocks.QUARTZ_BLOCK);
-        createResourceBlockSet("amethyst", Blocks.AMETHYST_BLOCK);
-        createResourceBlockSet("copper", Blocks.COPPER_BLOCK);
-        createResourceBlockSet("exposed_copper", Blocks.EXPOSED_COPPER);
-        createResourceBlockSet("weathered_copper", Blocks.WEATHERED_COPPER);
-        createResourceBlockSet("oxidized_copper", Blocks.OXIDIZED_COPPER);
-        //Glowstone Lamp
+        generateResourceBlocks();
+        //Lamps
+        createPyriteBlock("lit_redstone_lamp","block", 0.3f, MapColor.ORANGE, 15);
         createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
         //Classic Features
         createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
@@ -485,23 +422,11 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("buttercup", "flower", Blocks.DANDELION);
         createPyriteBlock("pink_daisy", "flower", Blocks.PINK_TULIP);
         //Charred Nether Bricks
-        createBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
+        generateBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0);
         //Blue Nether Bricks
-        createBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
-
-        //Autogenerate Vanilla Crafting Tables
-        for (Block plankBlock : vanillaWood) {
-            //Find block ID
-            String block = plankBlock.toString().substring(plankBlock.toString().indexOf(":") + 1, plankBlock.toString().indexOf("}"));
-            //If the block provided isn't a wall block, add the wall tag.
-            if (block.contains("planks")) {
-                block = block.substring(0, block.indexOf("_planks"));
-            }
-            //Create block.
-            createPyriteBlock(block + "_crafting_table","crafting", plankBlock);
-        }
-
-
+        generateBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLUE, 0);
+        //Vanilla Crafting Tables
+        generateVanillaCraftingTables();
         //Red Mushroom Blocks
         createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("red_mushroom", MapColor.RED, 0);
@@ -509,26 +434,12 @@ public class Pyrite implements ModInitializer {
         createPyriteBlock("brown_mushroom_stem", "log", Blocks.MUSHROOM_STEM);
         createWoodSet("brown_mushroom", MapColor.BROWN, 0);
         //Autogenerate dye blocks.
+
         for (int dyeIndex = 0; dyeIndex < dyes.length; dyeIndex++) {
             String dye = dyes[dyeIndex];
-            int blockLux = 0;
-            MapColor color;
+            int blockLux = checkDyeLux(dye);
+            MapColor color = checkDyeMapColour(dye);
             if (dyeIndex > 15) {
-                color = switch (dye) {
-                    case "glow" -> {
-                        blockLux = 8;
-                        yield MapColor.CYAN;
-                    }
-                    case "dragon" -> MapColor.BLACK;
-                    case "star" -> {
-                        blockLux = 15;
-                        yield MapColor.OFF_WHITE;
-                    }
-                    case "honey" -> MapColor.YELLOW;
-                    case "nostalgia" -> MapColor.BROWN;
-                    case "rose" -> MapColor.BRIGHT_RED;
-                    default -> MapColor.RED;
-                };
                 //Dye items.
                 createPyriteItem(dye + "_dye");
                 //Dyed Wool
@@ -540,18 +451,14 @@ public class Pyrite implements ModInitializer {
                 //Concrete Powder Block
                 //coming soon - createPyriteBlock(dye+"_concrete", "block", Blocks.TERRACOTTA,color, blockLux);
                 //Concrete Block
-                //coming soon - createPyriteBlock(dye+"_concrete", "block", Blocks.TERRACOTTA,color, blockLux);
+                //coming soon - createPyriteBlock(dye+"_concrete", "block", Blocks.CONCRETE,color, blockLux);
                 //Carpet block
                 createPyriteBlock(dye + "_carpet", "carpet", Blocks.WHITE_WOOL, color, blockLux);
-            }
-            //Normal dye colours.
-            else {
-                color = DyeColor.valueOf(dye.toUpperCase()).getMapColor();
             }
             //Planks and plank products
             createWoodSet(dye + "_stained", color, blockLux);
             //Bricks and brick products
-            createBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux);
+            generateBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux);
             //Dyed Lamps
             createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15);
 
@@ -559,7 +466,7 @@ public class Pyrite implements ModInitializer {
         //Autogenerate Wall Gates
         for (Block wallsBlock : walls_blocks) {
             //Find block ID
-            String block = wallsBlock.toString().substring(wallsBlock.toString().indexOf(":") + 1, wallsBlock.toString().indexOf("}"));
+            String block = findVanillaBlockID(wallsBlock);
             //If the block provided isn't a wall block, add the wall tag.
             if (!block.contains("wall")) {
                 block = block + "_wall";
@@ -581,7 +488,6 @@ public class Pyrite implements ModInitializer {
         //Registers the Pyrite item group.
         Registry.register(Registries.ITEM_GROUP, new Identifier(modID, "pyrite_group"), PYRITE_GROUP);
     }
-
 
 
     //Add items to the Pyrite Item Group
