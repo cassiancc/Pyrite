@@ -12,7 +12,8 @@ import net.minecraft.util.DyeColor;
 import java.util.ArrayList;
 import java.util.function.ToIntFunction;
 
-import static cc.cassian.pyrite.Pyrite.ITEMS;
+import static cc.cassian.pyrite.Pyrite.PYRITE_GROUP;
+import static cc.cassian.pyrite.Pyrite.pyriteItems;
 
 public class ModHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
@@ -30,7 +31,7 @@ public class ModHelpers {
     }
 
     public static void addBlockItem(RegistrySupplier<Block> newBlock) {
-        ITEMS.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings()));
+        pyriteItems.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings().arch$tab(PYRITE_GROUP)));
 
     }
 

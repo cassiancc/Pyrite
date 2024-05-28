@@ -1,6 +1,7 @@
 package cc.cassian.pyrite;
 
 import cc.cassian.pyrite.blocks.*;
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
@@ -10,6 +11,7 @@ import net.minecraft.item.*;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,9 +30,7 @@ public class Pyrite {
 	static Block[] resource_blocks = getVanillaResourceBlocks();
 	//Deferred registry entries
 	public static final DeferredRegister<Block> pyriteBlocks = DeferredRegister.create(modID, RegistryKeys.BLOCK);
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(modID, RegistryKeys.ITEM);
-
-
+	public static final DeferredRegister<Item> pyriteItems = DeferredRegister.create(modID, RegistryKeys.ITEM);
 
 	public static void generateResourceBlocks() {
 		for (Block resourceBlock : resource_blocks) {
@@ -140,6 +140,7 @@ public class Pyrite {
 		else {
 			power = 0;
 		}
+
 		switch (blockType.toLowerCase()) {
 			case "block":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModBlock(blockSettings, power));
@@ -190,11 +191,15 @@ public class Pyrite {
 		if (blockID.contains("grass")) {
 			addGrassBlock(newBlock);
 		}
+		else if (blockID.equals("cobblestone_bricks")) {
+			creativeTabIcon = newBlock;
+		}
 		else {
 			addGrassBlock(newBlock);
 		}
-	}
 
+	}
+	static RegistrySupplier<Block> creativeTabIcon;
 	//Add Pyrite blocks that require Wood Types - Fence gates.
 	public static void addPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
 		RegistrySupplier<Block> newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new FenceGateBlock(blockSettings, type));
@@ -252,7 +257,7 @@ public class Pyrite {
 
 	//Create and add Pyrite items.
 	public static void createPyriteItem(String itemID) {
-		ITEMS.register(new Identifier(modID, itemID), () -> (new Item(new Item.Settings())));
+		pyriteItems.register(new Identifier(modID, itemID), () -> (new Item(new Item.Settings())));
 	}
 
 	//Generate an entire brick set.
@@ -377,6 +382,17 @@ public class Pyrite {
         return new BlockSetType(blockID, openByHand, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_DOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
 	}
 
+	public static final DeferredRegister<ItemGroup> pyriteTabs =
+			DeferredRegister.create(modID, RegistryKeys.ITEM_GROUP);
+
+	public static final RegistrySupplier<ItemGroup> PYRITE_GROUP = pyriteTabs.register(
+			"pyrite", // Tab ID
+			() -> CreativeTabRegistry.create(
+					Text.translatable("itemGroup.pyrite.group"), // Tab Name
+					() -> new ItemStack(creativeTabIcon.get()) // Icon
+			)
+	);
+
 	public static void init() {
 		//Framed Glass
 		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0);
@@ -476,7 +492,9 @@ public class Pyrite {
 		}
 
 		pyriteBlocks.register();
-		ITEMS.register();
+		pyriteItems.register();
+		pyriteTabs.register();
+
 	}
 
 
