@@ -1,10 +1,14 @@
 package cc.cassian.pyrite.forge;
 
 import dev.architectury.platform.forge.EventBuses;
+import net.minecraft.block.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import cc.cassian.pyrite.Pyrite;
+
+import static cc.cassian.pyrite.Pyrite.BLOCKS;
+import static cc.cassian.pyrite.Pyrite.ITEMS;
 
 @Mod(Pyrite.modID)
 public final class PyriteForge {
@@ -14,6 +18,8 @@ public final class PyriteForge {
 
         // Run our common setup.
         Pyrite.init();
+
+
 
     }
 }

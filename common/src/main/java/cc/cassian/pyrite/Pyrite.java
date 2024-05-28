@@ -2,6 +2,7 @@ package cc.cassian.pyrite;
 
 import cc.cassian.pyrite.blocks.*;
 import com.google.common.base.Suppliers;
+import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrarManager;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -10,6 +11,8 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -22,6 +25,7 @@ import java.util.function.Supplier;
 
 import static cc.cassian.pyrite.functions.ModLists.*;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
+import static net.minecraft.registry.Registries.ITEM;
 
 public class Pyrite {
 	public final static String modID = "pyrite";
@@ -30,15 +34,15 @@ public class Pyrite {
 	public static ArrayList<Item> pyriteItems = new ArrayList<>();
 	public static ArrayList<String> pyriteBlockIDs = new ArrayList<>();
 	public static ArrayList<String> pyriteItemIDs = new ArrayList<>();
-	public static ArrayList<RegistrySupplier<Block>> pyriteBlocksRegistrar = new ArrayList<>();
-	public static ArrayList<RegistrySupplier<BlockItem>> pyriteBlockItemsRegistrar = new ArrayList<>();
-	public static ArrayList<RegistrySupplier<Item>> pyriteItemsRegistrar = new ArrayList<>();
 	//Lists of generated material.
     public static String[] dyes = getDyes();
 	static Block[] vanillaWood = getVanillaWood();
 	static Block[] walls_blocks = getVanillaWalls();
 	static Block[] resource_blocks = getVanillaResourceBlocks();
-	public static final Supplier<RegistrarManager> MANAGER = Suppliers.memoize(() -> RegistrarManager.get(modID));
+	//Deferred registry entries
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(modID, RegistryKeys.BLOCK);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(modID, RegistryKeys.ITEM);
+
 
 
 	public static void generateResourceBlocks() {
@@ -486,19 +490,20 @@ public class Pyrite {
 			createPyriteBlock(block + "_gate","fence_gate", wallsBlock);
 		}
 
-		Registrar<Item> items = MANAGER.get().get(Registries.ITEM);
-		Registrar<Block> blocks = MANAGER.get().get(Registries.BLOCK);
 		//Register blocks and block items.
 		for (int x = 0; x < pyriteBlockIDs.size(); x++) {
 			int finalX = x;
-			pyriteBlockItemsRegistrar.add(items.register(new Identifier(modID, pyriteBlockIDs.get(finalX)), () -> new BlockItem(pyriteBlocks.get(finalX), new Item.Settings())));
-			pyriteBlocksRegistrar.add(blocks.register(new Identifier(modID, pyriteBlockIDs.get(finalX)), () -> pyriteBlocks.get(finalX)));
+			BLOCKS.register(pyriteBlockIDs.get(finalX), () -> pyriteBlocks.get(finalX));
+			ITEMS.register(pyriteBlockIDs.get(finalX), () -> new BlockItem(pyriteBlocks.get(finalX), new Item.Settings()));
+
 		}
 		//Registers items.
 		for (int x = 0; x < pyriteItemIDs.size(); x++) {
 			int finalX = x;
-			pyriteItemsRegistrar.add(items.register(new Identifier(modID, pyriteItemIDs.get(finalX)), () -> pyriteItems.get(finalX)));
+			ITEMS.register(pyriteItemIDs.get(finalX), () -> pyriteItems.get(finalX));
 		}
+		BLOCKS.register();
+		ITEMS.register();
 	}
 
 
