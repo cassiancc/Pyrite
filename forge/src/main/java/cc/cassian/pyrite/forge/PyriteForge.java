@@ -14,5 +14,6 @@ public final class PyriteForge {
 
         // Run our common setup.
         Pyrite.init();
+
     }
 }
