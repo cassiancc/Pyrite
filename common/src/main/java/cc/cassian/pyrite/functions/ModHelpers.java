@@ -15,11 +15,11 @@ import java.util.function.ToIntFunction;
 import static cc.cassian.pyrite.Pyrite.ITEMS;
 
 public class ModHelpers {
-    public static ArrayList<Block> transparentBlocks = new ArrayList<>();
+    public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
     public static ArrayList<Block> grassBlocks = new ArrayList<>();
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
-//        transparentBlocks.add(newBlock.get());
+        transparentBlocks.add(newBlock);
     }
 
     public static void addGrassBlock(RegistrySupplier<Block> newBlock) {

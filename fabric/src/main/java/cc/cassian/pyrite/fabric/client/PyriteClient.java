@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.fabric.client;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -19,7 +20,7 @@ public class PyriteClient implements ClientModInitializer {
             ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), pyriteBlock);
             ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7183658, pyriteBlock);
         }
-        for (Block pyriteBlock : transparentBlocks) {
-            BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock, RenderLayer.getCutout());
+        for (RegistrySupplier<Block> pyriteBlock : transparentBlocks) {
+            BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock.get(), RenderLayer.getCutout());
         }}
 }
