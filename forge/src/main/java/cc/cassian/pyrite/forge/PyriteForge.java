@@ -6,6 +6,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import cc.cassian.pyrite.Pyrite;
 
+import static cc.cassian.pyrite.functions.ModHelpers.*;
+
 @Mod(Pyrite.modID)
 public final class PyriteForge {
     public PyriteForge() {
@@ -19,3 +21,4 @@ public final class PyriteForge {
 
     }
 }
+
