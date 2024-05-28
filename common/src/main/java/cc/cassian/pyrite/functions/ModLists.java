@@ -1,8 +1,7 @@
 package cc.cassian.pyrite.functions;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 
 public class ModLists {
     //List of dyes.
@@ -32,16 +31,16 @@ public class ModLists {
     };
     //List of Vanilla wood types.
     private final static Block[] vanillaWood = {
-        Blocks.SPRUCE_PLANKS,
-        Blocks.BIRCH_PLANKS,
-        Blocks.JUNGLE_PLANKS,
-        Blocks.ACACIA_PLANKS,
-        Blocks.DARK_OAK_PLANKS,
-        Blocks.MANGROVE_PLANKS,
-        Blocks.CHERRY_PLANKS,
-        Blocks.BAMBOO_PLANKS,
-        Blocks.CRIMSON_PLANKS,
-        Blocks.WARPED_PLANKS
+            Blocks.SPRUCE_PLANKS,
+            Blocks.BIRCH_PLANKS,
+            Blocks.JUNGLE_PLANKS,
+            Blocks.ACACIA_PLANKS,
+            Blocks.DARK_OAK_PLANKS,
+            Blocks.MANGROVE_PLANKS,
+            Blocks.CHERRY_PLANKS,
+            Blocks.BAMBOO_PLANKS,
+            Blocks.CRIMSON_PLANKS,
+            Blocks.WARPED_PLANKS
     };
 
     //List of Wall Blocks to generated Wall Gates for.

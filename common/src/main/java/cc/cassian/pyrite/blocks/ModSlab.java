@@ -1,30 +1,29 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockView;
 
 public class ModSlab extends SlabBlock {
     private final int power;
 
-    public ModSlab(BlockBehaviour.Properties settings) {
+    public ModSlab(Settings settings) {
         super(settings);
         this.power = 0;
     }
-    public ModSlab(BlockBehaviour.Properties settings, int power) {
+    public ModSlab(Settings settings, int power) {
         super(settings);
         this.power = power;
     }
     @Override
-    public boolean isSignalSource(BlockState state) {
+    public boolean emitsRedstonePower(BlockState state) {
         return power == 15;
     }
 
     @Override
-    public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
+    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
         return power;
     }
 }

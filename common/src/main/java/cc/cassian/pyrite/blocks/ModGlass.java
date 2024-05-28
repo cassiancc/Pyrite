@@ -1,10 +1,9 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.world.level.block.GlassBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.block.GlassBlock;
 
 public class ModGlass extends GlassBlock {
-    public ModGlass(BlockBehaviour.Properties settings) {
-        super (settings.noOcclusion());
+    public ModGlass(Settings settings) {
+        super (settings.nonOpaque());
     }
 }

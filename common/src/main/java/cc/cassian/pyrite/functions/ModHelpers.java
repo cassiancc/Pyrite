@@ -1,14 +1,13 @@
 package cc.cassian.pyrite.functions;
 
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
+import net.minecraft.util.DyeColor;
+
 import java.util.ArrayList;
 import java.util.function.ToIntFunction;
-
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
 
 import static cc.cassian.pyrite.Pyrite.*;
 
@@ -32,8 +31,8 @@ public class ModHelpers {
         return pyriteBlocks.get(pyriteBlocks.size() - index);
     }
 
-    public static BlockBehaviour.Properties copyBlock(Block copyBlock) {
-        return BlockBehaviour.Properties.copy(copyBlock);
+    public static AbstractBlock.Settings copyBlock(Block copyBlock) {
+        return AbstractBlock.Settings.copy(copyBlock);
     }
 
     public static ToIntFunction<BlockState> parseLux(int lux) {
@@ -46,12 +45,12 @@ public class ModHelpers {
 
     public static MapColor checkDyeMapColour(String dye) {
         return switch (dye) {
-            case "glow" -> MapColor.COLOR_CYAN;
-            case "dragon" -> MapColor.COLOR_BLACK;
-            case "star" -> MapColor.TERRACOTTA_WHITE;
-            case "honey" -> MapColor.COLOR_YELLOW;
-            case "nostalgia" -> MapColor.COLOR_BROWN;
-            case "rose" -> MapColor.COLOR_RED;
+            case "glow" -> MapColor.CYAN;
+            case "dragon" -> MapColor.BLACK;
+            case "star" -> MapColor.OFF_WHITE;
+            case "honey" -> MapColor.YELLOW;
+            case "nostalgia" -> MapColor.BROWN;
+            case "rose" -> MapColor.BRIGHT_RED;
             default -> DyeColor.valueOf(dye.toUpperCase()).getMapColor();
         };
     }
