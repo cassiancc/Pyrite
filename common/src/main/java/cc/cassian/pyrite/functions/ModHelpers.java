@@ -16,14 +16,14 @@ import static cc.cassian.pyrite.Pyrite.ITEMS;
 
 public class ModHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
-    public static ArrayList<Block> grassBlocks = new ArrayList<>();
+    public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
         transparentBlocks.add(newBlock);
     }
 
     public static void addGrassBlock(RegistrySupplier<Block> newBlock) {
-     grassBlocks.add(newBlock.get());
+     grassBlocks.add(newBlock);
     }
     public static void addFuelBlock(RegistrySupplier<Block> newBlock, int fuelTime) {
         System.out.println("Fuel time needs to be set for " + newBlock.getId());

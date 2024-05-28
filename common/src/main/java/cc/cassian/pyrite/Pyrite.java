@@ -187,6 +187,12 @@ public class Pyrite {
 				break;
 		}
 		addBlockItem(newBlock);
+		if (blockID.contains("grass")) {
+			addGrassBlock(newBlock);
+		}
+		else {
+			addGrassBlock(newBlock);
+		}
 	}
 
 	//Add Pyrite blocks that require Wood Types - Fence gates.
@@ -263,18 +269,8 @@ public class Pyrite {
 		createPyriteBlock(blockID+"_wall_gate","fence_gate", copyBlock);
 	}
 
-	//Generate a block and its slab and stair variants.
-	public static void generateGrassTurfSet(String blockID, Block copyBlock) {
-		createPyriteBlock( blockID+"_turf", "block", copyBlock);
-//		addGrassBlock();
-		createStair(blockID, copyBlock);
-//		addGrassBlock();
-		createSlab(blockID, copyBlock);
-//		addGrassBlock();
-		createCarpet(blockID+"_carpet");
-//		addGrassBlock();
-	}
-	//Generate a block and its slab and stair variants.
+
+	//Generate a Turf block set - including block and its slab, stair, and carpet variants.
 	public static void createTurfSet(String blockID, Block copyBlock) {
 		createPyriteBlock( blockID+"_turf", "block", copyBlock);
 		createStair(blockID, copyBlock);
@@ -392,7 +388,7 @@ public class Pyrite {
 		generateBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0);
 		generateBrickSet("smooth_stone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0);
 		//Grass Set
-		generateGrassTurfSet("grass", Blocks.GRASS_BLOCK);
+		createTurfSet("grass", Blocks.GRASS_BLOCK);
 		//Mycelium Set
 		createTurfSet("mycelium", Blocks.MYCELIUM);
 		//Podzol Set
