@@ -1,34 +1,37 @@
 package cc.cassian.pyrite.functions;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.util.DyeColor;
 
 import java.util.ArrayList;
 import java.util.function.ToIntFunction;
 
-import static cc.cassian.pyrite.Pyrite.*;
+import static cc.cassian.pyrite.Pyrite.ITEMS;
 
 public class ModHelpers {
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
     public static ArrayList<Block> grassBlocks = new ArrayList<>();
 
-    public static void addTransparentBlock() {
-        transparentBlocks.add(getLastBlock());
+    public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
+//        transparentBlocks.add(newBlock.get());
     }
 
-    public static void addGrassBlock() {
-        grassBlocks.add(getLastBlock());
+    public static void addGrassBlock(RegistrySupplier<Block> newBlock) {
+     grassBlocks.add(newBlock.get());
+    }
+    public static void addFuelBlock(RegistrySupplier<Block> newBlock, int fuelTime) {
+        System.out.println("Fuel time needs to be set for " + newBlock.getId());
     }
 
-    public static Block getLastBlock() {
-        return pyriteBlocks.get(pyriteBlocks.size() - 1);
-    }
+    public static void addBlockItem(RegistrySupplier<Block> newBlock) {
+        ITEMS.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings()));
 
-    public static Block getLastBlock(int index) {
-        return pyriteBlocks.get(pyriteBlocks.size() - index);
     }
 
     public static AbstractBlock.Settings copyBlock(Block copyBlock) {
