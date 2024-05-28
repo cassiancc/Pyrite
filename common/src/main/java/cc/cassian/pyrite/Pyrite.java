@@ -237,6 +237,12 @@ public class Pyrite {
 	public static void addPyriteBlock(String blockID, Block copyBlock, AbstractBlock.Settings blockSettings) {
 		RegistrySupplier<Block> newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModStairs(copyBlock.getDefaultState(), blockSettings));
 		addBlockItem(newBlock);
+		if (blockID.contains("grass")) {
+			addGrassBlock(newBlock);
+		}
+		else {
+			addGrassBlock(newBlock);
+		}
 	}
 
 	//Create Stained blocks that require a wood set or wood type, then add them.
