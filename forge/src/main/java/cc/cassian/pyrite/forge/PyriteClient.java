@@ -3,11 +3,17 @@ package cc.cassian.pyrite.forge;
 import cc.cassian.pyrite.Pyrite;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.item.BlockItem;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockRenderView;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -20,13 +26,10 @@ public class PyriteClient {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        for (RegistrySupplier<Block> pyriteBlock : transparentBlocks) {
-//            BlockModelRenderer.INSTANCE.putBlock(pyriteBlock.get(), RenderLayer.getCutout());
-            System.out.println("Transparent block not rendered!");
-        }}
 
+    }
     @SubscribeEvent
-    public void registerBlockColors(RegisterColorHandlersEvent.Block event){
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event){
         BlockColors blockColors = event.getBlockColors();
         for (RegistrySupplier<Block> pyriteBlock : grassBlocks) {
             event.register(((state, view, pos, tintIndex) -> {
@@ -37,11 +40,13 @@ public class PyriteClient {
         }
     }
 
-    @SubscribeEvent
-    public void registerItemColors(RegisterColorHandlersEvent.Item event){
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event){
         for (RegistrySupplier<Block> pyriteBlock : grassBlocks) {
             ItemColors itemColors = event.getItemColors();
             BlockColors blockColors = event.getBlockColors();
-            event.register((stack, tintIndex) -> blockColors.getColor(pyriteBlock.get().getDefaultState(), null, null, tintIndex), pyriteBlock.get());        }
-    }
+            event.register((stack, tintIndex) -> {
+                BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
+                return blockColors.getColor(blockstate, null, null, tintIndex);
+            }, pyriteBlock.get());
+        }}
 }
