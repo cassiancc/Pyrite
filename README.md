@@ -6,6 +6,8 @@
 
 <a href='https://modrinth.com/mod/fabric-api'><img alt="fabric" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg"></a>
 <a href='https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html'><img alt="forge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/forge_vector.svg"></a>
+<a href='https://neoforged.net'><img alt="neoforge" height="56" src="https://resources.godsted.com/modrinth/NeoForge.svg"></a>
+
 <a href='https://modrinth.com/mod/pyrite'><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
 
 </div>
