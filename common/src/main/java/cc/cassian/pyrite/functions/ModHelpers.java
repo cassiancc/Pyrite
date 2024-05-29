@@ -10,24 +10,24 @@ import net.minecraft.item.Item;
 import net.minecraft.util.DyeColor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
-import static cc.cassian.pyrite.Pyrite.PYRITE_GROUP;
-import static cc.cassian.pyrite.Pyrite.pyriteItems;
+import static cc.cassian.pyrite.Pyrite.*;
 
 public class ModHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
     public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
+    public static HashMap<RegistrySupplier<Block>, Integer> fuel = new HashMap<>();
+
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
         transparentBlocks.add(newBlock);
     }
 
     public static void addGrassBlock(RegistrySupplier<Block> newBlock) {
-     grassBlocks.add(newBlock);
-    }
-    public static void addFuelBlock(RegistrySupplier<Block> newBlock, int fuelTime) {
-        System.out.println("Fuel time needs to be set for " + newBlock.getId());
+        grassBlocks.add(newBlock);
     }
 
     public static void addBlockItem(RegistrySupplier<Block> newBlock) {

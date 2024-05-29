@@ -15,6 +15,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static cc.cassian.pyrite.functions.ModLists.*;
@@ -24,10 +25,10 @@ public class Pyrite {
 	public final static String modID = "pyrite";
 	//List of Blocks and Block IDS.
 	//Lists of generated material.
-    public static String[] dyes = getDyes();
-	static Block[] vanillaWood = getVanillaWood();
-	static Block[] walls_blocks = getVanillaWalls();
-	static Block[] resource_blocks = getVanillaResourceBlocks();
+    final static String[] dyes = getDyes();
+	final static Block[] vanillaWood = getVanillaWood();
+	final static Block[] walls_blocks = getVanillaWalls();
+	final static Block[] resource_blocks = getVanillaResourceBlocks();
 	//Deferred registry entries
 	public static final DeferredRegister<Block> pyriteBlocks = DeferredRegister.create(modID, RegistryKeys.BLOCK);
 	public static final DeferredRegister<Item> pyriteItems = DeferredRegister.create(modID, RegistryKeys.ITEM);
@@ -147,7 +148,7 @@ public class Pyrite {
 				break;
 			case "crafting":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModCraftingTable(blockSettings));
-				addFuelBlock(newBlock, 300);
+				fuel.put(newBlock, 300);
 				break;
 			case "carpet":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModCarpet(blockSettings));
