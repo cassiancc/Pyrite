@@ -36,11 +36,11 @@ _712 blocks and counting..._
   - This includes grass, podzol, mycelium, and dirt path carpets as well!
 
 ## Installation
-<a href="https://modrinth.com/mod/fabric-api"><img alt="fabric-api" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/fabric-api_vector.svg"></a>
+<a href='https://modrinth.com/mod/architectury-api'><img alt="architectury-api" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/architectury-api_vector.svg"></a>
 
 Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
-- On Fabric, Fabric Loader and Fabric API is required.
-- On Forge, Forge Loader is required.
+- On Fabric, Fabric Loader, Fabric API, and Architectury API is required.
+- On Forge, Forge Loader and Architectury API is required.
 
 ## Credits
 Pyrite is inspired by mods like [Quark](https://quarkmod.net), [Stoneworks](https://modrinth.com/mod/stoneworks), and [Charm](https://modrinth.com/mod/charm) that expand on Minecraft's block palette.
