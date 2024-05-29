@@ -11,7 +11,7 @@ authors = "cassiancc"
 description = '''
 Variations of Vanilla blocks, including dyed wood, dyed bricks, new material blocks and more to complete your colourful builds.
 '''
-#logoFile = ""
+logoFile = "assets/pyrite/icon.png"
 
 [[dependencies.pyrite]]
 modId = "forge"
