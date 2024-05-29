@@ -35,5 +35,7 @@ jobs:
     - name: Upload Build
       uses: actions/upload-artifact@v4
       with:
-          name: Pyrite Nightly Build
-          path: ${{ github.workspace }}/build/libs/pyrite-0.*-1.20.1.jar
+          name: Pyrite Nightly
+          path: |
+           ${{ github.workspace }}/build/fabric/libs/pyrite-fabric-1.20.1-0.12.jar
+           ${{ github.workspace }}/build/forge/libs/pyrite-forge-1.20.1-0.12.jar
