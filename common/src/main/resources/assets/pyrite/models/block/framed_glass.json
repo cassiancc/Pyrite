@@ -2,5 +2,6 @@
     "parent": "minecraft:block/cube_all",
     "textures": {
       "all": "pyrite:block/framed_glass"
-    }
+    },
+    "render_type": "cutout"
   }

@@ -3,5 +3,6 @@
   "textures": {
     "pane": "pyrite:block/framed_glass",
     "edge": "pyrite:block/framed_glass_pane_top"
-  }
+  },
+  "render_type": "cutout"
 }
