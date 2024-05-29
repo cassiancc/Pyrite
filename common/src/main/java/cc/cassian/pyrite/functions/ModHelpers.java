@@ -19,7 +19,6 @@ import static cc.cassian.pyrite.Pyrite.*;
 public class ModHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
     public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
-    public static HashMap<RegistrySupplier<Block>, Integer> fuel = new HashMap<>();
 
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
