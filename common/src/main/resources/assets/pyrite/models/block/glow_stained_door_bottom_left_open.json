@@ -1,0 +1,1 @@
+{"parent":"minecraft:block/door_bottom_left_open","textures":{"bottom":"pyrite:block/glow_stained_door_bottom","top":"pyrite:block/glow_stained_door_top"},"render_type":"cutout"}
