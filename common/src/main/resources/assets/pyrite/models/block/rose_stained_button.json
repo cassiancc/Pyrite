@@ -1,6 +1,1 @@
-{
-        "parent": "minecraft:block/button",
-        "textures": {
-          "texture": "pyrite:block/rose_stained_planks"
-        }
-      }
+{"parent":"minecraft:block/button","textures":{"texture":"pyrite:block/rose_stained_planks"},"render_type":"cutout"}

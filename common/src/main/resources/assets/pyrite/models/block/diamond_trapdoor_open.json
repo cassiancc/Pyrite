@@ -1,6 +1,1 @@
-{
-    "parent": "minecraft:block/template_orientable_trapdoor_open",
-    "textures": {
-      "texture": "pyrite:block/diamond_trapdoor"
-    }
-  }
+{"parent":"minecraft:block/template_orientable_trapdoor_open","textures":{"texture":"pyrite:block/diamond_trapdoor"},"render_type":"cutout"}

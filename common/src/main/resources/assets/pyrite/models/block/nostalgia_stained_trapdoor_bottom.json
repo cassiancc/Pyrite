@@ -1,6 +1,1 @@
-{
-    "parent": "minecraft:block/template_orientable_trapdoor_bottom",
-    "textures": {
-      "texture": "pyrite:block/nostalgia_stained_trapdoor"
-    }
-  }
+{"parent":"minecraft:block/template_orientable_trapdoor_bottom","textures":{"texture":"pyrite:block/nostalgia_stained_trapdoor"},"render_type":"cutout"}

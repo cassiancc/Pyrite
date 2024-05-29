@@ -25,10 +25,6 @@ import static cc.cassian.pyrite.functions.ModHelpers.transparentBlocks;
 public class PyriteClient {
 
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
-
-    }
-    @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event){
         BlockColors blockColors = event.getBlockColors();
         for (RegistrySupplier<Block> pyriteBlock : grassBlocks) {

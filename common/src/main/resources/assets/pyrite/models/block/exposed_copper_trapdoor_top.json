@@ -1,6 +1,1 @@
-{
-    "parent": "minecraft:block/template_orientable_trapdoor_top",
-    "textures": {
-      "texture": "pyrite:block/exposed_copper_trapdoor"
-    }
-  }
+{"parent":"minecraft:block/template_orientable_trapdoor_top","textures":{"texture":"pyrite:block/exposed_copper_trapdoor"},"render_type":"cutout"}

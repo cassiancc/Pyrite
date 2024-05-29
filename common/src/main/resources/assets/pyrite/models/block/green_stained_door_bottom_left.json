@@ -1,7 +1,1 @@
-{
-    "parent": "minecraft:block/door_bottom_left",
-    "textures": {
-      "bottom": "pyrite:block/green_stained_door_bottom",
-      "top": "pyrite:block/green_stained_door_top"
-    }
-  }
+{"parent":"minecraft:block/door_bottom_left","textures":{"bottom":"pyrite:block/green_stained_door_bottom","top":"pyrite:block/green_stained_door_top"},"render_type":"cutout"}

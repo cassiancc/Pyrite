@@ -1,7 +1,1 @@
-{
-    "parent": "minecraft:block/door_top_left_open",
-    "textures": {
-      "bottom": "pyrite:block/honey_stained_door_bottom",
-      "top": "pyrite:block/honey_stained_door_top"
-    }
-  }
+{"parent":"minecraft:block/door_top_left_open","textures":{"bottom":"pyrite:block/honey_stained_door_bottom","top":"pyrite:block/honey_stained_door_top"},"render_type":"cutout"}

@@ -1,7 +1,1 @@
-{
-    "parent": "minecraft:block/door_top_right",
-    "textures": {
-      "bottom": "pyrite:block/netherite_door_bottom",
-      "top": "pyrite:block/netherite_door_top"
-    }
-  }
+{"parent":"minecraft:block/door_top_right","textures":{"bottom":"pyrite:block/netherite_door_bottom","top":"pyrite:block/netherite_door_top"},"render_type":"cutout"}
