@@ -37,5 +37,5 @@ jobs:
       with:
           name: Pyrite Nightly
           path: |
-           ${{ github.workspace }}/build/fabric/libs/pyrite-fabric-1.20.1-0.12.jar
-           ${{ github.workspace }}/build/forge/libs/pyrite-forge-1.20.1-0.12.jar
+           ${{ github.workspace }}/fabric/build/libs/pyrite-fabric-1.20.1-0.12.jar
+           ${{ github.workspace }}/forge/build/libs/pyrite-forge-1.20.1-0.12.jar
