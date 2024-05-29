@@ -423,7 +423,7 @@ public class Pyrite {
 		//Resource Blocks
 		generateResourceBlocks();
 		//Lamps
-		createPyriteBlock("lit_redstone_lamp","block", 0.3f, MapColor.ORANGE, 15);
+		createPyriteBlock("lit_redstone_lamp", "block", Blocks.REDSTONE_LAMP, 15);
 		createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
 		//Classic Features
 		createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15);
