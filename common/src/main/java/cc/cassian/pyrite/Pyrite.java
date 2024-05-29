@@ -1,6 +1,7 @@
 package cc.cassian.pyrite;
 
 import cc.cassian.pyrite.blocks.*;
+import com.mojang.serialization.MapCodec;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -177,7 +178,12 @@ public class Pyrite {
 				addTransparentBlock(newBlock);
 				break;
 			case "gravel":
-				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new GravelBlock(blockSettings));
+				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new FallingBlock(blockSettings) {
+					@Override
+					protected MapCodec<? extends FallingBlock> getCodec() {
+						return null;
+					}
+				});
 				break;
 			case "flower":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
@@ -200,7 +206,7 @@ public class Pyrite {
 	static RegistrySupplier<Block> creativeTabIcon;
 	//Add Pyrite blocks that require Wood Types - Fence gates.
 	public static void addPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
-		RegistrySupplier<Block> newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new FenceGateBlock(blockSettings, type));
+		RegistrySupplier<Block> newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new FenceGateBlock(type, blockSettings));
 		addBlockItem(newBlock);
 	}
 
@@ -210,11 +216,11 @@ public class Pyrite {
 		RegistrySupplier<Block> newBlock;
 		switch (blockType) {
 			case "door":
-				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new DoorBlock(blockSettings.nonOpaque(), type));
+				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new DoorBlock(type, blockSettings.nonOpaque()));
 				addTransparentBlock(newBlock);
 				break;
 			case "trapdoor":
-				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new TrapdoorBlock(blockSettings.nonOpaque(), type));
+				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new TrapdoorBlock(type, blockSettings.nonOpaque()));
 				addTransparentBlock(newBlock);
 				break;
 			case "button":
@@ -380,7 +386,7 @@ public class Pyrite {
 
 	private static @NotNull BlockSetType getBlockSetType(String blockID) {
 		boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
-        return new BlockSetType(blockID, openByHand, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_DOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
+        return new BlockSetType(blockID, openByHand, openByHand, openByHand, BlockSetType.ActivationRule.EVERYTHING, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
 	}
 
 	public static final DeferredRegister<ItemGroup> pyriteTabs =

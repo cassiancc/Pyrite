@@ -7,6 +7,6 @@ import net.minecraft.block.TrapdoorBlock;
 
 public class ModTrapDoor extends TrapdoorBlock {
     public ModTrapDoor(AbstractBlock.Settings settings, BlockSetType blockSetType) {
-        super(settings, blockSetType);
+        super(blockSetType, settings);
     }
 }

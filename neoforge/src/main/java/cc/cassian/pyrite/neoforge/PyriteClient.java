@@ -1,27 +1,22 @@
-package cc.cassian.pyrite.forge;
+package cc.cassian.pyrite.neoforge;
+
 
 import cc.cassian.pyrite.Pyrite;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.item.BlockItem;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockRenderView;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 import static cc.cassian.pyrite.functions.ModHelpers.grassBlocks;
-import static cc.cassian.pyrite.functions.ModHelpers.transparentBlocks;
 
-@Mod.EventBusSubscriber(modid = Pyrite.modID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod(Pyrite.modID)
 public class PyriteClient {
 
     @SubscribeEvent
