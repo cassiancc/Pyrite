@@ -40,7 +40,7 @@ _712 blocks and counting..._
 
 Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
 - On Fabric, Fabric Loader, Fabric API, and Architectury API is required.
-- On Forge, Forge Loader and Architectury API is required.
+- On NeoForge, NeoForge Loader and Architectury API is required.
 
 ## Credits
 Pyrite is inspired by mods like [Quark](https://quarkmod.net), [Stoneworks](https://modrinth.com/mod/stoneworks), and [Charm](https://modrinth.com/mod/charm) that expand on Minecraft's block palette.
