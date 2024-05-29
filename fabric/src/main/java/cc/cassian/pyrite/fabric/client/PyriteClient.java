@@ -16,11 +16,11 @@ import static cc.cassian.pyrite.functions.ModHelpers.*;
 public class PyriteClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        for (RegistrySupplier<Block> pyriteBlock : grassBlocks) {
-            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), pyriteBlock.get());
-            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 9551193, pyriteBlock.get());
+        for (RegistrySupplier<Block> grassBlock : grassBlocks) {
+            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), grassBlock.get());
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 9551193, grassBlock.get());
         }
-        for (RegistrySupplier<Block> pyriteBlock : transparentBlocks) {
-            BlockRenderLayerMap.INSTANCE.putBlock(pyriteBlock.get(), RenderLayer.getCutout());
+        for (RegistrySupplier<Block> transparentBlock : transparentBlocks) {
+            BlockRenderLayerMap.INSTANCE.putBlock(transparentBlock.get(), RenderLayer.getCutout());
         }}
 }

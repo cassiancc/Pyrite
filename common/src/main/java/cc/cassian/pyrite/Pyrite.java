@@ -195,9 +195,6 @@ public class Pyrite {
 		else if (blockID.equals("cobblestone_bricks")) {
 			creativeTabIcon = newBlock;
 		}
-		else {
-			addGrassBlock(newBlock);
-		}
 
 	}
 	static RegistrySupplier<Block> creativeTabIcon;
@@ -239,9 +236,6 @@ public class Pyrite {
 		RegistrySupplier<Block> newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModStairs(copyBlock.getDefaultState(), blockSettings));
 		addBlockItem(newBlock);
 		if (blockID.contains("grass")) {
-			addGrassBlock(newBlock);
-		}
-		else {
 			addGrassBlock(newBlock);
 		}
 	}
