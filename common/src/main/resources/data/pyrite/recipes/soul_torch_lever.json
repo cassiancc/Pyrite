@@ -2,15 +2,15 @@
       "type": "minecraft:crafting_shapeless",
       "ingredients": [
         {
-          "item": "minecraft:torch"
+          "item": "minecraft:soul_torch"
         },
         {
           "item": "minecraft:lever"
         }
       ],
       "result": {
-        "item": "pyrite:torch_lever",
-        "id": "pyrite:torch_lever",
+        "item": "pyrite:soul_torch_lever",
+        "id": "pyrite:soul_torch_lever",
         "count": 1
       }
     }

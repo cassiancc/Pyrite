@@ -1,0 +1,7 @@
+{
+        "parent": "pyrite:block/template_torch_lever_on",
+        "textures": {
+          "texture": "minecraft:block/redstone_torch"
+        },
+        "render_type": "cutout"
+      }
