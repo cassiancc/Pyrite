@@ -1,0 +1,7 @@
+{
+    "parent": "pyrite:block/template_torch_lever",
+    "textures": {
+      "texture": "minecraft:block/soul_torch"
+    },
+    "render_type": "cutout"
+  }

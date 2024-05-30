@@ -5,10 +5,15 @@ import com.mojang.serialization.MapCodec;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.SharedConstants;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
+import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.DustParticleEffect;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
@@ -24,6 +29,7 @@ import static cc.cassian.pyrite.functions.ModHelpers.*;
 
 public class Pyrite {
 	public final static String modID = "pyrite";
+	static String version = SharedConstants.getGameVersion().getName();
 	//List of Blocks and Block IDS.
 	//Lists of generated material.
     final static String[] dyes = getDyes();
@@ -43,6 +49,11 @@ public class Pyrite {
 			}
 			createResourceBlockSet(block, resourceBlock);
 		}
+	}
+
+	public static void createTorchLever(String blockID, Block baseTorch, ParticleEffect particle) {
+		addPyriteBlock(blockID, "torch_lever", AbstractBlock.Settings.copy(baseTorch), particle);
+
 	}
 
 	public static void generateVanillaCraftingTables() {
@@ -149,7 +160,9 @@ public class Pyrite {
 				break;
 			case "crafting":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModCraftingTable(blockSettings));
-				fuel.put(newBlock, 300);
+				if (!(blockID.contains("crimson") || blockID.contains("warped"))) {
+					fuel.put(newBlock, 300);
+				}
 				break;
 			case "carpet":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModCarpet(blockSettings));
@@ -234,6 +247,14 @@ public class Pyrite {
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new Block(blockSettings));
 				break;
 		}
+		addBlockItem(newBlock);
+	}
+
+	//Add Torch Levers
+	public static void addPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle) {
+		RegistrySupplier<Block> newBlock;
+		newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new TorchLever(blockSettings.nonOpaque(), particle));
+		addTransparentBlock(newBlock);
 		addBlockItem(newBlock);
 	}
 
@@ -401,6 +422,7 @@ public class Pyrite {
 	);
 
 	public static void init() {
+		System.out.println("Pyrite 0.14 running on" + version);
 		//Framed Glass
 		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0);
 		//Framed Glass Pane
@@ -422,6 +444,10 @@ public class Pyrite {
 		createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE);
 		//Resource Blocks
 		generateResourceBlocks();
+		//Torch Levers
+		createTorchLever("torch_lever", Blocks.TORCH, ParticleTypes.FLAME);
+		createTorchLever("redstone_torch_lever", Blocks.SOUL_TORCH, DustParticleEffect.DEFAULT);
+		createTorchLever("soul_torch_lever", Blocks.TORCH, ParticleTypes.SOUL_FIRE_FLAME);
 		//Lamps
 		createPyriteBlock("lit_redstone_lamp", "block", Blocks.REDSTONE_LAMP, 15);
 		createPyriteBlock("glowstone_lamp","block", 0.3f, MapColor.YELLOW, 15);
@@ -503,6 +529,8 @@ public class Pyrite {
 		pyriteTabs.register();
 
 	}
+
+
 
 
 }

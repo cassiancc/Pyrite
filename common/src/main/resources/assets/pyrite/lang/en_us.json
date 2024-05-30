@@ -723,5 +723,10 @@
   "block.pyrite.cherry_crafting_table": "Cherry Crafting Table",
   "block.pyrite.bamboo_crafting_table": "Bamboo Crafting Table",
   "block.pyrite.crimson_crafting_table": "Crimson Crafting Table",
-  "block.pyrite.warped_crafting_table": "Warped Crafting Table"
+  "block.pyrite.warped_crafting_table": "Warped Crafting Table",
+  "block.pyrite.torch_lever": "Torch Lever",
+  "block.pyrite.redstone_torch_lever": "Redstone Torch Lever",
+  "block.pyrite.soul_torch_lever": "Soul Torch Lever"
+
+
 }
