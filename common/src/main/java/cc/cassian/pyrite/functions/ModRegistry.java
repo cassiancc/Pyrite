@@ -155,6 +155,6 @@ public class ModRegistry {
     );
     //Create and add Pyrite items.
     public static void registerPyriteItem(String itemID) {
-        pyriteItems.register(new Identifier(modID, itemID), () -> (new Item(new Item.Settings().arch$tab(PYRITE_GROUP))));
+        pyriteItems.register(itemID, () -> (new Item(new Item.Settings().arch$tab(PYRITE_GROUP))));
     }
 }
