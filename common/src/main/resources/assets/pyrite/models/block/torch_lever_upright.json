@@ -1,4 +1,4 @@
 {
-    "parent": "minecraft:block/torch",
-    "render_type": "cutout"
-}
+        "parent": "minecraft:block/torch",
+        "render_type": "cutout"
+    }

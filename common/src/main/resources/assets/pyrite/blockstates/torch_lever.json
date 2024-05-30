@@ -69,7 +69,7 @@
         "y": 270
       },
       "face=wall,facing=east,powered=false": {
-        "model": "minecraft:block/wall_torch"
+        "model": "pyrite:block/torch_lever_wall"
       },
       "face=wall,facing=east,powered=true": {
         "model": "pyrite:block/torch_lever",
@@ -77,7 +77,7 @@
         "y": 90
       },
       "face=wall,facing=north,powered=false": {
-        "model": "minecraft:block/wall_torch",
+        "model": "pyrite:block/torch_lever_wall",
         "y": 270
       },
       "face=wall,facing=north,powered=true": {
@@ -85,7 +85,7 @@
         "x": 90
       },
       "face=wall,facing=south,powered=false": {
-        "model": "minecraft:block/wall_torch",
+        "model": "pyrite:block/torch_lever_wall",
         "y": 90
       },
       "face=wall,facing=south,powered=true": {
@@ -94,7 +94,7 @@
         "y": 180
       },
       "face=wall,facing=west,powered=false": {
-        "model": "minecraft:block/wall_torch",
+        "model": "pyrite:block/torch_lever_wall",
         "y": 180
       },
       "face=wall,facing=west,powered=true": {
