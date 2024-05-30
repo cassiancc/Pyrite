@@ -4,6 +4,7 @@ import cc.cassian.pyrite.blocks.*;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.SharedConstants;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
@@ -27,6 +28,7 @@ import static cc.cassian.pyrite.functions.ModHelpers.*;
 
 public class Pyrite {
 	public final static String modID = "pyrite";
+	static String version = SharedConstants.getGameVersion().getName();
 	//List of Blocks and Block IDS.
 	//Lists of generated material.
     final static String[] dyes = getDyes();
@@ -414,6 +416,7 @@ public class Pyrite {
 	);
 
 	public static void init() {
+		System.out.println("Pyrite 0.14 running on" + version);
 		//Framed Glass
 		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0);
 		//Framed Glass Pane
