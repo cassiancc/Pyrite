@@ -1,21 +1,22 @@
 package cc.cassian.pyrite.functions;
 
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import dev.architectury.registry.fuel.FuelRegistry;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 import java.util.function.ToIntFunction;
 
-import static cc.cassian.pyrite.Pyrite.*;
+import static cc.cassian.pyrite.functions.ModRegistry.PYRITE_GROUP;
+import static cc.cassian.pyrite.functions.ModRegistry.pyriteItems;
 
 public class ModHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
@@ -33,7 +34,6 @@ public class ModHelpers {
 
     public static void addBlockItem(RegistrySupplier<Block> newBlock) {
         pyriteItems.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings().arch$tab(PYRITE_GROUP)));
-
     }
 
     public static AbstractBlock.Settings copyBlock(Block copyBlock) {
@@ -56,6 +56,7 @@ public class ModHelpers {
             case "honey" -> MapColor.YELLOW;
             case "nostalgia" -> MapColor.BROWN;
             case "rose" -> MapColor.BRIGHT_RED;
+            case "poisonous" -> MapColor.LIME;
             default -> DyeColor.valueOf(dye.toUpperCase()).getMapColor();
         };
     }
@@ -69,5 +70,10 @@ public class ModHelpers {
     }
     public static void registerFuelBlocks() {
         fuel.forEach((fuelBlock, fuelLength) -> FuelRegistry.register(fuelLength, fuelBlock.get()));
+    }
+
+    public static @NotNull BlockSetType getBlockSetType(String blockID) {
+        boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
+        return new BlockSetType(blockID, openByHand, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_DOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
     }
 }

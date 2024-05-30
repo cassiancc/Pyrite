@@ -27,7 +27,8 @@ public class ModLists {
             "star",
             "honey",
             "nostalgia",
-            "rose"
+            "rose",
+            "poisonous"
     };
     //List of Vanilla wood types.
     private final static Block[] vanillaWood = {
