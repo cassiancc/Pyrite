@@ -118,7 +118,6 @@ public class Pyrite {
 
 		pyriteBlocks.register();
 		pyriteItems.register();
-		pyriteTabs.register();
 
 	}
 

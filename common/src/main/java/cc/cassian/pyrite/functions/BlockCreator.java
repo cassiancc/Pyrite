@@ -48,9 +48,9 @@ public class BlockCreator {
 
     //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
     public static void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
-        AbstractBlock.Settings settings = AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color);
+        AbstractBlock.Settings settings = AbstractBlock.Settings.of(Material.STONE).strength(strength).luminance(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "obsidian")) {
-            ModRegistry.registerPyriteBlock(blockID, "block", settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK));
+            ModRegistry.registerPyriteBlock(blockID, "block", settings.strength(strength, 1200f));
         }
         else {
             ModRegistry.registerPyriteBlock(blockID, blockType, settings);
@@ -66,17 +66,8 @@ public class BlockCreator {
     //Create and then add most of the manually generated blocks.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
-        switch (blockType) {
-            case "fence_gate":
-                ModRegistry.registerPyriteBlock(blockID, blockSettings, WoodType.CRIMSON);
-                break;
-            case "door", "trapdoor":
-                ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings, BlockSetType.IRON);
-                break;
-            default:
-                ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
-                break;
-        }
+        ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
+
     }
 
     //Create a slab from the last block added.
@@ -160,8 +151,8 @@ public class BlockCreator {
 
     //Generate an entire wood set.
     public static void createWoodSet(String blockID, MapColor color, int blockLux) {
-        BlockSetType GENERATED_SET = new BlockSetType(blockID);
-        WoodType GENERATED_TYPE = new WoodType(blockID, GENERATED_SET);
+        BlockSetType GENERATED_SET = new BlockSetType();
+        WoodType GENERATED_TYPE = new WoodType();
         //Stained Planks
         createPyriteBlock( blockID+"_planks", "block", Blocks.OAK_PLANKS, color, blockLux);
         //Stained Stairs

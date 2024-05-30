@@ -38,8 +38,6 @@ public class ModLists {
             Blocks.ACACIA_PLANKS,
             Blocks.DARK_OAK_PLANKS,
             Blocks.MANGROVE_PLANKS,
-            Blocks.CHERRY_PLANKS,
-            Blocks.BAMBOO_PLANKS,
             Blocks.CRIMSON_PLANKS,
             Blocks.WARPED_PLANKS
     };
