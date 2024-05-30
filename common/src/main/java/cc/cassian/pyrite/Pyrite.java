@@ -2,7 +2,6 @@ package cc.cassian.pyrite;
 
 import cc.cassian.pyrite.blocks.*;
 import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.fuel.FuelRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
@@ -158,7 +157,9 @@ public class Pyrite {
 				break;
 			case "crafting":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModCraftingTable(blockSettings));
-//				FuelRegistry.register(300, newBlock.get());
+				if (!(blockID.contains("crimson") || blockID.contains("warped"))) {
+					fuel.put(newBlock, 300);
+				}
 				break;
 			case "carpet":
 				newBlock = pyriteBlocks.register(new Identifier(modID, blockID), () -> new ModCarpet(blockSettings));

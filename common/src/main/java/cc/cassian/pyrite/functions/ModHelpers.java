@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import dev.architectury.registry.fuel.FuelRegistry;
 import net.minecraft.util.DyeColor;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import static cc.cassian.pyrite.Pyrite.*;
 public class ModHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
     public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
+    public static HashMap<RegistrySupplier<Block>, Integer> fuel = new HashMap<>();
 
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
@@ -64,5 +66,8 @@ public class ModHelpers {
             case "star" -> 15;
             default -> 0;
         };
+    }
+    public static void registerFuelBlocks() {
+        fuel.forEach((fuelBlock, fuelLength) -> FuelRegistry.register(fuelLength, fuelBlock.get()));
     }
 }
