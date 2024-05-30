@@ -1,0 +1,106 @@
+{
+    "variants": {
+      "face=ceiling,facing=east,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "x": 180,
+        "y": 270
+      },
+      "face=ceiling,facing=east,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 180,
+        "y": 270
+      },
+      "face=ceiling,facing=north,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "x": 180,
+        "y": 180
+      },
+      "face=ceiling,facing=north,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 180,
+        "y": 180
+      },
+      "face=ceiling,facing=south,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "x": 180
+      },
+      "face=ceiling,facing=south,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 180
+      },
+      "face=ceiling,facing=west,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "x": 180,
+        "y": 90
+      },
+      "face=ceiling,facing=west,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 180,
+        "y": 90
+      },
+      "face=floor,facing=east,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "y": 90
+      },
+      "face=floor,facing=east,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "y": 90
+      },
+      "face=floor,facing=north,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright"
+      },
+      "face=floor,facing=north,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever"
+      },
+      "face=floor,facing=south,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "y": 180
+      },
+      "face=floor,facing=south,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "y": 180
+      },
+      "face=floor,facing=west,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_upright",
+        "y": 270
+      },
+      "face=floor,facing=west,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "y": 270
+      },
+      "face=wall,facing=east,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_wall"
+      },
+      "face=wall,facing=east,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 90,
+        "y": 90
+      },
+      "face=wall,facing=north,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_wall",
+        "y": 270
+      },
+      "face=wall,facing=north,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 90
+      },
+      "face=wall,facing=south,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_wall",
+        "y": 90
+      },
+      "face=wall,facing=south,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 90,
+        "y": 180
+      },
+      "face=wall,facing=west,powered=false": {
+        "model": "pyrite:block/redstone_torch_lever_wall",
+        "y": 180
+      },
+      "face=wall,facing=west,powered=true": {
+        "model": "pyrite:block/redstone_torch_lever",
+        "x": 90,
+        "y": 270
+      }
+    }
+  }

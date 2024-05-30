@@ -1,0 +1,1 @@
+{"parent":"minecraft:block/door_top_right","textures":{"bottom":"pyrite:block/quartz_door_bottom","top":"pyrite:block/quartz_door_top"},"render_type":"cutout"}

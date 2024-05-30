@@ -1,0 +1,1 @@
+{"parent":"minecraft:block/template_orientable_trapdoor_bottom","textures":{"texture":"pyrite:block/blue_stained_trapdoor"},"render_type":"cutout"}
