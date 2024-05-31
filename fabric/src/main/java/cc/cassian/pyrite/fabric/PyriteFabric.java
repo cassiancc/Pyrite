@@ -14,7 +14,7 @@ public class PyriteFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         Pyrite.init("fabric");
-        Registry.register(Registries.ITEM_GROUP, new Identifier(modID, "pyrite_group"), PYRITE_GROUP);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(modID, "pyrite_group"), PYRITE_GROUP);
         registerFuelBlocks();
     }
 }

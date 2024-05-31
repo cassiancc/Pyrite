@@ -157,7 +157,7 @@ public class FabricRegistry {
         }
         //Registers items.
         for (int x = 0; x < pyriteItemIDs.size(); x++) {
-            Registry.register(Registries.ITEM, new Identifier(modID, pyriteItemIDs.get(x)), pyriteItems.get(x));
+            Registry.register(Registries.ITEM, Identifier.of(modID, pyriteItemIDs.get(x)), pyriteItems.get(x));
         }
         //Registers the Pyrite item group.
 //        Registry.register(Registries.ITEM_GROUP, new Identifier(modID, "pyrite_group"), PYRITE_GROUP);
