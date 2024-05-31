@@ -41,7 +41,7 @@ _746 blocks and counting..._
 <a href='https://modrinth.com/mod/architectury-api'><img alt="architectury-api" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/architectury-api_vector.svg"></a>
 
 Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
-- On Fabric, Fabric Loader and Fabric API is required.
+- On Fabric, Fabric Loader, Architectury API and Fabric API is required.
 - On Forge, Forge Loader and Architectury API is required.
 
 ## Credits
