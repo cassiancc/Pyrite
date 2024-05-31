@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.fabric.client;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,19 +10,19 @@ import net.minecraft.block.*;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
 
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.grassBlocks;
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.transparentBlocks;
+import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.grassBlocks;
+import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.transparentBlocks;
 
 
 @Environment(EnvType.CLIENT)
 public class PyriteClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        for (Block grassBlock : grassBlocks) {
-            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), grassBlock);
-            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 9551193, grassBlock);
+        for (RegistrySupplier<Block> grassBlock : grassBlocks) {
+            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> BiomeColors.getGrassColor(view, pos), grassBlock.get());
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 9551193, grassBlock.get());
         }
-        for (Block transparentBlock : transparentBlocks) {
-            BlockRenderLayerMap.INSTANCE.putBlock(transparentBlock, RenderLayer.getCutout());
+        for (RegistrySupplier<Block> transparentBlock : transparentBlocks) {
+            BlockRenderLayerMap.INSTANCE.putBlock(transparentBlock.get(), RenderLayer.getCutout());
         }}
 }
