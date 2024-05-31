@@ -1,32 +1,28 @@
-package cc.cassian.pyrite.functions;
+package cc.cassian.pyrite.functions.architectury;
 
 import cc.cassian.pyrite.blocks.*;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.Registries;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 
 import static cc.cassian.pyrite.Pyrite.modID;
-import static cc.cassian.pyrite.functions.ModHelpers.*;
-import static cc.cassian.pyrite.functions.ModHelpers.addGrassBlock;
+import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.*;
 
-public class ModRegistry {
+public class CommonRegistry {
     static RegistrySupplier<Block> creativeTabIcon;
 
     //Deferred registry entries
-    public static final DeferredRegister<Block> pyriteBlocks = DeferredRegister.create(modID, Registry.BLOCK_KEY);
-    public static final DeferredRegister<Item> pyriteItems = DeferredRegister.create(modID, Registry.ITEM_KEY);
+    public static final DeferredRegister<Block> pyriteBlocks = DeferredRegister.create(modID, RegistryKeys.BLOCK);
+    public static final DeferredRegister<Item> pyriteItems = DeferredRegister.create(modID, RegistryKeys.ITEM);
 
     //Add most Pyrite blocks.
     public static void registerPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings) {
@@ -60,15 +56,6 @@ public class ModRegistry {
                 break;
             case "fence":
                 newBlock = pyriteBlocks.register(blockID, () -> new FenceBlock(blockSettings));
-                break;
-            case "fence_gate":
-                newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(blockSettings));
-                break;
-            case "door":
-                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(blockSettings));
-                break;
-                case "trapdoor":
-                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(blockSettings));
                 break;
             case "log":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModPillar(blockSettings, power));
@@ -109,7 +96,7 @@ public class ModRegistry {
 
     //Add Pyrite blocks that require Wood Types - Fence gates.
     public static void registerPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
-        RegistrySupplier<Block> newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(blockSettings));
+        RegistrySupplier<Block> newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(blockSettings, type));
         addBlockItem(newBlock);
     }
 
@@ -118,18 +105,18 @@ public class ModRegistry {
         RegistrySupplier<Block> newBlock;
         switch (blockType) {
             case "door":
-                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(blockSettings.nonOpaque()));
+                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(blockSettings.nonOpaque(), type));
                 addTransparentBlock(newBlock);
                 break;
             case "trapdoor":
-                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(blockSettings.nonOpaque()));
+                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(blockSettings.nonOpaque(), type));
                 addTransparentBlock(newBlock);
                 break;
             case "button":
-                newBlock = pyriteBlocks.register(blockID, () -> new ModWoodenButton(blockSettings));
+                newBlock = pyriteBlocks.register(blockID, () -> new ModWoodenButton(blockSettings, type));
                 break;
             case "pressure_plate":
-                newBlock = pyriteBlocks.register(blockID, () -> new ModPressurePlate(blockSettings));
+                newBlock = pyriteBlocks.register(blockID, () -> new ModPressurePlate(blockSettings, type));
                 break;
             default:
                 System.out.println(blockID + "created as a generic block.");
@@ -155,14 +142,28 @@ public class ModRegistry {
             addGrassBlock(newBlock);
         }
     }
+    public static final DeferredRegister<ItemGroup> pyriteTabs =
+            DeferredRegister.create(modID, RegistryKeys.ITEM_GROUP);
 
-    public static final ItemGroup PYRITE_GROUP = CreativeTabRegistry.create(
-            new Identifier("pyrite", "group"), // Tab ID
-            () -> new ItemStack(creativeTabIcon.get()) // Icon
+    public static final RegistrySupplier<ItemGroup> PYRITE_GROUP = pyriteTabs.register(
+            "pyrite", // Tab ID
+            () -> CreativeTabRegistry.create(
+                    Text.translatable("itemGroup.pyrite.group"), // Tab Name
+                    () -> new ItemStack(creativeTabIcon.get()) // Icon
+            )
     );
-
     //Create and add Pyrite items.
     public static void registerPyriteItem(String itemID) {
-        pyriteItems.register(itemID, () -> (new Item(new Item.Settings().group(PYRITE_GROUP))));
+        pyriteItems.register(itemID, () -> (new Item(new Item.Settings().arch$tab(PYRITE_GROUP))));
+    }
+
+    public static void register() {
+        pyriteBlocks.register();
+        pyriteItems.register();
+        pyriteTabs.register();
+    }
+
+    public static void addBlockItem(RegistrySupplier<Block> newBlock) {
+        pyriteItems.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings().arch$tab(PYRITE_GROUP)));
     }
 }

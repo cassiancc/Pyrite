@@ -1,1 +1,6 @@
-{"parent":"minecraft:block/cube_all","textures":{"all":"pyrite:block/rose_wool"},"render_type":"cutout"}
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+      "all": "pyrite:block/rose_wool"
+    }
+  }
