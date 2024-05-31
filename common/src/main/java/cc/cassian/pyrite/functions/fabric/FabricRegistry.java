@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.functions.fabric;
 
 import cc.cassian.pyrite.blocks.*;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
@@ -72,7 +73,12 @@ public class FabricRegistry {
                 addTransparentBlock();
                 break;
             case "gravel":
-                pyriteBlocks.add(new GravelBlock(blockSettings));
+                pyriteBlocks.add(new FallingBlock(blockSettings) {
+                    @Override
+                    protected MapCodec<? extends FallingBlock> getCodec() {
+                        return null;
+                    }
+                });
                 break;
             case "flower":
                 pyriteBlocks.add(new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
@@ -93,7 +99,7 @@ public class FabricRegistry {
     //Add Pyrite blocks that require Wood Types - Fence gates.
     public static void registerPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
         pyriteBlockIDs.add(blockID);
-        pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
+        pyriteBlocks.add(new FenceGateBlock(type, blockSettings));
     }
 
     //Add Pyrite blocks that require Block Sets.
@@ -101,11 +107,11 @@ public class FabricRegistry {
         pyriteBlockIDs.add(blockID);
         switch (blockType) {
             case "door":
-                pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), type));
+                pyriteBlocks.add(new DoorBlock(type, blockSettings.nonOpaque()));
                 addTransparentBlock();
                 break;
             case "trapdoor":
-                pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), type));
+                pyriteBlocks.add(new TrapdoorBlock(type, blockSettings.nonOpaque()));
                 addTransparentBlock();
                 break;
             case "button":
@@ -146,8 +152,8 @@ public class FabricRegistry {
     public static void register() {
         //Register blocks and block items.
         for (int x = 0; x < pyriteBlockIDs.size(); x++) {
-            Registry.register(Registries.BLOCK, new Identifier(modID, pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
-            Registry.register(Registries.ITEM, new Identifier(modID, pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
+            Registry.register(Registries.BLOCK, Identifier.of(modID, pyriteBlockIDs.get(x)), pyriteBlocks.get(x));
+            Registry.register(Registries.ITEM, Identifier.of(modID, pyriteBlockIDs.get(x)), new BlockItem(pyriteBlocks.get(x), new Item.Settings()));
         }
         //Registers items.
         for (int x = 0; x < pyriteItemIDs.size(); x++) {

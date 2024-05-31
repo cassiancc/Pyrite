@@ -9,7 +9,7 @@ import net.neoforged.fml.common.Mod;
 public final class PyriteNeoForge {
     public PyriteNeoForge() {
         // Run our common setup.
-        Pyrite.init();
+        Pyrite.init("neoforge");
 
     }
 }
