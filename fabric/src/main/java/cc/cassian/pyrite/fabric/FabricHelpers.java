@@ -10,13 +10,13 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 
-import static cc.cassian.pyrite.functions.ModHelpers.fuel;
+import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.fuel;
 import static cc.cassian.pyrite.functions.fabric.FabricRegistry.pyriteBlocks;
 import static cc.cassian.pyrite.functions.fabric.FabricRegistry.pyriteItems;
 
 public class FabricHelpers {
     public static void registerFuelBlocks() {
-        fuel.forEach((fuelBlock, fuelLength) -> FuelRegistry.INSTANCE.add((ItemConvertible) fuelBlock, fuelLength));
+        fuel.forEach(FuelRegistry.INSTANCE::add);
     }
 
     //Add items to the Pyrite Item Group

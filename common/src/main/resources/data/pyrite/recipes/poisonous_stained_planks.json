@@ -10,7 +10,7 @@
         "tag": "minecraft:planks"
       },
       "D": {
-        "item": "minecraft:poisonous_dye"
+        "item": "pyrite:poisonous_dye"
       }
     },
     "result": {

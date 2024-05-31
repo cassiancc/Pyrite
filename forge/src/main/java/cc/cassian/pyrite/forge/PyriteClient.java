@@ -13,7 +13,7 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static cc.cassian.pyrite.functions.ModHelpers.grassBlocks;
+import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.grassBlocks;
 
 @Mod.EventBusSubscriber(modid = Pyrite.modID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class PyriteClient {
