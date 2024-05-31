@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.functions;
 
+import cc.cassian.pyrite.functions.fabric.FabricRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.particle.ParticleEffect;
@@ -9,7 +10,7 @@ import java.util.Objects;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModHelpers.getBlockSetType;
 import static cc.cassian.pyrite.functions.ModLists.*;
-import static cc.cassian.pyrite.functions.FabricRegistry.registerPyriteBlock;
+import static cc.cassian.pyrite.functions.fabric.FabricRegistry.registerPyriteBlock;
 
 public class BlockCreator {
     final static Block[] vanillaWood = getVanillaWood();

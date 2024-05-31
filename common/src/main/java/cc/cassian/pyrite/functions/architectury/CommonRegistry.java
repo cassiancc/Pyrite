@@ -1,4 +1,4 @@
-package cc.cassian.pyrite.functions;
+package cc.cassian.pyrite.functions.architectury;
 
 import cc.cassian.pyrite.blocks.*;
 import dev.architectury.registry.CreativeTabRegistry;
@@ -15,7 +15,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 
 import static cc.cassian.pyrite.Pyrite.modID;
-import static cc.cassian.pyrite.functions.ModHelpers.*;
+import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.*;
 
 public class CommonRegistry {
     static RegistrySupplier<Block> creativeTabIcon;

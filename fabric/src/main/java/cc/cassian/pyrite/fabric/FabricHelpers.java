@@ -11,8 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 
 import static cc.cassian.pyrite.functions.ModHelpers.fuel;
-import static cc.cassian.pyrite.functions.FabricRegistry.pyriteBlocks;
-import static cc.cassian.pyrite.functions.FabricRegistry.pyriteItems;
+import static cc.cassian.pyrite.functions.fabric.FabricRegistry.pyriteBlocks;
+import static cc.cassian.pyrite.functions.fabric.FabricRegistry.pyriteItems;
 
 public class FabricHelpers {
     public static void registerFuelBlocks() {

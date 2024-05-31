@@ -1,4 +1,4 @@
-package cc.cassian.pyrite.functions;
+package cc.cassian.pyrite.functions.fabric;
 
 import cc.cassian.pyrite.blocks.*;
 import net.minecraft.block.*;
@@ -13,7 +13,8 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 
 import static cc.cassian.pyrite.Pyrite.modID;
-import static cc.cassian.pyrite.functions.ModHelpers.*;
+import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.addGrassBlock;
+import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.addTransparentBlock;
 
 public class FabricRegistry {
 
@@ -80,6 +81,9 @@ public class FabricRegistry {
                 System.out.println(blockID + "created as a generic block, block provided" + blockType);
                 pyriteBlocks.add(new Block(blockSettings));
                 break;
+        }
+        if (blockID.contains("grass")) {
+            addGrassBlock();
         }
 
     }
