@@ -29,13 +29,7 @@ public class Pyrite {
 		generateBrickSet("mossy_cobblestone_brick", Blocks.MOSSY_COBBLESTONE, MapColor.STONE_GRAY, 0, platform);
 		generateBrickSet("smooth_stone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, 0, platform);
 		//Grass Set
-		createTurfSet("grass", Blocks.GRASS_BLOCK, platform);
-		//Mycelium Set
-		createTurfSet("mycelium", Blocks.MYCELIUM, platform);
-		//Podzol Set
-		createTurfSet("podzol", Blocks.PODZOL, platform);
-		//Path Set
-		createTurfSet("path", Blocks.DIRT_PATH, platform);
+		createTurfSets(platform);
 		//Nether Brick Fence Gate
 		createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE, platform);
 		//Resource Blocks
@@ -51,21 +45,9 @@ public class Pyrite {
 		createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15, platform);
 		createPyriteBlock("nostalgia_glowing_obsidian","obsidian", 50f, MapColor.RED, 15, platform);
 		createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15, platform);
-		createPyriteBlock("nostalgia_grass_block", Blocks.GRASS_BLOCK, platform);
-		createTurfSet("nostalgia_grass", Blocks.GRASS_BLOCK, platform);
-		createPyriteBlock("nostalgia_cobblestone", Blocks.COBBLESTONE, platform);
-		createPyriteBlock("nostalgia_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE, platform);
-		createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL, platform);
-		createPyriteBlock("nostalgia_netherrack", Blocks.NETHERRACK, platform);
+		createNostalgia(platform);
 		//Classic Flowers
-		createPyriteBlock("rose", "flower", Blocks.POPPY, platform);
-		createPyriteBlock("orange_rose", "flower", Blocks.POPPY, platform);
-		createPyriteBlock("white_rose", "flower", Blocks.POPPY, platform);
-		createPyriteBlock("pink_rose", "flower", Blocks.POPPY, platform);
-		createPyriteBlock("blue_rose", "flower", Blocks.POPPY, platform);
-		createPyriteBlock("paeonia", "flower", Blocks.PEONY, platform);
-		createPyriteBlock("buttercup", "flower", Blocks.DANDELION, platform);
-		createPyriteBlock("pink_daisy", "flower", Blocks.PINK_TULIP, platform);
+		createFlowers(platform);
 		//Charred Nether Bricks
 		generateBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0, platform);
 		//Blue Nether Bricks

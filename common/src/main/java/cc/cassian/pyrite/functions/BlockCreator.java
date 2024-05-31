@@ -6,11 +6,13 @@ import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.particle.ParticleEffect;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModHelpers.getBlockSetType;
 import static cc.cassian.pyrite.functions.ModLists.*;
+import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.fuel;
 
 public class BlockCreator {
     final static Block[] vanillaWood = getVanillaWood();
@@ -202,6 +204,25 @@ public class BlockCreator {
                 sendToRegistry(blockID, blockType, blockSettings, platform);
                 break;
         }
+    }
+
+    public static void createFlowers(String platform) {
+        for (Map.Entry<String, Block> entry : flowers.entrySet()) {
+            createPyriteBlock(entry.getKey(), "flower", entry.getValue(), platform);
+        }
+    }
+
+    public static void createTurfSets(String platform) {
+        for (Map.Entry<String, Block> entry : turfSets.entrySet()) {
+            createTurfSet(entry.getKey(), entry.getValue(), platform);
+        }
+    }
+
+    public static void createNostalgia(String platform) {
+        for (Map.Entry<String, Block> entry : nostalgiaBlocks.entrySet()) {
+            createPyriteBlock(entry.getKey(), "block", entry.getValue(), platform);
+        }
+        createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL, platform);
     }
 
     //Generate an entire brick set.
