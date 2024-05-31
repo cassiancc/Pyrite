@@ -13,8 +13,7 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 
 import static cc.cassian.pyrite.Pyrite.modID;
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.addGrassBlock;
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.addTransparentBlock;
+import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.*;
 
 public class FabricRegistry {
 
@@ -42,7 +41,9 @@ public class FabricRegistry {
                 break;
             case "crafting":
                 pyriteBlocks.add(new ModCraftingTable(blockSettings));
-//                FuelRegistry.INSTANCE.add(getLastBlock(), 300);
+                if (!(blockID.contains("crimson") || blockID.contains("warped"))) {
+                    fuel.put(getLastBlock(), 300);
+                }
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));

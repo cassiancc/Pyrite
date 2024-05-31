@@ -15,12 +15,13 @@ public class FabricCommonHelpers {
     public static void addGrassBlock() {
         grassBlocks.add(getLastBlock());
     }
+    public static void addTransparentBlock() {
+        transparentBlocks.add(getLastBlock());
+    }
 
     public static Block getLastBlock() {
         return pyriteBlocks.get(pyriteBlocks.size() - 1);
     }
 
-    public static void addTransparentBlock() {
-        transparentBlocks.add(getLastBlock());
-    }
+
 }

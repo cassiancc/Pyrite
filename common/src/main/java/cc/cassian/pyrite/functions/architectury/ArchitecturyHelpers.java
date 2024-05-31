@@ -18,52 +18,11 @@ public class ArchitecturyHelpers {
     public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
     public static HashMap<RegistrySupplier<Block>, Integer> fuel = new HashMap<>();
 
-
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
         transparentBlocks.add(newBlock);
     }
-
-
     public static void addGrassBlock(RegistrySupplier<Block> newBlock) {
         grassBlocks.add(newBlock);
     }
 
-
-    public static AbstractBlock.Settings copyBlock(Block copyBlock) {
-        return AbstractBlock.Settings.copy(copyBlock);
-    }
-
-    public static ToIntFunction<BlockState> parseLux(int lux) {
-        return state -> lux;
-    }
-
-    public static String findVanillaBlockID(Block block) {
-        return block.toString().substring(block.toString().indexOf(":") + 1, block.toString().indexOf("}"));
-    }
-
-    public static MapColor checkDyeMapColour(String dye) {
-        return switch (dye) {
-            case "glow" -> MapColor.CYAN;
-            case "dragon" -> MapColor.BLACK;
-            case "star" -> MapColor.OFF_WHITE;
-            case "honey" -> MapColor.YELLOW;
-            case "nostalgia" -> MapColor.BROWN;
-            case "rose" -> MapColor.BRIGHT_RED;
-            case "poisonous" -> MapColor.LIME;
-            default -> DyeColor.valueOf(dye.toUpperCase()).getMapColor();
-        };
-    }
-
-    public static int checkDyeLux(String dye) {
-        return switch (dye) {
-            case "glow" -> 8;
-            case "star" -> 15;
-            default -> 0;
-        };
-    }
-
-    public static @NotNull BlockSetType getBlockSetType(String blockID) {
-        boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
-        return new BlockSetType(blockID, openByHand, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_DOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
-    }
 }
