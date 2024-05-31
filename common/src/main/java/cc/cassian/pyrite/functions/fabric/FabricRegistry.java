@@ -131,6 +131,9 @@ public class FabricRegistry {
     public static void registerPyriteBlock(String blockID, Block copyBlock, AbstractBlock.Settings blockSettings) {
         pyriteBlockIDs.add(blockID);
         pyriteBlocks.add(new ModStairs(copyBlock.getDefaultState(), blockSettings));
+        if (blockID.contains("grass")) {
+            addGrassBlock();
+        }
     }
 
     //Create and add Pyrite items.

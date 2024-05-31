@@ -16,7 +16,7 @@
 Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include stairs, slabs, fences, fence gates, walls, wall gates, trapdoors, pressure plates, buttons - everything you need to decorate as _you_ want. 
 
 ## Features
-_712 blocks and counting..._
+_746 blocks and counting..._
 - Stained Planks, in every colour of dye (and more!)
   - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)
@@ -41,7 +41,7 @@ _712 blocks and counting..._
 <a href='https://modrinth.com/mod/architectury-api'><img alt="architectury-api" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/architectury-api_vector.svg"></a>
 
 Pyrite is required on both the client and server. Pyrite currently supports 1.20.6 and 1.20.1, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
-- On Fabric, Fabric Loader, Fabric API, and Architectury API is required.
+- On Fabric, Fabric Loader and Fabric API is required.
 - On Forge, Forge Loader and Architectury API is required.
 
 ## Credits
