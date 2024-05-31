@@ -3,6 +3,8 @@ package cc.cassian.pyrite.functions;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
+import java.util.Map;
+
 public class ModLists {
     //List of dyes.
     private final static String[] dyes = {
@@ -27,7 +29,8 @@ public class ModLists {
             "star",
             "honey",
             "nostalgia",
-            "rose"
+            "rose",
+            "poisonous"
     };
     //List of Vanilla wood types.
     private final static Block[] vanillaWood = {
@@ -85,6 +88,32 @@ public class ModLists {
             Blocks.OXIDIZED_COPPER
 
     };
+
+    public static Map<String, Block> turfSets = Map.of(
+            "grass", Blocks.GRASS_BLOCK,
+            "mycelium", Blocks.MYCELIUM,
+            "podzol", Blocks.PODZOL,
+            "path", Blocks.DIRT_PATH,
+            "nostalgia_grass", Blocks.GRASS_BLOCK
+    );
+
+    public static Map<String, Block> nostalgiaBlocks = Map.of(
+            "nostalgia_grass_block", Blocks.GRASS_BLOCK,
+            "nostalgia_cobblestone", Blocks.COBBLESTONE,
+            "nostalgia_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE,
+            "nostalgia_netherrack", Blocks.NETHERRACK
+    );
+
+    public static Map<String, Block> flowers = Map.of(
+            "rose", Blocks.POPPY,
+            "orange_rose", Blocks.POPPY,
+            "white_rose", Blocks.POPPY,
+            "pink_rose", Blocks.POPPY,
+            "blue_rose", Blocks.POPPY,
+            "paeonia", Blocks.PEONY,
+            "buttercup", Blocks.PEONY,
+            "pink_daisy", Blocks.PEONY
+    );
 
     public static String[] getDyes() {
         return dyes;

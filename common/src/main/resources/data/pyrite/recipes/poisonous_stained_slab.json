@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:poisonous_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:poisonous_stained_slab",
+          "id": "pyrite:poisonous_stained_slab",
+          "count": 6
+        }
+      }

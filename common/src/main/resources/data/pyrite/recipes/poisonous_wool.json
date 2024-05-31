@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:poisonous_dye"
+        },
+        {
+          "item": "minecraft:white_wool"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:poisonous_wool",
+        "id": "pyrite:poisonous_wool"
+      }
+    }

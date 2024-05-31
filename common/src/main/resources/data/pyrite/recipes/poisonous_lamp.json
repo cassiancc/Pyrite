@@ -1,0 +1,21 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC",
+        "CDC",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:glowstone_lamp"
+        },
+        "D": {
+          "item": "pyrite:poisonous_dye"
+        }
+      },
+      "result": {
+        "item": "pyrite:poisonous_lamp",
+        "id": "pyrite:poisonous_lamp",
+        "count": 8
+      }
+  }

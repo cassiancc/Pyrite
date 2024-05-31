@@ -1,5 +1,4 @@
-package cc.cassian.pyrite.neoforge;
-
+package cc.cassian.pyrite.forge;
 
 import cc.cassian.pyrite.Pyrite;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -9,14 +8,14 @@ import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.item.BlockItem;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-import static cc.cassian.pyrite.functions.ModHelpers.grassBlocks;
+import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.grassBlocks;
 
-@Mod(Pyrite.modID)
+@Mod.EventBusSubscriber(modid = Pyrite.modID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class PyriteClient {
 
     @SubscribeEvent

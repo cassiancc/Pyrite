@@ -2,13 +2,19 @@ package cc.cassian.pyrite.fabric;
 
 import cc.cassian.pyrite.Pyrite;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 
-import static cc.cassian.pyrite.functions.ModHelpers.registerFuelBlocks;
+import static cc.cassian.pyrite.Pyrite.modID;
+import static cc.cassian.pyrite.fabric.FabricHelpers.PYRITE_GROUP;
+import static cc.cassian.pyrite.fabric.FabricHelpers.registerFuelBlocks;
 
 public class PyriteFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        Pyrite.init();
+        Pyrite.init("fabric");
+        Registry.register(Registries.ITEM_GROUP, new Identifier(modID, "pyrite_group"), PYRITE_GROUP);
         registerFuelBlocks();
     }
 }

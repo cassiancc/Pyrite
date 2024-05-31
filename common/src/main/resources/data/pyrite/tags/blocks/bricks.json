@@ -31,7 +31,9 @@
       "pyrite:star_bricks",
       "pyrite:honey_bricks",
       "pyrite:nostalgia_bricks",
-      "pyrite:rose_bricks"
+      "pyrite:rose_bricks",
+      "pyrite:poisonous_bricks"
+
     ]
   }
 
