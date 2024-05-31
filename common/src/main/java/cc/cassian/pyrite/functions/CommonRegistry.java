@@ -6,19 +6,18 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 import static cc.cassian.pyrite.Pyrite.modID;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
-import static cc.cassian.pyrite.functions.ModHelpers.addGrassBlock;
 
-public class ModRegistry {
+public class CommonRegistry {
     static RegistrySupplier<Block> creativeTabIcon;
 
     //Deferred registry entries
@@ -156,5 +155,15 @@ public class ModRegistry {
     //Create and add Pyrite items.
     public static void registerPyriteItem(String itemID) {
         pyriteItems.register(itemID, () -> (new Item(new Item.Settings().arch$tab(PYRITE_GROUP))));
+    }
+
+    public static void register() {
+        pyriteBlocks.register();
+        pyriteItems.register();
+        pyriteTabs.register();
+    }
+
+    public static void addBlockItem(RegistrySupplier<Block> newBlock) {
+        pyriteItems.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings().arch$tab(PYRITE_GROUP)));
     }
 }

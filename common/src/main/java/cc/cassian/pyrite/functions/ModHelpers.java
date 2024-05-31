@@ -2,9 +2,6 @@ package cc.cassian.pyrite.functions;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import dev.architectury.registry.fuel.FuelRegistry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
@@ -15,25 +12,23 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
 
-import static cc.cassian.pyrite.functions.ModRegistry.PYRITE_GROUP;
-import static cc.cassian.pyrite.functions.ModRegistry.pyriteItems;
+import static cc.cassian.pyrite.functions.FabricRegistry.*;
 
 public class ModHelpers {
-    public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
-    public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
-    public static HashMap<RegistrySupplier<Block>, Integer> fuel = new HashMap<>();
+    public static ArrayList<Object> transparentBlocks = new ArrayList<>();
+    public static ArrayList<Object> grassBlocks = new ArrayList<>();
+    public static HashMap<Object, Integer> fuel = new HashMap<>();
 
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
         transparentBlocks.add(newBlock);
     }
+    public static void addTransparentBlock() {
+        transparentBlocks.add(FabricRegistry.pyriteBlocks.get(pyriteBlocks.size()-1));
+    }
 
     public static void addGrassBlock(RegistrySupplier<Block> newBlock) {
         grassBlocks.add(newBlock);
-    }
-
-    public static void addBlockItem(RegistrySupplier<Block> newBlock) {
-        pyriteItems.register(newBlock.getId(), () -> new BlockItem(newBlock.get(), new Item.Settings().arch$tab(PYRITE_GROUP)));
     }
 
     public static AbstractBlock.Settings copyBlock(Block copyBlock) {
@@ -67,9 +62,6 @@ public class ModHelpers {
             case "star" -> 15;
             default -> 0;
         };
-    }
-    public static void registerFuelBlocks() {
-        fuel.forEach((fuelBlock, fuelLength) -> FuelRegistry.register(fuelLength, fuelBlock.get()));
     }
 
     public static @NotNull BlockSetType getBlockSetType(String blockID) {

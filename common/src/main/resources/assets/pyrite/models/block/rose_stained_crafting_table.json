@@ -1,1 +1,12 @@
-{"parent":"minecraft:block/cube","textures":{"particle":"pyrite:block/rose_stained_crafting_table_front","north":"pyrite:block/rose_stained_crafting_table_front","south":"pyrite:block/rose_stained_crafting_table_side","east":"pyrite:block/rose_stained_crafting_table_side","west":"pyrite:block/rose_stained_crafting_table_front","up":"pyrite:block/rose_stained_crafting_table_top","down":"pyrite:block/rose_stained_planks"},"render_type":"cutout"}
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+      "particle": "pyrite:block/rose_stained_crafting_table_front",
+      "north": "pyrite:block/rose_stained_crafting_table_front",
+      "south": "pyrite:block/rose_stained_crafting_table_side",
+      "east": "pyrite:block/rose_stained_crafting_table_side",
+      "west": "pyrite:block/rose_stained_crafting_table_front",
+      "up": "pyrite:block/rose_stained_crafting_table_top",
+      "down": "pyrite:block/rose_stained_planks"
+    }
+  }

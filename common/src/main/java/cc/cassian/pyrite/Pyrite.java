@@ -1,5 +1,6 @@
 package cc.cassian.pyrite;
 
+import cc.cassian.pyrite.functions.FabricRegistry;
 import net.minecraft.block.*;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -7,14 +8,14 @@ import net.minecraft.particle.ParticleTypes;
 import static cc.cassian.pyrite.functions.BlockCreator.*;
 import static cc.cassian.pyrite.functions.ModLists.*;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
-import static cc.cassian.pyrite.functions.ModRegistry.*;
+import static cc.cassian.pyrite.functions.FabricRegistry.*;
 
 public class Pyrite {
 	public final static String modID = "pyrite";
+	private String platform;
 
 
-
-	public static void init() {
+	public static void init(String platform) {
 		//Framed Glass
 		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0);
 		//Framed Glass Pane
@@ -116,9 +117,7 @@ public class Pyrite {
 			createPyriteBlock(block + "_gate","fence_gate", wallsBlock);
 		}
 
-		pyriteBlocks.register();
-		pyriteItems.register();
-		pyriteTabs.register();
+		FabricRegistry.register();
 
 	}
 

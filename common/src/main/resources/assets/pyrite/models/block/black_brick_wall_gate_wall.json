@@ -1,1 +1,6 @@
-{"parent":"pyrite:block/template_wall_gate_wall","textures":{"texture":"pyrite:block/black_bricks"}}
+{
+    "parent": "minecraft:block/template_fence_gate_wall",
+    "textures": {
+      "texture": "pyrite:block/black_bricks"
+    }
+  }

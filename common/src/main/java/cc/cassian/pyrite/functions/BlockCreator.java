@@ -9,7 +9,7 @@ import java.util.Objects;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModHelpers.getBlockSetType;
 import static cc.cassian.pyrite.functions.ModLists.*;
-import static cc.cassian.pyrite.functions.ModRegistry.registerPyriteBlock;
+import static cc.cassian.pyrite.functions.FabricRegistry.registerPyriteBlock;
 
 public class BlockCreator {
     final static Block[] vanillaWood = getVanillaWood();
@@ -50,17 +50,17 @@ public class BlockCreator {
     public static void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel) {
         AbstractBlock.Settings settings = AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "obsidian")) {
-            ModRegistry.registerPyriteBlock(blockID, "block", settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK));
+            FabricRegistry.registerPyriteBlock(blockID, "block", settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK));
         }
         else {
-            ModRegistry.registerPyriteBlock(blockID, blockType, settings);
+            FabricRegistry.registerPyriteBlock(blockID, blockType, settings);
         }
     }
 
     //Create and then add carpets
     private static void createCarpet(String blockID) {
         AbstractBlock.Settings blockSettings = copyBlock(Blocks.MOSS_CARPET);
-        ModRegistry.registerPyriteBlock(blockID, "carpet", blockSettings);
+        FabricRegistry.registerPyriteBlock(blockID, "carpet", blockSettings);
     }
 
     //Create and then add most of the manually generated blocks.
@@ -68,13 +68,13 @@ public class BlockCreator {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
         switch (blockType) {
             case "fence_gate":
-                ModRegistry.registerPyriteBlock(blockID, blockSettings, WoodType.CRIMSON);
+                FabricRegistry.registerPyriteBlock(blockID, blockSettings, WoodType.CRIMSON);
                 break;
             case "door", "trapdoor":
-                ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings, BlockSetType.IRON);
+                FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings, BlockSetType.IRON);
                 break;
             default:
-                ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
+                FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
                 break;
         }
     }
@@ -82,41 +82,41 @@ public class BlockCreator {
     //Create a slab from the last block added.
     public static void createStair(String blockID, Block copyBlock) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
-        ModRegistry.registerPyriteBlock(blockID+"_stairs", copyBlock, blockSettings);
+        FabricRegistry.registerPyriteBlock(blockID+"_stairs", copyBlock, blockSettings);
     }
 
     //Create a slab from the last block added.
     public static void createSlab(String blockID, Block copyBlock) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
-        ModRegistry.registerPyriteBlock(blockID+"_slab", "slab", blockSettings);
+        FabricRegistry.registerPyriteBlock(blockID+"_slab", "slab", blockSettings);
     }
 
     //Create blocks that require a change in light level, e.g. Locked Chests
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).luminance(parseLux(lux));
-        ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
+        FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
     }
 
     //Create blocks that require a Block Set.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set) {
-        ModRegistry.registerPyriteBlock(blockID, blockType, copyBlock(copyBlock), set);
+        FabricRegistry.registerPyriteBlock(blockID, blockType, copyBlock(copyBlock), set);
     }
 
     //Create most of the generic Stained Blocks, then add them.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
         if (Objects.equals(blockType, "stairs")) {
-            ModRegistry.registerPyriteBlock(blockID, copyBlock, blockSettings);
+            FabricRegistry.registerPyriteBlock(blockID, copyBlock, blockSettings);
         }
         else {
-            ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
+            FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
         }
     }
 
     //Create basic blocks.
     public static void createPyriteBlock(String blockID, Block copyBlock) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
-        ModRegistry.registerPyriteBlock(blockID, "block", blockSettings);
+        FabricRegistry.registerPyriteBlock(blockID, "block", blockSettings);
     }
 
     //Create Stained blocks that require a wood set or wood type, then add them.
@@ -124,13 +124,13 @@ public class BlockCreator {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
         switch (blockType) {
             case "door", "trapdoor", "button", "pressure_plate":
-                ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings, set);
+                FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings, set);
                 break;
             case "fence_gate":
-                ModRegistry.registerPyriteBlock(blockID, blockSettings, type);
+                FabricRegistry.registerPyriteBlock(blockID, blockSettings, type);
                 break;
             default:
-                ModRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
+                FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
                 break;
         }
     }

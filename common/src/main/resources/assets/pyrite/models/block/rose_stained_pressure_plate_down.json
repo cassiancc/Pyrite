@@ -1,1 +1,6 @@
-{"parent":"minecraft:block/pressure_plate_down","textures":{"texture":"pyrite:block/rose_stained_planks"},"render_type":"cutout"}
+{
+        "parent": "minecraft:block/pressure_plate_down",
+        "textures": {
+          "texture": "pyrite:block/rose_stained_planks"
+        }
+      }
