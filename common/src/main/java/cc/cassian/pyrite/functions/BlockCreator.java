@@ -341,12 +341,13 @@ public class BlockCreator {
             if (blockID.contains("copper")) {
                 if (!isTrialsOrLater(platform)) {
                     createPyriteBlock(blockID+"_door","door", block, set, platform);
+                    createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
                 }
             }
             else {
                 createPyriteBlock(blockID+"_door","door", block, set, platform);
+                createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             }
-            createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             //Create Plates for those that don't already exist (Iron and Gold)
             if (!Objects.equals(blockID, "gold")) {
                 createPyriteBlock(blockID+"_pressure_plate","pressure_plate", block, set, platform);

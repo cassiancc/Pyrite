@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.functions;
 
+import net.minecraft.SharedConstants;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
@@ -52,7 +53,12 @@ public class ModHelpers {
     }
 
     public static boolean isTrialsOrLater(String platform) {
-        return ( getVersion(platform) > 3940);
+        if (platform.contains("w")) {
+            return ( getVersion(platform) > 3940);
+        }
+        else {
+            return SharedConstants.getGameVersion().getName().contains("21");
+        }
     }
 
     public static boolean isPoisonousSnapshot(String platform) {

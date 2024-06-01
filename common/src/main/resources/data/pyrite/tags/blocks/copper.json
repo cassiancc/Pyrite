@@ -38,7 +38,8 @@
     "pyrite:nostalgia_weathered_copper_block",
     "pyrite:nostalgia_oxidized_copper_block",
     "#pyrite:chiseled_copper",
-    "#pyrite:copper_door"
+    "#pyrite:copper_door",
+    "#pyrite:copper_trapdoor"
 
 
   ]
