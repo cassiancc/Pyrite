@@ -19,6 +19,8 @@ public class Pyrite {
 
 
     public static void init(String platform) {
+		System.out.println(platform);
+		System.out.println(getVersion(platform));
 		//Framed Glass
 		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0, platform);
 		//Framed Glass Pane

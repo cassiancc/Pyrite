@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
 
+import static java.lang.Integer.parseInt;
+
 
 public class ModHelpers {
 
@@ -43,6 +45,22 @@ public class ModHelpers {
             case "star" -> 15;
             default -> 0;
         };
+    }
+
+    public static boolean isFabric(String platform) {
+        return platform.contains("fabric");
+    }
+
+    public static boolean isTrialsOrLater(String platform) {
+        return ( getVersion(platform) > 3940);
+    }
+
+    public static boolean isPoisonousSnapshot(String platform) {
+        return ( getVersion(platform) > 3824);
+    }
+
+    public static Integer getVersion(String platform) {
+        return parseInt(platform.substring(0, platform.indexOf("-")));
     }
 
     public static @NotNull BlockSetType getBlockSetType(String blockID) {

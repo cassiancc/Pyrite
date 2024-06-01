@@ -12,14 +12,13 @@ import java.util.Objects;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModHelpers.getBlockSetType;
 import static cc.cassian.pyrite.functions.ModLists.*;
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.fuel;
 
 public class BlockCreator {
     final static Block[] vanillaWood = getVanillaWood();
     final static Block[] resource_blocks = getVanillaResourceBlocks();
 
     public static void createPyriteItem(String id, String platform) {
-        if (Objects.equals(platform, "fabric")) {
+        if (isFabric(platform)) {
             FabricRegistry.registerPyriteItem(id);
         }
         else {
@@ -27,11 +26,11 @@ public class BlockCreator {
         }
     }
     public static void register(String platform) {
-    if (Objects.equals(platform, "fabric")) {
-        FabricRegistry.register();
-    }
+        if (isFabric(platform)) {
+            FabricRegistry.register();
+        }
 		else {
-        CommonRegistry.register();
+            CommonRegistry.register();
     }
     }
 
@@ -84,7 +83,7 @@ public class BlockCreator {
     //Create and then add most of the manually generated blocks.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, String platform) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
-        if (Objects.equals(platform, "fabric")) {
+        if (isFabric(platform)) {
             switch (blockType) {
                 case "fence_gate":
                     FabricRegistry.registerPyriteBlock(blockID, blockSettings, WoodType.CRIMSON);
@@ -132,21 +131,21 @@ public class BlockCreator {
     }
 
     private static void sendToRegistry(String blockID, String blockType, AbstractBlock.Settings blockSettings, String platform) {
-        if (Objects.equals(platform, "fabric")) {
+        if (isFabric(platform)) {
             FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
         } else {
             CommonRegistry.registerPyriteBlock(blockID, blockType, blockSettings);
         }
     }
     private static void sendToRegistry(String blockID, Block copyBlock, AbstractBlock.Settings blockSettings, String platform) {
-        if (Objects.equals(platform, "fabric")) {
+        if (isFabric(platform)) {
             FabricRegistry.registerPyriteBlock(blockID, copyBlock, blockSettings);
         } else {
             CommonRegistry.registerPyriteBlock(blockID, copyBlock, blockSettings);
         }
     }
     private static void sendToRegistry(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle, String platform) {
-        if (Objects.equals(platform, "fabric")) {
+        if (isFabric(platform)) {
             FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings, particle);
         } else {
             CommonRegistry.registerPyriteBlock(blockID, blockType, blockSettings, particle);
@@ -155,7 +154,7 @@ public class BlockCreator {
 
     //Create blocks that require a Block Set.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set, String platform) {
-        if (Objects.equals(platform, "fabric")) {
+        if (isFabric(platform)) {
             FabricRegistry.registerPyriteBlock(blockID, blockType, copyBlock(copyBlock), set);
         }
         else {
@@ -185,7 +184,7 @@ public class BlockCreator {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
         switch (blockType) {
             case "door", "trapdoor", "button", "pressure_plate":
-                if (Objects.equals(platform, "fabric")) {
+                if (isFabric(platform)) {
                     FabricRegistry.registerPyriteBlock(blockID, blockType, blockSettings, set);
                 }
                 else {
@@ -193,7 +192,7 @@ public class BlockCreator {
                 }
                 break;
             case "fence_gate":
-                if (Objects.equals(platform, "fabric")) {
+                if (isFabric(platform)) {
                     FabricRegistry.registerPyriteBlock(blockID, blockSettings, type);
                 }
                 else {
@@ -317,8 +316,15 @@ public class BlockCreator {
         if (!Objects.equals(blockID, "quartz")) {
             //Brick Blocks
             createPyriteBlock(blockID+"_bricks", block, platform);
-            //Chiseled Blocks
-            createPyriteBlock("chiseled_"+blockID+"_block", "log", block, platform);
+            //Chiseled Blocks - Copper Blocks
+            if (blockID.contains("copper")) {
+                if (!isTrialsOrLater(platform)) {
+                    createPyriteBlock("chiseled_"+blockID+"_block", "log", block, platform);
+                }
+            }
+            else {
+                createPyriteBlock("chiseled_"+blockID+"_block", "log", block, platform);
+            }
             //Pillar Blocks
             createPyriteBlock(blockID+"_pillar", "log", block, platform);
         }
@@ -331,7 +337,15 @@ public class BlockCreator {
         if (!Objects.equals(blockID, "iron")) {
             //Bars
             createPyriteBlock(blockID+"_bars","bars", block, platform);
-            createPyriteBlock(blockID+"_door","door", block, set, platform);
+            //Disable Copper doors in 1.21+
+            if (blockID.contains("copper")) {
+                if (!isTrialsOrLater(platform)) {
+                    createPyriteBlock(blockID+"_door","door", block, set, platform);
+                }
+            }
+            else {
+                createPyriteBlock(blockID+"_door","door", block, set, platform);
+            }
             createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             //Create Plates for those that don't already exist (Iron and Gold)
             if (!Objects.equals(blockID, "gold")) {
