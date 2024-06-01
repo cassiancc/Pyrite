@@ -21,7 +21,6 @@ public class PyriteClient {
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event){
-        BlockColors blockColors = event.getBlockColors();
         for (RegistrySupplier<Block> pyriteBlock : grassBlocks) {
             event.register(((state, view, pos, tintIndex) -> {
                 assert view != null;
@@ -31,13 +30,12 @@ public class PyriteClient {
         }
     }
 
-    public static void registerItemColors(RegisterColorHandlersEvent.Item event){
+    // Client-side mod bus event handler
+    @SubscribeEvent
+    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
         for (RegistrySupplier<Block> pyriteBlock : grassBlocks) {
-            ItemColors itemColors = event.getItemColors();
-            BlockColors blockColors = event.getBlockColors();
-            event.register((stack, tintIndex) -> {
-                BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
-                return blockColors.getColor(blockstate, null, null, tintIndex);
-            }, pyriteBlock.get());
-        }}
+            event.register((stack, tintIndex) -> 9551193, pyriteBlock.get());
+        }
+    }
+
 }
