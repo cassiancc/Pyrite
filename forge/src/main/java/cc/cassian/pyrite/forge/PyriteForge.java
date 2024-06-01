@@ -17,6 +17,7 @@ public final class PyriteForge {
         // Run our common setup.
         Pyrite.init(SharedConstants.WORLD_VERSION + "-forge");
         modEventBus.addListener(PyriteClient::registerBlockColors);
+        modEventBus.addListener(PyriteClient::registerItemColorHandlers);
 
 
 
