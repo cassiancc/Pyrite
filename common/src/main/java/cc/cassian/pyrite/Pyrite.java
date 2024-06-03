@@ -88,6 +88,8 @@ public class Pyrite {
 			generateBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux, platform);
 			//Dyed Lamps
 			createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15, platform);
+			createPyriteBlock(dye+"_torch", "torch", Blocks.TORCH, platform);
+
 
 		}
 		//Autogenerate Wall Gates

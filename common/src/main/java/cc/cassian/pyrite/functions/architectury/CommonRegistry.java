@@ -60,6 +60,9 @@ public class CommonRegistry {
             case "log":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModPillar(blockSettings, power));
                 break;
+            case "torch":
+                newBlock = pyriteBlocks.register(blockID, () -> new ModTorch(blockSettings));
+                break;
             case "facing":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModFacingBlock(blockSettings, power));
                 break;

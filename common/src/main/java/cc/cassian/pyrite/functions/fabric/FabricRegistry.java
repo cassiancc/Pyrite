@@ -6,6 +6,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -59,6 +60,9 @@ public class FabricRegistry {
                 break;
             case "log":
                 pyriteBlocks.add(new ModPillar(blockSettings, power));
+                break;
+            case "torch":
+                pyriteBlocks.add(new ModTorch(blockSettings));
                 break;
             case "facing":
                 pyriteBlocks.add(new ModFacingBlock(blockSettings, power));
