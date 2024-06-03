@@ -11,6 +11,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 import java.util.Map;
 
@@ -81,6 +82,16 @@ public class ModTorch extends WallMountedBlock {
         world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
         world.addParticle(ParticleTypes.FLAME, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
     }
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return canPlaceAt(world, pos, getDirection(state).getOpposite());
+    }
+
+    public static boolean canPlaceAt(WorldView world, BlockPos pos, Direction direction) {
+        BlockPos blockPos = pos.offset(direction);
+        return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite()) | sideCoversSmallSquare(world, pos.down(), Direction.UP);
+    }
+
+
     private static final Map<Direction, VoxelShape> WALL_BOUNDING_SHAPES;
     public static VoxelShape getBoundingShape(BlockState state) {
         return WALL_BOUNDING_SHAPES.get(state.get(FACING));
