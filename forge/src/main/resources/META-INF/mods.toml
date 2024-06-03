@@ -9,7 +9,7 @@ version = "${version}"
 displayName = "Pyrite"
 authors = "cassiancc"
 description = '''
-Variations of Vanilla blocks, including dyed wood, dyed bricks, new material blocks and more to complete your colourful builds.
+Variations of Vanilla blocks, including dyed wood planks and bricks, new material blocks and more to complete your colourful builds.
 '''
 logoFile = "assets/pyrite/icon.png"
 
