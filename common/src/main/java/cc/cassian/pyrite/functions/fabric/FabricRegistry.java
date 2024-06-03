@@ -63,6 +63,7 @@ public class FabricRegistry {
                 break;
             case "torch":
                 pyriteBlocks.add(new ModTorch(blockSettings));
+                addTransparentBlock();
                 break;
             case "facing":
                 pyriteBlocks.add(new ModFacingBlock(blockSettings, power));
