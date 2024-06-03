@@ -745,7 +745,28 @@
   "block.pyrite.warped_crafting_table": "Warped Crafting Table",
   "block.pyrite.torch_lever": "Torch Lever",
   "block.pyrite.redstone_torch_lever": "Redstone Torch Lever",
-  "block.pyrite.soul_torch_lever": "Soul Torch Lever"
-
-
+  "block.pyrite.soul_torch_lever": "Soul Torch Lever",
+  "block.pyrite.white_torch": "White Torch",
+  "block.pyrite.orange_torch": "Orange Torch",
+  "block.pyrite.magenta_torch": "Magenta Torch",
+  "block.pyrite.light_blue_torch": "Light Blue Torch",
+  "block.pyrite.yellow_torch": "Yellow Torch",
+  "block.pyrite.lime_torch": "Lime Torch",
+  "block.pyrite.pink_torch": "Pink Torch",
+  "block.pyrite.gray_torch": "Gray Torch",
+  "block.pyrite.light_gray_torch": "Light Gray Torch",
+  "block.pyrite.cyan_torch": "Cyan Torch",
+  "block.pyrite.purple_torch": "Purple Torch",
+  "block.pyrite.blue_torch": "Blue Torch",
+  "block.pyrite.brown_torch": "Brown Torch",
+  "block.pyrite.green_torch": "Green Torch",
+  "block.pyrite.red_torch": "Red Torch",
+  "block.pyrite.black_torch": "Black Torch",
+  "block.pyrite.glow_torch": "Glow Torch",
+  "block.pyrite.dragon_torch": "Dragon Torch",
+  "block.pyrite.star_torch": "Star Torch",
+  "block.pyrite.honey_torch": "Honey Torch",
+  "block.pyrite.nostalgia_torch": "Nostalgia Torch",
+  "block.pyrite.rose_torch": "Rose Torch",
+  "block.pyrite.poisonous_torch": "Poisonous Torch"
 }
