@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CC",
+      "CC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:red_terracotta"
+      }
+    },
+    "result": {
+      "item": "pyrite:red_terracotta_bricks",
+      "id": "pyrite:red_terracotta_bricks",
+      "count": 4
+    }
+}

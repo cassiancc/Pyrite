@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:dragon_terracotta_bricks"
+          },
+          "S": {
+            "item": "pyrite:dragon_terracotta_brick_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:dragon_terracotta_brick_wall_gate",
+          "id": "pyrite:dragon_terracotta_brick_wall_gate",
+          "count": 6
+        }
+      }

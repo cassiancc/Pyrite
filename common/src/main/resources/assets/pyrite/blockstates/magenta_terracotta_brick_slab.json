@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/magenta_terracotta_brick_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/magenta_terracotta_bricks"
+      },
+      "type=top": {
+        "model": "pyrite:block/magenta_terracotta_brick_slab_top"
+      }
+    }
+  }

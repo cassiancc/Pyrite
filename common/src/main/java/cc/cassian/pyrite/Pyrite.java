@@ -72,7 +72,8 @@ public class Pyrite {
 				//Dyed Wool
 				createPyriteBlock(dye + "_wool", "block", Blocks.WHITE_WOOL, color, blockLux, platform);
 				//Terracotta Block
-				//coming soon - createPyriteBlock(dye+"_terracotta", "block", Blocks.TERRACOTTA,color, blockLux);
+				createPyriteBlock(dye+"_terracotta", "block", Blocks.TERRACOTTA,color, blockLux, platform);
+
 				//Glazed Terracotta Block
 				//coming soon - createPyriteBlock(dye+"_glazed_terracotta", "block", Blocks.TERRACOTTA,color, blockLux);
 				//Concrete Powder Block
@@ -86,6 +87,8 @@ public class Pyrite {
 			createWoodSet(dye + "_stained", color, blockLux, platform);
 			//Bricks and brick products
 			generateBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux, platform);
+			//Terracotta Bricks
+			generateBrickSet(dye+"_terracotta_brick", Blocks.TERRACOTTA, color, blockLux, platform);
 			//Dyed Lamps
 			createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15, platform);
 			createPyriteBlock(dye+"_torch", "torch", Blocks.TORCH, platform);
