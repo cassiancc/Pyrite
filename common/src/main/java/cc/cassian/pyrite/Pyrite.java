@@ -81,7 +81,7 @@ public class Pyrite {
 				//Concrete Block
 				//coming soon - createPyriteBlock(dye+"_concrete", "block", Blocks.CONCRETE,color, blockLux);
 				//Carpet block
-				createPyriteBlock(dye + "_carpet", "carpet", Blocks.WHITE_WOOL, color, blockLux, platform);
+				createPyriteBlock(dye + "_carpet", "carpet", Blocks.WHITE_CARPET, color, blockLux, platform);
 			}
 			//Planks and plank products
 			createWoodSet(dye + "_stained", color, blockLux, platform);
