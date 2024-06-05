@@ -1,7 +1,7 @@
 {
     "variants": {
       "": {
-        "model": "pyrite:block/nostalgia_terracotta_bricks"
+        "model": "pyrite:block/nostalgia_terracotta_bricks_north_west_mirrored"
       }
     }
   }
