@@ -1,0 +1,6 @@
+{
+    "parent": "pyrite:block/template_ladder",
+    "textures": {
+      "all": "pyrite:block/blue_stained_ladder"
+    }
+  }
