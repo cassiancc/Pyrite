@@ -16,7 +16,6 @@ import net.minecraft.text.Text;
 
 import static cc.cassian.pyrite.Pyrite.modID;
 import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.*;
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.addTranslucentBlock;
 
 public class CommonRegistry {
     static RegistrySupplier<Block> creativeTabIcon;
@@ -73,11 +72,11 @@ public class CommonRegistry {
                 break;
             case "tinted_glass_pane":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModPane(blockSettings, power));
-//                addTranslucentBlock(newBlock);
+                addTranslucentBlock(newBlock);
                 break;
             case "glass":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
-                addTransparentBlock(newBlock);
+                addTranslucentBlock(newBlock);
                 break;
             case "tinted_glass":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
