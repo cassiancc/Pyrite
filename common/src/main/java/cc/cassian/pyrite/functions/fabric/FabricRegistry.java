@@ -48,6 +48,7 @@ public class FabricRegistry {
                 break;
             case "ladder":
                 pyriteBlocks.add(new LadderBlock(blockSettings));
+                addTransparentBlock();
                 break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));

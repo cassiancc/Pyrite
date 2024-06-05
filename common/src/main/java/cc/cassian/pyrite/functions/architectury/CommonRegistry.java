@@ -47,6 +47,7 @@ public class CommonRegistry {
                 break;
             case "ladder":
                 newBlock = pyriteBlocks.register(blockID, () -> new LadderBlock(blockSettings));
+                addTransparentBlock(newBlock);
                 break;
             case "carpet":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModCarpet(blockSettings));

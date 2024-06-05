@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "particle": "#ladder",
-        "texture": "#ladder"
+        "particle": "#all",
+        "texture": "#all"
     },
     "elements": [
         {   "from": [ 0, 0, 15.2 ],
@@ -13,5 +13,7 @@
                 "south": { "uv": [ 16, 0, 0, 16 ], "texture": "#texture" }
             }
         }
-    ]
+    ],
+    "render_type": "cutout"
+
 }
