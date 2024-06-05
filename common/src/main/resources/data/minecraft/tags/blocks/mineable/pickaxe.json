@@ -4,6 +4,10 @@
         "pyrite:framed_glass",
         "pyrite:framed_glass_pane",
         "#pyrite:bricks",
+        "#pyrite:brick_slabs",
+        "#pyrite:brick_stairs",
+        "#pyrite:brick_walls",
+        "#pyrite:brick_wall_gates",
         "#pyrite:wall_gates",
         "#pyrite:obsidian",
         "#pyrite:amethyst",
@@ -23,8 +27,7 @@
         "pyrite:charred_nether_bricks",
         "pyrite:nostalgia_netherrack",
         "pyrite:nostalgia_cobblestone",
-        "pyrite:nostalgia_mossy_cobblestone",
-        "#pyrite:terracotta_bricks"
+        "pyrite:nostalgia_mossy_cobblestone"
 
 
       ]
