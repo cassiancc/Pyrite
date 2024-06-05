@@ -45,6 +45,9 @@ public class CommonRegistry {
                     fuel.put(newBlock, 300);
                 }
                 break;
+            case "ladder":
+                newBlock = pyriteBlocks.register(blockID, () -> new LadderBlock(blockSettings));
+                break;
             case "carpet":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModCarpet(blockSettings));
                 break;

@@ -271,6 +271,8 @@ public class BlockCreator {
         createPyriteBlock(blockID+"_trapdoor", "trapdoor", Blocks.OAK_TRAPDOOR, color, blockLux, GENERATED_SET, GENERATED_TYPE, platform);
         //Crafting Tables
         createPyriteBlock( blockID+"_crafting_table", "crafting", Blocks.CRAFTING_TABLE, color, blockLux, platform);
+        createPyriteBlock( blockID+"_ladder", "ladder", Blocks.LADDER, color, blockLux, platform);
+
 
     }
 

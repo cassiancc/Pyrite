@@ -46,6 +46,9 @@ public class FabricRegistry {
                     fuel.put(getLastBlock(), 300);
                 }
                 break;
+            case "ladder":
+                pyriteBlocks.add(new LadderBlock(blockSettings));
+                break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
                 break;
