@@ -2,5 +2,5 @@
     "parent": "minecraft:block/cube_all",
     "textures": {
       "all": "pyrite:block/yellow_framed_glass"
-    }
+    },"render_type": "minecraft:translucent"
   }
