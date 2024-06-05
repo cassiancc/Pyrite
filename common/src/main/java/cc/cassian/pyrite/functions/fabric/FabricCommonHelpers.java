@@ -9,6 +9,7 @@ import static cc.cassian.pyrite.functions.fabric.FabricRegistry.pyriteBlocks;
 
 public class FabricCommonHelpers {
     public static ArrayList<Block> transparentBlocks = new ArrayList<>();
+    public static ArrayList<Block> translucentBlocks = new ArrayList<>();
     public static ArrayList<Block> grassBlocks = new ArrayList<>();
     public static HashMap<Block, Integer> fuel = new HashMap<>();
 
@@ -17,6 +18,9 @@ public class FabricCommonHelpers {
     }
     public static void addTransparentBlock() {
         transparentBlocks.add(getLastBlock());
+    }
+    public static void addTranslucentBlock() {
+        translucentBlocks.add(getLastBlock());
     }
 
     public static Block getLastBlock() {

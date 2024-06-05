@@ -89,6 +89,10 @@ public class Pyrite {
 			generateBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux, platform);
 			//Terracotta Bricks
 			generateBrickSet(dye+"_terracotta_brick", Blocks.TERRACOTTA, color, blockLux, platform);
+			//Framed Glass
+			createPyriteBlock(dye+"_framed_glass","tinted_glass", 2.0f, color, blockLux, platform);
+			//Framed Glass Pane
+			createPyriteBlock( dye+"_framed_glass_pane","tinted_glass_pane", 2.0f, color, blockLux, platform);
 			//Dyed Lamps
 			createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15, platform);
 			createPyriteBlock(dye+"_torch", "torch", Blocks.TORCH, platform);

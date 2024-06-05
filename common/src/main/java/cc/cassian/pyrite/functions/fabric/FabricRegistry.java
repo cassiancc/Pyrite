@@ -72,9 +72,17 @@ public class FabricRegistry {
                 pyriteBlocks.add(new ModPane(blockSettings, power));
                 addTransparentBlock();
                 break;
+            case "tinted_glass_pane":
+                pyriteBlocks.add(new ModPane(blockSettings, power));
+                addTranslucentBlock();
+                break;
             case "glass":
                 pyriteBlocks.add(new ModGlass(blockSettings));
                 addTransparentBlock();
+                break;
+            case "tinted_glass":
+                pyriteBlocks.add(new ModGlass(blockSettings));
+                addTranslucentBlock();
                 break;
             case "gravel":
                 pyriteBlocks.add(new GravelBlock(blockSettings));
