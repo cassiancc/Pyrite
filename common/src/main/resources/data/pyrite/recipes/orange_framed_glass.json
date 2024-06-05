@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:framed_glass"
+      },
+      "D": {
+        "item": "minecraft:orange_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:orange_framed_glass",
+      "id": "pyrite:orange_framed_glass",
+      "count": 8
+    }
+}
