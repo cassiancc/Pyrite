@@ -23,7 +23,8 @@
         "pyrite:charred_nether_bricks",
         "pyrite:nostalgia_netherrack",
         "pyrite:nostalgia_cobblestone",
-        "pyrite:nostalgia_mossy_cobblestone"
+        "pyrite:nostalgia_mossy_cobblestone",
+        "#pyrite:terracotta_bricks"
 
 
       ]

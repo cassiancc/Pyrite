@@ -1,7 +1,7 @@
 {
     "variants": {
       "": {
-        "model": "pyrite:block/cobblestone_bricks_north_west_mirrored"
+        "model": "pyrite:block/cobblestone_bricks"
       }
     }
   }
