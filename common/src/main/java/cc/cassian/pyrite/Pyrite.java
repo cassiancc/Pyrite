@@ -101,6 +101,7 @@ public class Pyrite {
 			//Create block.
 			createPyriteBlock(block + "_gate","fence_gate", wallsBlock, platform);
 		}
+		createTrialWallGates(platform);
 		register(platform);
 
 	}

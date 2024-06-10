@@ -59,6 +59,7 @@
     "pyrite:smooth_copper_wall_gate",
     "pyrite:smooth_exposed_copper_wall_gate",
     "pyrite:smooth_weathered_copper_wall_gate",
-    "pyrite:smooth_oxidized_copper_wall_gate"
+    "pyrite:smooth_oxidized_copper_wall_gate",
+    "#pyrite:tuff_wall_gates"
     ]
   }

@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:tuff"
+          },
+          "S": {
+            "item": "minecraft:tuff_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:tuff_wall_gate",
+          "id": "pyrite:tuff_wall_gate",
+          "count": 6
+        }
+      }

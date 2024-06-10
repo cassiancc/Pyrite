@@ -43,6 +43,7 @@ public class BlockCreator {
             }
             createResourceBlockSet(block, resourceBlock, platform);
         }
+
     }
 
     public static void createTorchLever(String blockID, Block baseTorch, ParticleEffect particle, String platform) {
@@ -306,6 +307,16 @@ public class BlockCreator {
         createPyriteBlock(smoothBlockID+"_wall", "wall", block, platform);
         //Smooth Wall Gate
         createPyriteBlock(smoothBlockID+"_wall_gate","fence_gate", block, platform);
+    }
+
+    public static void createTrialWallGates(String platform) {
+        if (isTrialsOrLater(platform)) {
+            //Autogenerate 1.21 Wall Gates
+            for (String block : getVanillaTrialsWalls()) {
+                //Create block.
+                createPyriteBlock(block + "_gate","fence_gate", Blocks.TUFF, platform);
+            }
+        }
     }
 
     //Create a set of Resource Blocks
