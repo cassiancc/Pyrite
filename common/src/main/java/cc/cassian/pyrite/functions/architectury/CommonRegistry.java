@@ -11,8 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
+
+import java.util.Objects;
 
 import static cc.cassian.pyrite.Pyrite.modID;
 import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.*;
@@ -65,7 +68,7 @@ public class CommonRegistry {
                 newBlock = pyriteBlocks.register(blockID, () -> new ModPillar(blockSettings, power));
                 break;
             case "torch":
-                newBlock = pyriteBlocks.register(blockID, () -> new ModTorch(blockSettings));
+                newBlock = pyriteBlocks.register(blockID, () -> new ModTorch(blockSettings, ParticleTypes.FLAME));
                 break;
             case "facing":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModFacingBlock(blockSettings, power));
@@ -140,12 +143,17 @@ public class CommonRegistry {
         addBlockItem(newBlock);
     }
 
-    //Add Torch Levers
+    //Add blocks with particles - torches/torch levers
     public static void registerPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle) {
         RegistrySupplier<Block> newBlock;
-        newBlock = pyriteBlocks.register(blockID, () -> new TorchLever(blockSettings.nonOpaque(), particle));
-        addTransparentBlock(newBlock);
+        if (Objects.equals(blockType, "torch")) {
+            newBlock = pyriteBlocks.register(blockID, () -> new ModTorch(blockSettings.nonOpaque(), particle));
+        }
+        else {
+            newBlock = pyriteBlocks.register(blockID, () -> new TorchLever(blockSettings.nonOpaque(), particle));
+        }
         addBlockItem(newBlock);
+        addTransparentBlock(newBlock);
     }
 
     //Add Pyrite Stair blocks.

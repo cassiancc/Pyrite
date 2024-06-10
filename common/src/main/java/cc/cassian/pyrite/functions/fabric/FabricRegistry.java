@@ -12,6 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static cc.cassian.pyrite.Pyrite.modID;
 import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.*;
@@ -66,7 +67,7 @@ public class FabricRegistry {
                 pyriteBlocks.add(new ModPillar(blockSettings, power));
                 break;
             case "torch":
-                pyriteBlocks.add(new ModTorch(blockSettings));
+                pyriteBlocks.add(new ModTorch(blockSettings, ParticleTypes.FLAME));
                 addTransparentBlock();
                 break;
             case "facing":
@@ -138,9 +139,14 @@ public class FabricRegistry {
         }
     }
 
-    //Add Torch Levers
+    //Add blocks with particles - torches/torch levers
     public static void registerPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle) {
-        pyriteBlocks.add(new TorchLever(blockSettings, particle));
+        if (Objects.equals(blockType, "torch")) {
+            pyriteBlocks.add(new ModTorch(blockSettings, particle));
+        }
+        else {
+            pyriteBlocks.add(new TorchLever(blockSettings, particle));
+        }
         pyriteBlockIDs.add(blockID);
         addTransparentBlock();
     }

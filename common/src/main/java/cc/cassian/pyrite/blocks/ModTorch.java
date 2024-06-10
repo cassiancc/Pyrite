@@ -3,6 +3,7 @@ package cc.cassian.pyrite.blocks;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.block.*;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
@@ -16,7 +17,7 @@ import net.minecraft.world.WorldView;
 import java.util.Map;
 
 public class ModTorch extends WallMountedBlock {
-
+    private final ParticleEffect particle;
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch (state.get(FACE)) {
@@ -27,8 +28,9 @@ public class ModTorch extends WallMountedBlock {
         };
     }
 
-    public ModTorch(Settings settings) {
+    public ModTorch(Settings settings, ParticleEffect particle) {
         super(settings);
+        this.particle = particle;
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -80,7 +82,7 @@ public class ModTorch extends WallMountedBlock {
 
 
         world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
-        world.addParticle(ParticleTypes.FLAME, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
     }
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return canPlaceAt(world, pos, getDirection(state).getOpposite());
