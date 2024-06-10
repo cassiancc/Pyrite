@@ -96,6 +96,8 @@ public class Pyrite {
 			//Dyed Lamps
 			createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15, platform);
 			createPyriteBlock(dye+"_torch", "torch", Blocks.TORCH, platform);
+			createTorchLever(dye+"_torch_lever", Blocks.TORCH, ParticleTypes.FLAME, platform);
+
 
 
 		}
