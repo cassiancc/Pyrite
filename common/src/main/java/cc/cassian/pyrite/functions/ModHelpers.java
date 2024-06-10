@@ -1,6 +1,8 @@
 package cc.cassian.pyrite.functions;
 
 import net.minecraft.block.*;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
@@ -44,6 +46,15 @@ public class ModHelpers {
             case "glow" -> 8;
             case "star" -> 15;
             default -> 0;
+        };
+    }
+
+    public static ParticleEffect getTorchParticle(String dye) {
+        return switch (dye) {
+            case "dragon" -> ParticleTypes.DRAGON_BREATH;
+            case "glow" -> ParticleTypes.GLOW;
+            case "star" -> ParticleTypes.ENCHANT;
+            default -> ParticleTypes.SMOKE;
         };
     }
 

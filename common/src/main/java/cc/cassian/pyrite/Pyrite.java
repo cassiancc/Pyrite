@@ -1,18 +1,12 @@
 package cc.cassian.pyrite;
 
-import cc.cassian.pyrite.functions.ModHelpers;
-import cc.cassian.pyrite.functions.architectury.CommonRegistry;
-import cc.cassian.pyrite.functions.fabric.FabricRegistry;
 import net.minecraft.block.*;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 
-import java.util.Objects;
-
 import static cc.cassian.pyrite.functions.BlockCreator.*;
 import static cc.cassian.pyrite.functions.ModLists.*;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
-import static cc.cassian.pyrite.functions.fabric.FabricRegistry.*;
 
 public class Pyrite {
 	public final static String modID = "pyrite";
@@ -95,8 +89,8 @@ public class Pyrite {
 			createPyriteBlock( dye+"_framed_glass_pane","tinted_glass_pane", 2.0f, color, blockLux, platform);
 			//Dyed Lamps
 			createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15, platform);
-			createPyriteBlock(dye+"_torch", "torch", Blocks.TORCH, platform);
-			createTorchLever(dye+"_torch_lever", Blocks.TORCH, ParticleTypes.FLAME, platform);
+			createTorch(dye+"_torch", getTorchParticle(dye), platform);
+			createTorchLever(dye+"_torch_lever", Blocks.TORCH, getTorchParticle(dye), platform);
 
 
 
