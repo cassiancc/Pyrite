@@ -12,29 +12,34 @@
 </div>
 
 ## About
-Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include stairs, slabs, fences, fence gates, walls, wall gates, trapdoors, pressure plates, buttons - everything you need to decorate as _you_ want. 
+Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include a full set of their own variants - stairs, slabs, walls, and more - everything you need to decorate as _you_ want. 
 
 ## Features
-_891 blocks and counting..._
+_985 blocks and counting..._
 - Stained Planks, in every colour of dye (and more!)
-  - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, and buttons as well!
+  - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, crafting tables, ladders and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)
   - This includes dyed brick slabs, stairs, and walls!
 - Resource Block Variants, letting you more easily decorate with riches!
   - Iron, Gold, Emerald, Diamond, Netherite, Quartz, Amethyst, Lapis, and Copper Blocks now have consistent block variations, including: Cut Blocks/Stairs/Slabs, Bricks, Chiseled, Pillar, Smooth, Bars, Doors, Trapdoors, Pressure Plates, and Buttons.
 - Wall Gates, because your walls deserve matching gates just like your fences have!
   - This includes wall gates for every vanilla wall type.
+- Terracotta Bricks, which come in all dye colours.
+   - This includes dyed brick slabs, stairs, and walls!
+- Dyed Torches, perfect for just a little bit of colour.
+- Torch Levers, to hide redstone in plain sight.
+- Framed Glass and Framed Glass Panes
+  - This includes Stained Framed Glass variants.
+- New Nether Bricks, including Charred Nether Bricks and Blue Nether Bricks.
+- New Stone Brick Variants, including Smooth Stone and Cobblestone sets.
+- Grass Turf, for detailing your lawns.
+    - This includes grass, podzol, mycelium, and dirt path slabs, stairs, and carpets as well!
 - Nostalgic Features
   - Roses, of a variety of new colours.
   - Classic cobblestone, grass, gravel, and more.
   - Glowing Obsidian from Pocket Edition.
   - Locked Chests from Beta 1.4.
-- Cobblestone Bricks
-  - This includes Mossy Cobblestone Bricks, as well as slabs, stairs, and walls for both.
-- Framed Glass and Framed Glass Panes
-- New Nether Bricks, including Charred Nether Bricks and Blue Nether Bricks.
-- Grass Carpets
-  - This includes grass, podzol, mycelium, and dirt path carpets as well!
+
 
 ## Installation
 <a href='https://modrinth.com/mod/fabric-api'><img alt="fabric" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy-minimal/supported/fabric_vector.svg"></a>
