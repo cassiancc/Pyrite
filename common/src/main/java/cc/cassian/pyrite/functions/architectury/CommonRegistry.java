@@ -12,7 +12,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -88,7 +87,7 @@ public class CommonRegistry {
                 break;
             case "glass":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
-                addTranslucentBlock(newBlock);
+                addTransparentBlock(newBlock);
                 break;
             case "tinted_glass":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
@@ -130,7 +129,7 @@ public class CommonRegistry {
     }
 
 
-    //Add Torch Levers
+    //Add blocks with particles - torches/torch levers
     public static void registerPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle) {
         RegistrySupplier<Block> newBlock;
         if (Objects.equals(blockType, "torch")) {
