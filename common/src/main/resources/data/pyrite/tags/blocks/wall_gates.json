@@ -60,7 +60,6 @@
     "pyrite:smooth_exposed_copper_wall_gate",
     "pyrite:smooth_weathered_copper_wall_gate",
     "pyrite:smooth_oxidized_copper_wall_gate",
-    "#pyrite:tuff_wall_gates",
     "#pyrite:terracotta_brick_wall_gates"
     ]
   }

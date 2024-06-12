@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:cobblestone_bricks"},"result":{"id":"pyrite:cobblestone_brick_slab","count":2}}
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:cobblestone_bricks"
+  },
+  "result": {"id": "pyrite:cobblestone_brick_slab",
+  "count": 2
+}}

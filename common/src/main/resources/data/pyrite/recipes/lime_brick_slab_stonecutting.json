@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:lime_bricks"},"result":{"id":"pyrite:lime_brick_slab","count":2}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:lime_bricks"
+    },
+    "result": {"id": "pyrite:lime_brick_slab",
+    "count": 2
+  }}

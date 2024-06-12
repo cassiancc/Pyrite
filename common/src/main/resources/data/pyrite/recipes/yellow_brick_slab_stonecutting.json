@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:yellow_bricks"},"result":{"id":"pyrite:yellow_brick_slab","count":2}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:yellow_bricks"
+    },
+    "result": {"id": "pyrite:yellow_brick_slab",
+    "count": 2
+  }}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","key":{"#":{"item":"minecraft:emerald_block"}},"pattern":["##","##"],"result":{"id":"pyrite:cut_emerald","item":"pyrite:cut_emerald","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","key":{"#":{"item":"minecraft:emerald_block"}},"pattern":["##","##"],"result":{"id":"pyrite:cut_emerald"}}

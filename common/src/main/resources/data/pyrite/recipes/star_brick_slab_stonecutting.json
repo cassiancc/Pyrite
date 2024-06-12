@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:star_bricks"},"result":{"id":"pyrite:star_brick_slab","count":2}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:star_bricks"
+    },
+    "result": {"id": "pyrite:star_brick_slab",
+    "count": 2
+  }}

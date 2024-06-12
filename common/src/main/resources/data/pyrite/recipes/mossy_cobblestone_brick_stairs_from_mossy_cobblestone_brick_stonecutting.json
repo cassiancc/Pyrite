@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:mossy_cobblestone_bricks"},"result":{"id":"pyrite:mossy_cobblestone_brick_stairs","count":1}}
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:mossy_cobblestone_bricks"
+  },
+  "result": {"id": "pyrite:mossy_cobblestone_brick_stairs",
+  "count": 1
+}}
