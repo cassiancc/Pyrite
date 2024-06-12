@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.functions;
 
+import net.minecraft.SharedConstants;
 import net.minecraft.block.*;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -62,17 +63,15 @@ public class ModHelpers {
         return platform.contains("fabric");
     }
 
-    public static boolean isTrialsOrLater(String platform) {
-        return ( getVersion(platform) > 3940);
+    public static boolean isTrialsOrLater() {
+        return (SharedConstants.getGameVersion().getName().contains("21") || (SharedConstants.getGameVersion().getName().contains("22")));
     }
 
-    public static boolean isPoisonousSnapshot(String platform) {
-        return ( getVersion(platform) > 3824);
+    public static boolean isPoisonousSnapshot() {
+        return (SharedConstants.getGameVersion().getName().contains("potato"));
     }
 
-    public static Integer getVersion(String platform) {
-        return parseInt(platform.substring(0, platform.indexOf("-")));
-    }
+
 
     public static @NotNull BlockSetType getBlockSetType(String blockID) {
         boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));

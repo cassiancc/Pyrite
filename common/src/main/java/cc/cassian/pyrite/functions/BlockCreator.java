@@ -5,7 +5,6 @@ import cc.cassian.pyrite.functions.fabric.FabricRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.particle.ParticleEffect;
-
 import java.util.Map;
 import java.util.Objects;
 
@@ -315,7 +314,7 @@ public class BlockCreator {
     }
 
     public static void createTrialWallGates(String platform) {
-        if (isTrialsOrLater(platform)) {
+        if (isTrialsOrLater()) {
             //Autogenerate 1.21 Wall Gates
             for (String block : getVanillaTrialsWalls()) {
                 //Create block.
@@ -334,7 +333,7 @@ public class BlockCreator {
             createPyriteBlock(blockID+"_bricks", block, platform);
             //Chiseled Blocks - Copper Blocks
             if (blockID.contains("copper")) {
-                if (!isTrialsOrLater(platform)) {
+                if (!isTrialsOrLater()) {
                     createPyriteBlock("chiseled_"+blockID+"_block", "log", block, platform);
                 }
             }
@@ -355,14 +354,15 @@ public class BlockCreator {
             createPyriteBlock(blockID+"_bars","bars", block, platform);
             //Disable Copper doors in 1.21+
             if (blockID.contains("copper")) {
-                if (!isTrialsOrLater(platform)) {
+                if (!isTrialsOrLater()) {
                     createPyriteBlock(blockID+"_door","door", block, set, platform);
+                    createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
                 }
             }
             else {
                 createPyriteBlock(blockID+"_door","door", block, set, platform);
+                createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             }
-            createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             //Create Plates for those that don't already exist (Iron and Gold)
             if (!Objects.equals(blockID, "gold")) {
                 createPyriteBlock(blockID+"_pressure_plate","pressure_plate", block, set, platform);
