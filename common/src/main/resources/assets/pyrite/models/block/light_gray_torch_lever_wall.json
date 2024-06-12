@@ -1,0 +1,4 @@
+{
+        "parent": "pyrite:block/light_gray_torch_wall",
+        "render_type": "cutout"
+    }

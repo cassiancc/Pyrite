@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:dragon_bricks"
     },
-    "result": {"id": "pyrite:dragon_brick_wall",
-    "count": 2
-  }}
+    "result": "pyrite:dragon_brick_wall",
+    "count": 1
+  }

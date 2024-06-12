@@ -8,5 +8,8 @@
   "pyrite:quartz_trapdoor",
   "pyrite:amethyst_trapdoor",
   "pyrite:lapis_trapdoor",
-  "#pyrite:copper_trapdoor"
+  "pyrite:copper_trapdoor",
+  "pyrite:exposed_copper_trapdoor",
+  "pyrite:weathered_copper_trapdoor",
+  "pyrite:oxidized_copper_trapdoor"
   ]}

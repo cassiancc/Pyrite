@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CC",
+      "CC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:pink_terracotta"
+      }
+    },
+    "result": {
+      "item": "pyrite:pink_terracotta_bricks",
+      "id": "pyrite:pink_terracotta_bricks",
+      "count": 4
+    }
+}

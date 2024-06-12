@@ -1,17 +1,18 @@
 package cc.cassian.pyrite.functions.fabric;
 
 import cc.cassian.pyrite.blocks.*;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static cc.cassian.pyrite.Pyrite.modID;
 import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.*;
@@ -46,6 +47,10 @@ public class FabricRegistry {
                     fuel.put(getLastBlock(), 300);
                 }
                 break;
+            case "ladder":
+                pyriteBlocks.add(new LadderBlock(blockSettings));
+                addTransparentBlock();
+                break;
             case "carpet":
                 pyriteBlocks.add(new ModCarpet(blockSettings));
                 break;
@@ -61,6 +66,10 @@ public class FabricRegistry {
             case "log":
                 pyriteBlocks.add(new ModPillar(blockSettings, power));
                 break;
+            case "torch":
+                pyriteBlocks.add(new ModTorch(blockSettings, ParticleTypes.FLAME));
+                addTransparentBlock();
+                break;
             case "facing":
                 pyriteBlocks.add(new ModFacingBlock(blockSettings, power));
                 break;
@@ -68,17 +77,20 @@ public class FabricRegistry {
                 pyriteBlocks.add(new ModPane(blockSettings, power));
                 addTransparentBlock();
                 break;
+            case "tinted_glass_pane":
+                pyriteBlocks.add(new ModPane(blockSettings, power));
+                addTranslucentBlock();
+                break;
             case "glass":
                 pyriteBlocks.add(new ModGlass(blockSettings));
                 addTransparentBlock();
                 break;
+            case "tinted_glass":
+                pyriteBlocks.add(new ModGlass(blockSettings));
+                addTranslucentBlock();
+                break;
             case "gravel":
-                pyriteBlocks.add(new FallingBlock(blockSettings) {
-                    @Override
-                    protected MapCodec<? extends FallingBlock> getCodec() {
-                        return null;
-                    }
-                });
+                pyriteBlocks.add(new GravelBlock(blockSettings));
                 break;
             case "flower":
                 pyriteBlocks.add(new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
@@ -99,7 +111,7 @@ public class FabricRegistry {
     //Add Pyrite blocks that require Wood Types - Fence gates.
     public static void registerPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
         pyriteBlockIDs.add(blockID);
-        pyriteBlocks.add(new FenceGateBlock(type, blockSettings));
+        pyriteBlocks.add(new FenceGateBlock(blockSettings, type));
     }
 
     //Add Pyrite blocks that require Block Sets.
@@ -107,11 +119,11 @@ public class FabricRegistry {
         pyriteBlockIDs.add(blockID);
         switch (blockType) {
             case "door":
-                pyriteBlocks.add(new DoorBlock(type, blockSettings.nonOpaque()));
+                pyriteBlocks.add(new DoorBlock(blockSettings.nonOpaque(), type));
                 addTransparentBlock();
                 break;
             case "trapdoor":
-                pyriteBlocks.add(new TrapdoorBlock(type, blockSettings.nonOpaque()));
+                pyriteBlocks.add(new TrapdoorBlock(blockSettings.nonOpaque(), type));
                 addTransparentBlock();
                 break;
             case "button":
@@ -127,9 +139,14 @@ public class FabricRegistry {
         }
     }
 
-    //Add Torch Levers
+    //Add blocks with particles - torches/torch levers
     public static void registerPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle) {
-        pyriteBlocks.add(new TorchLever(blockSettings, particle));
+        if (Objects.equals(blockType, "torch")) {
+            pyriteBlocks.add(new ModTorch(blockSettings, particle));
+        }
+        else {
+            pyriteBlocks.add(new TorchLever(blockSettings, particle));
+        }
         pyriteBlockIDs.add(blockID);
         addTransparentBlock();
     }

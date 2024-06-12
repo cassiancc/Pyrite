@@ -9,8 +9,7 @@ import net.minecraft.block.*;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
 
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.grassBlocks;
-import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.transparentBlocks;
+import static cc.cassian.pyrite.functions.fabric.FabricCommonHelpers.*;
 
 
 @Environment(EnvType.CLIENT)
@@ -23,5 +22,9 @@ public class PyriteClient implements ClientModInitializer {
         }
         for (Block transparentBlock : transparentBlocks) {
             BlockRenderLayerMap.INSTANCE.putBlock(transparentBlock, RenderLayer.getCutout());
-        }}
+        }
+        for (Block translucentBlock : translucentBlocks) {
+            BlockRenderLayerMap.INSTANCE.putBlock(translucentBlock, RenderLayer.getTranslucent());
+        }
+    }
 }

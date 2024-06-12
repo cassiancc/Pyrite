@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:quartz_block"},"result":{"id":"pyrite:quartz_button","count":1}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:quartz_block"
+    },
+    "result": "pyrite:quartz_button",
+    "count": 1
+  }

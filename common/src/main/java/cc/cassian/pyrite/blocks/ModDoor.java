@@ -6,6 +6,6 @@ import net.minecraft.block.DoorBlock;
 
 public class ModDoor extends DoorBlock {
     public ModDoor(AbstractBlock.Settings settings, BlockSetType blockSetType) {
-        super(blockSetType, settings);
+        super(settings, blockSetType);
     }
 }

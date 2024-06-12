@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:magenta_bricks"
     },
-    "result": {"id": "pyrite:magenta_brick_wall",
-    "count": 2
-  }}
+    "result": "pyrite:magenta_brick_wall",
+    "count": 1
+  }

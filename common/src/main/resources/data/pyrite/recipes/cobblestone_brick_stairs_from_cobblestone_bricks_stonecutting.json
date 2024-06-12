@@ -3,6 +3,6 @@
   "ingredient": {
     "item": "pyrite:cobblestone_bricks"
   },
-  "result": {"id": "pyrite:cobblestone_brick_stairs",
+  "result": "pyrite:cobblestone_brick_stairs",
   "count": 1
-}}
+}

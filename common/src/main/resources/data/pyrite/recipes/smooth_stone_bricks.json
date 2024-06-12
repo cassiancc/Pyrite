@@ -1,1 +1,16 @@
-{"type":"minecraft:crafting_shaped","pattern":["CC","CC"],"key":{"C":{"item":"minecraft:smooth_stone"}},"result":{"id":"pyrite:smooth_stone_bricks"}}
+    {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CC",
+        "CC"
+      ],
+      "key": {
+        "C": {
+          "item": "minecraft:smooth_stone"
+        }
+      },
+      "result": {
+        "item": "pyrite:smooth_stone_bricks",
+        "count": 4
+      }
+    }

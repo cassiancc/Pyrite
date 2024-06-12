@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:netherite_block"},"result":{"id":"pyrite:cut_netherite_wall","count":1}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:netherite_block"
+    },
+    "result": "pyrite:cut_netherite_wall",
+    "count": 1
+  }

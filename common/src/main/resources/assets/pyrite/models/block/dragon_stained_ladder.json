@@ -1,0 +1,6 @@
+{
+    "parent": "pyrite:block/template_ladder",
+    "textures": {
+      "all": "pyrite:block/dragon_stained_ladder"
+    }
+  }

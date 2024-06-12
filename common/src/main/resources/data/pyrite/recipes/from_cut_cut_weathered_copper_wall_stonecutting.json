@@ -1,10 +1,8 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-        "item": "minecraft:weathered_cut_copper"
+      "item": "minecraft:weathered_cut_copper"
     },
-    "result": {
-        "id": "pyrite:cut_weathered_copper_wall",
-        "count": 1
-    }
-}
+    "result": "pyrite:cut_weathered_copper_wall",
+    "count": 1
+  }

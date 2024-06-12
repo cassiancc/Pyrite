@@ -1,7 +1,6 @@
 package cc.cassian.pyrite.functions.architectury;
 
 import cc.cassian.pyrite.blocks.*;
-import com.mojang.serialization.MapCodec;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -12,8 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
+
+import java.util.Objects;
 
 import static cc.cassian.pyrite.Pyrite.modID;
 import static cc.cassian.pyrite.functions.architectury.ArchitecturyHelpers.*;
@@ -46,6 +48,10 @@ public class CommonRegistry {
                     fuel.put(newBlock, 300);
                 }
                 break;
+            case "ladder":
+                newBlock = pyriteBlocks.register(blockID, () -> new LadderBlock(blockSettings));
+                addTransparentBlock(newBlock);
+                break;
             case "carpet":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModCarpet(blockSettings));
                 break;
@@ -61,6 +67,9 @@ public class CommonRegistry {
             case "log":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModPillar(blockSettings, power));
                 break;
+            case "torch":
+                newBlock = pyriteBlocks.register(blockID, () -> new ModTorch(blockSettings, ParticleTypes.FLAME));
+                break;
             case "facing":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModFacingBlock(blockSettings, power));
                 break;
@@ -68,17 +77,19 @@ public class CommonRegistry {
                 newBlock = pyriteBlocks.register(blockID, () -> new ModPane(blockSettings, power));
                 addTransparentBlock(newBlock);
                 break;
+            case "tinted_glass_pane":
+                newBlock = pyriteBlocks.register(blockID, () -> new ModPane(blockSettings, power));
+                addTranslucentBlock(newBlock);
+                break;
             case "glass":
                 newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
-                addTransparentBlock(newBlock);
+                addTranslucentBlock(newBlock);
+                break;
+            case "tinted_glass":
+                newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
                 break;
             case "gravel":
-                newBlock = pyriteBlocks.register(blockID, () -> new FallingBlock(blockSettings) {
-                    @Override
-                    protected MapCodec<? extends FallingBlock> getCodec() {
-                        return null;
-                    }
-                });
+                newBlock = pyriteBlocks.register(blockID, () -> new GravelBlock(blockSettings));
                 break;
             case "flower":
                 newBlock = pyriteBlocks.register(blockID, () -> new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
@@ -102,7 +113,7 @@ public class CommonRegistry {
 
     //Add Pyrite blocks that require Wood Types - Fence gates.
     public static void registerPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
-        RegistrySupplier<Block> newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(type, blockSettings));
+        RegistrySupplier<Block> newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(blockSettings, type));
         addBlockItem(newBlock);
     }
 
@@ -111,11 +122,11 @@ public class CommonRegistry {
         RegistrySupplier<Block> newBlock;
         switch (blockType) {
             case "door":
-                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(type, blockSettings.nonOpaque()));
+                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(blockSettings.nonOpaque(), type));
                 addTransparentBlock(newBlock);
                 break;
             case "trapdoor":
-                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(type, blockSettings.nonOpaque()));
+                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(blockSettings.nonOpaque(), type));
                 addTransparentBlock(newBlock);
                 break;
             case "button":
@@ -132,12 +143,17 @@ public class CommonRegistry {
         addBlockItem(newBlock);
     }
 
-    //Add Torch Levers
+    //Add blocks with particles - torches/torch levers
     public static void registerPyriteBlock(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle) {
         RegistrySupplier<Block> newBlock;
-        newBlock = pyriteBlocks.register(blockID, () -> new TorchLever(blockSettings.nonOpaque(), particle));
-        addTransparentBlock(newBlock);
+        if (Objects.equals(blockType, "torch")) {
+            newBlock = pyriteBlocks.register(blockID, () -> new ModTorch(blockSettings.nonOpaque(), particle));
+        }
+        else {
+            newBlock = pyriteBlocks.register(blockID, () -> new TorchLever(blockSettings.nonOpaque(), particle));
+        }
         addBlockItem(newBlock);
+        addTransparentBlock(newBlock);
     }
 
     //Add Pyrite Stair blocks.

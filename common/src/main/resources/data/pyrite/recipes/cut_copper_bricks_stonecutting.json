@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:cut_copper"},"result":{"id":"pyrite:copper_bricks","count":1}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:cut_copper"
+    },
+    "result": "pyrite:copper_bricks",
+    "count": 1
+  }

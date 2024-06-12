@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:cyan_framed_glass"
+      }
+    },
+    "result": {
+      "item": "pyrite:cyan_framed_glass_pane",
+      "id": "pyrite:cyan_framed_glass_pane",
+      "count": 8
+    }
+}

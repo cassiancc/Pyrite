@@ -1,0 +1,35 @@
+{
+    "replace": false,
+    "values": [
+      "pyrite:cobblestone_brick_slab",
+      "pyrite:smooth_stone_brick_slab",
+      "pyrite:mossy_cobblestone_brick_slab",
+      "pyrite:charred_nether_brick_slab",
+      "pyrite:blue_nether_brick_slab",
+      "pyrite:white_brick_slab",
+      "pyrite:orange_brick_slab",
+      "pyrite:magenta_brick_slab",
+      "pyrite:light_blue_brick_slab",
+      "pyrite:yellow_brick_slab",
+      "pyrite:lime_brick_slab",
+      "pyrite:pink_brick_slab",
+      "pyrite:gray_brick_slab",
+      "pyrite:light_gray_brick_slab",
+      "pyrite:cyan_brick_slab",
+      "pyrite:purple_brick_slab",
+      "pyrite:blue_brick_slab",
+      "pyrite:brown_brick_slab",
+      "pyrite:green_brick_slab",
+      "pyrite:red_brick_slab",
+      "pyrite:black_brick_slab",
+      "pyrite:glow_brick_slab",
+      "pyrite:dragon_brick_slab",
+      "pyrite:star_brick_slab",
+      "pyrite:honey_brick_slab",
+      "pyrite:nostalgia_brick_slab",
+      "pyrite:rose_brick_slab",
+      "pyrite:poisonous_brick_slab",
+      "#pyrite:terracotta_brick_slabs"
+    ]
+  }
+

@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/template_glass_pane_noside",
+    "textures": {
+      "pane": "pyrite:block/magenta_framed_glass",
+      "edge": "pyrite:block/framed_glass_pane_top"
+    },
+    "render_type": "translucent"
+  }

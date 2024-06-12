@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:orange_bricks"
     },
-    "result": {"id": "pyrite:orange_brick_stairs",
-    "count": 2
-  }}
+    "result": "pyrite:orange_brick_stairs",
+    "count": 1
+  }

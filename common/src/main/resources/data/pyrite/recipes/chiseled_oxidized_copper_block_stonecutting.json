@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:oxidized_copper"},"result":{"id":"pyrite:chiseled_oxidized_copper_block","count":1}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:oxidized_copper"
+    },
+    "result": "pyrite:chiseled_oxidized_copper_block",
+    "count": 1
+  }

@@ -1,6 +1,5 @@
 package cc.cassian.pyrite.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
@@ -21,12 +20,6 @@ public class ModFacingBlock extends HorizontalFacingBlock {
         this.power = 0;
 
     }
-
-    @Override
-    protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
-        return null;
-    }
-
     public ModFacingBlock(Settings settings, int power) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));

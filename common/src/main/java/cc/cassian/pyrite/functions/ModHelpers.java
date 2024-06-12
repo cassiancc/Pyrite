@@ -1,7 +1,8 @@
 package cc.cassian.pyrite.functions;
 
-import net.minecraft.SharedConstants;
 import net.minecraft.block.*;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
@@ -48,17 +49,21 @@ public class ModHelpers {
         };
     }
 
+    public static ParticleEffect getTorchParticle(String dye) {
+        return switch (dye) {
+            case "dragon" -> ParticleTypes.DRAGON_BREATH;
+            case "glow" -> ParticleTypes.GLOW;
+            case "star" -> ParticleTypes.ENCHANT;
+            default -> ParticleTypes.SMOKE;
+        };
+    }
+
     public static boolean isFabric(String platform) {
         return platform.contains("fabric");
     }
 
     public static boolean isTrialsOrLater(String platform) {
-        if (platform.contains("w")) {
-            return ( getVersion(platform) > 3940);
-        }
-        else {
-            return SharedConstants.getGameVersion().getName().contains("21");
-        }
+        return ( getVersion(platform) > 3940);
     }
 
     public static boolean isPoisonousSnapshot(String platform) {
@@ -71,6 +76,6 @@ public class ModHelpers {
 
     public static @NotNull BlockSetType getBlockSetType(String blockID) {
         boolean openByHand = !Objects.equals(blockID, "emerald") && (!Objects.equals(blockID, "netherite") && (!Objects.equals(blockID, "diamond")));
-        return new BlockSetType(blockID, openByHand, openByHand, openByHand, BlockSetType.ActivationRule.EVERYTHING, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
+        return new BlockSetType(blockID, openByHand, BlockSoundGroup.METAL, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_DOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
     }
 }

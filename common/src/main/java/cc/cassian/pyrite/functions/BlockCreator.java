@@ -49,6 +49,9 @@ public class BlockCreator {
     public static void createTorchLever(String blockID, Block baseTorch, ParticleEffect particle, String platform) {
         sendToRegistry(blockID, "torch_lever", AbstractBlock.Settings.copy(baseTorch), particle, platform);
     }
+    public static void createTorch(String blockID, ParticleEffect particle, String platform) {
+        sendToRegistry(blockID, "torch", AbstractBlock.Settings.copy(Blocks.TORCH), particle, platform);
+    }
 
     public static void generateVanillaCraftingTables(String platform) {
         //Autogenerate Vanilla Crafting Tables
@@ -272,6 +275,8 @@ public class BlockCreator {
         createPyriteBlock(blockID+"_trapdoor", "trapdoor", Blocks.OAK_TRAPDOOR, color, blockLux, GENERATED_SET, GENERATED_TYPE, platform);
         //Crafting Tables
         createPyriteBlock( blockID+"_crafting_table", "crafting", Blocks.CRAFTING_TABLE, color, blockLux, platform);
+        createPyriteBlock( blockID+"_ladder", "ladder", Blocks.LADDER, color, blockLux, platform);
+
 
     }
 
@@ -352,13 +357,12 @@ public class BlockCreator {
             if (blockID.contains("copper")) {
                 if (!isTrialsOrLater(platform)) {
                     createPyriteBlock(blockID+"_door","door", block, set, platform);
-                    createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
                 }
             }
             else {
                 createPyriteBlock(blockID+"_door","door", block, set, platform);
-                createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             }
+            createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             //Create Plates for those that don't already exist (Iron and Gold)
             if (!Objects.equals(blockID, "gold")) {
                 createPyriteBlock(blockID+"_pressure_plate","pressure_plate", block, set, platform);

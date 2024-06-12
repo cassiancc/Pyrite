@@ -2,6 +2,7 @@ package cc.cassian.pyrite.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeverBlock;
+import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.property.BooleanProperty;

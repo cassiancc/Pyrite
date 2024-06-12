@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:smooth_amethyst"},"result":{"id":"pyrite:smooth_amethyst_slab","count":2}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:smooth_amethyst"
+    },
+    "result": "pyrite:smooth_amethyst_slab",
+    "count": 2
+  }

@@ -3,6 +3,6 @@
     "ingredient": {
       "item": "pyrite:black_bricks"
     },
-    "result": {"id": "pyrite:black_brick_stairs",
-    "count": 2
-  }}
+    "result": "pyrite:black_brick_stairs",
+    "count": 1
+  }

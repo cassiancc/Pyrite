@@ -15,11 +15,15 @@ import java.util.function.ToIntFunction;
 
 public class ArchitecturyHelpers {
     public static ArrayList<RegistrySupplier<Block>> transparentBlocks = new ArrayList<>();
+    public static ArrayList<RegistrySupplier<Block>> translucentBlocks = new ArrayList<>();
     public static ArrayList<RegistrySupplier<Block>> grassBlocks = new ArrayList<>();
     public static HashMap<RegistrySupplier<Block>, Integer> fuel = new HashMap<>();
 
     public static void addTransparentBlock(RegistrySupplier<Block> newBlock) {
         transparentBlocks.add(newBlock);
+    }
+    public static void addTranslucentBlock(RegistrySupplier<Block> newBlock) {
+        translucentBlocks.add(newBlock);
     }
     public static void addGrassBlock(RegistrySupplier<Block> newBlock) {
         grassBlocks.add(newBlock);

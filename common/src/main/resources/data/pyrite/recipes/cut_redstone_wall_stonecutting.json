@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:redstone_block"},"result":{"id":"pyrite:cut_redstone_wall","count":1}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:redstone_block"
+    },
+    "result": "pyrite:cut_redstone_wall",
+    "count": 1
+  }

@@ -21,15 +21,14 @@ public class ModCraftingTable extends CraftingTableBlock {
     public ModCraftingTable(Settings settings) {
         super(settings);
     }
-
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.isClient) {
             return ActionResult.SUCCESS;
-        } else {
-            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-            player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
-            return ActionResult.CONSUME;
         }
+        player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+        player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+        return ActionResult.CONSUME;
     }
 
     @Override

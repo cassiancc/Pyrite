@@ -6,7 +6,5 @@
         "ingredient": {
           "item": "minecraft:nether_bricks"
         },
-        "result": {
-          "id": "pyrite:charred_nether_bricks"
-        }
+        "result": "pyrite:charred_nether_bricks"
       }

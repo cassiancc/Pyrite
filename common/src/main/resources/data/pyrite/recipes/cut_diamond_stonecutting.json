@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:diamond_block"},"result":{"id":"pyrite:cut_diamond","count":4}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:diamond_block"
+    },
+    "result": "pyrite:cut_diamond",
+    "count": 4
+  }

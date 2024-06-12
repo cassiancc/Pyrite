@@ -1,1 +1,8 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:redstone_block"},"result":{"id":"pyrite:smooth_redstone","count":1}}
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:redstone_block"
+    },
+    "result": "pyrite:smooth_redstone",
+    "count": 1
+  }
