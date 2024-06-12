@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:white_bricks"
-    },
-    "result": "pyrite:white_brick_slab",
-    "count": 2
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:white_bricks"},"result":{"id":"pyrite:white_brick_slab","count":2}}

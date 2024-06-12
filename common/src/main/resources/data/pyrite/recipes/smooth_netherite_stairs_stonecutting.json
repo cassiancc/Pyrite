@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:smooth_netherite"
-    },
-    "result": "pyrite:smooth_netherite_stairs",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:smooth_netherite"},"result":{"id":"pyrite:smooth_netherite_stairs","count":1}}

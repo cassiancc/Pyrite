@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:cut_diamond"
-    },
-    "result": "pyrite:cut_diamond_stairs",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:cut_diamond"},"result":{"id":"pyrite:cut_diamond_stairs","count":1}}

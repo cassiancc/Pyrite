@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:smooth_diamond"
-    },
-    "result": "pyrite:smooth_diamond_slab",
-    "count": 2
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:smooth_diamond"},"result":{"id":"pyrite:smooth_diamond_slab","count":2}}

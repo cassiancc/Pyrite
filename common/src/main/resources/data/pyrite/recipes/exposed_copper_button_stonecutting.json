@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "minecraft:exposed_copper"
-    },
-    "result": "pyrite:exposed_copper_button",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:exposed_copper"},"result":{"id":"pyrite:exposed_copper_button","count":1}}

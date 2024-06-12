@@ -1,16 +1,1 @@
-{
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###"
-  ],
-  "key": {
-    "#": {
-      "item": "pyrite:framed_glass"
-    }
-  },
-  "result": {
-    "item": "pyrite:framed_glass_pane",
-    "count": 16
-  }
-}
+{"type":"minecraft:crafting_shaped","pattern":["###","###"],"key":{"#":{"item":"pyrite:framed_glass"}},"result":{"id":"pyrite:framed_glass_pane","item":"pyrite:framed_glass_pane","count":1}}

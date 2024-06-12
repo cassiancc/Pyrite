@@ -1,17 +1,1 @@
-{
-      "type": "minecraft:crafting_shaped",
-      "category": "building",
-      "key": {
-        "#": {
-          "item": "minecraft:iron_block"
-        }
-      },
-      "pattern": [
-        "##",
-        "##"
-      ],
-      "result": {
-        "count": 4,
-        "item": "pyrite:cut_iron"
-      }
-    }
+{"type":"minecraft:crafting_shaped","category":"building","key":{"#":{"item":"minecraft:iron_block"}},"pattern":["##","##"],"result":{"id":"pyrite:cut_iron","item":"pyrite:cut_iron","count":1}}

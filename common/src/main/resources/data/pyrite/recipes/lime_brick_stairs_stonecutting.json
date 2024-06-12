@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:lime_bricks"
-    },
-    "result": "pyrite:lime_brick_stairs",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:lime_bricks"},"result":{"id":"pyrite:lime_brick_stairs","count":1}}

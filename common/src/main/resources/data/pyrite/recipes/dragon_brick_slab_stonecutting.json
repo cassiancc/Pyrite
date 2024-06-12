@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:dragon_bricks"
-    },
-    "result": "pyrite:dragon_brick_slab",
-    "count": 2
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:dragon_bricks"},"result":{"id":"pyrite:dragon_brick_slab","count":2}}

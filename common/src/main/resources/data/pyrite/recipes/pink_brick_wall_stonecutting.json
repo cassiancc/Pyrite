@@ -1,8 +1,1 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:pink_bricks"
-    },
-    "result": "pyrite:pink_brick_wall",
-    "count": 1
-  }
+{"type":"minecraft:stonecutting","ingredient":{"item":"pyrite:pink_bricks"},"result":{"id":"pyrite:pink_brick_wall","count":1}}
