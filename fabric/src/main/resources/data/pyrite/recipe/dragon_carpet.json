@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:dragon_wool"
+          }
+        },
+        "result": {
+          "item": "pyrite:dragon_carpet",
+          "id": "pyrite:dragon_carpet",
+          "count": 3
+        }
+      }

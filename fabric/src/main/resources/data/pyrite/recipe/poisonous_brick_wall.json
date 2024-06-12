@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:poisonous_bricks"
+      }
+    },
+    "result": {
+      "item": "pyrite:poisonous_brick_wall",
+      "id": "pyrite:poisonous_brick_wall",
+      "count": 6
+    }
+}

@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:blue_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:blue_brick_slab",
+          "id": "pyrite:blue_brick_slab",
+          "count": 6
+        }
+      }

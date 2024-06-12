@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:mossy_stone_bricks"
+          },
+          "S": {
+            "item": "minecraft:mossy_stone_brick_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:mossy_stone_brick_wall_gate",
+          "id": "pyrite:mossy_stone_brick_wall_gate",
+          "count": 6
+        }
+      }

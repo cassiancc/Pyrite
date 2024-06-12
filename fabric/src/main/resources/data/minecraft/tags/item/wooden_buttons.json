@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:white_stained_button",
+    "pyrite:orange_stained_button",
+    "pyrite:magenta_stained_button",
+    "pyrite:light_blue_stained_button",
+    "pyrite:yellow_stained_button",
+    "pyrite:lime_stained_button",
+    "pyrite:pink_stained_button",
+    "pyrite:gray_stained_button",
+    "pyrite:light_gray_stained_button",
+    "pyrite:cyan_stained_button",
+    "pyrite:purple_stained_button",
+    "pyrite:blue_stained_button",
+    "pyrite:brown_stained_button",
+    "pyrite:green_stained_button",
+    "pyrite:red_stained_button",
+    "pyrite:black_stained_button",
+    "pyrite:glow_stained_button",
+    "pyrite:dragon_stained_button",
+    "pyrite:star_stained_button",
+    "pyrite:honey_stained_button",
+    "pyrite:nostalgia_stained_button",
+    "pyrite:rose_stained_button",
+    "pyrite:poisonous_stained_button",
+    "pyrite:red_mushroom_button",
+    "pyrite:brown_mushroom_button"
+
+  ]}

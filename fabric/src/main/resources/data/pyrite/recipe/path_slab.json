@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:path_turf"
+          }
+        },
+        "result": {
+          "item": "pyrite:path_slab",
+          "id": "pyrite:path_slab",
+          "count": 6
+        }
+      }

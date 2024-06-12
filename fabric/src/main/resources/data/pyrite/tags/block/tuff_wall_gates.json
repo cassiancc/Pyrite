@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+    "pyrite:tuff_wall_gate",
+    "pyrite:tuff_brick_wall_gate",
+    "pyrite:polished_tuff_wall_gate"
+
+    ]
+  }

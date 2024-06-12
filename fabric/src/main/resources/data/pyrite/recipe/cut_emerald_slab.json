@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cut_emerald"
+          }
+        },
+        "result": {
+          "item": "pyrite:cut_emerald_slab",
+          "id": "pyrite:cut_emerald_slab",
+          "count": 6
+        }
+      }

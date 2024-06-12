@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:mossy_cobblestone"
+          },
+          "S": {
+            "item": "minecraft:mossy_cobblestone_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:mossy_cobblestone_wall_gate",
+          "id": "pyrite:mossy_cobblestone_wall_gate",
+          "count": 6
+        }
+      }

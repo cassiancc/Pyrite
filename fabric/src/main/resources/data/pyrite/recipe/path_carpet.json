@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:path_turf"
+          }
+        },
+        "result": {
+          "item": "pyrite:path_carpet",
+          "id": "pyrite:path_carpet",
+          "count": 3
+        }
+      }

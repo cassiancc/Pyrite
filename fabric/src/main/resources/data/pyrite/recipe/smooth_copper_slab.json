@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:smooth_copper"
+          }
+        },
+        "result": {
+          "item": "pyrite:smooth_copper_slab",
+          "id": "pyrite:smooth_copper_slab",
+          "count": 6
+        }
+      }

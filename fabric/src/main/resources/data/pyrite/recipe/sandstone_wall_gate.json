@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:sandstone"
+          },
+          "S": {
+            "item": "minecraft:sandstone_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:sandstone_wall_gate",
+          "id": "pyrite:sandstone_wall_gate",
+          "count": 6
+        }
+      }

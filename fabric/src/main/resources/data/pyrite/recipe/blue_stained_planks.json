@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "tag": "minecraft:planks"
+      },
+      "D": {
+        "item": "minecraft:blue_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:blue_stained_planks",
+      "id": "pyrite:blue_stained_planks",
+      "count": 8
+    }
+}

@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:glow_dye"
+        },
+        {
+          "item": "minecraft:white_wool"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:glow_wool",
+        "id": "pyrite:glow_wool"
+      }
+    }

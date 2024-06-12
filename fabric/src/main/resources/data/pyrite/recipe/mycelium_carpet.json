@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:mycelium_turf"
+          }
+        },
+        "result": {
+          "item": "pyrite:mycelium_carpet",
+          "id": "pyrite:mycelium_carpet",
+          "count": 3
+        }
+      }

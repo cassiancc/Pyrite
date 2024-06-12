@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:nostalgia_dye"
+        },
+        {
+          "item": "minecraft:emerald_block"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:nostalgia_emerald_block",
+        "id": "pyrite:nostalgia_emerald_block"
+      }
+    }

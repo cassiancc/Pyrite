@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:netherite_ingot"
+          }
+        },
+        "result": {
+          "item": "pyrite:netherite_door",
+          "id": "pyrite:netherite_door",
+          "count": 3
+        }
+      }

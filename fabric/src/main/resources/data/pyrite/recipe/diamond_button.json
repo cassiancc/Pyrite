@@ -1,0 +1,17 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "minecraft:diamond_block"
+        },
+        {
+          "tag": "minecraft:buttons"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:diamond_button",
+        "id": "pyrite:diamond_button"
+      }
+    }

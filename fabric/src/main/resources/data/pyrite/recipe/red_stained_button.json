@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:red_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:red_stained_button",
+          "id": "pyrite:red_stained_button",
+          "count": 1
+        }
+      }

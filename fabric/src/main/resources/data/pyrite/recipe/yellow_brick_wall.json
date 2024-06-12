@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:yellow_bricks"
+      }
+    },
+    "result": {
+      "item": "pyrite:yellow_brick_wall",
+      "id": "pyrite:yellow_brick_wall",
+      "count": 6
+    }
+}

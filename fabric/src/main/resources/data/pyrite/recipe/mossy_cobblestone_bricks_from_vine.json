@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pyrite:cobblestone_bricks"
+    },
+    {
+      "item": "minecraft:vine"
+    }
+  ],
+  "result": {
+    "item": "pyrite:mossy_cobblestone_bricks",
+    "id": "pyrite:mossy_cobblestone_bricks"
+  }
+}

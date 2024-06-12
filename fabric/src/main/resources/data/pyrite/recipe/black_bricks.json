@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:bricks"
+      },
+      "D": {
+        "item": "minecraft:black_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:black_bricks",
+      "id": "pyrite:black_bricks",
+      "count": 8
+    }  
+}

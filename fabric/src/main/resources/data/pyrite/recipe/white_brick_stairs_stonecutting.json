@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "pyrite:white_bricks"
+    },
+    "result": {"id": "pyrite:white_brick_stairs",
+    "count": 2
+  }}

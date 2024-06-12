@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:end_stone_bricks"
+          },
+          "S": {
+            "item": "minecraft:end_stone_brick_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:end_stone_brick_wall_gate",
+          "id": "pyrite:end_stone_brick_wall_gate",
+          "count": 6
+        }
+      }

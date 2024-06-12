@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "C"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:honey_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:honey_stained_button",
+          "id": "pyrite:honey_stained_button",
+          "count": 1
+        }
+      }

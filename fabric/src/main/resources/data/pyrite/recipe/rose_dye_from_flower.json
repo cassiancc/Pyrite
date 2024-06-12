@@ -1,0 +1,14 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "pyrite:pink_rose"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "item": "pyrite:rose_dye",
+        "id": "pyrite:rose_dye"
+      }
+    }

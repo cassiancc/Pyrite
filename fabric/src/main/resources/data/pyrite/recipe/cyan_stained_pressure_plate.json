@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cyan_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:cyan_stained_pressure_plate",
+          "id": "pyrite:cyan_stained_pressure_plate",
+          "count": 1
+        }
+      }

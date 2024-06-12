@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:nether_bricks"
+          },
+          "S": {
+            "item": "minecraft:nether_brick"
+          }
+        },
+        "result": {
+          "item": "pyrite:nether_brick_fence_gate",
+          "id": "pyrite:nether_brick_fence_gate",
+          "count": 1
+        }
+      }

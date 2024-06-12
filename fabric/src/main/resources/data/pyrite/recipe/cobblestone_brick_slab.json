@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cobblestone_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:cobblestone_brick_slab",
+          "id": "pyrite:cobblestone_brick_slab",
+          "count": 6
+        }
+      }

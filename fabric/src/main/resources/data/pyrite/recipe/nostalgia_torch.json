@@ -1,0 +1,16 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "pyrite:nostalgia_dye"
+        },
+        {
+          "item": "minecraft:torch"
+        }
+      ],
+      "result": {
+        "item": "pyrite:nostalgia_torch",
+        "id": "pyrite:nostalgia_torch",
+        "count": 1
+      }
+    }
