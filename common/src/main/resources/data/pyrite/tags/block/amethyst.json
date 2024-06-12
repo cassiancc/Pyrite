@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:cut_amethyst",
+    "pyrite:cut_amethyst_stairs",
+    "pyrite:cut_amethyst_slab",
+    "pyrite:cut_amethyst_wall",
+    "pyrite:cut_amethyst_wall_gate",
+    "pyrite:amethyst_bricks",
+    "pyrite:chiseled_amethyst_block",
+    "pyrite:amethyst_pillar",
+    "pyrite:smooth_amethyst",
+    "pyrite:smooth_amethyst_slab",
+    "pyrite:smooth_amethyst_stairs",
+    "pyrite:smooth_amethyst_wall_gate",
+    "pyrite:smooth_amethyst_wall",
+    "pyrite:amethyst_bars",
+    "pyrite:amethyst_door",
+    "pyrite:nostalgia_amethyst_block"
+
+  ]
+}

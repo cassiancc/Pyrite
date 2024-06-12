@@ -1,0 +1,35 @@
+{
+    "replace": false,
+    "values": [
+      "pyrite:cobblestone_brick_wall_gate",
+      "pyrite:smooth_stone_brick_wall_gate",
+      "pyrite:mossy_cobblestone_brick_wall_gate",
+      "pyrite:charred_nether_brick_wall_gate",
+      "pyrite:blue_nether_brick_wall_gate",
+      "pyrite:white_brick_wall_gate",
+      "pyrite:orange_brick_wall_gate",
+      "pyrite:magenta_brick_wall_gate",
+      "pyrite:light_blue_brick_wall_gate",
+      "pyrite:yellow_brick_wall_gate",
+      "pyrite:lime_brick_wall_gate",
+      "pyrite:pink_brick_wall_gate",
+      "pyrite:gray_brick_wall_gate",
+      "pyrite:light_gray_brick_wall_gate",
+      "pyrite:cyan_brick_wall_gate",
+      "pyrite:purple_brick_wall_gate",
+      "pyrite:blue_brick_wall_gate",
+      "pyrite:brown_brick_wall_gate",
+      "pyrite:green_brick_wall_gate",
+      "pyrite:red_brick_wall_gate",
+      "pyrite:black_brick_wall_gate",
+      "pyrite:glow_brick_wall_gate",
+      "pyrite:dragon_brick_wall_gate",
+      "pyrite:star_brick_wall_gate",
+      "pyrite:honey_brick_wall_gate",
+      "pyrite:nostalgia_brick_wall_gate",
+      "pyrite:rose_brick_wall_gate",
+      "pyrite:poisonous_brick_wall_gate",
+      "#pyrite:terracotta_brick_wall_gates"
+    ]
+  }
+

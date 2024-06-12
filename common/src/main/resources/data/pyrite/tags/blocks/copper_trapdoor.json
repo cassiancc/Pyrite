@@ -1,10 +1,6 @@
 {
   "replace": false,
   "values": [
-    "pyrite:copper_door",
-    "pyrite:exposed_copper_door",
-    "pyrite:weathered_copper_door",
-    "pyrite:oxidized_copper_door",
     "pyrite:copper_trapdoor",
     "pyrite:exposed_copper_trapdoor",
     "pyrite:weathered_copper_trapdoor",

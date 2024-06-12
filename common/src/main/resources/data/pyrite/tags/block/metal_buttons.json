@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "pyrite:iron_button",
+    "pyrite:gold_button",
+    "pyrite:emerald_button",
+    "pyrite:diamond_button",
+    "pyrite:netherite_button",
+    "pyrite:quartz_button",
+    "pyrite:amethyst_button",
+    "pyrite:lapis_button",
+    "pyrite:copper_button",
+    "pyrite:exposed_copper_button",
+    "pyrite:weathered_copper_button",
+    "pyrite:oxidized_copper_button"
+  ]}
