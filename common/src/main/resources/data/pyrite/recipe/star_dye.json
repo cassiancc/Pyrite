@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_star"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "pyrite:star_dye",
+    "id": "pyrite:star_dye"
+  }
+}

@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "tag": "minecraft:planks"
+      },
+      "D": {
+        "item": "pyrite:poisonous_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:poisonous_stained_planks",
+      "id": "pyrite:poisonous_stained_planks",
+      "count": 8
+    }
+}

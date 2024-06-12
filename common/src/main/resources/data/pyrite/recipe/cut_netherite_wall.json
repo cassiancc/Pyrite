@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:cut_netherite"
+      }
+    },
+    "result": {
+      "item": "pyrite:cut_netherite_wall",
+      "id": "pyrite:cut_netherite_wall",
+      "count": 6
+    }
+}

@@ -1,0 +1,18 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "C  ",
+        "CC ",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:white_bricks"
+        }
+      },
+      "result": {
+        "item": "pyrite:white_brick_stairs",
+        "id": "pyrite:white_brick_stairs",
+        "count": 4
+      }
+  }

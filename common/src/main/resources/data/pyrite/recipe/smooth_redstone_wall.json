@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:smooth_redstone"
+      }
+    },
+    "result": {
+      "item": "pyrite:smooth_redstone_wall",
+      "id": "pyrite:smooth_redstone_wall",
+      "count": 6
+    }
+}

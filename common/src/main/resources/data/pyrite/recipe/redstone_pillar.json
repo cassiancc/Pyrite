@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "D",
+      "D"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:redstone_block"
+      }
+    },
+    "result": {
+      "item": "pyrite:redstone_pillar",
+      "id": "pyrite:redstone_pillar",
+      "count": 1
+    }
+    }

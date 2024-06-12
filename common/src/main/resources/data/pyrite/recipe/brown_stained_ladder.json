@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "C C",
+      "CDC",
+      "C C"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:stick"
+      },
+      "D": {
+        "item": "pyrite:brown_stained_planks"
+      }
+    },
+    "result": {
+      "item": "pyrite:brown_stained_ladder",
+      "id": "pyrite:brown_stained_ladder",
+      "count": 3
+    }
+}

@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "pyrite:mossy_cobblestone_bricks"
+      }
+    },
+    "result": {
+      "item": "pyrite:mossy_cobblestone_brick_wall",
+      "id": "pyrite:mossy_cobblestone_brick_wall",
+      "count": 6
+    }
+}

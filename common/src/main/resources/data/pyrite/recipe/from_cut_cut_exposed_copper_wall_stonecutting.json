@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:exposed_cut_copper"
+    },
+    "result": {
+        "id": "pyrite:cut_exposed_copper_wall",
+        "count": 1
+    }
+}

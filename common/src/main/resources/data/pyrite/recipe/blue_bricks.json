@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:bricks"
+      },
+      "D": {
+        "item": "minecraft:blue_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:blue_bricks",
+      "id": "pyrite:blue_bricks",
+      "count": 8
+    }  
+}

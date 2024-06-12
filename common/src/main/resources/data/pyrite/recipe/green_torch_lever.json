@@ -1,0 +1,16 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "pyrite:green_torch"
+        },
+        {
+          "item": "minecraft:lever"
+        }
+      ],
+      "result": {
+        "item": "pyrite:green_torch_lever",
+        "id": "pyrite:green_torch_lever",
+        "count": 1
+      }
+    }

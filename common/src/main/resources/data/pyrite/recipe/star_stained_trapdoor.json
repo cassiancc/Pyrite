@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:star_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:star_stained_trapdoor",
+          "id": "pyrite:star_stained_trapdoor",
+          "count": 2
+        }
+      }

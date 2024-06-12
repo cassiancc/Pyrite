@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SCS",
+          "SCS"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cut_amethyst"
+          },
+          "S": {
+            "item": "pyrite:cut_amethyst_wall"
+          }
+        },
+        "result": {
+          "item": "pyrite:cut_amethyst_wall_gate",
+          "id": "pyrite:cut_amethyst_wall_gate",
+          "count": 6
+        }
+      }

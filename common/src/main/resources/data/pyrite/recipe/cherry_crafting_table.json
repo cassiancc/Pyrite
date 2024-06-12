@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:cherry_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:cherry_crafting_table",
+          "id": "pyrite:cherry_crafting_table",
+          "count": 1
+        }
+      }

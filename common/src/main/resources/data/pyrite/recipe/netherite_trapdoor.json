@@ -1,0 +1,18 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC",
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:netherite_ingot"
+          }
+        },
+        "result": {
+          "item": "pyrite:netherite_trapdoor",
+          "id": "pyrite:netherite_trapdoor",
+          "count": 2
+        }
+      }

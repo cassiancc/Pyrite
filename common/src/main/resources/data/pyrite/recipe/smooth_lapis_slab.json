@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:smooth_lapis"
+          }
+        },
+        "result": {
+          "item": "pyrite:smooth_lapis_slab",
+          "id": "pyrite:smooth_lapis_slab",
+          "count": 6
+        }
+      }

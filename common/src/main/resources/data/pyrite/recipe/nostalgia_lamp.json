@@ -1,0 +1,21 @@
+        {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "CCC",
+        "CDC",
+        "CCC"
+      ],
+      "key": {
+        "C": {
+          "item": "pyrite:glowstone_lamp"
+        },
+        "D": {
+          "item": "pyrite:nostalgia_dye"
+        }
+      },
+      "result": {
+        "item": "pyrite:nostalgia_lamp",
+        "id": "pyrite:nostalgia_lamp",
+        "count": 8
+      }
+  }

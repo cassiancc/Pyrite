@@ -1,0 +1,21 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CDC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:bricks"
+      },
+      "D": {
+        "item": "pyrite:glow_dye"
+      }
+    },
+    "result": {
+      "item": "pyrite:glow_bricks",
+      "id": "pyrite:glow_bricks",
+      "count": 8
+    }  
+}

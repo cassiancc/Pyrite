@@ -1,0 +1,17 @@
+        {
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:weathered_cut_copper"
+      }
+    },
+    "result": {
+      "item": "pyrite:cut_weathered_copper_wall",
+      "id": "pyrite:cut_weathered_copper_wall",
+      "count": 6
+    }
+}

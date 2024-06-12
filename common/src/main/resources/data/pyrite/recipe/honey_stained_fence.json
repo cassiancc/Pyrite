@@ -1,0 +1,21 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CSC",
+          "CSC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:honey_stained_planks"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "result": {
+          "item": "pyrite:honey_stained_fence",
+          "id": "pyrite:honey_stained_fence",
+          "count": 1
+        }
+      }

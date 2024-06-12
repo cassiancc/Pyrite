@@ -1,0 +1,16 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "pyrite:poisonous_dye"
+        },
+        {
+          "item": "minecraft:torch"
+        }
+      ],
+      "result": {
+        "item": "pyrite:poisonous_torch",
+        "id": "pyrite:poisonous_torch",
+        "count": 1
+      }
+    }

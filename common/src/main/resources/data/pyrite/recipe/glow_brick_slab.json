@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:glow_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:glow_brick_slab",
+          "id": "pyrite:glow_brick_slab",
+          "count": 6
+        }
+      }

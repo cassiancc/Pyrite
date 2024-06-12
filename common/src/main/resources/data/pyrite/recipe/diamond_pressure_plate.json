@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "minecraft:diamond_block"
+          }
+        },
+        "result": {
+          "item": "pyrite:diamond_pressure_plate",
+          "id": "pyrite:diamond_pressure_plate",
+          "count": 1
+        }
+      }

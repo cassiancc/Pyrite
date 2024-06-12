@@ -1,0 +1,19 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CC",
+          "CC",
+          "CC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:black_stained_planks"
+          }
+        },
+        "result": {
+          "item": "pyrite:black_stained_door",
+          "id": "pyrite:black_stained_door",
+          "count": 3
+        }
+      }

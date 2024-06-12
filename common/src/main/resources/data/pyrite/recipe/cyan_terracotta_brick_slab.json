@@ -1,0 +1,17 @@
+        
+      {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "CCC"
+        ],
+        "key": {
+          "C": {
+            "item": "pyrite:cyan_terracotta_bricks"
+          }
+        },
+        "result": {
+          "item": "pyrite:cyan_terracotta_brick_slab",
+          "id": "pyrite:cyan_terracotta_brick_slab",
+          "count": 6
+        }
+      }
