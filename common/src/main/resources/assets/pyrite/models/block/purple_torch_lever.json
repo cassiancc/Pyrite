@@ -1,0 +1,7 @@
+{
+    "parent": "pyrite:block/template_torch_lever",
+    "textures": {
+      "texture": "pyrite:block/purple_torch"
+    },
+    "render_type": "cutout"
+  }

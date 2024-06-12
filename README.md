@@ -15,7 +15,7 @@
 Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include stairs, slabs, fences, fence gates, walls, wall gates, trapdoors, pressure plates, buttons - everything you need to decorate as _you_ want. 
 
 ## Features
-_746 blocks and counting..._
+_891 blocks and counting..._
 - Stained Planks, in every colour of dye (and more!)
   - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)
@@ -49,7 +49,12 @@ Pyrite is required on both the client and server. Pyrite currently supports 1.20
 - On Forge, Forge Loader and Architectury API is required.
 - On NeoForge, Forge Loader and Architectury API is required.
 
+## Contributing
+Pyrite is available on GitHub under the open source MIT license. If you are interested in helping to make Pyrite better, through improved textures, translations, or bugfixes, please see the [Pyrite Wiki](https://github.com/cassiancc/Pyrite/wiki/Contributing-to-Pyrite).
+
 ## Credits
 Pyrite is inspired by mods like [Quark](https://quarkmod.net), [Stoneworks](https://modrinth.com/mod/stoneworks), and [Charm](https://modrinth.com/mod/charm) that expand on Minecraft's block palette.
+
+Translation credits available on the [Pyrite Wiki](https://github.com/cassiancc/Pyrite/wiki/Contributing-to-Pyrite#translation-status).
 
 Many textures are adapted from and inspired by vanilla Minecraft and removed features of such. These textures belong to Mojang.

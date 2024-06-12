@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_north_west_mirrored_all",
+    "textures": {
+      "all": "pyrite:block/dragon_terracotta_bricks"
+    }
+  }

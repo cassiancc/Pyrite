@@ -1,0 +1,16 @@
+{
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "pyrite:rose_dye"
+        },
+        {
+          "item": "minecraft:torch"
+        }
+      ],
+      "result": {
+        "item": "pyrite:rose_torch",
+        "id": "pyrite:rose_torch",
+        "count": 1
+      }
+    }

@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "type=bottom": {
+        "model": "pyrite:block/black_terracotta_brick_slab"
+      },
+      "type=double": {
+        "model": "pyrite:block/black_terracotta_bricks"
+      },
+      "type=top": {
+        "model": "pyrite:block/black_terracotta_brick_slab_top"
+      }
+    }
+  }

@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/template_torch",
+    "textures": {
+      "torch": "pyrite:block/rose_torch"
+    },
+    "render_type": "cutout"
+  }

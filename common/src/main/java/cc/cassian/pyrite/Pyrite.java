@@ -66,7 +66,8 @@ public class Pyrite {
 				//Dyed Wool
 				createPyriteBlock(dye + "_wool", "block", Blocks.WHITE_WOOL, color, blockLux, platform);
 				//Terracotta Block
-				//coming soon - createPyriteBlock(dye+"_terracotta", "block", Blocks.TERRACOTTA,color, blockLux);
+				createPyriteBlock(dye+"_terracotta", "block", Blocks.TERRACOTTA,color, blockLux, platform);
+
 				//Glazed Terracotta Block
 				//coming soon - createPyriteBlock(dye+"_glazed_terracotta", "block", Blocks.TERRACOTTA,color, blockLux);
 				//Concrete Powder Block
@@ -74,14 +75,26 @@ public class Pyrite {
 				//Concrete Block
 				//coming soon - createPyriteBlock(dye+"_concrete", "block", Blocks.CONCRETE,color, blockLux);
 				//Carpet block
-				createPyriteBlock(dye + "_carpet", "carpet", Blocks.WHITE_WOOL, color, blockLux, platform);
+				createPyriteBlock(dye + "_carpet", "carpet", Blocks.WHITE_CARPET, color, blockLux, platform);
 			}
 			//Planks and plank products
 			createWoodSet(dye + "_stained", color, blockLux, platform);
 			//Bricks and brick products
 			generateBrickSet(dye + "_brick", Blocks.BRICKS, color, blockLux, platform);
+			//Terracotta Bricks
+			generateBrickSet(dye+"_terracotta_brick", Blocks.TERRACOTTA, color, blockLux, platform);
+			//Dyed Framed Glass
+			createPyriteBlock(dye+"_framed_glass","tinted_glass", 2.0f, color, blockLux, platform);
+			//Dyed Framed Glass Pane
+			createPyriteBlock( dye+"_framed_glass_pane","tinted_glass_pane", 2.0f, color, blockLux, platform);
 			//Dyed Lamps
 			createPyriteBlock(dye + "_lamp","block", 0.3f, color, 15, platform);
+			//Dyed Torches
+			createTorch(dye+"_torch", getTorchParticle(dye), platform);
+			//Dyed Torch Levers
+			createTorchLever(dye+"_torch_lever", Blocks.TORCH, getTorchParticle(dye), platform);
+
+
 
 		}
 		//Autogenerate Wall Gates

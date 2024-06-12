@@ -35,6 +35,9 @@ public class BlockCreator {
     public static void createTorchLever(String blockID, Block baseTorch, ParticleEffect particle, String platform) {
         sendToRegistry(blockID, "torch_lever", AbstractBlock.Settings.copy(baseTorch), particle, platform);
     }
+    public static void createTorch(String blockID, ParticleEffect particle, String platform) {
+        sendToRegistry(blockID, "torch", AbstractBlock.Settings.copy(Blocks.TORCH), particle, platform);
+    }
 
     public static void generateVanillaCraftingTables(String platform) {
         //Autogenerate Vanilla Crafting Tables
@@ -182,6 +185,8 @@ public class BlockCreator {
         createPyriteBlock(blockID+"_trapdoor", "trapdoor", Blocks.OAK_TRAPDOOR, color, blockLux, platform);
         //Crafting Tables
         createPyriteBlock( blockID+"_crafting_table", "crafting", Blocks.CRAFTING_TABLE, color, blockLux, platform);
+        createPyriteBlock( blockID+"_ladder", "ladder", Blocks.LADDER, color, blockLux, platform);
+
 
     }
 
