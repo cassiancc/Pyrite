@@ -2,6 +2,7 @@ package cc.cassian.pyrite.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -84,6 +85,12 @@ public class ModTorch extends WallMountedBlock {
         world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
         world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
     }
+
+    @Override
+    protected MapCodec<? extends WallMountedBlock> getCodec() {
+        return null;
+    }
+
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return canPlaceAt(world, pos, getDirection(state).getOpposite());
     }

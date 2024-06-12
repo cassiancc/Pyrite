@@ -5,9 +5,9 @@ import net.minecraft.block.ButtonBlock;
 
 public class ModWoodenButton extends ButtonBlock {
     public ModWoodenButton(Settings settings, BlockSetType blockSetType) {
-        super(settings, blockSetType, 40, true);
+        super(blockSetType, 40, settings);
     }
     public ModWoodenButton(Settings settings, BlockSetType blockSetType, int pressTicks) {
-        super(settings, blockSetType, pressTicks, true);
+        super(blockSetType, pressTicks, settings);
     }
 }

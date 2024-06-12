@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.functions.architectury;
 
 import cc.cassian.pyrite.blocks.*;
+import com.mojang.serialization.MapCodec;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -89,7 +90,12 @@ public class CommonRegistry {
                 newBlock = pyriteBlocks.register(blockID, () -> new ModGlass(blockSettings));
                 break;
             case "gravel":
-                newBlock = pyriteBlocks.register(blockID, () -> new GravelBlock(blockSettings));
+                newBlock = pyriteBlocks.register(blockID, () -> new FallingBlock(blockSettings) {
+                    @Override
+                    protected MapCodec<? extends FallingBlock> getCodec() {
+                        return null;
+                    }
+                });
                 break;
             case "flower":
                 newBlock = pyriteBlocks.register(blockID, () -> new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
@@ -113,7 +119,7 @@ public class CommonRegistry {
 
     //Add Pyrite blocks that require Wood Types - Fence gates.
     public static void registerPyriteBlock(String blockID, AbstractBlock.Settings blockSettings, WoodType type) {
-        RegistrySupplier<Block> newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(blockSettings, type));
+        RegistrySupplier<Block> newBlock = pyriteBlocks.register(blockID, () -> new FenceGateBlock(type, blockSettings));
         addBlockItem(newBlock);
     }
 
@@ -122,11 +128,11 @@ public class CommonRegistry {
         RegistrySupplier<Block> newBlock;
         switch (blockType) {
             case "door":
-                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(blockSettings.nonOpaque(), type));
+                newBlock = pyriteBlocks.register(blockID, () -> new DoorBlock(type, blockSettings.nonOpaque()));
                 addTransparentBlock(newBlock);
                 break;
             case "trapdoor":
-                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(blockSettings.nonOpaque(), type));
+                newBlock = pyriteBlocks.register(blockID, () -> new TrapdoorBlock(type, blockSettings.nonOpaque()));
                 addTransparentBlock(newBlock);
                 break;
             case "button":
