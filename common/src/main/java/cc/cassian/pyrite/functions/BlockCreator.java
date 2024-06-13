@@ -314,13 +314,10 @@ public class BlockCreator {
     }
 
     public static void createTrialWallGates(String platform) {
-        if (isTrialsOrLater()) {
-            //Autogenerate 1.21 Wall Gates
-            for (String block : getVanillaTrialsWalls()) {
+        for (String block : getVanillaTrialsWalls()) {
                 //Create block.
                 createPyriteBlock(block + "_gate","fence_gate", Blocks.TUFF, platform);
             }
-        }
     }
 
     //Create a set of Resource Blocks
@@ -332,12 +329,7 @@ public class BlockCreator {
             //Brick Blocks
             createPyriteBlock(blockID+"_bricks", block, platform);
             //Chiseled Blocks - Copper Blocks
-            if (blockID.contains("copper")) {
-                if (!isTrialsOrLater()) {
-                    createPyriteBlock("chiseled_"+blockID+"_block", "log", block, platform);
-                }
-            }
-            else {
+            if (!blockID.contains("copper")) {
                 createPyriteBlock("chiseled_"+blockID+"_block", "log", block, platform);
             }
             //Pillar Blocks
@@ -353,13 +345,7 @@ public class BlockCreator {
             //Bars
             createPyriteBlock(blockID+"_bars","bars", block, platform);
             //Disable Copper doors in 1.21+
-            if (blockID.contains("copper")) {
-                if (!isTrialsOrLater()) {
-                    createPyriteBlock(blockID+"_door","door", block, set, platform);
-                    createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
-                }
-            }
-            else {
+            if (!blockID.contains("copper")) {
                 createPyriteBlock(blockID+"_door","door", block, set, platform);
                 createPyriteBlock(blockID+"_trapdoor","trapdoor", block, set, platform);
             }

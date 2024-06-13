@@ -63,10 +63,6 @@ public class ModHelpers {
         return platform.contains("fabric");
     }
 
-    public static boolean isTrialsOrLater() {
-        return (SharedConstants.getGameVersion().getName().contains("21") || (SharedConstants.getGameVersion().getName().contains("22")));
-    }
-
     public static boolean isPoisonousSnapshot() {
         return (SharedConstants.getGameVersion().getName().contains("potato"));
     }

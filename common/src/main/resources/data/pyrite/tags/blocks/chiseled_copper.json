@@ -1,9 +1,0 @@
-
-{
-  "replace": false,
-  "values": [
-    "pyrite:chiseled_copper_block",
-    "pyrite:chiseled_exposed_copper_block",
-    "pyrite:chiseled_weathered_copper_block",
-    "pyrite:chiseled_oxidized_copper_block"
-]}
