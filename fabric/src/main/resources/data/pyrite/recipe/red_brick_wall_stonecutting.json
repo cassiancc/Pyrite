@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:red_bricks"
-    },
-    "result": {"id": "pyrite:red_brick_wall",
-    "count": 2
-  }}
