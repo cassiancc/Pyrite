@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-      "item": "pyrite:light_gray_bricks"
-    },
-    "result": {"id": "pyrite:light_gray_brick_stairs",
-    "count": 2
-  }}
