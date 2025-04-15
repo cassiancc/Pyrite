@@ -21,7 +21,7 @@ public class BlockCreator {
     final static Block[] resource_blocks = getVanillaResourceBlocks();
 
     @ExpectPlatform @SuppressWarnings("unused")
-    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group) {
+    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
         throw new AssertionError();
     }
 
@@ -89,7 +89,7 @@ public class BlockCreator {
 
     //Create and then add most of the manually generated blocks.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, String group) {
-        platformRegister(blockID, blockType, copyBlock(copyBlock), WoodType.CRIMSON, BlockSetType.IRON, null, copyBlock, group);
+        platformRegister(blockID, blockType, copyBlock(copyBlock), WoodType.CRIMSON, BlockSetType.IRON, null, copyBlock, group, null);
     }
 
     //Create a slab from the last block added.
@@ -107,25 +107,25 @@ public class BlockCreator {
     //Create blocks that require a change in light level, e.g. Locked Chests
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux, String group) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock).luminance(parseLux(lux));
-        platformRegister(blockID, blockType, blockSettings, null, null, null, copyBlock, group);
+        platformRegister(blockID, blockType, blockSettings, null, null, null, copyBlock, group, null);
     }
 
     private static void sendToRegistry(String blockID, String blockType, AbstractBlock.Settings blockSettings, String group) {
-        platformRegister(blockID, blockType, blockSettings, null, null, null, null, group);
+        platformRegister(blockID, blockType, blockSettings, null, null, null, null, group, null);
 
     }
     private static void sendToRegistry(String blockID, Block copyBlock, AbstractBlock.Settings blockSettings, String group) {
-        platformRegister(blockID, "stairs", blockSettings,  null, null, null, copyBlock, group);
+        platformRegister(blockID, "stairs", blockSettings,  null, null, null, copyBlock, group, null);
     }
     
     //Add blocks with particles - Torches/Torch Levers
     private static void sendToRegistry(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle, String group) {
-        platformRegister(blockID, blockType, blockSettings, null, null, particle, null, group);
+        platformRegister(blockID, blockType, blockSettings, null, null, particle, null, group, null);
     }
 
     //Create blocks that require a Block Set.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set, String group) {
-        platformRegister(blockID, blockType, copyBlock(copyBlock),  null, set, null, copyBlock, group);
+        platformRegister(blockID, blockType, copyBlock(copyBlock),  null, set, null, copyBlock, group, null);
     }
 
     //Create most of the generic Stained Blocks, then add them.
@@ -134,13 +134,13 @@ public class BlockCreator {
         if ((copyBlock.equals(Blocks.OAK_PLANKS)) || (copyBlock.equals(Blocks.OAK_SLAB) || (copyBlock.equals(Blocks.OAK_STAIRS)))) {
             blockSettings = blockSettings.burnable();
         }
-        platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group);
+        platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group, color);
     }
 
     //Create basic blocks.
     public static void createPyriteBlock(String blockID, Block copyBlock, String group) {
         AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
-        platformRegister(blockID, "block", blockSettings,  null, null, null, null, group);
+        platformRegister(blockID, "block", blockSettings,  null, null, null, null, group, null);
     }
 
     //Create Stained blocks that require a wood set or wood type, then add them.
@@ -149,7 +149,7 @@ public class BlockCreator {
         if (!blockType.equals("button")) {
             blockSettings = blockSettings.burnable();
         }
-        platformRegister(blockID, blockType, blockSettings,  type, set, null, null, group);
+        platformRegister(blockID, blockType, blockSettings,  type, set, null, null, group, color);
     }
 
     public static void generateFlowers() {
@@ -250,6 +250,7 @@ public class BlockCreator {
         createPyriteBlock("%s_sign".formatted(blockID), "sign", Blocks.OAK_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         // Hanging Signs
         createPyriteBlock("%s_hanging_sign".formatted(blockID), "hanging_sign", Blocks.OAK_HANGING_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
     }
 
     /**

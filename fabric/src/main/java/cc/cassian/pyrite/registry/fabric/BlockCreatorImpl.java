@@ -1,12 +1,11 @@
 package cc.cassian.pyrite.registry.fabric;
 
 import cc.cassian.pyrite.blocks.*;
-import cc.cassian.pyrite.blocks.fabric.OxidizableColumnBlock;
+import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.ColumnsCompat;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
-import io.github.haykam821.columns.block.ColumnBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -44,9 +43,9 @@ public class BlockCreatorImpl {
     }
 
 	/**
-     * Implements {@link BlockCreator#platformRegister(String, String, AbstractBlock.Settings, WoodType, BlockSetType, ParticleEffect, Block, String)} on Fabric.
+     * Implements {@link BlockCreator#platformRegister(String, String, AbstractBlock.Settings, WoodType, BlockSetType, ParticleEffect, Block, String, MapColor)} on Fabric.
      */
-    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group) {
+    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock;
         switch (blockType.toLowerCase()) {
@@ -69,6 +68,10 @@ public class BlockCreatorImpl {
 					FUEL_BLOCKS.put(newBlock, 300);
 				} else
 					newBlock = new ModCraftingTable(blockSettings);
+                break;
+            case "chest":
+                newBlock = ChestsCompat.registerChest(blockID, color, group, copyBlock);
+                ChestsCompat.registerToBlockEntity(newBlock);
                 break;
             case "ladder":
                 newBlock = new LadderBlock(blockSettings);
