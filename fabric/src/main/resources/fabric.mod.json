@@ -27,7 +27,7 @@
     "java": ">=21",
     "fabric-api": ">=0.107.0"
   },
-  "recommends": {
+  "suggests": {
     "lolmcv": "*"
   }
 }

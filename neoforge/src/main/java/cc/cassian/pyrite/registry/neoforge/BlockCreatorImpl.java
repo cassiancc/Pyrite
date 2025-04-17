@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.registry.neoforge;
 
 import cc.cassian.pyrite.blocks.*;
+import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
@@ -17,6 +18,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -68,11 +70,11 @@ public class BlockCreatorImpl {
         int power;
         if (blockID.contains("redstone")) power = 15;
         else power = 0;
-        Supplier<Block> newBlock;
+        Supplier<Block> newBlock = null;
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new OxidizableBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModBlock(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModBlock(blockSettings, power));
@@ -98,6 +100,12 @@ public class BlockCreatorImpl {
                 }
                 WOOD_BLOCKS.add(newBlock);
                 break;
+            case "chest":
+                if (ModList.get().isLoaded("lolmcv")) {
+                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock);
+                    ChestsCompat.add(newBlock);
+                }
+                break;
             case "ladder":
                 newBlock = BLOCKS.register(blockID, () -> new LadderBlock(blockSettings));
                 WOOD_BLOCKS.add(newBlock);
@@ -107,7 +115,7 @@ public class BlockCreatorImpl {
                 break;
             case "slab":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableSlabBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new OxidizableSlabBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModSlab(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModSlab(blockSettings, power));
@@ -119,7 +127,7 @@ public class BlockCreatorImpl {
                 break;
             case "stairs":
                 if (isCopper(blockID)) {
-					newBlock = BLOCKS.register(blockID, () -> new OxidizableStairsBlock(ModHelpers.getOxidizationState(blockID), copyBlock.getDefaultState(), blockSettings));
+					newBlock = BLOCKS.register(blockID, () -> new OxidizableStairsBlock(getOxidizationState(blockID), copyBlock.getDefaultState(), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModStairs(copyBlock.getDefaultState(), blockSettings), "waxed_"+group);
                 } else
                     newBlock = BLOCKS.register(blockID, () -> new ModStairs(copyBlock.getDefaultState(), blockSettings));
@@ -128,7 +136,7 @@ public class BlockCreatorImpl {
                 break;
             case "wall":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableWallBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new OxidizableWallBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModWall(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModWall(blockSettings, power));
@@ -143,7 +151,7 @@ public class BlockCreatorImpl {
                 break;
             case "log":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizablePillarBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModPillar(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModPillar(blockSettings, power));
@@ -164,7 +172,7 @@ public class BlockCreatorImpl {
                 break;
             case "bars", "glass_pane", "tinted_glass_pane":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableBarsBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new OxidizableBarsBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModPane(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModPane(blockSettings, power));
@@ -179,14 +187,15 @@ public class BlockCreatorImpl {
                 newBlock = BLOCKS.register(blockID, () -> new ModGlass(blockSettings));
                 break;
             case "stained_framed_glass":
-                newBlock = BLOCKS.register(blockID, () -> new StainedFramedGlass(ModHelpers.getDyeColorFromFramedId(blockID), blockSettings));
+                newBlock = BLOCKS.register(blockID, () -> new StainedFramedGlass(getDyeColorFromFramedId(blockID), blockSettings));
                 break;
             case "gravel":
                 newBlock = BLOCKS.register(blockID, () -> new GravelBlock(blockSettings));
                 break;
             case "flower":
                 newBlock = BLOCKS.register(blockID, () -> new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
-                Supplier<FlowerPotBlock> pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, newBlock, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+                Supplier<Block> finalNewBlock = newBlock;
+                Supplier<FlowerPotBlock> pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
                 POTTED_FLOWERS.put(blockID, pot);
                 break;
             case "fence_gate":
@@ -196,7 +205,7 @@ public class BlockCreatorImpl {
                 break;
             case "wall_gate":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableWallGateBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new WallGateBlock(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new WallGateBlock(blockSettings));
@@ -247,7 +256,7 @@ public class BlockCreatorImpl {
                 REDSTONE_BLOCKS.add(newBlock);
                 break;
             case "concrete_powder":
-                newBlock = BLOCKS.register(blockID, () -> new ConcretePowderBlock((ModHelpers.getBlock(blockID.replace("_powder", ""))), blockSettings));
+                newBlock = BLOCKS.register(blockID, () -> new ConcretePowderBlock((getBlock(blockID.replace("_powder", ""))), blockSettings));
                 break;
             case "switchable_glass":
                 newBlock = BLOCKS.register(blockID, () -> new SwitchableGlass(blockSettings));
@@ -258,6 +267,8 @@ public class BlockCreatorImpl {
                 newBlock = BLOCKS.register(blockID, () -> new Block(blockSettings));
                 break;
         }
+        if (newBlock == null)
+            return;
         for (Block block : ModLists.getVanillaResourceBlocks()) {
             if (blockID.contains(Registries.BLOCK.getId(block).getPath().replace("_block", "")) && !inGroup(newBlock))
                 RESOURCE_BLOCKS.add(newBlock);
@@ -355,12 +366,15 @@ public class BlockCreatorImpl {
 
     // Adds Pyrite's signs to the list of blockstates that the Sign block entities support.
     @SubscribeEvent
-    public static void addSignsToSupports(BlockEntityTypeAddBlocksEvent event) {
+    public static void addSupportedBlocks(BlockEntityTypeAddBlocksEvent event) {
         for (Supplier<Block> sign : SIGN_BLOCKS) {
             event.modify(BlockEntityType.SIGN, sign.get());
         }
         for (Supplier<Block> sign : HANGING_SIGN_BLOCKS) {
             event.modify(BlockEntityType.HANGING_SIGN, sign.get());
+        }
+        if (ModList.get().isLoaded("lolmcv")) {
+            ChestsCompat.registerToBlockEntity(event);
         }
     }
 
@@ -371,7 +385,7 @@ public class BlockCreatorImpl {
         for (Map.Entry<String, Supplier<FlowerPotBlock>> entry : POTTED_FLOWERS.entrySet()) {
             String flowerID = entry.getKey();
             Supplier<FlowerPotBlock> flowerPot = entry.getValue();
-            pot.addPlant(ModHelpers.locate(flowerID), flowerPot);
+            pot.addPlant(locate(flowerID), flowerPot);
         }
     }
 }

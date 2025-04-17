@@ -22,7 +22,7 @@ public final class PyriteNeoForge {
             PyriteNeoForgeClient.init(eventBus);
         // Run NeoForged specific setup.
         BlockCreatorImpl.register(eventBus);
-        eventBus.addListener(BlockCreatorImpl::addSignsToSupports);
+        eventBus.addListener(BlockCreatorImpl::addSupportedBlocks);
         eventBus.addListener(BlockCreatorImpl::commonSetup);
         eventBus.addListener(PyriteItemGroupsImpl::buildContents);
 
