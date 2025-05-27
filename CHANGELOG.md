@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cobbled Deepslate and Mossy Cobbled Deepslate Bricks.
 - Optional compatibility for [Columns](https://modrinth.com/mod/columns) by haykam.
 - Optional compatibility for [More Chest Variants](https://modrinth.com/mod/more-chest-variants-lieonlion) by LieOn Studios.
+- Support for new Fabric ladder tag.
 
 ### Changed
 - Unwaxed copper blocks now properly oxidize, can be stripped, and waxed.
