@@ -66,7 +66,7 @@ public class BlockCreatorImpl {
     /**
      * Implements {@link BlockCreator#platformRegister(String, String, AbstractBlock.Settings, WoodType, BlockSetType, ParticleEffect, Block, String, MapColor)} on NeoForge.
      */
-    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
+    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings settings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
         int power;
         if (blockID.contains("redstone")) power = 15;
         else power = 0;
@@ -195,7 +195,8 @@ public class BlockCreatorImpl {
                 break;
             case "flower":
                 newBlock = BLOCKS.register(blockID, () -> new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
-                var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, newBlock, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY).registryKey(registryKeyBlock("potted_"+blockID))));
+                Supplier<Block> finalNewBlock = newBlock;
+                var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY).registryKey(registryKeyBlock("potted_"+blockID))));
                 POTTED_FLOWERS.put(blockID, pot);
                 break;
             case "fence_gate":
@@ -297,7 +298,7 @@ public class BlockCreatorImpl {
     }
 
     public static void registerBlockItem(String blockID, Supplier<Block> newBlock) {
-        Item.Settings settings = new Item.Settings();
+        Item.Settings settings = newBlockItemSettings(blockID);
         if (blockID.contains("netherite"))
             settings = settings.fireproof();
         final Item.Settings finalSettings = settings;
@@ -305,13 +306,13 @@ public class BlockCreatorImpl {
     }
 
     public static void registerSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(new Item.Settings().maxCount(16), newBlock.get(), wallSign.get()));
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).maxCount(16)));
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }
 
     public static void registerHangingSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new HangingSignItem(newBlock.get(), wallSign.get(), new Item.Settings().maxCount(16)));
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new HangingSignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).maxCount(16)));
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }

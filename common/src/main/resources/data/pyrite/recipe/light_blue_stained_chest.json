@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["III","I I","III"],"key":{"I":{"item":"pyrite:light_blue_stained_planks"}},"result":{"id":"pyrite:light_blue_stained_chest","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["III","I I","III"],"key":{"I":"pyrite:light_blue_stained_planks"},"result":{"id":"pyrite:light_blue_stained_chest","count":1}}

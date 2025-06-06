@@ -48,6 +48,7 @@ public class BlockCreatorImpl {
     public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
+        blockSettings = blockSettings.registryKey(registryKeyBlock(blockID));
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
@@ -170,7 +171,7 @@ public class BlockCreatorImpl {
                 newBlock = new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings);
                 addTransparentBlock(newBlock);
                 // register flower pot
-                final Block FLOWER_POTTED = Blocks.createFlowerPotBlock(newBlock);
+                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, Blocks.createFlowerPotSettings().registryKey(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;
@@ -195,7 +196,7 @@ public class BlockCreatorImpl {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(new Item.Settings().maxCount(16), newBlock, WALL_SIGN);
+                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newItemSettings(blockID).maxCount(16));
                 ITEMS.put(blockID, SIGN_ITEM);
                 SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
                 BlockEntityType.SIGN.addSupportedBlock(newBlock);
@@ -209,7 +210,7 @@ public class BlockCreatorImpl {
                 final WallHangingSignBlock HANGING_WALL_SIGN = new WallHangingSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), HANGING_WALL_SIGN);
                 // Register item for signs.
-                final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, new Item.Settings().maxCount(16));
+                final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newItemSettings(blockID).maxCount(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 SIGNS.add(() -> HANGING_SIGN_ITEM);
                 BlockEntityType.HANGING_SIGN.addSupportedBlock(newBlock);
@@ -285,13 +286,13 @@ public class BlockCreatorImpl {
      * This registers a basic item with no additional settings - primarily used for Dye.
      */
     public static void registerPyriteItem(String itemID) {
-        var item = new Item(new Item.Settings());
+        var item = new Item(newItemSettings(itemID));
         ITEMS.put(itemID, item);
         DYES.add(()-> item);
     }
 
     public static BlockItem addBlockItem(String blockID, Block block) {
-        Item.Settings settings = new Item.Settings();
+        Item.Settings settings = newBlockItemSettings(blockID);
         if (blockID.contains("netherite"))
             settings = settings.fireproof();
         return new BlockItem(block, settings);

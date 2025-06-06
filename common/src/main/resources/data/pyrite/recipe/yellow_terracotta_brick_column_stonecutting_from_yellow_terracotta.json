@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:yellow_terracotta"},"result":{"id":"pyrite:yellow_terracotta_brick_column","count":1}}
+{"type":"minecraft:stonecutting","ingredient":"minecraft:yellow_terracotta","result":{"id":"pyrite:yellow_terracotta_brick_column","count":1}}

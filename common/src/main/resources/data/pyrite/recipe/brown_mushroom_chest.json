@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["III","I I","III"],"key":{"I":{"item":"pyrite:brown_mushroom_planks"}},"result":{"id":"pyrite:brown_mushroom_chest","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["III","I I","III"],"key":{"I":"pyrite:brown_mushroom_planks"},"result":{"id":"pyrite:brown_mushroom_chest","count":1}}

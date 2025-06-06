@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
@@ -38,11 +39,11 @@ public class ModHelpers {
     }
 
     public static RegistryKey<Block> registryKeyBlock(String id) {
-        return RegistryKey.of(RegistryKeys.BLOCK, identifier(id));
+        return RegistryKey.of(RegistryKeys.BLOCK, locate(id));
     }
 
     public static RegistryKey<Item> registryKeyItem(String id) {
-        return RegistryKey.of(RegistryKeys.ITEM, identifier(id));
+        return RegistryKey.of(RegistryKeys.ITEM, locate(id));
     }
 
     public static Item.Settings newItemSettings(String id) {

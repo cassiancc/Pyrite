@@ -27,21 +27,13 @@ public class PyriteNeoForgeClient {
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block event){
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         for (Supplier<Block> pyriteBlock : GRASS_BLOCKS) {
             event.register(((state, view, pos, tintIndex) -> {
                 if (view == null) return 9551193;
                 return BiomeColors.getGrassColor(view, pos);
             }), pyriteBlock.get());
 
-        }
-    }
-
-    // Client-side mod bus event handler
-    @SubscribeEvent
-    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
-        for (Supplier<Block> pyriteBlock : GRASS_BLOCKS) {
-            event.register((stack, tintIndex) -> 9551193, pyriteBlock.get());
         }
     }
 
