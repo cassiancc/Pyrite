@@ -11,7 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cobbled Deepslate and Mossy Cobbled Deepslate Bricks.
 - Optional compatibility for [Columns](https://modrinth.com/mod/columns) by haykam.
 - Optional compatibility for [More Chest Variants](https://modrinth.com/mod/more-chest-variants-lieonlion) by LieOn Studios.
-- Support for new Fabric ladder tag.
+  - Trapped chests have not yet been added, they'll be in a future patch.
+- On Fabric, Pyrite ladders now work with trapdoors correctly.
+- Updated Russian translations (@Alexander317)
 
 ### Changed
 - Unwaxed copper blocks now properly oxidize, can be stripped, and waxed.
