@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/stairs","textures":{"bottom":"pyrite:block/diorite_bricks","top":"pyrite:block/diorite_bricks","side":"pyrite:block/diorite_bricks"}}
+{"parent":"minecraft:block/stairs","textures":{"bottom":"pyrite:block/cut_diorite","top":"pyrite:block/cut_diorite","side":"pyrite:block/cut_diorite"}}

@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/inner_stairs","textures":{"bottom":"pyrite:block/andesite_bricks","top":"pyrite:block/andesite_bricks","side":"pyrite:block/andesite_bricks"}}
+{"parent":"minecraft:block/inner_stairs","textures":{"bottom":"pyrite:block/cut_andesite","top":"pyrite:block/cut_andesite","side":"pyrite:block/cut_andesite"}}

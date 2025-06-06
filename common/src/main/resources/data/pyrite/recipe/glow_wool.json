@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:glow_dye","minecraft:white_wool"],"result":{"id":"pyrite:glow_wool","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:glow_dye","#minecraft:wool"],"result":{"id":"pyrite:glow_wool","count":1}}

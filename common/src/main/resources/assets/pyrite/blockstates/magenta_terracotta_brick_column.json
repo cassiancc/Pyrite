@@ -1,0 +1,1 @@
+{"multipart":[{"apply":{"model":"pyrite:block/magenta_terracotta_brick_column_center"}},{"apply":{"model":"pyrite:block/magenta_terracotta_brick_column_end"},"when":{"down":"true"}},{"apply":{"model":"pyrite:block/magenta_terracotta_brick_column_end","uvlock":true,"x":180},"when":{"up":"true"}}]}

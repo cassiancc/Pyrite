@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/outer_stairs","textures":{"bottom":"pyrite:block/smooth_stone_bricks","top":"pyrite:block/smooth_stone_bricks","side":"pyrite:block/smooth_stone_bricks"}}
+{"parent":"minecraft:block/outer_stairs","textures":{"bottom":"pyrite:block/cut_smooth_stone","top":"pyrite:block/cut_smooth_stone","side":"pyrite:block/cut_smooth_stone"}}

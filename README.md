@@ -4,9 +4,10 @@
 <div align='center'>
   <br>
 <a href='https://modrinth.com/mod/pyrite'><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
+<a href='https://curseforge.com/minecraft/mc-mods/pyrite'><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
 
 <a href='https://modrinth.com/mod/fabric-api'><img alt="fabric" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg"></a>
-<a href='https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html'><img alt="forge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/forge_vector.svg"></a>
+<a href='https://neoforged.net'><img alt="forge" height="56" src="https://resources.godsted.com/modrinth/NeoForge2.svg"></a>
 
 
 </div>
@@ -15,7 +16,7 @@
 Pyrite helps to fill out your block palette when building with various vanilla blocks! Looking to build with coloured blocks? Try out new Stained Planks, Dyed Lamps or Dyed Bricks in all the dye colours and more! Looking to flex your wealth? Try out Cut, Chiseled and Pillar variants of all the various resource blocks! Best of all, these variants (depending on the block) can include a full set of their own variants - stairs, slabs, walls, and more - everything you need to decorate as _you_ want. 
 
 ## Features
-_1,170 blocks and counting..._
+_1,228 blocks and counting..._
 - Stained Planks, in every colour of dye (and more!)
   - This includes stained wood slabs, stairs, fences, fence gates, pressure plates, doors, crafting tables, ladders, signs, and buttons as well!
 - Dyed Bricks, in every colour of dye (and more!)
@@ -52,7 +53,7 @@ _1,170 blocks and counting..._
 <a href='https://modrinth.com/mod/qsl'><img alt="quilt" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy-minimal/supported/quilt_vector.svg"></a>
 
 
-Pyrite is required on both the client and server. Pyrite currently supports 1.21, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
+Pyrite is required on both the client and server. Pyrite currently supports 1.21.1 and above, with occasional backports after major content updates. EMI is recommended to view crafting recipes.
 - On Fabric and Quilt, Fabric API or QSL is required.
 - On versions below 0.15.0, Architectury API is required.
 

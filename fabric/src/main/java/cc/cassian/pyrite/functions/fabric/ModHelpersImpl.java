@@ -13,4 +13,8 @@ public class ModHelpersImpl {
     public static boolean isShield(ItemStack stack) {
         return stack.isIn(ConventionalItemTags.SHIELD_TOOLS);
     }
+
+    public static boolean isDevEnvironment() {
+        return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
 }

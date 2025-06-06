@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/slab_top","textures":{"bottom":"pyrite:block/granite_bricks","top":"pyrite:block/granite_bricks","side":"pyrite:block/granite_bricks"}}
+{"parent":"minecraft:block/slab_top","textures":{"bottom":"pyrite:block/cut_granite","top":"pyrite:block/cut_granite","side":"pyrite:block/cut_granite"}}

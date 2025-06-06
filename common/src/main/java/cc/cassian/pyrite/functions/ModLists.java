@@ -8,30 +8,48 @@ import java.util.Map;
 
 public class ModLists {
     //List of dyes.
-    private final static String[] DYES = {
+    public final static String[] DYES = {
             "white",
+            "light_gray",
+            "gray",
+            "black",
+            "brown",
+            "red",
             "orange",
-            "magenta",
+            "honey",
+            "yellow",
+            "poisonous",
+            "lime",
+            "green",
+            "glow",
+            "cyan",
+            "nostalgia",
+            "star",
             "light_blue",
+            "blue",
+            "purple",
+            "dragon",
+            "magenta",
+            "rose",
+            "pink",
+    };
+    public final static String[] VANILLA_DYES = {
+            "white",
+            "light_gray",
+            "gray",
+            "black",
+            "brown",
+            "red",
+            "orange",
             "yellow",
             "lime",
-            "pink",
-            "gray",
-            "light_gray",
-            "cyan",
-            "purple",
-            "blue",
-            "brown",
             "green",
-            "red",
-            "black",
-            "glow",
-            "dragon",
-            "star",
-            "honey",
-            "nostalgia",
-            "rose",
-            "poisonous"
+            "cyan",
+            "light_blue",
+            "blue",
+            "purple",
+            "magenta",
+            "pink",
     };
     //List of Vanilla wood types.
     private final static Block[] VANILLA_WOOD = {
@@ -110,6 +128,10 @@ public class ModLists {
             "nostalgia_netherrack", Blocks.NETHERRACK
     );
 
+    public final static Map<String, Block> WOOL_MATCH = new LinkedHashMap<>();
+    public final static Map<String, Block> CARPET_MATCH = new LinkedHashMap<>();
+    public final static Map<String, Block> CONCRETE_MATCH = new LinkedHashMap<>();
+
     public static final LinkedHashMap<String, Block> FLOWERS = new LinkedHashMap<>();
     public static void populateLinkedHashMaps() {
         FLOWERS.put("rose", Blocks.POPPY);
@@ -120,6 +142,31 @@ public class ModLists {
         FLOWERS.put("paeonia", Blocks.PEONY);
         FLOWERS.put("buttercup", Blocks.PEONY);
         FLOWERS.put("pink_daisy", Blocks.PEONY);
+
+        WOOL_MATCH.put("glow", Blocks.GREEN_WOOL);
+        WOOL_MATCH.put("dragon", Blocks.PURPLE_WOOL);
+        WOOL_MATCH.put("star", Blocks.CYAN_WOOL);
+        WOOL_MATCH.put("honey", Blocks.ORANGE_WOOL);
+        WOOL_MATCH.put("rose", Blocks.MAGENTA_WOOL);
+        WOOL_MATCH.put("poisonous", Blocks.YELLOW_WOOL);
+        WOOL_MATCH.put("nostalgia", Blocks.CYAN_WOOL);
+
+        CARPET_MATCH.put("glow", Blocks.GREEN_CARPET);
+        CARPET_MATCH.put("dragon", Blocks.PURPLE_CARPET);
+        CARPET_MATCH.put("star", Blocks.CYAN_CARPET);
+        CARPET_MATCH.put("honey", Blocks.ORANGE_CARPET);
+        CARPET_MATCH.put("rose", Blocks.MAGENTA_CARPET);
+        CARPET_MATCH.put("poisonous", Blocks.YELLOW_CARPET);
+        CARPET_MATCH.put("nostalgia", Blocks.CYAN_CARPET);
+
+        CONCRETE_MATCH.put("glow", Blocks.GREEN_CONCRETE);
+        CONCRETE_MATCH.put("dragon", Blocks.PURPLE_CONCRETE);
+        CONCRETE_MATCH.put("star", Blocks.LIGHT_BLUE_CONCRETE);
+        CONCRETE_MATCH.put("honey", Blocks.ORANGE_CONCRETE);
+        CONCRETE_MATCH.put("rose", Blocks.MAGENTA_CONCRETE);
+        CONCRETE_MATCH.put("poisonous", Blocks.YELLOW_CONCRETE);
+        CONCRETE_MATCH.put("nostalgia", Blocks.CYAN_CONCRETE);
+
     }
 
     public static String[] getDyes() {

@@ -1,1 +1,1 @@
-{"variants":{"type=bottom":{"model":"pyrite:block/smooth_redstone_slab"},"type=double":{"model":"pyrite:block/smooth_redstone"},"type=top":{"model":"pyrite:block/smooth_redstone_slab_top"}}}
+{"variants":{"type=bottom":{"model":"pyrite:block/smooth_redstone_slab"},"type=double":{"model":"pyrite:block/smooth_redstone_slab_double"},"type=top":{"model":"pyrite:block/smooth_redstone_slab_top"}}}

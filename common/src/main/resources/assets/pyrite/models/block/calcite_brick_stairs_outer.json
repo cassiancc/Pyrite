@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/outer_stairs","textures":{"bottom":"pyrite:block/calcite_bricks","top":"pyrite:block/calcite_bricks","side":"pyrite:block/calcite_bricks"}}
+{"parent":"minecraft:block/outer_stairs","textures":{"bottom":"pyrite:block/cut_calcite","top":"pyrite:block/cut_calcite","side":"pyrite:block/cut_calcite"}}

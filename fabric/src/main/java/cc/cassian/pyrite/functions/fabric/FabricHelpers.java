@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static cc.cassian.pyrite.functions.fabric.BlockCreatorImpl.BLOCKS;
+import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
 
 public class FabricHelpers {
 
@@ -34,7 +34,7 @@ public class FabricHelpers {
         TRANSLUCENT_BLOCKS.add(newBlock);
     }
     public static Block getLastBlock() {
-        return BLOCKS.getLast();
+        return BLOCKS.lastEntry().getValue();
     }
 
 

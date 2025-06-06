@@ -1,7 +1,6 @@
 package cc.cassian.pyrite.functions;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.SharedConstants;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,13 +10,12 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
+import net.minecraft.util.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.function.ToIntFunction;
 
+import static cc.cassian.pyrite.Pyrite.LOGGER;
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 
 
@@ -35,7 +33,7 @@ public class ModHelpers {
         return block.toString().substring(block.toString().indexOf(":") + 1, block.toString().indexOf("}"));
     }
 
-    public static Identifier identifier(String id) {
+    public static Identifier locate(String id) {
         return Identifier.of(MOD_ID, id);
     }
 
@@ -52,7 +50,11 @@ public class ModHelpers {
     }
 
     public static Item.Settings newBlockItemSettings(String id) {
-        return newItemSettings(id).useBlockPrefixedTranslationKey();
+        return newItemSettings(id).useBlockPrefixedTranslationKey(); 
+    }
+
+    public static Block getBlock(String id) {
+        return Registries.BLOCK.get(ModHelpers.locate(id));
     }
 
     public static MapColor checkDyeMapColour(String dye) {
@@ -85,16 +87,33 @@ public class ModHelpers {
         };
     }
 
-    public static boolean isFabric(String platform) {
-        return platform.contains("fabric");
-    }
-
-    public static boolean isPoisonousSnapshot() {
-        return (SharedConstants.getGameVersion().getName().contains("potato"));
+    public static int power(String blockID) {
+        if (blockID.contains("redstone")) return 15;
+        else return 0;
     }
 
     public static DyeColor getDyeColorFromFramedId(String blockID) {
-        var dye = blockID.split("_framed")[0];
+        String dye;
+        if (blockID.contains("framed"))
+            dye = blockID.split("_framed")[0];
+        else if (blockID.contains("stained"))
+            dye = blockID.split("_stained")[0];
+        else dye = "";
+        return switch (dye) {
+            case "glow" -> DyeColor.CYAN;
+            case "dragon" -> DyeColor.BLACK;
+            case "star" -> DyeColor.LIGHT_BLUE;
+            case "honey" -> DyeColor.YELLOW;
+            case "nostalgia" -> DyeColor.BROWN;
+            case "rose" -> DyeColor.PINK;
+            case "poisonous" -> DyeColor.LIME;
+            default -> DyeColor.byName(dye, DyeColor.WHITE);
+        };
+    }
+
+    public static DyeColor getDyeColorFromStainedId(String blockID) {
+        var dye = blockID.split("_stained")[0];
+        System.out.println(dye);
         return switch (dye) {
             case "glow" -> DyeColor.CYAN;
             case "dragon" -> DyeColor.BLACK;
@@ -132,6 +151,30 @@ public class ModHelpers {
 
     @ExpectPlatform
     public static boolean isShield(ItemStack stack) {
+        throw new AssertionError();
+    }
+
+    public static boolean isCopper(String blockID) {
+        return blockID.contains("copper");
+    }
+
+    public static Oxidizable.OxidationLevel getOxidizationState(String blockID) {
+        if (blockID.contains("oxidized"))
+            return Oxidizable.OxidationLevel.OXIDIZED;
+        else if (blockID.contains("weathered"))
+            return Oxidizable.OxidationLevel.WEATHERED;
+        else if (blockID.contains("exposed"))
+            return Oxidizable.OxidationLevel.EXPOSED;
+        return Oxidizable.OxidationLevel.UNAFFECTED;
+    }
+
+    public static void log(String log) {
+        if (isDevEnvironment())
+            LOGGER.info(log);
+    }
+
+    @ExpectPlatform
+    public static boolean isDevEnvironment() {
         throw new AssertionError();
     }
 }

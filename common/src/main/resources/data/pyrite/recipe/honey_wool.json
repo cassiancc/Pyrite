@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:honey_dye","minecraft:white_wool"],"result":{"id":"pyrite:honey_wool","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:honey_dye","#minecraft:wool"],"result":{"id":"pyrite:honey_wool","count":1}}

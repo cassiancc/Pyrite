@@ -1,10 +1,13 @@
+import org.apache.commons.io.FileUtils
+
 plugins {
     id 'dev.architectury.loom' version '1.7-SNAPSHOT' apply false
     id 'architectury-plugin' version '3.4-SNAPSHOT'
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
     id "io.github.pacifistmc.forgix" version "1.2.9-local.10"
     id 'io.github.0ffz.github-packages' version '[1,2)'
-    id "me.modmuss50.mod-publish-plugin" version "0.8.1"
+    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+    id "org.moddedmc.wiki.toolkit" version "0.2.4"
 }
 
 architectury {
@@ -14,6 +17,17 @@ architectury {
 allprojects {
     group = maven_group
     version = mod_version + "+" + minecraft_version
+}
+
+
+wiki {
+    docs {
+        // The name of the object (examplemod) should match the registered wiki project ID (if it exists).
+        "pyrite" {
+            // The path to the folder containing the documentation metadata file (sinytra-wiki.json)
+            root = file('docs')
+        }
+    }
 }
 
 forgix {
@@ -32,20 +46,19 @@ forgix {
 
 publishMods {
     file = file("Merged/"+forgix.getMergedJarName())
-    String changelogString = "Port to 1.21.4"
-    changelog = changelogString
+    changelog = FileUtils.readFileToString(files("CHANGELOG-LATEST.md").singleFile, "UTF-8")
     type = STABLE
     modLoaders.add("fabric")
     modLoaders.add("neoforge")
 
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
-        projectId = "qO4ozPoe"
+        projectId = modrinth_id
         minecraftVersions.add(minecraft_version)
     }
     curseforge {
         accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
-        projectId = "1101500"
+        projectId = curseforge_id
         clientRequired = true
         serverRequired = true
         minecraftVersions.add(minecraft_version)
@@ -77,6 +90,17 @@ subprojects {
             name = "TerraformersMC"
             url = "https://maven.terraformersmc.com/"
         }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
         maven githubPackage.invoke("The-Aether-Team/The-Aether")
 
     }
@@ -84,7 +108,7 @@ subprojects {
     dependencies {
         minecraft "net.minecraft:minecraft:$minecraft_version"
         mappings loom.layered {
-            it.mappings("net.fabricmc:yarn:$minecraft_version$yarn_mappings:v2")
+            it.mappings("net.fabricmc:yarn:$minecraft_version+build.$yarn_mappings_build:v2")
             it.mappings("dev.architectury:yarn-mappings-patch-neoforge:$yarn_mappings_patch_neoforge_version")
         }
     }
@@ -120,6 +144,6 @@ subprojects {
             // retrieving dependencies.
         }
     }
-    build.finalizedBy(mergeJars)
-    assemble.finalizedBy(mergeJars)
+//    build.finalizedBy(mergeJars)
+//    assemble.finalizedBy(mergeJars)
 }

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:white_wool"],"result":{"id":"pyrite:nostalgia_wool","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","#minecraft:wool"],"result":{"id":"pyrite:nostalgia_wool","count":1}}

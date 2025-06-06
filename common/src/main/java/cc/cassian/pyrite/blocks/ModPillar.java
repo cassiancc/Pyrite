@@ -47,7 +47,7 @@ public class ModPillar extends PillarBlock {
         if (!world.isClient) {
             if (stack.isIn(ItemTags.AXES) && !ModHelpers.isShield(player.getOffHandStack())) {
                 Identifier id = Registries.BLOCK.getId(state.getBlock());
-                Block strippedBlock = Registries.BLOCK.get(Identifier.of(MOD_ID, "stripped_"+ id.getPath()));
+                Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());
                 if (!strippedBlock.equals(Blocks.AIR)) {
                     world.setBlockState(pos, strippedBlock.getDefaultState().with(AXIS, state.get(AXIS)));
                     return ActionResult.SUCCESS;

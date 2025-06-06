@@ -1,1 +1,1 @@
-{"replace":false,"values":["pyrite:light_gray_stained_stairs","pyrite:light_gray_stained_slab","pyrite:light_gray_stained_pressure_plate","pyrite:light_gray_stained_planks","pyrite:light_gray_stained_crafting_table","pyrite:light_gray_torch"]}
+{"replace":false,"values":["pyrite:light_gray_stained_stairs","pyrite:light_gray_stained_slab","pyrite:light_gray_stained_pressure_plate","pyrite:light_gray_stained_planks","pyrite:light_gray_stained_crafting_table","pyrite:light_gray_torch",{"id":"pyrite:light_gray_stained_chest","required":false}]}

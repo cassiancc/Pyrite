@@ -27,3 +27,10 @@ type = "required"
 versionRange = "[1.21.4,1.22)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.pyrite]]
+modId = "lolmcv"
+type = "optional"
+versionRange = "[1.5,)"
+ordering = "AFTER"
+side = "BOTH"
