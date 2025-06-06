@@ -15,9 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Unwaxed copper blocks now properly oxidize, can be stripped, and waxed.
-- On Fabric 1.21 and above, Pyrite's items have been added to the vanilla item groups. 
-- On Fabric 1.21 and above, Pyrite also now has only one item group containing all of its items.
-- On NeoForge 1.21 and above, Pyrite's Redstone group has been integrated into the vanilla item group.
+- On Fabric, Pyrite's items have been added to the vanilla item groups. 
+- On Fabric, Pyrite also now has only one item group containing all of its items.
+- On NeoForge, Pyrite's Redstone group has been integrated into the vanilla item group.
 - Stone brick blocks now have an alternate texture for slabs and stairs.
 - Nostalgia Copper Blocks now have a more pleasant texture.
 - Azalea Logs can now be smelted into Charcoal.

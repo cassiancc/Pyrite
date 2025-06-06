@@ -67,6 +67,8 @@ public class PyriteItemGroups {
     public static final ArrayList<Supplier<Block>> DYED_BRICKS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> DYED_WOOD = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> WOOD = new ArrayList<>();
+    public static final ArrayList<Supplier<Block>> RED_MUSHROOM = new ArrayList<>();
+    public static final ArrayList<Supplier<Block>> BROWN_MUSHROOM = new ArrayList<>();
     public static final LinkedHashMap<Block, Supplier<Block>> FUNCTIONAL = new LinkedHashMap<>();
     public static final LinkedHashMap<Block, Supplier<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
     public static final LinkedHashMap<Block, Supplier<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
@@ -257,6 +259,12 @@ public class PyriteItemGroups {
                 break;
             case "wood":
                 WOOD.add(newBlock);
+                break;
+            case "red_mushroom":
+                RED_MUSHROOM.add(newBlock);
+                break;
+            case "brown_mushroom":
+                BROWN_MUSHROOM.add(newBlock);
                 break;
             case "functional":
                 FUNCTIONAL.put(copyBlock, newBlock);
