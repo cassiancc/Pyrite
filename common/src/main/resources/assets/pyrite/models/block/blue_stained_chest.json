@@ -1,1 +1,1 @@
-{"parent":"lolmcv:block/chests/chest_base","textures":{"wood_type":"lolmcv:entity/chest/blue_stained","particle":"pyrite:block/blue_stained_planks"}}
+{"parent":"lolmcv:block/chests/chest_base","textures":{"wood_type":"lolmcv:entity/chest/pyrite_blue_stained","particle":"pyrite:block/blue_stained_planks"}}

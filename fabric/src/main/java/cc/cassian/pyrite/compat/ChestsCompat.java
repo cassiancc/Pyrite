@@ -12,8 +12,7 @@ public class ChestsCompat {
     public static ArrayList<Block> CHESTS = new ArrayList<>();
 
     public static Block registerChest(String blockID, AbstractBlock.Settings blockSettings, String group, Block copyBlock) {
-        Block column = new MoreChestBlock(blockSettings, () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY, blockID.replace("_chest", ""));
-        return column;
+        return new MoreChestBlock(blockSettings, () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY, "pyrite_"+ blockID.replace("_chest", ""));
     }
 
     public static void add(Block newBlock) {

@@ -16,8 +16,7 @@ public class ChestsCompat {
     public static ArrayList<Supplier<Block>> CHESTS = new ArrayList<>();
 
     public static Supplier<Block> registerChest(String blockID, AbstractBlock.Settings blockSettings, String group, Block copyBlock) {
-        Supplier<Block> chest = BLOCKS.register(blockID, () -> new MoreChestBlock(blockSettings,() -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY.get(), blockID.replace("_chest", "")));
-        return chest;
+        return BLOCKS.register(blockID, () -> new MoreChestBlock(blockSettings,() -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY.get(), "pyrite_"+ blockID.replace("_chest", "")));
     }
 
     public static void add(Supplier<Block> newBlock) {
