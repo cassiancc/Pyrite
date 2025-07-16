@@ -93,23 +93,6 @@ public class ModHelpers {
         };
     }
 
-    public static DyeColor getDyeColorFromStainedId(String blockID) {
-        var dye = blockID.split("_stained")[0];
-        System.out.println(dye);
-        return switch (dye) {
-            case "glow" -> DyeColor.CYAN;
-            case "dragon" -> DyeColor.BLACK;
-            case "star" -> DyeColor.LIGHT_BLUE;
-            case "honey" -> DyeColor.YELLOW;
-            case "nostalgia" -> DyeColor.BROWN;
-            case "rose" -> DyeColor.PINK;
-            case "poisonous" -> DyeColor.LIME;
-            default -> DyeColor.byName(dye, DyeColor.WHITE);
-        };
-    }
-
-
-
     public static @NotNull BlockSetType getBlockSetType(String blockID) {
         boolean openByHand = !blockID.equals("emerald") && (!blockID.equals("netherite") && (!blockID.equals("diamond")));
         BlockSoundGroup soundGroup = switch (blockID) {
