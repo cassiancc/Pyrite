@@ -7,7 +7,7 @@ dependencies {
     // which get remapped to the correct annotations on each platform.
     // Do NOT use other classes from Fabric Loader.
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-    modCompileOnly("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
+    modCompileOnly("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-fabric")
     modCompileOnly("vectorwing:FarmersDelight:${fdrf_version}") {
         exclude(group: "net.fabricmc")
     }

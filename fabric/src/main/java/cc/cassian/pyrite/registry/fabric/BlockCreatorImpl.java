@@ -203,7 +203,7 @@ public class BlockCreatorImpl {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newItemSettings(blockID).maxCount(16));
+                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).maxCount(16));
                 ITEMS.put(blockID, SIGN_ITEM);
                 SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
                 BlockEntityType.SIGN.addSupportedBlock(newBlock);
@@ -217,7 +217,7 @@ public class BlockCreatorImpl {
                 final WallHangingSignBlock HANGING_WALL_SIGN = new WallHangingSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), HANGING_WALL_SIGN);
                 // Register item for signs.
-                final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newItemSettings(blockID).maxCount(16));
+                final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).maxCount(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 SIGNS.add(() -> HANGING_SIGN_ITEM);
                 BlockEntityType.HANGING_SIGN.addSupportedBlock(newBlock);

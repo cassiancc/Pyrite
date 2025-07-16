@@ -108,7 +108,7 @@ public class ModHelpers {
             case "nostalgia" -> DyeColor.BROWN;
             case "rose" -> DyeColor.PINK;
             case "poisonous" -> DyeColor.LIME;
-            default -> DyeColor.byName(dye, DyeColor.WHITE);
+            default -> DyeColor.byId(dye, DyeColor.WHITE);
         };
     }
 
@@ -123,7 +123,7 @@ public class ModHelpers {
             case "nostalgia" -> DyeColor.BROWN;
             case "rose" -> DyeColor.PINK;
             case "poisonous" -> DyeColor.LIME;
-            default -> DyeColor.byName(dye, DyeColor.WHITE);
+            default -> DyeColor.byId(dye, DyeColor.WHITE);
         };
     }
 
