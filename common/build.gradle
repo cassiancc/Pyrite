@@ -8,6 +8,9 @@ dependencies {
     // Do NOT use other classes from Fabric Loader.
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
     modCompileOnly("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
+    modCompileOnly("vectorwing:FarmersDelight:${fdrf_version}") {
+        exclude(group: "net.fabricmc")
+    }
 
     // Architectury API. This is optional, and you can comment it out if you don't need it.
 //    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"

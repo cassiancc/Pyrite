@@ -3,6 +3,7 @@ package cc.cassian.pyrite.registry.fabric;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.ColumnsCompat;
+import cc.cassian.pyrite.compat.FarmersDelightCompat;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -73,6 +74,12 @@ public class BlockCreatorImpl {
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
                     newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock);
                     ChestsCompat.add(newBlock);
+                }
+                break;
+            case "cabinet":
+                if (ModHelpers.isModLoaded("farmersdelight")) {
+                    newBlock = FarmersDelightCompat.registerCabinet(blockID, blockSettings, group, copyBlock);
+                    FarmersDelightCompat.add(newBlock);
                 }
                 break;
             case "ladder":

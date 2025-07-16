@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Farmer's Delight compatibility - Cabinets for all Pyrite wood sets.
+- Items hidden by the `c:hidden_from_recipe_viewers` tag will no longer show up in the creative inventory.
+
+## [0.16.0]
+
+### Added
 - Waxed variants of Pyrite copper blocks.
 - Cobbled Deepslate and Mossy Cobbled Deepslate Bricks.
 - Optional compatibility for [Columns](https://modrinth.com/mod/columns) by haykam.
