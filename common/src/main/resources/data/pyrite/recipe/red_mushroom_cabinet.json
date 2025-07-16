@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["___","D D","___"],"key":{"D":{"item":"pyrite:red_mushroom_trapdoor"},"_":{"item":"pyrite:red_mushroom_slab"}},"result":{"id":"pyrite:red_mushroom_cabinet","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["___","D D","___"],"key":{"D":"pyrite:red_mushroom_trapdoor","_":"pyrite:red_mushroom_slab"},"result":{"id":"pyrite:red_mushroom_cabinet","count":1}}

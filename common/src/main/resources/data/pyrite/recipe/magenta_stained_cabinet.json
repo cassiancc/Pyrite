@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["___","D D","___"],"key":{"D":{"item":"pyrite:magenta_stained_trapdoor"},"_":{"item":"pyrite:magenta_stained_slab"}},"result":{"id":"pyrite:magenta_stained_cabinet","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["___","D D","___"],"key":{"D":"pyrite:magenta_stained_trapdoor","_":"pyrite:magenta_stained_slab"},"result":{"id":"pyrite:magenta_stained_cabinet","count":1}}
