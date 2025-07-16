@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.pyrite.core.ModTags;
 import cc.cassian.pyrite.functions.ModHelpers;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.block.Block;
@@ -78,7 +79,9 @@ public class PyriteItemGroups {
     public static Collection<ItemStack> getBlockCollectionList(Collection<Supplier<Block>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Block> block : items) {
-            stacks.add(block.get().asItem().getDefaultStack());
+            var stack = block.get().asItem().getDefaultStack();
+            if (!stack.isIn(ModTags.HIDDEN_FROM_RECIPE_VIEWERS))
+                stacks.add(stack);
         }
         return stacks;
     }
@@ -86,7 +89,9 @@ public class PyriteItemGroups {
     public static Collection<ItemStack> getItemCollectionList(ArrayList<Supplier<Item>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
-            stacks.add(item.get().getDefaultStack());
+            var stack = item.get().getDefaultStack();
+            if (!stack.isIn(ModTags.HIDDEN_FROM_RECIPE_VIEWERS))
+                stacks.add(stack);
         }
         return stacks;
     }

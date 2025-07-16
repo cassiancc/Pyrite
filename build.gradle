@@ -102,6 +102,16 @@ subprojects {
             }
         }
 //        maven githubPackage.invoke("The-Aether-Team/The-Aether")
+        maven {
+            name = "Greenhouse Maven"
+            url = 'https://repo.greenhouse.house/releases/'
+        }
+        maven {
+            url "https://jitpack.io/" // Fabric ASM
+            content {
+                includeGroup "com.github.Chocohead"
+            }
+        }
 
     }
 

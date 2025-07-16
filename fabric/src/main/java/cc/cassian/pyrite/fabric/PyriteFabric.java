@@ -2,6 +2,7 @@ package cc.cassian.pyrite.fabric;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.ChestsCompat;
+import cc.cassian.pyrite.compat.FarmersDelightCompat;
 import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
 import cc.cassian.pyrite.functions.fabric.FabricHelpers;
 import net.fabricmc.api.ModInitializer;
@@ -17,7 +18,11 @@ public class PyriteFabric implements ModInitializer {
         Pyrite.init();
         BlockCreatorImpl.register();
         FabricHelpers.registerFuelBlocks();
-        if (FabricLoader.getInstance().isModLoaded("lolmcv"))
-            ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ChestsCompat.registerToBlockEntity());
+        ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> {
+            if (FabricLoader.getInstance().isModLoaded("lolmcv"))
+                ChestsCompat.registerToBlockEntity();
+            if (FabricLoader.getInstance().isModLoaded("farmersdelight"))
+                FarmersDelightCompat.registerToBlockEntity();
+        });
     }
 }
