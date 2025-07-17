@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Farmer's Delight compatibility - Cabinets for all Pyrite wood sets.
 - Items hidden by the `c:hidden_from_recipe_viewers` tag will no longer show up in the creative inventory.
+- Item textures for Pyrite torch levers.
 
 ## [0.16.0]
 
