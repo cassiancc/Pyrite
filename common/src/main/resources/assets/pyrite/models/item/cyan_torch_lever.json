@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/cyan_torch"}}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/cyan_torch_lever"}}
