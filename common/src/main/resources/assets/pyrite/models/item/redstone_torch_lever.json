@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"minecraft:block/redstone_torch"}}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/redstone_torch_lever"}}
