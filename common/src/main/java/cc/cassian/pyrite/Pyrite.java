@@ -1,5 +1,6 @@
 package cc.cassian.pyrite;
 
+import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import net.minecraft.block.*;
@@ -17,6 +18,7 @@ import static cc.cassian.pyrite.functions.ModHelpers.*;
 public class Pyrite {
 	public static final String MOD_ID = "pyrite";
 	public static final Logger LOGGER = LogManager.getLogger("Pyrite");
+	public static final ModConfig CONFIG = ModConfig.createToml(ModHelpers.getConfigDir(), "", MOD_ID, ModConfig.class);
 
     public static void init() {
 		ModLists.populateLinkedHashMaps();

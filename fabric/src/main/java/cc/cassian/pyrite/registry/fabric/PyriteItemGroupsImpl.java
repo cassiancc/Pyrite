@@ -1,5 +1,7 @@
 package cc.cassian.pyrite.registry.fabric;
 
+import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModLists;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
@@ -11,6 +13,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -39,7 +42,8 @@ public class PyriteItemGroupsImpl {
                 .displayName(Text.translatable("itemGroup.pyrite." + id))
                 .entries((context, entries) -> {
                     for (Block block : blocks.values()) {
-                        entries.add(block);
+                        if (block.asItem().getDefaultStack().isIn(PyriteTags.ENABLED))
+                            entries.add(block);
                     }
                 })
                 .build();
@@ -140,8 +144,10 @@ public class PyriteItemGroupsImpl {
             final var concrete = dye+"_concrete";
             final var stairs = BLOCKS.get(concrete + "_stairs");
             final var slab = BLOCKS.get(concrete + "_slab");
-            ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register((itemGroup) ->
-                    itemGroup.addAfter(Registries.BLOCK.get(Identifier.of(namespace, concrete)), stairs, slab));
+            ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register((itemGroup) -> {
+                if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultStack().isIn(PyriteTags.ENABLED))
+                    itemGroup.addAfter(Registries.BLOCK.get(Identifier.of(namespace, concrete)), stairs, slab);
+            });
         }
     }
 }

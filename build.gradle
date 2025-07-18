@@ -112,6 +112,16 @@ subprojects {
                 includeGroup "com.github.Chocohead"
             }
         }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    url = "https://repo.sleeping.town/"
+                }
+            }
+            filter {
+                includeGroup "folk.sisby"
+            }
+        }
 
     }
 

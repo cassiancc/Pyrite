@@ -79,8 +79,11 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Block> block : items) {
             var stack = block.get().asItem().getDefaultStack();
-            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS))
+            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
                 stacks.add(stack);
+            } else {
+                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+            }
         }
         return stacks;
     }
@@ -89,8 +92,11 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
             var stack = item.get().getDefaultStack();
-            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS))
+            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
                 stacks.add(stack);
+            } else {
+                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+            }
         }
         return stacks;
     }

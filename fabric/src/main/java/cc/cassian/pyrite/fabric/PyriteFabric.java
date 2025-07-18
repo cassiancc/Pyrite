@@ -14,6 +14,8 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
@@ -42,5 +44,18 @@ public class PyriteFabric implements ModInitializer {
                 FarmersDelightCompat.registerToBlockEntity();
         });
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));
+        if (Pyrite.CONFIG.oddities) {
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                ModHelpers.locate("pyrite_oddities"),
+                FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
+                ResourcePackActivationType.DEFAULT_ENABLED);
+        }
+        if (Pyrite.CONFIG.azalea) {
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    ModHelpers.locate("pyrite_azalea"),
+                    FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
+                    ResourcePackActivationType.DEFAULT_ENABLED);
+        }
+
     }
 }

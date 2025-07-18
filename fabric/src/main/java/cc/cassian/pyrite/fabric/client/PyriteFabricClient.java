@@ -1,14 +1,21 @@
 package cc.cassian.pyrite.fabric.client;
 
+import cc.cassian.pyrite.core.PyriteTags;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.minecraft.block.*;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.registry.Registries;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
+import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
 
 
@@ -29,6 +36,11 @@ public class PyriteFabricClient implements ClientModInitializer {
         for (Block translucentBlock : TRANSLUCENT_BLOCKS) {
             BlockRenderLayerMap.INSTANCE.putBlock(translucentBlock, RenderLayer.getTranslucent());
         }
+        ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {
+            if (Registries.ITEM.getId(stack.getItem()).getNamespace().equals(MOD_ID) && !stack.isIn(PyriteTags.ENABLED)) {
+                lines.add(Text.literal("Disabled by current configuration").formatted(Formatting.RED));
+            }
+        }));
 
     }
 }

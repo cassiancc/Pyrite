@@ -19,6 +19,9 @@
     ],
     "client": [
       "cc.cassian.pyrite.fabric.client.PyriteFabricClient"
+    ],
+    "emi": [
+      "cc.cassian.pyrite.compat.EmiCompat"
     ]
   },
   "depends": {

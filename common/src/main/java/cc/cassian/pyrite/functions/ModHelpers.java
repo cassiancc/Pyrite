@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.nio.file.Path;
 import java.util.function.ToIntFunction;
 
 import static cc.cassian.pyrite.Pyrite.LOGGER;
@@ -174,5 +175,10 @@ public class ModHelpers {
 
     public static ActionResult updateTorchColour(ItemStack itemStack, @Nullable PlayerEntity player, World level, BlockPos pos) {
         return updateTorchColour(itemStack, level.getBlockState(pos), player, level, pos);
+    }
+
+    @ExpectPlatform
+    public static Path getConfigDir() {
+        return null;
     }
 }

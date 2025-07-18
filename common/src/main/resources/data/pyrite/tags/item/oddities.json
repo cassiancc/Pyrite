@@ -1,0 +1,2377 @@
+{
+  "values": [
+    {
+      "id": "pyrite:glow_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:blue_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:orange_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:white_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:paeonia",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_daisy",
+      "required": false
+    },
+    {
+      "id": "pyrite:buttercup",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_column",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_framed_glass_pane",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:glow_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_glass_pane",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_glowing_obsidian",
+      "required": false
+    },
+    {
+      "id": "pyrite:locked_chest",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:glow_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_dye",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:blue_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:orange_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:white_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:paeonia",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_daisy",
+      "required": false
+    },
+    {
+      "id": "pyrite:buttercup",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_terracotta",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_powder",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_grass_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_grass_turf",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_grass_carpet",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_grass_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_grass_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_iron_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_gold_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_emerald_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_diamond_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_netherite_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_quartz_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_amethyst_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_lapis_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_redstone_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_exposed_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_weathered_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:nostalgia_oxidized_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:waxed_nostalgia_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:waxed_nostalgia_exposed_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:waxed_nostalgia_weathered_copper_block",
+      "required": false
+    },
+
+    {
+      "id": "pyrite:waxed_nostalgia_oxidized_copper_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_gravel",
+      "required": false
+    },
+    {
+      "id": "pyrite:switchable_glass",
+      "required": false
+    }
+  ]
+}
