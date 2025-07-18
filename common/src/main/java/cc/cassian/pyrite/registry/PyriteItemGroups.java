@@ -1,8 +1,7 @@
 package cc.cassian.pyrite.registry;
 
-import cc.cassian.pyrite.core.ModTags;
+import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModHelpers;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.item.*;
@@ -80,7 +79,7 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Block> block : items) {
             var stack = block.get().asItem().getDefaultStack();
-            if (!stack.isIn(ModTags.HIDDEN_FROM_RECIPE_VIEWERS))
+            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS))
                 stacks.add(stack);
         }
         return stacks;
@@ -90,7 +89,7 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
             var stack = item.get().getDefaultStack();
-            if (!stack.isIn(ModTags.HIDDEN_FROM_RECIPE_VIEWERS))
+            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS))
                 stacks.add(stack);
         }
         return stacks;
