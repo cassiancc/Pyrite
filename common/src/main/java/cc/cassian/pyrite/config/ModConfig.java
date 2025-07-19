@@ -10,8 +10,6 @@ public class ModConfig extends WrappedConfig {
    public boolean azalea = true;
    @Comment("Enable Pyrite Tall Mushrooms and their wood set.")
    public boolean mushrooms = true;
-   @Comment("Remove disabled content from EMI")
-   public boolean removeDisabledContentFromEMI = true;
    @Comment("Add a tooltip on disabled items.")
    public boolean disabledContentTooltip = true;
 

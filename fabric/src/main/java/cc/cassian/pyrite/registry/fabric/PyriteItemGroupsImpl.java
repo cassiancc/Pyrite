@@ -29,10 +29,12 @@ public class PyriteItemGroupsImpl {
         for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
-            if (anchor != null)
-                group.addAfter(anchor, value);
-            else
-                group.add(value);
+            if (value.asItem().getDefaultStack().isIn(PyriteTags.ENABLED)) {
+                if (anchor != null)
+                    group.addAfter(anchor, value);
+                else
+                    group.add(value);
+            }
         }
     }
 

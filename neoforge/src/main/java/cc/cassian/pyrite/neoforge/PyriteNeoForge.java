@@ -2,24 +2,17 @@ package cc.cassian.pyrite.neoforge;
 
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.functions.ModHelpers;
+import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
 import cc.cassian.pyrite.neoforge.client.PyriteNeoForgeClient;
 import cc.cassian.pyrite.registry.neoforge.PyriteItemGroupsImpl;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.resource.ResourcePackProfile;
 import net.minecraft.resource.ResourcePackSource;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -54,14 +47,10 @@ public final class PyriteNeoForge {
     }
 
     private static void addOddities(AddPackFindersEvent event) {
-        if (Pyrite.CONFIG.oddities) {
-            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_oddities"), ResourceType.SERVER_DATA, Text.literal("Pyrite Oddities"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
-        }
-        if (Pyrite.CONFIG.azalea) {
-            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_azalea"), ResourceType.SERVER_DATA, Text.literal("Pyrite Azalea"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
-        }
-        if (Pyrite.CONFIG.mushrooms) {
-            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_mushrooms"), ResourceType.SERVER_DATA, Text.literal("Pyrite Mushrooms"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
-        }
+        ModLists.DATAPACKS.forEach((key, value) -> {
+            if (value) {
+                event.addPackFinders(ModHelpers.locate("resourcepacks/"+key), ResourceType.SERVER_DATA, Text.literal(key), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
+            }
+        });
     }
 }
