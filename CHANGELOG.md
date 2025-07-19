@@ -7,8 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Pyrite's additional dyes and nostalgia blocks have been disabled behind the new Pyrite Oddities config option.
+- Pyrite's Azalea Wood can now be disabled behind the new Pyrite Azalea config option.
+- Pyrite's Mushroom Wood can now be disabled behind the new Pyrite Mushrooms config option.
 - Farmer's Delight compatibility - Cabinets for all Pyrite wood sets.
-- Items hidden by the `c:hidden_from_recipe_viewers` tag will no longer show up in the creative inventory.
+- Item textures for Pyrite torch levers.
+- Torches can now be dyed in world, like Signs.
+
+### Changed
+- Resource block variants will now yield more when crafted via the Stonecutter.
+- Pyrite items not included in the `pyrite:enabled` item tag will no longer show up in the creative inventory.
+
+### Fixed
+- Recipes for waxed Copper blocks.
 
 ## [0.16.0]
 
@@ -23,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Unwaxed copper blocks now properly oxidize, can be stripped, and waxed.
-- On Fabric, Pyrite's items have been added to the vanilla item groups. 
+- On Fabric, Pyrite's items have been added to the vanilla item groups.
 - On Fabric, Pyrite also now has only one item group containing all of its items.
 - On NeoForge, Pyrite's Redstone group has been integrated into the vanilla item group.
 - Stone brick blocks now have an alternate texture for slabs and stairs.

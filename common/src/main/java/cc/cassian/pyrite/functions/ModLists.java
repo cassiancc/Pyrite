@@ -1,7 +1,10 @@
 package cc.cassian.pyrite.functions;
 
+import cc.cassian.pyrite.Pyrite;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -128,6 +131,8 @@ public class ModLists {
             "nostalgia_netherrack", Blocks.NETHERRACK
     );
 
+    public final static Map<String, Boolean> DATAPACKS = new LinkedHashMap<>();
+
     public final static Map<String, Block> WOOL_MATCH = new LinkedHashMap<>();
     public final static Map<String, Block> CARPET_MATCH = new LinkedHashMap<>();
     public final static Map<String, Block> CONCRETE_MATCH = new LinkedHashMap<>();
@@ -166,6 +171,10 @@ public class ModLists {
         CONCRETE_MATCH.put("rose", Blocks.MAGENTA_CONCRETE);
         CONCRETE_MATCH.put("poisonous", Blocks.YELLOW_CONCRETE);
         CONCRETE_MATCH.put("nostalgia", Blocks.CYAN_CONCRETE);
+
+        DATAPACKS.put("pyrite_oddities", Pyrite.CONFIG.oddities);
+        DATAPACKS.put("pyrite_azalea", Pyrite.CONFIG.azalea);
+        DATAPACKS.put("pyrite_mushrooms", Pyrite.CONFIG.mushrooms);
 
     }
 

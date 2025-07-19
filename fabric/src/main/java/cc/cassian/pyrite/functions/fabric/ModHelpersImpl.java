@@ -1,8 +1,8 @@
 package cc.cassian.pyrite.functions.fabric;
 
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.ItemStack;
+
+import java.nio.file.Path;
 
 @SuppressWarnings("unused")
 public class ModHelpersImpl {
@@ -10,11 +10,11 @@ public class ModHelpersImpl {
         return FabricLoader.getInstance().isModLoaded(modID);
     }
 
-    public static boolean isShield(ItemStack stack) {
-        return stack.isIn(ConventionalItemTags.SHIELD_TOOLS);
-    }
-
     public static boolean isDevEnvironment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+    public static Path getConfigDir() {
+        return FabricLoader.getInstance().getConfigDir();
     }
 }

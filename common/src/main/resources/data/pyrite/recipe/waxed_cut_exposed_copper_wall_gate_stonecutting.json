@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:exposed_cut_copper","result":{"id":"pyrite:waxed_cut_exposed_copper_wall_gate","count":1}}
+{"type":"minecraft:stonecutting","ingredient":"minecraft:waxed_exposed_copper","result":{"id":"pyrite:waxed_cut_exposed_copper_wall_gate","count":4}}
