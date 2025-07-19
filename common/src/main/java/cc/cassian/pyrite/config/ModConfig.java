@@ -10,4 +10,6 @@ public class ModConfig extends WrappedConfig {
    public boolean azalea = true;
    @Comment("Remove disabled content from EMI")
    public boolean removeDisabledContentFromEMI = true;
+   @Comment("Add a tooltip on disabled items.")
+   public boolean disabledContentTooltip;
 }

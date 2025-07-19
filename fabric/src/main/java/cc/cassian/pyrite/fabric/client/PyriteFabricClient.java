@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.fabric.client;
 
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -36,11 +37,13 @@ public class PyriteFabricClient implements ClientModInitializer {
         for (Block translucentBlock : TRANSLUCENT_BLOCKS) {
             BlockRenderLayerMap.INSTANCE.putBlock(translucentBlock, RenderLayer.getTranslucent());
         }
-        ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {
-            if (Registries.ITEM.getId(stack.getItem()).getNamespace().equals(MOD_ID) && !stack.isIn(PyriteTags.ENABLED)) {
-                lines.add(Text.literal("Disabled by current configuration").formatted(Formatting.RED));
-            }
-        }));
+        if (Pyrite.CONFIG.disabledContentTooltip) {
+            ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {
+                if (Registries.ITEM.getId(stack.getItem()).getNamespace().equals(MOD_ID) && !stack.isIn(PyriteTags.ENABLED)) {
+                    lines.add(Text.literal("Disabled by current configuration").formatted(Formatting.RED));
+                }
+            }));
+        }
 
     }
 }
