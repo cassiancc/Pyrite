@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Pyrite's additional dyes and nostalgia blocks have been disabled behind the new Pyrite Oddities config option.
+- Pyrite's Azalea Wood can now be disabled behind the new Pyrite Azalea config option.
+- Pyrite's Mushroom Wood can now be disabled behind the new Pyrite Mushrooms config option.
 - Farmer's Delight compatibility - Cabinets for all Pyrite wood sets.
-- Items hidden by the `c:hidden_from_recipe_viewers` tag will no longer show up in the creative inventory.
 - Item textures for Pyrite torch levers.
 - Torches can now be dyed in world, like Signs.
+
+### Changed
+- Pyrite items not included in the `pyrite:enabled` item tag or included in the `c:hidden_from_recipe_viewers` item tag will no longer show up in the creative inventory.
+
 
 ## [0.16.0]
 

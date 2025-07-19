@@ -56,6 +56,12 @@ public class PyriteFabric implements ModInitializer {
                     FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
                     ResourcePackActivationType.DEFAULT_ENABLED);
         }
+        if (Pyrite.CONFIG.mushrooms) {
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    ModHelpers.locate("pyrite_mushrooms"),
+                    FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
+                    ResourcePackActivationType.DEFAULT_ENABLED);
+        }
 
     }
 }
