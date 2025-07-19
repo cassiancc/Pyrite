@@ -25,6 +25,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 
@@ -42,7 +43,7 @@ public final class PyriteNeoForge {
         eventBus.addListener(BlockCreatorImpl::addSupportedBlocks);
         eventBus.addListener(BlockCreatorImpl::commonSetup);
         eventBus.addListener(PyriteItemGroupsImpl::buildContents);
-        eventBus.addListener(PyriteNeoForge::onUseWithItem);
+        NeoForge.EVENT_BUS.addListener(PyriteNeoForge::onUseWithItem);
         eventBus.addListener(PyriteNeoForge::addOddities);
 
     }
@@ -55,6 +56,12 @@ public final class PyriteNeoForge {
     private static void addOddities(AddPackFindersEvent event) {
         if (Pyrite.CONFIG.oddities) {
             event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_oddities"), ResourceType.SERVER_DATA, Text.literal("Pyrite Oddities"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
+        }
+        if (Pyrite.CONFIG.azalea) {
+            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_azalea"), ResourceType.SERVER_DATA, Text.literal("Pyrite Azalea"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
+        }
+        if (Pyrite.CONFIG.mushrooms) {
+            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_mushrooms"), ResourceType.SERVER_DATA, Text.literal("Pyrite Mushrooms"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
         }
     }
 }
