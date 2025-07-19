@@ -2,6 +2,7 @@ package cc.cassian.pyrite.fabric;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.ChestsCompat;
+import cc.cassian.pyrite.compat.EivCompat;
 import cc.cassian.pyrite.compat.FarmersDelightCompat;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
@@ -27,6 +28,8 @@ public class PyriteFabric implements ModInitializer {
                 ChestsCompat.registerToBlockEntity();
             if (FabricLoader.getInstance().isModLoaded("farmersdelight"))
                 FarmersDelightCompat.registerToBlockEntity();
+            if (FabricLoader.getInstance().isModLoaded("eiv"))
+                EivCompat.hideStacks();
         });
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));
         ModLists.DATAPACKS.forEach((key, value) -> {

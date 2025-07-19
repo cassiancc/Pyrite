@@ -12,7 +12,6 @@ import net.minecraft.resource.ResourcePackSource;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ItemActionResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -43,7 +42,7 @@ public final class PyriteNeoForge {
 
     private static void onUseWithItem(UseItemOnBlockEvent event) {
         ActionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
-        if (actionResult.equals(ActionResult.SUCCESS)) event.cancelWithResult(ItemActionResult.SUCCESS);
+        if (actionResult.equals(ActionResult.SUCCESS)) event.cancelWithResult(ActionResult.SUCCESS);
     }
 
     private static void addOddities(AddPackFindersEvent event) {

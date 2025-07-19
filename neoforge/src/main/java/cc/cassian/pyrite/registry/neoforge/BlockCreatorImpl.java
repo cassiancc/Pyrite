@@ -2,6 +2,7 @@ package cc.cassian.pyrite.registry.neoforge;
 
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
+import cc.cassian.pyrite.compat.EivCompat;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
@@ -387,6 +388,9 @@ public class BlockCreatorImpl {
             String flowerID = entry.getKey();
             Supplier<FlowerPotBlock> flowerPot = entry.getValue();
             pot.addPlant(locate(flowerID), flowerPot);
+        }
+        if (ModList.get().isLoaded("eiv")) {
+            EivCompat.hideStacks();
         }
     }
 }

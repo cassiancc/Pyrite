@@ -1,6 +1,5 @@
 package cc.cassian.pyrite.core;
 
-import dev.emi.emi.api.EmiRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
