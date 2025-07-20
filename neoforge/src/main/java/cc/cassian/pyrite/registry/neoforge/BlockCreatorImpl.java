@@ -206,9 +206,9 @@ public class BlockCreatorImpl {
             case "wall_gate":
                 if (isCopper(blockID)) {
                     newBlock = BLOCKS.register(blockID, () -> new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings));
-                    registerBlock("waxed_"+blockID, () -> new WallGateBlock(blockSettings), "waxed_"+group);
+                    registerBlock("waxed_"+blockID, () -> new WallGateBlock(blockSetType, blockSettings), "waxed_"+group);
                 } else {
-                    newBlock = BLOCKS.register(blockID, () -> new WallGateBlock(blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new WallGateBlock(blockSetType, blockSettings));
                 }
                 break;
             case "sign":

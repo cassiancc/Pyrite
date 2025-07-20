@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.blocks;
 
+import net.minecraft.block.BlockSetType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Oxidizable;
 import net.minecraft.block.WallBlock;
@@ -11,7 +12,7 @@ public class OxidizableWallGateBlock extends WallGateBlock implements Oxidizable
 	private final OxidationLevel oxidationLevel;
 
 	public OxidizableWallGateBlock(OxidationLevel oxidationLevel, Settings settings) {
-		super(settings);
+		super(BlockSetType.COPPER, settings);
 		this.oxidationLevel = oxidationLevel;
 	}
 
