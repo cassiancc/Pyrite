@@ -2,6 +2,7 @@ package cc.cassian.pyrite.neoforge;
 
 
 import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
@@ -52,5 +53,7 @@ public final class PyriteNeoForge {
                 event.addPackFinders(ModHelpers.locate("resourcepacks/"+key), ResourceType.SERVER_DATA, Text.literal(key), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
             }
         });
+        if (Pyrite.CONFIG.crafting_tables)
+            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_crafting_tables"), ResourceType.CLIENT_RESOURCES, Text.literal("pyrite/pyrite_crafting_tables"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
     }
 }

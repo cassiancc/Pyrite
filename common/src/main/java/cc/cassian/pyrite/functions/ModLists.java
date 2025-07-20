@@ -173,6 +173,7 @@ public class ModLists {
         DATAPACKS.put("pyrite_oddities", Pyrite.CONFIG.oddities);
         DATAPACKS.put("pyrite_azalea", Pyrite.CONFIG.azalea);
         DATAPACKS.put("pyrite_mushrooms", Pyrite.CONFIG.mushrooms);
+        DATAPACKS.put("pyrite_crafting_tables", Pyrite.CONFIG.crafting_tables);
 
     }
 
