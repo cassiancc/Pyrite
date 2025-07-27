@@ -1,6 +1,10 @@
 {
-    "pack": {
-      "description": "Pyrite's crafting tables, for dyed wood, vanilla wood, and supported mods.",
-      "pack_format": 48
+  "pack": {
+    "description": "Pyrite's crafting tables, for dyed wood, vanilla wood, and supported mods.",
+    "pack_format": 48,
+    "supported_formats": {
+      "min_inclusive": 34,
+      "max_inclusive": 81
     }
   }
+}
