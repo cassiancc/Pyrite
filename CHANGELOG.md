@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Sounds on Wall Gates and Cobbled Deepslate Bricks
 - Recipes for waxed Copper blocks.
+- Wall Gate textures are no longer stretched.
 
 ## [0.16.0]
 
