@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"c:dyes/yellow"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:yellow_bricks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"tag":"c:dyes/yellow"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:yellow_bricks","count":8}}

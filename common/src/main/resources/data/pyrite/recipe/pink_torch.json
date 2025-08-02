@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"c:dyes/pink"},{"item":"minecraft:torch"}],"result":{"id":"pyrite:pink_torch","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"c:dyes/pink"},{"item":"minecraft:torch"}],"result":{"id":"pyrite:pink_torch","count":1}}
