@@ -48,6 +48,8 @@ public class Pyrite {
 		generateBrickSet("mossy_deepslate_brick", Blocks.DEEPSLATE_BRICKS);
 		// Sandstone Bricks
 		generateBrickSet("sandstone_brick", Blocks.SANDSTONE);
+		// Red Sandstone Bricks
+		generateBrickSet("red_sandstone_brick", Blocks.RED_SANDSTONE);
 		// Terracotta Bricks
 		generateBrickSet("terracotta_brick", Blocks.TERRACOTTA);
 		// Grass Set
