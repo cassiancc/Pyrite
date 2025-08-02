@@ -30,7 +30,7 @@ public class Pyrite {
 		createPyriteBlock("switchable_glass", "switchable_glass", Blocks.GLASS, "redstone-group");
 		// Cobblestone Bricks
 		generateBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, true);
-		generateBrickSet("cobbled_deepslate_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, true);
+		generateBrickSet("cobbled_deepslate_brick", Blocks.COBBLED_DEEPSLATE, MapColor.STONE_GRAY, true);
 		// Smooth Stone Set
 		createPyriteBlock("smooth_stone_stairs", "stairs", Blocks.SMOOTH_STONE, "building_blocks");
 		generateBrickSet("smooth_stone_brick", Blocks.SMOOTH_STONE, MapColor.STONE_GRAY, true);

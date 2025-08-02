@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dyeing recipes now use convention tags instead of dye items.
 
 ### Fixed
+- Sounds on Wall Gates and Cobbled Deepslate Bricks
 - Recipes for waxed Copper blocks.
 
 ## [0.16.0]
