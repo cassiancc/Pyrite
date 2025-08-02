@@ -38,7 +38,7 @@ dependencies {
 //    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
     modCompileOnly("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Neo")
     modLocalRuntime("maven.modrinth:quad:${quad_version}-Neo")
-    implementation(include("folk.sisby:kaleido-config:${kaleido_version}"))
+    implementation(include(forgeRuntimeLibrary("folk.sisby:kaleido-config:${kaleido_version}")))
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')

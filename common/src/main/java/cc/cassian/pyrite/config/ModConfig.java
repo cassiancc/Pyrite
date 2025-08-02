@@ -4,6 +4,8 @@ import folk.sisby.kaleido.api.WrappedConfig;
 import folk.sisby.kaleido.lib.quiltconfig.api.annotations.Comment;
 
 public class ModConfig extends WrappedConfig {
+   @Comment("Add items to vanilla item groups.")
+   public boolean addToVanillaItemGroups = true;
    @Comment("Enable the Oddities - removed features from Pyrite")
    public boolean oddities = false;
    @Comment("Enable Pyrite Azalea Trees and their wood set.")

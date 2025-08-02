@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Resource block variants will now yield more when crafted via the Stonecutter.
 - Pyrite items not included in the `pyrite:enabled` item tag will no longer show up in the creative inventory.
 - Dyeing recipes now use convention tags instead of dye items.
+- Vanilla item group modification now works on NeoForge.
+- Vanilla item group modification can now be disabled.
 
 ### Fixed
 - Sounds on Wall Gates and Cobbled Deepslate Bricks
