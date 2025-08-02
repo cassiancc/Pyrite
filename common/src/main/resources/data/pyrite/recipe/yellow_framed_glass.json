@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":{"item":"pyrite:framed_glass"},"D":{"item":"minecraft:yellow_dye"}},"result":{"id":"pyrite:yellow_framed_glass","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":{"item":"pyrite:framed_glass"},"D":{"item":"c:dyes/yellow"}},"result":{"id":"pyrite:yellow_framed_glass","count":8}}

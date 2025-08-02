@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"minecraft:white_dye"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:white_bricks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"c:dyes/white"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:white_bricks","count":8}}

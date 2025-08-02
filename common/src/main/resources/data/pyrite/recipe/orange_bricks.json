@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"minecraft:orange_dye"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:orange_bricks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"c:dyes/orange"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:orange_bricks","count":8}}

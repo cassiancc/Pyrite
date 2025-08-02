@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"minecraft:blue_dye"},{"item":"minecraft:torch"}],"result":{"id":"pyrite:blue_torch","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"c:dyes/blue"},{"item":"minecraft:torch"}],"result":{"id":"pyrite:blue_torch","count":1}}

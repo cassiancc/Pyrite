@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"minecraft:green_dye"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:green_bricks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":{"item":"c:dyes/green"},"C":{"item":"minecraft:bricks"}},"result":{"id":"pyrite:green_bricks","count":8}}
