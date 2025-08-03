@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ModLists {
@@ -36,6 +37,17 @@ public class ModLists {
             "rose",
             "pink",
     };
+
+    public final static List<String> PYRITE_DYES = List.of(
+            "honey",
+            "poisonous",
+            "glow",
+            "nostalgia",
+            "star",
+            "dragon",
+            "rose"
+    );
+
     public final static String[] VANILLA_DYES = {
             "white",
             "light_gray",

@@ -4,6 +4,8 @@ import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.ColumnsCompat;
 import cc.cassian.pyrite.compat.FarmersDelightCompat;
+import cc.cassian.pyrite.compat.TotallyLitCompat;
+import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -257,6 +259,8 @@ public class BlockCreatorImpl {
                 if (particle == null)
                     torchParticle = ParticleTypes.FLAME;
                 newBlock = new ModTorch(blockSettings.nonOpaque(), torchParticle);
+                if (FabricLoader.getInstance().isModLoaded("totally_lit") && !ModLists.PYRITE_DYES.contains(blockID.replace("_torch", "")))
+                    TotallyLitCompat.registerTorch("unlit_"+blockID, blockSettings.nonOpaque(), "unlit_torch", newBlock);
                 addTransparentBlock(newBlock);
                 break;
             case "torch_lever":

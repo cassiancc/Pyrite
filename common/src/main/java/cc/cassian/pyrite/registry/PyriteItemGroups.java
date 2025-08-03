@@ -82,7 +82,7 @@ public class PyriteItemGroups {
             if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
                 stacks.add(stack);
             } else {
-                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
             }
         }
         return stacks;
@@ -95,7 +95,7 @@ public class PyriteItemGroups {
             if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
                 stacks.add(stack);
             } else {
-                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
             }
         }
         return stacks;

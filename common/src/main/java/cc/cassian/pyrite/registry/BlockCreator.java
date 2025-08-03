@@ -18,7 +18,6 @@ import static cc.cassian.pyrite.functions.ModLists.*;
 
 public class BlockCreator {
     final static Block[] vanillaWood = getVanillaWood();
-    final static Block[] resource_blocks = getVanillaResourceBlocks();
 
     @ExpectPlatform @SuppressWarnings("unused")
     public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
@@ -32,7 +31,7 @@ public class BlockCreator {
     }
 
     public static void generateResourceBlocks() {
-        for (Block resourceBlock : resource_blocks) {
+        for (Block resourceBlock : getVanillaResourceBlocks()) {
             String block = findVanillaBlockID(resourceBlock);
             //If the block provided isn't a wall block, add the wall tag.
             if (block.contains("block")) {

@@ -30,12 +30,18 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version+$minecraft_version"
     modLocalRuntime "dev.emi:emi-fabric:$emi_version+$minecraft_version"
+
+    // Optional compat dependencies
     modImplementation("maven.modrinth:columns:${columns_version}")
     modImplementation("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
-    modLocalRuntime("maven.modrinth:quad:${quad_version}-Fabric")
+        modLocalRuntime("maven.modrinth:quad:${quad_version}-Fabric")
     modImplementation("vectorwing:FarmersDelight:${fdrf_version}") {
         exclude(group: "net.fabricmc")
     }
+    modImplementation("maven.modrinth:totally-lit:${totally_lit_version}")
+        modImplementation "io.wispforest:owo-lib:${project.owo_version}"
+
+    // Configs
     implementation(include("folk.sisby:kaleido-config:${kaleido_version}"))
     modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}")
     modImplementation "maven.modrinth:mcqoy:$mcqoy_version"
