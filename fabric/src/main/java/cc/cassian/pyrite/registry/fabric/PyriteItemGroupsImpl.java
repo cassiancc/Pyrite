@@ -86,6 +86,7 @@ public class PyriteItemGroupsImpl {
                 itemGroup.addBefore(Items.TUFF, Items.CALCITE);
                 itemGroup.addAfter(Items.CALCITE, getBlockCollectionList(CALCITE));
                 itemGroup.addAfter(Items.CUT_SANDSTONE_SLAB, getBlockCollectionList(SANDSTONE));
+                itemGroup.addAfter(Items.CUT_RED_SANDSTONE_SLAB, getBlockCollectionList(RED_SANDSTONE));
                 addMapToItemGroup(itemGroup, BUILDING_BLOCKS);
                 itemGroup.addAfter(Items.CHERRY_BUTTON, getBlockCollectionList(WOOD));
             });

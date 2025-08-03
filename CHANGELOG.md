@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Pyrite torches will now burn out with the mod installed.
 - Item textures for Pyrite torch levers.
 - Torches can now be dyed in world, like Signs.
+- Red Sandstone Bricks, in parity with existing Sandstone Bricks.
 
 ### Changed
 - Resource block variants will now yield more when crafted via the Stonecutter.

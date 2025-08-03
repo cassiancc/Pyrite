@@ -44,6 +44,7 @@ public class PyriteItemGroups {
     public static final ArrayList<Supplier<Block>> DEEPSLATE = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> COBBLED_DEEPSLATE = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> SANDSTONE = new ArrayList<>();
+    public static final ArrayList<Supplier<Block>> RED_SANDSTONE = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> STAINED_GLASS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> STAINED_GLASS_PANES = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> FRAMED_GLASS = new ArrayList<>();
@@ -194,6 +195,9 @@ public class PyriteItemGroups {
                 break;
             case "sandstone_brick":
                 SANDSTONE.add(newBlock);
+                break;
+            case "red_sandstone_brick":
+                RED_SANDSTONE.add(newBlock);
                 break;
             case "crafting_table":
                 CRAFTING_TABLES.add(newBlock);
