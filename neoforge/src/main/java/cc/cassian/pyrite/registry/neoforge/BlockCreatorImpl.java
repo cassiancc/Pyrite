@@ -103,7 +103,7 @@ public class BlockCreatorImpl {
                 break;
             case "chest":
                 if (ModList.get().isLoaded("lolmcv")) {
-                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock);
+                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
                     ChestsCompat.add(newBlock);
                 }
                 break;

@@ -72,7 +72,7 @@ public class BlockCreatorImpl {
                 break;
             case "chest":
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
-                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock);
+                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
                     ChestsCompat.add(newBlock);
                 }
                 break;
