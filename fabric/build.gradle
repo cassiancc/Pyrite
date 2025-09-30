@@ -28,12 +28,12 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version+$minecraft_version"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version+1.21.9"
     // modLocalRuntime "dev.emi:emi-fabric:$emi_version+$minecraft_version"
     modCompileOnly("maven.modrinth:columns:${columns_version}")
     modCompileOnly("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
-    modLocalRuntime("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
-    modLocalRuntime("maven.modrinth:quad:${quad_version}-Fabric")
+//    modLocalRuntime("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
+//    modLocalRuntime("maven.modrinth:quad:${quad_version}-Fabric")
 
 
 

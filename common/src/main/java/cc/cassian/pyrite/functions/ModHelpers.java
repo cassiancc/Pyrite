@@ -4,6 +4,7 @@ import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.DragonBreathParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
@@ -81,7 +82,7 @@ public class ModHelpers {
 
     public static ParticleEffect getTorchParticle(String dye) {
         return switch (dye) {
-            case "dragon" -> ParticleTypes.DRAGON_BREATH;
+            case "dragon" -> DragonBreathParticleEffect.of(ParticleTypes.DRAGON_BREATH, 1);
             case "glow" -> ParticleTypes.GLOW;
             case "star" -> ParticleTypes.ENCHANT;
             default -> ParticleTypes.SMOKE;

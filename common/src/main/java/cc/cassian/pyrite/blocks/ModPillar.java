@@ -44,7 +44,7 @@ public class ModPillar extends PillarBlock {
 
     @Override @SuppressWarnings("all")
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             if (stack.isIn(ItemTags.AXES) && !ModHelpers.isShield(player.getOffHandStack())) {
                 Identifier id = Registries.BLOCK.getId(state.getBlock());
                 Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());

@@ -52,7 +52,7 @@ public class SwitchableGlass extends TransparentBlock {
     }
 
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             boolean currentlyPowered = state.get(POWERED);
             if (currentlyPowered != world.isReceivingRedstonePower(pos)) {
                 if (currentlyPowered) {
