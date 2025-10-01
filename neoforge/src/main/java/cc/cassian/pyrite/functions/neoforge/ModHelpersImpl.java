@@ -16,6 +16,6 @@ public class ModHelpersImpl {
     }
 
     public static boolean isDevEnvironment() {
-        return !FMLEnvironment.production;
+        return !FMLEnvironment.isProduction();
     }
 }

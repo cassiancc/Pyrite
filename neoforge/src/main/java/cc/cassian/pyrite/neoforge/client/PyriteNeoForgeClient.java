@@ -21,7 +21,7 @@ import static cc.cassian.pyrite.functions.neoforge.NeoHelpers.GRASS_BLOCKS;
 public class PyriteNeoForgeClient {
 
     public static void init(IEventBus eventBus) {
-        if (FMLEnvironment.dist.equals(Dist.CLIENT)) {
+        if (FMLEnvironment.getDist().isClient()) {
             eventBus.addListener(PyriteNeoForgeClient::registerBlockColors);
         }
     }
