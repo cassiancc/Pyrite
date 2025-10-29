@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sounds on Wall Gates and Cobbled Deepslate Bricks
 - Recipes for waxed Copper blocks.
 - Wall Gate textures are no longer stretched.
+- Log spam when Columns was not installed.
 
 ## [0.16.0]
 

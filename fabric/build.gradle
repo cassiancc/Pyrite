@@ -32,7 +32,7 @@ dependencies {
     modLocalRuntime "dev.emi:emi-fabric:$emi_version+$minecraft_version"
 
     // Optional compat dependencies
-    modImplementation("maven.modrinth:columns:${columns_version}")
+    modCompileOnly("maven.modrinth:columns:${columns_version}")
     modImplementation("maven.modrinth:more-chest-variants-lieonlion:${chest_variants_version}-Fabric")
         modLocalRuntime("maven.modrinth:quad:${quad_version}-Fabric")
     modImplementation("vectorwing:FarmersDelight:${fdrf_version}") {
