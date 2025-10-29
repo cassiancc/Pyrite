@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModHelpers;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.item.*;
@@ -44,6 +44,7 @@ public class PyriteItemGroups {
     public static final ArrayList<Supplier<Block>> DEEPSLATE = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> COBBLED_DEEPSLATE = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> SANDSTONE = new ArrayList<>();
+    public static final ArrayList<Supplier<Block>> RED_SANDSTONE = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> STAINED_GLASS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> STAINED_GLASS_PANES = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> FRAMED_GLASS = new ArrayList<>();
@@ -78,7 +79,12 @@ public class PyriteItemGroups {
     public static Collection<ItemStack> getBlockCollectionList(Collection<Supplier<Block>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Block> block : items) {
-            stacks.add(block.get().asItem().getDefaultStack());
+            var stack = block.get().asItem().getDefaultStack();
+            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
+                stacks.add(stack);
+            } else {
+//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+            }
         }
         return stacks;
     }
@@ -86,7 +92,12 @@ public class PyriteItemGroups {
     public static Collection<ItemStack> getItemCollectionList(ArrayList<Supplier<Item>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
-            stacks.add(item.get().getDefaultStack());
+            var stack = item.get().getDefaultStack();
+            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
+                stacks.add(stack);
+            } else {
+//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+            }
         }
         return stacks;
     }
@@ -184,6 +195,9 @@ public class PyriteItemGroups {
                 break;
             case "sandstone_brick":
                 SANDSTONE.add(newBlock);
+                break;
+            case "red_sandstone_brick":
+                RED_SANDSTONE.add(newBlock);
                 break;
             case "crafting_table":
                 CRAFTING_TABLES.add(newBlock);

@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:copper_block","result":{"id":"pyrite:cut_copper_column","count":1}}
+{"type":"minecraft:stonecutting","ingredient":"minecraft:copper_block","result":{"id":"pyrite:cut_copper_column","count":1},"fabric:load_conditions":[{"condition":"fabric:all_mods_loaded","values":["columns"]}],"neoforge:conditions":[{"type":"neoforge:mod_loaded","modid":"columns"}]}

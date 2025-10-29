@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":"minecraft:brown_dye","C":"minecraft:bricks"},"result":{"id":"pyrite:brown_bricks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"D":"#c:dyes/brown","C":"minecraft:bricks"},"result":{"id":"pyrite:brown_bricks","count":8}}

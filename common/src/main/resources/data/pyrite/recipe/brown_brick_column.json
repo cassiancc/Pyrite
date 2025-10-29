@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["###"," # ","###"],"key":{"#":"pyrite:brown_bricks"},"result":{"id":"pyrite:brown_brick_column","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["###"," # ","###"],"key":{"#":"pyrite:brown_bricks"},"fabric:load_conditions":[{"condition":"fabric:all_mods_loaded","values":["columns"]}],"neoforge:conditions":[{"type":"neoforge:mod_loaded","modid":"columns"}],"result":{"id":"pyrite:brown_brick_column","count":6}}

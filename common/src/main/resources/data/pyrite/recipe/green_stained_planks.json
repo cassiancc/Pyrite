@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"#minecraft:planks","D":"minecraft:green_dye"},"result":{"id":"pyrite:green_stained_planks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"#minecraft:planks","D":"#c:dyes/green"},"result":{"id":"pyrite:green_stained_planks","count":8}}

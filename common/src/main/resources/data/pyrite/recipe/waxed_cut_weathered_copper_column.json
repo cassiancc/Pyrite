@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["###"," # ","###"],"key":{"#":"minecraft:weathered_cut_copper"},"result":{"id":"pyrite:waxed_cut_weathered_copper_column","count":6}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:cut_weathered_copper_column","minecraft:honeycomb"],"result":{"id":"pyrite:waxed_cut_weathered_copper_column","count":1}}
