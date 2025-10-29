@@ -1,12 +1,18 @@
 package cc.cassian.pyrite.registry;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.block.*;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -20,7 +26,7 @@ public class BlockCreator {
     final static Block[] vanillaWood = getVanillaWood();
 
     @ExpectPlatform @SuppressWarnings("unused")
-    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
+    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         throw new AssertionError();
     }
 
@@ -41,11 +47,11 @@ public class BlockCreator {
         }
     }
 
-    public static void createTorchLever(String blockID, Block baseTorch, ParticleEffect particle) {
-        sendToRegistry(blockID, "torch_lever", AbstractBlock.Settings.copy(baseTorch), particle, "torch_lever");
+    public static void createTorchLever(String blockID, Block baseTorch, ParticleOptions particle) {
+        sendToRegistry(blockID, "torch_lever", BlockBehaviour.Properties.ofFullCopy(baseTorch), particle, "torch_lever");
     }
-    public static void createTorch(String blockID, ParticleEffect particle) {
-        sendToRegistry(blockID, "torch", AbstractBlock.Settings.copy(Blocks.TORCH), particle, "torch");
+    public static void createTorch(String blockID, ParticleOptions particle) {
+        sendToRegistry(blockID, "torch", BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH), particle, "torch");
     }
 
     public static void generateVanillaCraftingTables() {
@@ -64,25 +70,25 @@ public class BlockCreator {
 
     //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
     public static void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel, String group) {
-        AbstractBlock.Settings settings = AbstractBlock.Settings.create().strength(strength).luminance(state -> lightLevel).mapColor(color);
+        BlockBehaviour.Properties settings = BlockBehaviour.Properties.of().strength(strength).lightLevel(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "obsidian")) {
-            sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pistonBehavior(PistonBehavior.BLOCK), group);
+            sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pushReaction(PushReaction.BLOCK), group);
         }
         else if (blockType.equals("lamp")) {
-            sendToRegistry(blockID, blockType, settings.sounds(BlockSoundGroup.GLASS), group);
+            sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS), group);
         }
         else {
-            sendToRegistry(blockID, blockType, settings.sounds(BlockSoundGroup.GLASS).nonOpaque().solidBlock(BlockCreator::never), group);
+            sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS).noOcclusion().isRedstoneConductor(BlockCreator::never), group);
         }
     }
 
-    private static boolean never(BlockState state, BlockView world, BlockPos pos) {
+    private static boolean never(BlockState state, BlockGetter world, BlockPos pos) {
         return false;
     }
 
     //Create and then add carpets
     private static void createCarpet(String blockID, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(Blocks.MOSS_CARPET);
+        BlockBehaviour.Properties blockSettings = copyBlock(Blocks.MOSS_CARPET);
         sendToRegistry(blockID, "carpet", blockSettings, group);
     }
 
@@ -93,32 +99,32 @@ public class BlockCreator {
 
     //Create a slab from the last block added.
     public static void createStair(String blockID, Block copyBlock, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
+        BlockBehaviour.Properties blockSettings = copyBlock(copyBlock);
         sendToRegistry(blockID+"_stairs", copyBlock, blockSettings, group);
     }
 
     //Create a slab from the last block added.
     public static void createSlab(String blockID, Block copyBlock, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
+        BlockBehaviour.Properties blockSettings = copyBlock(copyBlock);
         sendToRegistry(blockID+"_slab", "slab", blockSettings, group);
     }
 
     //Create blocks that require a change in light level, e.g. Locked Chests
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).luminance(parseLux(lux));
+        BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).lightLevel(parseLux(lux));
         platformRegister(blockID, blockType, blockSettings, null, null, null, copyBlock, group, null);
     }
 
-    private static void sendToRegistry(String blockID, String blockType, AbstractBlock.Settings blockSettings, String group) {
+    private static void sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, String group) {
         platformRegister(blockID, blockType, blockSettings, null, null, null, null, group, null);
 
     }
-    private static void sendToRegistry(String blockID, Block copyBlock, AbstractBlock.Settings blockSettings, String group) {
+    private static void sendToRegistry(String blockID, Block copyBlock, BlockBehaviour.Properties blockSettings, String group) {
         platformRegister(blockID, "stairs", blockSettings,  null, null, null, copyBlock, group, null);
     }
     
     //Add blocks with particles - Torches/Torch Levers
-    private static void sendToRegistry(String blockID, String blockType, AbstractBlock.Settings blockSettings, ParticleEffect particle, String group) {
+    private static void sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, ParticleOptions particle, String group) {
         platformRegister(blockID, blockType, blockSettings, null, null, particle, null, group, null);
     }
 
@@ -129,24 +135,24 @@ public class BlockCreator {
 
     //Create most of the generic Stained Blocks, then add them.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
+        BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).mapColor(color).lightLevel(parseLux(lux));
         if ((copyBlock.equals(Blocks.OAK_PLANKS)) || (copyBlock.equals(Blocks.OAK_SLAB) || (copyBlock.equals(Blocks.OAK_STAIRS)))) {
-            blockSettings = blockSettings.burnable();
+            blockSettings = blockSettings.ignitedByLava();
         }
         platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group, color);
     }
 
     //Create basic blocks.
     public static void createPyriteBlock(String blockID, Block copyBlock, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock);
+        BlockBehaviour.Properties blockSettings = copyBlock(copyBlock);
         platformRegister(blockID, "block", blockSettings,  null, null, null, null, group, null);
     }
 
     //Create Stained blocks that require a wood set or wood type, then add them.
     public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type, String group) {
-        AbstractBlock.Settings blockSettings = copyBlock(copyBlock).mapColor(color).luminance(parseLux(lux));
+        BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).mapColor(color).lightLevel(parseLux(lux));
         if (!blockType.equals("button")) {
-            blockSettings = blockSettings.burnable();
+            blockSettings = blockSettings.ignitedByLava();
         }
         platformRegister(blockID, blockType, blockSettings,  type, set, null, null, group, color);
     }
@@ -191,7 +197,7 @@ public class BlockCreator {
     }
 
     public static void generateBrickSet(String blockID, Block copyBlock) {
-        generateBrickSet(blockID, copyBlock, copyBlock.getDefaultMapColor());
+        generateBrickSet(blockID, copyBlock, copyBlock.defaultMapColor());
     }
 
     public static void generateBrickSet(String blockID, Block copyBlock, MapColor color, boolean generateMossySet, String group) {

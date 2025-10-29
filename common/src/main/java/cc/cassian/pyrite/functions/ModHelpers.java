@@ -2,23 +2,30 @@ package cc.cassian.pyrite.functions;
 
 import cc.cassian.pyrite.core.PyriteTags;
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.block.*;
-import net.minecraft.block.enums.BlockFace;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.property.Properties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.*;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,8 +38,8 @@ import static cc.cassian.pyrite.Pyrite.MOD_ID;
 
 public class ModHelpers {
 
-    public static AbstractBlock.Settings copyBlock(Block copyBlock) {
-        return AbstractBlock.Settings.copy(copyBlock);
+    public static BlockBehaviour.Properties copyBlock(Block copyBlock) {
+        return BlockBehaviour.Properties.ofFullCopy(copyBlock);
     }
 
     public static ToIntFunction<BlockState> parseLux(int lux) {
@@ -43,8 +50,8 @@ public class ModHelpers {
         return block.toString().substring(block.toString().indexOf(":") + 1, block.toString().indexOf("}"));
     }
 
-    public static Identifier locate(String id) {
-        return Identifier.of(MOD_ID, id);
+    public static ResourceLocation locate(String id) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
     }
 
     public static RegistryKey<Block> registryKeyBlock(String id) {
@@ -64,18 +71,18 @@ public class ModHelpers {
     }
 
     public static Block getBlock(String id) {
-        return Registries.BLOCK.get(ModHelpers.locate(id));
+        return BuiltInRegistries.BLOCK.get(ModHelpers.locate(id));
     }
 
     public static MapColor checkDyeMapColour(String dye) {
         return switch (dye) {
-            case "glow" -> MapColor.CYAN;
-            case "dragon" -> MapColor.BLACK;
-            case "star" -> MapColor.OFF_WHITE;
-            case "honey" -> MapColor.YELLOW;
-            case "nostalgia" -> MapColor.BROWN;
-            case "rose" -> MapColor.BRIGHT_RED;
-            case "poisonous" -> MapColor.LIME;
+            case "glow" -> MapColor.COLOR_CYAN;
+            case "dragon" -> MapColor.COLOR_BLACK;
+            case "star" -> MapColor.QUARTZ;
+            case "honey" -> MapColor.COLOR_YELLOW;
+            case "nostalgia" -> MapColor.COLOR_BROWN;
+            case "rose" -> MapColor.FIRE;
+            case "poisonous" -> MapColor.COLOR_LIGHT_GREEN;
             default -> DyeColor.valueOf(dye.toUpperCase()).getMapColor();
         };
     }
@@ -88,7 +95,7 @@ public class ModHelpers {
         };
     }
 
-    public static ParticleEffect getTorchParticle(String dye) {
+    public static ParticleOptions getTorchParticle(String dye) {
         return switch (dye) {
             case "dragon" -> ParticleTypes.DRAGON_BREATH;
             case "glow" -> ParticleTypes.GLOW;
@@ -123,18 +130,18 @@ public class ModHelpers {
 
     public static @NotNull BlockSetType getBlockSetType(String blockID) {
         boolean openByHand = !blockID.equals("emerald") && (!blockID.equals("netherite") && (!blockID.equals("diamond")));
-        BlockSoundGroup soundGroup = switch (blockID) {
+        SoundType soundGroup = switch (blockID) {
             case "amethyst":
-                yield BlockSoundGroup.AMETHYST_BLOCK;
+                yield SoundType.AMETHYST;
             case "copper", "exposed_copper", "weathered_copper", "oxidized_copper":
-                yield BlockSoundGroup.COPPER;
+                yield SoundType.COPPER;
             case "quartz", "lapis", "diamond", "redstone", "gold":
-                yield BlockSoundGroup.STONE;
+                yield SoundType.STONE;
              default:
-                yield BlockSoundGroup.METAL;
+                yield SoundType.METAL;
         };
 
-        return new BlockSetType(blockID, openByHand, openByHand, openByHand, BlockSetType.ActivationRule.EVERYTHING, soundGroup, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON);
+        return new BlockSetType(blockID, openByHand, openByHand, openByHand, BlockSetType.PressurePlateSensitivity.EVERYTHING, soundGroup, SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON);
     }
 
     @ExpectPlatform
@@ -143,21 +150,21 @@ public class ModHelpers {
     }
 
     public static boolean isShield(ItemStack stack) {
-        return stack.isIn(PyriteTags.SHIELDS);
+        return stack.is(PyriteTags.SHIELDS);
     }
 
     public static boolean isCopper(String blockID) {
         return blockID.contains("copper");
     }
 
-    public static Oxidizable.OxidationLevel getOxidizationState(String blockID) {
+    public static WeatheringCopper.WeatherState getOxidizationState(String blockID) {
         if (blockID.contains("oxidized"))
-            return Oxidizable.OxidationLevel.OXIDIZED;
+            return WeatheringCopper.WeatherState.OXIDIZED;
         else if (blockID.contains("weathered"))
-            return Oxidizable.OxidationLevel.WEATHERED;
+            return WeatheringCopper.WeatherState.WEATHERED;
         else if (blockID.contains("exposed"))
-            return Oxidizable.OxidationLevel.EXPOSED;
-        return Oxidizable.OxidationLevel.UNAFFECTED;
+            return WeatheringCopper.WeatherState.EXPOSED;
+        return WeatheringCopper.WeatherState.UNAFFECTED;
     }
 
     public static void log(String log) {
@@ -170,29 +177,29 @@ public class ModHelpers {
         throw new AssertionError();
     }
 
-    public static ActionResult updateTorchColour(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        ItemStack stack = player.getStackInHand(hand);
+    public static InteractionResult updateTorchColour(Player player, Level world, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack stack = player.getItemInHand(hand);
         BlockState state = world.getBlockState(hitResult.getBlockPos());
         return updateTorchColour(stack, state, player, world, hitResult.getBlockPos());
     }
 
-    public static ActionResult updateTorchColour(ItemStack stack, BlockState state, PlayerEntity player, World world, BlockPos pos) {
-        if (stack.isIn(PyriteTags.DYES)) {
-            Identifier id = Registries.ITEM.getId(stack.getItem());
-            Block dyedTorch = Registries.BLOCK.get(Identifier.of(MOD_ID, id.getPath().replace("dye", "torch")));
-            if (state.isOf(Blocks.TORCH)) {
-                world.setBlockState(pos, dyedTorch.getStateWithProperties(state));
-                stack.decrementUnlessCreative(1, player);
-            } else if (state.isOf(Blocks.WALL_TORCH)) {
-                world.setBlockState(pos, dyedTorch.getStateWithProperties(state).with(Properties.BLOCK_FACE, BlockFace.WALL));
-                stack.decrementUnlessCreative(1, player);
-            } else return ActionResult.PASS;
-            return ActionResult.SUCCESS;
+    public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
+        if (stack.is(PyriteTags.DYES)) {
+            ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            Block dyedTorch = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
+            if (state.is(Blocks.TORCH)) {
+                world.setBlockAndUpdate(pos, dyedTorch.withPropertiesOf(state));
+                stack.consume(1, player);
+            } else if (state.is(Blocks.WALL_TORCH)) {
+                world.setBlockAndUpdate(pos, dyedTorch.withPropertiesOf(state).setValue(BlockStateProperties.ATTACH_FACE, AttachFace.WALL));
+                stack.consume(1, player);
+            } else return InteractionResult.PASS;
+            return InteractionResult.SUCCESS;
         }
-        return ActionResult.PASS;
+        return InteractionResult.PASS;
     }
 
-    public static ActionResult updateTorchColour(ItemStack itemStack, @Nullable PlayerEntity player, World level, BlockPos pos) {
+    public static InteractionResult updateTorchColour(ItemStack itemStack, @Nullable Player player, Level level, BlockPos pos) {
         return updateTorchColour(itemStack, level.getBlockState(pos), player, level, pos);
     }
 

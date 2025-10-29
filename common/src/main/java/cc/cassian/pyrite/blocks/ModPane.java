@@ -1,29 +1,29 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PaneBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class ModPane extends PaneBlock {
+public class ModPane extends IronBarsBlock {
     private final int power;
 
-    public ModPane(Settings settings) {
-        super(settings.nonOpaque());
+    public ModPane(Properties settings) {
+        super(settings.noOcclusion());
         this.power = 0;
     }
-    public ModPane(Settings settings, int power) {
-        super(settings.nonOpaque());
+    public ModPane(Properties settings, int power) {
+        super(settings.noOcclusion());
         this.power = power;
     }
     @Override
-    public boolean emitsRedstonePower(BlockState state) {
+    public boolean isSignalSource(BlockState state) {
         return power == 15;
     }
 
     @Override
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+    public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         return power;
     }
 }

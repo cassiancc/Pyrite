@@ -1,32 +1,32 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.*;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class ModTorch extends ModWallMounted {
-    private final ParticleEffect particle;
+    private final ParticleOptions particle;
 
-    public ModTorch(Settings settings, ParticleEffect particle) {
+    public ModTorch(Properties settings, ParticleOptions particle) {
         super(settings);
         this.particle = particle;
     }
 
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         double xPlus;
         double yPlus;
         double zPlus;
-        switch (state.get(FACE)) {
+        switch (state.getValue(FACE)) {
             case FLOOR:
                 xPlus = (double)pos.getX() + 0.5;
                 yPlus = (double)pos.getY() + 0.65;
                 zPlus = (double)pos.getZ() + 0.5;
                 break;
             case WALL:
-                switch (state.get(FACING)) {
+                switch (state.getValue(FACING)) {
                     case EAST:
                         xPlus = (double)pos.getX() + 0.3;
                         yPlus = (double)pos.getY() + 0.9;

@@ -6,16 +6,22 @@ import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.text.Text;
+import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
@@ -41,9 +47,9 @@ public class BlockCreatorImpl {
     public static Supplier<Block> BRICK_ICON;
     public static Supplier<Block> MISC_ICON;
     //Deferred registry entries
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(RegistryKeys.BLOCK, MOD_ID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(RegistryKeys.ITEM, MOD_ID);
-    public static final DeferredRegister<ItemGroup> TABS = DeferredRegister.create(RegistryKeys.ITEM_GROUP, MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, MOD_ID);
+    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final ArrayList<Supplier<Item>> ALL_ITEMS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> SIGN_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> HANGING_SIGN_BLOCKS = new ArrayList<>();
@@ -64,9 +70,9 @@ public class BlockCreatorImpl {
     }
 
     /**
-     * Implements {@link BlockCreator#platformRegister(String, String, AbstractBlock.Settings, WoodType, BlockSetType, ParticleEffect, Block, String, MapColor)} on NeoForge.
+     * Implements {@link BlockCreator#platformRegister(String, String, BlockBehaviour.Properties, WoodType, BlockSetType, ParticleOptions, Block, String, MapColor)} on NeoForge.
      */
-    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings settings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
+    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power;
         if (blockID.contains("redstone")) power = 15;
         else power = 0;
@@ -75,7 +81,7 @@ public class BlockCreatorImpl {
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableBlock(getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModBlock(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModBlock(blockSettings, power));
@@ -90,9 +96,9 @@ public class BlockCreatorImpl {
                 }
                 break;
             case "crafting":
-                AbstractBlock.Settings craftingSettings;
+                BlockBehaviour.Properties craftingSettings;
                 if (!(blockID.contains("crimson") || blockID.contains("warped"))) {
-                    craftingSettings = blockSettings.burnable();
+                    craftingSettings = blockSettings.ignitedByLava();
                 }
                 else craftingSettings = blockSettings;
                 newBlock = BLOCKS.register(blockID, () -> new ModCraftingTable(craftingSettings));
@@ -116,7 +122,7 @@ public class BlockCreatorImpl {
                 break;
             case "slab":
                 if (isCopper(blockID)) {
-                    newBlock = BLOCKS.register(blockID, () -> new OxidizableSlabBlock(getOxidizationState(blockID), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings));
                     registerBlock("waxed_"+blockID, () -> new ModSlab(blockSettings), "waxed_"+group);
                 } else {
                     newBlock = BLOCKS.register(blockID, () -> new ModSlab(blockSettings, power));
@@ -128,10 +134,10 @@ public class BlockCreatorImpl {
                 break;
             case "stairs":
                 if (isCopper(blockID)) {
-					newBlock = BLOCKS.register(blockID, () -> new OxidizableStairsBlock(getOxidizationState(blockID), copyBlock.getDefaultState(), blockSettings));
-                    registerBlock("waxed_"+blockID, () -> new ModStairs(copyBlock.getDefaultState(), blockSettings), "waxed_"+group);
+					newBlock = BLOCKS.register(blockID, () -> new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings));
+                    registerBlock("waxed_"+blockID, () -> new ModStairs(copyBlock.defaultBlockState(), blockSettings), "waxed_"+group);
                 } else
-                    newBlock = BLOCKS.register(blockID, () -> new ModStairs(copyBlock.getDefaultState(), blockSettings));
+                    newBlock = BLOCKS.register(blockID, () -> new ModStairs(copyBlock.defaultBlockState(), blockSettings));
                 if (Objects.equals(copyBlock, Blocks.OAK_STAIRS))
                     WOOD_BLOCKS.add(newBlock);
                 break;
@@ -194,7 +200,7 @@ public class BlockCreatorImpl {
                 newBlock = BLOCKS.register(blockID, () -> new GravelBlock(blockSettings));
                 break;
             case "flower":
-                newBlock = BLOCKS.register(blockID, () -> new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings));
+                newBlock = BLOCKS.register(blockID, () -> new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings));
                 Supplier<Block> finalNewBlock = newBlock;
                 var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY).registryKey(registryKeyBlock("potted_"+blockID))));
                 POTTED_FLOWERS.put(blockID, pot);
@@ -213,26 +219,26 @@ public class BlockCreatorImpl {
                 }
                 break;
             case "sign":
-                newBlock = BLOCKS.register(blockID, () -> new SignBlock(woodType, blockSettings));
+                newBlock = BLOCKS.register(blockID, () -> new WallSignBlock(woodType, blockSettings));
                 Supplier<Block> wallSign = BLOCKS.register(blockID.replace("_sign", "_wall_sign"), () -> new WallSignBlock(woodType, blockSettings));
                 SIGN_BLOCKS.add(newBlock);
                 SIGN_BLOCKS.add(wallSign);
                 registerSignItem(newBlock, wallSign, blockID);
                 break;
             case "hanging_sign":
-                newBlock = BLOCKS.register(blockID, () -> new HangingSignBlock(woodType, blockSettings));
+                newBlock = BLOCKS.register(blockID, () -> new WallHangingSignBlock(woodType, blockSettings));
                 Supplier<Block> hangingWallSign = BLOCKS.register(blockID.replace("_sign", "_wall_sign"), () -> new WallHangingSignBlock(woodType, blockSettings));
                 HANGING_SIGN_BLOCKS.add(newBlock);
                 HANGING_SIGN_BLOCKS.add(hangingWallSign);
                 registerHangingSignItem(newBlock, hangingWallSign, blockID);
                 break;
             case "door":
-                newBlock = BLOCKS.register(blockID, () -> new DoorBlock(blockSetType, blockSettings.nonOpaque()));
+                newBlock = BLOCKS.register(blockID, () -> new DoorBlock(blockSetType, blockSettings.noOcclusion()));
                 if (blockID.contains("_stained") || blockID.contains("mushroom"))
                     WOOD_BLOCKS.add(newBlock);
                 break;
             case "trapdoor":
-                newBlock = BLOCKS.register(blockID, () -> new TrapdoorBlock(blockSetType, blockSettings.nonOpaque()));
+                newBlock = BLOCKS.register(blockID, () -> new TrapDoorBlock(blockSetType, blockSettings.noOcclusion()));
                 if (blockID.contains("_stained") || blockID.contains("mushroom"))
                     WOOD_BLOCKS.add(newBlock);
                 break;
@@ -248,12 +254,12 @@ public class BlockCreatorImpl {
                 break;
             case "torch":
                 if (particle == null)
-                    newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.nonOpaque(), ParticleTypes.FLAME));
+                    newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.noOcclusion(), ParticleTypes.FLAME));
                 else
-                    newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.nonOpaque(), particle));
+                    newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.noOcclusion(), particle));
                 break;
             case "torch_lever":
-                newBlock = BLOCKS.register(blockID, () -> new TorchLever(blockSettings.nonOpaque(), particle));
+                newBlock = BLOCKS.register(blockID, () -> new TorchLever(blockSettings.noOcclusion(), particle));
                 REDSTONE_BLOCKS.add(newBlock);
                 break;
             case "concrete_powder":
@@ -271,7 +277,7 @@ public class BlockCreatorImpl {
         if (newBlock == null)
             return;
         for (Block block : ModLists.getVanillaResourceBlocks()) {
-            if (blockID.contains(Registries.BLOCK.getId(block).getPath().replace("_block", "")) && !inGroup(newBlock))
+            if (blockID.contains(BuiltInRegistries.BLOCK.getKey(block).getPath().replace("_block", "")) && !inGroup(newBlock))
                 RESOURCE_BLOCKS.add(newBlock);
         }
         if (blockID.contains("brick") && !inGroup(newBlock))
@@ -298,10 +304,10 @@ public class BlockCreatorImpl {
     }
 
     public static void registerBlockItem(String blockID, Supplier<Block> newBlock) {
-        Item.Settings settings = newBlockItemSettings(blockID);
+        Item.Properties settings = newBlockItemSettings(blockID);
         if (blockID.contains("netherite"))
-            settings = settings.fireproof();
-        final Item.Settings finalSettings = settings;
+            settings = settings.fireResistant();
+        final Item.Properties finalSettings = settings;
         ALL_ITEMS.add(ITEMS.register(blockID, () -> new BlockItem(newBlock.get(), finalSettings)));
     }
 
@@ -322,18 +328,18 @@ public class BlockCreatorImpl {
     }
 
     public static void addItemGroup(String id, Supplier<Block> icon, ArrayList<Supplier<?>> blocks) {
-        Supplier<ItemGroup> PYRITE_GROUP = TABS.register(id, () -> ItemGroup.builder()
+        Supplier<CreativeModeTab> PYRITE_GROUP = TABS.register(id, () -> CreativeModeTab.builder()
             //Set the title of the tab.
-            .displayName(Text.translatable("itemGroup." + MOD_ID + "." + id))
+            .title(Component.translatable("itemGroup." + MOD_ID + "." + id))
             //Set the icon of the tab.
             .icon(() -> new ItemStack(icon.get()))
             //Add your items to the tab.
-            .entries((params, entries) -> {
+            .displayItems((params, entries) -> {
                 for (Supplier<?> obj : blocks) {
                     if (obj.get() instanceof Block block)
-                        entries.add(block);
+                        entries.accept(block);
                     else if (obj.get() instanceof Item item)
-                        entries.add(item);
+                        entries.accept(item);
                 }
             })
             .build()

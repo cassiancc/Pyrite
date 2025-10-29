@@ -1,12 +1,12 @@
 package cc.cassian.pyrite.blocks;
 
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockSetType;
-import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 
-public class ModTrapDoor extends TrapdoorBlock {
-    public ModTrapDoor(AbstractBlock.Settings settings, BlockSetType blockSetType) {
+public class ModTrapDoor extends TrapDoorBlock {
+    public ModTrapDoor(BlockBehaviour.Properties settings, BlockSetType blockSetType) {
         super(blockSetType, settings);
     }
 }

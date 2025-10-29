@@ -1,32 +1,34 @@
 package cc.cassian.pyrite.blocks.fabric;
 
 import io.github.haykam821.columns.block.ColumnBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Oxidizable;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class OxidizableColumnBlock extends ColumnBlock implements Oxidizable {
-    private final OxidationLevel oxidationLevel;
+import java.util.Random;
 
-    public OxidizableColumnBlock(Oxidizable.OxidationLevel oxidationLevel, Settings settings) {
+public class OxidizableColumnBlock extends ColumnBlock implements WeatheringCopper {
+    private final WeatherState oxidationLevel;
+
+    public OxidizableColumnBlock(WeatheringCopper.WeatherState oxidationLevel, Properties settings) {
         super(settings);
         this.oxidationLevel = oxidationLevel;
     }
 
     @Override
-    protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        this.tickDegradation(state, world, pos, random);
+    protected void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        this.changeOverTime(state, world, pos, random);
     }
 
     @Override
-    protected boolean hasRandomTicks(BlockState state) {
-        return Oxidizable.getIncreasedOxidationBlock(state.getBlock()).isPresent();
+    protected boolean isRandomlyTicking(BlockState state) {
+        return WeatheringCopper.getNext(state.getBlock()).isPresent();
     }
 
     @Override
-    public OxidationLevel getDegradationLevel() {
+    public WeatherState getAge() {
         return oxidationLevel;
     }
 }
