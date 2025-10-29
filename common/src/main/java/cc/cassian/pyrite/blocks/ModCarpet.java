@@ -1,9 +1,9 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.CarpetBlock;
+import net.minecraft.world.level.block.CarpetBlock;
 
 public class ModCarpet extends CarpetBlock {
-    public ModCarpet(Settings settings) {
+    public ModCarpet(Properties settings) {
         super(settings);
     }
 }

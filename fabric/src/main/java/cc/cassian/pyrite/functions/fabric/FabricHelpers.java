@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.functions.fabric;
 
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
 import java.util.HashMap;

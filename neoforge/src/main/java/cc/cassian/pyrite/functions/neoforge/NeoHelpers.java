@@ -1,7 +1,6 @@
 package cc.cassian.pyrite.functions.neoforge;
 
-import net.minecraft.block.Block;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
 import java.util.HashMap;

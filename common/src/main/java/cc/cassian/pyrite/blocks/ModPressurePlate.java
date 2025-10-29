@@ -1,10 +1,10 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.BlockSetType;
-import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class ModPressurePlate extends PressurePlateBlock {
-    public ModPressurePlate(Settings settings, BlockSetType blockSetType) {
+    public ModPressurePlate(Properties settings, BlockSetType blockSetType) {
         super(blockSetType, settings);
     }
 }

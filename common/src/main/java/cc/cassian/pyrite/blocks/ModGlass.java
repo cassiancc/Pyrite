@@ -1,9 +1,9 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.TransparentBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 
 public class ModGlass extends TransparentBlock {
-    public ModGlass(Settings settings) {
-        super (settings.nonOpaque());
+    public ModGlass(Properties settings) {
+        super (settings.noOcclusion());
     }
 }

@@ -1,59 +1,57 @@
 package cc.cassian.pyrite.blocks;
 
 import cc.cassian.pyrite.functions.ModHelpers;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
-import static cc.cassian.pyrite.Pyrite.MOD_ID;
-
-public class ModPillar extends PillarBlock {
+public class ModPillar extends RotatedPillarBlock {
     private final int power;
 
-    public ModPillar(Settings settings) {
+    public ModPillar(Properties settings) {
         super(settings);
         this.power = 0;
     }
-    public ModPillar(Settings settings, int power) {
+    public ModPillar(Properties settings, int power) {
         super(settings);
         this.power = power;
     }
 
     @Override
-    public boolean emitsRedstonePower(BlockState state) {
+    public boolean isSignalSource(BlockState state) {
         return power == 15;
     }
 
     @Override
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+    public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         return power;
     }
 
     @Override @SuppressWarnings("all")
-    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient()) {
-            if (stack.isIn(ItemTags.AXES) && !ModHelpers.isShield(player.getOffHandStack())) {
-                Identifier id = Registries.BLOCK.getId(state.getBlock());
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!world.isClientSide()) {
+            if (stack.is(ItemTags.AXES) && !ModHelpers.isShield(player.getOffhandItem())) {
+                ResourceLocation id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
                 Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());
                 if (!strippedBlock.equals(Blocks.AIR)) {
-                    world.setBlockState(pos, strippedBlock.getDefaultState().with(AXIS, state.get(AXIS)));
-                    return ActionResult.SUCCESS;
+                    world.setBlockAndUpdate(pos, strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS)));
+                    return InteractionResult.SUCCESS;
                 }
             }
         }
-        return ActionResult.PASS;
+        return InteractionResult.PASS;
     }
 }

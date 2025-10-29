@@ -1,29 +1,29 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.LeverBlock;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LeverBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class TorchLever extends LeverBlock {
-    private final ParticleEffect particle;
+    private final ParticleOptions particle;
 
-    public TorchLever(Settings settings, ParticleEffect particle) {
+    public TorchLever(Properties settings, ParticleOptions particle) {
         super(settings);
         this.particle = particle;
     }
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
 
         double xPlus;
         double yPlus;
         double zPlus;
-        switch (state.get(FACE)) {
+        switch (state.getValue(FACE)) {
             case FLOOR:
-                if (state.get(POWERED))  {
-                    zPlus = switch (state.get(FACING)) {
+                if (state.getValue(POWERED))  {
+                    zPlus = switch (state.getValue(FACING)) {
                         case WEST -> {
                             xPlus = (double) pos.getX() + 0.1;
                             yield (double) pos.getZ() + 0.5;
@@ -51,8 +51,8 @@ public class TorchLever extends LeverBlock {
                 }
                 break;
             case WALL:
-                if (state.get(POWERED)) {
-                    zPlus = switch (state.get(FACING)) {
+                if (state.getValue(POWERED)) {
+                    zPlus = switch (state.getValue(FACING)) {
                         case EAST -> {
                             xPlus = (double) pos.getX() + 0.3;
                             yield (double) pos.getZ() + 0.5;
@@ -74,7 +74,7 @@ public class TorchLever extends LeverBlock {
 
                 }
                 else {
-                    switch (state.get(FACING)) {
+                    switch (state.getValue(FACING)) {
                         case EAST:
                             xPlus = (double)pos.getX() + 0.3;
                             yPlus = (double)pos.getY() + 0.9;
@@ -100,8 +100,8 @@ public class TorchLever extends LeverBlock {
                 break;
             //Ceiling
             default:
-                if (state.get(POWERED))  {
-                    zPlus = switch (state.get(FACING)) {
+                if (state.getValue(POWERED))  {
+                    zPlus = switch (state.getValue(FACING)) {
                         case WEST -> {
                             xPlus = (double) pos.getX() + 0.1;
                             yield (double) pos.getZ() + 0.5;
@@ -132,7 +132,7 @@ public class TorchLever extends LeverBlock {
 
 
 
-        world.addParticleClient(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
-        world.addParticleClient(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
     }
 }

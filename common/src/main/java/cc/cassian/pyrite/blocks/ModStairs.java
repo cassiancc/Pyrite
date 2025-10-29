@@ -1,30 +1,30 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class ModStairs extends StairsBlock {
+public class ModStairs extends StairBlock {
     private final int power;
 
-    public ModStairs(BlockState baseblockstate, Settings settings) {
+    public ModStairs(BlockState baseblockstate, Properties settings) {
         super(baseblockstate, settings);
         this.power = 0;
     }
-    public ModStairs(BlockState baseblockstate, Settings settings, int power) {
+    public ModStairs(BlockState baseblockstate, Properties settings, int power) {
         super(baseblockstate, settings);
         this.power = power;
     }
 
     @Override
-    public boolean emitsRedstonePower(BlockState state) {
+    public boolean isSignalSource(BlockState state) {
         return power == 15;
     }
 
     @Override
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+    public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         return power;
     }
 }
