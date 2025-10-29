@@ -59,7 +59,7 @@ public class BlockCreatorImpl {
     public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
-        blockSettings = blockSettings.registryKey(registryKeyBlock(blockID));
+        blockSettings = blockSettings.setId(registryKeyBlock(blockID));
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
@@ -188,7 +188,7 @@ public class BlockCreatorImpl {
                 newBlock = new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings);
                 addTransparentBlock(newBlock);
                 // register flower pot
-                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, Blocks.createFlowerPotSettings().registryKey(registryKeyBlock("potted_"+blockID)));
+                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, Blocks.flowerPotProperties().setId(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;

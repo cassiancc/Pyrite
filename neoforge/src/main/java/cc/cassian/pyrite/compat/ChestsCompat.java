@@ -2,9 +2,9 @@ package cc.cassian.pyrite.compat;
 
 
 import dev.lieonlion.mcv.block.NeoForgeMoreChestBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import static dev.lieonlion.mcv.init.NeoForgeMoreChestVariantsBlocks.MORE_CHEST_
 public class ChestsCompat {
     public static ArrayList<Supplier<Block>> CHESTS = new ArrayList<>();
 
-    public static Supplier<Block> registerChest(String blockID, AbstractBlock.Settings blockSettings, String group, Block copyBlock, MapColor color) {
+    public static Supplier<Block> registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
         return BLOCKS.register(blockID, () -> new NeoForgeMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
     }
 

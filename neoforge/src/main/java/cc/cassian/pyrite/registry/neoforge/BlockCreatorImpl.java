@@ -72,12 +72,12 @@ public class BlockCreatorImpl {
     /**
      * Implements {@link BlockCreator#platformRegister(String, String, BlockBehaviour.Properties, WoodType, BlockSetType, ParticleOptions, Block, String, MapColor)} on NeoForge.
      */
-    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
+    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties settings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power;
         if (blockID.contains("redstone")) power = 15;
         else power = 0;
         Supplier<Block> newBlock = null;
-        AbstractBlock.Settings blockSettings = settings.registryKey(registryKeyBlock(blockID));
+        BlockBehaviour.Properties blockSettings = settings.setId(registryKeyBlock(blockID));
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
@@ -202,7 +202,7 @@ public class BlockCreatorImpl {
             case "flower":
                 newBlock = BLOCKS.register(blockID, () -> new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings));
                 Supplier<Block> finalNewBlock = newBlock;
-                var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY).registryKey(registryKeyBlock("potted_"+blockID))));
+                var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).setId(registryKeyBlock("potted_"+blockID))));
                 POTTED_FLOWERS.put(blockID, pot);
                 break;
             case "fence_gate":
@@ -312,13 +312,13 @@ public class BlockCreatorImpl {
     }
 
     public static void registerSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).maxCount(16)));
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).stacksTo(16)));
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }
 
     public static void registerHangingSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new HangingSignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).maxCount(16)));
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new HangingSignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).stacksTo(16)));
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }

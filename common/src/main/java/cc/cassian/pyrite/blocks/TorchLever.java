@@ -132,7 +132,7 @@ public class TorchLever extends LeverBlock {
 
 
 
-        world.addParticleClient(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
-        world.addParticleClient(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
     }
 }

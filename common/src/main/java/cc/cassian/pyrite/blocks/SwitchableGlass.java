@@ -38,9 +38,10 @@ public class SwitchableGlass extends TransparentBlock {
         }
     }
 
-    protected int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+    @Override
+    protected int getLightBlock(BlockState state) {
         if (state.getValue(POWERED)) {
-            return world.getMaxLightLevel();
+            return 15;
         }
         return 0;
     }

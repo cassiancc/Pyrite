@@ -1,17 +1,19 @@
 package cc.cassian.pyrite.compat;
 
-import io.github.lieonlion.mcv.block.MoreChestBlock;
-import io.github.lieonlion.mcv.init.McvBlockInit;
+import dev.lieonlion.mcv.block.FabricMoreChestBlock;
+import dev.lieonlion.mcv.init.FabricMoreChestVariantsBlocks;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.ArrayList;
 
 public class ChestsCompat {
     public static ArrayList<Block> CHESTS = new ArrayList<>();
 
-    public static Block registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
-        return new MoreChestBlock(blockSettings, () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY, "pyrite_"+ blockID.replace("_chest", ""));
+    public static Block registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
+        return new FabricMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
     }
 
     public static void add(Block newBlock) {

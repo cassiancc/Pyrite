@@ -8,13 +8,10 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Block;
 
@@ -33,10 +30,10 @@ public class PyriteFabricClient implements ClientModInitializer {
             }, grassBlock);
         }
         for (Block transparentBlock : TRANSPARENT_BLOCKS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(transparentBlock, RenderType.cutout());
+            BlockRenderLayerMap.putBlock(transparentBlock, ChunkSectionLayer.CUTOUT);
         }
         for (Block translucentBlock : TRANSLUCENT_BLOCKS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(translucentBlock, RenderType.translucent());
+            BlockRenderLayerMap.putBlock(translucentBlock, ChunkSectionLayer.TRANSLUCENT);
         }
         if (Pyrite.CONFIG.disabledContentTooltip) {
             ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {

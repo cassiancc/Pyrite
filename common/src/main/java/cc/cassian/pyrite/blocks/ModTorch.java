@@ -57,7 +57,7 @@ public class ModTorch extends ModWallMounted {
                 break;
         }
 
-        world.addParticleClient(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
-        world.addParticleClient(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
     }
 }

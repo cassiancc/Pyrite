@@ -6,6 +6,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.*;
@@ -13,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -54,24 +57,24 @@ public class ModHelpers {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
     }
 
-    public static RegistryKey<Block> registryKeyBlock(String id) {
-        return RegistryKey.of(RegistryKeys.BLOCK, locate(id));
+    public static ResourceKey<Block> registryKeyBlock(String id) {
+        return ResourceKey.create(Registries.BLOCK, locate(id));
     }
 
-    public static RegistryKey<Item> registryKeyItem(String id) {
-        return RegistryKey.of(RegistryKeys.ITEM, locate(id));
+    public static ResourceKey<Item> registryKeyItem(String id) {
+        return ResourceKey.create(Registries.ITEM, locate(id));
     }
 
-    public static Item.Settings newItemSettings(String id) {
-        return new Item.Settings().registryKey(registryKeyItem(id));
+    public static Item.Properties newItemSettings(String id) {
+        return new Item.Properties().setId(registryKeyItem(id));
     }
 
-    public static Item.Settings newBlockItemSettings(String id) {
-        return newItemSettings(id).useBlockPrefixedTranslationKey(); 
+    public static Item.Properties newBlockItemSettings(String id) {
+        return newItemSettings(id).useBlockDescriptionPrefix();
     }
 
     public static Block getBlock(String id) {
-        return BuiltInRegistries.BLOCK.get(ModHelpers.locate(id));
+        return BuiltInRegistries.BLOCK.getValue(ModHelpers.locate(id));
     }
 
     public static MapColor checkDyeMapColour(String dye) {
@@ -124,7 +127,7 @@ public class ModHelpers {
             case "nostalgia" -> DyeColor.BROWN;
             case "rose" -> DyeColor.PINK;
             case "poisonous" -> DyeColor.LIME;
-            default -> DyeColor.byId(dye, DyeColor.WHITE);
+            default -> DyeColor.byName(dye, DyeColor.WHITE);
         };
     }
 
@@ -186,7 +189,7 @@ public class ModHelpers {
     public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
         if (stack.is(PyriteTags.DYES)) {
             ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            Block dyedTorch = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
+            Block dyedTorch = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
             if (state.is(Blocks.TORCH)) {
                 world.setBlockAndUpdate(pos, dyedTorch.withPropertiesOf(state));
                 stack.consume(1, player);
