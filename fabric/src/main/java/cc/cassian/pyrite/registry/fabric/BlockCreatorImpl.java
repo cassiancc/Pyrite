@@ -12,14 +12,22 @@ import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.HangingSignItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SignItem;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -46,15 +54,15 @@ public class BlockCreatorImpl {
     }
 
 	/**
-     * Implements {@link BlockCreator#platformRegister(String, String, AbstractBlock.Settings, WoodType, BlockSetType, ParticleEffect, Block, String, MapColor)} on Fabric.
+     * Implements {@link BlockCreator#platformRegister(String, String, BlockBehaviour.Properties, WoodType, BlockSetType, ParticleOptions, Block, String, MapColor)} on Fabric.
      */
-    public static void platformRegister(String blockID, String blockType, AbstractBlock.Settings blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleEffect particle, Block copyBlock, String group, MapColor color) {
+    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
-					newBlock = new OxidizableBlock(getOxidizationState(blockID), blockSettings.ticksRandomly());
+					newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
 					var waxedBlock = new ModBlock(blockSettings);
 					BLOCKS.put("waxed_"+blockID, waxedBlock);
 					match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
@@ -67,7 +75,7 @@ public class BlockCreatorImpl {
                 boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
 				// Register Crafting table.
 				if (burnable) {
-					newBlock = new ModCraftingTable(blockSettings.burnable());
+					newBlock = new ModCraftingTable(blockSettings.ignitedByLava());
 					FUEL_BLOCKS.put(newBlock, 300);
 				} else
 					newBlock = new ModCraftingTable(blockSettings);
@@ -93,7 +101,7 @@ public class BlockCreatorImpl {
                 break;
             case "slab":
                 if (isCopper(blockID)) {
-					newBlock = new OxidizableSlabBlock(getOxidizationState(blockID), blockSettings);
+					newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
 					Block waxed = new ModSlab(blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
@@ -103,12 +111,12 @@ public class BlockCreatorImpl {
                 break;
             case "stairs":
                 if (isCopper(blockID)) {
-					newBlock = new OxidizableStairsBlock(getOxidizationState(blockID), copyBlock.getDefaultState(), blockSettings);
-					Block waxed = new ModStairs(copyBlock.getDefaultState(), blockSettings);
+					newBlock = new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings);
+					Block waxed = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
 					BLOCKS.put("waxed_"+blockID, waxed);
 					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
 				} else
-					newBlock = new ModStairs(copyBlock.getDefaultState(), blockSettings);
+					newBlock = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
                 break;
             case "wall":
 				if (isCopper(blockID)) {
@@ -176,10 +184,10 @@ public class BlockCreatorImpl {
                 break;
             case "flower":
                 // register flower
-                newBlock = new FlowerBlock(StatusEffects.NIGHT_VISION, 5, blockSettings);
+                newBlock = new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings);
                 addTransparentBlock(newBlock);
                 // register flower pot
-                final Block FLOWER_POTTED = Blocks.createFlowerPotBlock(newBlock);
+                final Block FLOWER_POTTED = Blocks.flowerPot(newBlock);
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;
@@ -198,13 +206,13 @@ public class BlockCreatorImpl {
                 break;
             case "sign":
                 //Sign Blocks
-                newBlock = new SignBlock(woodType, blockSettings);
+                newBlock = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID, newBlock);
                 //Wall Sign Blocks
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(new Item.Settings().maxCount(16), newBlock, WALL_SIGN);
+                final Item SIGN_ITEM = new SignItem(new Item.Properties().stacksTo(16), newBlock, WALL_SIGN);
                 ITEMS.put(blockID, SIGN_ITEM);
                 SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
                 BlockEntityType.SIGN.addSupportedBlock(newBlock);
@@ -212,13 +220,13 @@ public class BlockCreatorImpl {
                 break;
             case "hanging_sign":
                 //Sign Blocks
-                newBlock = new HangingSignBlock(woodType, blockSettings);
+                newBlock = new WallHangingSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID, newBlock);
                 //Wall Sign Blocks
                 final WallHangingSignBlock HANGING_WALL_SIGN = new WallHangingSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), HANGING_WALL_SIGN);
                 // Register item for signs.
-                final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, new Item.Settings().maxCount(16));
+                final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, new Item.Properties().stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 SIGNS.add(() -> HANGING_SIGN_ITEM);
                 BlockEntityType.HANGING_SIGN.addSupportedBlock(newBlock);
@@ -226,26 +234,26 @@ public class BlockCreatorImpl {
                 break;
             case "door":
 				if (isCopper(blockID)) {
-					newBlock = new OxidizableDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.nonOpaque());
-					Block waxed = new DoorBlock(blockSetType, blockSettings.nonOpaque());
+					newBlock = new WeatheringCopperDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
+					Block waxed = new DoorBlock(blockSetType, blockSettings.noOcclusion());
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
 					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
 				}
 				else
-					newBlock = new DoorBlock(blockSetType, blockSettings.nonOpaque());
+					newBlock = new DoorBlock(blockSetType, blockSettings.noOcclusion());
                 addTransparentBlock(newBlock);
                 break;
             case "trapdoor":
                 if (isCopper(blockID)) {
-					newBlock = new OxidizableTrapdoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.nonOpaque());
-					Block waxed = new TrapdoorBlock(blockSetType, blockSettings.nonOpaque());
+					newBlock = new WeatheringCopperTrapDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
+					Block waxed = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
 					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
 				}
                 else
-                    newBlock = new TrapdoorBlock(blockSetType, blockSettings.nonOpaque());
+                    newBlock = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
                 addTransparentBlock(newBlock);
                 break;
             case "button":
@@ -258,13 +266,13 @@ public class BlockCreatorImpl {
                 var torchParticle = particle;
                 if (particle == null)
                     torchParticle = ParticleTypes.FLAME;
-                newBlock = new ModTorch(blockSettings.nonOpaque(), torchParticle);
+                newBlock = new ModTorch(blockSettings.noOcclusion(), torchParticle);
                 if (FabricLoader.getInstance().isModLoaded("totally_lit") && !ModLists.PYRITE_DYES.contains(blockID.replace("_torch", "")))
-                    TotallyLitCompat.registerTorch("unlit_"+blockID, blockSettings.nonOpaque(), "unlit_torch", newBlock);
+                    TotallyLitCompat.registerTorch("unlit_"+blockID, blockSettings.noOcclusion(), "unlit_torch", newBlock);
                 addTransparentBlock(newBlock);
                 break;
             case "torch_lever":
-                newBlock = new TorchLever(blockSettings.nonOpaque(), particle);
+                newBlock = new TorchLever(blockSettings.noOcclusion(), particle);
                 addTransparentBlock(newBlock);
                 break;
             case "concrete_powder":
@@ -296,15 +304,15 @@ public class BlockCreatorImpl {
      * This registers a basic item with no additional settings - primarily used for Dye.
      */
     public static void registerPyriteItem(String itemID) {
-        var item = new Item(new Item.Settings());
+        var item = new Item(new Item.Properties());
         ITEMS.put(itemID, item);
         DYES.add(()-> item);
     }
 
     public static BlockItem addBlockItem(String blockID, Block block) {
-        Item.Settings settings = new Item.Settings();
+        Item.Properties settings = new Item.Properties();
         if (blockID.contains("netherite"))
-            settings = settings.fireproof();
+            settings = settings.fireResistant();
         return new BlockItem(block, settings);
     }
 
@@ -313,20 +321,20 @@ public class BlockCreatorImpl {
         for (Map.Entry<String, Block> entry : BLOCKS.entrySet()) {
             final Block block = entry.getValue();
             final String blockID = entry.getKey();
-            Registry.register(Registries.BLOCK, locate(blockID), block);
-            Registry.register(Registries.ITEM, locate(blockID), addBlockItem(blockID, block));
+            Registry.register(BuiltInRegistries.BLOCK, locate(blockID), block);
+            Registry.register(BuiltInRegistries.ITEM, locate(blockID), addBlockItem(blockID, block));
         }
         //Registers blocks without block items.
         for (Map.Entry<String, Block> entry : ITEMLESS_BLOCKS.entrySet()) {
             final Block block = entry.getValue();
             final String blockID = entry.getKey();
-            Registry.register(Registries.BLOCK, locate(blockID), block);
+            Registry.register(BuiltInRegistries.BLOCK, locate(blockID), block);
         }
         //Registers items.
         for (Map.Entry<String, Item> entry : ITEMS.entrySet()) {
             final Item item = entry.getValue();
             final String itemID = entry.getKey();
-            Registry.register(Registries.ITEM, locate(itemID), item);
+            Registry.register(BuiltInRegistries.ITEM, locate(itemID), item);
         }
 
 

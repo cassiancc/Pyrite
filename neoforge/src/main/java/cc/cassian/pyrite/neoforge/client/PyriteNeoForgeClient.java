@@ -2,8 +2,8 @@ package cc.cassian.pyrite.neoforge.client;
 
 
 import cc.cassian.pyrite.Pyrite;
-import net.minecraft.block.Block;
-import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,7 +32,7 @@ public class PyriteNeoForgeClient {
         for (Supplier<Block> pyriteBlock : GRASS_BLOCKS) {
             event.register(((state, view, pos, tintIndex) -> {
                 if (view == null) return 9551193;
-                return BiomeColors.getGrassColor(view, pos);
+                return BiomeColors.getAverageGrassColor(view, pos);
             }), pyriteBlock.get());
 
         }

@@ -3,9 +3,13 @@ package cc.cassian.pyrite;
 import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
-import net.minecraft.block.*;
-import net.minecraft.particle.DustParticleEffect;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.material.MapColor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,25 +27,25 @@ public class Pyrite {
     public static void init() {
 		ModLists.populateLinkedHashMaps();
 		// Framed Glass
-		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.CLEAR, 0, "framed_glass");
+		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.NONE, 0, "framed_glass");
 		// Framed Glass Pane
-		createPyriteBlock( "framed_glass_pane","glass_pane", 2.0f, MapColor.CLEAR, 0, "framed_glass_pane");
+		createPyriteBlock( "framed_glass_pane","glass_pane", 2.0f, MapColor.NONE, 0, "framed_glass_pane");
 		// Switchable Glass
 		createPyriteBlock("switchable_glass", "switchable_glass", Blocks.GLASS, "redstone-group");
 		// Cobblestone Bricks
-		generateBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, true);
-		generateBrickSet("cobbled_deepslate_brick", Blocks.COBBLED_DEEPSLATE, MapColor.STONE_GRAY, true);
+		generateBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE, true);
+		generateBrickSet("cobbled_deepslate_brick", Blocks.COBBLED_DEEPSLATE, MapColor.STONE, true);
 		// Smooth Stone Set
 		createPyriteBlock("smooth_stone_stairs", "stairs", Blocks.SMOOTH_STONE, "building_blocks");
-		generateBrickSet("smooth_stone_brick", Blocks.SMOOTH_STONE, MapColor.STONE_GRAY, true);
+		generateBrickSet("smooth_stone_brick", Blocks.SMOOTH_STONE, MapColor.STONE, true);
 		// Granite Bricks
-		generateBrickSet("granite_brick", Blocks.GRANITE, MapColor.DIRT_BROWN, true);
+		generateBrickSet("granite_brick", Blocks.GRANITE, MapColor.DIRT, true);
 		// Andesite Bricks
-		generateBrickSet("andesite_brick", Blocks.ANDESITE, MapColor.STONE_GRAY, true);
+		generateBrickSet("andesite_brick", Blocks.ANDESITE, MapColor.STONE, true);
 		// Diorite Bricks
-		generateBrickSet("diorite_brick", Blocks.DIORITE, MapColor.OFF_WHITE, true);
+		generateBrickSet("diorite_brick", Blocks.DIORITE, MapColor.QUARTZ, true);
 		// Calcite Bricks
-		generateBrickSet("calcite_brick", Blocks.CALCITE, MapColor.OFF_WHITE, true);
+		generateBrickSet("calcite_brick", Blocks.CALCITE, MapColor.QUARTZ, true);
 		// Mossy Tuff Bricks
 		generateBrickSet("mossy_tuff_brick", Blocks.TUFF_BRICKS);
 		// Mossy Deepslate Bricks
@@ -60,22 +64,22 @@ public class Pyrite {
 		generateResourceBlocks();
 		// Torch Levers
 		createTorchLever("torch_lever", Blocks.TORCH, ParticleTypes.FLAME);
-		createTorchLever("redstone_torch_lever", Blocks.SOUL_TORCH, DustParticleEffect.DEFAULT);
+		createTorchLever("redstone_torch_lever", Blocks.SOUL_TORCH, DustParticleOptions.REDSTONE);
 		createTorchLever("soul_torch_lever", Blocks.SOUL_TORCH, ParticleTypes.SOUL_FIRE_FLAME);
 		// Lamps
 		createPyriteBlock("lit_redstone_lamp", "lamp", Blocks.REDSTONE_LAMP, 15, "functional");
 		createPyriteBlock("glowstone_lamp","lamp", Blocks.GLOWSTONE, 15, "functional");
 		// Classic Features
-		createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.RED, 15, "obsidian");
-		createPyriteBlock("nostalgia_glowing_obsidian","obsidian", 50f, MapColor.RED, 15, "obsidian");
+		createPyriteBlock("glowing_obsidian","obsidian", 50f, MapColor.COLOR_RED, 15, "obsidian");
+		createPyriteBlock("nostalgia_glowing_obsidian","obsidian", 50f, MapColor.COLOR_RED, 15, "obsidian");
 		createPyriteBlock("locked_chest", "facing", Blocks.CHEST, 15, "functional");
 		generateNostalgiaBlocks();
 		// Classic Flowers
 		generateFlowers();
 		// Blue Nether Bricks
-		generateBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLUE, 0, "coloured_nether_bricks");
+		generateBrickSet("blue_nether_brick", Blocks.NETHER_BRICKS, MapColor.COLOR_BLUE, 0, "coloured_nether_bricks");
 		// Charred Nether Bricks
-		generateBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.BLACK, 0, "coloured_nether_bricks");
+		generateBrickSet("charred_nether_brick", Blocks.NETHER_BRICKS, MapColor.COLOR_BLACK, 0, "coloured_nether_bricks");
 		// Vanilla Crafting Tables
 		generateVanillaCraftingTables();
 		// Modded Crafting Tables
@@ -92,12 +96,12 @@ public class Pyrite {
 		}
 		// Red Mushroom Wood Set
 		createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM, "red_mushroom");
-		createWoodSet("red_mushroom", MapColor.RED, 0, "wood");
+		createWoodSet("red_mushroom", MapColor.COLOR_RED, 0, "wood");
 		// Brown Mushroom Wood Set
 		createPyriteBlock("brown_mushroom_stem", "log", Blocks.MUSHROOM_STEM, "brown_mushroom");
-		createWoodSet("brown_mushroom", MapColor.BROWN, 0, "wood");
+		createWoodSet("brown_mushroom", MapColor.COLOR_BROWN, 0, "wood");
 		// Azalea Wood Set
-		createWoodSetWithLog("azalea", MapColor.DULL_RED, 0);
+		createWoodSetWithLog("azalea", MapColor.CRIMSON_NYLIUM, 0);
 		// Autogenerate dye blocks.
         for (int dyeIndex = 0; dyeIndex < DYES.length; dyeIndex++) {
 			String dye = ModLists.DYES[dyeIndex];
@@ -161,4 +165,12 @@ public class Pyrite {
 			createPyriteBlock(block + "_gate","wall_gate", wallsBlock, BlockSetType.STONE, "building_blocks");
 		}
 	}
+
+    public static ResourceLocation of(String namespace, String path) {
+        return ResourceLocation.fromNamespaceAndPath(namespace, path);
+    }
+
+    public static ResourceLocation of(String path) {
+        return of(MOD_ID, path);
+    }
 }

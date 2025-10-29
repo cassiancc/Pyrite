@@ -8,12 +8,12 @@ import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
 import cc.cassian.pyrite.neoforge.client.PyriteNeoForgeClient;
 import cc.cassian.pyrite.registry.neoforge.PyriteItemGroupsImpl;
-import net.minecraft.resource.ResourcePackProfile;
-import net.minecraft.resource.ResourcePackSource;
-import net.minecraft.resource.ResourceType;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ItemActionResult;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -43,17 +43,17 @@ public final class PyriteNeoForge {
     }
 
     private static void onUseWithItem(UseItemOnBlockEvent event) {
-        ActionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
-        if (actionResult.equals(ActionResult.SUCCESS)) event.cancelWithResult(ItemActionResult.SUCCESS);
+        InteractionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
+        if (actionResult.equals(InteractionResult.SUCCESS)) event.cancelWithResult(ItemInteractionResult.SUCCESS);
     }
 
     private static void addOddities(AddPackFindersEvent event) {
         ModLists.DATAPACKS.forEach((key, value) -> {
             if (value) {
-                event.addPackFinders(ModHelpers.locate("resourcepacks/"+key), ResourceType.SERVER_DATA, Text.literal(key), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
+                event.addPackFinders(ModHelpers.locate("resourcepacks/"+key), PackType.SERVER_DATA, Component.literal(key), PackSource.BUILT_IN, true, Pack.Position.TOP);
             }
         });
         if (Pyrite.CONFIG.crafting_tables)
-            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_crafting_tables"), ResourceType.CLIENT_RESOURCES, Text.literal("pyrite/pyrite_crafting_tables"), ResourcePackSource.BUILTIN, true, ResourcePackProfile.InsertionPosition.TOP);
+            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_crafting_tables"), PackType.CLIENT_RESOURCES, Component.literal("pyrite/pyrite_crafting_tables"), PackSource.BUILT_IN, true, Pack.Position.TOP);
     }
 }

@@ -4,13 +4,9 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
@@ -27,18 +23,18 @@ public class PyriteItemGroupsImpl {
 		for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {
 			Block anchor = entry.getKey();
 			Block value = entry.getValue().get();
-			if (value.asItem().getDefaultStack().isIn(PyriteTags.ENABLED)) {
+			if (value.asItem().getDefaultInstance().is(PyriteTags.ENABLED)) {
 				if (anchor != null)
-					group.insertAfter(anchor.asItem().getDefaultStack(), value.asItem().getDefaultStack(), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+					group.insertAfter(anchor.asItem().getDefaultInstance(), value.asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 				else
-					group.add(value);
+					group.accept(value);
 			}
 		}
 	}
 
 	private static void addAfter(Item anchor, Collection<ItemStack> blockCollectionList, BuildCreativeModeTabContentsEvent event) {
 		for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
-			event.insertAfter(anchor.getDefaultStack(), itemStack, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+			event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 		}
 	}
 
@@ -52,18 +48,18 @@ public class PyriteItemGroupsImpl {
 
 	private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList, BuildCreativeModeTabContentsEvent event) {
 		for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
-			event.insertAfter(anchor.getDefaultStack(), itemStack, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+			event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 		}
 	}
 
 	private static void addBefore(Item anchor, Item item, BuildCreativeModeTabContentsEvent event) {
-		event.insertBefore(anchor.getDefaultStack(), item.getDefaultStack(), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+		event.insertBefore(anchor.getDefaultInstance(), item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 	}
 
 	@SubscribeEvent
 	public static void buildContents(BuildCreativeModeTabContentsEvent event) {
 		if (Pyrite.CONFIG.addToVanillaItemGroups) {
-			if (event.getTabKey().equals(ItemGroups.BUILDING_BLOCKS)) {
+			if (event.getTabKey().equals(CreativeModeTabs.BUILDING_BLOCKS)) {
 				addAfter(Items.IRON_BLOCK, getBlockCollectionList(IRON_BLOCKS), event);
 				addAfter(Items.GOLD_BLOCK, getBlockCollectionList(GOLD_BLOCKS), event);
 				addAfter(Items.EMERALD_BLOCK, getBlockCollectionList(EMERALD_BLOCKS), event);
@@ -92,12 +88,12 @@ public class PyriteItemGroupsImpl {
 				addAfter(Items.DEEPSLATE_TILE_WALL, getBlockCollectionList(DEEPSLATE), event);
 				addBefore(Items.TUFF, Items.CALCITE, event);
 				addAfter(Items.CALCITE, getBlockCollectionList(CALCITE), event);
-				addAfter(Items.CUT_SANDSTONE_SLAB, getBlockCollectionList(SANDSTONE), event);
+				addAfter(Blocks.CUT_SANDSTONE_SLAB, getBlockCollectionList(SANDSTONE), event);
 				addMapToItemGroup(event, BUILDING_BLOCKS);
 				addAfter(Items.CHERRY_BUTTON, getBlockCollectionList(WOOD), event);
 			}
 
-			else if (event.getTabKey().equals(ItemGroups.COLORED_BLOCKS)) {
+			else if (event.getTabKey().equals(CreativeModeTabs.COLORED_BLOCKS)) {
 				addAfter(Blocks.PINK_STAINED_GLASS, getBlockCollectionList(STAINED_GLASS), event);
 				addAfter(Blocks.PINK_STAINED_GLASS_PANE, getBlockCollectionList(STAINED_GLASS_PANES), event);
 				addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(FRAMED_GLASS), event);
@@ -109,7 +105,7 @@ public class PyriteItemGroupsImpl {
 				addMapToItemGroup(event, COLORED_BLOCKS);
 				addAfter(Blocks.PINK_CARPET, getBlockCollectionList(CARPET), event);
 				addAfter(Blocks.PINK_SHULKER_BOX, getBlockCollectionList(DYED_BRICKS), event);
-				event.addAll(getBlockCollectionList(DYED_WOOD));
+				event.acceptAll(getBlockCollectionList(DYED_WOOD));
 				addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(LAMPS), event);
 
 				// TODO Add Pyrite Concrete to vanilla item group.
@@ -129,7 +125,7 @@ public class PyriteItemGroupsImpl {
 //			}
 			}
 
-			else if (event.getTabKey().equals(ItemGroups.NATURAL)) {
+			else if (event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
 				addAfter(Items.WITHER_ROSE, getBlockCollectionList(FLOWERS), event);
 				addAfter(Items.DIRT_PATH, getBlockCollectionList(DIRT_PATH), event);
 				addAfter(Items.GRASS_BLOCK, getBlockCollectionList(NOSTALGIA_GRASS), event);
@@ -141,7 +137,7 @@ public class PyriteItemGroupsImpl {
 				addAfter(Items.MUSHROOM_STEM, getBlockCollectionList(RED_MUSHROOM), event);
 			}
 
-			else if (event.getTabKey().equals(ItemGroups.FUNCTIONAL)) {
+			else if (event.getTabKey().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
 				addAfter(Items.WARPED_HANGING_SIGN, getItemCollectionList(SIGNS), event);
 				addAfter(Items.CRAFTING_TABLE, getBlockCollectionList(CRAFTING_TABLES), event);
 				addAfter(Items.TORCH, getBlockCollectionList(TORCH), event);
@@ -149,13 +145,13 @@ public class PyriteItemGroupsImpl {
 				addMapToItemGroup(event, FUNCTIONAL);
 			}
 
-			else if (event.getTabKey().equals(ItemGroups.REDSTONE)) {
+			else if (event.getTabKey().equals(CreativeModeTabs.REDSTONE_BLOCKS)) {
 				addAfter(Items.CAULDRON, getBlockCollectionList(REDSTONE_BLOCKS), event);
 				addAfter(Items.REDSTONE_BLOCK, getBlockCollectionList(REDSTONE_RESOURCE_BLOCKS), event);
 				addAfter(Items.LEVER, getBlockCollectionList(TORCH_LEVER), event);
 			}
 
-			else if (event.getTabKey().equals(ItemGroups.INGREDIENTS))
+			else if (event.getTabKey().equals(CreativeModeTabs.INGREDIENTS))
 				addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
 		}
 	}

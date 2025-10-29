@@ -1,9 +1,7 @@
 package cc.cassian.pyrite.compat;
 
-import io.github.lieonlion.mcv.block.MoreChestBlock;
-import io.github.lieonlion.mcv.init.McvBlockInit;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import vectorwing.farmersdelight.common.block.CabinetBlock;
 import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes;
 
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 public class FarmersDelightCompat {
     public static ArrayList<Block> CABINETS = new ArrayList<>();
 
-    public static Block registerCabinet(String blockID, AbstractBlock.Settings blockSettings, String group, Block copyBlock) {
+    public static Block registerCabinet(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         return new CabinetBlock(blockSettings);
     }
 

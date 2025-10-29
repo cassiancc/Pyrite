@@ -2,10 +2,10 @@ package cc.cassian.pyrite.registry;
 
 import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModHelpers;
-import net.minecraft.block.Block;
-import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.item.*;
-
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import java.util.*;
 import java.util.function.Supplier;
 
@@ -79,8 +79,8 @@ public class PyriteItemGroups {
     public static Collection<ItemStack> getBlockCollectionList(Collection<Supplier<Block>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Block> block : items) {
-            var stack = block.get().asItem().getDefaultStack();
-            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
+            var stack = block.get().asItem().getDefaultInstance();
+            if (!stack.is(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteTags.ENABLED)) {
                 stacks.add(stack);
             } else {
 //                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
@@ -92,8 +92,8 @@ public class PyriteItemGroups {
     public static Collection<ItemStack> getItemCollectionList(ArrayList<Supplier<Item>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
-            var stack = item.get().getDefaultStack();
-            if (!stack.isIn(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.isIn(PyriteTags.ENABLED)) {
+            var stack = item.get().getDefaultInstance();
+            if (!stack.is(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteTags.ENABLED)) {
                 stacks.add(stack);
             } else {
 //                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");

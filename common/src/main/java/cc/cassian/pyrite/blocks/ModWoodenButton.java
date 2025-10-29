@@ -1,13 +1,13 @@
 package cc.cassian.pyrite.blocks;
 
-import net.minecraft.block.BlockSetType;
-import net.minecraft.block.ButtonBlock;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class ModWoodenButton extends ButtonBlock {
-    public ModWoodenButton(Settings settings, BlockSetType blockSetType) {
+    public ModWoodenButton(Properties settings, BlockSetType blockSetType) {
         super(blockSetType, 40, settings);
     }
-    public ModWoodenButton(Settings settings, BlockSetType blockSetType, int pressTicks) {
+    public ModWoodenButton(Properties settings, BlockSetType blockSetType, int pressTicks) {
         super(blockSetType, pressTicks, settings);
     }
 }
