@@ -1,7 +1,5 @@
 package cc.cassian.pyrite.compat;
 
-import io.github.lieonlion.mcv.block.MoreChestBlock;
-import io.github.lieonlion.mcv.init.McvBlockInit;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import vectorwing.farmersdelight.common.block.CabinetBlock;

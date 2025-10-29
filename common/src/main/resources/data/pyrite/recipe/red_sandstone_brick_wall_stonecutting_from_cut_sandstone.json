@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:cut_red_sandstone"},"result":{"id":"pyrite:red_sandstone_brick_wall","count":1}}
+{"type":"minecraft:stonecutting","ingredient":"minecraft:cut_red_sandstone","result":{"id":"pyrite:red_sandstone_brick_wall","count":1}}

@@ -1,1 +1,1 @@
-{"parent":"pyrite:block/red_sandstone_brick_slab"}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/red_sandstone_brick_slab"}}
