@@ -3,6 +3,9 @@ package cc.cassian.pyrite.registry.fabric;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.ColumnsCompat;
+import cc.cassian.pyrite.compat.FarmersDelightCompat;
+import cc.cassian.pyrite.compat.TotallyLitCompat;
+import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -74,6 +77,12 @@ public class BlockCreatorImpl {
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
                     newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
                     ChestsCompat.add(newBlock);
+                }
+                break;
+            case "cabinet":
+                if (ModHelpers.isModLoaded("farmersdelight")) {
+                    newBlock = FarmersDelightCompat.registerCabinet(blockID, blockSettings, group, copyBlock);
+                    FarmersDelightCompat.add(newBlock);
                 }
                 break;
             case "ladder":
@@ -181,12 +190,12 @@ public class BlockCreatorImpl {
             case "wall_gate":
 				if (isCopper(blockID)) {
 					newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
-					Block waxed = new WallGateBlock(blockSettings);
+					Block waxed = new WallGateBlock(blockSetType, blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
 					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
 				} else
-					newBlock = new WallGateBlock(blockSettings);
+					newBlock = new WallGateBlock(blockSetType, blockSettings);
                 break;
             case "sign":
                 //Sign Blocks
@@ -251,6 +260,8 @@ public class BlockCreatorImpl {
                 if (particle == null)
                     torchParticle = ParticleTypes.FLAME;
                 newBlock = new ModTorch(blockSettings.nonOpaque(), torchParticle);
+                if (FabricLoader.getInstance().isModLoaded("totally_lit") && !ModLists.PYRITE_DYES.contains(blockID.replace("_torch", "")))
+                    TotallyLitCompat.registerTorch("unlit_"+blockID, blockSettings.nonOpaque(), "unlit_torch", newBlock);
                 addTransparentBlock(newBlock);
                 break;
             case "torch_lever":

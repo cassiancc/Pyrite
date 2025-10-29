@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"pyrite:terracotta_bricks","D":"minecraft:gray_dye"},"result":{"id":"pyrite:gray_terracotta_bricks","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"pyrite:terracotta_bricks","D":"#c:dyes/gray"},"result":{"id":"pyrite:gray_terracotta_bricks","count":8}}

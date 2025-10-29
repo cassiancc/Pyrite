@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["minecraft:magenta_dye","minecraft:torch"],"result":{"id":"pyrite:magenta_torch","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["#c:dyes/magenta","minecraft:torch"],"result":{"id":"pyrite:magenta_torch","count":1}}

@@ -1,5 +1,6 @@
 package cc.cassian.pyrite;
 
+import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import net.minecraft.block.*;
@@ -17,6 +18,7 @@ import static cc.cassian.pyrite.functions.ModHelpers.*;
 public class Pyrite {
 	public static final String MOD_ID = "pyrite";
 	public static final Logger LOGGER = LogManager.getLogger("Pyrite");
+	public static final ModConfig CONFIG = ModConfig.createToml(ModHelpers.getConfigDir(), "", MOD_ID, ModConfig.class);
 
     public static void init() {
 		ModLists.populateLinkedHashMaps();
@@ -28,7 +30,7 @@ public class Pyrite {
 		createPyriteBlock("switchable_glass", "switchable_glass", Blocks.GLASS, "redstone-group");
 		// Cobblestone Bricks
 		generateBrickSet("cobblestone_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, true);
-		generateBrickSet("cobbled_deepslate_brick", Blocks.COBBLESTONE, MapColor.STONE_GRAY, true);
+		generateBrickSet("cobbled_deepslate_brick", Blocks.COBBLED_DEEPSLATE, MapColor.STONE_GRAY, true);
 		// Smooth Stone Set
 		createPyriteBlock("smooth_stone_stairs", "stairs", Blocks.SMOOTH_STONE, "building_blocks");
 		generateBrickSet("smooth_stone_brick", Blocks.SMOOTH_STONE, MapColor.STONE_GRAY, true);
@@ -46,6 +48,8 @@ public class Pyrite {
 		generateBrickSet("mossy_deepslate_brick", Blocks.DEEPSLATE_BRICKS);
 		// Sandstone Bricks
 		generateBrickSet("sandstone_brick", Blocks.SANDSTONE);
+		// Red Sandstone Bricks
+		generateBrickSet("red_sandstone_brick", Blocks.RED_SANDSTONE);
 		// Terracotta Bricks
 		generateBrickSet("terracotta_brick", Blocks.TERRACOTTA);
 		// Grass Set

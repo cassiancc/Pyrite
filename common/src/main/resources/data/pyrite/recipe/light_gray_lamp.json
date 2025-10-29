@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"pyrite:glowstone_lamp","D":"minecraft:light_gray_dye"},"result":{"id":"pyrite:light_gray_lamp","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"pyrite:glowstone_lamp","D":"#c:dyes/light_gray"},"result":{"id":"pyrite:light_gray_lamp","count":8}}

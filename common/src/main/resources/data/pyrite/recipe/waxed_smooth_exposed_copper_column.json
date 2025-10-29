@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["###"," # ","###"],"key":{"#":"pyrite:smooth_exposed_copper"},"result":{"id":"pyrite:waxed_smooth_exposed_copper_column","count":6}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:smooth_exposed_copper_column","minecraft:honeycomb"],"result":{"id":"pyrite:waxed_smooth_exposed_copper_column","count":1}}

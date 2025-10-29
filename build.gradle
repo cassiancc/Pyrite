@@ -102,6 +102,26 @@ subprojects {
             }
         }
 //        maven githubPackage.invoke("The-Aether-Team/The-Aether")
+        maven {
+            name = "Greenhouse Maven"
+            url = 'https://maven.greenhouse.lgbt/releases/'
+        }
+        maven {
+            url "https://jitpack.io/" // Fabric ASM
+            content {
+                includeGroup "com.github.Chocohead"
+            }
+        }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    url = "https://repo.sleeping.town/"
+                }
+            }
+            filter {
+                includeGroup "folk.sisby"
+            }
+        }
 
     }
 

@@ -1,8 +1,10 @@
 package cc.cassian.pyrite.functions;
 
+import cc.cassian.pyrite.core.PyriteTags;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.block.*;
-import net.minecraft.item.Item;
+import net.minecraft.block.enums.BlockFace;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -11,9 +13,15 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.*;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.nio.file.Path;
 import java.util.function.ToIntFunction;
 
 import static cc.cassian.pyrite.Pyrite.LOGGER;
@@ -112,7 +120,6 @@ public class ModHelpers {
         };
     }
 
-
     public static @NotNull BlockSetType getBlockSetType(String blockID) {
         boolean openByHand = !blockID.equals("emerald") && (!blockID.equals("netherite") && (!blockID.equals("diamond")));
         BlockSoundGroup soundGroup = switch (blockID) {
@@ -134,9 +141,8 @@ public class ModHelpers {
         throw new AssertionError();
     }
 
-    @ExpectPlatform
     public static boolean isShield(ItemStack stack) {
-        throw new AssertionError();
+        return stack.isIn(PyriteTags.SHIELDS);
     }
 
     public static boolean isCopper(String blockID) {
@@ -161,5 +167,36 @@ public class ModHelpers {
     @ExpectPlatform
     public static boolean isDevEnvironment() {
         throw new AssertionError();
+    }
+
+    public static ActionResult updateTorchColour(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        ItemStack stack = player.getStackInHand(hand);
+        BlockState state = world.getBlockState(hitResult.getBlockPos());
+        return updateTorchColour(stack, state, player, world, hitResult.getBlockPos());
+    }
+
+    public static ActionResult updateTorchColour(ItemStack stack, BlockState state, PlayerEntity player, World world, BlockPos pos) {
+        if (stack.isIn(PyriteTags.DYES)) {
+            Identifier id = Registries.ITEM.getId(stack.getItem());
+            Block dyedTorch = Registries.BLOCK.get(Identifier.of(MOD_ID, id.getPath().replace("dye", "torch")));
+            if (state.isOf(Blocks.TORCH)) {
+                world.setBlockState(pos, dyedTorch.getStateWithProperties(state));
+                stack.decrementUnlessCreative(1, player);
+            } else if (state.isOf(Blocks.WALL_TORCH)) {
+                world.setBlockState(pos, dyedTorch.getStateWithProperties(state).with(Properties.BLOCK_FACE, BlockFace.WALL));
+                stack.decrementUnlessCreative(1, player);
+            } else return ActionResult.PASS;
+            return ActionResult.SUCCESS;
+        }
+        return ActionResult.PASS;
+    }
+
+    public static ActionResult updateTorchColour(ItemStack itemStack, @Nullable PlayerEntity player, World level, BlockPos pos) {
+        return updateTorchColour(itemStack, level.getBlockState(pos), player, level, pos);
+    }
+
+    @ExpectPlatform
+    public static Path getConfigDir() {
+        return null;
     }
 }
