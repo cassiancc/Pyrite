@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Recipes for waxed Copper blocks.
 - Wall Gate textures are no longer stretched.
 - Log spam when Columns was not installed.
+- Sign items with incorrect translations.
 
 ## [0.16.0]
 
