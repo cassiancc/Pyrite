@@ -13,10 +13,7 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-
-import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 
@@ -54,7 +51,7 @@ public class PyriteFabric implements ModInitializer {
     }
 
     public static void addAlias(String id) {
-        Registries.BLOCK.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
-        Registries.ITEM.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
+        BuiltInRegistries.BLOCK.addAlias(Pyrite.of(MOD_ID, id), Pyrite.of("minecraft", id));
+        BuiltInRegistries.ITEM.addAlias(Pyrite.of(MOD_ID, id), Pyrite.of("minecraft", id));
     }
 }

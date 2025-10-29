@@ -7,6 +7,8 @@ import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
 import cc.cassian.pyrite.neoforge.client.PyriteNeoForgeClient;
 import cc.cassian.pyrite.registry.neoforge.PyriteItemGroupsImpl;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -51,8 +53,8 @@ public final class PyriteNeoForge {
     }
 
     public static void addAlias(String id) {
-        Registries.BLOCK.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
-        Registries.ITEM.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
+        BuiltInRegistries.BLOCK.addAlias(Pyrite.of(MOD_ID, id), Pyrite.of("minecraft", id));
+        BuiltInRegistries.ITEM.addAlias(Pyrite.of(MOD_ID, id), Pyrite.of("minecraft", id));
     }
 
     private static void onUseWithItem(UseItemOnBlockEvent event) {
