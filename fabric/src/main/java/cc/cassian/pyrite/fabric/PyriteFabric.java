@@ -55,6 +55,6 @@ public class PyriteFabric implements ModInitializer {
 
     public static void addAlias(String id) {
         Registries.BLOCK.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
-        
+        Registries.ITEM.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
     }
 }

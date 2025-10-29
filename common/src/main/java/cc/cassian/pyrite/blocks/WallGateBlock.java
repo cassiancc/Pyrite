@@ -171,7 +171,7 @@ public class WallGateBlock extends HorizontalFacingBlock {
 
     @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             boolean bl = world.isReceivingRedstonePower(pos);
             if (state.get(POWERED) != bl) {
                 world.setBlockState(pos, state.with(POWERED, bl).with(OPEN, bl), 2);

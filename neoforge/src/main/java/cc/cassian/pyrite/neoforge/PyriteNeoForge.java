@@ -2,7 +2,6 @@ package cc.cassian.pyrite.neoforge;
 
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
@@ -15,8 +14,6 @@ import net.minecraft.resource.ResourcePackSource;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ItemActionResult;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -56,11 +53,12 @@ public final class PyriteNeoForge {
 
     public static void addAlias(String id) {
         Registries.BLOCK.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
+        Registries.ITEM.addAlias(Identifier.of(MOD_ID, id), Identifier.ofVanilla(id));
     }
 
     private static void onUseWithItem(UseItemOnBlockEvent event) {
         ActionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
-        if (actionResult.equals(ActionResult.SUCCESS)) event.cancelWithResult(ItemActionResult.SUCCESS);
+        if (actionResult.equals(ActionResult.SUCCESS)) event.cancelWithResult(ActionResult.SUCCESS);
     }
 
     private static void addOddities(AddPackFindersEvent event) {
