@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.functions;
 
 import cc.cassian.pyrite.Platform;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -37,8 +38,7 @@ import org.jetbrains.annotations.Nullable;
 import java.nio.file.Path;
 import java.util.function.ToIntFunction;
 
-import static cc.cassian.pyrite.Pyrite.LOGGER;
-import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import static cc.cassian.pyrite.Pyrite.*;
 
 
 public class ModHelpers {
@@ -52,19 +52,15 @@ public class ModHelpers {
     }
 
     public static String findVanillaBlockID(Block block) {
-        return block.toString().substring(block.toString().indexOf(":") + 1, block.toString().indexOf("}"));
-    }
-
-    public static ResourceLocation locate(String id) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
+        return BuiltInRegistries.BLOCK.getKey(block).getPath();
     }
 
     public static ResourceKey<Block> registryKeyBlock(String id) {
-        return ResourceKey.create(Registries.BLOCK, locate(id));
+        return ResourceKey.create(Registries.BLOCK, of(id));
     }
 
     public static ResourceKey<Item> registryKeyItem(String id) {
-        return ResourceKey.create(Registries.ITEM, locate(id));
+        return ResourceKey.create(Registries.ITEM, of(id));
     }
 
     public static Item.Properties newItemSettings(String id) {
@@ -76,7 +72,7 @@ public class ModHelpers {
     }
 
     public static Block getBlock(String id) {
-        return BuiltInRegistries.BLOCK.getValue(ModHelpers.locate(id));
+        return BuiltInRegistries.BLOCK.getValue(of(id));
     }
 
     public static MapColor checkDyeMapColour(String dye) {
@@ -142,25 +138,13 @@ public class ModHelpers {
     public static @NotNull BlockSetType getBlockSetType(String blockID) {
         boolean openByHand = !blockID.equals("emerald") && (!blockID.equals("netherite") && (!blockID.equals("diamond")));
         SoundType soundGroup = switch (blockID) {
-            case "amethyst":
-                yield SoundType.AMETHYST;
-            case "copper", "exposed_copper", "weathered_copper", "oxidized_copper":
-                yield SoundType.COPPER;
-            case "quartz", "lapis", "diamond", "redstone", "gold":
-                yield SoundType.STONE;
-             default:
-                yield SoundType.METAL;
+            case "amethyst" -> SoundType.AMETHYST;
+            case "copper", "exposed_copper", "weathered_copper", "oxidized_copper" -> SoundType.COPPER;
+            case "quartz", "lapis", "diamond", "redstone", "gold" -> SoundType.STONE;
+            default -> SoundType.METAL;
         };
 
         return new BlockSetType(blockID, openByHand, openByHand, openByHand, BlockSetType.PressurePlateSensitivity.EVERYTHING, soundGroup, SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON);
-    }
-
-    public static boolean isModLoaded(String modID) {
-        return Platform.INSTANCE.isModLoaded(modID);
-    }
-
-    public static boolean isShield(ItemStack stack) {
-        return stack.is(PyriteTags.SHIELDS);
     }
 
     public static boolean isCopper(String blockID) {
@@ -210,5 +194,10 @@ public class ModHelpers {
 
     public static Path getConfigDir() {
         return Platform.INSTANCE.getConfigDir();
+    }
+
+    public static void addAlias(String id) {
+        BuiltInRegistries.BLOCK.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
+        BuiltInRegistries.ITEM.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
     }
 }

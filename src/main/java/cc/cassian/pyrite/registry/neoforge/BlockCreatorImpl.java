@@ -2,7 +2,8 @@ package cc.cassian.pyrite.registry.neoforge;
 
 //? if neoforge {
 
-/*import cc.cassian.pyrite.blocks.*;
+/*import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
@@ -17,6 +18,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -57,17 +59,17 @@ public class BlockCreatorImpl {
     public static final ArrayList<Supplier<Block>> HANGING_SIGN_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> SHELVES = new ArrayList<>();
     // Sublists for Item Groups
-    public static final ArrayList<Supplier<?>> WOOD_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<?>> RESOURCE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<?>> BRICK_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Supplier<? extends ItemLike>> WOOD_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Supplier<? extends ItemLike>> RESOURCE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Supplier<? extends ItemLike>> BRICK_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> REDSTONE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<?>> MISC_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Supplier<? extends ItemLike>> MISC_BLOCKS = new ArrayList<>();
 
     /^*
      * Implements {@link BlockCreator#createWoodType(String, BlockSetType)} on NeoForge.
      ^/
     public static WoodType createWoodType(String blockID, BlockSetType setType) {
-        WoodType woodType = new WoodType(locate(blockID).toString(), setType);
+        WoodType woodType = new WoodType(Pyrite.of(blockID).toString(), setType);
         WoodType.register(woodType);
         return woodType;
     }
@@ -263,10 +265,7 @@ public class BlockCreatorImpl {
                     WOOD_BLOCKS.add(newBlock);
                 break;
             case "torch":
-                if (particle == null)
-                    newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.noOcclusion(), ParticleTypes.FLAME));
-                else
-                    newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.noOcclusion(), particle));
+                newBlock = BLOCKS.register(blockID, () -> new ModTorch(blockSettings.noOcclusion(), Objects.requireNonNullElse(particle, ParticleTypes.FLAME)));
                 break;
             case "torch_lever":
                 newBlock = BLOCKS.register(blockID, () -> new TorchLever(blockSettings.noOcclusion(), particle));
@@ -322,22 +321,22 @@ public class BlockCreatorImpl {
     }
 
     public static void registerSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).stacksTo(16)));
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(newBlock.get(), wallSign.get(), newBlockItemSettings(blockID).stacksTo(16)));
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }
 
     public static void registerHangingSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new HangingSignItem(newBlock.get(), wallSign.get(), newItemSettings(blockID).stacksTo(16)));
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new HangingSignItem(newBlock.get(), wallSign.get(), newBlockItemSettings(blockID).stacksTo(16)));
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }
 
-    public static boolean inGroup(Object obj) {
+    public static boolean inGroup(Supplier<? extends ItemLike> obj) {
         return WOOD_BLOCKS.contains(obj) || BRICK_BLOCKS.contains(obj) || RESOURCE_BLOCKS.contains(obj) || REDSTONE_BLOCKS.contains(obj) || MISC_BLOCKS.contains(obj);
     }
 
-    public static void addItemGroup(String id, Supplier<Block> icon, ArrayList<Supplier<?>> blocks) {
+    public static void addItemGroup(String id, Supplier<Block> icon, ArrayList<Supplier<? extends ItemLike>> blocks) {
         Supplier<CreativeModeTab> PYRITE_GROUP = TABS.register(id, () -> CreativeModeTab.builder()
             //Set the title of the tab.
             .title(Component.translatable("itemGroup." + MOD_ID + "." + id))
@@ -390,9 +389,11 @@ public class BlockCreatorImpl {
         for (Supplier<Block> sign : HANGING_SIGN_BLOCKS) {
             event.modify(BlockEntityType.HANGING_SIGN, sign.get());
         }
+        //? if >1.21.9 {
         for (Supplier<Block> shelf : SHELVES) {
             event.modify(BlockEntityType.SHELF, shelf.get());
         }
+        //?}
         if (ModList.get().isLoaded("lolmcv")) {
             ChestsCompat.registerToBlockEntity(event);
         }
@@ -405,7 +406,7 @@ public class BlockCreatorImpl {
         for (Map.Entry<String, Supplier<FlowerPotBlock>> entry : POTTED_FLOWERS.entrySet()) {
             String flowerID = entry.getKey();
             Supplier<FlowerPotBlock> flowerPot = entry.getValue();
-            pot.addPlant(locate(flowerID), flowerPot);
+            pot.addPlant(Pyrite.of(flowerID), flowerPot);
         }
     }
 }

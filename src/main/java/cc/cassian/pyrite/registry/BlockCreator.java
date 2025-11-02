@@ -1,8 +1,9 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.pyrite.Platform;
 //? if fabric {
 import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
-//?} else {
+ //?} else {
 /*import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
 *///?}
 import net.minecraft.core.BlockPos;
@@ -257,9 +258,11 @@ public class BlockCreator {
         // Hanging Signs
         createPyriteBlock("%s_hanging_sign".formatted(blockID), "hanging_sign", Blocks.OAK_HANGING_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         // Chest
-        createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        if (Platform.INSTANCE.isModLoaded("lolmcv"))
+            createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         // Cabinet
-        createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        if (Platform.INSTANCE.isModLoaded("farmersdelight"))
+            createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         // Shelf
         //? if >1.21.8
         createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
@@ -336,8 +339,11 @@ public class BlockCreator {
         BlockSetType set = getBlockSetType(blockID);
         //Create Bars/Doors/Trapdoors/Plates for those that don't already exist (Iron)
         if (!blockID.equals("iron")) {
+            //? if <1.21.9
+            /*createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);*/
             //Disable Copper doors in 1.21+
             if (!blockID.contains("copper")) {
+                //? if >1.21.9
                 createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
                 createPyriteBlock("%s_door".formatted(blockID),"door", block, set, blockID);
                 createPyriteBlock("%s_trapdoor".formatted(blockID),"trapdoor", block, set, blockID);

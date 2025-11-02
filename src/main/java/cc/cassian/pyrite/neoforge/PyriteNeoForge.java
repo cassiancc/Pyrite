@@ -44,20 +44,6 @@ public final class PyriteNeoForge {
         NeoForge.EVENT_BUS.addListener(PyriteNeoForge::onUseWithItem);
         eventBus.addListener(PyriteNeoForge::addOddities);
         NeoForge.EVENT_BUS.addListener(PyriteNeoForge::hideStacks);
-
-        addAlias("copper_bars");
-        addAlias("exposed_copper_bars");
-        addAlias("weathered_copper_bars");
-        addAlias("oxidized_copper_bars");
-        addAlias("waxed_copper_bars");
-        addAlias("waxed_exposed_copper_bars");
-        addAlias("waxed_weathered_copper_bars");
-        addAlias("waxed_oxidized_copper_bars");
-    }
-
-    public static void addAlias(String id) {
-        BuiltInRegistries.BLOCK.addAlias(Pyrite.of(MOD_ID, id), Pyrite.of("minecraft", id));
-        BuiltInRegistries.ITEM.addAlias(Pyrite.of(MOD_ID, id), Pyrite.of("minecraft", id));
     }
 
     private static void onUseWithItem(UseItemOnBlockEvent event) {
@@ -68,11 +54,11 @@ public final class PyriteNeoForge {
     private static void addOddities(AddPackFindersEvent event) {
         ModLists.DATAPACKS.forEach((key, value) -> {
             if (value) {
-                event.addPackFinders(ModHelpers.locate("resourcepacks/"+key), PackType.SERVER_DATA, Component.literal(key), PackSource.BUILT_IN, true, Pack.Position.TOP);
+                event.addPackFinders(Pyrite.of("resourcepacks/"+key), PackType.SERVER_DATA, Component.literal(key), PackSource.BUILT_IN, true, Pack.Position.TOP);
             }
         });
         if (Pyrite.CONFIG.crafting_tables)
-            event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_crafting_tables"), PackType.CLIENT_RESOURCES, Component.literal("pyrite/pyrite_crafting_tables"), PackSource.BUILT_IN, true, Pack.Position.TOP);
+            event.addPackFinders(Pyrite.of("resourcepacks/pyrite_crafting_tables"), PackType.CLIENT_RESOURCES, Component.literal("pyrite/pyrite_crafting_tables"), PackSource.BUILT_IN, true, Pack.Position.TOP);
     }
 
     private static void hideStacks(TagsUpdatedEvent commonSetupEvent) {

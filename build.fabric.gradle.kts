@@ -60,6 +60,9 @@ repositories {
             name = "Jitpack (Fabric ASM)"
         }
     }
+    maven ( "https://maven.cassian.cc" ) {
+        name = "cassian's maven"
+    }
 }
 
 dependencies {
@@ -91,9 +94,13 @@ dependencies {
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     include("folk.sisby:kaleido-config:${property("deps.kaleido")}")
+
     modCompileOnly("maven.modrinth:columns:${property("deps.columns")}")
     modImplementation("maven.modrinth:eiv:${property("deps.eiv")}-fabric")
     modCompileOnly("maven.modrinth:totally-lit:${property("deps.totally_lit")}")
+    modLocalRuntime("cc.cassian.item-descriptions:item-descriptions-fabric:${property("deps.item_descriptions")}") {
+        isTransitive = false
+    }
 
     modImplementation("vectorwing:FarmersDelight:${property("deps.fdrf")}") {
         exclude(group = "net.fabricmc")

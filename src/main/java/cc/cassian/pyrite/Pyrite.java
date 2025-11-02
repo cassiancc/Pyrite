@@ -83,7 +83,7 @@ public class Pyrite {
 		// Vanilla Crafting Tables
 		generateVanillaCraftingTables();
 		// Modded Crafting Tables
-		if (ModHelpers.isModLoaded("aether")) {
+		if (Platform.INSTANCE.isModLoaded("aether")) {
 			createPyriteBlock("skyroot_crafting_table","crafting", Blocks.CRAFTING_TABLE, "crafting_table");
 			createPyriteBlock( "holystone_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 			createPyriteBlock( "mossy_holystone_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
@@ -164,6 +164,18 @@ public class Pyrite {
 			//Create block.
 			createPyriteBlock(block + "_gate","wall_gate", wallsBlock, BlockSetType.STONE, "building_blocks");
 		}
+
+        // Add aliases for content removed in 1.21.9.
+        //? if >1.21.9 {
+        addAlias("copper_bars");
+        addAlias("exposed_copper_bars");
+        addAlias("weathered_copper_bars");
+        addAlias("oxidized_copper_bars");
+        addAlias("waxed_copper_bars");
+        addAlias("waxed_exposed_copper_bars");
+        addAlias("waxed_weathered_copper_bars");
+        addAlias("waxed_oxidized_copper_bars");
+        //?}
 	}
 
     public static ResourceLocation of(String namespace, String path) {

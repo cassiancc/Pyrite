@@ -2,6 +2,8 @@ package cc.cassian.pyrite.registry.fabric;
 
 //? if fabric {
 
+import cc.cassian.pyrite.Platform;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.ColumnsCompat;
@@ -50,7 +52,7 @@ public class BlockCreatorImpl {
      * Implements {@link BlockCreator#createWoodType(String, BlockSetType)} on Fabric.
      */
     public static WoodType createWoodType(String blockID, BlockSetType setType) {
-        return WoodTypeBuilder.copyOf(WoodType.OAK).register(locate(blockID), setType);
+        return WoodTypeBuilder.copyOf(WoodType.OAK).register(Pyrite.of(blockID), setType);
     }
 
 	/**
@@ -96,7 +98,7 @@ public class BlockCreatorImpl {
                 }
                 break;
             case "cabinet":
-                if (ModHelpers.isModLoaded("farmersdelight")) {
+                if (Platform.INSTANCE.isModLoaded("farmersdelight")) {
                     newBlock = FarmersDelightCompat.registerCabinet(blockID, blockSettings, group, copyBlock);
                     FarmersDelightCompat.add(newBlock);
                 }
@@ -330,20 +332,20 @@ public class BlockCreatorImpl {
         for (Map.Entry<String, Block> entry : BLOCKS.entrySet()) {
             final Block block = entry.getValue();
             final String blockID = entry.getKey();
-            Registry.register(BuiltInRegistries.BLOCK, locate(blockID), block);
-            Registry.register(BuiltInRegistries.ITEM, locate(blockID), addBlockItem(blockID, block));
+            Registry.register(BuiltInRegistries.BLOCK, Pyrite.of(blockID), block);
+            Registry.register(BuiltInRegistries.ITEM, Pyrite.of(blockID), addBlockItem(blockID, block));
         }
         //Registers blocks without block items.
         for (Map.Entry<String, Block> entry : ITEMLESS_BLOCKS.entrySet()) {
             final Block block = entry.getValue();
             final String blockID = entry.getKey();
-            Registry.register(BuiltInRegistries.BLOCK, locate(blockID), block);
+            Registry.register(BuiltInRegistries.BLOCK, Pyrite.of(blockID), block);
         }
         //Registers items.
         for (Map.Entry<String, Item> entry : ITEMS.entrySet()) {
             final Item item = entry.getValue();
             final String itemID = entry.getKey();
-            Registry.register(BuiltInRegistries.ITEM, locate(itemID), item);
+            Registry.register(BuiltInRegistries.ITEM, Pyrite.of(itemID), item);
         }
 
 
