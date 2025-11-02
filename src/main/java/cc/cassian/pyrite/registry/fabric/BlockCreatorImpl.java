@@ -17,7 +17,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -37,7 +36,6 @@ import java.util.function.Supplier;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
 import static cc.cassian.pyrite.registry.PyriteItemGroups.*;
-import static cc.cassian.pyrite.registry.fabric.PyriteItemGroupsImpl.*;
 
 @SuppressWarnings("unused")
 public class BlockCreatorImpl {
@@ -362,7 +360,7 @@ public class BlockCreatorImpl {
         // Register item group.
         addItemGroup("pyrite_group", "glowing_obsidian", BLOCKS);
         // Add items to item group.
-        modifyEntries();
+        PyriteItemGroups.buildContents();
     }
 }
 

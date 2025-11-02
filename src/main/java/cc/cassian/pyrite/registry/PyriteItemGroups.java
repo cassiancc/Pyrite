@@ -1,13 +1,31 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModHelpers;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import cc.cassian.pyrite.functions.ModLists;
+//? if fabric {
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
+//?} else {
+/*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+*///?}
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
+
+
 import java.util.*;
 import java.util.function.Supplier;
+
+import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import static cc.cassian.pyrite.functions.ModLists.VANILLA_DYES;
 
 public class PyriteItemGroups {
     public static final ArrayList<Supplier<Block>> REDSTONE_BLOCKS = new ArrayList<>();
@@ -294,5 +312,266 @@ public class PyriteItemGroups {
             default:
                 ModHelpers.log("%s provided group %s".formatted(blockID, group));
         }
+    }
+
+    private static void addAfter(Item anchor, Collection<ItemStack> blockCollectionList,
+                                 //? if fabric
+                                 FabricItemGroupEntries event
+                                 //? if neoforge
+                                 /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
+            //? if neoforge {
+            /*event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            *///?} else {
+            event.addAfter(anchor, itemStack);
+            //?}
+        }
+    }
+
+    private static void addAfter(Block block, Collection<ItemStack> blockCollectionList,
+                                 //? if fabric
+                                 FabricItemGroupEntries event
+                                 //? if neoforge
+                                 /*BuildCreativeModeTabContentsEvent event*/
+                                 ) {
+        addAfter(block.asItem(), blockCollectionList, event);
+    }
+
+    private static void addBefore(Block block, Collection<ItemStack> blockCollectionList,
+                                  //? if fabric
+                                  FabricItemGroupEntries event
+                                  //? if neoforge
+                                  /*BuildCreativeModeTabContentsEvent event*/
+                                  ) {
+        addBefore(block.asItem(), blockCollectionList, event);
+    }
+
+    private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList,
+                                  //? if fabric
+                                  FabricItemGroupEntries event
+                                  //? if neoforge
+                                  /*BuildCreativeModeTabContentsEvent event*/
+                                  ) {
+        for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
+            //? if fabric {
+            event.addAfter(anchor, itemStack);
+            //?} else {
+            /*event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            *///?}
+        }
+    }
+
+    private static void addBefore(Item anchor, Item item,
+                                  //? if fabric
+                                  FabricItemGroupEntries event
+                                  //? if neoforge
+                                  /*BuildCreativeModeTabContentsEvent event*/
+                                  ) {
+        //? if fabric {
+        event.addBefore(anchor, item);
+        //?} else {
+        /*event.insertBefore(anchor.getDefaultInstance(), item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        *///?}
+    }
+
+    public static void buildContents(
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        if (Pyrite.CONFIG.addToVanillaItemGroups) {
+            //? if neoforge {
+            /*if (event.getTabKey().equals(CreativeModeTabs.BUILDING_BLOCKS))
+                buildBuildingBlocksTab(event);
+            else if (event.getTabKey().equals(CreativeModeTabs.COLORED_BLOCKS))
+                buildColoredBlocksTab(event);
+            else if (event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS))
+                buildNaturalBlocksTab(event);
+            else if (event.getTabKey().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS))
+                buildFunctionalBlocksTab(event);
+            else if (event.getTabKey().equals(CreativeModeTabs.REDSTONE_BLOCKS))
+                buildRedstoneBlocksTab(event);
+            else if (event.getTabKey().equals(CreativeModeTabs.INGREDIENTS))
+                buildIngredientsTab(event);
+            *///?}
+            //? if fabric {
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(PyriteItemGroups::buildBuildingBlocksTab);
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(PyriteItemGroups::buildBuildingBlocksTab);
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(PyriteItemGroups::buildNaturalBlocksTab);
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(PyriteItemGroups::buildFunctionalBlocksTab);
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(PyriteItemGroups::buildRedstoneBlocksTab);
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(PyriteItemGroups::buildIngredientsTab);
+            //?}
+
+            // Add Pyrite Concrete to vanilla item group.
+            //? if fabric {
+            for (int dyeIndex = 0; dyeIndex < ModLists.DYES.length; dyeIndex++) {
+                String dye = ModLists.DYES[dyeIndex];
+                String namespace;
+                if (!Arrays.asList(VANILLA_DYES).contains(dye))
+                    namespace = MOD_ID;
+                else {
+                    namespace = "minecraft";
+                }
+                final var concrete = dye+"_concrete";
+                final var stairs = BLOCKS.get(concrete + "_stairs");
+                final var slab = BLOCKS.get(concrete + "_slab");
+                ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register((itemGroup) -> {
+                    if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
+                        itemGroup.addAfter(BuiltInRegistries.BLOCK.getValue(Pyrite.of(namespace, concrete)), stairs, slab);
+                });
+            }
+            //?}
+
+        }
+
+    }
+
+    private static void buildIngredientsTab(
+            //? if fabric
+            FabricItemGroupEntries event
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
+    }
+
+    private static void buildRedstoneBlocksTab(
+            //? if fabric
+            FabricItemGroupEntries event
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        addAfter(Items.CAULDRON, getBlockCollectionList(REDSTONE_BLOCKS), event);
+        addAfter(Items.REDSTONE_BLOCK, getBlockCollectionList(REDSTONE_RESOURCE_BLOCKS), event);
+        addAfter(Items.LEVER, getBlockCollectionList(TORCH_LEVER), event);
+    }
+
+    private static void buildFunctionalBlocksTab(
+            //? if fabric
+            FabricItemGroupEntries event
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        addAfter(Items.WARPED_HANGING_SIGN, getItemCollectionList(SIGNS), event);
+        addAfter(Items.CRAFTING_TABLE, getBlockCollectionList(CRAFTING_TABLES), event);
+        addAfter(Items.TORCH, getBlockCollectionList(TORCH), event);
+        addAfter(Items.CRYING_OBSIDIAN, getBlockCollectionList(OBSIDIAN), event);
+        addMapToItemGroup(event, FUNCTIONAL);
+    }
+
+    private static void buildNaturalBlocksTab(
+            //? if fabric
+            FabricItemGroupEntries event
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+            ) {
+        addAfter(Items.WITHER_ROSE, getBlockCollectionList(FLOWERS), event);
+        addAfter(Items.DIRT_PATH, getBlockCollectionList(DIRT_PATH), event);
+        addAfter(Items.GRASS_BLOCK, getBlockCollectionList(NOSTALGIA_GRASS), event);
+        addAfter(Items.GRASS_BLOCK, getBlockCollectionList(GRASS), event);
+        addAfter(Items.PODZOL, getBlockCollectionList(PODZOL), event);
+        addAfter(Items.MYCELIUM, getBlockCollectionList(MYCELIUM), event);
+        addAfter(Items.GRAVEL, getBlockCollectionList(GRAVEL), event);
+        addAfter(Items.MUSHROOM_STEM, getBlockCollectionList(BROWN_MUSHROOM), event);
+        addAfter(Items.MUSHROOM_STEM, getBlockCollectionList(RED_MUSHROOM), event);
+    }
+
+    private static void buildBuildingBlocksTab(
+            //? if fabric
+            FabricItemGroupEntries event
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        addAfter(Items.IRON_BLOCK, getBlockCollectionList(IRON_BLOCKS), event);
+        addAfter(Items.GOLD_BLOCK, getBlockCollectionList(GOLD_BLOCKS), event);
+        addAfter(Items.EMERALD_BLOCK, getBlockCollectionList(EMERALD_BLOCKS), event);
+        addAfter(Items.LAPIS_BLOCK, getBlockCollectionList(LAPIS_BLOCKS), event);
+        addAfter(Items.REDSTONE_BLOCK, getBlockCollectionList(REDSTONE_RESOURCE_BLOCKS), event);
+        addAfter(Items.DIAMOND_BLOCK, getBlockCollectionList(DIAMOND_BLOCKS), event);
+        addAfter(Items.NETHERITE_BLOCK, getBlockCollectionList(NETHERITE_BLOCKS), event);
+        addAfter(Items.QUARTZ_BLOCK, getBlockCollectionList(QUARTZ_BLOCKS), event);
+        addAfter(Items.AMETHYST_BLOCK, getBlockCollectionList(AMETHYST_BLOCKS), event);
+        addAfter(Items.CUT_COPPER_SLAB, getBlockCollectionList(COPPER_BLOCKS.values()), event);
+        addAfter(Items.EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(EXPOSED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WEATHERED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(OXIDIZED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.WAXED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_EXPOSED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_WEATHERED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_OXIDIZED_COPPER_BLOCKS.values()), event);
+        addAfter(Items.RED_NETHER_BRICK_WALL, getBlockCollectionList(COLOURED_NETHER_BRICKS), event);
+        addAfter(Items.COBBLESTONE_WALL, getBlockCollectionList(COBBLESTONE), event);
+        addAfter(Items.COBBLED_DEEPSLATE_WALL, getBlockCollectionList(COBBLED_DEEPSLATE), event);
+        addAfter(Items.GRANITE_SLAB, getBlockCollectionList(GRANITE), event);
+        addAfter(Items.ANDESITE_SLAB, getBlockCollectionList(ANDESITE), event);
+        addAfter(Items.POLISHED_DIORITE_SLAB, getBlockCollectionList(DIORITE), event);
+        addAfter(Items.SMOOTH_STONE_SLAB, getBlockCollectionList(SMOOTH_STONE), event);
+        addAfter(Items.TUFF_BRICK_SLAB, getBlockCollectionList(TUFF), event);
+        addAfter(Items.DEEPSLATE_TILE_WALL, getBlockCollectionList(DEEPSLATE), event);
+        addBefore(Items.TUFF, Items.CALCITE, event);
+        addAfter(Items.CALCITE, getBlockCollectionList(CALCITE), event);
+        addAfter(Blocks.CUT_SANDSTONE_SLAB, getBlockCollectionList(SANDSTONE), event);
+        addMapToItemGroup(event, BUILDING_BLOCKS);
+        addAfter(Items.CHERRY_BUTTON, getBlockCollectionList(WOOD), event);
+    }
+
+    private static void buildColoredBlocksTab(
+            //? if fabric
+            FabricItemGroupEntries event
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent event*/
+    ) {
+        addAfter(Blocks.PINK_STAINED_GLASS, getBlockCollectionList(STAINED_GLASS), event);
+        addAfter(Blocks.PINK_STAINED_GLASS_PANE, getBlockCollectionList(STAINED_GLASS_PANES), event);
+        addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(FRAMED_GLASS), event);
+        addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(FRAMED_GLASS_PANES), event);
+        addAfter(Blocks.PINK_CONCRETE, getBlockCollectionList(CONCRETE), event);
+        addAfter(Blocks.PINK_CONCRETE_POWDER, getBlockCollectionList(CONCRETE_POWDER), event);
+        addAfter(Blocks.PINK_TERRACOTTA, getBlockCollectionList(TERRACOTTA), event);
+        addBefore(Blocks.WHITE_CONCRETE, getBlockCollectionList(TERRACOTTA_BRICKS), event);
+        addMapToItemGroup(event, COLORED_BLOCKS);
+        addAfter(Blocks.PINK_CARPET, getBlockCollectionList(CARPET), event);
+        addAfter(Blocks.PINK_SHULKER_BOX, getBlockCollectionList(DYED_BRICKS), event);
+        event.acceptAll(getBlockCollectionList(DYED_WOOD));
+        addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(LAMPS), event);
+    }
+
+    public static void addMapToItemGroup(
+            //? if fabric
+            FabricItemGroupEntries group
+            //? if neoforge
+            /*BuildCreativeModeTabContentsEvent group*/
+            , LinkedHashMap<Block, Supplier<Block>> map) {
+        for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {
+            Block anchor = entry.getKey();
+            Block value = entry.getValue().get();
+            if (value.asItem().getDefaultInstance().is(PyriteTags.ENABLED)) {
+                if (anchor != null) {
+                    //? if fabric {
+                    group.addAfter(anchor, value);
+                    //?} else {
+                    /*group.insertAfter(anchor.asItem().getDefaultInstance(), value.asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                    *///?}
+                } else
+                    group.accept(value);
+            }
+        }
+    }
+
+    public static void addItemGroup(String id, String icon, LinkedHashMap<String, Block> blocks) {
+        //? if fabric {
+        CreativeModeTab group = FabricItemGroup.builder()
+                .icon(() -> new ItemStack(BLOCKS.get(icon)))
+                .title(Component.translatable("itemGroup.pyrite." + id))
+                .displayItems((context, entries) -> {
+                    for (Block block : blocks.values()) {
+                        if (block.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
+                            entries.accept(block);
+                    }
+                })
+                .build();
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
+        //?}
     }
 }
