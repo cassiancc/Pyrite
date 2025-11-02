@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "pyrite",
+  "version": "${version}",
+  "name": "Pyrite",
+  "description": "Variations of Vanilla blocks, including dyed wood, dyed bricks, new material blocks and more to complete your colourful builds.",
+  "authors": ["cassiancc"],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/pyrite",
+    "issues": "https://github.com/cassiancc/Pyrite/issues",
+    "sources": "https://github.com/cassiancc/Pyrite"
+  },
+  "license": "MIT",
+  "icon": "assets/pyrite/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "cc.cassian.pyrite.fabric.PyriteFabric"
+    ],
+    "client": [
+      "cc.cassian.pyrite.fabric.client.PyriteFabricClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.2",
+    "minecraft": "${minecraft}",
+    "java": ">=21",
+    "fabric-api": ">=0.110.0"
+  },
+  "suggests": {
+    "lolmcv": "*"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "package": "cc.cassian.pyrite.mixin",
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+  ],
+  "client": []
+}
