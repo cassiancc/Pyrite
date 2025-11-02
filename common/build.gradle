@@ -13,6 +13,8 @@ dependencies {
         exclude(group: "net.fabricmc")
     }
     implementation("folk.sisby:kaleido-config:${kaleido_version}")
+    modCompileOnly("maven.modrinth:eiv:${eiv_version}-fabric")
+
 
     // Architectury API. This is optional, and you can comment it out if you don't need it.
 //    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"

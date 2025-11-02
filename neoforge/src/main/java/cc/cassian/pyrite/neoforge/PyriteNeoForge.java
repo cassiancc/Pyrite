@@ -2,6 +2,7 @@ package cc.cassian.pyrite.neoforge;
 
 
 import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.compat.PyriteEIVPlugin;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
@@ -17,10 +18,13 @@ import net.minecraft.world.InteractionResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
@@ -41,6 +45,7 @@ public final class PyriteNeoForge {
         eventBus.addListener(PyriteItemGroupsImpl::buildContents);
         NeoForge.EVENT_BUS.addListener(PyriteNeoForge::onUseWithItem);
         eventBus.addListener(PyriteNeoForge::addOddities);
+        eventBus.addListener(PyriteNeoForge::hideStacks);
 
         addAlias("copper_bars");
         addAlias("exposed_copper_bars");
@@ -70,5 +75,11 @@ public final class PyriteNeoForge {
         });
         if (Pyrite.CONFIG.crafting_tables)
             event.addPackFinders(ModHelpers.locate("resourcepacks/pyrite_crafting_tables"), PackType.CLIENT_RESOURCES, Component.literal("pyrite/pyrite_crafting_tables"), PackSource.BUILT_IN, true, Pack.Position.TOP);
+    }
+
+    private static void hideStacks(TagsUpdatedEvent commonSetupEvent) {
+        if (ModList.get().isLoaded("eiv")) {
+            PyriteEIVPlugin.hideStacks();
+        }
     }
 }
