@@ -2,7 +2,7 @@ package cc.cassian.pyrite.registry.fabric;
 
 //? if fabric {
 
-/*import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModLists;
@@ -163,4 +163,4 @@ public class PyriteItemGroupsImpl {
     }
 }
 
-*///?}
+//?}

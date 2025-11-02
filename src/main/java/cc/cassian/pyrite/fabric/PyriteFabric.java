@@ -2,7 +2,7 @@ package cc.cassian.pyrite.fabric;
 
 //? fabric {
 
-/*import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.FarmersDelightCompat;
 import cc.cassian.pyrite.compat.PyriteEIVPlugin;
@@ -65,4 +65,4 @@ public class PyriteFabric implements ModInitializer {
     }
 }
 
-*///?}
+//?}

@@ -2,7 +2,7 @@ package cc.cassian.pyrite.registry.fabric;
 
 //? if fabric {
 
-/*import cc.cassian.pyrite.blocks.*;
+import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.ColumnsCompat;
 import cc.cassian.pyrite.compat.FarmersDelightCompat;
@@ -48,16 +48,16 @@ public class BlockCreatorImpl {
     // All items and their IDs.
     public static final LinkedHashMap<String, Item> ITEMS = new LinkedHashMap<>();
 
-    /^*
+    /**
      * Implements {@link BlockCreator#createWoodType(String, BlockSetType)} on Fabric.
-     ^/
+     */
     public static WoodType createWoodType(String blockID, BlockSetType setType) {
         return WoodTypeBuilder.copyOf(WoodType.OAK).register(locate(blockID), setType);
     }
 
-	/^*
+	/**
      * Implements {@link BlockCreator#platformRegister(String, String, BlockBehaviour.Properties, WoodType, BlockSetType, ParticleOptions, Block, String, MapColor)} on Fabric.
-     ^/
+     */
     public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
@@ -85,8 +85,10 @@ public class BlockCreatorImpl {
                 break;
             case "shelf":
                 // Register Shelf
+                //? if >1.21.9 {
                 newBlock = new ShelfBlock(blockSettings);
                 BlockEntityType.SHELF.addSupportedBlock(newBlock);
+                //?}
                 break;
             case "chest":
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
@@ -308,10 +310,10 @@ public class BlockCreatorImpl {
         match(()-> finalNewBlock, copyBlock, group, blockID);
     }
 
-    /^*
+    /**
      * Implements {@link BlockCreator#registerPyriteItem(String)} on Fabric.
      * This registers a basic item with no additional settings - primarily used for Dye.
-     ^/
+     */
     public static void registerPyriteItem(String itemID) {
         var item = new Item(newItemSettings(itemID));
         ITEMS.put(itemID, item);
@@ -364,4 +366,4 @@ public class BlockCreatorImpl {
     }
 }
 
-*///?}
+//?}

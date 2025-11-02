@@ -2,7 +2,7 @@ package cc.cassian.pyrite.functions.neoforge;
 
 //? if neoforge {
 
-import net.minecraft.world.level.block.Block;
+/*import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,4 +21,4 @@ public class NeoHelpers {
 
 }
 
-//?}
+*///?}

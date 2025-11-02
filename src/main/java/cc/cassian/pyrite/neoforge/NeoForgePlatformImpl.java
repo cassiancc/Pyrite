@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.neoforge;
 
 //? neoforge {
-import cc.cassian.pyrite.Platform;
+/*import cc.cassian.pyrite.Platform;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLPaths;
@@ -31,4 +31,4 @@ public class NeoForgePlatformImpl implements Platform {
     }
 
 }
-//?}
+*///?}

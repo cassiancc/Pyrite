@@ -21,7 +21,7 @@ public class FarmersDelightCompat {
     public static void registerToBlockEntity() {
         for (Block chest : CABINETS) {
             //? if fabric
-            /*ModBlockEntityTypes.CABINET.get().addSupportedBlock(chest);*/
+            ModBlockEntityTypes.CABINET.get().addSupportedBlock(chest);
         }
     }
 }

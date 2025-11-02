@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.fabric;
 
 //? fabric {
-/*import cc.cassian.pyrite.Platform;
+import cc.cassian.pyrite.Platform;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
@@ -29,4 +29,4 @@ public class FabricPlatformImpl implements Platform {
     }
 
 }
-*///?}
+//?}

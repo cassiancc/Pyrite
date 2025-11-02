@@ -2,7 +2,7 @@ package cc.cassian.pyrite.compat;
 
 //? if fabric {
 
-/*import cc.cassian.pyrite.blocks.ModWallMounted;
+import cc.cassian.pyrite.blocks.ModWallMounted;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
 import io.github.realguyman.totally_lit.TotallyLit;
@@ -30,4 +30,4 @@ public class TotallyLitCompat {
     }
 }
 
-*///?}
+//?}

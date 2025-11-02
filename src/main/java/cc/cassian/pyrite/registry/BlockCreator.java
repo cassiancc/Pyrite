@@ -1,10 +1,10 @@
 package cc.cassian.pyrite.registry;
 
 //? if fabric {
-/*import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
-*///?} else {
-import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
-//?}
+import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
+//?} else {
+/*import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
+*///?}
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.level.BlockGetter;
@@ -261,6 +261,7 @@ public class BlockCreator {
         // Cabinet
         createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         // Shelf
+        //? if >1.21.8
         createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
     }
 

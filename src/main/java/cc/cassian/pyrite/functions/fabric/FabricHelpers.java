@@ -2,7 +2,7 @@ package cc.cassian.pyrite.functions.fabric;
 
 //? if fabric {
 
-/*import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
@@ -42,4 +42,4 @@ public class FabricHelpers {
 
 }
 
-*///?}
+//?}

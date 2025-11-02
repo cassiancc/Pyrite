@@ -2,7 +2,7 @@ package cc.cassian.pyrite.compat;
 
 //? if fabric {
 
-/*import cc.cassian.pyrite.blocks.fabric.OxidizableColumnBlock;
+import cc.cassian.pyrite.blocks.fabric.OxidizableColumnBlock;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import io.github.haykam821.columns.block.ColumnBlock;
@@ -33,4 +33,4 @@ public class ColumnsCompat {
     }
 }
 
-*///?}
+//?}

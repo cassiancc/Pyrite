@@ -2,7 +2,7 @@ package cc.cassian.pyrite.neoforge.client;
 
 //? if neoforge {
 
-import cc.cassian.pyrite.Pyrite;
+/*import cc.cassian.pyrite.Pyrite;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
@@ -40,4 +40,4 @@ public class PyriteNeoForgeClient {
 
 }
 
-//?}
+*///?}

@@ -2,7 +2,7 @@ package cc.cassian.pyrite.registry.neoforge;
 
 //? if neoforge {
 
-import cc.cassian.pyrite.Pyrite;
+/*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
@@ -159,4 +159,4 @@ public class PyriteItemGroupsImpl {
 	}
 }
 
-//?}
+*///?}

@@ -5,6 +5,7 @@ import cc.cassian.pyrite.core.PyriteTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+//? if >1.21.8
 import net.minecraft.core.particles.PowerParticleOption;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -101,7 +102,13 @@ public class ModHelpers {
 
     public static ParticleOptions getTorchParticle(String dye) {
         return switch (dye) {
-            case "dragon" -> PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1);
+            case "dragon" ->
+                    //? if >1.21.8 {
+                    PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1)
+                    //?} else {
+                    /*ParticleTypes.DRAGON_BREATH
+                    *///?}
+                    ;
             case "glow" -> ParticleTypes.GLOW;
             case "star" -> ParticleTypes.ENCHANT;
             default -> ParticleTypes.SMOKE;

@@ -2,7 +2,7 @@ package cc.cassian.pyrite.blocks.fabric;
 
 //? if fabric {
 
-/*import io.github.haykam821.columns.block.ColumnBlock;
+import io.github.haykam821.columns.block.ColumnBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -35,4 +35,4 @@ public class OxidizableColumnBlock extends ColumnBlock implements WeatheringCopp
     }
 }
 
-*///?}
+//?}

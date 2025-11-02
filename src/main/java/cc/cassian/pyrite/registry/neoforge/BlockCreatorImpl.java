@@ -2,7 +2,7 @@ package cc.cassian.pyrite.registry.neoforge;
 
 //? if neoforge {
 
-import cc.cassian.pyrite.blocks.*;
+/*import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
@@ -63,18 +63,18 @@ public class BlockCreatorImpl {
     public static final ArrayList<Supplier<Block>> REDSTONE_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<?>> MISC_BLOCKS = new ArrayList<>();
 
-    /**
+    /^*
      * Implements {@link BlockCreator#createWoodType(String, BlockSetType)} on NeoForge.
-     */
+     ^/
     public static WoodType createWoodType(String blockID, BlockSetType setType) {
         WoodType woodType = new WoodType(locate(blockID).toString(), setType);
         WoodType.register(woodType);
         return woodType;
     }
 
-    /**
+    /^*
      * Implements {@link BlockCreator#platformRegister(String, String, BlockBehaviour.Properties, WoodType, BlockSetType, ParticleOptions, Block, String, MapColor)} on NeoForge.
-     */
+     ^/
     public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties settings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power;
         if (blockID.contains("redstone")) power = 15;
@@ -356,10 +356,10 @@ public class BlockCreatorImpl {
     );
     }
 
-    /**
+    /^*
      * Implements {@link BlockCreator#registerPyriteItem(String)} on NeoForge.
      * This registers a basic item with no additional settings - primarily used for Dye.
-     */
+     ^/
     public static void registerPyriteItem(String itemID) {
         ALL_ITEMS.add(ITEMS.register(itemID, () -> (new Item(newItemSettings(itemID)))));
     }
@@ -410,4 +410,4 @@ public class BlockCreatorImpl {
     }
 }
 
-//?}
+*///?}

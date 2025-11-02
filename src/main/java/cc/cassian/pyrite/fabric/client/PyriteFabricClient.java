@@ -2,7 +2,7 @@ package cc.cassian.pyrite.fabric.client;
 
 //? if fabric {
 
-/*import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -47,4 +47,4 @@ public class PyriteFabricClient implements ClientModInitializer {
 
     }
 }
-*///?}
+//?}
