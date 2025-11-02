@@ -53,6 +53,7 @@ public class BlockCreatorImpl {
     public static final ArrayList<Supplier<Item>> ALL_ITEMS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> SIGN_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> HANGING_SIGN_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Supplier<Block>> SHELVES = new ArrayList<>();
     // Sublists for Item Groups
     public static final ArrayList<Supplier<?>> WOOD_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<?>> RESOURCE_BLOCKS = new ArrayList<>();
@@ -106,6 +107,13 @@ public class BlockCreatorImpl {
                     FUEL_BLOCKS.put(newBlock, 300);
                 }
                 WOOD_BLOCKS.add(newBlock);
+                break;
+            case "shelf":
+                // Register Shelf
+                newBlock = BLOCKS.register(blockID, ()-> new ShelfBlock(blockSettings.ignitedByLava()));
+                FUEL_BLOCKS.put(newBlock, 300);
+                WOOD_BLOCKS.add(newBlock);
+                SHELVES.add(newBlock);
                 break;
             case "chest":
                 if (ModList.get().isLoaded("lolmcv")) {
@@ -379,6 +387,9 @@ public class BlockCreatorImpl {
         }
         for (Supplier<Block> sign : HANGING_SIGN_BLOCKS) {
             event.modify(BlockEntityType.HANGING_SIGN, sign.get());
+        }
+        for (Supplier<Block> shelf : SHELVES) {
+            event.modify(BlockEntityType.SHELF, shelf.get());
         }
         if (ModList.get().isLoaded("lolmcv")) {
             ChestsCompat.registerToBlockEntity(event);

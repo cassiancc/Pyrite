@@ -259,7 +259,8 @@ public class BlockCreator {
         createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         // Cabinet
         createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
-
+        // Shelf
+        createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
     }
 
     /**

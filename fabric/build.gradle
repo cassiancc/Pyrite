@@ -39,6 +39,7 @@ dependencies {
     }
     modCompileOnly("maven.modrinth:totally-lit:${totally_lit_version}")
 
+    modImplementation("maven.modrinth:eiv:${eiv_version}-fabric")
 
     // Configs
     implementation(include("folk.sisby:kaleido-config:${kaleido_version}"))

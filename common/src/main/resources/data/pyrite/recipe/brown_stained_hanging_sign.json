@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["S S","CCC","CCC"],"key":{"C":"pyrite:brown_stained_planks","S":"minecraft:chain"},"result":{"id":"pyrite:brown_stained_hanging_sign","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["S S","CCC","CCC"],"key":{"C":"pyrite:brown_stained_planks","S":"minecraft:iron_chain"},"result":{"id":"pyrite:brown_stained_hanging_sign","count":6}}

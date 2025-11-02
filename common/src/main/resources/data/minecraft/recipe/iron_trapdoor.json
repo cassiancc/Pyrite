@@ -1,4 +1,4 @@
-        {
+{
     "type": "minecraft:crafting_shaped",
     "pattern": [
       "DDD",
@@ -12,4 +12,4 @@
       "id": "minecraft:iron_trapdoor",
       "count": 2
     }
-    }
+}

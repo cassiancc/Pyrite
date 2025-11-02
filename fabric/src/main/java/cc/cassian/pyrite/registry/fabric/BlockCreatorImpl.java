@@ -60,6 +60,7 @@ public class BlockCreatorImpl {
         int power = power(blockID);
         Block newBlock = null;
         blockSettings = blockSettings.setId(registryKeyBlock(blockID));
+        boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
@@ -73,13 +74,17 @@ public class BlockCreatorImpl {
                     newBlock = new ModBlock(blockSettings, power);
                 break;
             case "crafting":
-                boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
 				// Register Crafting table.
 				if (burnable) {
 					newBlock = new ModCraftingTable(blockSettings.ignitedByLava());
 					FUEL_BLOCKS.put(newBlock, 300);
 				} else
 					newBlock = new ModCraftingTable(blockSettings);
+                break;
+            case "shelf":
+                // Register Shelf
+                newBlock = new ShelfBlock(blockSettings);
+                BlockEntityType.SHELF.addSupportedBlock(newBlock);
                 break;
             case "chest":
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
