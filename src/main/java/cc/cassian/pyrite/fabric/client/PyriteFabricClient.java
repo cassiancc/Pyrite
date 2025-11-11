@@ -8,11 +8,16 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+//? if >1.21.4 {
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+//?} else {
+/*import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.client.renderer.RenderType;
+*///?}
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Block;
@@ -20,8 +25,6 @@ import net.minecraft.world.level.block.Block;
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
 
-
-@Environment(EnvType.CLIENT)
 public class PyriteFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
@@ -32,10 +35,18 @@ public class PyriteFabricClient implements ClientModInitializer {
             }, grassBlock);
         }
         for (Block transparentBlock : TRANSPARENT_BLOCKS) {
+            //? if >1.21.4 {
             BlockRenderLayerMap.putBlock(transparentBlock, ChunkSectionLayer.CUTOUT);
+            //?} else {
+            /*BlockRenderLayerMap.INSTANCE.putBlock(transparentBlock, RenderType.cutout());
+            *///?}
         }
         for (Block translucentBlock : TRANSLUCENT_BLOCKS) {
+            //? if >1.21.4 {
             BlockRenderLayerMap.putBlock(translucentBlock, ChunkSectionLayer.TRANSLUCENT);
+            //?} else {
+            /*BlockRenderLayerMap.INSTANCE.putBlock(translucentBlock, RenderType.translucent());
+            *///?}
         }
         if (Pyrite.CONFIG.disabledContentTooltip) {
             ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {

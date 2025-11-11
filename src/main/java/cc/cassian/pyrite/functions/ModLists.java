@@ -75,7 +75,9 @@ public class ModLists {
             Blocks.BAMBOO_PLANKS,
             Blocks.CRIMSON_PLANKS,
             Blocks.WARPED_PLANKS,
+            //? if >1.21.4 {
             Blocks.PALE_OAK_PLANKS
+            //?}
     };
 
     //List of Wall Blocks to generated Wall Gates for.
@@ -105,6 +107,7 @@ public class ModLists {
             Blocks.POLISHED_TUFF_WALL,
             Blocks.TUFF_BRICK_WALL,
             Blocks.TUFF_WALL,
+            //? if >1.21.4
             Blocks.RESIN_BRICK_WALL
     };
 

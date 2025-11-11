@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -17,15 +19,8 @@ import java.util.function.Supplier;
 
 import static cc.cassian.pyrite.functions.neoforge.NeoHelpers.GRASS_BLOCKS;
 
-
-@Mod(value = Pyrite.MOD_ID, dist = Dist.CLIENT)
+@EventBusSubscriber(modid = Pyrite.MOD_ID, value = Dist.CLIENT)
 public class PyriteNeoForgeClient {
-
-    public static void init(IEventBus eventBus) {
-        if (FMLEnvironment.getDist().isClient()) {
-            eventBus.addListener(PyriteNeoForgeClient::registerBlockColors);
-        }
-    }
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {

@@ -82,7 +82,10 @@ public class BlockCreatorImpl {
         if (blockID.contains("redstone")) power = 15;
         else power = 0;
         Supplier<Block> newBlock = null;
-        BlockBehaviour.Properties blockSettings = settings.setId(registryKeyBlock(blockID));
+        BlockBehaviour.Properties blockSettings = settings
+                //? if >1.21.4
+                .setId(registryKeyBlock(blockID))
+                ;
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
@@ -112,6 +115,7 @@ public class BlockCreatorImpl {
                 }
                 WOOD_BLOCKS.add(newBlock);
                 break;
+            //? if >1.21.9 {
             case "shelf":
                 // Register Shelf
                 newBlock = BLOCKS.register(blockID, ()-> new ShelfBlock(blockSettings.ignitedByLava()));
@@ -119,6 +123,7 @@ public class BlockCreatorImpl {
                 WOOD_BLOCKS.add(newBlock);
                 SHELVES.add(newBlock);
                 break;
+            //?}
             case "chest":
                 if (ModList.get().isLoaded("lolmcv")) {
                     newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
@@ -214,7 +219,10 @@ public class BlockCreatorImpl {
             case "flower":
                 newBlock = BLOCKS.register(blockID, () -> new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings));
                 Supplier<Block> finalNewBlock = newBlock;
-                var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).setId(registryKeyBlock("potted_"+blockID))));
+                var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+                        //? if >1.21.4
+                        .setId(registryKeyBlock("potted_"+blockID))
+                        ));
                 POTTED_FLOWERS.put(blockID, pot);
                 break;
             case "fence_gate":
@@ -321,7 +329,13 @@ public class BlockCreatorImpl {
     }
 
     public static void registerSignItem(Supplier<Block> newBlock, Supplier<Block> wallSign, String blockID) {
-        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(newBlock.get(), wallSign.get(), newBlockItemSettings(blockID).stacksTo(16)));
+        var settings = newBlockItemSettings(blockID).stacksTo(16);
+        Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(
+        //? if >1.21.4 {
+        newBlock.get(), wallSign.get(), settings));
+        //?} else {
+        /^settings, newBlock.get(), wallSign.get()));
+        ^///?}
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }

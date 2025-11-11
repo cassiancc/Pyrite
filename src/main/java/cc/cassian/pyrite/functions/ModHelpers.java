@@ -64,16 +64,31 @@ public class ModHelpers {
     }
 
     public static Item.Properties newItemSettings(String id) {
-        return new Item.Properties().setId(registryKeyItem(id));
+        return new Item.Properties()
+                //? if >1.21.2
+                .setId(registryKeyItem(id))
+        ;
     }
 
     public static Item.Properties newBlockItemSettings(String id) {
-        return newItemSettings(id).useBlockDescriptionPrefix();
+        return newItemSettings(id)
+                //? if >1.21.2
+                .useBlockDescriptionPrefix()
+                ;
     }
 
     public static Block getBlock(String id) {
-        return BuiltInRegistries.BLOCK.getValue(of(id));
+        return getBlock(of(id));
     }
+
+    public static Block getBlock(ResourceLocation id) {
+        //? if >1.21.4 {
+        return BuiltInRegistries.BLOCK.getValue(id);
+         //?} else {
+        /*return BuiltInRegistries.BLOCK.get(id);
+        *///?}
+    }
+
 
     public static MapColor checkDyeMapColour(String dye) {
         return switch (dye) {
@@ -175,7 +190,7 @@ public class ModHelpers {
     public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
         if (stack.is(PyriteTags.DYES)) {
             ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            Block dyedTorch = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
+            Block dyedTorch = getBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
             if (state.is(Blocks.TORCH)) {
                 world.setBlockAndUpdate(pos, dyedTorch.withPropertiesOf(state));
                 stack.consume(1, player);

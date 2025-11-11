@@ -79,31 +79,76 @@ neoForge {
 
 repositories {
     mavenLocal()
-    maven ( "https://repo.sleeping.town/" ) {
-        name = "Sisby Maven"
-    }
-    maven ( "https://maven.parchmentmc.org" ) {
-        name = "Parchment Mappings"
-    }
-    maven ( "https://maven.isxander.dev/releases") {
-        name = "Xander Maven"
-    }
-    maven ( "https://api.modrinth.com/maven") {
-        name = "Modrinth"
-    }
-    maven ( "https://maven.terraformersmc.com/releases/" ) {
-        name = "Terraformers (Mod Menu)"
-    }
-    maven ( "https://maven.shedaniel.me/" ) {
-        name = "shedaniel (Cloth Config)"
-    }
-    maven ( "https://maven.greenhouse.lgbt/releases" ) {
-        name = "Greenhouse (Farmer's Delight)"
-    }
-    maven( "https://jitpack.io/") {
+    maven {
+        name = "cassian's maven"
+        url = uri("https://maven.cassian.cc")
         content {
-            includeGroup("com.github.Chocohead")
-            name = "Jitpack (Fabric ASM)"
+            includeGroupAndSubgroups("cc.cassian")
+        }
+    }
+    maven {
+        name = "shedaniel (Cloth Config)"
+        url = uri("https://maven.shedaniel.me/")
+        content {
+            includeGroupAndSubgroups("me.shedaniel")
+        }
+    }
+    maven {
+        name = "Terraformers (Mod Menu)"
+        url = uri("https://maven.terraformersmc.com/releases/")
+        content {
+            includeGroupAndSubgroups("com.terraformersmc")
+        }
+    }
+    maven {
+        name = "Modrinth"
+        url = uri("https://api.modrinth.com/maven")
+        content {
+            includeGroupAndSubgroups("maven.modrinth")
+        }
+    }
+    maven {
+        name = "Sisby Maven"
+        url = uri("https://repo.sleeping.town/")
+        content {
+            includeGroupAndSubgroups("folk.sisby")
+        }
+    }
+    maven {
+        name = "Parchment Mappings"
+        url = uri("https://maven.parchmentmc.org")
+        content {
+            includeGroupAndSubgroups("org.parchmentmc")
+        }
+    }
+    maven {
+        name = "Xander Maven"
+        url = uri("https://maven.isxander.dev/releases")
+        content {
+            includeGroupAndSubgroups("dev.isxander")
+            includeGroupAndSubgroups("org.quiltmc.parsers")
+        }
+    }
+    maven {
+        name = "Nucleoid Maven (Polymer)"
+        url = uri("https://maven.nucleoid.xyz")
+        content {
+            includeGroupAndSubgroups("eu.pb4")
+            includeGroupAndSubgroups("xyz.nucleoid")
+        }
+    }
+    maven {
+        name = "Fuzs Mod Resources"
+        url = uri("https://raw.githubusercontent.com/Fuzss/modresources/main/maven/")
+        content {
+            includeGroupAndSubgroups("fuzs")
+        }
+    }
+    maven {
+        name = "Kotlin for Forge"
+        url = uri("https://thedarkcolour.github.io/KotlinForForge/")
+        content {
+            includeGroupAndSubgroups("thedarkcolour")
         }
     }
 }
@@ -120,7 +165,8 @@ dependencies {
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     jarJar("folk.sisby:kaleido-config:${property("deps.kaleido")}")
-    implementation("maven.modrinth:eiv:${property("deps.eiv")}-neoforge")
+    if (hasProperty("deps.eiv"))
+        implementation("maven.modrinth:eiv:${property("deps.eiv")}-neoforge")
 
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 

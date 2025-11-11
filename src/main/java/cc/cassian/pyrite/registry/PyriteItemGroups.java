@@ -418,7 +418,7 @@ public class PyriteItemGroups {
                 final var slab = BLOCKS.get(concrete + "_slab");
                 ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register((itemGroup) -> {
                     if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
-                        itemGroup.addAfter(BuiltInRegistries.BLOCK.getValue(Pyrite.of(namespace, concrete)), stairs, slab);
+                        itemGroup.addAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)), stairs, slab);
                 });
             }
             //?}

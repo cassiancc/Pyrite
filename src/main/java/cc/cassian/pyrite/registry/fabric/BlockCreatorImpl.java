@@ -11,7 +11,6 @@ import cc.cassian.pyrite.compat.FarmersDelightCompat;
 import cc.cassian.pyrite.compat.TotallyLitCompat;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
-import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
@@ -20,6 +19,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HangingSignItem;
@@ -61,6 +61,7 @@ public class BlockCreatorImpl {
     public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
+        //? if >1.21.4
         blockSettings = blockSettings.setId(registryKeyBlock(blockID));
         boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
         switch (blockType.toLowerCase()) {
@@ -198,7 +199,7 @@ public class BlockCreatorImpl {
                 newBlock = new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings);
                 addTransparentBlock(newBlock);
                 // register flower pot
-                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, Blocks.flowerPotProperties().setId(registryKeyBlock("potted_"+blockID)));
+                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;
@@ -223,7 +224,12 @@ public class BlockCreatorImpl {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
+                final Item SIGN_ITEM = new SignItem(
+                //? if >1.21.4 {
+                newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
+                //?} else {
+                /*newBlockItemSettings(blockID).stacksTo(16), newBlock, WALL_SIGN);
+                *///?}
                 ITEMS.put(blockID, SIGN_ITEM);
                 SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
                 BlockEntityType.SIGN.addSupportedBlock(newBlock);
@@ -308,6 +314,14 @@ public class BlockCreatorImpl {
         }
         Block finalNewBlock = newBlock;
         match(()-> finalNewBlock, copyBlock, group, blockID);
+    }
+
+    private static BlockBehaviour.Properties flowerPotProperties(ResourceKey<Block> blockResourceKey) {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                //? if >1.21.4 {
+                .setId(blockResourceKey)
+                //?}
+        ;
     }
 
     /**
