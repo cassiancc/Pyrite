@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/mossy_deepslate_brick_slab"}}
+{"parent":"pyrite:block/mossy_deepslate_brick_slab"}

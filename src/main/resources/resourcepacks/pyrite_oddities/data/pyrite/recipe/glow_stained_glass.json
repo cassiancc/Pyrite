@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:glass","D":"pyrite:glow_dye"},"result":{"id":"pyrite:glow_stained_glass","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:glass","D":"#c:dyes/glow"},"result":{"id":"pyrite:glow_stained_glass","count":8}}

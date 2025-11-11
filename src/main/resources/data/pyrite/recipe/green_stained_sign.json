@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"," S "],"key":{"C":"pyrite:green_stained_planks","S":"minecraft:stick"},"result":{"id":"pyrite:green_stained_sign","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"," S "],"key":{"C":{"item":"pyrite:green_stained_planks"},"S":{"item":"minecraft:stick"}},"result":{"id":"pyrite:green_stained_sign","count":3}}

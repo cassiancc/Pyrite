@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C C","CDC","C C"],"key":{"C":"minecraft:stick","D":"pyrite:gray_stained_planks"},"result":{"id":"pyrite:gray_stained_ladder","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C C","CDC","C C"],"key":{"C":{"item":"minecraft:stick"},"D":{"item":"pyrite:gray_stained_planks"}},"result":{"id":"pyrite:gray_stained_ladder","count":3}}

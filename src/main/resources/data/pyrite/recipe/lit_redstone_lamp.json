@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["minecraft:redstone_torch","minecraft:redstone_lamp"],"result":{"id":"pyrite:lit_redstone_lamp","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"minecraft:redstone_torch"},{"item":"minecraft:redstone_lamp"}],"result":{"id":"pyrite:lit_redstone_lamp","count":1}}

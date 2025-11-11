@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:yellow_torch","minecraft:lever"],"result":{"id":"pyrite:yellow_torch_lever","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:yellow_torch"},{"item":"minecraft:lever"}],"result":{"id":"pyrite:yellow_torch_lever","count":1}}

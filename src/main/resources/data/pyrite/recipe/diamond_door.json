@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC","CC"],"key":{"C":"minecraft:diamond_block"},"result":{"id":"pyrite:diamond_door","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC","CC"],"key":{"C":{"item":"minecraft:diamond_block"}},"result":{"id":"pyrite:diamond_door","count":3}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:andesite","result":{"id":"pyrite:andesite_bricks","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:andesite"},"result":{"id":"pyrite:andesite_bricks","count":1}}

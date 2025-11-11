@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:glass","D":"pyrite:poisonous_dye"},"result":{"id":"pyrite:poisonous_stained_glass","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:glass","D":"#c:dyes/poisonous"},"result":{"id":"pyrite:poisonous_stained_glass","count":8}}

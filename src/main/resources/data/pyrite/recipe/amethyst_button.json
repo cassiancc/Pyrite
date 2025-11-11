@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["minecraft:amethyst_block","#minecraft:buttons"],"result":{"id":"pyrite:amethyst_button","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"minecraft:amethyst_block"},{"tag":"minecraft:buttons"}],"result":{"id":"pyrite:amethyst_button","count":1}}

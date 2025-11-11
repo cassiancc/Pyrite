@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["X#X","#X#","X#X"],"key":{"#":"minecraft:glass","X":"minecraft:iron_nugget"},"result":{"id":"pyrite:framed_glass","count":4}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["X#X","#X#","X#X"],"key":{"#":{"item":"minecraft:glass"},"X":{"item":"minecraft:iron_nugget"}},"result":{"id":"pyrite:framed_glass","count":4}}

@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/mangrove_crafting_table"}}
+{"parent":"pyrite:block/mangrove_crafting_table"}

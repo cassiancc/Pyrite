@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/pink_stained_chest"}}
+{"parent":"pyrite:block/pink_stained_chest"}

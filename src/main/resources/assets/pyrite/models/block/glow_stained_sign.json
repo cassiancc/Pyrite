@@ -1,1 +1,1 @@
-{"textures":{"particle":"pyrite:block/glow_stained_planks"}}
+{"parent":"minecraft:block/cube_all","textures":{"all":"pyrite:block/glow_stained_planks"}}

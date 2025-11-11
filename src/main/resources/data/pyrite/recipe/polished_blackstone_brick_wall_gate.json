@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"minecraft:polished_blackstone_bricks","S":"minecraft:polished_blackstone_brick_wall"},"result":{"id":"pyrite:polished_blackstone_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"minecraft:polished_blackstone_bricks"},"S":{"item":"minecraft:polished_blackstone_brick_wall"}},"result":{"id":"pyrite:polished_blackstone_brick_wall_gate","count":6}}

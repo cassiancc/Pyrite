@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:brown_bricks","S":"pyrite:brown_brick_wall"},"result":{"id":"pyrite:brown_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:brown_bricks"},"S":{"item":"pyrite:brown_brick_wall"}},"result":{"id":"pyrite:brown_brick_wall_gate","count":6}}

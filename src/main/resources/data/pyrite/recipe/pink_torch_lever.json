@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:pink_torch","minecraft:lever"],"result":{"id":"pyrite:pink_torch_lever","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:pink_torch"},{"item":"minecraft:lever"}],"result":{"id":"pyrite:pink_torch_lever","count":1}}

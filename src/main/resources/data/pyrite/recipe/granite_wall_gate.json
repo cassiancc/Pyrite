@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"minecraft:granite","S":"minecraft:granite_wall"},"result":{"id":"pyrite:granite_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"minecraft:granite"},"S":{"item":"minecraft:granite_wall"}},"result":{"id":"pyrite:granite_wall_gate","count":6}}

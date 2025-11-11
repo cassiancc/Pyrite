@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"],"key":{"C":"pyrite:pink_terracotta_bricks"},"result":{"id":"pyrite:pink_terracotta_brick_wall","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"],"key":{"C":{"item":"pyrite:pink_terracotta_bricks"}},"result":{"id":"pyrite:pink_terracotta_brick_wall","count":6}}

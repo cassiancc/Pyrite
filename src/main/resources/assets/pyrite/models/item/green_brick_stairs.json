@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/green_brick_stairs"}}
+{"parent":"pyrite:block/green_brick_stairs"}

@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:diamond_block","result":{"id":"pyrite:smooth_diamond_wall_gate","count":4}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:diamond_block"},"result":{"id":"pyrite:smooth_diamond_wall_gate","count":4}}

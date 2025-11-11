@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:cut_sandstone","result":{"id":"pyrite:sandstone_brick_stairs","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:cut_sandstone"},"result":{"id":"pyrite:sandstone_brick_stairs","count":1}}

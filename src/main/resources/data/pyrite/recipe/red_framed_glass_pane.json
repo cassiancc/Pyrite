@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"],"key":{"C":"pyrite:red_framed_glass"},"result":{"id":"pyrite:red_framed_glass_pane","count":16}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"],"key":{"C":{"item":"pyrite:red_framed_glass"}},"result":{"id":"pyrite:red_framed_glass_pane","count":16}}

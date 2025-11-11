@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":"minecraft:brown_concrete"},"result":{"id":"pyrite:brown_concrete_slab","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":{"item":"minecraft:brown_concrete"}},"result":{"id":"pyrite:brown_concrete_slab","count":6}}

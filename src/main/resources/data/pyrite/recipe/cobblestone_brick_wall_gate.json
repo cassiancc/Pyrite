@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:cobblestone_bricks","S":"pyrite:cobblestone_brick_wall"},"result":{"id":"pyrite:cobblestone_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:cobblestone_bricks"},"S":{"item":"pyrite:cobblestone_brick_wall"}},"result":{"id":"pyrite:cobblestone_brick_wall_gate","count":6}}

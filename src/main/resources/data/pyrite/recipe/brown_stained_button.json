@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C"],"key":{"C":"pyrite:brown_stained_planks"},"result":{"id":"pyrite:brown_stained_button","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C"],"key":{"C":{"item":"pyrite:brown_stained_planks"}},"result":{"id":"pyrite:brown_stained_button","count":1}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:cut_oxidized_copper_column","minecraft:honeycomb"],"result":{"id":"pyrite:waxed_cut_oxidized_copper_column","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:cut_oxidized_copper_column"},{"item":"minecraft:honeycomb"}],"result":{"id":"pyrite:waxed_cut_oxidized_copper_column","count":1}}

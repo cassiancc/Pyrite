@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:granite","result":{"id":"pyrite:granite_brick_wall","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:granite"},"result":{"id":"pyrite:granite_brick_wall","count":1}}

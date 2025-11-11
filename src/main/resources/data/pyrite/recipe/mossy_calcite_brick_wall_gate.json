@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:mossy_calcite_bricks","S":"pyrite:mossy_calcite_brick_wall"},"result":{"id":"pyrite:mossy_calcite_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:mossy_calcite_bricks"},"S":{"item":"pyrite:mossy_calcite_brick_wall"}},"result":{"id":"pyrite:mossy_calcite_brick_wall_gate","count":6}}

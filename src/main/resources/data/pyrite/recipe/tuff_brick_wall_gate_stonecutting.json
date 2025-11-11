@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:tuff_bricks","result":{"id":"pyrite:tuff_brick_wall_gate","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:tuff_bricks"},"result":{"id":"pyrite:tuff_brick_wall_gate","count":1}}

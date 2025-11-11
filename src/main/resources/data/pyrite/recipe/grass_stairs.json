@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":"pyrite:grass_turf"},"result":{"id":"pyrite:grass_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":{"item":"pyrite:grass_turf"}},"result":{"id":"pyrite:grass_stairs","count":4}}

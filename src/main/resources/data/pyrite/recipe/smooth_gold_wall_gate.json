@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:smooth_gold","S":"pyrite:smooth_gold_wall"},"result":{"id":"pyrite:smooth_gold_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:smooth_gold"},"S":{"item":"pyrite:smooth_gold_wall"}},"result":{"id":"pyrite:smooth_gold_wall_gate","count":6}}

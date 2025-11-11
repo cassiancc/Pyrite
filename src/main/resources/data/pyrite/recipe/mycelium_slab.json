@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":"pyrite:mycelium_turf"},"result":{"id":"pyrite:mycelium_slab","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":{"item":"pyrite:mycelium_turf"}},"result":{"id":"pyrite:mycelium_slab","count":6}}

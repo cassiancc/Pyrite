@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/poisonous_brick_slab"}}
+{"parent":"pyrite:block/poisonous_brick_slab"}

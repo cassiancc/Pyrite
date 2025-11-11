@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC"],"key":{"C":"minecraft:mycelium"},"result":{"id":"pyrite:mycelium_carpet","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC"],"key":{"C":{"item":"minecraft:mycelium"}},"result":{"id":"pyrite:mycelium_carpet","count":3}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:smooth_netherite","S":"pyrite:smooth_netherite_wall"},"result":{"id":"pyrite:smooth_netherite_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:smooth_netherite"},"S":{"item":"pyrite:smooth_netherite_wall"}},"result":{"id":"pyrite:smooth_netherite_wall_gate","count":6}}

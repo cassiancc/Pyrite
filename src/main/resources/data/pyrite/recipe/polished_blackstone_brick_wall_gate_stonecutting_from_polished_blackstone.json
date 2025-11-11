@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:polished_blackstone","result":{"id":"pyrite:polished_blackstone_brick_wall_gate","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:polished_blackstone"},"result":{"id":"pyrite:polished_blackstone_brick_wall_gate","count":1}}

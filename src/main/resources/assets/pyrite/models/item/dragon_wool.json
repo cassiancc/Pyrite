@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/dragon_wool"}}
+{"parent":"pyrite:block/dragon_wool"}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":"pyrite:red_terracotta_bricks"},"result":{"id":"pyrite:red_terracotta_brick_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":{"item":"pyrite:red_terracotta_bricks"}},"result":{"id":"pyrite:red_terracotta_brick_stairs","count":4}}

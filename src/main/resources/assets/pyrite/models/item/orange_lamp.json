@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/orange_lamp"}}
+{"parent":"pyrite:block/orange_lamp"}

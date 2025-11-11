@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:lime_bricks","S":"pyrite:lime_brick_wall"},"result":{"id":"pyrite:lime_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:lime_bricks"},"S":{"item":"pyrite:lime_brick_wall"}},"result":{"id":"pyrite:lime_brick_wall_gate","count":6}}

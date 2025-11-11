@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["#c:dyes/lime","minecraft:torch"],"result":{"id":"pyrite:lime_torch","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"c:dyes/lime"},{"item":"minecraft:torch"}],"result":{"id":"pyrite:lime_torch","count":1}}

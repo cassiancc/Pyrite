@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:copper_block","result":{"id":"pyrite:smooth_copper_wall_gate","count":4}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:copper_block"},"result":{"id":"pyrite:smooth_copper_wall_gate","count":4}}

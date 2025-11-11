@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:cyan_torch","minecraft:lever"],"result":{"id":"pyrite:cyan_torch_lever","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:cyan_torch"},{"item":"minecraft:lever"}],"result":{"id":"pyrite:cyan_torch_lever","count":1}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":"pyrite:yellow_stained_planks"},"result":{"id":"pyrite:yellow_stained_slab","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":{"item":"pyrite:yellow_stained_planks"}},"result":{"id":"pyrite:yellow_stained_slab","count":6}}

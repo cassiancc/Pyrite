@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CSC","CSC"],"key":{"C":"pyrite:purple_stained_planks","S":"minecraft:stick"},"result":{"id":"pyrite:purple_stained_fence","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CSC","CSC"],"key":{"C":{"item":"pyrite:purple_stained_planks"},"S":{"item":"minecraft:stick"}},"result":{"id":"pyrite:purple_stained_fence","count":3}}

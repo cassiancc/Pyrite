@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:lime_terracotta","result":{"id":"pyrite:lime_terracotta_brick_slab","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:lime_terracotta"},"result":{"id":"pyrite:lime_terracotta_brick_slab","count":1}}

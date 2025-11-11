@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:green_torch","minecraft:lever"],"result":{"id":"pyrite:green_torch_lever","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:green_torch"},{"item":"minecraft:lever"}],"result":{"id":"pyrite:green_torch_lever","count":1}}

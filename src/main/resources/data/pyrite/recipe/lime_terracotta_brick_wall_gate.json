@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:lime_terracotta_bricks","S":"pyrite:lime_terracotta_brick_wall"},"result":{"id":"pyrite:lime_terracotta_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:lime_terracotta_bricks"},"S":{"item":"pyrite:lime_terracotta_brick_wall"}},"result":{"id":"pyrite:lime_terracotta_brick_wall_gate","count":6}}

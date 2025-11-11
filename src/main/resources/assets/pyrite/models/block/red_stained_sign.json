@@ -1,1 +1,1 @@
-{"textures":{"particle":"pyrite:block/red_stained_planks"}}
+{"parent":"minecraft:block/cube_all","textures":{"all":"pyrite:block/red_stained_planks"}}

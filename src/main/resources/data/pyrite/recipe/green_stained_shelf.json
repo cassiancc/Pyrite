@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["DDD","   ","DDD"],"key":{"D":"pyrite:green_stained_planks"},"result":{"id":"pyrite:green_stained_shelf","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["DDD","   ","DDD"],"key":{"D":{"item":"pyrite:green_stained_planks"}},"result":{"id":"pyrite:green_stained_shelf","count":1}}

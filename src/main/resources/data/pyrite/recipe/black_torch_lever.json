@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:black_torch","minecraft:lever"],"result":{"id":"pyrite:black_torch_lever","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:black_torch"},{"item":"minecraft:lever"}],"result":{"id":"pyrite:black_torch_lever","count":1}}

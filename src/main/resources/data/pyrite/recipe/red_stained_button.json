@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C"],"key":{"C":"pyrite:red_stained_planks"},"result":{"id":"pyrite:red_stained_button","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C"],"key":{"C":{"item":"pyrite:red_stained_planks"}},"result":{"id":"pyrite:red_stained_button","count":1}}

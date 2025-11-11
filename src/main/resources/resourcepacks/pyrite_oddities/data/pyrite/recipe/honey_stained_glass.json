@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:glass","D":"pyrite:honey_dye"},"result":{"id":"pyrite:honey_stained_glass","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:glass","D":"#c:dyes/honey"},"result":{"id":"pyrite:honey_stained_glass","count":8}}

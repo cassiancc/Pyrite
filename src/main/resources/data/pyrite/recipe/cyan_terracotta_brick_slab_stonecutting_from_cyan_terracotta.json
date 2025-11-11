@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:cyan_terracotta","result":{"id":"pyrite:cyan_terracotta_brick_slab","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:cyan_terracotta"},"result":{"id":"pyrite:cyan_terracotta_brick_slab","count":1}}

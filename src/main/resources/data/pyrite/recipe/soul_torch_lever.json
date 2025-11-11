@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["minecraft:soul_torch","minecraft:lever"],"result":{"id":"pyrite:soul_torch_lever","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"minecraft:soul_torch"},{"item":"minecraft:lever"}],"result":{"id":"pyrite:soul_torch_lever","count":1}}

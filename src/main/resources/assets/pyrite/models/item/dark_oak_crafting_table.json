@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/dark_oak_crafting_table"}}
+{"parent":"pyrite:block/dark_oak_crafting_table"}

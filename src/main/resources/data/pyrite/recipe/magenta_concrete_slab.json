@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":"minecraft:magenta_concrete"},"result":{"id":"pyrite:magenta_concrete_slab","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":{"item":"minecraft:magenta_concrete"}},"result":{"id":"pyrite:magenta_concrete_slab","count":6}}

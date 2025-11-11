@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":"pyrite:podzol_turf"},"result":{"id":"pyrite:podzol_slab","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC"],"key":{"C":{"item":"pyrite:podzol_turf"}},"result":{"id":"pyrite:podzol_slab","count":6}}

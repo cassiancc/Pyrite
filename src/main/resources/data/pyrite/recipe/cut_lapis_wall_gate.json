@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"pyrite:cut_lapis","S":"pyrite:cut_lapis_wall"},"result":{"id":"pyrite:cut_lapis_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"pyrite:cut_lapis"},"S":{"item":"pyrite:cut_lapis_wall"}},"result":{"id":"pyrite:cut_lapis_wall_gate","count":6}}

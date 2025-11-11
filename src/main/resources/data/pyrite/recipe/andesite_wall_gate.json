@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"minecraft:andesite","S":"minecraft:andesite_wall"},"result":{"id":"pyrite:andesite_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"minecraft:andesite"},"S":{"item":"minecraft:andesite_wall"}},"result":{"id":"pyrite:andesite_wall_gate","count":6}}

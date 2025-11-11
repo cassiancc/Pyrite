@@ -1,0 +1,1 @@
+{"parent":"minecraft:block/template_glass_pane_noside_alt","textures":{"pane":"pyrite:block/dragon_stained_glass","edge":"pyrite:block/dragon_stained_glass_pane_top"},"render_type":"translucent"}

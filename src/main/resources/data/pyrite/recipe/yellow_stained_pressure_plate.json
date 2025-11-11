@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC"],"key":{"C":"pyrite:yellow_stained_planks"},"result":{"id":"pyrite:yellow_stained_pressure_plate","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC"],"key":{"C":{"item":"pyrite:yellow_stained_planks"}},"result":{"id":"pyrite:yellow_stained_pressure_plate","count":1}}

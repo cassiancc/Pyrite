@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["D","D"],"key":{"D":"minecraft:redstone_block"},"result":{"id":"pyrite:redstone_pillar","count":2}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["D","D"],"key":{"D":{"item":"minecraft:redstone_block"}},"result":{"id":"pyrite:redstone_pillar","count":2}}

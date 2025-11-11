@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:brown_concrete","result":{"id":"pyrite:brown_concrete_slab","count":2}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:brown_concrete"},"result":{"id":"pyrite:brown_concrete_slab","count":2}}

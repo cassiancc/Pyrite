@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"minecraft:tuff_bricks","S":"minecraft:tuff_brick_wall"},"result":{"id":"pyrite:tuff_brick_wall_gate","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":{"item":"minecraft:tuff_bricks"},"S":{"item":"minecraft:tuff_brick_wall"}},"result":{"id":"pyrite:tuff_brick_wall_gate","count":6}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:granite_bricks","minecraft:vine"],"result":{"id":"pyrite:mossy_granite_bricks","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:granite_bricks"},{"item":"minecraft:vine"}],"result":{"id":"pyrite:mossy_granite_bricks","count":1}}

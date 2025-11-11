@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:smooth_copper","minecraft:honeycomb"],"result":{"id":"pyrite:waxed_smooth_copper","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:smooth_copper"},{"item":"minecraft:honeycomb"}],"result":{"id":"pyrite:waxed_smooth_copper","count":1}}
