@@ -218,7 +218,7 @@ public class BlockCreatorImpl {
                 break;
             case "sign":
                 //Sign Blocks
-                newBlock = new WallSignBlock(woodType, blockSettings);
+                newBlock = new PyriteWallSignBlock(woodType, blockSettings, blockID);
                 ITEMLESS_BLOCKS.put(blockID, newBlock);
                 //Wall Sign Blocks
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
@@ -237,7 +237,7 @@ public class BlockCreatorImpl {
                 break;
             case "hanging_sign":
                 //Sign Blocks
-                newBlock = new WallHangingSignBlock(woodType, blockSettings);
+                newBlock = new PyriteWallHangingSignBlock(woodType, blockSettings, blockID);
                 ITEMLESS_BLOCKS.put(blockID, newBlock);
                 //Wall Sign Blocks
                 final WallHangingSignBlock HANGING_WALL_SIGN = new WallHangingSignBlock(woodType, blockSettings);

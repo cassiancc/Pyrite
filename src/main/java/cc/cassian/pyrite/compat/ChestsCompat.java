@@ -5,12 +5,12 @@ package cc.cassian.pyrite.compat;
 import static cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl.BLOCKS;
 
 //? if >1.21.4 {
-import static dev.lieonlion.mcv.init.NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY;
+/^import static dev.lieonlion.mcv.init.NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY;
 import dev.lieonlion.mcv.block.NeoForgeMoreChestBlock;
-//?} else {
-/^import io.github.lieonlion.mcv.block.MoreChestBlock;
+^///?} else {
+import io.github.lieonlion.mcv.block.MoreChestBlock;
 import static io.github.lieonlion.mcv.init.McvBlockInit.MORE_CHEST_BLOCK_ENTITY;
-^///?}
+//?}
 
 *///?}
 
