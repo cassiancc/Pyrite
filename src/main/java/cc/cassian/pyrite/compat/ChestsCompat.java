@@ -8,7 +8,8 @@ import static cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl.BLOCKS;
 import static dev.lieonlion.mcv.init.NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY;
 import dev.lieonlion.mcv.block.NeoForgeMoreChestBlock;
 //?} else {
-/^import static io.github.lieonlion.mcv.init.McvBlockInit.MORE_CHEST_BLOCK_ENTITY;
+/^import io.github.lieonlion.mcv.block.MoreChestBlock;
+import static io.github.lieonlion.mcv.init.McvBlockInit.MORE_CHEST_BLOCK_ENTITY;
 ^///?}
 
 *///?}
@@ -38,12 +39,21 @@ public class ChestsCompat {
 
     public static Supplier<Block> registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
         //? if <1.21.4 {
-        /*return ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
-        *///?} else if fabric {
+
+        /*//? if fabric {
+        return ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
+        //?} else {
+        /^return BLOCKS.register(blockID, ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
+        ^///?}
+
+        *///?} else {
+        //? if fabric {
         return ()-> new FabricMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
         //?} else {
         /*return BLOCKS.register(blockID, () -> new NeoForgeMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
         *///?}
+
+        //?}
     }
 
     public static void add(Supplier<Block> newBlock) {

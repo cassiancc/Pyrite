@@ -207,10 +207,6 @@ public class ModHelpers {
         return updateTorchColour(itemStack, level.getBlockState(pos), player, level, pos);
     }
 
-    public static Path getConfigDir() {
-        return Platform.INSTANCE.getConfigDir();
-    }
-
     public static void addAlias(String id) {
         BuiltInRegistries.BLOCK.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
         BuiltInRegistries.ITEM.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
