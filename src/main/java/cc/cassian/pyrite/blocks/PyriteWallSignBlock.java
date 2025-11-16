@@ -12,8 +12,10 @@ public class PyriteWallSignBlock extends WallSignBlock {
         this.id = blockID;
     }
 
-    @Override
+    //? if <1.21.2 {
+    /*@Override
     public String getDescriptionId() {
         return Pyrite.of(id).toLanguageKey("block");
     }
+    *///?}
 }
