@@ -34,8 +34,6 @@ public class PyriteFabric implements ModInitializer {
                 ChestsCompat.registerToBlockEntity();
             if (FabricLoader.getInstance().isModLoaded("farmersdelight"))
                 FarmersDelightCompat.registerToBlockEntity();
-            if (FabricLoader.getInstance().isModLoaded("lolmcv"))
-                ChestsCompat.registerToBlockEntity();
         });
 
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));
