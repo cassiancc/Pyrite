@@ -5,12 +5,12 @@ package cc.cassian.pyrite.compat;
 import static cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl.BLOCKS;
 
 //? if >1.21.4 {
-/^import static dev.lieonlion.mcv.init.NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY;
+import static dev.lieonlion.mcv.init.NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY;
 import dev.lieonlion.mcv.block.NeoForgeMoreChestBlock;
-^///?} else {
-import io.github.lieonlion.mcv.block.MoreChestBlock;
+//?} else {
+/^import io.github.lieonlion.mcv.block.MoreChestBlock;
 import static io.github.lieonlion.mcv.init.McvBlockInit.MORE_CHEST_BLOCK_ENTITY;
-//?}
+^///?}
 
 *///?}
 
@@ -37,24 +37,23 @@ import java.util.function.Supplier;
 public class ChestsCompat {
     public static ArrayList<Supplier<Block>> CHESTS = new ArrayList<>();
 
-    public static Supplier<Block> registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
-        //? if <1.21.4 {
-
-        /*//? if fabric {
-        return ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
+    //? if fabric {
+    public static Block registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
+        //? if >1.21.4 {
+        return new FabricMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
         //?} else {
-        /^return BLOCKS.register(blockID, ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
-        ^///?}
-
-        *///?} else {
-        //? if fabric {
-        return ()-> new FabricMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
-        //?} else {
-        /*return BLOCKS.register(blockID, () -> new NeoForgeMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
+        /*return new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
         *///?}
-
+    }
+    //?} else {
+    /*public static Supplier<Block> registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
+        //? if <1.21.4 {
+        /^return BLOCKS.register(blockID, ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
+        ^///?} else {
+        return BLOCKS.register(blockID, () -> new NeoForgeMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
         //?}
     }
+    *///?}
 
     public static void add(Supplier<Block> newBlock) {
         CHESTS.add(newBlock);
