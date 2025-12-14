@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["S S","CCC","CCC"],"key":{"C":"pyrite:red_mushroom_planks","S":"minecraft:chain"},"result":{"id":"pyrite:red_mushroom_hanging_sign","count":6}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["S S","CCC","CCC"],"key":{"C":{"item":"pyrite:red_mushroom_planks"},"S":{"item":"minecraft:chain"}},"result":{"id":"pyrite:red_mushroom_hanging_sign","count":6}}

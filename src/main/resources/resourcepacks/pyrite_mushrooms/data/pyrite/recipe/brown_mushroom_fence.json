@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CSC","CSC"],"key":{"C":"pyrite:brown_mushroom_planks","S":"minecraft:stick"},"result":{"id":"pyrite:brown_mushroom_fence","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CSC","CSC"],"key":{"C":{"item":"pyrite:brown_mushroom_planks"},"S":{"item":"minecraft:stick"}},"result":{"id":"pyrite:brown_mushroom_fence","count":3}}
