@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC"],"key":{"C":"pyrite:azalea_log"},"result":{"id":"pyrite:azalea_wood","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC"],"key":{"C":{"item":"pyrite:azalea_log"}},"result":{"id":"pyrite:azalea_wood","count":3}}

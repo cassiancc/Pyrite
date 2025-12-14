@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":"pyrite:azalea_planks"},"result":{"id":"pyrite:azalea_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":{"item":"pyrite:azalea_planks"}},"result":{"id":"pyrite:azalea_stairs","count":4}}
