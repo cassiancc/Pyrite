@@ -1,1 +1,28 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"minecraft:resin_bricks","S":"minecraft:resin_brick_wall"},"result":{"id":"pyrite:resin_brick_wall_gate","count":6}}
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "SCS",
+    "SCS"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:resin_bricks"
+    },
+    "S": {
+      "item": "minecraft:resin_brick_wall"
+    }
+  },
+  "result": {
+    "id": "pyrite:resin_brick_wall_gate",
+    "count": 6
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "values": [
+        "minecraft:resin_brick_wall"
+      ]
+    }
+  ]
+}

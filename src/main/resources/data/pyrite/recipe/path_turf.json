@@ -1,1 +1,3 @@
-{"type":"minecraft:crafting_shaped","pattern":["##","##"],"key":{"#":"minecraft:dirt_path"},"result":{"id":"pyrite:path_turf","count":4}}
+{"type":"minecraft:crafting_shaped","pattern":["##","##"],"key":{"#": {
+  "item": "minecraft:dirt_path"
+}},"result":{"id":"pyrite:path_turf","count":4}}

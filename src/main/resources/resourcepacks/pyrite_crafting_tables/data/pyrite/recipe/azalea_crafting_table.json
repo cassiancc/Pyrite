@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": ["CC", "CC"],
+  "key": {
+    "C": {
+      "item": "pyrite:azalea_planks"
+    }
+  },
+  "result": { "id": "pyrite:azalea_crafting_table", "count": 1 }
+}
