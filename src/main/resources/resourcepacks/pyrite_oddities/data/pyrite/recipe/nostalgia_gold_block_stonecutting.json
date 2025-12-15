@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:gold_block","result":{"id":"pyrite:nostalgia_gold_block","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:gold"},"result":{"id":"pyrite:nostalgia_gold_block","count":1}}

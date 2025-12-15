@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"],"key":{"C":"pyrite:rose_stained_glass"},"result":{"id":"pyrite:rose_stained_glass_pane","count":16}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CCC"],"key":{"C":{"item":"pyrite:rose_stained_glass"}},"result":{"id":"pyrite:rose_stained_glass_pane","count":16}}

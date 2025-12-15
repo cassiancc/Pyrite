@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:gravel"],"result":{"id":"pyrite:nostalgia_gravel","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items,minecraft:gravel"}],"result":{"id":"pyrite:nostalgia_gravel","count":1}}

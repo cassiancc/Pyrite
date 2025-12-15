@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":"pyrite:rose_concrete"},"result":{"id":"pyrite:rose_concrete_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":{"item":"pyrite:rose_concrete"}},"result":{"id":"pyrite:rose_concrete_stairs","count":4}}

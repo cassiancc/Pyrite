@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:terracotta","D":"#c:dyes/rose"},"result":{"id":"pyrite:rose_terracotta","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":{"item":"minecraft:terracotta"},"D":{"tag":"c:dyes/rose"}},"result":{"id":"pyrite:rose_terracotta","count":8}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":"pyrite:poisonous_concrete"},"result":{"id":"pyrite:poisonous_concrete_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C  ","CC ","CCC"],"key":{"C":{"item":"pyrite:poisonous_concrete"}},"result":{"id":"pyrite:poisonous_concrete_stairs","count":4}}

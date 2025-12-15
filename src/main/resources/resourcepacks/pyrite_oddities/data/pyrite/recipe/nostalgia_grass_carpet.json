@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC"],"key":{"C":"pyrite:nostalgia_grass_block"},"result":{"id":"pyrite:nostalgia_grass_carpet","count":3}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC"],"key":{"C":{"item":"pyrite:nostalgia_grass_block"}},"result":{"id":"pyrite:nostalgia_grass_carpet","count":3}}
