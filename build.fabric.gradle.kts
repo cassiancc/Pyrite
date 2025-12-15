@@ -161,8 +161,8 @@ dependencies {
         exclude(group = "net.fabricmc")
     }
 
-    if (hasProperty("deps.backport_copper_age")) {
-        modImplementation("maven.modrinth:backport_copper_age:${property("deps.backport_copper_age")}")
+    if (hasProperty("deps.copper_age_backport")) {
+        modImplementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
     }
 
     val modules = listOf("transitive-access-wideners-v1", "registry-sync-v0", "resource-loader-v0")

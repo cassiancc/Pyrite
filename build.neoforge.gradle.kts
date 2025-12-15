@@ -170,8 +170,8 @@ dependencies {
 
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
-    if (hasProperty("deps.backport_copper_age")) {
-        implementation("maven.modrinth:backport_copper_age:${property("deps.backport_copper_age")}")
+    if (hasProperty("deps.copper_age_backport")) {
+        implementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
     }
 
 }

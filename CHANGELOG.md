@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Item textures for Pyrite torch levers.
 - Torches can now be dyed in world, like Signs.
 - Red Sandstone Bricks, in parity with existing Sandstone Bricks.
+- Added Shelves for Pyrite planks. On 1.21.1, these are available as optional compatibility for [Copper Age Backport](https://modrinth.com/mod/backport-copper-age).
 
 ### Changed
 - Resource block variants will now yield more when crafted via the Stonecutter.
@@ -29,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Vanilla item group modification can now be disabled.
 
 ### Fixed
-- Sounds on Wall Gates and Cobbled Deepslate Bricks
+- Sounds on Wall Gates and Cobbled Deepslate Bricks.
 - Recipes for waxed Copper blocks.
 - Wall Gate textures are no longer stretched.
 - Log spam when Columns was not installed.

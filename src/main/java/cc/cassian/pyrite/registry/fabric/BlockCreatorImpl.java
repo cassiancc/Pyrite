@@ -5,10 +5,7 @@ package cc.cassian.pyrite.registry.fabric;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
-import cc.cassian.pyrite.compat.ChestsCompat;
-import cc.cassian.pyrite.compat.ColumnsCompat;
-import cc.cassian.pyrite.compat.FarmersDelightCompat;
-import cc.cassian.pyrite.compat.TotallyLitCompat;
+import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -89,7 +86,13 @@ public class BlockCreatorImpl {
                 //? if >1.21.9 {
                 newBlock = new ShelfBlock(blockSettings);
                 BlockEntityType.SHELF.addSupportedBlock(newBlock);
-                //?}
+                //?} else {
+                /*if (FabricLoader.getInstance().isModLoaded("copperagebackport")) {
+                    newBlock = CopperAgeBackportCompat.registerShelf(blockID, blockSettings, group, copyBlock, color);
+                    Block finalNewBlock1 = newBlock;
+                    CopperAgeBackportCompat.add(()-> finalNewBlock1);
+                }
+                *///?}
                 break;
             case "chest":
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
