@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC"],"key":{"C":"minecraft:crimson_planks"},"result":{"id":"pyrite:crimson_crafting_table","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC"],"key":{"C":{"item":"minecraft:crimson_planks"}},"result":{"id":"pyrite:crimson_crafting_table","count":1}}

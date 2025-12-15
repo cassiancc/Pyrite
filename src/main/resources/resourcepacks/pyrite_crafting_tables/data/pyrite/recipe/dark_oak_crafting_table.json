@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC"],"key":{"C":"minecraft:dark_oak_planks"},"result":{"id":"pyrite:dark_oak_crafting_table","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CC","CC"],"key":{"C":{"item":"minecraft:dark_oak_planks"}},"result":{"id":"pyrite:dark_oak_crafting_table","count":1}}
