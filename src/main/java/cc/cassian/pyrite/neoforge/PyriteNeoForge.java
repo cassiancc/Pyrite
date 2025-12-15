@@ -16,8 +16,8 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.InteractionResult;
 //? if <1.21.4 {
-import net.minecraft.world.ItemInteractionResult;
-//?}
+/^import net.minecraft.world.ItemInteractionResult;
+^///?}
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -49,10 +49,10 @@ public final class PyriteNeoForge {
         InteractionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
         if (actionResult.equals(InteractionResult.SUCCESS)) event.cancelWithResult(
                 //? if >1.21.4 {
-                /^InteractionResult.SUCCESS
-                ^///?} else {
-                ItemInteractionResult.SUCCESS
-                //?}
+                InteractionResult.SUCCESS
+                //?} else {
+                /^ItemInteractionResult.SUCCESS
+                ^///?}
         );
     }
 

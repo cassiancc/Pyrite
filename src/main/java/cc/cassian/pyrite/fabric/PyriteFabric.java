@@ -3,10 +3,7 @@ package cc.cassian.pyrite.fabric;
 //? fabric {
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.compat.ChestsCompat;
-import cc.cassian.pyrite.compat.CopperAgeBackportCompat;
-import cc.cassian.pyrite.compat.FarmersDelightCompat;
-import cc.cassian.pyrite.compat.PyriteEIVPlugin;
+import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
@@ -35,8 +32,10 @@ public class PyriteFabric implements ModInitializer {
                 ChestsCompat.registerToBlockEntity();
             if (FabricLoader.getInstance().isModLoaded("farmersdelight"))
                 FarmersDelightCompat.registerToBlockEntity();
-            if (FabricLoader.getInstance().isModLoaded("copperagebackport"))
+            //? if =1.21.1 {
+            /*if (FabricLoader.getInstance().isModLoaded("copperagebackport"))
                 CopperAgeBackportCompat.registerToBlockEntity();
+            *///?}
         });
 
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));
