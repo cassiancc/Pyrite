@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items,minecraft:iron"}],"result":{"id":"pyrite:nostalgia_iron_block","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items"},{"item":"minecraft:iron"}],"result":{"id":"pyrite:nostalgia_iron_block","count":1}}
