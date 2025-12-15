@@ -266,6 +266,9 @@ public class BlockCreator {
         // Shelf
         //? if >1.21.8
         createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
+            createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_PLANKS, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        }
     }
 
     /**

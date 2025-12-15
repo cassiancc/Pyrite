@@ -5,6 +5,7 @@ package cc.cassian.pyrite.registry.neoforge;
 /*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.ChestsCompat;
+import cc.cassian.pyrite.compat.CopperAgeBackportCompat;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
@@ -85,7 +86,7 @@ public class BlockCreatorImpl {
         Supplier<Block> newBlock = null;
         BlockBehaviour.Properties blockSettings = settings
                 //? if >1.21.4
-                .setId(registryKeyBlock(blockID))
+                /^.setId(registryKeyBlock(blockID))^/
                 ;
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
@@ -116,15 +117,17 @@ public class BlockCreatorImpl {
                 }
                 WOOD_BLOCKS.add(newBlock);
                 break;
-            //? if >1.21.9 {
             case "shelf":
                 // Register Shelf
-                newBlock = BLOCKS.register(blockID, ()-> new ShelfBlock(blockSettings.ignitedByLava()));
+                //? if >1.21.9 {
+                /^newBlock = BLOCKS.register(blockID, ()-> new ShelfBlock(blockSettings.ignitedByLava()));
                 FUEL_BLOCKS.put(newBlock, 300);
                 WOOD_BLOCKS.add(newBlock);
                 SHELVES.add(newBlock);
+                ^///?} else {
+                newBlock = CopperAgeBackportCompat.registerShelf(blockSettings.ignitedByLava());
+                //?}
                 break;
-            //?}
             case "chest":
                 if (ModList.get().isLoaded("lolmcv")) {
                     newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
@@ -222,7 +225,7 @@ public class BlockCreatorImpl {
                 Supplier<Block> finalNewBlock = newBlock;
                 var pot = BLOCKS.register("potted_"+blockID, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, finalNewBlock, BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
                         //? if >1.21.4
-                        .setId(registryKeyBlock("potted_"+blockID))
+                        /^.setId(registryKeyBlock("potted_"+blockID))^/
                         ));
                 POTTED_FLOWERS.put(blockID, pot);
                 break;
@@ -333,10 +336,10 @@ public class BlockCreatorImpl {
         var settings = newBlockItemSettings(blockID).stacksTo(16);
         Supplier<Item> newItem = ITEMS.register(blockID, () -> new SignItem(
         //? if >1.21.4 {
-        newBlock.get(), wallSign.get(), settings));
-        //?} else {
-        /^settings, newBlock.get(), wallSign.get()));
-        ^///?}
+        /^newBlock.get(), wallSign.get(), settings));
+        ^///?} else {
+        settings, newBlock.get(), wallSign.get()));
+        //?}
         ALL_ITEMS.add(newItem);
         WOOD_BLOCKS.add(newItem);
     }
@@ -405,12 +408,15 @@ public class BlockCreatorImpl {
             event.modify(BlockEntityType.HANGING_SIGN, sign.get());
         }
         //? if >1.21.9 {
-        for (Supplier<Block> shelf : SHELVES) {
+        /^for (Supplier<Block> shelf : SHELVES) {
             event.modify(BlockEntityType.SHELF, shelf.get());
         }
-        //?}
+        ^///?}
         if (ModList.get().isLoaded("lolmcv")) {
             ChestsCompat.registerToBlockEntity(event);
+        }
+        if (ModList.get().isLoaded("copperagebackport")) {
+            CopperAgeBackportCompat.registerToBlockEntity(event);
         }
     }
 
