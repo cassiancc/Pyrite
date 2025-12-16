@@ -1,1 +1,15 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"pyrite:pale_oak_crafting_table"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"pyrite:pale_oak_crafting_table"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "vanillabackport"
+      ]
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "vanillabackport"
+    }
+  ]}

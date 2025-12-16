@@ -1,1 +1,3 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:waxed_copper_block","result":{"id":"pyrite:waxed_copper_bars","count":4}}
+{"type":"minecraft:stonecutting","ingredient": {
+  "item": "minecraft:waxed_copper_block"
+},"result":{"id":"pyrite:waxed_copper_bars","count":4}}
