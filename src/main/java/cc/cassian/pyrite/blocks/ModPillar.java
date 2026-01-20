@@ -5,7 +5,7 @@ import cc.cassian.pyrite.functions.ModHelpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -54,7 +54,7 @@ public class ModPillar extends RotatedPillarBlock {
     useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide()) {
             if (stack.is(ItemTags.AXES) && !player.getOffhandItem().is(PyriteTags.SHIELDS)) {
-                ResourceLocation id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
+                Identifier id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
                 Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());
                 if (!strippedBlock.equals(Blocks.AIR)) {
                     world.setBlockAndUpdate(pos, strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS)));

@@ -146,8 +146,8 @@ dependencies {
     include("folk.sisby:kaleido-config:${property("deps.kaleido")}")
 
     modCompileOnly("maven.modrinth:columns:${property("deps.columns")}")
-    if (hasProperty("deps.eiv"))
-        modImplementation("maven.modrinth:eiv:${property("deps.eiv")}-fabric")
+    if (hasProperty("deps.rrv"))
+        modImplementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}")
     if (hasProperty("deps.emi")) {
         modCompileOnly("dev.emi:emi-fabric:${property("deps.emi")}+${property("deps.minecraft")}:api")
         modLocalRuntime("dev.emi:emi-fabric:${property("deps.emi")}+${property("deps.minecraft")}")
@@ -157,8 +157,12 @@ dependencies {
         isTransitive = false
     }
 
-    modImplementation("vectorwing:FarmersDelight:${property("deps.fdrf")}") {
+    modImplementation("maven.modrinth:farmers-delight-refabricated:${property("deps.fdrf")}") {
         exclude(group = "net.fabricmc")
+        exclude(group = "me.shedaniel")
+    }
+    modImplementation("com.github.Chocohead:Fabric-ASM:${property("deps.fabric_asm")}") {
+        exclude (group = "net.fabricmc.fabric-api")
     }
 
     if (hasProperty("deps.copper_age_backport")) {
@@ -175,6 +179,15 @@ dependencies {
 //        client = true
 //    }
 //}
+
+
+stonecutter {
+    replacements.string {
+        direction = eval(current.version, ">1.21")
+        replace("ResourceLocation", "Identifier")
+    }
+}
+
 
 tasks {
     processResources {

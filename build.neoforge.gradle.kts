@@ -165,8 +165,8 @@ dependencies {
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     jarJar("folk.sisby:kaleido-config:${property("deps.kaleido")}")
-    if (hasProperty("deps.eiv"))
-        implementation("maven.modrinth:eiv:${property("deps.eiv")}-neoforge")
+    if (hasProperty("deps.rrv"))
+        implementation("maven.modrinth:rrv:${property("deps.rrv")}-neoforge")
 
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
@@ -175,6 +175,15 @@ dependencies {
     }
 
 }
+
+
+stonecutter {
+    replacements.string {
+        direction = eval(current.version, ">1.21")
+        replace("ResourceLocation", "Identifier")
+    }
+}
+
 
 tasks {
     processResources {
