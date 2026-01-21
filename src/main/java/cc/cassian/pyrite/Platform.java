@@ -2,6 +2,9 @@ package cc.cassian.pyrite;
 
 //? fabric {
 import cc.cassian.pyrite.fabric.FabricPlatformImpl;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 //?}
 //? neoforge {
 /*import cc.cassian.pyrite.neoforge.NeoForgePlatformImpl;
@@ -12,7 +15,9 @@ public interface Platform {
 
     //? fabric {
     Platform INSTANCE = new FabricPlatformImpl();
-    //?}
+
+	void registerWaxableBlockPair(Block newBlock, Block waxed);
+	//?}
     //? neoforge {
     /*Platform INSTANCE = new NeoForgePlatformImpl();
     *///?}
@@ -22,4 +27,9 @@ public interface Platform {
     String loader();
     boolean isDevEnvironment();
     Path getConfigDir();
+
+    void addSupportedBlock(BlockEntityType<?> be, Block block);
+
+    void registerOxidizableBlockPair(Block block, Block block1);
+
 }

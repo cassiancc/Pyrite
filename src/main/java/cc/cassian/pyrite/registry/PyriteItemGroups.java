@@ -4,12 +4,17 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
-//? if fabric {
+//? if fabric && <26.1 {
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
-//?} else {
+//?} else if fabric {
+/*import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
+*///?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
 import net.minecraft.core.Registry;
@@ -315,14 +320,18 @@ public class PyriteItemGroups {
     }
 
     private static void addAfter(Item anchor, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric
-                                 FabricItemGroupEntries event
+                                 //? if fabric && >26 {
+                                 /*FabricCreativeModeTabOutput event
+                                 *///?} else if fabric
+                                FabricItemGroupEntries event
                                  //? if neoforge
                                  /*BuildCreativeModeTabContentsEvent event*/
     ) {
         for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
             //? if neoforge {
             /*event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            *///?} else if fabric && >26 {
+            /*event.insertAfter(anchor.getDefaultInstance(), itemStack);
             *///?} else {
             event.addAfter(anchor, itemStack);
             //?}
@@ -330,7 +339,9 @@ public class PyriteItemGroups {
     }
 
     private static void addAfter(Block block, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric
+                                 //? if fabric && >26 {
+                                 /*FabricCreativeModeTabOutput event
+                                 *///?} else if fabric
                                  FabricItemGroupEntries event
                                  //? if neoforge
                                  /*BuildCreativeModeTabContentsEvent event*/
@@ -339,7 +350,9 @@ public class PyriteItemGroups {
     }
 
     private static void addBefore(Block block, Collection<ItemStack> blockCollectionList,
-                                  //? if fabric
+                                  //? if fabric && >26 {
+                                  /*FabricCreativeModeTabOutput event
+                                  *///?} else if fabric
                                   FabricItemGroupEntries event
                                   //? if neoforge
                                   /*BuildCreativeModeTabContentsEvent event*/
@@ -348,29 +361,37 @@ public class PyriteItemGroups {
     }
 
     private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList,
-                                  //? if fabric
+                                  //? if fabric && >26 {
+                                  /*FabricCreativeModeTabOutput event
+                                  *///?} else if fabric
                                   FabricItemGroupEntries event
                                   //? if neoforge
                                   /*BuildCreativeModeTabContentsEvent event*/
                                   ) {
         for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
-            //? if fabric {
+            //? if fabric && <26.1 {
             event.addAfter(anchor, itemStack);
-            //?} else {
+            //?} else if fabric {
+            /*event.insertAfter(anchor, itemStack);
+            *///?} else {
             /*event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             *///?}
         }
     }
 
     private static void addBefore(Item anchor, Item item,
-                                  //? if fabric
+                                  //? if fabric && >26 {
+                                  /*FabricCreativeModeTabOutput event
+                                  *///?} else if fabric
                                   FabricItemGroupEntries event
                                   //? if neoforge
                                   /*BuildCreativeModeTabContentsEvent event*/
                                   ) {
-        //? if fabric {
+        //? if fabric && <26.1 {
         event.addBefore(anchor, item);
-        //?} else {
+        //?} else if fabric {
+        /*event.insertBefore(anchor, item);
+        *///?} else {
         /*event.insertBefore(anchor.getDefaultInstance(), item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         *///?}
     }
@@ -394,14 +415,21 @@ public class PyriteItemGroups {
             else if (event.getTabKey().equals(CreativeModeTabs.INGREDIENTS))
                 buildIngredientsTab(event);
             *///?}
-            //? if fabric {
+            //? if fabric && <26.1 {
             ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(PyriteItemGroups::buildBuildingBlocksTab);
             ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(PyriteItemGroups::buildBuildingBlocksTab);
             ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(PyriteItemGroups::buildNaturalBlocksTab);
             ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(PyriteItemGroups::buildFunctionalBlocksTab);
             ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(PyriteItemGroups::buildRedstoneBlocksTab);
             ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(PyriteItemGroups::buildIngredientsTab);
-            //?}
+            //?} else if fabric && >26 {
+            /*CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(PyriteItemGroups::buildBuildingBlocksTab);
+            CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COLORED_BLOCKS).register(PyriteItemGroups::buildBuildingBlocksTab);
+            CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(PyriteItemGroups::buildNaturalBlocksTab);
+            CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(PyriteItemGroups::buildFunctionalBlocksTab);
+            CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(PyriteItemGroups::buildRedstoneBlocksTab);
+            CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(PyriteItemGroups::buildIngredientsTab);
+            *///?}
 
             // Add Pyrite Concrete to vanilla item group.
             //? if fabric {
@@ -416,10 +444,18 @@ public class PyriteItemGroups {
                 final var concrete = dye+"_concrete";
                 final var stairs = BLOCKS.get(concrete + "_stairs");
                 final var slab = BLOCKS.get(concrete + "_slab");
-                ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register((itemGroup) -> {
+                //? if <26 {
+                ItemGroupEvents.modifyEntriesEvent    (CreativeModeTabs.COLORED_BLOCKS).register((itemGroup) -> {
                     if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
                         itemGroup.addAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)), stairs, slab);
                 });
+                //?} else {
+                /*CreativeModeTabEvents.modifyOutputEvent    (CreativeModeTabs.COLORED_BLOCKS).register((itemGroup) -> {
+                    if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
+                        itemGroup.insertAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)), stairs, slab);
+                });
+                *///?}
+
             }
             //?}
 
@@ -428,7 +464,9 @@ public class PyriteItemGroups {
     }
 
     private static void buildIngredientsTab(
-            //? if fabric
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
             FabricItemGroupEntries event
             //? if neoforge
             /*BuildCreativeModeTabContentsEvent event*/
@@ -437,7 +475,9 @@ public class PyriteItemGroups {
     }
 
     private static void buildRedstoneBlocksTab(
-            //? if fabric
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
             FabricItemGroupEntries event
             //? if neoforge
             /*BuildCreativeModeTabContentsEvent event*/
@@ -448,7 +488,9 @@ public class PyriteItemGroups {
     }
 
     private static void buildFunctionalBlocksTab(
-            //? if fabric
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
             FabricItemGroupEntries event
             //? if neoforge
             /*BuildCreativeModeTabContentsEvent event*/
@@ -461,7 +503,9 @@ public class PyriteItemGroups {
     }
 
     private static void buildNaturalBlocksTab(
-            //? if fabric
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
             FabricItemGroupEntries event
             //? if neoforge
             /*BuildCreativeModeTabContentsEvent event*/
@@ -478,7 +522,9 @@ public class PyriteItemGroups {
     }
 
     private static void buildBuildingBlocksTab(
-            //? if fabric
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
             FabricItemGroupEntries event
             //? if neoforge
             /*BuildCreativeModeTabContentsEvent event*/
@@ -517,7 +563,9 @@ public class PyriteItemGroups {
     }
 
     private static void buildColoredBlocksTab(
-            //? if fabric
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
             FabricItemGroupEntries event
             //? if neoforge
             /*BuildCreativeModeTabContentsEvent event*/
@@ -538,29 +586,33 @@ public class PyriteItemGroups {
     }
 
     public static void addMapToItemGroup(
-            //? if fabric
-            FabricItemGroupEntries group
+            //? if fabric && >26 {
+            /*FabricCreativeModeTabOutput event
+            *///?} else if fabric
+            FabricItemGroupEntries event
             //? if neoforge
-            /*BuildCreativeModeTabContentsEvent group*/
+            /*BuildCreativeModeTabContentsEvent event*/
             , LinkedHashMap<Block, Supplier<Block>> map) {
         for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
             if (value.asItem().getDefaultInstance().is(PyriteTags.ENABLED)) {
                 if (anchor != null) {
-                    //? if fabric {
-                    group.addAfter(anchor, value);
+                    //? if fabric && <26.1 {
+                    event.addAfter(anchor, value);
                     //?} else {
-                    /*group.insertAfter(anchor.asItem().getDefaultInstance(), value.asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                    /*event.insertAfter(anchor, value);
+                    *///?} else {
+                    /*event.insertAfter(anchor.asItem().getDefaultInstance(), value.asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                     *///?}
                 } else
-                    group.accept(value);
+                    event.accept(value);
             }
         }
     }
 
     public static void addItemGroup(String id, String icon, LinkedHashMap<String, Block> blocks) {
-        //? if fabric {
+        //? if fabric && <26.1 {
         CreativeModeTab group = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(BLOCKS.get(icon)))
                 .title(Component.translatable("itemGroup.pyrite." + id))
@@ -572,6 +624,18 @@ public class PyriteItemGroups {
                 })
                 .build();
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
-        //?}
+        //?} else if fabric && >26 {
+        /*CreativeModeTab group = FabricCreativeModeTab.builder()
+                .icon(() -> new ItemStack(BLOCKS.get(icon)))
+                .title(Component.translatable("itemGroup.pyrite." + id))
+                .displayItems((context, entries) -> {
+                    for (Block block : blocks.values()) {
+                        if (block.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
+                            entries.accept(block);
+                    }
+                })
+                .build();
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
+        *///?}
     }
 }

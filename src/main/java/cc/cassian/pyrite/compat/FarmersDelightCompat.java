@@ -1,5 +1,7 @@
 package cc.cassian.pyrite.compat;
 
+import cc.cassian.pyrite.Platform;
+import cc.cassian.pyrite.blocks.ModBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import vectorwing.farmersdelight.common.block.CabinetBlock;
@@ -20,8 +22,7 @@ public class FarmersDelightCompat {
 
     public static void registerToBlockEntity() {
         for (Block chest : CABINETS) {
-            //? if fabric
-            ModBlockEntityTypes.CABINET.get().addSupportedBlock(chest);
+            Platform.INSTANCE.addSupportedBlock(ModBlockEntityTypes.CABINET.get(), chest);
         }
     }
 }

@@ -10,7 +10,6 @@ import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
-import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
@@ -68,7 +67,7 @@ public class BlockCreatorImpl {
 					var waxedBlock = new ModBlock(blockSettings);
 					BLOCKS.put("waxed_"+blockID, waxedBlock);
 					match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxedBlock);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxedBlock);
 				}
                 else
                     newBlock = new ModBlock(blockSettings, power);
@@ -85,7 +84,7 @@ public class BlockCreatorImpl {
                 // Register Shelf
                 //? if >1.21.9 {
                 newBlock = new ShelfBlock(blockSettings);
-                BlockEntityType.SHELF.addSupportedBlock(newBlock);
+                Platform.INSTANCE.addSupportedBlock(BlockEntityType.SHELF, newBlock);
                 //?} else {
                 /*if (FabricLoader.getInstance().isModLoaded("copperagebackport")) {
                     newBlock = CopperAgeBackportCompat.registerShelf(blockID, blockSettings, group, copyBlock, color);
@@ -95,11 +94,13 @@ public class BlockCreatorImpl {
                 *///?}
                 break;
             case "chest":
+				//? <26.1 {
                 if (FabricLoader.getInstance().isModLoaded("lolmcv")) {
                     newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
                     Block finalNewBlock1 = newBlock;
                     ChestsCompat.add(()-> finalNewBlock1);
                 }
+				//?}
                 break;
             case "cabinet":
                 if (Platform.INSTANCE.isModLoaded("farmersdelight")) {
@@ -120,7 +121,7 @@ public class BlockCreatorImpl {
 					Block waxed = new ModSlab(blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 				} else
                      newBlock = new ModSlab(blockSettings, power);
                 break;
@@ -129,7 +130,7 @@ public class BlockCreatorImpl {
 					newBlock = new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings);
 					Block waxed = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
 					BLOCKS.put("waxed_"+blockID, waxed);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 				} else
 					newBlock = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
                 break;
@@ -140,7 +141,7 @@ public class BlockCreatorImpl {
 					Block waxed = new ModWall(blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     // column
                     if (FabricLoader.getInstance().isModLoaded("columns"))
                         ColumnsCompat.registerCopperColumn(blockID, blockSettings, group, copyBlock);
@@ -159,7 +160,7 @@ public class BlockCreatorImpl {
 					Block waxed = new ModPillar(blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 				} else
 					newBlock = new ModPillar(blockSettings, power);
                 break;
@@ -175,7 +176,7 @@ public class BlockCreatorImpl {
 					Block waxed = new ModPane(blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 					addTransparentBlock(waxed);
 				} else {
 					newBlock = new ModPane(blockSettings, power);
@@ -215,7 +216,7 @@ public class BlockCreatorImpl {
 					Block waxed = new WallGateBlock(blockSetType, blockSettings);
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 				} else
 					newBlock = new WallGateBlock(blockSetType, blockSettings);
                 break;
@@ -235,8 +236,8 @@ public class BlockCreatorImpl {
                 *///?}
                 ITEMS.put(blockID, SIGN_ITEM);
                 SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
-                BlockEntityType.SIGN.addSupportedBlock(newBlock);
-                BlockEntityType.SIGN.addSupportedBlock(WALL_SIGN);
+                Platform.INSTANCE.addSupportedBlock(BlockEntityType.SIGN, newBlock);
+                Platform.INSTANCE.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
                 break;
             case "hanging_sign":
                 //Sign Blocks
@@ -249,8 +250,8 @@ public class BlockCreatorImpl {
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 SIGNS.add(() -> HANGING_SIGN_ITEM);
-                BlockEntityType.HANGING_SIGN.addSupportedBlock(newBlock);
-                BlockEntityType.HANGING_SIGN.addSupportedBlock(HANGING_WALL_SIGN);
+                Platform.INSTANCE.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
+                Platform.INSTANCE.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
             case "door":
 				if (isCopper(blockID)) {
@@ -258,7 +259,7 @@ public class BlockCreatorImpl {
 					Block waxed = new DoorBlock(blockSetType, blockSettings.noOcclusion());
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 				}
 				else
 					newBlock = new DoorBlock(blockSetType, blockSettings.noOcclusion());
@@ -270,7 +271,7 @@ public class BlockCreatorImpl {
 					Block waxed = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
 					BLOCKS.put("waxed_" + blockID, waxed);
 					match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-					OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+					Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
 				}
                 else
                     newBlock = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
@@ -367,13 +368,13 @@ public class BlockCreatorImpl {
 
 
 		for (Map.Entry<String, Supplier<Block>> entry : COPPER_BLOCKS.entrySet()) {
-			OxidizableBlocksRegistry.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
+			Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
 		}
 		for (Map.Entry<String, Supplier<Block>> entry : EXPOSED_COPPER_BLOCKS.entrySet()) {
-			OxidizableBlocksRegistry.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("exposed", "weathered")));
+			Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("exposed", "weathered")));
 		}
 		for (Map.Entry<String, Supplier<Block>> entry : WEATHERED_COPPER_BLOCKS.entrySet()) {
-			OxidizableBlocksRegistry.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("weathered", "oxidized")));
+			Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("weathered", "oxidized")));
 		}
 
         // Register item group.
