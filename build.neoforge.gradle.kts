@@ -166,7 +166,7 @@ dependencies {
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     jarJar("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     if (hasProperty("deps.rrv"))
-        implementation("maven.modrinth:rrv:${property("deps.rrv")}-neoforge")
+        implementation("cc.cassian.rrv:reliable-recipe-viewer-neoforge:${property("deps.rrv")}")
 
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 

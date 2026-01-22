@@ -48,7 +48,7 @@ public class PyriteFabric implements ModInitializer {
         });
 
         CommonLifecycleEvents.TAGS_LOADED.register(((registryAccess, bl) -> {
-            if (FabricLoader.getInstance().isModLoaded("eiv")) {
+            if (FabricLoader.getInstance().isModLoaded("rrv")) {
                 PyriteRRVPlugin.hideStacks();
             }
         }));
