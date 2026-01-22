@@ -14,8 +14,15 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+//? >1.21.2 {
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
+import static net.fabricmc.fabric.api.resource.v1.pack.PackActivationType.DEFAULT_ENABLED;
+//?} else {
+/*import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import static net.fabricmc.fabric.api.resource.ResourcePackActivationType.DEFAULT_ENABLED;
+*///?}
+
 import net.fabricmc.loader.api.FabricLoader;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
@@ -28,16 +35,23 @@ public class PyriteFabric implements ModInitializer {
         FabricHelpers.registerFuelBlocks();
         PyriteItemGroups.buildContents();
 
-        ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> Platform.INSTANCE.addSupportedBlock(be.get(), block)));
+        ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> {
+            if (be != null)
+			    Platform.INSTANCE.addSupportedBlock(be.get(), block);
+		}));
 
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));
 
         ModLists.DATAPACKS.forEach((key, value) -> {
             if (value) {
-                ResourceManagerHelper.registerBuiltinResourcePack(
+                //? >1.21.2 {
+                ResourceLoader.registerBuiltinPack(
+                //?} else {
+                /*ResourceManagerHelper.registerBuiltinResourcePack(
+                *///?}
                         Pyrite.of(key),
                         FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
-                        ResourcePackActivationType.DEFAULT_ENABLED);
+                        DEFAULT_ENABLED);
             }
         });
 
