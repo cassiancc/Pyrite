@@ -2,6 +2,8 @@ package cc.cassian.pyrite.neoforge;
 
 //? neoforge {
 /*import cc.cassian.pyrite.Platform;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLPaths;
@@ -32,6 +34,16 @@ public class NeoForgePlatformImpl implements Platform {
     @Override
     public Path getConfigDir() {
         return FMLPaths.CONFIGDIR.get();
+    }
+
+    @Override
+    public void addSupportedBlock(BlockEntityType<?> be, Block block) {
+        //fabric
+    }
+
+    @Override
+    public void registerOxidizableBlockPair(Block block, Block block1) {
+        //fabric
     }
 
 }

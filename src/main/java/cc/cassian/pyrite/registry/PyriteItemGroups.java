@@ -600,7 +600,7 @@ public class PyriteItemGroups {
                 if (anchor != null) {
                     //? if fabric && <26.1 {
                     event.addAfter(anchor, value);
-                    //?} else {
+                    //?} else if fabric {
                     /*event.insertAfter(anchor, value);
                     *///?} else {
                     /*event.insertAfter(anchor.asItem().getDefaultInstance(), value.asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

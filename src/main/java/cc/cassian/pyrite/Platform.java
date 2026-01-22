@@ -2,10 +2,10 @@ package cc.cassian.pyrite;
 
 //? fabric {
 import cc.cassian.pyrite.fabric.FabricPlatformImpl;
+//?}
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-//?}
 //? neoforge {
 /*import cc.cassian.pyrite.neoforge.NeoForgePlatformImpl;
 *///?}

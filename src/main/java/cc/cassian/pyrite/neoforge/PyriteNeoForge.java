@@ -3,7 +3,7 @@ package cc.cassian.pyrite.neoforge;
 //? if neoforge {
 
 /*import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.compat.PyriteEIVPlugin;
+import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -69,8 +69,8 @@ public final class PyriteNeoForge {
 
     @SubscribeEvent
     private static void hideStacks(TagsUpdatedEvent commonSetupEvent) {
-        if (ModList.get().isLoaded("eiv")) {
-            PyriteEIVPlugin.hideStacks();
+        if (ModList.get().isLoaded("rrv")) {
+            PyriteRRVPlugin.hideStacks();
         }
     }
 }

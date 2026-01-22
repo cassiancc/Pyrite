@@ -33,6 +33,8 @@ public class PyriteFabricClient implements ClientModInitializer {
             *///?} else {
             net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.BLOCK.register(PyriteClient::registerColor, grassBlock);
             //?}
+            //? <1.21.4
+            /*net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(PyriteClient::registerColor, grassBlock);*/
         }
         for (Block transparentBlock : TRANSPARENT_BLOCKS) {
             //? if >26 {
