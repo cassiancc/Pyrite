@@ -3,6 +3,7 @@ package cc.cassian.pyrite.functions;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteTags;
+import com.google.common.collect.LinkedHashMultimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.AttachFace;
@@ -36,12 +38,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import static cc.cassian.pyrite.Pyrite.*;
 
 
 public class ModHelpers {
+
+    public static final ArrayList<Block> GRASS_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Block> TRANSPARENT_BLOCKS = new ArrayList<>();
+    public static final ArrayList<Block> TRANSLUCENT_BLOCKS = new ArrayList<>();
+    public static final LinkedHashMultimap<Supplier<BlockEntityType<?>>, Block> SUPPORTED_BLOCKS = LinkedHashMultimap.create();
+
 
     public static BlockBehaviour.Properties copyBlock(Block copyBlock) {
         return BlockBehaviour.Properties.ofFullCopy(copyBlock);
@@ -53,6 +63,14 @@ public class ModHelpers {
 
     public static String findVanillaBlockID(Block block) {
         return BuiltInRegistries.BLOCK.getKey(block).getPath();
+    }
+
+    public static BlockBehaviour.Properties flowerPotProperties(ResourceKey<Block> blockResourceKey) {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                //? if >1.21.4 {
+                .setId(blockResourceKey)
+                //?}
+                ;
     }
 
     public static ResourceKey<Block> registryKeyBlock(String id) {
@@ -210,5 +228,21 @@ public class ModHelpers {
     public static void addAlias(String id) {
         BuiltInRegistries.BLOCK.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
         BuiltInRegistries.ITEM.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
+    }
+
+
+    public static void addTransparentBlock(Block newBlock) {
+        TRANSPARENT_BLOCKS.add(newBlock);
+    }
+    public static void addTranslucentBlock(Block newBlock) {
+        TRANSLUCENT_BLOCKS.add(newBlock);
+    }
+
+    public static void addSupportedBlock(Supplier<?> be, Block block) {
+        SUPPORTED_BLOCKS.put((Supplier<BlockEntityType<?>>) be, block);
+    }
+
+    public static void addSupportedBlock(BlockEntityType<?> be, Block block) {
+        SUPPORTED_BLOCKS.put(()->be, block);
     }
 }

@@ -2,11 +2,14 @@ package cc.cassian.pyrite.fabric;
 
 //? fabric {
 import cc.cassian.pyrite.Platform;
+import cc.cassian.pyrite.Pyrite;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.nio.file.Path;
 
@@ -19,6 +22,11 @@ public class FabricPlatformImpl implements Platform {
         *///?} else {
         OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
         //?}
+    }
+
+    @Override
+    public WoodType createWoodType(String blockID, BlockSetType setType) {
+        return WoodTypeBuilder.copyOf(WoodType.OAK).register(Pyrite.of(blockID), setType);
     }
 
     @Override

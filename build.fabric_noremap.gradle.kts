@@ -150,7 +150,7 @@ dependencies {
         compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
     }
 
-    compileOnly("maven.modrinth:farmers-delight:${property("deps.fdrf")}") {
+    compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}") {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }

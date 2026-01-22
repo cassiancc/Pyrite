@@ -157,7 +157,7 @@ dependencies {
         isTransitive = false
     }
 
-    modImplementation("maven.modrinth:farmers-delight-refabricated:${property("deps.fdrf")}") {
+    modImplementation("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }

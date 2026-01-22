@@ -8,11 +8,10 @@ import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 //? <26.1
 import io.github.haykam821.columns.block.ColumnBlock;
-import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
+import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 
 public class ColumnsCompat {
     public static void registerCopperColumn(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {

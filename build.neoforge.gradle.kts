@@ -166,7 +166,7 @@ dependencies {
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     jarJar("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     if (hasProperty("deps.rrv"))
-        implementation("maven.modrinth:rrv:${property("deps.rrv")}-neoforge")
+        implementation("cc.cassian.rrv:reliable-recipe-viewer-neoforge:${property("deps.rrv")}")
 
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
@@ -179,7 +179,7 @@ dependencies {
 
 stonecutter {
     replacements.string {
-        direction = eval(current.version, ">1.21")
+        direction = eval(current.version, ">1.21.10")
         replace("ResourceLocation", "Identifier")
     }
 }

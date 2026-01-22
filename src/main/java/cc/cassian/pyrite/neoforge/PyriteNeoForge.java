@@ -3,13 +3,14 @@ package cc.cassian.pyrite.neoforge;
 //? if neoforge {
 
 /*import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.compat.PyriteEIVPlugin;
+import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
-import cc.cassian.pyrite.registry.neoforge.BlockCreatorImpl;
+import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.neoforge.client.PyriteNeoForgeClient;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -19,6 +20,7 @@ import net.minecraft.world.InteractionResult;
 /^import net.minecraft.world.ItemInteractionResult;
 ^///?}
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -28,10 +30,14 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import static cc.cassian.pyrite.neoforge.NeoForgePlatformImpl.SUPPORTED_BLOCKS;
 
 
 @Mod(Pyrite.MOD_ID)
@@ -39,9 +45,24 @@ import static cc.cassian.pyrite.Pyrite.MOD_ID;
 public final class PyriteNeoForge {
     public PyriteNeoForge(IEventBus eventBus, ModContainer container) {
         // Run our common setup.
-        Pyrite.init();
-        // Run NeoForged specific setup.
-        BlockCreatorImpl.register(eventBus);
+    }
+
+    @SubscribeEvent
+    private static void onUseWithItem(RegisterEvent event) {
+        if (event.getRegistryKey().equals(Registries.BLOCK)) {
+            Pyrite.init();
+            BlockCreator.register();
+        }
+    }
+
+    @SubscribeEvent
+    private static void onUseWithItem(BuildCreativeModeTabContentsEvent event) {
+        PyriteItemGroups.buildContents(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    private static void onUseWithItem(BlockEntityTypeAddBlocksEvent event) {
+        SUPPORTED_BLOCKS.forEach(event::modify);
     }
 
     @SubscribeEvent
@@ -69,8 +90,8 @@ public final class PyriteNeoForge {
 
     @SubscribeEvent
     private static void hideStacks(TagsUpdatedEvent commonSetupEvent) {
-        if (ModList.get().isLoaded("eiv")) {
-            PyriteEIVPlugin.hideStacks();
+        if (ModList.get().isLoaded("rrv")) {
+            PyriteRRVPlugin.hideStacks();
         }
     }
 }

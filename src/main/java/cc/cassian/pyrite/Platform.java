@@ -2,10 +2,11 @@ package cc.cassian.pyrite;
 
 //? fabric {
 import cc.cassian.pyrite.fabric.FabricPlatformImpl;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 //?}
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 //? neoforge {
 /*import cc.cassian.pyrite.neoforge.NeoForgePlatformImpl;
 *///?}
@@ -16,7 +17,6 @@ public interface Platform {
     //? fabric {
     Platform INSTANCE = new FabricPlatformImpl();
 
-	void registerWaxableBlockPair(Block newBlock, Block waxed);
 	//?}
     //? neoforge {
     /*Platform INSTANCE = new NeoForgePlatformImpl();
@@ -32,4 +32,7 @@ public interface Platform {
 
     void registerOxidizableBlockPair(Block block, Block block1);
 
+    void registerWaxableBlockPair(Block newBlock, Block waxed);
+
+    WoodType createWoodType(String blockID, BlockSetType setType);
 }
