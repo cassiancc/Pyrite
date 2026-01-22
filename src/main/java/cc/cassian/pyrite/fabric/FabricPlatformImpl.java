@@ -14,7 +14,11 @@ public class FabricPlatformImpl implements Platform {
 
     @Override
     public void registerWaxableBlockPair(Block newBlock, Block waxed) {
-        OxidizableBlocksRegistry.registerWaxable(newBlock, waxed);
+        //? if >26 {
+        /*OxidizableBlocksRegistry.registerWaxable(newBlock, waxed);
+        *///?} else {
+        OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+        //?}
     }
 
     @Override
