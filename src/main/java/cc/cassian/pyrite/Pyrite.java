@@ -94,6 +94,9 @@ public class Pyrite {
 			createPyriteBlock( "angelic_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 			createPyriteBlock( "hellfire_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 		}
+		if (Platform.INSTANCE.isModLoaded("vanillabackport")) {
+			createPyriteBlock("resin_brick_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
+		}
 		// Red Mushroom Wood Set
 		createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM, "red_mushroom");
 		createWoodSet("red_mushroom", MapColor.COLOR_RED, 0, "wood");
