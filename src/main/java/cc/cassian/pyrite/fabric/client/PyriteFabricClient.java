@@ -12,7 +12,6 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 //? if >26 {
 /*import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 *///?} else {
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 //?}
 //? if >1.21.4 {

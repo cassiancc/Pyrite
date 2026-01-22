@@ -183,7 +183,7 @@ dependencies {
 
 stonecutter {
     replacements.string {
-        direction = eval(current.version, ">1.21")
+        direction = eval(current.version, ">1.21.10")
         replace("ResourceLocation", "Identifier")
     }
 }
