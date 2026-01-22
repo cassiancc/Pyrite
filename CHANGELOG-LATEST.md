@@ -1,18 +1,30 @@
 ### Added
-- Waxed variants of Pyrite copper blocks.
-- Cobbled Deepslate and Mossy Cobbled Deepslate Bricks.
-- Optional compatibility for [Columns](https://modrinth.com/mod/columns) by haykam.
-- Optional compatibility for [More Chest Variants](https://modrinth.com/mod/more-chest-variants-lieonlion) by LieOn Studios.
-    - Trapped chests have not yet been added, they'll be in a future patch.
-- On Fabric, Pyrite ladders now work with trapdoors correctly.
-- Updated Russian translations (@Alexander317)
+- Internal restructures now allow for content to be disabled via datapacks, enabled via `config/pyrite.toml`. This file can be edited ingame via [McQoy](https://modrinth.com/mod/mcqoy), but a restart is required to reload the packs.
+  - Pyrite's additional dyes and nostalgia blocks have been disabled behind the new Pyrite Oddities config option.
+  - Pyrite's Azalea Wood can now be disabled behind the new Pyrite Azalea config option.
+  - Pyrite's Mushroom Wood can now be disabled behind the new Pyrite Mushrooms config option.
+  - Pyrite Crafting Tables can now be disabled behind the new Pyrite Crafting Tables config option.
+- Optional compatibility for [Farmer's Delight Refabricated](https://modrinth.com/mod/farmers-delight-refabricated).
+  - Cabinets for all Pyrite wood sets.
+  - Cutting recipes for Pyrite wood sets.
+- Optional compatibility for [Totally Lit](https://modrinth.com/mod/totally-lit).
+  - Pyrite torches will now burn out with the mod installed.
+- Item textures for Pyrite torch levers.
+- Torches can now be dyed in world, like Signs.
+- Red Sandstone Bricks, in parity with existing Sandstone Bricks.
+- Added Shelves for Pyrite planks. On 1.21.1, these are available as optional compatibility for [Copper Age Backport](https://modrinth.com/mod/backport-copper-age).
+- Pale Oak blocks will now be registered when [Vanilla Backport](https://modrinth.com/mod/vanillabackport) is present.
 
 ### Changed
-- Unwaxed copper blocks now properly oxidize, can be stripped, and waxed.
-- On Fabric, Pyrite's items have been added to the vanilla item groups.
-- On Fabric, Pyrite also now has only one item group containing all of its items.
-- On NeoForge, Pyrite's Redstone group has been integrated into the vanilla item group.
-- Stone brick blocks now have an alternate texture for slabs and stairs.
-- Nostalgia Copper Blocks now have a more pleasant texture.
-- Azalea Logs can now be smelted into Charcoal.
-- Vanilla Deepslate recipes have been changed to accomodate Cobbled Deepslate Bricks.
+- Resource block variants will now yield more when crafted via the Stonecutter.
+- Pyrite items not included in the `pyrite:enabled` item tag will no longer show up in the creative inventory.
+- Dyeing recipes now use convention tags instead of dye items.
+- Vanilla item group modification now works on NeoForge.
+- Vanilla item group modification can now be disabled.
+
+### Fixed
+- Sounds on Wall Gates and Cobbled Deepslate Bricks.
+- Recipes for waxed Copper blocks.
+- Wall Gate textures are no longer stretched.
+- Log spam when Columns was not installed.
+- Sign items with incorrect translations.

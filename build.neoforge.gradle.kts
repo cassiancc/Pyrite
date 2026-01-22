@@ -4,6 +4,9 @@ plugins {
     id("me.modmuss50.mod-publish-plugin")
 }
 
+val minecraft = stonecutter.current.version
+val mcVersion = stonecutter.current.project.substringBeforeLast('-')
+
 tasks.named<ProcessResources>("processResources") {
     fun prop(name: String) = project.property(name) as String
 
@@ -204,10 +207,10 @@ tasks {
 
 java {
     withSourcesJar()
-    val javaCompat = if (stonecutter.eval(stonecutter.current.version, ">=1.20.5")) {
-        JavaVersion.VERSION_21
+    val javaCompat = if (stonecutter.eval(stonecutter.current.version, ">26")) {
+        JavaVersion.VERSION_25
     } else {
-        JavaVersion.VERSION_17
+        JavaVersion.VERSION_21
     }
     sourceCompatibility = javaCompat
     targetCompatibility = javaCompat
@@ -227,7 +230,7 @@ publishMods {
     type = BETA
     displayName = "${property("mod.name")} ${property("mod.version")} for ${stonecutter.current.version} NeoForge"
     version = "${property("mod.version")}+${property("deps.minecraft")}-neoforge"
-    changelog = provider { rootProject.file("CHANGELOG.md").readText() }
+    changelog = provider { rootProject.file("CHANGELOG-LATEST.md").readText() }
     modLoaders.add("neoforge")
 
     modrinth {
@@ -236,6 +239,13 @@ publishMods {
         minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
         optional("mcqoy")
+        if (stonecutter.eval(mcVersion, "<1.21.4")) {
+            optional("emi")
+            optional("vanillabackport")
+            optional("backport-copper-age")
+        } else {
+            optional("rrv")
+        }
     }
 
     curseforge {
@@ -243,5 +253,11 @@ publishMods {
         accessToken = env.CURSEFORGE_API_KEY.orNull()
         minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
+        if (hasProperty("deps.emi")) {
+            optional("emi")
+        }
+        if (hasProperty("deps.rrv")) {
+            optional("rrv")
+        }
     }
 }

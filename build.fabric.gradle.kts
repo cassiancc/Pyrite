@@ -6,6 +6,9 @@ plugins {
     id("me.modmuss50.mod-publish-plugin")
 }
 
+val minecraft = stonecutter.current.version
+val mcVersion = stonecutter.current.project.substringBeforeLast('-')
+
 tasks.named<ProcessResources>("processResources") {
     fun prop(name: String) = project.property(name) as String
 
@@ -227,7 +230,7 @@ publishMods {
     type = STABLE
     displayName = "${property("mod.name")} ${property("mod.version")} for ${stonecutter.current.version} Fabric"
     version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
-    changelog = provider { rootProject.file("CHANGELOG.md").readText() }
+    changelog = provider { rootProject.file("CHANGELOG-LATEST.md").readText() }
     modLoaders.add("fabric")
 
     modrinth {
@@ -237,6 +240,13 @@ publishMods {
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
         optional("mcqoy")
+        if (stonecutter.eval(mcVersion, "<1.21.4")) {
+            optional("emi")
+            optional("vanillabackport")
+            optional("backport-copper-age")
+        } else {
+            optional("rrv")
+        }
     }
 
     curseforge {
@@ -245,5 +255,11 @@ publishMods {
         minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
+        if (hasProperty("deps.emi")) {
+            optional("emi")
+        }
+        if (hasProperty("deps.rrv")) {
+            optional("rrv")
+        }
     }
 }
