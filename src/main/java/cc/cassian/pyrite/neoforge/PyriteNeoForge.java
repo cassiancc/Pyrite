@@ -3,6 +3,7 @@ package cc.cassian.pyrite.neoforge;
 //? if neoforge {
 
 /*import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
@@ -48,7 +49,7 @@ public final class PyriteNeoForge {
     }
 
     @SubscribeEvent
-    private static void onUseWithItem(RegisterEvent event) {
+    private static void register(RegisterEvent event) {
         if (event.getRegistryKey().equals(Registries.BLOCK)) {
             Pyrite.init();
             BlockCreator.register();
@@ -56,13 +57,14 @@ public final class PyriteNeoForge {
     }
 
     @SubscribeEvent
-    private static void onUseWithItem(BuildCreativeModeTabContentsEvent event) {
+    private static void buildCreativeGroups(BuildCreativeModeTabContentsEvent event) {
         PyriteItemGroups.buildContents(event);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    private static void onUseWithItem(BlockEntityTypeAddBlocksEvent event) {
+    private static void addSupportedBlocks(BlockEntityTypeAddBlocksEvent event) {
         SUPPORTED_BLOCKS.forEach(event::modify);
+        ChestsCompat.registerToBlockEntity(event);
     }
 
     @SubscribeEvent
