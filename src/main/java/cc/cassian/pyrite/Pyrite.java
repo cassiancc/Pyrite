@@ -95,6 +95,7 @@ public class Pyrite {
 			createPyriteBlock( "hellfire_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 		}
 		if (Platform.INSTANCE.isModLoaded("vanillabackport")) {
+			createPyriteBlock("pale_oak_crafting_table","crafting", Blocks.CRAFTING_TABLE, "crafting_table");
 			createPyriteBlock("resin_brick_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 		}
 		// Red Mushroom Wood Set

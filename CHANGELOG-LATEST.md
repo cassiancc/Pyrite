@@ -13,7 +13,7 @@
 - Torches can now be dyed in world, like Signs.
 - Red Sandstone Bricks, in parity with existing Sandstone Bricks.
 - Added Shelves for Pyrite planks. On 1.21.1, these are available as optional compatibility for [Copper Age Backport](https://modrinth.com/mod/backport-copper-age).
-- Pale Oak blocks will now be registered when [Vanilla Backport](https://modrinth.com/mod/vanillabackport) is present.
+- Pale Oak and Resin blocks will now be registered when [Vanilla Backport](https://modrinth.com/mod/vanillabackport) is present.
 
 ### Changed
 - Resource block variants will now yield more when crafted via the Stonecutter.
