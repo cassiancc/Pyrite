@@ -22,6 +22,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Block;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
 
 public class PyriteFabricClient implements ClientModInitializer {

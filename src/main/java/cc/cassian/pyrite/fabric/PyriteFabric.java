@@ -2,12 +2,14 @@ package cc.cassian.pyrite.fabric;
 
 //? fabric {
 
+import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
-import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
+import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.functions.fabric.FabricHelpers;
+import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -22,16 +24,17 @@ public class PyriteFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         Pyrite.init();
-        BlockCreatorImpl.register();
+        BlockCreator.register();
         FabricHelpers.registerFuelBlocks();
+        PyriteItemGroups.buildContents();
 
         ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> {
-            if (FabricLoader.getInstance().isModLoaded("lolmcv"))
+            if (Platform.INSTANCE.isModLoaded("lolmcv"))
                 ChestsCompat.registerToBlockEntity();
-            if (FabricLoader.getInstance().isModLoaded("farmersdelight"))
+            if (Platform.INSTANCE.isModLoaded("farmersdelight"))
                 FarmersDelightCompat.registerToBlockEntity();
             //? if =1.21.1 {
-            /*if (FabricLoader.getInstance().isModLoaded("copperagebackport"))
+            /*if (Platform.INSTANCE.isModLoaded("copperagebackport"))
                 CopperAgeBackportCompat.registerToBlockEntity();
             *///?}
         });
@@ -48,7 +51,7 @@ public class PyriteFabric implements ModInitializer {
         });
 
         CommonLifecycleEvents.TAGS_LOADED.register(((registryAccess, bl) -> {
-            if (FabricLoader.getInstance().isModLoaded("rrv")) {
+            if (Platform.INSTANCE.isModLoaded("rrv")) {
                 PyriteRRVPlugin.hideStacks();
             }
         }));

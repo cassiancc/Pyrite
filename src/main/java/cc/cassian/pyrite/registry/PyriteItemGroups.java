@@ -8,12 +8,12 @@ import cc.cassian.pyrite.functions.ModLists;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
+import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 //?} else if fabric {
 /*import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import static cc.cassian.pyrite.registry.fabric.BlockCreatorImpl.BLOCKS;
+import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 *///?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
