@@ -2,6 +2,7 @@ package cc.cassian.pyrite.compat;
 
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.blocks.ModBlock;
+import cc.cassian.pyrite.functions.ModHelpers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import vectorwing.farmersdelight.common.block.CabinetBlock;
@@ -16,6 +17,6 @@ public class FarmersDelightCompat {
     }
 
     public static void add(Block newBlock) {
-        Platform.INSTANCE.addSupportedBlock(ModBlockEntityTypes.CABINET.get(), newBlock);
+        ModHelpers.addSupportedBlock(ModBlockEntityTypes.CABINET, newBlock);
     }
 }

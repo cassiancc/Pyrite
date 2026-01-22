@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.compat;
 
 //? =1.21.1 {
-/*import cc.cassian.pyrite.Platform;
+/*import cc.cassian.pyrite.functions.ModHelpers;
 import com.github.smallinger.copperagebackport.block.shelf.ShelfBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,7 +24,7 @@ public class CopperAgeBackportCompat {
 
 
     public static void add(Block newBlock) {
-        Platform.INSTANCE.addSupportedBlock(SHELF_BLOCK_ENTITY.get(), newBlock);
+        ModHelpers.addSupportedBlock(SHELF_BLOCK_ENTITY, newBlock);
     }
 }
 *///?}

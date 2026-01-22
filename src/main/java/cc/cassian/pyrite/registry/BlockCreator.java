@@ -4,6 +4,7 @@ import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.*;
+import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -128,7 +129,7 @@ public class BlockCreator {
                 // Register Shelf
                 //? if >1.21.9 {
                 newBlock = new ShelfBlock(blockSettings);
-                Platform.INSTANCE.addSupportedBlock(BlockEntityType.SHELF, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
                 //?} else {
                 /*if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
                     newBlock = CopperAgeBackportCompat.registerShelf(blockID, blockSettings, group, copyBlock, color);
@@ -282,8 +283,8 @@ public class BlockCreator {
                  *///?}
                 ITEMS.put(blockID, SIGN_ITEM);
                 SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
-                Platform.INSTANCE.addSupportedBlock(BlockEntityType.SIGN, newBlock);
-                Platform.INSTANCE.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
+                ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
                 break;
             case "hanging_sign":
                 //Sign Blocks
@@ -296,8 +297,8 @@ public class BlockCreator {
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 SIGNS.add(() -> HANGING_SIGN_ITEM);
-                Platform.INSTANCE.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
-                Platform.INSTANCE.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
+                ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
             case "door":
                 if (isCopper(blockID)) {

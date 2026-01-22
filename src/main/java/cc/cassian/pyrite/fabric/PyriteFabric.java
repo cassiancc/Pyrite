@@ -28,16 +28,7 @@ public class PyriteFabric implements ModInitializer {
         FabricHelpers.registerFuelBlocks();
         PyriteItemGroups.buildContents();
 
-        ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> {
-            if (Platform.INSTANCE.isModLoaded("lolmcv"))
-                ChestsCompat.registerToBlockEntity();
-            if (Platform.INSTANCE.isModLoaded("farmersdelight"))
-                FarmersDelightCompat.registerToBlockEntity();
-            //? if =1.21.1 {
-            /*if (Platform.INSTANCE.isModLoaded("copperagebackport"))
-                CopperAgeBackportCompat.registerToBlockEntity();
-            *///?}
-        });
+        ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> Platform.INSTANCE.addSupportedBlock(be.get(), block)));
 
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));
 

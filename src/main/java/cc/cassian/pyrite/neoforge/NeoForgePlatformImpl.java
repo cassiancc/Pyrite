@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLPaths;
-import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.HashMap;
