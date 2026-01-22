@@ -5,7 +5,7 @@ import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -178,11 +178,11 @@ public class Pyrite {
         //?}
 	}
 
-    public static ResourceLocation of(String namespace, String path) {
-        return ResourceLocation.fromNamespaceAndPath(namespace, path);
+    public static Identifier of(String namespace, String path) {
+        return Identifier.fromNamespaceAndPath(namespace, path);
     }
 
-    public static ResourceLocation of(String path) {
+    public static Identifier of(String path) {
         return of(MOD_ID, path);
     }
 }

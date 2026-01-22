@@ -2,7 +2,9 @@ package cc.cassian.pyrite.functions.fabric;
 
 //? if fabric {
 
-//? if >1.21.4 {
+//? if >26 {
+/*import net.fabricmc.fabric.api.registry.FuelValueEvents;
+*///?} else if >1.21.4 {
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 //?} else {
 /*import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -24,7 +26,11 @@ public class FabricHelpers {
 
     public static void registerFuelBlocks() {
         for (Map.Entry<Block, Integer> fuelBlock : FUEL_BLOCKS.entrySet()) {
-            //? if >1.21.4 {
+            //? if >26 {
+            /*FuelValueEvents.BUILD.register((builder, context) -> {
+                builder.add(fuelBlock.getKey(), fuelBlock.getValue());
+            });
+            *///?} else if >1.21.4 {
             FuelRegistryEvents.BUILD.register((builder, context) -> {
                 builder.add(fuelBlock.getKey(), fuelBlock.getValue());
             });

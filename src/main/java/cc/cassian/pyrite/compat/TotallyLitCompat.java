@@ -5,6 +5,7 @@ package cc.cassian.pyrite.compat;
 import cc.cassian.pyrite.blocks.ModWallMounted;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.registry.fabric.BlockCreatorImpl;
+//? <26
 import io.github.realguyman.totally_lit.TotallyLit;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,6 +22,7 @@ public class TotallyLitCompat {
         BlockCreatorImpl.BLOCKS.put(blockID, block);
         add(block);
         PyriteItemGroups.match(()->block, copyBlock, group, "unlit_torch");
+        //? <26
         TotallyLit.TORCH_MAP.put(copyBlock, block);
         addTransparentBlock(block);
     }

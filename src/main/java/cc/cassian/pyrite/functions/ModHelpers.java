@@ -11,7 +11,7 @@ import net.minecraft.core.particles.PowerParticleOption;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.*;
 import net.minecraft.world.InteractionHand;
@@ -81,7 +81,7 @@ public class ModHelpers {
         return getBlock(of(id));
     }
 
-    public static Block getBlock(ResourceLocation id) {
+    public static Block getBlock(Identifier id) {
         //? if >1.21.4 {
         return BuiltInRegistries.BLOCK.getValue(id);
          //?} else {
@@ -189,8 +189,8 @@ public class ModHelpers {
 
     public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
         if (stack.is(PyriteTags.DYES)) {
-            ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            Block dyedTorch = getBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
+            Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            Block dyedTorch = getBlock(Identifier.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
             if (state.is(Blocks.TORCH)) {
                 world.setBlockAndUpdate(pos, dyedTorch.withPropertiesOf(state));
                 stack.consume(1, player);

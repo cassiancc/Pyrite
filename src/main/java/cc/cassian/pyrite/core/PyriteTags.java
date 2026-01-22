@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.core;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
@@ -20,6 +20,6 @@ public class PyriteTags {
     }
 
     public static TagKey<Item> itemTagKey(String namespace, String id) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(namespace, id));
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(namespace, id));
     }
 }

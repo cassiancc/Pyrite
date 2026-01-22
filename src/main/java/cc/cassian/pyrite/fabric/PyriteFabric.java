@@ -15,10 +15,8 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.core.registries.BuiltInRegistries;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
-import static cc.cassian.pyrite.functions.ModHelpers.addAlias;
 
 public class PyriteFabric implements ModInitializer {
     @Override
@@ -51,7 +49,7 @@ public class PyriteFabric implements ModInitializer {
 
         CommonLifecycleEvents.TAGS_LOADED.register(((registryAccess, bl) -> {
             if (FabricLoader.getInstance().isModLoaded("eiv")) {
-                PyriteEIVPlugin.hideStacks();
+                PyriteRRVPlugin.hideStacks();
             }
         }));
     }

@@ -14,7 +14,7 @@ import static io.github.lieonlion.mcv.init.McvBlockInit.MORE_CHEST_BLOCK_ENTITY;
 
 *///?}
 
-//? if fabric {
+//? if fabric && <26.1 {
     //? if >1.21.4 {
     import dev.lieonlion.mcv.block.FabricMoreChestBlock;
     import dev.lieonlion.mcv.init.FabricMoreChestVariantsBlocks;
@@ -25,6 +25,7 @@ import static io.github.lieonlion.mcv.init.McvBlockInit.MORE_CHEST_BLOCK_ENTITY;
 //?}
 
 
+import cc.cassian.pyrite.Platform;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -37,15 +38,15 @@ import java.util.function.Supplier;
 public class ChestsCompat {
     public static ArrayList<Supplier<Block>> CHESTS = new ArrayList<>();
 
-    //? if fabric {
+    //? if fabric && <26.1 {
     public static Block registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
         //? if >1.21.4 {
         return new FabricMoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
-        //?} else {
+        //?} else if =1.21.1 {
         /*return new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", ""));
         *///?}
     }
-    //?} else {
+    //?} else if neoforge {
     /*public static Supplier<Block> registerChest(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock, MapColor color) {
         //? if <1.21.4 {
         /^return BLOCKS.register(blockID, ()-> new MoreChestBlock(color,"pyrite_"+ blockID.replace("_chest", "")));
@@ -69,9 +70,9 @@ public class ChestsCompat {
             BlockEntityType.CHEST.addSupportedBlock(chest.get());
             *///?} else if neoforge {
             /*event.modify(MORE_CHEST_BLOCK_ENTITY.get(), chest.get());
-            *///?} else {
-            FabricMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY.addSupportedBlock(chest.get());
-            BlockEntityType.CHEST.addSupportedBlock(chest.get());
+            *///?} else if <26.1 && fabric {
+            Platform.INSTANCE.addSupportedBlock(FabricMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY, chest.get());
+            Platform.INSTANCE.addSupportedBlock(BlockEntityType.CHEST, chest.get());
             //?}
         }
     }
