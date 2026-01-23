@@ -171,9 +171,6 @@ dependencies {
     if (hasProperty("deps.copper_age_backport")) {
         modImplementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
     }
-
-    val modules = listOf("transitive-access-wideners-v1", "registry-sync-v0", "resource-loader-v0")
-    for (it in modules) modImplementation(fabricApi.module("fabric-$it", property("deps.fabric-api") as String))
 }
 
 //fabricApi {

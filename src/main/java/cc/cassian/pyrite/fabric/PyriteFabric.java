@@ -36,8 +36,10 @@ public class PyriteFabric implements ModInitializer {
         PyriteItemGroups.buildContents();
 
         ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> {
-            if (be != null)
+            if (be != null && be.get() != null)
 			    Platform.INSTANCE.addSupportedBlock(be.get(), block);
+            if (Platform.INSTANCE.isModLoaded("lolmcv"))
+                ChestsCompat.registerToBlockEntity();
 		}));
 
         UseBlockCallback.EVENT.register((ModHelpers::updateTorchColour));

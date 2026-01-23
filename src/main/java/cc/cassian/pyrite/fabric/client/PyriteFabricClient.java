@@ -35,7 +35,7 @@ public class PyriteFabricClient implements ClientModInitializer {
             net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.BLOCK.register(PyriteClient::registerColor, grassBlock);
             //?}
             //? <1.21.4
-            /*net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(PyriteClient::registerColor, grassBlock);*/
+            //net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(PyriteClient::registerColor, grassBlock);
         }
         for (Block transparentBlock : TRANSPARENT_BLOCKS) {
             //? if >26 {
@@ -56,11 +56,7 @@ public class PyriteFabricClient implements ClientModInitializer {
             *///?}
         }
         if (Pyrite.CONFIG.disabledContentTooltip) {
-            ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {
-                if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID) && !stack.is(PyriteTags.ENABLED)) {
-                    lines.add(Component.literal("Disabled by current configuration").withStyle(ChatFormatting.RED));
-                }
-            }));
+            ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> PyriteClient.addTooltip(lines, stack)));
         }
 
     }

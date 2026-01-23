@@ -199,10 +199,16 @@ public class ModHelpers {
             LOGGER.info(log);
     }
 
+    @SuppressWarnings("unused") // fabric
     public static InteractionResult updateTorchColour(Player player, Level world, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack stack = player.getItemInHand(hand);
         BlockState state = world.getBlockState(hitResult.getBlockPos());
         return updateTorchColour(stack, state, player, world, hitResult.getBlockPos());
+    }
+
+    @SuppressWarnings("unused") // neoforge
+    public static InteractionResult updateTorchColour(ItemStack itemStack, @Nullable Player player, Level level, BlockPos pos) {
+        return updateTorchColour(itemStack, level.getBlockState(pos), player, level, pos);
     }
 
     public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
@@ -219,10 +225,6 @@ public class ModHelpers {
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
-    }
-
-    public static InteractionResult updateTorchColour(ItemStack itemStack, @Nullable Player player, Level level, BlockPos pos) {
-        return updateTorchColour(itemStack, level.getBlockState(pos), player, level, pos);
     }
 
     public static void addAlias(String id) {

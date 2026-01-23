@@ -677,7 +677,7 @@ public class BlockCreator {
         //Create Bars/Doors/Trapdoors/Plates for those that don't already exist (Iron)
         if (!blockID.equals("iron")) {
             //? if <1.21.9
-            /*createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);*/
+            //createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
             //Disable Copper doors in 1.21+
             if (!blockID.contains("copper")) {
                 //? if >1.21.9

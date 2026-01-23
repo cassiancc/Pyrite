@@ -1,5 +1,4 @@
 {
-	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
 		"lever": "#texture",
@@ -15,7 +14,8 @@
 				"east": {"uv": [7, 6, 9, 16], "texture": "#lever"},
 				"south": {"uv": [7, 6, 9, 16], "texture": "#lever"},
 				"west": {"uv": [7, 6, 9, 16], "texture": "#lever"},
-				"up": {"uv": [7, 6, 9, 8], "texture": "#lever"}
+				"up": {"uv": [7, 6, 9, 8], "texture": "#lever"},
+				"down": {"uv": [7, 14, 9, 16], "texture": "#lever"}
 			}
 		}
 	]
