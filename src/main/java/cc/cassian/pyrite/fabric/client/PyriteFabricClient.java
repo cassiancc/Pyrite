@@ -56,11 +56,7 @@ public class PyriteFabricClient implements ClientModInitializer {
             *///?}
         }
         if (Pyrite.CONFIG.disabledContentTooltip) {
-            ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> {
-                if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID) && !stack.is(PyriteTags.ENABLED)) {
-                    lines.add(Component.literal("Disabled by current configuration").withStyle(ChatFormatting.RED));
-                }
-            }));
+            ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> PyriteClient.addTooltip(lines, stack)));
         }
 
     }

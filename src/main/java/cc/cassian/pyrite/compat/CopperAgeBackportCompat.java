@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 //? neoforge {
-/^import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
-^///?}
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+//?}
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
