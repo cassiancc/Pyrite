@@ -49,7 +49,7 @@ public class ChestsCompat {
     ) {
         for (Block chest : CHESTS) {
             //? if <1.21.4 && fabric {
-            /*McvBlockInit.MORE_CHEST_BLOCK_ENTITY.addSupportedBlock(chest);
+            /*MORE_CHEST_BLOCK_ENTITY.addSupportedBlock(chest);
             BlockEntityType.CHEST.addSupportedBlock(chest);
             *///?} else if neoforge {
             /*event.modify(MORE_CHEST_BLOCK_ENTITY.get(), chest);
