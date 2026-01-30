@@ -12,12 +12,18 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 //? if >1.21.2 {
 import net.minecraft.world.entity.vehicle.boat.Boat;
+import cc.cassian.pyrite.entity.ModEntities;
  //?} else {
-/*import net.minecraft.world.entity.vehicle.Boat;
+/*import com.terraformersmc.terraform.boat.api.TerraformBoatType;
+import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 *///?}
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
@@ -110,7 +116,7 @@ public class BlockCreator {
     }
 
     final static Block[] vanillaWood = getVanillaWood();
-    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
+    public static Block platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
         //? if >1.21.4
@@ -370,7 +376,7 @@ public class BlockCreator {
                 break;
         }
         if (newBlock == null)
-            return;
+            return null;
         if (!blockType.contains("sign")) {
             BLOCKS.put(blockID, newBlock);
         }
@@ -379,6 +385,7 @@ public class BlockCreator {
         }
         Block finalNewBlock = newBlock;
         match(()-> finalNewBlock, copyBlock, group, blockID);
+        return finalNewBlock;
     }
 
     public static Block getLastBlock() {
@@ -487,12 +494,12 @@ public class BlockCreator {
     }
 
     //Create most of the generic Stained Blocks, then add them.
-    public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
+    public static Block createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).mapColor(color).lightLevel(parseLux(lux));
         if ((copyBlock.equals(Blocks.OAK_PLANKS)) || (copyBlock.equals(Blocks.OAK_SLAB) || (copyBlock.equals(Blocks.OAK_STAIRS)))) {
             blockSettings = blockSettings.ignitedByLava();
         }
-        platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group, color);
+        return platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group, color);
     }
 
     //Create basic blocks.
@@ -579,7 +586,7 @@ public class BlockCreator {
         WoodType GENERATED_TYPE = Platform.INSTANCE.createWoodType(blockID, GENERATED_SET);
 
         // Planks
-        createPyriteBlock("%s_planks".formatted(blockID), "block", Blocks.OAK_PLANKS, color, blockLux, group);
+        var planks = createPyriteBlock("%s_planks".formatted(blockID), "block", Blocks.OAK_PLANKS, color, blockLux, group);
 
         // Stairs
         createPyriteBlock("%s_stairs".formatted(blockID), "stairs",Blocks.OAK_STAIRS, color, blockLux, group);
@@ -635,8 +642,25 @@ public class BlockCreator {
         *///?}
 
         // Boat
+        //? if >1.21.2 {
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
         registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop));
+        //?} else {
+        /*ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));
+
+        Item boatItem = TerraformBoatItemHelper.registerBoatItem(Pyrite.of("%s_boat".formatted(blockID)), key, false);
+        Item chestBoatItem = TerraformBoatItemHelper.registerBoatItem(Pyrite.of("%s_chest_boat".formatted(blockID)), key, true);
+
+        TerraformBoatType boat = new TerraformBoatType.Builder()
+                .item(boatItem)
+                .chestItem(chestBoatItem)
+                .planks(planks.asItem())
+                .build();
+
+        Registry.register(TerraformBoatTypeRegistry.INSTANCE, key, boat);
+        ModEntities.BOATS.add(key);
+        *///?}
+
     }
 
     /**

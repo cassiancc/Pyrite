@@ -16,12 +16,14 @@ import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 //?} else {
 /*import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
+import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 *///?}
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
+
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 
 public class PyriteFabricClient implements ClientModInitializer {
@@ -58,11 +60,17 @@ public class PyriteFabricClient implements ClientModInitializer {
             ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> PyriteClient.addTooltip(lines, stack)));
         }
 
+        //? if >1.21.2 {
         BOATS.forEach((id, entityType) -> {
             var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");
             EntityModelLayerRegistry.registerModelLayer(layer, BoatModel::createBoatModel);
             EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
         });
+        //?} else {
+        /*BOATS.forEach(boat -> {
+            TerraformBoatClientHelper.registerModelLayers(boat.location(), false);
+        });
+        *///?}
 
     }
 }

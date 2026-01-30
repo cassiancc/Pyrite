@@ -154,6 +154,10 @@ repositories {
             includeGroupAndSubgroups("thedarkcolour")
         }
     }
+
+    flatDir {
+        dirs("libs")
+    }
 }
 
 dependencies {
@@ -175,6 +179,9 @@ dependencies {
 
     if (hasProperty("deps.copper_age_backport")) {
         implementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
+    }
+    if (hasProperty("deps.terraform_wood_api")) {
+        implementation("com.terraformersmc.terraform:terraform_wood_api_v1:${property("deps.terraform_wood_api")}")
     }
 
 }

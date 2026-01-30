@@ -171,6 +171,9 @@ dependencies {
     if (hasProperty("deps.copper_age_backport")) {
         modImplementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
     }
+    if (hasProperty("deps.terraform_wood_api")) {
+        modImplementation("com.terraformersmc.terraform-api:terraform-wood-api-v1:${property("deps.terraform_wood_api")}")
+    }
 }
 
 //fabricApi {

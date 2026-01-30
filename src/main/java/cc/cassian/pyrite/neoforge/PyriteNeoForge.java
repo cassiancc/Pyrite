@@ -2,7 +2,8 @@ package cc.cassian.pyrite.neoforge;
 
 //? if neoforge {
 
-/*import cc.cassian.pyrite.Pyrite;
+/*import cc.cassian.pyrite.Platform;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.ChestsCompat;
 import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.functions.ModHelpers;
@@ -64,7 +65,8 @@ public final class PyriteNeoForge {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     private static void addSupportedBlocks(BlockEntityTypeAddBlocksEvent event) {
         SUPPORTED_BLOCKS.forEach(event::modify);
-        ChestsCompat.registerToBlockEntity(event);
+        if (Platform.INSTANCE.isModLoaded("lolmcv"))
+            ChestsCompat.registerToBlockEntity(event);
     }
 
     @SubscribeEvent
