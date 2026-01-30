@@ -4,6 +4,7 @@ import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.*;
+import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import net.minecraft.core.BlockPos;
@@ -11,12 +12,14 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SignItem;
+import net.minecraft.world.entity.EntityType;
+//? if >1.21.2 {
+import net.minecraft.world.entity.vehicle.boat.Boat;
+ //?} else {
+/*import net.minecraft.world.entity.vehicle.Boat;
+*///?}
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,6 +32,7 @@ import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static cc.cassian.pyrite.functions.ModHelpers.*;
@@ -52,6 +56,14 @@ public class BlockCreator {
         var item = new Item(newItemSettings(itemID));
         ITEMS.put(itemID, item);
         PyriteItemGroups.DYES.add(()-> item);
+    }
+
+    /**
+     * This registers a custom item.
+     */
+    public static void registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
+        var item = itemFactory.apply(newItemSettings(itemID));
+        ITEMS.put(itemID, item);
     }
 
     public static BlockItem addBlockItem(String blockID, Block block) {
@@ -565,44 +577,66 @@ public class BlockCreator {
     public static void createWoodSet(String blockID, MapColor color, int blockLux, String group) {
         BlockSetType GENERATED_SET = new BlockSetType(blockID);
         WoodType GENERATED_TYPE = Platform.INSTANCE.createWoodType(blockID, GENERATED_SET);
+
         // Planks
         createPyriteBlock("%s_planks".formatted(blockID), "block", Blocks.OAK_PLANKS, color, blockLux, group);
+
         // Stairs
         createPyriteBlock("%s_stairs".formatted(blockID), "stairs",Blocks.OAK_STAIRS, color, blockLux, group);
+
         // Slabs
         createPyriteBlock("%s_slab".formatted(blockID), "slab", Blocks.OAK_SLAB, color, blockLux, group);
+
         // Fences
         createPyriteBlock("%s_fence".formatted(blockID), "fence", Blocks.OAK_FENCE, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Fence Gates
         createPyriteBlock("%s_fence_gate".formatted(blockID), "fence_gate", Blocks.OAK_FENCE_GATE, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Doors
         createPyriteBlock("%s_door".formatted(blockID), "door", Blocks.OAK_DOOR, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Trapdoors
         createPyriteBlock("%s_trapdoor".formatted(blockID), "trapdoor", Blocks.OAK_TRAPDOOR, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Pressure Plates
         createPyriteBlock("%s_pressure_plate".formatted(blockID), "pressure_plate", Blocks.OAK_PRESSURE_PLATE, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Buttons
         createPyriteBlock("%s_button".formatted(blockID), "button", Blocks.OAK_BUTTON, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Crafting Tables
         createPyriteBlock("%s_crafting_table".formatted(blockID), "crafting", Blocks.CRAFTING_TABLE, color, blockLux, group);
+
         // Ladders
         createPyriteBlock("%s_ladder".formatted(blockID), "ladder", Blocks.LADDER, color, blockLux, group);
+
         // Signs
         createPyriteBlock("%s_sign".formatted(blockID), "sign", Blocks.OAK_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Hanging Signs
         createPyriteBlock("%s_hanging_sign".formatted(blockID), "hanging_sign", Blocks.OAK_HANGING_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Chest
         if (Platform.INSTANCE.isModLoaded("lolmcv"))
             createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Cabinet
         if (Platform.INSTANCE.isModLoaded("farmersdelight"))
             createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Shelf
-        //? if >1.21.8
+        //? if >1.21.8 {
         createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
-        if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
+        //?} else {
+        /*if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
             createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_PLANKS, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
         }
+        *///?}
+
+        // Boat
+        EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
+        registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop));
     }
 
     /**

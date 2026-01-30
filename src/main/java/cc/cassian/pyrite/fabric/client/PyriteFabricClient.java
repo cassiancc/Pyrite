@@ -4,26 +4,25 @@ package cc.cassian.pyrite.fabric.client;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.client.PyriteClient;
-import cc.cassian.pyrite.core.PyriteTags;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 //? if >1.21.4 {
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.object.boat.BoatModel;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 //?} else {
 /*import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
 *///?}
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
+import net.minecraft.client.renderer.entity.BoatRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 
-import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import static cc.cassian.pyrite.entity.ModEntities.BOATS;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
-import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
 
 public class PyriteFabricClient implements ClientModInitializer {
     @Override
@@ -58,6 +57,12 @@ public class PyriteFabricClient implements ClientModInitializer {
         if (Pyrite.CONFIG.disabledContentTooltip) {
             ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> PyriteClient.addTooltip(lines, stack)));
         }
+
+        BOATS.forEach((id, entityType) -> {
+            var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");
+            EntityModelLayerRegistry.registerModelLayer(layer, BoatModel::createBoatModel);
+            EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
+        });
 
     }
 }
