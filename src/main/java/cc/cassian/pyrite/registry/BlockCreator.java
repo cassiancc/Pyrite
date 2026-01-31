@@ -15,6 +15,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 //? if >1.21.2 {
@@ -157,12 +158,10 @@ public class BlockCreator {
                 *///?}
                 break;
             case "chest":
-                //? <26.1 {
                 if (Platform.INSTANCE.isModLoaded("lolmcv")) {
-                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
-                    ChestsCompat.add(newBlock);
+                    newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
+                    ModHelpers.addSupportedBlock(BlockEntityType.CHEST, newBlock);
                 }
-                //?}
                 break;
             case "cabinet":
                 if (Platform.INSTANCE.isModLoaded("farmersdelight")) {

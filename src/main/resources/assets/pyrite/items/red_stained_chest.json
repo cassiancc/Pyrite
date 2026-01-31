@@ -1,1 +1,1 @@
-{"model":{"type":"minecraft:special","base":"minecraft:item/chest","model":{"type":"minecraft:chest","texture":"lolmcv:pyrite_red_stained"}}}
+{"model":{"type":"minecraft:special","base":"minecraft:item/chest","model":{"type":"minecraft:chest","texture":"pyrite:red_stained"}}}

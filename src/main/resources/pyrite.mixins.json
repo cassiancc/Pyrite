@@ -8,5 +8,8 @@
   },
   "mixins": [
   ],
-  "client": []
+  "client": [
+    "ChestRendererMixin",
+    "ChestRenderStateMixin"
+  ]
 }
