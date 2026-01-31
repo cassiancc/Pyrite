@@ -7,7 +7,6 @@ import cc.cassian.pyrite.client.PyriteClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 //? if >1.21.4 {
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -30,10 +29,11 @@ public class PyriteFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         for (Block grassBlock : GRASS_BLOCKS) {
+            net.fabricmc.fabric.api.client.rendering.v1.
             //? if >26 {
-            /*net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry.register(PyriteClient::registerColor, grassBlock);
+            /*BlockColorRegistry.register(PyriteClient::registerColor, grassBlock);
             *///?} else {
-            net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.BLOCK.register(PyriteClient::registerColor, grassBlock);
+            ColorProviderRegistry.BLOCK.register(PyriteClient::registerColor, grassBlock);
             //?}
             //? <1.21.4
             //net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(PyriteClient::registerColor, grassBlock);
@@ -63,7 +63,12 @@ public class PyriteFabricClient implements ClientModInitializer {
         //? if >1.21.2 {
         BOATS.forEach((id, entityType) -> {
             var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");
-            EntityModelLayerRegistry.registerModelLayer(layer, BoatModel::createBoatModel);
+            //? if >26 {
+            /*net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry.registerModelLayer
+            *///?} else {
+            net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry.registerModelLayer
+            //?}
+            (layer, BoatModel::createBoatModel);
             EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
         });
         //?} else {

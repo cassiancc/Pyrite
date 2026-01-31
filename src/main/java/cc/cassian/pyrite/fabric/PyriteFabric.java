@@ -14,6 +14,12 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+//? if >26  {
+/*import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+*///?} else {
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+//?}
 //? >1.21.2 {
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
@@ -33,7 +39,11 @@ public class PyriteFabric implements ModInitializer {
         Pyrite.init();
         BlockCreator.register();
         FabricHelpers.registerFuelBlocks();
-        PyriteItemGroups.buildContents();
+        //? <26.1 {
+        ItemGroupEvents.MODIFY_ENTRIES_ALL.register(PyriteItemGroups::buildContents);
+        //?} else {
+        /*CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register(PyriteItemGroups::buildContents);
+        *///?}
 
         ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> {
             if (be != null && be.get() != null)

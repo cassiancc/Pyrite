@@ -173,6 +173,7 @@ dependencies {
     }
     if (hasProperty("deps.terraform_wood_api")) {
         modImplementation("com.terraformersmc.terraform-api:terraform-wood-api-v1:${property("deps.terraform_wood_api")}")
+        include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${property("deps.terraform_wood_api")}")
     }
 }
 
