@@ -35,6 +35,7 @@ import static cc.cassian.pyrite.functions.ModLists.VANILLA_DYES;
 public class PyriteItemGroups {
     public static final ArrayList<Supplier<Block>> REDSTONE_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<Item>> SIGNS = new ArrayList<>();
+    public static final ArrayList<Supplier<Item>> BOATS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> CRAFTING_TABLES = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> FLOWERS = new ArrayList<>();
     public static final LinkedHashMap<String, Supplier<FlowerPotBlock>> POTTED_FLOWERS = new LinkedHashMap<>();
@@ -496,6 +497,7 @@ public class PyriteItemGroups {
             //BuildCreativeModeTabContentsEvent event
     ) {
         addAfter(Items.WARPED_HANGING_SIGN, getItemCollectionList(SIGNS), event);
+        addAfter(Items.PALE_OAK_CHEST_BOAT, getItemCollectionList(BOATS), event);
         addAfter(Items.CRAFTING_TABLE, getBlockCollectionList(CRAFTING_TABLES), event);
         addAfter(Items.TORCH, getBlockCollectionList(TORCH), event);
         addAfter(Items.CRYING_OBSIDIAN, getBlockCollectionList(OBSIDIAN), event);

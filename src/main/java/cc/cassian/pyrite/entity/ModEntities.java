@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 
 public class ModEntities {
-	public static ArrayList<ResourceKey<?>> BOATS = new ArrayList<>();
 
 //? if >1.21.2 {
 
@@ -44,5 +43,8 @@ public class ModEntities {
 		var resourceKey = ResourceKey.create(Registries.ENTITY_TYPE, Pyrite.of(key));
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, resourceKey, builder.build(resourceKey));
 	}
-//?}
+//?} else {
+/*public static ArrayList<ResourceKey<?>> BOATS = new ArrayList<>();
+
+	*///?}
 }

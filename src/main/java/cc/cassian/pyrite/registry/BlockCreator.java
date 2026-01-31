@@ -67,9 +67,10 @@ public class BlockCreator {
     /**
      * This registers a custom item.
      */
-    public static void registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
+    public static Item registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
         var item = itemFactory.apply(newItemSettings(itemID));
         ITEMS.put(itemID, item);
+        return item;
     }
 
     public static BlockItem addBlockItem(String blockID, Block block) {
@@ -644,7 +645,8 @@ public class BlockCreator {
         // Boat
         //? if >1.21.2 {
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
-        registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop));
+        var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop));
+        BOATS.add(()->boat);
         //?} else {
         /*ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));
 
