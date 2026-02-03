@@ -23,7 +23,14 @@ import net.minecraft.world.level.block.Block;
 
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
 
+import static cc.cassian.pyrite.entity.ModEntities.CHEST_BOATS;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
+//? if >26 {
+/*import static net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry.registerModelLayer;
+*///?} else if >1.21.4 {
+import static net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry.registerModelLayer;
+//?}
+
 
 public class PyriteFabricClient implements ClientModInitializer {
     @Override
@@ -63,12 +70,12 @@ public class PyriteFabricClient implements ClientModInitializer {
         //? if >1.21.2 {
         BOATS.forEach((id, entityType) -> {
             var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");
-            //? if >26 {
-            /*net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry.registerModelLayer
-            *///?} else {
-            net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry.registerModelLayer
-            //?}
-            (layer, BoatModel::createBoatModel);
+            registerModelLayer(layer, BoatModel::createBoatModel);
+            EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
+        });
+        CHEST_BOATS.forEach((id, entityType) -> {
+            var layer = new ModelLayerLocation(Pyrite.of("chest_boat/" + id), "main");
+            registerModelLayer(layer, BoatModel::createChestBoatModel);
             EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
         });
         //?} else {

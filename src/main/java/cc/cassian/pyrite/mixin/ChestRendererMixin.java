@@ -2,7 +2,7 @@ package cc.cassian.pyrite.mixin;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.access.ChestRenderStateAccess;
-import cc.cassian.pyrite.core.PyriteTags;
+import cc.cassian.pyrite.core.PyriteBlockTags;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -28,7 +28,7 @@ public class ChestRendererMixin {
 	@Inject(method = "extractRenderState(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState;FLnet/minecraft/world/phys/Vec3;Lnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V", at = @At(value = "RETURN"))
 	private void setVariantOnRenderState(BlockEntity blockEntity, ChestRenderState chestRenderState, float f, Vec3 vec3, ModelFeatureRenderer.CrumblingOverlay crumblingOverlay, CallbackInfo ci) {
 		var state = blockEntity.getBlockState();
-		if (state.is(PyriteTags.CHESTS)) {
+		if (state.is(PyriteBlockTags.CHESTS)) {
 			((ChestRenderStateAccess) chestRenderState).pyrite$setVariant(BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath().replace("_chest", ""));
 		}
 	}

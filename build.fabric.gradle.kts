@@ -142,7 +142,7 @@ dependencies {
         }
     }
 
-    modCompileOnly("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}-Fabric")
+    modImplementation("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}-Fabric")
     modImplementation("maven.modrinth:quad:${property("deps.quad")}-Fabric")
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")

@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.registry;
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.core.PyriteTags;
+import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 //? if fabric && <26.1 {
@@ -171,7 +171,7 @@ public class PyriteItemGroups {
                     final var concrete = dye+"_concrete";
                     final Block stairs = BLOCKS.get(concrete + "_stairs");
                     final Block slab = BLOCKS.get(concrete + "_slab");
-                    if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
+                    if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
                         addAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)).asItem(), List.of(new ItemStack(stairs), new ItemStack(slab)), event);
                 }
 			} else if (key.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
@@ -412,7 +412,7 @@ public class PyriteItemGroups {
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
                     for (Block block : blocks.values()) {
-                        if (block.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
+                        if (block.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
                             entries.accept(block);
                     }
                 })
@@ -530,7 +530,7 @@ public class PyriteItemGroups {
         for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
-            if (value.asItem().getDefaultInstance().is(PyriteTags.ENABLED)) {
+            if (value.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED)) {
                 if (anchor != null) {
                     addAfter(anchor.asItem(), new ItemStack(value), event);
                 } else
@@ -543,7 +543,7 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Block> block : items) {
             var stack = block.get().asItem().getDefaultInstance();
-            if (!stack.is(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteTags.ENABLED)) {
+            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
                 stacks.add(stack);
             } else {
 //                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
@@ -556,7 +556,7 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
             var stack = item.get().getDefaultInstance();
-            if (!stack.is(PyriteTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteTags.ENABLED)) {
+            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
                 stacks.add(stack);
             } else {
 //                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");

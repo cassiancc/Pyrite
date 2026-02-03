@@ -26,6 +26,7 @@ import cc.cassian.pyrite.entity.ModEntities;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 *///?}
+import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
@@ -46,7 +47,6 @@ import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModLists.*;
 //? fabric
 import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
-import static cc.cassian.pyrite.registry.PyriteItemGroups.*;
 
 public class BlockCreator {
     // All blocks and their IDs.
@@ -103,18 +103,18 @@ public class BlockCreator {
         }
 
 
-        for (Map.Entry<String, Supplier<Block>> entry : COPPER_BLOCKS.entrySet()) {
+        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.COPPER_BLOCKS.entrySet()) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
         }
-        for (Map.Entry<String, Supplier<Block>> entry : EXPOSED_COPPER_BLOCKS.entrySet()) {
+        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS.entrySet()) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("exposed", "weathered")));
         }
-        for (Map.Entry<String, Supplier<Block>> entry : WEATHERED_COPPER_BLOCKS.entrySet()) {
+        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS.entrySet()) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("weathered", "oxidized")));
         }
 
         // Register item group.
-        addItemGroup("pyrite_group", "glowing_obsidian", BLOCKS);
+        PyriteItemGroups.addItemGroup("pyrite_group", "glowing_obsidian", BLOCKS);
     }
 
     final static Block[] vanillaWood = getVanillaWood();
@@ -130,7 +130,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
                     var waxedBlock = new ModBlock(blockSettings);
                     BLOCKS.put("waxed_"+blockID, waxedBlock);
-                    match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
+                    PyriteItemGroups.match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxedBlock);
                 }
                 else
@@ -181,7 +181,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModSlab(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModSlab(blockSettings, power);
@@ -201,7 +201,7 @@ public class BlockCreator {
                     newBlock = new OxidizableWallBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModWall(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     // column
                     //? fabric {
@@ -224,7 +224,7 @@ public class BlockCreator {
                     newBlock = new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPillar(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModPillar(blockSettings, power);
@@ -240,7 +240,7 @@ public class BlockCreator {
                     newBlock = new OxidizableBarsBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPane(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     addTransparentBlock(waxed);
                 } else {
@@ -270,7 +270,7 @@ public class BlockCreator {
                 // register flower pot
                 final FlowerPotBlock FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
-                POTTED_FLOWERS.put(blockID, ()-> FLOWER_POTTED);
+                PyriteItemGroups.POTTED_FLOWERS.put(blockID, ()-> FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;
             case "fence_gate":
@@ -281,7 +281,7 @@ public class BlockCreator {
                     newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new WallGateBlock(blockSetType, blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new WallGateBlock(blockSetType, blockSettings);
@@ -301,7 +301,7 @@ public class BlockCreator {
                 /*newBlockItemSettings(blockID).stacksTo(16), newBlock, WALL_SIGN);
                  *///?}
                 ITEMS.put(blockID, SIGN_ITEM);
-                SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
+                PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), () -> SIGN_ITEM);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
                 break;
@@ -315,7 +315,7 @@ public class BlockCreator {
                 // Register item for signs.
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
-                SIGNS.add(() -> HANGING_SIGN_ITEM);
+                PyriteItemGroups.SIGNS.add(() -> HANGING_SIGN_ITEM);
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
@@ -324,7 +324,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
                     Block waxed = new DoorBlock(blockSetType, blockSettings.noOcclusion());
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 }
                 else
@@ -336,7 +336,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperTrapDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
                     Block waxed = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 }
                 else
@@ -385,7 +385,7 @@ public class BlockCreator {
             addGrassBlock();
         }
         Block finalNewBlock = newBlock;
-        match(()-> finalNewBlock, copyBlock, group, blockID);
+        PyriteItemGroups.match(()-> finalNewBlock, copyBlock, group, blockID);
         return finalNewBlock;
     }
 
@@ -646,7 +646,10 @@ public class BlockCreator {
         //? if >1.21.2 {
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
         var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
-        BOATS.add(()->boat);
+        PyriteItemGroups.BOATS.add(()->boat);
+        EntityType<ChestBoat> chestBoatEntityType = ModEntities.registerChestBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_chest_boat".formatted(blockID))));
+        var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
+        PyriteItemGroups.BOATS.add(()->chestBoat);
         //?} else {
         /*ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));
 

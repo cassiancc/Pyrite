@@ -2,7 +2,7 @@ package cc.cassian.pyrite.functions;
 
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.core.PyriteTags;
+import cc.cassian.pyrite.core.PyriteItemTags;
 import com.google.common.collect.LinkedHashMultimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -14,7 +14,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.*;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +36,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
@@ -212,7 +210,7 @@ public class ModHelpers {
     }
 
     public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
-        if (stack.is(PyriteTags.DYES)) {
+        if (stack.is(PyriteItemTags.DYES)) {
             Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
             Block dyedTorch = getBlock(Identifier.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
             if (state.is(Blocks.TORCH)) {
