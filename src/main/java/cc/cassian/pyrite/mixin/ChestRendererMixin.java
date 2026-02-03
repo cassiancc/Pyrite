@@ -34,9 +34,8 @@ public class ChestRendererMixin {
 	}
 
 	@WrapOperation(method = "submit(Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/CameraRenderState;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/Sheets;chooseMaterial(Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState$ChestMaterialType;Lnet/minecraft/world/level/block/state/properties/ChestType;)Lnet/minecraft/client/resources/model/Material;"))
-	private Material changeMaterial(ChestRenderState.ChestMaterialType chestMaterialType, ChestType chestType, Operation<Material> original, @Local ChestRenderState chestRenderState) {
-		var access = ((ChestRenderStateAccess) chestRenderState);
-		if (!access.pyrite$getVariant().isEmpty()) {
+	private Material changeMaterial(ChestRenderState.ChestMaterialType chestMaterialType, ChestType chestType, Operation<Material> original, @Local(argsOnly = true) ChestRenderState chestRenderState) {
+		if (chestRenderState instanceof ChestRenderStateAccess access && access.pyrite$getVariant() != null && !access.pyrite$getVariant().isEmpty()) {
 			String addon = switch (chestType) {
 				case LEFT -> "_left";
 				case RIGHT -> "_right";

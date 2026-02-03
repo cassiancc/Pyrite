@@ -1,6 +1,5 @@
 package cc.cassian.pyrite.mixin;
 
-
 import cc.cassian.pyrite.access.ChestRenderStateAccess;
 import net.minecraft.client.renderer.blockentity.state.ChestRenderState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,7 +9,6 @@ import org.spongepowered.asm.mixin.Unique;
 public class ChestRenderStateMixin implements ChestRenderStateAccess {
 	@Unique
 	public String pyrite$variant;
-
 
 	public ChestRenderStateMixin() {
 		pyrite$variant = "";
