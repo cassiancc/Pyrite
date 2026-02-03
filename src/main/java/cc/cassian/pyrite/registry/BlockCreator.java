@@ -268,8 +268,9 @@ public class BlockCreator {
                 newBlock = new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings);
                 addTransparentBlock(newBlock);
                 // register flower pot
-                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
+                final FlowerPotBlock FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
+                POTTED_FLOWERS.put(blockID, ()-> FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;
             case "fence_gate":

@@ -20,6 +20,8 @@ import net.minecraft.world.InteractionResult;
 //? if <1.21.4 {
 /^import net.minecraft.world.ItemInteractionResult;
 ^///?}
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -28,6 +30,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -37,8 +40,12 @@ import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
+import java.util.Map;
+import java.util.function.Supplier;
+
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.neoforge.NeoForgePlatformImpl.SUPPORTED_BLOCKS;
+import static cc.cassian.pyrite.registry.PyriteItemGroups.POTTED_FLOWERS;
 
 
 @Mod(Pyrite.MOD_ID)
@@ -64,6 +71,17 @@ public final class PyriteNeoForge {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     private static void addSupportedBlocks(BlockEntityTypeAddBlocksEvent event) {
         SUPPORTED_BLOCKS.forEach(event::modify);
+    }
+
+    // Adds Pyrite's flowers to the flower pot block.
+    @SubscribeEvent
+    public static void commonSetup(FMLCommonSetupEvent event) {
+        FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
+        for (Map.Entry<String, Supplier<FlowerPotBlock>> entry : POTTED_FLOWERS.entrySet()) {
+            String flowerID = entry.getKey();
+            Supplier<FlowerPotBlock> flowerPot = entry.getValue();
+            pot.addPlant(Pyrite.of(flowerID), flowerPot);
+        }
     }
 
     @SubscribeEvent

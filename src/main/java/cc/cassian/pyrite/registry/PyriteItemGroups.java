@@ -7,13 +7,10 @@ import cc.cassian.pyrite.functions.ModLists;
 //? if fabric && <26.1 {
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-
-import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 //?} else if fabric {
 /*import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 *///?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
@@ -29,6 +26,7 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import java.util.*;
 import java.util.function.Supplier;
 
+import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.functions.ModLists.VANILLA_DYES;
 
@@ -405,17 +403,11 @@ public class PyriteItemGroups {
     public static void addItemGroup(String id, String icon, LinkedHashMap<String, Block> blocks) {
         //? if fabric && <26.1 {
         CreativeModeTab group = FabricItemGroup.builder()
-                .icon(() -> new ItemStack(BLOCKS.get(icon)))
-                .title(Component.translatable("itemGroup.pyrite." + id))
-                .displayItems((context, entries) -> {
-                    for (Block block : blocks.values()) {
-                        if (block.asItem().getDefaultInstance().is(PyriteTags.ENABLED))
-                            entries.accept(block);
-                    }
-                })
-                .build();
         //?} else if fabric && >26 {
         /*CreativeModeTab group = FabricCreativeModeTab.builder()
+        *///?} else {
+        /*CreativeModeTab group = CreativeModeTab.builder()
+        *///?}
                 .icon(() -> new ItemStack(BLOCKS.get(icon)))
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
@@ -425,7 +417,6 @@ public class PyriteItemGroups {
                     }
                 })
                 .build();
-        *///?}
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
     }
 
