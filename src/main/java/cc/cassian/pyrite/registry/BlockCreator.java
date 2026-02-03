@@ -644,7 +644,7 @@ public class BlockCreator {
         // Boat
         //? if >1.21.2 {
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
-        var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop));
+        var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
         BOATS.add(()->boat);
         //?} else {
         /*ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));
