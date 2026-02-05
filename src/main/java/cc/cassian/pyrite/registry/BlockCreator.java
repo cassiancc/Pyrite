@@ -20,13 +20,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 //? if >1.21.2 {
 import net.minecraft.world.entity.vehicle.boat.Boat;
+import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import cc.cassian.pyrite.entity.ModEntities;
  //?} else {
 /*import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 *///?}
-import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
@@ -43,10 +43,10 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+//? fabric
+import static cc.cassian.pyrite.fabric.PyriteFabric.FUEL_BLOCKS;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModLists.*;
-//? fabric
-import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
 
 public class BlockCreator {
     // All blocks and their IDs.

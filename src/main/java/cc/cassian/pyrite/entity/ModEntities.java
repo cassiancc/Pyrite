@@ -56,7 +56,9 @@ public class ModEntities {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, resourceKey, builder.build(resourceKey));
 	}
 //?} else {
-/*public static ArrayList<ResourceKey<?>> BOATS = new ArrayList<>();
+/*
+public static ArrayList<ResourceKey<?>> BOATS = new ArrayList<>();
+public static ArrayList<ResourceKey<?>> CHEST_BOATS = new ArrayList<>();
 
 	*///?}
 }

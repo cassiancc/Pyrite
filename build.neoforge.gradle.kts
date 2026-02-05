@@ -155,9 +155,7 @@ repositories {
         }
     }
 
-    flatDir {
-        dirs("libs")
-    }
+    flatDir { dirs(file("$rootDir/libs")) }
 }
 
 dependencies {
@@ -183,6 +181,7 @@ dependencies {
     if (hasProperty("deps.terraform_wood_api")) {
         implementation("com.terraformersmc.terraform:terraform_wood_api_v1:${property("deps.terraform_wood_api")}")
     }
+    compileOnly("maven.local:columns:1.12.0")
 
 }
 

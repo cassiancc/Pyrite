@@ -3,7 +3,7 @@ package cc.cassian.pyrite.compat;
 //? if fabric {
 
 import cc.cassian.pyrite.Platform;
-import cc.cassian.pyrite.blocks.fabric.OxidizableColumnBlock;
+import cc.cassian.pyrite.blocks.OxidizableColumnBlock;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 //? <26.1
