@@ -14,22 +14,15 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 //? if >26  {
-/*import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.registry.FuelValueEvents;
-*///?} else {
+//?} else {
+/*import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-//?}
-//? >1.21.2 {
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
-import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
-import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
-import static net.fabricmc.fabric.api.resource.v1.pack.PackActivationType.DEFAULT_ENABLED;
-//?} else {
-/*import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import static net.fabricmc.fabric.api.resource.ResourcePackActivationType.DEFAULT_ENABLED;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 *///?}
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import static net.fabricmc.fabric.api.resource.v1.pack.PackActivationType.DEFAULT_ENABLED;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.world.level.block.Block;
@@ -46,10 +39,10 @@ public class PyriteFabric implements ModInitializer {
         BlockCreator.register();
         registerFuelBlocks();
         //? <26.1 {
-        ItemGroupEvents.MODIFY_ENTRIES_ALL.register(PyriteItemGroups::buildContents);
-        //?} else {
-        /*CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register(PyriteItemGroups::buildContents);
-        *///?}
+        /*ItemGroupEvents.MODIFY_ENTRIES_ALL.register(PyriteItemGroups::buildContents);
+        *///?} else {
+        CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register(PyriteItemGroups::buildContents);
+        //?}
 
         ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> {
             if (be != null && be.get() != null)
@@ -60,11 +53,7 @@ public class PyriteFabric implements ModInitializer {
 
         ModLists.DATAPACKS.forEach((key, value) -> {
             if (value) {
-                //? >1.21.2 {
                 ResourceLoader.registerBuiltinPack(
-                //?} else {
-                /*ResourceManagerHelper.registerBuiltinResourcePack(
-                *///?}
                         Pyrite.of(key),
                         FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
                         DEFAULT_ENABLED);
@@ -83,16 +72,14 @@ public class PyriteFabric implements ModInitializer {
     public static void registerFuelBlocks() {
         for (Map.Entry<Block, Integer> fuelBlock : FUEL_BLOCKS.entrySet()) {
             //? if >26 {
-            /*FuelValueEvents.BUILD.register((builder, context) -> {
-                builder.add(fuelBlock.getKey(), fuelBlock.getValue());
-            });
-            *///?} else if >1.21.4 {
-            FuelRegistryEvents.BUILD.register((builder, context) -> {
+            FuelValueEvents.BUILD.register((builder, context) -> {
                 builder.add(fuelBlock.getKey(), fuelBlock.getValue());
             });
             //?} else {
-            /*FuelRegistry.INSTANCE.add(fuelBlock.getKey(), fuelBlock.getValue());
-             *///?}
+            /*FuelRegistryEvents.BUILD.register((builder, context) -> {
+                builder.add(fuelBlock.getKey(), fuelBlock.getValue());
+            });
+            *///?}
         }
     }
 }

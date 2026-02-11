@@ -2,8 +2,6 @@ package cc.cassian.pyrite.entity;
 
 
 import net.minecraft.resources.ResourceKey;
-
-//? if >1.21.2 {
 import net.minecraft.world.entity.vehicle.boat.Boat;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -16,17 +14,12 @@ import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.item.Item;
 import java.util.LinkedHashMap;
 import java.util.function.Supplier;
-//?}
-
 
 
 import java.util.ArrayList;
 
 
 public class ModEntities {
-
-//? if >1.21.2 {
-
 
 	public static LinkedHashMap<String, EntityType<Boat>> BOATS = new LinkedHashMap<>();
 	public static LinkedHashMap<String, EntityType<ChestBoat>> CHEST_BOATS = new LinkedHashMap<>();
@@ -55,10 +48,4 @@ public class ModEntities {
 		var resourceKey = ResourceKey.create(Registries.ENTITY_TYPE, Pyrite.of(key));
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, resourceKey, builder.build(resourceKey));
 	}
-//?} else {
-/*
-public static ArrayList<ResourceKey<?>> BOATS = new ArrayList<>();
-public static ArrayList<ResourceKey<?>> CHEST_BOATS = new ArrayList<>();
-
-	*///?}
 }

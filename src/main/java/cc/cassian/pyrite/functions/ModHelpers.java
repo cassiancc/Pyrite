@@ -80,17 +80,11 @@ public class ModHelpers {
     }
 
     public static Item.Properties newItemSettings(String id) {
-        return new Item.Properties()
-                //? if >1.21.2
-                .setId(registryKeyItem(id))
-        ;
+        return new Item.Properties().setId(registryKeyItem(id));
     }
 
     public static Item.Properties newBlockItemSettings(String id) {
-        return newItemSettings(id)
-                //? if >1.21.2
-                .useBlockDescriptionPrefix()
-                ;
+        return newItemSettings(id).useBlockDescriptionPrefix();
     }
 
     public static Block getBlock(String id) {
@@ -98,11 +92,7 @@ public class ModHelpers {
     }
 
     public static Block getBlock(Identifier id) {
-        //? if >1.21.4 {
         return BuiltInRegistries.BLOCK.getValue(id);
-         //?} else {
-        /*return BuiltInRegistries.BLOCK.get(id);
-        *///?}
     }
 
 
@@ -129,13 +119,7 @@ public class ModHelpers {
 
     public static ParticleOptions getTorchParticle(String dye) {
         return switch (dye) {
-            case "dragon" ->
-                    //? if >1.21.8 {
-                    PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1)
-                    //?} else {
-                    /*ParticleTypes.DRAGON_BREATH
-                    *///?}
-                    ;
+            case "dragon" -> PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1);
             case "glow" -> ParticleTypes.GLOW;
             case "star" -> ParticleTypes.ENCHANT;
             default -> ParticleTypes.SMOKE;

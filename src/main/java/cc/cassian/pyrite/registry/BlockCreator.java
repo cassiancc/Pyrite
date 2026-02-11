@@ -18,15 +18,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
-//? if >1.21.2 {
 import net.minecraft.world.entity.vehicle.boat.Boat;
 import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import cc.cassian.pyrite.entity.ModEntities;
- //?} else {
-/*import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
-import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
-*///?}
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
@@ -121,7 +115,6 @@ public class BlockCreator {
     public static Block platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
-        //? if >1.21.4
         blockSettings = blockSettings.setId(registryKeyBlock(blockID));
         boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
         switch (blockType.toLowerCase()) {
@@ -147,15 +140,8 @@ public class BlockCreator {
                 break;
             case "shelf":
                 // Register Shelf
-                //? if >1.21.9 {
                 newBlock = new ShelfBlock(blockSettings);
                 ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
-                //?} else {
-                /*if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
-                    newBlock = CopperAgeBackportCompat.registerShelf(blockID, blockSettings, group, copyBlock, color);
-                    CopperAgeBackportCompat.add(newBlock);
-                }
-                *///?}
                 break;
             case "chest":
                 if (Platform.INSTANCE.isModLoaded("lolmcv")) {
@@ -294,12 +280,7 @@ public class BlockCreator {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(
-                        //? if >1.21.4 {
-                        newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
-                //?} else {
-                /*newBlockItemSettings(blockID).stacksTo(16), newBlock, WALL_SIGN);
-                 *///?}
+                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, SIGN_ITEM);
                 PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), () -> SIGN_ITEM);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
@@ -634,37 +615,15 @@ public class BlockCreator {
             createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Shelf
-        //? if >1.21.8 {
         createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
-        //?} else {
-        /*if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
-            createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_PLANKS, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
-        }
-        *///?}
 
         // Boat
-        //? if >1.21.2 {
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
         var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
         PyriteItemGroups.BOATS.add(()->boat);
         EntityType<ChestBoat> chestBoatEntityType = ModEntities.registerChestBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_chest_boat".formatted(blockID))));
         var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
         PyriteItemGroups.BOATS.add(()->chestBoat);
-        //?} else {
-        /*ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));
-
-        Item boatItem = TerraformBoatItemHelper.registerBoatItem(Pyrite.of("%s_boat".formatted(blockID)), key, false);
-        Item chestBoatItem = TerraformBoatItemHelper.registerBoatItem(Pyrite.of("%s_chest_boat".formatted(blockID)), key, true);
-
-        TerraformBoatType boat = new TerraformBoatType.Builder()
-                .item(boatItem)
-                .chestItem(chestBoatItem)
-                .planks(planks.asItem())
-                .build();
-
-        Registry.register(TerraformBoatTypeRegistry.INSTANCE, key, boat);
-        ModEntities.BOATS.add(key);
-        *///?}
 
     }
 
@@ -739,11 +698,9 @@ public class BlockCreator {
         BlockSetType set = getBlockSetType(blockID);
         //Create Bars/Doors/Trapdoors/Plates for those that don't already exist (Iron)
         if (!blockID.equals("iron")) {
-            //? if <1.21.9
             //createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
             //Disable Copper doors in 1.21+
             if (!blockID.contains("copper")) {
-                //? if >1.21.9
                 createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
                 createPyriteBlock("%s_door".formatted(blockID),"door", block, set, blockID);
                 createPyriteBlock("%s_trapdoor".formatted(blockID),"trapdoor", block, set, blockID);
