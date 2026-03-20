@@ -7,44 +7,23 @@ import cc.cassian.pyrite.client.PyriteClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
-
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
-
 import static cc.cassian.pyrite.entity.ModEntities.CHEST_BOATS;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
-//? if >26 {
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import static net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry.registerModelLayer;
-//?} else {
-/*import static net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry.registerModelLayer;
-*///?}
 
 
 public class PyriteFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        //? if <26 {
-        /*for (Block grassBlock : GRASS_BLOCKS) {
-            net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.BLOCK.register(PyriteClient::registerColor, grassBlock);
-        }
-        for (Block transparentBlock : TRANSPARENT_BLOCKS) {
-            net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap.putBlock(transparentBlock, ChunkSectionLayer.CUTOUT);
-        }
-        for (Block translucentBlock : TRANSLUCENT_BLOCKS) {
-            net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap.putBlock(translucentBlock, ChunkSectionLayer.TRANSLUCENT);
-        }
-        *///?} else {
         for (Block grassBlock : GRASS_BLOCKS) {
-            BlockColorRegistry.register(PyriteClient::registerColor, grassBlock);
+            BlockColorRegistry.register(PyriteClient.registerColor(), grassBlock);
         }
-        //?}
 
         if (Pyrite.CONFIG.disabledContentTooltip) {
             ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> PyriteClient.addTooltip(lines, stack)));
