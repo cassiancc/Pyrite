@@ -118,7 +118,7 @@ dependencies {
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     include("folk.sisby:kaleido-config:${property("deps.kaleido")}")
 
-    implementation("maven.local:columns:1.12.0")
+    compileOnly("maven.local:columns:1.12.0")
 
     // YACL
     if (hasProperty("deps.yacl")) {
