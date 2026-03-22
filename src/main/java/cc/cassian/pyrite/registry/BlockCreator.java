@@ -619,7 +619,8 @@ public class BlockCreator {
             createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Shelf
-        createPyriteBlock("%s_shelf".formatted(blockID), "shelf", planks, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        if (Platform.INSTANCE.isModLoaded("copperagebackport"))
+            createPyriteBlock("%s_shelf".formatted(blockID), "shelf", planks, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Boat
         ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));

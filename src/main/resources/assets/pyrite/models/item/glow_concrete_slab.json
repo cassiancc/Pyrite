@@ -1,1 +1,1 @@
-{"parent":"pyrite:block/glow_concrete_slab"}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/glow_concrete_slab"}}

@@ -1,1 +1,0 @@
-{"parent":"minecraft:block/template_glass_pane_noside","textures":{"pane":"pyrite:block/star_stained_glass","edge":"pyrite:block/star_stained_glass_pane_top"},"render_type":"translucent"}

@@ -1,1 +1,1 @@
-{"parent":"pyrite:block/star_terracotta"}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/star_terracotta"}}

@@ -1,1 +1,1 @@
-{"parent":"pyrite:block/rose_concrete_stairs"}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/rose_concrete_stairs"}}

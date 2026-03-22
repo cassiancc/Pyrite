@@ -1,1 +1,1 @@
-{"parent":"pyrite:block/honey_carpet"}
+{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/honey_carpet"}}
