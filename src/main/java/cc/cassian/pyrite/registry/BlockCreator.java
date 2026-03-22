@@ -144,8 +144,7 @@ public class BlockCreator {
                 break;
             case "shelf":
                 // Register Shelf
-                newBlock = new ShelfBlock(blockSettings);
-                ModHelpers.addSupportedBlock(ModBlockEntities.SHELF_BLOCK_ENTITY, newBlock);
+                newBlock = CopperAgeBackportCompat.registerShelf(blockSettings);
                 break;
             case "chest":
                 if (Platform.INSTANCE.isModLoaded("lolmcv")) {

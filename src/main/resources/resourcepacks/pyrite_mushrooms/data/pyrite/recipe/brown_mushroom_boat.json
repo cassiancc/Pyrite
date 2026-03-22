@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["C C","CCC"],"key":{"C":"pyrite:brown_mushroom_planks"},"result":{"id":"pyrite:brown_mushroom_boat","count":1}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["C C","CCC"],"key":{"C":{"item":"pyrite:brown_mushroom_planks"}},"result":{"id":"pyrite:brown_mushroom_boat","count":1}}
