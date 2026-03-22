@@ -171,6 +171,7 @@ dependencies {
         modImplementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
     }
     modImplementation("com.terraformersmc.terraform-api:terraform-wood-api-v1:${property("deps.terraform_wood_api")}")
+    include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${property("deps.terraform_wood_api")}")
 }
 
 stonecutter {
