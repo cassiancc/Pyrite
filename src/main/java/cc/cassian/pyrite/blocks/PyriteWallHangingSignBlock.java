@@ -13,9 +13,9 @@ public class PyriteWallHangingSignBlock extends WallHangingSignBlock {
     }
 
     //? if <1.21.2 {
-    /*@Override
+    @Override
     public String getDescriptionId() {
         return Pyrite.of(id).toLanguageKey("block");
     }
-    *///?}
+    //?}
 }

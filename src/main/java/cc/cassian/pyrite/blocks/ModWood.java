@@ -9,8 +9,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 //? if <1.21.4 {
-/*import net.minecraft.world.ItemInteractionResult;
-*///?}
+import net.minecraft.world.ItemInteractionResult;
+//?}
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -27,10 +27,10 @@ public class ModWood extends Block {
     @Override @SuppressWarnings("all")
     protected
     //? if >1.21.4 {
-    InteractionResult
-     //?} else {
-    /*ItemInteractionResult
-    *///?}
+    /*InteractionResult
+     *///?} else {
+    ItemInteractionResult
+    //?}
     useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide()) {
             if (stack.is(ItemTags.AXES) && !player.getOffhandItem().is(PyriteItemTags.SHIELDS)) {
@@ -39,17 +39,17 @@ public class ModWood extends Block {
                 if (!strippedBlock.equals(Blocks.AIR)) {
                     world.setBlockAndUpdate(pos, strippedBlock.defaultBlockState());
                     //? if >1.21.4 {
-                    return InteractionResult.SUCCESS;
-                     //?} else {
-                    /*return ItemInteractionResult.SUCCESS;
-                    *///?}
+                    /*return InteractionResult.SUCCESS;
+                     *///?} else {
+                    return ItemInteractionResult.SUCCESS;
+                    //?}
                 }
             }
         }
         //? if >1.21.4 {
-        return InteractionResult.PASS;
-         //?} else {
-        /*return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        *///?}
+        /*return InteractionResult.PASS;
+         *///?} else {
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        //?}
     }
 }

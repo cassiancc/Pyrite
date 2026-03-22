@@ -8,7 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 //? if >1.21.8
-import net.minecraft.core.particles.PowerParticleOption;
+//import net.minecraft.core.particles.PowerParticleOption;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -66,8 +66,8 @@ public class ModHelpers {
     public static BlockBehaviour.Properties flowerPotProperties(ResourceKey<Block> blockResourceKey) {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
                 //? if >1.21.4 {
-                .setId(blockResourceKey)
-                //?}
+                /*.setId(blockResourceKey)
+                *///?}
                 ;
     }
 
@@ -80,11 +80,11 @@ public class ModHelpers {
     }
 
     public static Item.Properties newItemSettings(String id) {
-        return new Item.Properties().setId(registryKeyItem(id));
+        return new Item.Properties();
     }
 
     public static Item.Properties newBlockItemSettings(String id) {
-        return newItemSettings(id).useBlockDescriptionPrefix();
+        return newItemSettings(id);
     }
 
     public static Block getBlock(String id) {
@@ -92,7 +92,7 @@ public class ModHelpers {
     }
 
     public static Block getBlock(Identifier id) {
-        return BuiltInRegistries.BLOCK.getValue(id);
+        return BuiltInRegistries.BLOCK.get(id);
     }
 
 
@@ -119,7 +119,7 @@ public class ModHelpers {
 
     public static ParticleOptions getTorchParticle(String dye) {
         return switch (dye) {
-            case "dragon" -> PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1);
+            case "dragon" -> ParticleTypes.DRAGON_BREATH;
             case "glow" -> ParticleTypes.GLOW;
             case "star" -> ParticleTypes.ENCHANT;
             default -> ParticleTypes.SMOKE;

@@ -7,6 +7,11 @@ import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
+import com.github.smallinger.copperagebackport.block.shelf.ShelfBlock;
+import com.github.smallinger.copperagebackport.registry.ModBlockEntities;
+import com.terraformersmc.terraform.boat.api.TerraformBoatType;
+import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
@@ -115,8 +120,7 @@ public class BlockCreator {
     public static Block platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
-        blockSettings = blockSettings.setId(registryKeyBlock(blockID));
-        boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
+		boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
         switch (blockType.toLowerCase()) {
             case "block", "lamp":
                 if (isCopper(blockID)) {
@@ -141,11 +145,11 @@ public class BlockCreator {
             case "shelf":
                 // Register Shelf
                 newBlock = new ShelfBlock(blockSettings);
-                ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
+                ModHelpers.addSupportedBlock(ModBlockEntities.SHELF_BLOCK_ENTITY, newBlock);
                 break;
             case "chest":
                 if (Platform.INSTANCE.isModLoaded("lolmcv")) {
-                    newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
+                    newBlock = new ChestBlock(blockSettings, ()-> BlockEntityType.CHEST);
                     ModHelpers.addSupportedBlock(BlockEntityType.CHEST, newBlock);
                 }
                 break;
@@ -280,7 +284,7 @@ public class BlockCreator {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
+                final Item SIGN_ITEM = new SignItem(newBlockItemSettings(blockID).stacksTo(16), newBlock, WALL_SIGN);
                 ITEMS.put(blockID, SIGN_ITEM);
                 PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), () -> SIGN_ITEM);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
@@ -615,15 +619,22 @@ public class BlockCreator {
             createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Shelf
-        createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        createPyriteBlock("%s_shelf".formatted(blockID), "shelf", planks, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Boat
-        EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
-        var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
-        PyriteItemGroups.BOATS.add(()->boat);
-        EntityType<ChestBoat> chestBoatEntityType = ModEntities.registerChestBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_chest_boat".formatted(blockID))));
-        var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
-        PyriteItemGroups.BOATS.add(()->chestBoat);
+        ResourceKey<TerraformBoatType> key = TerraformBoatTypeRegistry.createKey(Pyrite.of(blockID));
+
+        Item boatItem = TerraformBoatItemHelper.registerBoatItem(Pyrite.of("%s_boat".formatted(blockID)), key, false);
+        Item chestBoatItem = TerraformBoatItemHelper.registerBoatItem(Pyrite.of("%s_chest_boat".formatted(blockID)), key, true);
+
+        TerraformBoatType boat = new TerraformBoatType.Builder()
+                .item(boatItem)
+                .chestItem(chestBoatItem)
+                .planks(planks.asItem())
+                .build();
+
+        Registry.register(TerraformBoatTypeRegistry.INSTANCE, key, boat);
+        ModEntities.BOATS.add(key);
 
     }
 

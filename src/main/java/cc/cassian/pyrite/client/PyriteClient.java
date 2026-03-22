@@ -3,22 +3,34 @@ package cc.cassian.pyrite.client;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.resources.model.Material;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-import java.util.Collections;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.state.BlockState;
+
 import java.util.List;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import static net.minecraft.client.renderer.Sheets.CHEST_SHEET;
 
 public class PyriteClient {
 
-	public static List<BlockTintSource> registerColor() {
-		return Collections.singletonList(BlockTintSources.grassBlock());
+	public static int registerColor(BlockState state, BlockAndTintGetter view, BlockPos pos, int tintIndex) {
+		if (view == null  || pos == null) return 9551193;
+		return BiomeColors.getAverageGrassColor(view, pos);
 	}
 
+	public static int registerColor(ItemStack stack, int i) {
+		return 9551193;
+	}
+
+	public static Material pyriteChestMaterial(String chestName) {
+		return new Material(CHEST_SHEET, Pyrite.of("entity/chest/" + chestName));
+	}
 
 	public static void addTooltip(List<Component> lines, ItemStack stack) {
 		if (Pyrite.CONFIG.disabledContentTooltip) {

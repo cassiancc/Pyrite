@@ -18,10 +18,10 @@ public class FabricPlatformImpl implements Platform {
     @Override
     public void registerWaxableBlockPair(Block newBlock, Block waxed) {
         //? if >26 {
-        OxidizableBlocksRegistry.registerWaxable(newBlock, waxed);
-        //?} else {
-        /*OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
-        *///?}
+        /*OxidizableBlocksRegistry.registerWaxable(newBlock, waxed);
+        *///?} else {
+        OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock, waxed);
+        //?}
     }
 
     @Override
@@ -52,19 +52,19 @@ public class FabricPlatformImpl implements Platform {
     @Override
     public void addSupportedBlock(BlockEntityType<?> be, Block block) {
         //? if >26 {
-        be.addValidBlock(block);
-        //?} else {
-        /*be.addSupportedBlock(block);
-        *///?}
+        /*be.addValidBlock(block);
+        *///?} else {
+        be.addSupportedBlock(block);
+        //?}
     }
 
     @Override
     public void registerOxidizableBlockPair(Block block, Block block1) {
         //? if >26 {
-        OxidizableBlocksRegistry.registerNextStage(block, block1);
-        //?} else {
-        /*OxidizableBlocksRegistry.registerOxidizableBlockPair(block, block1);
-         *///?}
+        /*OxidizableBlocksRegistry.registerNextStage(block, block1);
+        *///?} else {
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(block, block1);
+         //?}
     }
 
 }
