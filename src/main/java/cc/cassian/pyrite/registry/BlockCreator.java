@@ -108,7 +108,7 @@ public class BlockCreator {
         }
 
         // Register item group.
-        PyriteItemGroups.addItemGroup("pyrite_group", "glowing_obsidian", BLOCKS);
+        PyriteItemGroups.addItemGroup("pyrite_group", "glowstone_lamp", BLOCKS);
     }
 
     final static Block[] vanillaWood = getVanillaWood();

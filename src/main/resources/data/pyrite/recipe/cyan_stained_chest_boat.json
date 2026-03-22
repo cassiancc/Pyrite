@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:cyan_stained_boat","c:chests/wooden"],"result":{"id":"pyrite:cyan_stained_chest_boat","count":1,"components":true}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:cyan_stained_boat","#c:chests/wooden"],"result":{"id":"pyrite:cyan_stained_chest_boat","count":1}}
