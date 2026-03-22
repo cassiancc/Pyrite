@@ -28,28 +28,6 @@ jsonlang {
     prettyPrint = true
 }
 
-repositories {
-    maven("https://maven.parchmentmc.org") { name = "ParchmentMC" }
-    maven ( "https://repo.sleeping.town/" ) {
-        name = "Sisby Maven"
-    }
-    maven ( "https://maven.parchmentmc.org" ) {
-        name = "Parchment Mappings"
-    }
-    maven ( "https://maven.isxander.dev/releases") {
-        name = "Xander Maven"
-    }
-    maven ( "https://api.modrinth.com/maven") {
-        name = "Modrinth"
-    }
-    maven ( "https://maven.terraformersmc.com/releases/" ) {
-        name = "Terraformers (Mod Menu)"
-    }
-    maven ( "https://maven.shedaniel.me/" ) {
-        name = "shedaniel (Cloth Config)"
-    }
-}
-
 neoForge {
     version = property("deps.neoforge") as String
     validateAccessTransformers = true
@@ -118,13 +96,6 @@ repositories {
         }
     }
     maven {
-        name = "Parchment Mappings"
-        url = uri("https://maven.parchmentmc.org")
-        content {
-            includeGroupAndSubgroups("org.parchmentmc")
-        }
-    }
-    maven {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
         content {
@@ -154,14 +125,16 @@ repositories {
             includeGroupAndSubgroups("thedarkcolour")
         }
     }
+
+    flatDir { dirs(file("$rootDir/libs")) }
 }
 
 dependencies {
-    implementation("maven.modrinth:mcqoy:yHGo6VsD")
 
     // YACL
     if (hasProperty("deps.yacl")) {
         implementation("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-neoforge")
+        implementation("maven.modrinth:mcqoy:yHGo6VsD")
     }
 
     compileOnly("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}-Neo")
@@ -176,6 +149,10 @@ dependencies {
     if (hasProperty("deps.copper_age_backport")) {
         implementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
     }
+    if (hasProperty("deps.terraform_wood_api")) {
+        implementation("com.terraformersmc.terraform:terraform_wood_api_v1:${property("deps.terraform_wood_api")}")
+    }
+    compileOnly("maven.local:columns:1.12.0")
 
 }
 

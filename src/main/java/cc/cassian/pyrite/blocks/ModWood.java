@@ -1,6 +1,6 @@
 package cc.cassian.pyrite.blocks;
 
-import cc.cassian.pyrite.core.PyriteTags;
+import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.functions.ModHelpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,7 +33,7 @@ public class ModWood extends Block {
     *///?}
     useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide()) {
-            if (stack.is(ItemTags.AXES) && !player.getOffhandItem().is(PyriteTags.SHIELDS)) {
+            if (stack.is(ItemTags.AXES) && !player.getOffhandItem().is(PyriteItemTags.SHIELDS)) {
                 Identifier id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
                 Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());
                 if (!strippedBlock.equals(Blocks.AIR)) {

@@ -170,7 +170,6 @@ public class Pyrite {
 		}
 
         // Add aliases for content removed in 1.21.9.
-        //? if >1.21.9 {
         addAlias("copper_bars");
         addAlias("exposed_copper_bars");
         addAlias("weathered_copper_bars");
@@ -179,7 +178,6 @@ public class Pyrite {
         addAlias("waxed_exposed_copper_bars");
         addAlias("waxed_weathered_copper_bars");
         addAlias("waxed_oxidized_copper_bars");
-        //?}
 	}
 
     public static Identifier of(String namespace, String path) {

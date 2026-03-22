@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.redstone.Orientation;
 import org.jetbrains.annotations.Nullable;
 
 public class SwitchableGlass extends TransparentBlock {
@@ -38,13 +39,8 @@ public class SwitchableGlass extends TransparentBlock {
         }
     }
 
-
     @Override
-    protected int getLightBlock(BlockState state
-    //? if <1.21.4 {
-    /*, BlockGetter level, BlockPos pos
-    *///?}
-      ) {
+    protected int getLightDampening(BlockState state) {
         if (state.getValue(POWERED)) {
             return 15;
         }
@@ -56,14 +52,15 @@ public class SwitchableGlass extends TransparentBlock {
         return this.defaultBlockState().setValue(POWERED, ctx.getLevel().hasNeighborSignal(ctx.getClickedPos()));
     }
 
-    protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-        if (!world.isClientSide()) {
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @org.jspecify.annotations.Nullable Orientation orientation, boolean movedByPiston) {
+        if (!level.isClientSide()) {
             boolean currentlyPowered = state.getValue(POWERED);
-            if (currentlyPowered != world.hasNeighborSignal(pos)) {
+            if (currentlyPowered != level.hasNeighborSignal(pos)) {
                 if (currentlyPowered) {
-                    world.scheduleTick(pos, this, 4);
+                    level.scheduleTick(pos, this, 4);
                 } else {
-                    world.setBlock(pos, state.cycle(POWERED), 2);
+                    level.setBlock(pos, state.cycle(POWERED), 2);
                 }
             }
         }

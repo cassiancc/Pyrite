@@ -4,11 +4,10 @@ package cc.cassian.pyrite.neoforge.client;
 
 /*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.client.PyriteClient;
-import cc.cassian.pyrite.core.PyriteTags;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.object.boat.BoatModel;
+import net.minecraft.client.renderer.entity.BoatRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -16,38 +15,40 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
-
-import java.util.function.Supplier;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
-import static cc.cassian.pyrite.functions.neoforge.NeoHelpers.GRASS_BLOCKS;
+import static cc.cassian.pyrite.entity.ModEntities.BOATS;
+import static cc.cassian.pyrite.functions.ModHelpers.GRASS_BLOCKS;
 
-@EventBusSubscriber(modid = Pyrite.MOD_ID, value = Dist.CLIENT)
+@Mod(value = MOD_ID, dist = Dist.CLIENT)
+@EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
 public class PyriteNeoForgeClient {
 
-    @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-        for (Supplier<Block> pyriteBlock : GRASS_BLOCKS) {
-            event.register((PyriteClient::registerColor), pyriteBlock.get());
-        }
+    public PyriteNeoForgeClient(IEventBus eventBus, ModContainer container) {
     }
 
-    //? <1.21.4 {
-    /^@SubscribeEvent
-    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
-        for (Supplier<Block> pyriteBlock : GRASS_BLOCKS) {
-            event.register(PyriteClient::registerColor, pyriteBlock.get());
+    @SubscribeEvent
+    public static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {
+        for (Block pyriteBlock : GRASS_BLOCKS) {
+            event.register((PyriteClient.registerColor()), pyriteBlock);
         }
     }
-    ^///?}
 
     @SubscribeEvent
     public static void disabledContentTooltip(ItemTooltipEvent event) {
         PyriteClient.addTooltip(event.getToolTip(), event.getItemStack());
+    }
+
+    @SubscribeEvent
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        BOATS.forEach((id, entityType) -> {
+            var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");
+            event.registerLayerDefinition(layer, BoatModel::createBoatModel);
+            EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
+        });
     }
 
 }

@@ -4,6 +4,7 @@ import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.*;
+import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import net.minecraft.core.BlockPos;
@@ -11,12 +12,16 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SignItem;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.vehicle.boat.Boat;
+import net.minecraft.world.entity.vehicle.boat.ChestBoat;
+import cc.cassian.pyrite.entity.ModEntities;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,13 +34,13 @@ import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
+//? fabric
+import static cc.cassian.pyrite.fabric.PyriteFabric.FUEL_BLOCKS;
 import static cc.cassian.pyrite.functions.ModHelpers.*;
 import static cc.cassian.pyrite.functions.ModLists.*;
-//? fabric
-import static cc.cassian.pyrite.functions.fabric.FabricHelpers.*;
-import static cc.cassian.pyrite.registry.PyriteItemGroups.*;
 
 public class BlockCreator {
     // All blocks and their IDs.
@@ -52,6 +57,15 @@ public class BlockCreator {
         var item = new Item(newItemSettings(itemID));
         ITEMS.put(itemID, item);
         PyriteItemGroups.DYES.add(()-> item);
+    }
+
+    /**
+     * This registers a custom item.
+     */
+    public static Item registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
+        var item = itemFactory.apply(newItemSettings(itemID));
+        ITEMS.put(itemID, item);
+        return item;
     }
 
     public static BlockItem addBlockItem(String blockID, Block block) {
@@ -83,25 +97,24 @@ public class BlockCreator {
         }
 
 
-        for (Map.Entry<String, Supplier<Block>> entry : COPPER_BLOCKS.entrySet()) {
+        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.COPPER_BLOCKS.entrySet()) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
         }
-        for (Map.Entry<String, Supplier<Block>> entry : EXPOSED_COPPER_BLOCKS.entrySet()) {
+        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS.entrySet()) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("exposed", "weathered")));
         }
-        for (Map.Entry<String, Supplier<Block>> entry : WEATHERED_COPPER_BLOCKS.entrySet()) {
+        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS.entrySet()) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("weathered", "oxidized")));
         }
 
         // Register item group.
-        addItemGroup("pyrite_group", "glowing_obsidian", BLOCKS);
+        PyriteItemGroups.addItemGroup("pyrite_group", "glowstone_lamp", BLOCKS);
     }
 
     final static Block[] vanillaWood = getVanillaWood();
-    public static void platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
+    public static Block platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
-        //? if >1.21.4
         blockSettings = blockSettings.setId(registryKeyBlock(blockID));
         boolean burnable = !(blockID.contains("crimson") || blockID.contains("warped"));
         switch (blockType.toLowerCase()) {
@@ -110,7 +123,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
                     var waxedBlock = new ModBlock(blockSettings);
                     BLOCKS.put("waxed_"+blockID, waxedBlock);
-                    match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
+                    PyriteItemGroups.match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxedBlock);
                 }
                 else
@@ -127,23 +140,14 @@ public class BlockCreator {
                 break;
             case "shelf":
                 // Register Shelf
-                //? if >1.21.9 {
                 newBlock = new ShelfBlock(blockSettings);
                 ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
-                //?} else {
-                /*if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
-                    newBlock = CopperAgeBackportCompat.registerShelf(blockID, blockSettings, group, copyBlock, color);
-                    CopperAgeBackportCompat.add(newBlock);
-                }
-                *///?}
                 break;
             case "chest":
-                //? <26.1 {
                 if (Platform.INSTANCE.isModLoaded("lolmcv")) {
-                    newBlock = ChestsCompat.registerChest(blockID, blockSettings, group, copyBlock, color);
-                    ChestsCompat.add(newBlock);
+                    newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
+                    ModHelpers.addSupportedBlock(BlockEntityType.CHEST, newBlock);
                 }
-                //?}
                 break;
             case "cabinet":
                 if (Platform.INSTANCE.isModLoaded("farmersdelight")) {
@@ -163,7 +167,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModSlab(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModSlab(blockSettings, power);
@@ -183,7 +187,7 @@ public class BlockCreator {
                     newBlock = new OxidizableWallBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModWall(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     // column
                     //? fabric {
@@ -206,7 +210,7 @@ public class BlockCreator {
                     newBlock = new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPillar(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModPillar(blockSettings, power);
@@ -222,7 +226,7 @@ public class BlockCreator {
                     newBlock = new OxidizableBarsBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPane(blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     addTransparentBlock(waxed);
                 } else {
@@ -250,8 +254,9 @@ public class BlockCreator {
                 newBlock = new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings);
                 addTransparentBlock(newBlock);
                 // register flower pot
-                final Block FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
+                final FlowerPotBlock FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
+                PyriteItemGroups.POTTED_FLOWERS.put(blockID, ()-> FLOWER_POTTED);
                 addTransparentBlock(FLOWER_POTTED);
                 break;
             case "fence_gate":
@@ -262,7 +267,7 @@ public class BlockCreator {
                     newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new WallGateBlock(blockSetType, blockSettings);
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new WallGateBlock(blockSetType, blockSettings);
@@ -275,14 +280,9 @@ public class BlockCreator {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(
-                        //? if >1.21.4 {
-                        newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
-                //?} else {
-                /*newBlockItemSettings(blockID).stacksTo(16), newBlock, WALL_SIGN);
-                 *///?}
+                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, SIGN_ITEM);
-                SIGNS.add(SIGNS.size(), () -> SIGN_ITEM);
+                PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), () -> SIGN_ITEM);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
                 break;
@@ -296,7 +296,7 @@ public class BlockCreator {
                 // Register item for signs.
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
-                SIGNS.add(() -> HANGING_SIGN_ITEM);
+                PyriteItemGroups.SIGNS.add(() -> HANGING_SIGN_ITEM);
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
@@ -305,7 +305,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
                     Block waxed = new DoorBlock(blockSetType, blockSettings.noOcclusion());
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 }
                 else
@@ -317,7 +317,7 @@ public class BlockCreator {
                     newBlock = new WeatheringCopperTrapDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
                     Block waxed = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 }
                 else
@@ -358,7 +358,7 @@ public class BlockCreator {
                 break;
         }
         if (newBlock == null)
-            return;
+            return null;
         if (!blockType.contains("sign")) {
             BLOCKS.put(blockID, newBlock);
         }
@@ -366,7 +366,8 @@ public class BlockCreator {
             addGrassBlock();
         }
         Block finalNewBlock = newBlock;
-        match(()-> finalNewBlock, copyBlock, group, blockID);
+        PyriteItemGroups.match(()-> finalNewBlock, copyBlock, group, blockID);
+        return finalNewBlock;
     }
 
     public static Block getLastBlock() {
@@ -475,12 +476,12 @@ public class BlockCreator {
     }
 
     //Create most of the generic Stained Blocks, then add them.
-    public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
+    public static Block createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).mapColor(color).lightLevel(parseLux(lux));
         if ((copyBlock.equals(Blocks.OAK_PLANKS)) || (copyBlock.equals(Blocks.OAK_SLAB) || (copyBlock.equals(Blocks.OAK_STAIRS)))) {
             blockSettings = blockSettings.ignitedByLava();
         }
-        platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group, color);
+        return platformRegister(blockID, blockType, blockSettings,  null, null, null, copyBlock, group, color);
     }
 
     //Create basic blocks.
@@ -565,44 +566,65 @@ public class BlockCreator {
     public static void createWoodSet(String blockID, MapColor color, int blockLux, String group) {
         BlockSetType GENERATED_SET = new BlockSetType(blockID);
         WoodType GENERATED_TYPE = Platform.INSTANCE.createWoodType(blockID, GENERATED_SET);
+
         // Planks
-        createPyriteBlock("%s_planks".formatted(blockID), "block", Blocks.OAK_PLANKS, color, blockLux, group);
+        var planks = createPyriteBlock("%s_planks".formatted(blockID), "block", Blocks.OAK_PLANKS, color, blockLux, group);
+
         // Stairs
         createPyriteBlock("%s_stairs".formatted(blockID), "stairs",Blocks.OAK_STAIRS, color, blockLux, group);
+
         // Slabs
         createPyriteBlock("%s_slab".formatted(blockID), "slab", Blocks.OAK_SLAB, color, blockLux, group);
+
         // Fences
         createPyriteBlock("%s_fence".formatted(blockID), "fence", Blocks.OAK_FENCE, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Fence Gates
         createPyriteBlock("%s_fence_gate".formatted(blockID), "fence_gate", Blocks.OAK_FENCE_GATE, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Doors
         createPyriteBlock("%s_door".formatted(blockID), "door", Blocks.OAK_DOOR, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Trapdoors
         createPyriteBlock("%s_trapdoor".formatted(blockID), "trapdoor", Blocks.OAK_TRAPDOOR, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Pressure Plates
         createPyriteBlock("%s_pressure_plate".formatted(blockID), "pressure_plate", Blocks.OAK_PRESSURE_PLATE, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Buttons
         createPyriteBlock("%s_button".formatted(blockID), "button", Blocks.OAK_BUTTON, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Crafting Tables
         createPyriteBlock("%s_crafting_table".formatted(blockID), "crafting", Blocks.CRAFTING_TABLE, color, blockLux, group);
+
         // Ladders
         createPyriteBlock("%s_ladder".formatted(blockID), "ladder", Blocks.LADDER, color, blockLux, group);
+
         // Signs
         createPyriteBlock("%s_sign".formatted(blockID), "sign", Blocks.OAK_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Hanging Signs
         createPyriteBlock("%s_hanging_sign".formatted(blockID), "hanging_sign", Blocks.OAK_HANGING_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Chest
         if (Platform.INSTANCE.isModLoaded("lolmcv"))
             createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Cabinet
         if (Platform.INSTANCE.isModLoaded("farmersdelight"))
             createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+
         // Shelf
-        //? if >1.21.8
         createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
-        if (Platform.INSTANCE.isModLoaded("copperagebackport")) {
-            createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_PLANKS, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
-        }
+
+        // Boat
+        EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
+        var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
+        PyriteItemGroups.BOATS.add(()->boat);
+        EntityType<ChestBoat> chestBoatEntityType = ModEntities.registerChestBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_chest_boat".formatted(blockID))));
+        var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
+        PyriteItemGroups.BOATS.add(()->chestBoat);
+
     }
 
     /**
@@ -676,11 +698,9 @@ public class BlockCreator {
         BlockSetType set = getBlockSetType(blockID);
         //Create Bars/Doors/Trapdoors/Plates for those that don't already exist (Iron)
         if (!blockID.equals("iron")) {
-            //? if <1.21.9
             //createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
             //Disable Copper doors in 1.21+
             if (!blockID.contains("copper")) {
-                //? if >1.21.9
                 createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
                 createPyriteBlock("%s_door".formatted(blockID),"door", block, set, blockID);
                 createPyriteBlock("%s_trapdoor".formatted(blockID),"trapdoor", block, set, blockID);

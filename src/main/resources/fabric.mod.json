@@ -21,6 +21,9 @@
       "cc.cassian.pyrite.fabric.client.PyriteFabricClient"
     ]
   },
+  "mixins": [
+    "pyrite.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.16.2",
     "minecraft": "${minecraft}",
