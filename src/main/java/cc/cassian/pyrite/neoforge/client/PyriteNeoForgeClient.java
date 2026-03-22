@@ -31,20 +31,11 @@ public class PyriteNeoForgeClient {
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+    public static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {
         for (Block pyriteBlock : GRASS_BLOCKS) {
-            event.register((PyriteClient::registerColor), pyriteBlock);
+            event.register((PyriteClient.registerColor()), pyriteBlock);
         }
     }
-
-    //? <1.21.4 {
-    /^@SubscribeEvent
-    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
-        for (Block pyriteBlock : GRASS_BLOCKS) {
-            event.register(PyriteClient::registerColor, pyriteBlock);
-        }
-    }
-    ^///?}
 
     @SubscribeEvent
     public static void disabledContentTooltip(ItemTooltipEvent event) {

@@ -38,11 +38,7 @@ public class PyriteFabric implements ModInitializer {
         Pyrite.init();
         BlockCreator.register();
         registerFuelBlocks();
-        //? <26.1 {
-        /*ItemGroupEvents.MODIFY_ENTRIES_ALL.register(PyriteItemGroups::buildContents);
-        *///?} else {
         CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register(PyriteItemGroups::buildContents);
-        //?}
 
         ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> {
             if (be != null && be.get() != null)
@@ -71,15 +67,9 @@ public class PyriteFabric implements ModInitializer {
 
     public static void registerFuelBlocks() {
         for (Map.Entry<Block, Integer> fuelBlock : FUEL_BLOCKS.entrySet()) {
-            //? if >26 {
             FuelValueEvents.BUILD.register((builder, context) -> {
                 builder.add(fuelBlock.getKey(), fuelBlock.getValue());
             });
-            //?} else {
-            /*FuelRegistryEvents.BUILD.register((builder, context) -> {
-                builder.add(fuelBlock.getKey(), fuelBlock.getValue());
-            });
-            *///?}
         }
     }
 }
