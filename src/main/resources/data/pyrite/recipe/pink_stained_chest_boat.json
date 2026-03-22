@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:pink_stained_boat","#c:chests/wooden"],"result":{"id":"pyrite:pink_stained_chest_boat","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:pink_stained_boat"},{"tag":"c:chests/wooden"}],"result":{"id":"pyrite:pink_stained_chest_boat","count":1}}
