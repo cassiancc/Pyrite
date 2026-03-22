@@ -1,1 +1,1 @@
-{"textures":{"particle":"pyrite:block/azalea_planks"}}
+{"parent":"minecraft:block/cube_all","textures":{"all":"pyrite:block/azalea_planks"}}
