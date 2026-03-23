@@ -13,14 +13,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-//? if >26  {
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.registry.FuelValueEvents;
-//?} else {
-/*import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-*///?}
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import static net.fabricmc.fabric.api.resource.v1.pack.PackActivationType.DEFAULT_ENABLED;
 
@@ -38,7 +33,7 @@ public class PyriteFabric implements ModInitializer {
         Pyrite.init();
         BlockCreator.register();
         registerFuelBlocks();
-        CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register(PyriteItemGroups::buildContents);
+        ItemGroupEvents.MODIFY_ENTRIES_ALL.register(PyriteItemGroups::buildContents);
 
         ServerLifecycleEvents.SERVER_STARTING.register(minecraftServer -> ModHelpers.SUPPORTED_BLOCKS.forEach((be, block) -> {
             if (be != null && be.get() != null)
@@ -67,7 +62,7 @@ public class PyriteFabric implements ModInitializer {
 
     public static void registerFuelBlocks() {
         for (Map.Entry<Block, Integer> fuelBlock : FUEL_BLOCKS.entrySet()) {
-            FuelValueEvents.BUILD.register((builder, context) -> {
+            FuelRegistryEvents.BUILD.register((builder, context) -> {
                 builder.add(fuelBlock.getKey(), fuelBlock.getValue());
             });
         }

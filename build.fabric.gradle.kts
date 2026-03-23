@@ -1,10 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("net.fabricmc.fabric-loom")
+    id("fabric-loom")
     id("dev.kikugie.postprocess.jsonlang")
     id("me.modmuss50.mod-publish-plugin")
-    id("maven-publish")
 }
 
 val minecraft = stonecutter.current.version
@@ -21,19 +20,14 @@ tasks.named<ProcessResources>("processResources") {
     filesMatching(listOf("fabric.mod.json", "META-INF/neoforge.mods.toml", "META-INF/mods.toml")) {
         expand(props)
     }
-
-}
-
-tasks.named("processResources") {
-    dependsOn(":${stonecutter.current.project}:stonecutterGenerate")
 }
 
 version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
 base.archivesName = property("mod.id") as String
 
-//loom {
-//    accessWidenerPath = rootProject.file("src/main/resources/${property("mod.id")}.accesswidener")
-//}
+loom {
+    accessWidenerPath = rootProject.file("src/main/resources/${property("mod.id")}.accesswidener")
+}
 
 jsonlang {
     languageDirectories = listOf("assets/${property("mod.id")}/lang")
@@ -42,6 +36,26 @@ jsonlang {
 
 repositories {
     mavenLocal()
+    maven {
+        name = "Greenhouse (Farmer's Delight)"
+        url = uri("https://maven.greenhouse.lgbt/releases")
+        content {
+            includeGroup("vectorwing")
+        }
+    }
+    maven( "https://jitpack.io/") {
+        content {
+            includeGroup("com.github.Chocohead")
+            name = "Jitpack (Fabric ASM)"
+        }
+    }
+    maven {
+        name = "cassian's maven"
+        url = uri("https://maven.cassian.cc")
+        content {
+            includeGroupAndSubgroups("cc.cassian")
+        }
+    }
     maven {
         name = "shedaniel (Cloth Config)"
         url = uri("https://maven.shedaniel.me/")
@@ -54,6 +68,7 @@ repositories {
         url = uri("https://maven.terraformersmc.com/releases/")
         content {
             includeGroupAndSubgroups("com.terraformersmc")
+            includeGroupAndSubgroups("dev.emi")
         }
     }
     maven {
@@ -81,6 +96,7 @@ repositories {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
         content {
+            includeGroupAndSubgroups("dev.isxander")
             includeGroupAndSubgroups("org.quiltmc.parsers")
         }
     }
@@ -99,63 +115,54 @@ repositories {
             includeGroupAndSubgroups("fuzs")
         }
     }
-    maven {
-        name = "cassian's maven"
-        url = uri("https://maven.cassian.cc")
-        content {
-            includeGroupAndSubgroups("cc.cassian")
-        }
-    }
-    flatDir { dirs(file("$rootDir/libs")) }
 }
 
 dependencies {
     minecraft("com.mojang:minecraft:${property("deps.minecraft")}")
-    implementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
+    mappings(loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${property("deps.parchment")}@zip")
+    })
+    modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
 
-    implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
+    // Mod Menu
+    if (hasProperty("deps.modmenu")) {
+        modApi("com.terraformersmc:modmenu:${property("deps.modmenu")}") {
+            exclude(group = "net.fabricmc")
+        }
+    }
+    modImplementation("maven.modrinth:mcqoy:17CKhwqV")
+
+    // YACL
+    if (hasProperty("deps.yacl")) {
+        modApi("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric") {
+            exclude(group = "net.fabricmc")
+        }
+    }
+
+    modImplementation("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}-Fabric")
+    modImplementation("maven.modrinth:quad:${property("deps.quad")}-Fabric")
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     include("folk.sisby:kaleido-config:${property("deps.kaleido")}")
 
-    compileOnly("maven.local:columns:1.12.0")
+    modCompileOnly("maven.modrinth:columns:${property("deps.columns")}")
 
-    // YACL
-    if (hasProperty("deps.yacl")) {
-        compileOnly("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric")
-    } else {
-        compileOnly("dev.isxander:yet-another-config-lib:3.7.1+1.21.6-neoforge") {
-            isTransitive = false
-        }
+    modImplementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}") {
+        isTransitive = false
     }
-    // Cloth Config
-    if (hasProperty("deps.cloth_version")) {
-        compileOnly("me.shedaniel.cloth:cloth-config-fabric:${property("deps.cloth_version")}")
-    } else {
-        compileOnly("me.shedaniel.cloth:cloth-config-neoforge:19.0.147")
-    }
-    // Mod Menu
-    if (hasProperty("deps.modmenu_version")) {
-        compileOnly("maven.modrinth:modmenu:${property("deps.modmenu_version")}")
-        runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu_version")}")
-    } else {
-        compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
-    }
-
-    compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}") {
-        exclude(group = "net.fabricmc")
-        exclude(group = "me.shedaniel")
-    }
-
-    implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}") {
+    modCompileOnly("maven.modrinth:totally-lit:${property("deps.totally_lit")}")
+    modLocalRuntime("cc.cassian.item-descriptions:item-descriptions-fabric:${property("deps.item_descriptions")}") {
         isTransitive = false
     }
 
-}
-
-configurations.all {
-    resolutionStrategy {
-        force("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
+    modImplementation("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
+        exclude(group = "net.fabricmc")
+        exclude(group = "me.shedaniel")
+    }
+    modImplementation("com.github.Chocohead:Fabric-ASM:${property("deps.fabric_asm")}") {
+        exclude (group = "net.fabricmc.fabric-api")
     }
 }
 
@@ -173,20 +180,17 @@ tasks {
 
     register<Copy>("buildAndCollect") {
         group = "build"
-        from(jar.map { it.archiveFile })
+        from(remapJar.map { it.archiveFile })
         into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
         dependsOn("build")
     }
 }
 
-loom.runs.named("server") {
-    isIdeConfigGenerated = false
-}
-
 java {
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
+    val javaCompat = JavaVersion.VERSION_21
+    sourceCompatibility = javaCompat
+    targetCompatibility = javaCompat
 }
 
 val additionalVersionsStr = findProperty("publish.additionalVersions") as String?
@@ -197,11 +201,10 @@ val additionalVersions: List<String> = additionalVersionsStr
     ?: emptyList()
 
 publishMods {
-    file = tasks.jar.map { it.archiveFile.get() }
-    additionalFiles.from(tasks.named<org.gradle.jvm.tasks.Jar>("sourcesJar").map { it.archiveFile.get() })
+    file = tasks.remapJar.map { it.archiveFile.get() }
+    additionalFiles.from(tasks.remapSourcesJar.map { it.archiveFile.get() })
 
-    // one of BETA, ALPHA, STABLE
-    type = BETA
+    type = STABLE
     displayName = "${property("mod.name")} ${property("mod.version")} for ${stonecutter.current.version} Fabric"
     version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
     changelog = provider { rootProject.file("CHANGELOG-LATEST.md").readText() }
@@ -210,9 +213,11 @@ publishMods {
     modrinth {
         projectId = property("publish.modrinth") as String
         accessToken = env.MODRINTH_API_KEY.orNull()
-        minecraftVersions.add(property("deps.minecraft").toString())
+        minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
+        optional("mcqoy")
+        optional("rrv")
     }
 
     curseforge {
@@ -221,11 +226,6 @@ publishMods {
         minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
-        if (hasProperty("deps.emi")) {
-            optional("emi")
-        }
-        if (hasProperty("deps.rrv")) {
-            optional("rrv")
-        }
+        optional("rrv")
     }
 }

@@ -40,7 +40,7 @@ public class SwitchableGlass extends TransparentBlock {
     }
 
     @Override
-    protected int getLightDampening(BlockState state) {
+    protected int getLightBlock(BlockState state) {
         if (state.getValue(POWERED)) {
             return 15;
         }
