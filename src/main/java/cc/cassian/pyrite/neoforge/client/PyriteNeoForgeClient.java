@@ -21,6 +21,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
+import static cc.cassian.pyrite.entity.ModEntities.CHEST_BOATS;
 import static cc.cassian.pyrite.functions.ModHelpers.GRASS_BLOCKS;
 
 @Mod(value = MOD_ID, dist = Dist.CLIENT)
@@ -49,6 +50,11 @@ public class PyriteNeoForgeClient {
             event.registerLayerDefinition(layer, BoatModel::createBoatModel);
             EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
         });
+		CHEST_BOATS.forEach((id, entityType) -> {
+			var layer = new ModelLayerLocation(Pyrite.of("chest_boat/" + id), "main");
+			event.registerLayerDefinition(layer, BoatModel::createChestBoatModel);
+			EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
+		});
     }
 
 }
