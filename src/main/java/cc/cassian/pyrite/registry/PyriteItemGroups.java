@@ -411,10 +411,11 @@ public class PyriteItemGroups {
                 .icon(() -> new ItemStack(BLOCKS.get(icon)))
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
-                    for (Block block : blocks.values()) {
-                        if (block.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
-                            entries.accept(block);
-                    }
+                    BuiltInRegistries.ITEM.entrySet().stream().sorted((e, f)-> CharSequence.compare(e.getKey().identifier().toString(), f.getKey().identifier().toString())).forEach(entry -> {
+                        if (entry.getKey().identifier().getNamespace().equals(Pyrite.MOD_ID) && entry.getValue().getDefaultInstance().is(PyriteItemTags.ENABLED)) {
+                            entries.accept(entry.getValue());
+                        }
+                    });
                 })
                 .build();
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
