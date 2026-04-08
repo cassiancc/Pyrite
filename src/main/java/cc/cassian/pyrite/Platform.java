@@ -28,8 +28,6 @@ public interface Platform {
     boolean isDevEnvironment();
     Path getConfigDir();
 
-    void addSupportedBlock(BlockEntityType<?> be, Block block);
-
     void registerOxidizableBlockPair(Block block, Block block1);
 
     void registerWaxableBlockPair(Block newBlock, Block waxed);

@@ -49,7 +49,6 @@ public class BlockCreator {
     public static final LinkedHashMap<String, Block> ITEMLESS_BLOCKS = new LinkedHashMap<>();
     // All items and their IDs.
     public static final LinkedHashMap<String, Item> ITEMS = new LinkedHashMap<>();
-
     /**
      * This registers a basic item with no additional settings - primarily used for Dye.
      */
@@ -146,7 +145,7 @@ public class BlockCreator {
             case "chest":
                 if (Platform.INSTANCE.isModLoaded("lolmcv")) {
                     newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
-                    ModHelpers.addSupportedBlock(BlockEntityType.CHEST, newBlock);
+                    ModHelpers.addSupportedBlock(()->BlockEntityType.CHEST, newBlock);
                 }
                 break;
             case "cabinet":

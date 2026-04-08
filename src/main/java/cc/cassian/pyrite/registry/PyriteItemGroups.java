@@ -197,11 +197,7 @@ public class PyriteItemGroups {
 			} else if (key.equals(CreativeModeTabs.INGREDIENTS)) {
                 addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
 			} else if (key.equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
-                //? if >1.21.4 {
                 addAfter(Items.PALE_OAK_CHEST_BOAT, getItemCollectionList(BOATS), event);
-                //?} else {
-                /*addAfter(Items.CHERRY_CHEST_BOAT, getItemCollectionList(BOATS), event);
-                *///?}
             }
         }
     }
@@ -401,9 +397,7 @@ public class PyriteItemGroups {
     }
 
     public static void addItemGroup(String id, String icon, LinkedHashMap<String, Block> blocks) {
-        //? if fabric && <26.1 {
-        /*CreativeModeTab group = FabricItemGroup.builder()
-        *///?} else if fabric && >26 {
+        //? if fabric {
         CreativeModeTab group = FabricCreativeModeTab.builder()
         //?} else {
         /*CreativeModeTab group = CreativeModeTab.builder()
@@ -443,11 +437,9 @@ public class PyriteItemGroups {
     ) {
         //? if neoforge {
         /*event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-         *///?} else if fabric && >26 {
+         *///?} else {
         event.insertAfter(anchor.getDefaultInstance(), itemStack);
-         //?} else {
-        /*event.addAfter(anchor, itemStack);
-        *///?}
+         //?}
     }
 
     private static void addAfter(Block block, Collection<ItemStack> blockCollectionList,
@@ -462,10 +454,8 @@ public class PyriteItemGroups {
     }
 
     private static void addBefore(Block block, Collection<ItemStack> blockCollectionList,
-                                  //? if fabric && >26 {
-            FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                  //FabricItemGroupEntries event
+                                  //? if fabric
+                                    FabricCreativeModeTabOutput event
                                   //? if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
@@ -475,14 +465,10 @@ public class PyriteItemGroups {
     private static void addBefore(Item anchor, ItemStack itemStack,
                                   //? if fabric && >26 {
             FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                  //FabricItemGroupEntries event
-                                  //? if neoforge
+             //?} else if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
-        //? if fabric && <26.1 {
-        /*event.addBefore(anchor, itemStack);
-        *///?} else if fabric {
+        //? if fabric {
         event.insertBefore(anchor, itemStack);
          //?} else {
         /*event.insertBefore(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -490,11 +476,9 @@ public class PyriteItemGroups {
     }
 
     private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList,
-                                  //? if fabric && >26 {
+                                  //? if fabric {
             FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                  //FabricItemGroupEntries event
-                                  //? if neoforge
+             //?} else if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
         for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
@@ -503,16 +487,12 @@ public class PyriteItemGroups {
     }
 
     private static void addBefore(Item anchor, Item item,
-                                  //? if fabric && >26 {
+                                  //? if fabric {
             FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                  //FabricItemGroupEntries event
-                                  //? if neoforge
+             //?} else  if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
-        //? if fabric && <26.1 {
-        /*event.addBefore(anchor, item);
-        *///?} else if fabric {
+        //? if fabric {
         event.insertBefore(anchor, item);
          //?} else {
         /*event.insertBefore(anchor.getDefaultInstance(), item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -522,9 +502,7 @@ public class PyriteItemGroups {
     public static void addMapToItemGroup(
             //? if fabric && >26 {
             FabricCreativeModeTabOutput event
-             //?} else if fabric
-            //FabricItemGroupEntries event
-            //? if neoforge
+             //?} else if neoforge
             //BuildCreativeModeTabContentsEvent event
             , LinkedHashMap<Block, Supplier<Block>> map) {
         for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {

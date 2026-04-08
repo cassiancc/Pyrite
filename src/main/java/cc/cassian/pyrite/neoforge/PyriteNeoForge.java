@@ -2,27 +2,20 @@ package cc.cassian.pyrite.neoforge;
 
 //? if neoforge {
 
-/*import cc.cassian.pyrite.Platform;
-import cc.cassian.pyrite.Pyrite;
+/*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.registry.BlockCreator;
-import cc.cassian.pyrite.neoforge.client.PyriteNeoForgeClient;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.InteractionResult;
-//? if <1.21.4 {
-/^import net.minecraft.world.ItemInteractionResult;
-^///?}
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -31,8 +24,6 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -43,8 +34,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static cc.cassian.pyrite.Pyrite.MOD_ID;
-import static cc.cassian.pyrite.neoforge.NeoForgePlatformImpl.SUPPORTED_BLOCKS;
+import static cc.cassian.pyrite.functions.ModHelpers.SUPPORTED_BLOCKS;
 import static cc.cassian.pyrite.registry.PyriteItemGroups.POTTED_FLOWERS;
 
 
@@ -70,7 +60,9 @@ public final class PyriteNeoForge {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     private static void addSupportedBlocks(BlockEntityTypeAddBlocksEvent event) {
-        SUPPORTED_BLOCKS.forEach(event::modify);
+        SUPPORTED_BLOCKS.forEach((blockEntityTypeSupplier, block)-> {
+            event.modify(blockEntityTypeSupplier.get(), block);
+        });
     }
 
     // Adds Pyrite's flowers to the flower pot block.
@@ -87,13 +79,7 @@ public final class PyriteNeoForge {
     @SubscribeEvent
     private static void onUseWithItem(UseItemOnBlockEvent event) {
         InteractionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
-        if (actionResult.equals(InteractionResult.SUCCESS)) event.cancelWithResult(
-                //? if >1.21.4 {
-                InteractionResult.SUCCESS
-                //?} else {
-                /^ItemInteractionResult.SUCCESS
-                ^///?}
-        );
+        if (actionResult.equals(InteractionResult.SUCCESS)) event.cancelWithResult(InteractionResult.SUCCESS);
     }
 
     @SubscribeEvent

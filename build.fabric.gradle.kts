@@ -142,7 +142,7 @@ dependencies {
         compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
     }
 
-    compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}") {
+    compileOnly("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }
@@ -150,6 +150,11 @@ dependencies {
     implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}") {
         isTransitive = false
     }
+    implementation("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}") {
+        exclude(group = "net.fabricmc")
+        exclude(group = "me.shedaniel")
+    }
+    implementation("maven.modrinth:quad:${property("deps.quad")}")
 
 }
 

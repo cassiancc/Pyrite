@@ -50,15 +50,6 @@ public class FabricPlatformImpl implements Platform {
     }
 
     @Override
-    public void addSupportedBlock(BlockEntityType<?> be, Block block) {
-        //? if >26 {
-        be.addValidBlock(block);
-        //?} else {
-        /*be.addSupportedBlock(block);
-        *///?}
-    }
-
-    @Override
     public void registerOxidizableBlockPair(Block block, Block block1) {
         //? if >26 {
         OxidizableBlocksRegistry.registerNextStage(block, block1);

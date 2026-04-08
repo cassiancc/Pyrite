@@ -20,7 +20,6 @@ import java.util.LinkedHashMap;
 
 public class NeoForgePlatformImpl implements Platform {
 
-    public static final LinkedHashMultimap<BlockEntityType<?>, Block> SUPPORTED_BLOCKS = LinkedHashMultimap.create();
 
     @Override
     public boolean isModLoaded(String modid) {
@@ -34,11 +33,7 @@ public class NeoForgePlatformImpl implements Platform {
 
     @Override
     public boolean isDevEnvironment() {
-        //? if >1.21.4 {
         return !FMLEnvironment.isProduction();
-        //?} else {
-        /^return !FMLEnvironment.production;
-        ^///?}
     }
 
     @Override
@@ -47,18 +42,11 @@ public class NeoForgePlatformImpl implements Platform {
     }
 
     @Override
-    public void addSupportedBlock(BlockEntityType<?> be, Block block) {
-        SUPPORTED_BLOCKS.put(be, block);
-    }
-
-    @Override
     public void registerOxidizableBlockPair(Block block, Block block1) {
-        //fabric
     }
 
     @Override
     public void registerWaxableBlockPair(Block newBlock, Block waxed) {
-        //fabric
     }
 
     @Override

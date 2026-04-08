@@ -137,7 +137,8 @@ dependencies {
         implementation("maven.modrinth:mcqoy:yHGo6VsD")
     }
 
-    compileOnly("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}-Neo")
+    implementation("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}")
+    implementation("maven.modrinth:quad:${property("deps.quad")}")
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     jarJar("folk.sisby:kaleido-config:${property("deps.kaleido")}")
@@ -146,12 +147,6 @@ dependencies {
 
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
-    if (hasProperty("deps.copper_age_backport")) {
-        implementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
-    }
-    if (hasProperty("deps.terraform_wood_api")) {
-        implementation("com.terraformersmc.terraform:terraform_wood_api_v1:${property("deps.terraform_wood_api")}")
-    }
     compileOnly("maven.local:columns:1.12.0")
 
 }
