@@ -14,8 +14,11 @@ public class PyriteItemTags {
     public static final TagKey<Item> ENABLED = tagKey( "enabled");
     public static final TagKey<Item> ODDITIES = tagKey("oddities");
     public static final TagKey<Item> CHESTS = tagKey("chests");
+    public static final TagKey<Item> FENCES = tagKey("fences");
+    public static final TagKey<Item> BOATS = tagKey("boats");
+    public static final TagKey<Item> CHEST_BOATS = tagKey("chest_boats");
 
-    public static TagKey<Item> tagKey(String id) {
+	public static TagKey<Item> tagKey(String id) {
         return tagKey(MOD_ID, id);
     }
 

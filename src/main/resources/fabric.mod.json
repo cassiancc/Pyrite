@@ -19,6 +19,9 @@
     ],
     "client": [
       "cc.cassian.pyrite.fabric.client.PyriteFabricClient"
+    ],
+    "fabric-datagen": [
+      "cc.cassian.pyrite.fabric.datagen.PyriteDataGenerator"
     ]
   },
   "mixins": [

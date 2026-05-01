@@ -29,14 +29,12 @@ jsonlang {
 }
 
 neoForge {
-    version = property("deps.neoforge") as String
-    validateAccessTransformers = true
-
-    if (hasProperty("deps.parchment")) parchment {
-        val (mc, ver) = (property("deps.parchment") as String).split(':')
-        mappingsVersion = ver
-        minecraftVersion = mc
+    enable {
+        version = property("deps.neoforge") as String
+        // Disable recompilation if the "CI" environment variable is set to true. It is automatically set by GitHub Actions.
+        isDisableRecompilation = true
     }
+    validateAccessTransformers = true
 
     runs {
         register("client") {

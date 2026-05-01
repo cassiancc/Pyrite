@@ -1,0 +1,136 @@
+{
+  "values": [
+    {
+      "id": "pyrite:pink_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_daisy",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_rose",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_shelf",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_torch_lever",
+      "required": false
+    }
+  ]
+}

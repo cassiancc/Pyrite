@@ -1,0 +1,92 @@
+{
+  "values": [
+    {
+      "id": "pyrite:cut_weathered_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_weathered_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_weathered_copper_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_weathered_copper",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_weathered_copper_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_weathered_copper_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_weathered_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_weathered_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_cut_weathered_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_cut_weathered_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_nostalgia_weathered_copper_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_weathered_copper",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_weathered_copper_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_weathered_copper_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_weathered_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_weathered_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_weathered_copper_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_weathered_copper_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:weathered_copper_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:weathered_copper_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:weathered_copper_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:weathered_copper_pressure_plate",
+      "required": false
+    }
+  ]
+}

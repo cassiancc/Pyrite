@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "pyrite:dragon_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_wool",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_wool",
+      "required": false
+    }
+  ]
+}

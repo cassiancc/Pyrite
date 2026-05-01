@@ -1,0 +1,92 @@
+{
+  "values": [
+    {
+      "id": "pyrite:cut_exposed_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_exposed_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:exposed_copper_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:exposed_copper_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:exposed_copper_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:exposed_copper_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_exposed_copper_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_exposed_copper",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_exposed_copper_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_exposed_copper_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_exposed_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_exposed_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_cut_exposed_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_cut_exposed_copper_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_exposed_copper_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_exposed_copper_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_nostalgia_exposed_copper_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_exposed_copper",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_exposed_copper_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_exposed_copper_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_exposed_copper_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_smooth_exposed_copper_wall_gate",
+      "required": false
+    }
+  ]
+}

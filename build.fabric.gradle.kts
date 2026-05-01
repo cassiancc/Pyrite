@@ -71,13 +71,6 @@ repositories {
         }
     }
     maven {
-        name = "Parchment Mappings"
-        url = uri("https://maven.parchmentmc.org")
-        content {
-            includeGroupAndSubgroups("org.parchmentmc")
-        }
-    }
-    maven {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
         content {
@@ -107,6 +100,15 @@ repositories {
         }
     }
     flatDir { dirs(file("$rootDir/libs")) }
+}
+
+
+fabricApi {
+    configureDataGeneration() {
+        outputDirectory = file("$rootDir/src/main/generated")
+        client = true
+        modId = "pyrite"
+    }
 }
 
 dependencies {
@@ -142,7 +144,7 @@ dependencies {
         compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
     }
 
-    compileOnly("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
+    implementation("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }

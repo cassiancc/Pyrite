@@ -1,0 +1,128 @@
+{
+  "values": [
+    {
+      "id": "pyrite:magenta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_shelf",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_torch_lever",
+      "required": false
+    }
+  ]
+}
