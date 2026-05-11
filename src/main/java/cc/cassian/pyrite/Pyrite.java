@@ -168,16 +168,6 @@ public class Pyrite {
 			//Create block.
 			createPyriteBlock(block + "_gate","wall_gate", wallsBlock, BlockSetType.STONE, "building_blocks");
 		}
-
-        // Add aliases for content removed in 1.21.9.
-        addAlias("copper_bars");
-        addAlias("exposed_copper_bars");
-        addAlias("weathered_copper_bars");
-        addAlias("oxidized_copper_bars");
-        addAlias("waxed_copper_bars");
-        addAlias("waxed_exposed_copper_bars");
-        addAlias("waxed_weathered_copper_bars");
-        addAlias("waxed_oxidized_copper_bars");
 	}
 
     public static Identifier of(String namespace, String path) {

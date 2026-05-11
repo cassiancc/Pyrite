@@ -709,10 +709,9 @@ public class BlockCreator {
         BlockSetType set = getBlockSetType(blockID);
         //Create Bars/Doors/Trapdoors/Plates for those that don't already exist (Iron)
         if (!blockID.equals("iron")) {
-            //createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
+            createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
             //Disable Copper doors in 1.21+
             if (!blockID.contains("copper")) {
-                createPyriteBlock("%s_bars".formatted(blockID),"bars", block, blockID);
                 createPyriteBlock("%s_door".formatted(blockID),"door", block, set, blockID);
                 createPyriteBlock("%s_trapdoor".formatted(blockID),"trapdoor", block, set, blockID);
             }
