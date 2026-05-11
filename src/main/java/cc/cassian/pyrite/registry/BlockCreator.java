@@ -273,7 +273,7 @@ public class BlockCreator {
                 break;
             case "sign":
                 //Sign Blocks
-                newBlock = new PyriteWallSignBlock(woodType, blockSettings, blockID);
+                newBlock = new PyriteStandingSignBlock(woodType, blockSettings, blockID);
                 ITEMLESS_BLOCKS.put(blockID, newBlock);
                 //Wall Sign Blocks
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
