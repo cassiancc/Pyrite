@@ -71,13 +71,6 @@ repositories {
         }
     }
     maven {
-        name = "Parchment Mappings"
-        url = uri("https://maven.parchmentmc.org")
-        content {
-            includeGroupAndSubgroups("org.parchmentmc")
-        }
-    }
-    maven {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
         content {
@@ -135,9 +128,9 @@ dependencies {
         compileOnly("me.shedaniel.cloth:cloth-config-neoforge:19.0.147")
     }
     // Mod Menu
-    if (hasProperty("deps.modmenu_version")) {
-        compileOnly("maven.modrinth:modmenu:${property("deps.modmenu_version")}")
-        runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu_version")}")
+    if (hasProperty("deps.modmenu")) {
+        compileOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
+        runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
     } else {
         compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
     }
