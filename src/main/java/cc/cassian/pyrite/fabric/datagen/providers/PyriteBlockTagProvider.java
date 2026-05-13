@@ -1,4 +1,5 @@
-package cc.cassian.pyrite.fabric.datagen;
+//? fabric {
+package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.ModCarpet;
@@ -19,7 +20,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceBlock;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Comparator;
 import java.util.List;
@@ -149,3 +149,4 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		return ResourceKey.create(Registries.BLOCK, Pyrite.of(e));
 	}
 }
+//?}

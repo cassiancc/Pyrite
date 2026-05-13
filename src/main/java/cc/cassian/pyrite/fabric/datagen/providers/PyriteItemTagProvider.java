@@ -1,4 +1,5 @@
-package cc.cassian.pyrite.fabric.datagen;
+//? fabric {
+package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
@@ -15,10 +16,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -111,3 +110,4 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		return ResourceKey.create(Registries.ITEM, Pyrite.of(e));
 	}
 }
+//?}
