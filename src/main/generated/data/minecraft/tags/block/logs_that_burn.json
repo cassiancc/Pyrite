@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "pyrite:azalea_log",
+      "required": false
+    },
+    {
+      "id": "pyrite:stripped_azalea_log",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_stem",
+      "required": false
+    },
+    {
+      "id": "pyrite:red_mushroom_stem",
+      "required": false
+    }
+  ]
+}

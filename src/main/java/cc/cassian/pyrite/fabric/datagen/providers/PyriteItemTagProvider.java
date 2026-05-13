@@ -14,8 +14,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Comparator;
@@ -57,15 +60,40 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		builder(PyriteItemTags.CHEST_BOATS, "chest_boat");
 
 		// conventional tags
-		copy(ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES, ConventionalItemTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
+		copy(ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
 
+		// minecraft
+		copy(BlockTags.DIRT);
+		copy(BlockTags.DOORS);
+		copy(BlockTags.FENCE_GATES);
+		copy(BlockTags.GUARDED_BY_PIGLINS);
+		copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
+		builder(ItemTags.PIGLIN_LOVED).addAll(get("gold"));
+		copy(BlockTags.SIGNS);
+		copy(BlockTags.STAIRS);
+		copy(BlockTags.SLABS);
+		copy(BlockTags.WOODEN_BUTTONS);
+		copy(BlockTags.WOODEN_DOORS);
+		copy(BlockTags.WOODEN_FENCES);
+		copy(BlockTags.WOODEN_PRESSURE_PLATES);
+		copy(BlockTags.WOODEN_SLABS);
+		copy(BlockTags.WOODEN_STAIRS);
+		copy(BlockTags.WOODEN_TRAPDOORS);
 		// fd
-		copy(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden")), TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden")));
-		copy(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets")), TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets")));
+		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden"));
+		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets"));
 	}
 
-	private void copy(PyriteBlockItemTags.BlockItemTagId block) {
-		copy(block.block(), block.item());
+    private void copy(TagKey<Block> blockTag) {
+        copy(blockTag, TagKey.create(Registries.ITEM, blockTag.location()));
+    }
+
+	private void copy(Identifier id) {
+		copy(TagKey.create(Registries.BLOCK, id), TagKey.create(Registries.ITEM, id));
+	}
+
+	private void copy(PyriteBlockItemTags.BlockItemTagId tagId) {
+		copy(tagId.block(), tagId.item());
 	}
 
 	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(TagKey<Item> tag, String id) {
@@ -80,12 +108,12 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(PyriteBlockItemTags.BlockItemTagId fences, Class<? extends Item> aClass) {
-		return builder(fences.item()).addAll(get(aClass));
+	private TagAppender<ResourceKey<Item>, Item> builder(PyriteBlockItemTags.BlockItemTagId tag, Class<? extends Item> aClass) {
+		return builder(tag.item()).addAll(get(aClass));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(PyriteBlockItemTags.BlockItemTagId fences, String id) {
-		return builder(fences.item()).addAll(get(id));
+	private TagAppender<ResourceKey<Item>, Item> builder(PyriteBlockItemTags.BlockItemTagId tag, String id) {
+		return builder(tag.item()).addAll(get(id));
 	}
 
 	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(PyriteBlockItemTags.BlockItemTagId tag, String id) {
