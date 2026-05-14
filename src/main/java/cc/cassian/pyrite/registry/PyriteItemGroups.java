@@ -4,6 +4,7 @@ import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
+import cc.cassian.pyrite.entries.PyriteEntry;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 //? if fabric && <26.1 {
@@ -15,6 +16,7 @@ import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 //?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -97,10 +99,13 @@ public class PyriteItemGroups {
     public static final LinkedHashMap<Block, BlockEntry<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
     public static final LinkedHashMap<Block, BlockEntry<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
     public static final LinkedHashMap<Block, BlockEntry<Block>> NATURAL = new LinkedHashMap<>();
+    private static Block get(String id) {
+        return BuiltInRegistries.BLOCK.getValue(Pyrite.of(id));
+    };
 
 
     public static void buildContents(
-            //? if fabric && >26 {
+            //? if fabric && >26
             CreativeModeTab creativeModeTab, FabricCreativeModeTabOutput event
             //? if neoforge
             //BuildCreativeModeTabContentsEvent event
@@ -112,37 +117,37 @@ public class PyriteItemGroups {
             var key = BuiltInRegistries.CREATIVE_MODE_TAB.getResourceKey(creativeModeTab).orElseThrow();
 
             if (key.equals(CreativeModeTabs.BUILDING_BLOCKS)) {
-                addAfter(Items.IRON_BLOCK, getBlockCollectionList(IRON_BLOCKS), event);
-                addAfter(Items.GOLD_BLOCK, getBlockCollectionList(GOLD_BLOCKS), event);
-                addAfter(Items.EMERALD_BLOCK, getBlockCollectionList(EMERALD_BLOCKS), event);
-                addAfter(Items.LAPIS_BLOCK, getBlockCollectionList(LAPIS_BLOCKS), event);
-                addAfter(Items.REDSTONE_BLOCK, getBlockCollectionList(REDSTONE_RESOURCE_BLOCKS), event);
-                addAfter(Items.DIAMOND_BLOCK, getBlockCollectionList(DIAMOND_BLOCKS), event);
-                addAfter(Items.NETHERITE_BLOCK, getBlockCollectionList(NETHERITE_BLOCKS), event);
-                addAfter(Items.QUARTZ_BLOCK, getBlockCollectionList(QUARTZ_BLOCKS), event);
-                addAfter(Items.AMETHYST_BLOCK, getBlockCollectionList(AMETHYST_BLOCKS), event);
-                addAfter(Items.CUT_COPPER_SLAB, getBlockCollectionList(COPPER_BLOCKS), event);
-                addAfter(Items.EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(EXPOSED_COPPER_BLOCKS), event);
-                addAfter(Items.WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WEATHERED_COPPER_BLOCKS), event);
-                addAfter(Items.OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(OXIDIZED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_EXPOSED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_WEATHERED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_OXIDIZED_COPPER_BLOCKS), event);
-                addAfter(Items.RED_NETHER_BRICK_WALL, getBlockCollectionList(COLOURED_NETHER_BRICKS), event);
-                addAfter(Items.COBBLESTONE_WALL, getBlockCollectionList(COBBLESTONE), event);
-                addAfter(Items.COBBLED_DEEPSLATE_WALL, getBlockCollectionList(COBBLED_DEEPSLATE), event);
-                addAfter(Items.GRANITE_SLAB, getBlockCollectionList(GRANITE), event);
-                addAfter(Items.ANDESITE_SLAB, getBlockCollectionList(ANDESITE), event);
-                addAfter(Items.POLISHED_DIORITE_SLAB, getBlockCollectionList(DIORITE), event);
-                addAfter(Items.SMOOTH_STONE_SLAB, getBlockCollectionList(SMOOTH_STONE), event);
-                addAfter(Items.TUFF_BRICK_SLAB, getBlockCollectionList(TUFF), event);
-                addAfter(Items.DEEPSLATE_TILE_WALL, getBlockCollectionList(DEEPSLATE), event);
+                addAfter(Items.IRON_BLOCK, IRON_BLOCKS, event);
+                addAfter(Items.GOLD_BLOCK, GOLD_BLOCKS, event);
+                addAfter(Items.EMERALD_BLOCK, (EMERALD_BLOCKS), event);
+                addAfter(Items.LAPIS_BLOCK, (LAPIS_BLOCKS), event);
+                addAfter(Items.REDSTONE_BLOCK, (REDSTONE_RESOURCE_BLOCKS), event);
+                addAfter(Items.DIAMOND_BLOCK, (DIAMOND_BLOCKS), event);
+                addAfter(Items.NETHERITE_BLOCK, (NETHERITE_BLOCKS), event);
+                addAfter(Items.QUARTZ_BLOCK, (QUARTZ_BLOCKS), event);
+                addAfter(Items.AMETHYST_BLOCK, (AMETHYST_BLOCKS), event);
+                addAfter(Items.CUT_COPPER_SLAB, (COPPER_BLOCKS), event);
+                addAfter(Items.EXPOSED_CUT_COPPER_SLAB, (EXPOSED_COPPER_BLOCKS), event);
+                addAfter(Items.WEATHERED_CUT_COPPER_SLAB, (WEATHERED_COPPER_BLOCKS), event);
+                addAfter(Items.OXIDIZED_CUT_COPPER_SLAB, (OXIDIZED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_CUT_COPPER_SLAB, (WAXED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, (WAXED_EXPOSED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, (WAXED_WEATHERED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, (WAXED_OXIDIZED_COPPER_BLOCKS), event);
+                addAfter(Items.RED_NETHER_BRICK_WALL, (COLOURED_NETHER_BRICKS), event);
+                addAfter(Items.COBBLESTONE_WALL, (COBBLESTONE), event);
+                addAfter(Items.COBBLED_DEEPSLATE_WALL, (COBBLED_DEEPSLATE), event);
+                addAfter(Items.GRANITE_SLAB, (GRANITE), event);
+                addAfter(Items.ANDESITE_SLAB, (ANDESITE), event);
+                addAfter(Items.POLISHED_DIORITE_SLAB, (DIORITE), event);
+                addAfter(Items.SMOOTH_STONE_SLAB, (SMOOTH_STONE), event);
+                addAfter(Items.TUFF_BRICK_SLAB, (TUFF), event);
+                addAfter(Items.DEEPSLATE_TILE_WALL, (DEEPSLATE), event);
                 addBefore(Items.TUFF, Items.CALCITE, event);
-                addAfter(Items.CALCITE, getBlockCollectionList(CALCITE), event);
+                addAfter(Items.CALCITE, (CALCITE), event);
                 addAfter(Blocks.CUT_SANDSTONE_SLAB, getBlockCollectionList(SANDSTONE), event);
                 addMapToItemGroup(event, BUILDING_BLOCKS);
-                addAfter(Items.CHERRY_BUTTON, getBlockCollectionList(WOOD), event);
+                addAfter(Items.CHERRY_BUTTON, (WOOD), event);
 			} else if (key.equals(CreativeModeTabs.COLORED_BLOCKS)) {
                 addAfter(Blocks.PINK_STAINED_GLASS, getBlockCollectionList(STAINED_GLASS), event);
                 addAfter(Blocks.PINK_STAINED_GLASS_PANE, getBlockCollectionList(STAINED_GLASS_PANES), event);
@@ -168,31 +173,31 @@ public class PyriteItemGroups {
                         namespace = "minecraft";
                     }
                     final var concrete = dye+"_concrete";
-                    final Block stairs = BLOCKS.get(concrete + "_stairs");
-                    final Block slab = BLOCKS.get(concrete + "_slab");
+                    final Block stairs = get(concrete + "_stairs");
+                    final Block slab = get(concrete + "_slab");
                     if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
                         addAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)).asItem(), List.of(new ItemStack(stairs), new ItemStack(slab)), event);
                 }
 			} else if (key.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
-                addAfter(Items.WITHER_ROSE, getBlockCollectionList(FLOWERS), event);
-                addAfter(Items.DIRT_PATH, getBlockCollectionList(DIRT_PATH), event);
-                addAfter(Items.GRASS_BLOCK, getBlockCollectionList(NOSTALGIA_GRASS), event);
-                addAfter(Items.GRASS_BLOCK, getBlockCollectionList(GRASS), event);
-                addAfter(Items.PODZOL, getBlockCollectionList(PODZOL), event);
-                addAfter(Items.MYCELIUM, getBlockCollectionList(MYCELIUM), event);
-                addAfter(Items.GRAVEL, getBlockCollectionList(GRAVEL), event);
-                addAfter(Items.MUSHROOM_STEM, getBlockCollectionList(BROWN_MUSHROOM), event);
-                addAfter(Items.MUSHROOM_STEM, getBlockCollectionList(RED_MUSHROOM), event);
+                addAfter(Items.WITHER_ROSE, FLOWERS, event);
+                addAfter(Items.DIRT_PATH, DIRT_PATH, event);
+                addAfter(Items.GRASS_BLOCK, NOSTALGIA_GRASS, event);
+                addAfter(Items.GRASS_BLOCK, GRASS, event);
+                addAfter(Items.PODZOL, PODZOL, event);
+                addAfter(Items.MYCELIUM, MYCELIUM, event);
+                addAfter(Items.GRAVEL, GRAVEL, event);
+                addAfter(Items.MUSHROOM_STEM, BROWN_MUSHROOM, event);
+                addAfter(Items.MUSHROOM_STEM, RED_MUSHROOM, event);
 			} else if (key.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
-                addAfter(Items.WARPED_HANGING_SIGN, getItemCollectionList(SIGNS), event);
-                addAfter(Items.CRAFTING_TABLE, getBlockCollectionList(CRAFTING_TABLES), event);
-                addAfter(Items.TORCH, getBlockCollectionList(TORCH), event);
-                addAfter(Items.CRYING_OBSIDIAN, getBlockCollectionList(OBSIDIAN), event);
+                addAfter(Items.WARPED_HANGING_SIGN, SIGNS, event);
+                addAfter(Items.CRAFTING_TABLE, CRAFTING_TABLES, event);
+                addAfter(Items.TORCH, (TORCH), event);
+                addAfter(Items.CRYING_OBSIDIAN, (OBSIDIAN), event);
                 addMapToItemGroup(event, FUNCTIONAL);
 			} else if (key.equals(CreativeModeTabs.REDSTONE_BLOCKS)) {
-                addAfter(Items.CAULDRON, getBlockCollectionList(REDSTONE_BLOCKS), event);
-                addAfter(Items.REDSTONE_BLOCK, getBlockCollectionList(REDSTONE_RESOURCE_BLOCKS), event);
-                addAfter(Items.LEVER, getBlockCollectionList(TORCH_LEVER), event);
+                addAfter(Items.CAULDRON, (REDSTONE_BLOCKS), event);
+                addAfter(Items.REDSTONE_BLOCK, (REDSTONE_RESOURCE_BLOCKS), event);
+                addAfter(Items.LEVER, (TORCH_LEVER), event);
 			} else if (key.equals(CreativeModeTabs.INGREDIENTS)) {
                 addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
 			} else if (key.equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
@@ -201,15 +206,13 @@ public class PyriteItemGroups {
         }
     }
 
+    @Deprecated
     public static void match(Supplier<Block> newBlock, Block copyBlock, String group, String blockID) {
-        match(new BlockEntry<>(blockID, newBlock.get()), copyBlock, group, blockID);
+        match(new BlockEntry<>(blockID, newBlock.get()), copyBlock, group);
     }
 
-    public static void match(BlockEntry<Block> newBlock, Block copyBlock, String group, String blockID) {
-        match(newBlock, copyBlock, group);
-    }
-
-    public static void match(BlockEntry<Block> newBlock, Block copyBlock, String group) {
+    public static <T extends Block> void match(BlockEntry<T> entry, Block copyBlock, String group) {
+        var newBlock = (BlockEntry<Block>) entry;
         if (newBlock.getPath().equals("glowstone_lamp"))
             LAMPS.add(newBlock);
         switch (group) {
@@ -403,26 +406,35 @@ public class PyriteItemGroups {
         }
     }
 
-    public static void addItemGroup(String id, String icon, LinkedHashMap<String, Block> blocks) {
+    public static void addItemGroup(String id, String icon, ArrayList<BlockEntry<Block>> blocks) {
         //? if fabric {
         CreativeModeTab group = FabricCreativeModeTab.builder()
         //?} else {
         /*CreativeModeTab group = CreativeModeTab.builder()
         *///?}
-                .icon(() -> new ItemStack(BLOCKS.get(icon)))
+                .icon(() -> new ItemStack(BuiltInRegistries.ITEM.getValue(Pyrite.of(icon))))
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
-                    for (Block block : blocks.values()) {
+                    for (BlockEntry<?> block : blocks) {
                         if (block.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
-                            entries.accept(block);
+                            entries.accept(block.get());
                     }
                 })
                 .build();
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
     }
 
+    private static void addAfter(Item anchor, ArrayList<? extends PyriteEntry> blockCollectionList,
+                                 //? if fabric
+                                 FabricCreativeModeTabOutput event
+                                 //? if neoforge
+                                 //BuildCreativeModeTabContentsEvent event
+    ) {
+        addAfter(anchor, getBlockCollectionList(blockCollectionList), event);
+    }
+
     private static void addAfter(Item anchor, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric {
+                                 //? if fabric
                                  FabricCreativeModeTabOutput event
                                  //? if neoforge
                                  //BuildCreativeModeTabContentsEvent event
@@ -518,10 +530,10 @@ public class PyriteItemGroups {
         }
     }
 
-    public static Collection<ItemStack> getBlockCollectionList(Collection<BlockEntry<Block>> items) {
+    public static Collection<ItemStack> getBlockCollectionList(Collection<? extends PyriteEntry> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
-        for (BlockEntry<Block> block : items) {
-            var stack = block.get().asItem().getDefaultInstance();
+        for (PyriteEntry block : items) {
+            var stack = block.asItem().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
                 stacks.add(stack);
             } else {

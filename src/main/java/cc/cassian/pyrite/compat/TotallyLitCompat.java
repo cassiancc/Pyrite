@@ -3,6 +3,7 @@ package cc.cassian.pyrite.compat;
 //? if fabric {
 
 import cc.cassian.pyrite.blocks.ModWallMounted;
+import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -19,9 +20,9 @@ public class TotallyLitCompat {
 
     public static void registerTorch(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         var block = new ModWallMounted(blockSettings.lightLevel((state)->0));
-        BlockCreator.BLOCKS.put(blockID, block);
+        BlockCreator.putBlock(blockID, block);
         add(block);
-        PyriteItemGroups.match(()->block, copyBlock, group, "unlit_torch");
+        PyriteItemGroups.match(new BlockEntry<>(blockID, block), copyBlock, group);
         //? <26
         //TotallyLit.TORCH_MAP.put(copyBlock, block);
         ModHelpers.addTransparentBlock(block);

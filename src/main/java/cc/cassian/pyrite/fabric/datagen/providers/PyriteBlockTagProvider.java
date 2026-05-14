@@ -5,7 +5,9 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.core.PyriteBlockTags;
+import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
+import cc.cassian.pyrite.entries.PyriteEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import dev.lieonlion.quad.tags.QuadBlockTags;
@@ -113,7 +115,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(ConventionalBlockTags.YELLOW_DYED, "yellow_");
 
 		// minecraft tags
-		builder(BlockTags.BEACON_BASE_BLOCKS).addAll(BlockCreator.BLOCKS.entrySet().stream().filter(blockEntry -> {
+		builder(BlockTags.BEACON_BASE_BLOCKS).addAll(BlockCreator.BLOCKS.stream().filter(blockEntry -> {
 			var b = blockEntry.getValue().getClass().equals(ModBlock.class) || blockEntry.getValue().getClass().equals(ModPillar.class);
 			if (!b) return false;
 			var key = blockEntry.getKey();
@@ -121,7 +123,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 				return true;
 			}
 			return false;
-		}).map(PyriteBlockTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)));
+		}).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)));
 		builder(BlockTags.CEILING_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")));
 		builder(BlockTags.CLIMBABLE).addTag(PyriteBlockItemTags.LADDERS.block());
 		builder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).addTag(PyriteBlockItemTags.CARPET.block());
@@ -236,11 +238,11 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 
 
 	private List<ResourceKey<Block>> get(String id) {
-		return BlockCreator.BLOCKS.entrySet().stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(PyriteBlockTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private List<ResourceKey<Block>> get(Class<? extends Block> block) {
-		return BlockCreator.BLOCKS.entrySet().stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(PyriteBlockTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private static ResourceKey<Block> of(Map.Entry<String, Block> e) {

@@ -1,6 +1,7 @@
 package cc.cassian.pyrite;
 
 //? fabric {
+import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.fabric.FabricPlatformImpl;
 //?}
 import net.minecraft.world.level.block.Block;
@@ -31,6 +32,10 @@ public interface Platform {
     void registerOxidizableBlockPair(Block block, Block block1);
 
     void registerWaxableBlockPair(Block newBlock, Block waxed);
+
+    default void registerWaxableBlockPair(Block newBlock, BlockEntry<?> waxed) {
+        registerWaxableBlockPair(newBlock, waxed.get());
+    }
 
     WoodType createWoodType(String blockID, BlockSetType setType);
 }

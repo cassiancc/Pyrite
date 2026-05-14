@@ -1,14 +1,14 @@
 package cc.cassian.pyrite.entries;
 
 import cc.cassian.pyrite.Pyrite;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Supplier;
 
 public class BlockEntry<T extends Block> implements PyriteEntry {
 
@@ -47,11 +47,15 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
         return raw.defaultBlockState();
     }
 
-    public Supplier<T> getValue() {
-        return ()->raw;
+    public T getValue() {
+        return raw;
     }
 
     public String getKey() {
         return id.getPath();
+    }
+
+    public ResourceKey<Block> resourceKey() {
+        return ResourceKey.create(Registries.BLOCK, id);
     }
 }

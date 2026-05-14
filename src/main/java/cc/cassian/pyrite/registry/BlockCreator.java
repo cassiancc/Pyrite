@@ -42,7 +42,7 @@ import static cc.cassian.pyrite.functions.ModLists.*;
 
 public class BlockCreator {
     // All blocks and their IDs.
-    public static final LinkedHashMap<String, Block> BLOCKS = new LinkedHashMap<>();
+    public static final ArrayList<BlockEntry<Block>> BLOCKS = new ArrayList<>();
     // All blocks without block items and their IDs.
     public static final LinkedHashMap<String, Block> ITEMLESS_BLOCKS = new LinkedHashMap<>();
     // All items and their IDs.
@@ -75,7 +75,7 @@ public class BlockCreator {
 
     public static void register() {
         //Register blocks and block items.
-        for (Map.Entry<String, Block> entry : BLOCKS.entrySet()) {
+        for (BlockEntry<Block> entry : BLOCKS) {
             final Block block = entry.getValue();
             final String blockID = entry.getKey();
             Registry.register(BuiltInRegistries.BLOCK, Pyrite.of(blockID), block);
@@ -96,13 +96,13 @@ public class BlockCreator {
 
 
         for (BlockEntry<Block> entry : PyriteItemGroups.COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("exposed", "weathered")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue(), getBlock(entry.getKey().replace("exposed", "weathered")));
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("weathered", "oxidized")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue(), getBlock(entry.getKey().replace("weathered", "oxidized")));
         }
 
         // Register item group.
@@ -120,7 +120,7 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
                     var waxedBlock = new ModBlock(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_"+blockID, waxedBlock);
+                    putBlock("waxed_"+blockID, waxedBlock);
                     PyriteItemGroups.match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxedBlock);
                 }
@@ -164,7 +164,7 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModSlab(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_" + blockID, waxed);
+                    putBlock("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
@@ -174,7 +174,7 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings);
                     Block waxed = new ModStairs(copyBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_"+blockID, waxed);
+                    putBlock("waxed_"+blockID, waxed);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
@@ -184,8 +184,8 @@ public class BlockCreator {
                     // wall
                     newBlock = new OxidizableWallBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModWall(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    putBlock("waxed_" + blockID, waxed);
+                    PyriteItemGroups.match(new BlockEntry<>("waxed_" + blockID, waxed), copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     // column
                     //? fabric {
@@ -207,8 +207,9 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPillar(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(new BlockEntry<>("waxed_"+blockID, waxed), copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    BlockEntry<Block> entry = new BlockEntry<>("waxed_" + blockID, waxed);
+                    putBlock(entry);
+                    PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModPillar(blockSettings, power);
@@ -223,8 +224,9 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableBarsBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPane(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    var entry =  new BlockEntry<>("waxed_" + blockID, waxed);
+                    putBlock(entry);
+                    PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                     addTransparentBlock(waxed);
                 } else {
@@ -264,7 +266,7 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new WallGateBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BLOCKS.put("waxed_" + blockID, waxed);
+                    putBlock("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
@@ -301,9 +303,9 @@ public class BlockCreator {
             case "door":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
-                    Block waxed = new DoorBlock(blockSetType, blockSettings.noOcclusion());
-                    BLOCKS.put("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    var waxed = new BlockEntry<>("waxed_" + blockID, new DoorBlock(blockSetType, blockSettings.noOcclusion()));
+                    putBlock(waxed);
+                    PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 }
                 else
@@ -313,9 +315,9 @@ public class BlockCreator {
             case "trapdoor":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperTrapDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
-                    Block waxed = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
-                    BLOCKS.put("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    var waxed = new BlockEntry<>("waxed_"+blockID, new TrapDoorBlock(blockSetType, blockSettings.noOcclusion()));
+                    putBlock(waxed);
+                    PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 }
                 else
@@ -358,18 +360,27 @@ public class BlockCreator {
         if (newBlock == null)
             return null;
         if (!blockType.contains("sign")) {
-            BLOCKS.put(blockID, newBlock);
+            putBlock(blockID, newBlock);
         }
         if (blockID.contains("grass")) {
             addGrassBlock();
         }
         Block finalNewBlock = newBlock;
-        PyriteItemGroups.match(()-> finalNewBlock, copyBlock, group, blockID);
+        PyriteItemGroups.match(new BlockEntry<>(blockID, finalNewBlock), copyBlock, group);
         return finalNewBlock;
     }
 
+    public static void putBlock(String s, Block waxed) {
+        BLOCKS.add(new BlockEntry<>(s, waxed));
+    }
+
+    @SuppressWarnings("all")
+    private static void putBlock(BlockEntry<?> entry) {
+        BLOCKS.add((BlockEntry<Block>) entry);
+    }
+
     public static Block getLastBlock() {
-        return BLOCKS.lastEntry().getValue();
+        return BLOCKS.getLast().getValue();
     }
 
     public static void addGrassBlock() {
