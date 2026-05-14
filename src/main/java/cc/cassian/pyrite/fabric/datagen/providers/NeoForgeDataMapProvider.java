@@ -13,6 +13,7 @@ import com.google.gson.JsonElement;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -24,7 +25,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 public class NeoForgeDataMapProvider implements DataProvider {
     private final FabricPackOutput output;
 
-    public NeoForgeDataMapProvider(FabricPackOutput output) {
+    public NeoForgeDataMapProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         this.output = output;
     }
 
