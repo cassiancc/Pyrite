@@ -18,6 +18,7 @@ public class PyriteBlockItemTags {
     public static final BlockItemTagId CHESTS = tagKey("chests");
     public static final BlockItemTagId CONCRETE_SLABS = tagKey("concrete_slabs");
     public static final BlockItemTagId CONCRETE_STAIRS = tagKey("concrete_stairs");
+    public static final BlockItemTagId COPPER = tagKey("copper");
     public static final BlockItemTagId CRAFTING_TABLES = tagKey("crafting_tables");
     public static final BlockItemTagId DIAMOND = tagKey("diamond");
     public static final BlockItemTagId EMERALD = tagKey("emerald");
@@ -39,7 +40,7 @@ public class PyriteBlockItemTags {
     public static final BlockItemTagId WALL_GATES = tagKey("wall_gates");
     public static final BlockItemTagId QUARTZ = tagKey("quartz");
     public static final BlockItemTagId WEATHERED_COPPER = tagKey("weathered_copper");
-
+    public static final BlockItemTagId CONCRETE = tagKey("concrete");
 
 
     public static BlockItemTagId tagKey(String id) {

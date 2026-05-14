@@ -51,6 +51,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(PyriteBlockItemTags.MUSHROOM_STEM);
 		copy(PyriteBlockItemTags.NETHERITE);
 		copy(PyriteBlockItemTags.OXIDIZED_COPPER);
+		copy(PyriteBlockItemTags.PLANKS);
 		copy(PyriteBlockItemTags.STAINED_GLASS);
 		copy(PyriteBlockItemTags.STAINED_FRAMED_GLASS);
 		copy(PyriteBlockItemTags.TERRACOTTA);
@@ -61,6 +62,22 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		// conventional tags
 		copy(ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
+		copy(ConventionalBlockTags.BLACK_DYED);
+		copy(ConventionalBlockTags.BLUE_DYED);
+		copy(ConventionalBlockTags.BROWN_DYED);
+		copy(ConventionalBlockTags.CYAN_DYED);
+		copy(ConventionalBlockTags.GRAY_DYED);
+		copy(ConventionalBlockTags.GREEN_DYED);
+		copy(ConventionalBlockTags.LIGHT_BLUE_DYED);
+		copy(ConventionalBlockTags.LIGHT_GRAY_DYED);
+		copy(ConventionalBlockTags.LIME_DYED);
+		copy(ConventionalBlockTags.MAGENTA_DYED);
+		copy(ConventionalBlockTags.ORANGE_DYED);
+		copy(ConventionalBlockTags.PURPLE_DYED);
+		copy(ConventionalBlockTags.PINK_DYED);
+		copy(ConventionalBlockTags.RED_DYED);
+		copy(ConventionalBlockTags.WHITE_DYED);
+		copy(ConventionalBlockTags.YELLOW_DYED);
 
 		// minecraft
 		copy(BlockTags.DIRT);
@@ -79,6 +96,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(BlockTags.WOODEN_SLABS);
 		copy(BlockTags.WOODEN_STAIRS);
 		copy(BlockTags.WOODEN_TRAPDOORS);
+		copy(BlockTags.WOODEN_SHELVES);
 		// fd
 		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden"));
 		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets"));

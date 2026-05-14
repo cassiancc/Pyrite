@@ -1,0 +1,188 @@
+{
+  "values": [
+    {
+      "id": "pyrite:brown_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_framed_glass",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_framed_glass_pane",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_lamp",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_shelf",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_stem",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_cabinet",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_crafting_table",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_fence",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_fence_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_ladder",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_planks",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_shelf",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_terracotta_brick_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_terracotta_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_terracotta_brick_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_terracotta_brick_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_terracotta_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_torch",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_torch_lever",
+      "required": false
+    }
+  ]
+}
