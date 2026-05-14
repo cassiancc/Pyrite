@@ -2,8 +2,10 @@ package cc.cassian.pyrite.compat;
 
 //? if fabric {
 
+import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.blocks.OxidizableColumnBlock;
+import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import io.github.haykam821.columns.block.ColumnBlock;
@@ -20,8 +22,8 @@ public class ColumnsCompat {
         BLOCKS.put(columnID, column);
         Block waxed_column = new ColumnBlock(blockSettings);
         BLOCKS.put(waxedColumnID, waxed_column);
-        PyriteItemGroups.match(()->column, copyBlock, group, columnID);
-        PyriteItemGroups.match(()->waxed_column, copyBlock, "waxed_"+group, waxedColumnID);
+        PyriteItemGroups.match(new BlockEntry<>(blockID, column), copyBlock, group, columnID);
+        PyriteItemGroups.match(new BlockEntry<>(waxedColumnID, waxed_column), copyBlock, "waxed_"+group, waxedColumnID);
         Platform.INSTANCE.registerWaxableBlockPair(column, waxed_column);
     }
 
@@ -29,7 +31,7 @@ public class ColumnsCompat {
         String columnID = blockID.replace("wall", "column");
         Block column = new ColumnBlock(blockSettings);
         BLOCKS.put(columnID, column);
-        PyriteItemGroups.match(()->column, copyBlock, group, columnID);
+        PyriteItemGroups.match(new BlockEntry<>(blockID, column), copyBlock, group, columnID);
     }
 }
 

@@ -1,5 +1,7 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
@@ -32,7 +34,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 //? fabric
 import static cc.cassian.pyrite.fabric.PyriteFabric.FUEL_BLOCKS;
@@ -53,23 +54,23 @@ public class BlockCreator {
     public static void registerPyriteItem(String itemID) {
         var item = new Item(newItemSettings(itemID));
         ITEMS.put(itemID, item);
-        PyriteItemGroups.DYES.add(()-> item);
+        PyriteItemGroups.DYES.add(new ItemEntry<>(itemID, item));
     }
 
     /**
      * This registers a custom item.
      */
-    public static Item registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
+    public static ItemEntry<Item> registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
         var item = itemFactory.apply(newItemSettings(itemID));
         ITEMS.put(itemID, item);
-        return item;
+        return new ItemEntry<>(itemID, item);
     }
 
-    public static BlockItem addBlockItem(String blockID, Block block) {
+    public static ItemEntry<Item> addBlockItem(String blockID, Block block) {
         Item.Properties settings = newBlockItemSettings(blockID);
         if (blockID.contains("netherite"))
             settings = settings.fireResistant();
-        return new BlockItem(block, settings);
+        return new ItemEntry<>(blockID, new BlockItem(block, settings));
     }
 
     public static void register() {
@@ -78,7 +79,7 @@ public class BlockCreator {
             final Block block = entry.getValue();
             final String blockID = entry.getKey();
             Registry.register(BuiltInRegistries.BLOCK, Pyrite.of(blockID), block);
-            Registry.register(BuiltInRegistries.ITEM, Pyrite.of(blockID), addBlockItem(blockID, block));
+            Registry.register(BuiltInRegistries.ITEM, Pyrite.of(blockID), addBlockItem(blockID, block).get());
         }
         //Registers blocks without block items.
         for (Map.Entry<String, Block> entry : ITEMLESS_BLOCKS.entrySet()) {
@@ -94,13 +95,13 @@ public class BlockCreator {
         }
 
 
-        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.COPPER_BLOCKS.entrySet()) {
+        for (BlockEntry<Block> entry : PyriteItemGroups.COPPER_BLOCKS) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
         }
-        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS.entrySet()) {
+        for (BlockEntry<Block> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("exposed", "weathered")));
         }
-        for (Map.Entry<String, Supplier<Block>> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS.entrySet()) {
+        for (BlockEntry<Block> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS) {
             Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue().get(), getBlock(entry.getKey().replace("weathered", "oxidized")));
         }
 
@@ -207,7 +208,7 @@ public class BlockCreator {
                     newBlock = new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPillar(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
+                    PyriteItemGroups.match(new BlockEntry<>("waxed_"+blockID, waxed), copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
                     newBlock = new ModPillar(blockSettings, power);
@@ -253,7 +254,7 @@ public class BlockCreator {
                 // register flower pot
                 final FlowerPotBlock FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
-                PyriteItemGroups.POTTED_FLOWERS.put(blockID, ()-> FLOWER_POTTED);
+                PyriteItemGroups.POTTED_FLOWERS.put(blockID, new BlockEntry<>("potted_"+blockID, FLOWER_POTTED));
                 addTransparentBlock(FLOWER_POTTED);
                 break;
             case "fence_gate":
@@ -279,7 +280,7 @@ public class BlockCreator {
                 // Register item for signs.
                 final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, SIGN_ITEM);
-                PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), () -> SIGN_ITEM);
+                PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), new ItemEntry<>(blockID, SIGN_ITEM));
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
                 break;
@@ -293,7 +294,7 @@ public class BlockCreator {
                 // Register item for signs.
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
-                PyriteItemGroups.SIGNS.add(() -> HANGING_SIGN_ITEM);
+                PyriteItemGroups.SIGNS.add(new ItemEntry<>(blockID, HANGING_SIGN_ITEM));
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
@@ -617,10 +618,10 @@ public class BlockCreator {
         // Boat
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
         var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
-        PyriteItemGroups.BOATS.add(BuiltInRegistries.ITEM.wrapAsHolder(boat));
+        PyriteItemGroups.BOATS.add(boat);
         EntityType<ChestBoat> chestBoatEntityType = ModEntities.registerChestBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_chest_boat".formatted(blockID))));
         var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
-        PyriteItemGroups.BOATS.add(BuiltInRegistries.ITEM.wrapAsHolder(chestBoat));
+        PyriteItemGroups.BOATS.add(chestBoat);
 
         var family = new BlockFamily.Builder(planks).slab(slab).stairs(stairs).trapdoor(trapdoor).door(door).button(button).fence(fence).pressurePlate(pressurePlate).fenceGate(fenceGate).getFamily();
         FAMILIES.add(family);

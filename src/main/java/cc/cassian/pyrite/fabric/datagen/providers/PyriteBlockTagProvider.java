@@ -5,6 +5,7 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.core.PyriteBlockTags;
+import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import dev.lieonlion.quad.tags.QuadBlockTags;
@@ -197,7 +198,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
         return key.identifier().toString().contains(hangingSign);
     }
 
-	private List<ResourceKey<Block>> get(ArrayList<Supplier<Item>> signs) {
+	private List<ResourceKey<Block>> get(ArrayList<ItemEntry<Item>> signs) {
         List<ResourceKey<Block>> blocks = new ArrayList<>();
 		signs.forEach(sign -> {
 			if (sign.get() instanceof BlockItem blockItem) {

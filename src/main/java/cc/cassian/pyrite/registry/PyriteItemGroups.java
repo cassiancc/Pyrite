@@ -1,5 +1,7 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.functions.ModHelpers;
@@ -13,7 +15,6 @@ import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 //?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -21,7 +22,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import org.jetbrains.annotations.UnknownNullability;
 
 
 import java.util.*;
@@ -32,78 +32,76 @@ import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.functions.ModLists.VANILLA_DYES;
 
 public class PyriteItemGroups {
-    public static final ArrayList<Supplier<Block>> REDSTONE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Item>> SIGNS = new ArrayList<>();
-    public static final ArrayList<Holder<Item>> BOATS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> CRAFTING_TABLES = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> FLOWERS = new ArrayList<>();
-    public static final LinkedHashMap<String, Supplier<FlowerPotBlock>> POTTED_FLOWERS = new LinkedHashMap<>();
-    public static final ArrayList<Supplier<Item>> DYES = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> IRON_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> GOLD_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> EMERALD_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> LAPIS_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> REDSTONE_RESOURCE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> DIAMOND_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> NETHERITE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> QUARTZ_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> AMETHYST_BLOCKS = new ArrayList<>();
-    public static final LinkedHashMap<String, Supplier<Block>> COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> EXPOSED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> WEATHERED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> OXIDIZED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> WAXED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> WAXED_EXPOSED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> WAXED_WEATHERED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<String, Supplier<Block>> WAXED_OXIDIZED_COPPER_BLOCKS = new LinkedHashMap<>();
-    public static final ArrayList<Supplier<Block>> COLOURED_NETHER_BRICKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> COBBLESTONE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> SMOOTH_STONE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> ANDESITE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> GRANITE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> DIORITE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> CALCITE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> TUFF = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> DEEPSLATE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> COBBLED_DEEPSLATE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> SANDSTONE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> RED_SANDSTONE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> STAINED_GLASS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> STAINED_GLASS_PANES = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> FRAMED_GLASS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> FRAMED_GLASS_PANES = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> CONCRETE = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> CONCRETE_POWDER = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> WOOL = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> CARPET = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> TERRACOTTA = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> TERRACOTTA_BRICKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> TORCH = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> TORCH_LEVER = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> GRASS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> NOSTALGIA_GRASS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> GRAVEL = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> PODZOL = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> MYCELIUM = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> DIRT_PATH = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> LAMPS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> OBSIDIAN = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> DYED_BRICKS = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> DYED_WOOD = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> WOOD = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> RED_MUSHROOM = new ArrayList<>();
-    public static final ArrayList<Supplier<Block>> BROWN_MUSHROOM = new ArrayList<>();
-    public static final LinkedHashMap<Block, Supplier<Block>> FUNCTIONAL = new LinkedHashMap<>();
-    public static final LinkedHashMap<Block, Supplier<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<Block, Supplier<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<Block, Supplier<Block>> NATURAL = new LinkedHashMap<>();
+    public static final ArrayList<BlockEntry<Block>> REDSTONE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemEntry<Item>> SIGNS = new ArrayList<>();
+    public static final ArrayList<ItemEntry<Item>> BOATS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> CRAFTING_TABLES = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> FLOWERS = new ArrayList<>();
+    public static final LinkedHashMap<String, BlockEntry<FlowerPotBlock>> POTTED_FLOWERS = new LinkedHashMap<>();
+    public static final ArrayList<ItemEntry<Item>> DYES = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> IRON_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> GOLD_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> EMERALD_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> LAPIS_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> REDSTONE_RESOURCE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> DIAMOND_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> NETHERITE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> QUARTZ_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> AMETHYST_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> EXPOSED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WEATHERED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> OXIDIZED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WAXED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WAXED_EXPOSED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WAXED_WEATHERED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WAXED_OXIDIZED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> COLOURED_NETHER_BRICKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> COBBLESTONE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> SMOOTH_STONE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> ANDESITE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> GRANITE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> DIORITE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> CALCITE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> TUFF = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> DEEPSLATE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> COBBLED_DEEPSLATE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> SANDSTONE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> RED_SANDSTONE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> STAINED_GLASS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> STAINED_GLASS_PANES = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> FRAMED_GLASS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> FRAMED_GLASS_PANES = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> CONCRETE = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> CONCRETE_POWDER = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WOOL = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> CARPET = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> TERRACOTTA = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> TERRACOTTA_BRICKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> TORCH = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> TORCH_LEVER = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> GRASS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> NOSTALGIA_GRASS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> GRAVEL = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> PODZOL = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> MYCELIUM = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> DIRT_PATH = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> LAMPS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> OBSIDIAN = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> DYED_BRICKS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> DYED_WOOD = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WOOD = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> RED_MUSHROOM = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> BROWN_MUSHROOM = new ArrayList<>();
+    public static final LinkedHashMap<Block, BlockEntry<Block>> FUNCTIONAL = new LinkedHashMap<>();
+    public static final LinkedHashMap<Block, BlockEntry<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
+    public static final LinkedHashMap<Block, BlockEntry<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
+    public static final LinkedHashMap<Block, BlockEntry<Block>> NATURAL = new LinkedHashMap<>();
 
 
     public static void buildContents(
             //? if fabric && >26 {
             CreativeModeTab creativeModeTab, FabricCreativeModeTabOutput event
-             //?} else if fabric
-            //CreativeModeTab creativeModeTab, FabricItemGroupEntries event
             //? if neoforge
             //BuildCreativeModeTabContentsEvent event
     ) {
@@ -123,14 +121,14 @@ public class PyriteItemGroups {
                 addAfter(Items.NETHERITE_BLOCK, getBlockCollectionList(NETHERITE_BLOCKS), event);
                 addAfter(Items.QUARTZ_BLOCK, getBlockCollectionList(QUARTZ_BLOCKS), event);
                 addAfter(Items.AMETHYST_BLOCK, getBlockCollectionList(AMETHYST_BLOCKS), event);
-                addAfter(Items.CUT_COPPER_SLAB, getBlockCollectionList(COPPER_BLOCKS.values()), event);
-                addAfter(Items.EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(EXPOSED_COPPER_BLOCKS.values()), event);
-                addAfter(Items.WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WEATHERED_COPPER_BLOCKS.values()), event);
-                addAfter(Items.OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(OXIDIZED_COPPER_BLOCKS.values()), event);
-                addAfter(Items.WAXED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_COPPER_BLOCKS.values()), event);
-                addAfter(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_EXPOSED_COPPER_BLOCKS.values()), event);
-                addAfter(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_WEATHERED_COPPER_BLOCKS.values()), event);
-                addAfter(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_OXIDIZED_COPPER_BLOCKS.values()), event);
+                addAfter(Items.CUT_COPPER_SLAB, getBlockCollectionList(COPPER_BLOCKS), event);
+                addAfter(Items.EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(EXPOSED_COPPER_BLOCKS), event);
+                addAfter(Items.WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WEATHERED_COPPER_BLOCKS), event);
+                addAfter(Items.OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(OXIDIZED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_EXPOSED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_WEATHERED_COPPER_BLOCKS), event);
+                addAfter(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, getBlockCollectionList(WAXED_OXIDIZED_COPPER_BLOCKS), event);
                 addAfter(Items.RED_NETHER_BRICK_WALL, getBlockCollectionList(COLOURED_NETHER_BRICKS), event);
                 addAfter(Items.COBBLESTONE_WALL, getBlockCollectionList(COBBLESTONE), event);
                 addAfter(Items.COBBLED_DEEPSLATE_WALL, getBlockCollectionList(COBBLED_DEEPSLATE), event);
@@ -198,13 +196,21 @@ public class PyriteItemGroups {
 			} else if (key.equals(CreativeModeTabs.INGREDIENTS)) {
                 addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
 			} else if (key.equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
-                addAfter(Items.PALE_OAK_CHEST_BOAT, getHolderCollectionList(BOATS), event);
+                addAfter(Items.PALE_OAK_CHEST_BOAT, getItemCollectionList(BOATS), event);
             }
         }
     }
 
     public static void match(Supplier<Block> newBlock, Block copyBlock, String group, String blockID) {
-        if (blockID.equals("glowstone_lamp"))
+        match(new BlockEntry<>(blockID, newBlock.get()), copyBlock, group, blockID);
+    }
+
+    public static void match(BlockEntry<Block> newBlock, Block copyBlock, String group, String blockID) {
+        match(newBlock, copyBlock, group);
+    }
+
+    public static void match(BlockEntry<Block> newBlock, Block copyBlock, String group) {
+        if (newBlock.getPath().equals("glowstone_lamp"))
             LAMPS.add(newBlock);
         switch (group) {
             case "iron":
@@ -241,28 +247,28 @@ public class PyriteItemGroups {
                 AMETHYST_BLOCKS.add(newBlock);
                 break;
             case "copper":
-                COPPER_BLOCKS.put(blockID, newBlock);
+                COPPER_BLOCKS.add(newBlock);
                 break;
             case "exposed_copper":
-                EXPOSED_COPPER_BLOCKS.put(blockID, newBlock);
+                EXPOSED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "weathered_copper":
-                WEATHERED_COPPER_BLOCKS.put(blockID, newBlock);
+                WEATHERED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "oxidized_copper":
-                OXIDIZED_COPPER_BLOCKS.put(blockID, newBlock);
+                OXIDIZED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "waxed_copper":
-                WAXED_COPPER_BLOCKS.put(blockID, newBlock);
+                WAXED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "waxed_exposed_copper":
-                WAXED_EXPOSED_COPPER_BLOCKS.put(blockID, newBlock);
+                WAXED_EXPOSED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "waxed_weathered_copper":
-                WAXED_WEATHERED_COPPER_BLOCKS.put(blockID, newBlock);
+                WAXED_WEATHERED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "waxed_oxidized_copper":
-                WAXED_OXIDIZED_COPPER_BLOCKS.put(blockID, newBlock);
+                WAXED_OXIDIZED_COPPER_BLOCKS.add(newBlock);
                 break;
             case "coloured_nether_bricks":
                 COLOURED_NETHER_BRICKS.add(newBlock);
@@ -393,7 +399,7 @@ public class PyriteItemGroups {
             case "concrete_stairs", "concrete_slab":
                 break;
             default:
-                ModHelpers.log("%s provided group %s".formatted(blockID, group));
+                ModHelpers.log("%s provided group %s".formatted(newBlock.getPath(), group));
         }
     }
 
@@ -416,10 +422,8 @@ public class PyriteItemGroups {
     }
 
     private static void addAfter(Item anchor, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric && >26 {
-            FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                 //FabricItemGroupEntries event
+                                 //? if fabric {
+                                 FabricCreativeModeTabOutput event
                                  //? if neoforge
                                  //BuildCreativeModeTabContentsEvent event
     ) {
@@ -429,10 +433,8 @@ public class PyriteItemGroups {
     }
 
     private static void addAfter(Item anchor, ItemStack itemStack,
-                                 //? if fabric && >26 {
-            FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                 //FabricItemGroupEntries event
+                                 //? if fabric
+                                FabricCreativeModeTabOutput event
                                  //? if neoforge
                                  //BuildCreativeModeTabContentsEvent event
     ) {
@@ -444,10 +446,8 @@ public class PyriteItemGroups {
     }
 
     private static void addAfter(Block block, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric && >26 {
-            FabricCreativeModeTabOutput event
-             //?} else if fabric
-                                 //FabricItemGroupEntries event
+                                 //? if fabric
+                                 FabricCreativeModeTabOutput event
                                  //? if neoforge
                                  //BuildCreativeModeTabContentsEvent event
     ) {
@@ -464,9 +464,9 @@ public class PyriteItemGroups {
     }
 
     private static void addBefore(Item anchor, ItemStack itemStack,
-                                  //? if fabric && >26 {
-            FabricCreativeModeTabOutput event
-             //?} else if neoforge
+                                  //? if fabric {
+                                FabricCreativeModeTabOutput event
+                                 //?} else if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
         //? if fabric {
@@ -478,8 +478,8 @@ public class PyriteItemGroups {
 
     private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList,
                                   //? if fabric {
-            FabricCreativeModeTabOutput event
-             //?} else if neoforge
+                                    FabricCreativeModeTabOutput event
+                                     //?} else if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
         for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
@@ -489,8 +489,8 @@ public class PyriteItemGroups {
 
     private static void addBefore(Item anchor, Item item,
                                   //? if fabric {
-            FabricCreativeModeTabOutput event
-             //?} else  if neoforge
+                                    FabricCreativeModeTabOutput event
+                                     //?} else  if neoforge
                                   //BuildCreativeModeTabContentsEvent event
     ) {
         //? if fabric {
@@ -505,8 +505,8 @@ public class PyriteItemGroups {
             FabricCreativeModeTabOutput event
              //?} else if neoforge
             //BuildCreativeModeTabContentsEvent event
-            , LinkedHashMap<Block, Supplier<Block>> map) {
-        for (Map.Entry<Block, Supplier<Block>> entry : map.entrySet()) {
+            , LinkedHashMap<Block, BlockEntry<Block>> map) {
+        for (Map.Entry<Block, BlockEntry<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
             if (value.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED)) {
@@ -518,9 +518,9 @@ public class PyriteItemGroups {
         }
     }
 
-    public static Collection<ItemStack> getBlockCollectionList(Collection<Supplier<Block>> items) {
+    public static Collection<ItemStack> getBlockCollectionList(Collection<BlockEntry<Block>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
-        for (Supplier<Block> block : items) {
+        for (BlockEntry<Block> block : items) {
             var stack = block.get().asItem().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
                 stacks.add(stack);
@@ -531,23 +531,10 @@ public class PyriteItemGroups {
         return stacks;
     }
 
-    public static Collection<ItemStack> getItemCollectionList(ArrayList<Supplier<Item>> items) {
+    public static Collection<ItemStack> getItemCollectionList(ArrayList<ItemEntry<Item>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
-        for (Supplier<Item> item : items) {
+        for (ItemEntry<Item> item : items) {
             var stack = item.get().getDefaultInstance();
-            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
-                stacks.add(stack);
-            } else {
-//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
-            }
-        }
-        return stacks;
-    }
-
-    public static Collection<ItemStack> getHolderCollectionList(ArrayList<Holder<Item>> items) {
-        ArrayList<ItemStack> stacks = new ArrayList<>();
-        for (Holder<Item> item : items) {
-            var stack = item.value().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
                 stacks.add(stack);
             } else {
