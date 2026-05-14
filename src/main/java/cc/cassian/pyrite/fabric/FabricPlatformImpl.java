@@ -24,7 +24,7 @@ public class FabricPlatformImpl implements Platform {
     @Override
     public void registerWaxableBlockPair(Block newBlock, Block waxed) {
         OxidizableBlocksRegistry.registerWaxable(newBlock, waxed);
-        WAXABLES.put(newBlock.properties().blockId().identifier(),  waxed.properties().blockId().identifier().withPrefix("waxed_"));
+        WAXABLES.put(newBlock.properties().blockId().identifier(),  waxed.properties().blockId().identifier());
     }
 
     @Override

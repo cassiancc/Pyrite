@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "pyrite:waxed_smooth_exposed_copper_stairs"
+          "name": "pyrite:smooth_exposed_copper_stairs"
         }
       ],
       "rolls": 1.0

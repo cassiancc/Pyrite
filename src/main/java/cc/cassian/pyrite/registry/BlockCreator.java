@@ -118,7 +118,7 @@ public class BlockCreator {
             case "block", "lamp":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
-                    var waxedBlock = new ModBlock(blockSettings);
+                    var waxedBlock = new ModBlock(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_"+blockID, waxedBlock);
                     PyriteItemGroups.match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxedBlock);
@@ -162,7 +162,7 @@ public class BlockCreator {
             case "slab":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
-                    Block waxed = new ModSlab(blockSettings);
+                    Block waxed = new ModSlab(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
@@ -172,7 +172,7 @@ public class BlockCreator {
             case "stairs":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings);
-                    Block waxed = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
+                    Block waxed = new ModStairs(copyBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_"+blockID, waxed);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
                 } else
@@ -182,7 +182,7 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     // wall
                     newBlock = new OxidizableWallBlock(getOxidizationState(blockID), blockSettings);
-                    Block waxed = new ModWall(blockSettings);
+                    Block waxed = new ModWall(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
@@ -205,7 +205,7 @@ public class BlockCreator {
             case "log":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings);
-                    Block waxed = new ModPillar(blockSettings);
+                    Block waxed = new ModPillar(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
@@ -221,7 +221,7 @@ public class BlockCreator {
             case "bars", "glass_pane":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableBarsBlock(getOxidizationState(blockID), blockSettings);
-                    Block waxed = new ModPane(blockSettings);
+                    Block waxed = new ModPane(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
@@ -262,7 +262,7 @@ public class BlockCreator {
             case "wall_gate":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
-                    Block waxed = new WallGateBlock(blockSetType, blockSettings);
+                    Block waxed = new WallGateBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
                     BLOCKS.put("waxed_" + blockID, waxed);
                     PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
@@ -617,10 +617,10 @@ public class BlockCreator {
         // Boat
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
         var boat = registerPyriteItem("%s_boat".formatted(blockID), (prop)-> new BoatItem(boatEntityType, prop.stacksTo(1)));
-        PyriteItemGroups.BOATS.add(()->boat);
+        PyriteItemGroups.BOATS.add(BuiltInRegistries.ITEM.wrapAsHolder(boat));
         EntityType<ChestBoat> chestBoatEntityType = ModEntities.registerChestBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_chest_boat".formatted(blockID))));
         var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
-        PyriteItemGroups.BOATS.add(()->chestBoat);
+        PyriteItemGroups.BOATS.add(BuiltInRegistries.ITEM.wrapAsHolder(chestBoat));
 
         var family = new BlockFamily.Builder(planks).slab(slab).stairs(stairs).trapdoor(trapdoor).door(door).button(button).fence(fence).pressurePlate(pressurePlate).fenceGate(fenceGate).getFamily();
         FAMILIES.add(family);
@@ -655,25 +655,29 @@ public class BlockCreator {
         family.wall(createPyriteBlock("%s_wall".formatted(cutBlockID), "wall", block, blockID));
         //Cut Wall Gate
         family.customFenceGate(createPyriteBlock("%s_wall_gate".formatted(cutBlockID),"wall_gate", block, blockID));
-        FAMILIES.add(family.getFamily());
+        FAMILIES.add(family.generateStonecutterRecipe().getFamily());
     }
     /**
      * Generate an entire Smooth Block set.
      */
     public static void createSmoothBlocks(String blockID, Block block) {
+        Block smoothBlock = Blocks.SMOOTH_QUARTZ;
+        Block stair = null;
+        Block slab = null;
         String smoothBlockID = "smooth_" + blockID;
         if (!Objects.equals(blockID, "quartz")) {
             //Smooth Block
-            createPyriteBlock(smoothBlockID, block, blockID);
+            smoothBlock = createPyriteBlock(smoothBlockID, block, blockID);
             //Smooth Stairs
-            createStair(smoothBlockID, block, blockID);
+            stair = createStair(smoothBlockID, block, blockID);
             //Smooth Slab
-            createSlab(smoothBlockID, block, blockID);
+            slab = createSlab(smoothBlockID, block, blockID);
         }
         //Smooth Wall
-        createPyriteBlock("%s_wall".formatted(smoothBlockID), "wall", block, blockID);
+        var wall = createPyriteBlock("%s_wall".formatted(smoothBlockID), "wall", block, blockID);
         //Smooth Wall Gate
-        createPyriteBlock("%s_wall_gate".formatted(smoothBlockID),"wall_gate", block, blockID);
+        var wallGate = createPyriteBlock("%s_wall_gate".formatted(smoothBlockID),"wall_gate", block, blockID);
+        FAMILIES.add(new BlockFamily.Builder(smoothBlock).customFenceGate(wallGate).wall(wall).stairs(stair).slab(slab).generateStonecutterRecipe().getFamily());
     }
 
     //Create a set of Resource Blocks
@@ -713,7 +717,7 @@ public class BlockCreator {
         }
         //Create buttons for all blocks.
         family.button(createPyriteBlock("%s_button".formatted(blockID),"button", block, set, blockID));
-        FAMILIES.add(family.getFamily());
+        FAMILIES.add(family.generateStonecutterRecipe().getFamily());
     }
 
 }

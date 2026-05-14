@@ -10,10 +10,10 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 *///?} else if fabric {
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 //?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -21,6 +21,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import org.jetbrains.annotations.UnknownNullability;
 
 
 import java.util.*;
@@ -33,7 +34,7 @@ import static cc.cassian.pyrite.functions.ModLists.VANILLA_DYES;
 public class PyriteItemGroups {
     public static final ArrayList<Supplier<Block>> REDSTONE_BLOCKS = new ArrayList<>();
     public static final ArrayList<Supplier<Item>> SIGNS = new ArrayList<>();
-    public static final ArrayList<Supplier<Item>> BOATS = new ArrayList<>();
+    public static final ArrayList<Holder<Item>> BOATS = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> CRAFTING_TABLES = new ArrayList<>();
     public static final ArrayList<Supplier<Block>> FLOWERS = new ArrayList<>();
     public static final LinkedHashMap<String, Supplier<FlowerPotBlock>> POTTED_FLOWERS = new LinkedHashMap<>();
@@ -197,7 +198,7 @@ public class PyriteItemGroups {
 			} else if (key.equals(CreativeModeTabs.INGREDIENTS)) {
                 addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
 			} else if (key.equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
-                addAfter(Items.PALE_OAK_CHEST_BOAT, getItemCollectionList(BOATS), event);
+                addAfter(Items.PALE_OAK_CHEST_BOAT, getHolderCollectionList(BOATS), event);
             }
         }
     }
@@ -534,6 +535,19 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (Supplier<Item> item : items) {
             var stack = item.get().getDefaultInstance();
+            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
+                stacks.add(stack);
+            } else {
+//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
+            }
+        }
+        return stacks;
+    }
+
+    public static Collection<ItemStack> getHolderCollectionList(ArrayList<Holder<Item>> items) {
+        ArrayList<ItemStack> stacks = new ArrayList<>();
+        for (Holder<Item> item : items) {
+            var stack = item.value().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
                 stacks.add(stack);
             } else {

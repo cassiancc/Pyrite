@@ -59,6 +59,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(PyriteBlockItemTags.GOLD, "gold");
 		optionalBuilder(PyriteBlockItemTags.IRON, "iron");
 		builder(PyriteBlockItemTags.LADDERS, "ladder");
+		optionalBuilder(PyriteBlockItemTags.LAMPS, "_lamp");
 		optionalBuilder(PyriteBlockItemTags.LAPIS, "lapis");
 		builder(PyriteBlockItemTags.MUSHROOM_STEM, "mushroom_stem");
 		optionalBuilder(PyriteBlockItemTags.OBSIDIAN, "obsidian");
@@ -148,6 +149,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 			if (family.getBaseBlock().builtInRegistryHolder().key().identifier().getPath().contains("planks")) {
 				valueLookupBuilder(PyriteBlockItemTags.PLANKS.block()).add(family.getBaseBlock());
 				family.getVariants().forEach((variant, block) -> {
+					if (block == null) return;
 					switch (variant) {
 						case BUTTON -> valueLookupBuilder(BlockTags.WOODEN_BUTTONS).add(block);
 						case DOOR -> valueLookupBuilder(BlockTags.WOODEN_DOORS).add(block);
@@ -162,6 +164,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 				});
 			} else {
 				family.getVariants().forEach((variant, block) -> {
+					if (block == null) return;
 					switch (variant) {
 						case BUTTON -> valueLookupBuilder(BlockTags.BUTTONS).add(block);
 						case CUSTOM_FENCE_GATE -> valueLookupBuilder(PyriteBlockItemTags.WALL_GATES.block()).add(block);

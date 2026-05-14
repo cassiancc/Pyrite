@@ -1,10 +1,7 @@
 //? fabric {
 package cc.cassian.pyrite.fabric.datagen;
 
-import cc.cassian.pyrite.fabric.datagen.providers.NeoForgeDataMapProvider;
-import cc.cassian.pyrite.fabric.datagen.providers.PyriteBlockTagProvider;
-import cc.cassian.pyrite.fabric.datagen.providers.PyriteItemTagProvider;
-import cc.cassian.pyrite.fabric.datagen.providers.PyriteLootTableProvider;
+import cc.cassian.pyrite.fabric.datagen.providers.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -16,6 +13,7 @@ public class PyriteDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider((output, registryLookupFuture) -> new PyriteItemTagProvider(output, registryLookupFuture, pyriteBlockTagProvider));
 		pack.addProvider(NeoForgeDataMapProvider::new);
 		pack.addProvider(PyriteLootTableProvider::new);
+		pack.addProvider(PyriteRecipeProvider::new);
 	}
 }
 //?}

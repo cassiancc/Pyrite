@@ -11,6 +11,8 @@ val minecraft = stonecutter.current.version
 val mcVersion = stonecutter.current.project.substringBeforeLast('-')
 
 tasks.named<ProcessResources>("processResources") {
+    duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.WARN
+
     fun prop(name: String) = project.property(name) as String
 
     val props = HashMap<String, String>().apply {

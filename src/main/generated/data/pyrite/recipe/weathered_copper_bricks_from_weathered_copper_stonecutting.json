@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:weathered_copper",
+  "result": {
+    "id": "pyrite:weathered_copper_bricks"
+  }
+}

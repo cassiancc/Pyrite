@@ -1,1 +1,0 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"pyrite:angelic_wall_gate"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}],"fabric:load_conditions":[{"condition":"fabric:all_mods_loaded","values":["aether"]}],"neoforge:conditions":[{"type":"neoforge:mod_loaded","modid":"aether"}]}

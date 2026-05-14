@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:quartz_block"
+  ],
+  "result": {
+    "id": "pyrite:quartz_button"
+  }
+}

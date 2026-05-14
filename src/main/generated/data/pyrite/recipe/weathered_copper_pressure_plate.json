@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:weathered_copper"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:weathered_copper_pressure_plate"
+  }
+}

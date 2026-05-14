@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "pyrite:blue_stained_planks"
+  ],
+  "result": {
+    "id": "pyrite:blue_stained_button"
+  }
+}

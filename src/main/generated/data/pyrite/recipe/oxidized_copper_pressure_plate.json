@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:oxidized_copper"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:oxidized_copper_pressure_plate"
+  }
+}

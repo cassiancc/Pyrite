@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:smooth_gold",
+  "result": {
+    "id": "pyrite:smooth_gold_stairs"
+  }
+}

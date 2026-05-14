@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "pyrite:waxed_exposed_copper_pillar"
+          "name": "pyrite:exposed_copper_pillar"
         }
       ],
       "rolls": 1.0

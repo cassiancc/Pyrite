@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:purple_stained_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:purple_stained_pressure_plate"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:red_mushroom_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:red_mushroom_pressure_plate"
+  }
+}

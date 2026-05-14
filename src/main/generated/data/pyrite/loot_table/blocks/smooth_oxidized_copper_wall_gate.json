@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "pyrite:waxed_smooth_oxidized_copper_wall_gate"
+          "name": "pyrite:smooth_oxidized_copper_wall_gate"
         }
       ],
       "rolls": 1.0

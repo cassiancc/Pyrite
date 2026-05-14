@@ -41,6 +41,7 @@ public class PyriteBlockItemTags {
     public static final BlockItemTagId QUARTZ = tagKey("quartz");
     public static final BlockItemTagId WEATHERED_COPPER = tagKey("weathered_copper");
     public static final BlockItemTagId CONCRETE = tagKey("concrete");
+    public static final BlockItemTagId LAMPS = tagKey("lamps");
 
 
     public static BlockItemTagId tagKey(String id) {

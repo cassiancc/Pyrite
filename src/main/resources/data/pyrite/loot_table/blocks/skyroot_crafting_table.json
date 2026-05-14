@@ -1,1 +1,0 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"pyrite:skyroot_crafting_table"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}],"fabric:load_conditions":[{"condition":"fabric:registry_contains","values":["pyrite:skyroot_crafting_table"]}]}
