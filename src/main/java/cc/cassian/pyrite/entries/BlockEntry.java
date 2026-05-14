@@ -58,4 +58,8 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
     public ResourceKey<Block> resourceKey() {
         return ResourceKey.create(Registries.BLOCK, id);
     }
+
+    public T value() {
+        return get();
+    }
 }

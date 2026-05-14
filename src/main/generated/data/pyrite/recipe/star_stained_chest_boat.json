@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    "minecraft:chest",
+    "pyrite:star_stained_planks"
+  ],
+  "result": {
+    "id": "pyrite:star_stained_chest_boat"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "crafting_table",
+  "key": {
+    "#": "minecraft:pale_oak_planks"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:pale_oak_crafting_table"
+  },
+  "show_notification": false
+}

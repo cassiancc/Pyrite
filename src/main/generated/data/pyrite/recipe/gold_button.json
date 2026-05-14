@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "id": "pyrite:gold_button"
+  }
+}

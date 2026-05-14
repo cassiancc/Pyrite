@@ -420,16 +420,16 @@ public class BlockCreator {
     }
 
     //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
-    public static void createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel, String group) {
+    public static Block createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel, String group) {
         BlockBehaviour.Properties settings = BlockBehaviour.Properties.of().strength(strength).lightLevel(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "obsidian")) {
-            sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pushReaction(PushReaction.BLOCK), group);
+            return sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pushReaction(PushReaction.BLOCK), group);
         }
         else if (blockType.equals("lamp")) {
-            sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS), group);
+            return sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS), group);
         }
         else {
-            sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS).noOcclusion().isRedstoneConductor(BlockCreator::never), group);
+            return sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS).noOcclusion().isRedstoneConductor(BlockCreator::never), group);
         }
     }
 
@@ -438,9 +438,9 @@ public class BlockCreator {
     }
 
     //Create and then add carpets
-    private static void createCarpet(String blockID, String group) {
+    private static Block createCarpet(String blockID, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(Blocks.MOSS_CARPET);
-        sendToRegistry(blockID, "carpet", blockSettings, group);
+        return sendToRegistry(blockID, "carpet", blockSettings, group);
     }
 
     //Create and then add most of the manually generated blocks.
@@ -461,9 +461,9 @@ public class BlockCreator {
     }
 
     //Create blocks that require a change in light level, e.g. Locked Chests
-    public static void createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux, String group) {
+    public static Block createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).lightLevel(parseLux(lux));
-        platformRegister(blockID, blockType, blockSettings, null, null, null, copyBlock, group, null);
+        return platformRegister(blockID, blockType, blockSettings, null, null, null, copyBlock, group, null);
     }
 
     private static Block sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, String group) {

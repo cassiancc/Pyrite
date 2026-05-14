@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "crafting_table",
+  "key": {
+    "#": "minecraft:jungle_planks"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:jungle_crafting_table"
+  },
+  "show_notification": false
+}
