@@ -2,17 +2,20 @@
 package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.blocks.ModCraftingTable;
+import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
+import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.advancements.criterion.PlayerTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -20,13 +23,13 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("all")
@@ -67,17 +70,26 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						hangingSign(boat.value(), getItem(boatId.withPath(p -> p.replace("hanging_sign", "planks"))));
 					}
 				}
-				for (BlockEntry<Block> craftingTable : PyriteItemGroups.CRAFTING_TABLES) {
-					Identifier tableId = craftingTable.getId();
-					Item planks = getItemOrVanilla(tableId.withPath(p -> p.replace("crafting_table", "planks")));
-					this.shaped(RecipeCategory.DECORATIONS, craftingTable.asItem())
-							.group("crafting_table")
-							.define('#', planks)
-							.pattern("##")
-							.pattern("##")
-							.unlockedBy("unlock_right_away", PlayerTrigger.TriggerInstance.tick())
-							.showNotification(false)
-							.save(withConditions(output, ResourceConditions.allModsLoaded()));
+				for (BlockEntry<Block> craftingTable : BlockCreator.BLOCKS) {
+					if (craftingTable.value() instanceof ModCraftingTable) {
+						Identifier tableId = craftingTable.getId();
+						Item planks = getItemOrVanilla(tableId.withPath(p -> p.replace("crafting_table", "planks")));
+						List<String> requiredOptions = new ArrayList<>(List.of("crafting_tables"));
+						if (tableId.toString().contains("azalea")) {
+							requiredOptions.add("azalea");
+						}
+						else if (tableId.toString().contains("mushroom")) {
+							requiredOptions.add("mushrooms");
+						}
+						this.shaped(RecipeCategory.DECORATIONS, craftingTable.asItem())
+								.group("crafting_table")
+								.define('#', planks)
+								.pattern("##")
+								.pattern("##")
+								.unlockedBy("unlock_right_away", PlayerTrigger.TriggerInstance.tick())
+								.showNotification(false)
+								.save(withConditions(output, PyriteResourceConditions.config(requiredOptions)));
+					}
 				}
 			}
 
@@ -102,6 +114,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 
 				family.getVariants().forEach((variant, result) -> {
 					if (family.shouldGenerateCraftingRecipe()) {
+						if (result == null) return;
 						ItemLike base = this.getBaseBlockForCrafting(family, variant);
 						this.generateCraftingRecipe(family, variant, result, base);
 						if (variant == BlockFamily.Variant.CRACKED) {

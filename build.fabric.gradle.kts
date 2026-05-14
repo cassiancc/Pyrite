@@ -11,7 +11,7 @@ val minecraft = stonecutter.current.version
 val mcVersion = stonecutter.current.project.substringBeforeLast('-')
 
 tasks.named<ProcessResources>("processResources") {
-    duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.WARN
+    duplicatesStrategy = DuplicatesStrategy.WARN
 
     fun prop(name: String) = project.property(name) as String
 
@@ -127,6 +127,8 @@ dependencies {
     // YACL
     if (hasProperty("deps.yacl")) {
         compileOnly("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric")
+        localRuntime("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric")
+        localRuntime("maven.modrinth:mcqoy:${property("deps.mcqoy")}")
     } else {
         compileOnly("dev.isxander:yet-another-config-lib:3.7.1+1.21.6-neoforge") {
             isTransitive = false
@@ -139,9 +141,9 @@ dependencies {
         compileOnly("me.shedaniel.cloth:cloth-config-neoforge:19.0.147")
     }
     // Mod Menu
-    if (hasProperty("deps.modmenu_version")) {
-        compileOnly("maven.modrinth:modmenu:${property("deps.modmenu_version")}")
-        runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu_version")}")
+    if (hasProperty("deps.modmenu")) {
+        compileOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
+        runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
     } else {
         compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
     }

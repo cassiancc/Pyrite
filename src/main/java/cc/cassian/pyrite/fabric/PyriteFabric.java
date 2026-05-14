@@ -5,6 +5,7 @@ package cc.cassian.pyrite.fabric;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.*;
+import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
@@ -35,6 +36,7 @@ import static cc.cassian.pyrite.Pyrite.MOD_ID;
 public class PyriteFabric implements ModInitializer {
     @Override
     public void onInitialize() {
+        PyriteResourceConditions.register();
         Pyrite.init();
         BlockCreator.register();
         registerFuelBlocks();

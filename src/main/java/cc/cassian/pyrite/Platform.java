@@ -1,7 +1,8 @@
 package cc.cassian.pyrite;
 
-//? fabric {
 import cc.cassian.pyrite.entries.BlockEntry;
+//? fabric {
+
 import cc.cassian.pyrite.fabric.FabricPlatformImpl;
 //?}
 import net.minecraft.world.level.block.Block;

@@ -703,7 +703,7 @@ public class BlockCreator {
             family.bricks(createPyriteBlock("%s_bricks".formatted(blockID), block, blockID));
             //Chiseled Blocks - Copper Blocks
             if (!blockID.contains("copper")) {
-               family.chiseled(createPyriteBlock("chiseled_%s_block".formatted(blockID), "log", block, blockID));
+               createPyriteBlock("chiseled_%s_block".formatted(blockID), "log", block, blockID);
             }
             //Pillar Blocks
             createPyriteBlock("%s_pillar".formatted(blockID), "log", block, blockID);

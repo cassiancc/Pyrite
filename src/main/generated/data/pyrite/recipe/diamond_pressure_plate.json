@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:diamond_block"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:diamond_pressure_plate"
+  }
+}

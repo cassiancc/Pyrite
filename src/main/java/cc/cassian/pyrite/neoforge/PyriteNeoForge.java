@@ -4,6 +4,8 @@ package cc.cassian.pyrite.neoforge;
 
 /*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.PyriteRRVPlugin;
+import cc.cassian.pyrite.condition.PyriteResourceConditions;
+import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -48,6 +50,7 @@ public final class PyriteNeoForge {
     @SubscribeEvent
     private static void register(RegisterEvent event) {
         if (event.getRegistryKey().equals(Registries.BLOCK)) {
+            PyriteResourceConditions.register();
             Pyrite.init();
             BlockCreator.register();
         }
@@ -69,9 +72,9 @@ public final class PyriteNeoForge {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
-        for (Map.Entry<String, Supplier<FlowerPotBlock>> entry : POTTED_FLOWERS.entrySet()) {
+        for (Map.Entry<String, BlockEntry<FlowerPotBlock>> entry : POTTED_FLOWERS.entrySet()) {
             String flowerID = entry.getKey();
-            Supplier<FlowerPotBlock> flowerPot = entry.getValue();
+            Supplier<FlowerPotBlock> flowerPot = ()-> entry.getValue().get();
             pot.addPlant(Pyrite.of(flowerID), flowerPot);
         }
     }

@@ -8,6 +8,7 @@ val minecraft = stonecutter.current.version
 val mcVersion = stonecutter.current.project.substringBeforeLast('-')
 
 tasks.named<ProcessResources>("processResources") {
+    duplicatesStrategy = DuplicatesStrategy.WARN
     fun prop(name: String) = project.property(name) as String
 
     val props = HashMap<String, String>().apply {
@@ -146,7 +147,7 @@ dependencies {
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
     compileOnly("maven.local:columns:1.12.0")
-
+    implementation("maven.local:fabric_resource_conditions_api_v1:6.0.5")
 }
 
 
