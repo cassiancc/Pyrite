@@ -1,19 +1,16 @@
 package cc.cassian.pyrite.compat;
 
-import cc.cassian.pyrite.core.PyriteItemTags;
-//? if >1.21.4 {
+import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.rrv.api.recipe.ItemView;
-//?}
-
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.ItemStackTemplate;
-
-import static cc.cassian.pyrite.Pyrite.MOD_ID;
+import net.minecraft.resources.Identifier;
 
 public class PyriteRRVPlugin {
     public static void hideStacks() {
         BuiltInRegistries.ITEM.entrySet().forEach(((itemEntry) -> {
-            if (itemEntry.getKey().identifier().getNamespace().equals(MOD_ID) && !new ItemStackTemplate(itemEntry.getValue()).is(PyriteItemTags.ENABLED))
+            Identifier itemId = itemEntry.getKey().identifier();
+            if (itemId.getNamespace().equals(Pyrite.MOD_ID) && !ModHelpers.enabled(itemId))
                 ItemView.excludeItem(itemEntry.getValue());
         }));
     }

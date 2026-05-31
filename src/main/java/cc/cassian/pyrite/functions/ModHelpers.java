@@ -3,7 +3,9 @@ package cc.cassian.pyrite.functions;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
+import cc.cassian.pyrite.entries.BlockEntry;
 import com.google.common.collect.LinkedHashMultimap;
+import folk.sisby.kaleido.lib.quiltconfig.api.values.TrackedValue;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -37,11 +39,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import static cc.cassian.pyrite.Pyrite.*;
-
 
 public class ModHelpers {
 
@@ -50,6 +52,45 @@ public class ModHelpers {
     public static final ArrayList<Block> TRANSLUCENT_BLOCKS = new ArrayList<>();
     public static final LinkedHashMultimap<Supplier<BlockEntityType<?>>, Block> SUPPORTED_BLOCKS = LinkedHashMultimap.create();
 
+    public static List<String> getRequiredOptions(Identifier itemId) {
+        List<String> requiredOptions = new ArrayList<>();
+        String path = itemId.getPath();
+        if (path.contains("crafting_table")) {
+            requiredOptions.add("crafting_tables");
+        }
+        if (path.contains("azalea")) {
+            requiredOptions.add("azalea");
+        } else if (path.contains("mushroom")) {
+            requiredOptions.add("mushrooms");
+        } else if (path.contains("glow_stained") || path.contains("honey_stained") || path.contains("star_stained") || path.contains("dragon_stained") || path.contains("poisonous_stained") || path.contains("rose_stained")) {
+            requiredOptions.add("oddities");
+        }
+        return requiredOptions;
+    }
+
+    public static boolean enabled(List<String> options) {
+        for (String option : options) {
+            var value = ((TrackedValue<Boolean>) Pyrite.CONFIG.getValue(List.of(option))).value();
+            if (value == false) return false;
+        }
+        return true;
+    }
+
+    public static boolean enabled(Identifier itemId) {
+        for (String option : getRequiredOptions(itemId)) {
+            var value = ((TrackedValue<Boolean>) Pyrite.CONFIG.getValue(List.of(option))).value();
+            if (value == false) return false;
+        }
+        return true;
+    }
+
+    public static boolean enabled(ItemStack stack) {
+        return enabled(stack.getItem().builtInRegistryHolder().key().identifier());
+    }
+
+    public static boolean enabled(BlockEntry stack) {
+        return enabled(stack.getId());
+    }
 
     public static BlockBehaviour.Properties copyBlock(Block copyBlock) {
         return BlockBehaviour.Properties.ofFullCopy(copyBlock);

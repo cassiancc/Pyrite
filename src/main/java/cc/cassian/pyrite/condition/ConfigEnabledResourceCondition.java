@@ -2,10 +2,9 @@ package cc.cassian.pyrite.condition;
 
 import java.util.List;
 
-import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.functions.ModHelpers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import folk.sisby.kaleido.lib.quiltconfig.api.values.TrackedValue;
 import net.minecraft.util.ExtraCodecs;
 import org.jspecify.annotations.Nullable;
 
@@ -30,10 +29,6 @@ public record ConfigEnabledResourceCondition(List<String> options) implements Re
 
     @Override
     public boolean test(RegistryOps.@Nullable RegistryInfoLookup registryInfo) {
-        for (String option : options) {
-            var value = ((TrackedValue<Boolean>) Pyrite.CONFIG.getValue(List.of(option))).value();
-            if (value == false) return false;
-        }
-        return true;
+        return ModHelpers.enabled(options);
     }
 }

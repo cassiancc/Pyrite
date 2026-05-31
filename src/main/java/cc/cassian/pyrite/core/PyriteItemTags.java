@@ -11,7 +11,6 @@ public class PyriteItemTags {
     public static final TagKey<Item> HIDDEN_FROM_RECIPE_VIEWERS = tagKey("c", "hidden_from_recipe_viewers");
     public static final TagKey<Item> DYES = tagKey("c", "dyes");
     public static final TagKey<Item> SHIELDS = tagKey("c", "tools/shield");
-    public static final TagKey<Item> ENABLED = tagKey( "enabled");
     public static final TagKey<Item> ODDITIES = tagKey("oddities");
     public static final TagKey<Item> CHESTS = tagKey("chests");
     public static final TagKey<Item> FENCES = tagKey("fences");

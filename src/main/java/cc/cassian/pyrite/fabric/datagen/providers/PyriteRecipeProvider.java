@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
+
 @SuppressWarnings("all")
 public class PyriteRecipeProvider extends FabricRecipeProvider {
 
@@ -68,14 +70,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						Item planks = getItem(signId.withPath(p -> p.replace("sign", "planks")));
 						sign(sign.value(), planks, getRequiredOptions(signId));
 					} else {
-						hangingSign(sign.value(), getItem(signId.withPath(p -> p.replace("hanging_sign", "planks"))), getRequiredOptions(List.of(), signId));
+						hangingSign(sign.value(), getItem(signId.withPath(p -> p.replace("hanging_sign", "planks"))), getRequiredOptions(signId));
 					}
 				}
 				for (BlockEntry<Block> craftingTable : BlockCreator.BLOCKS) {
 					if (craftingTable.value() instanceof ModCraftingTable) {
 						Identifier tableId = craftingTable.getId();
 						Item planks = getItemOrVanilla(tableId.withPath(p -> p.replace("crafting_table", "planks")));
-						List<String> requiredOptions = getRequiredOptions(List.of("crafting_tables"), tableId);
+						List<String> requiredOptions = getRequiredOptions(tableId);
 						this.shaped(RecipeCategory.DECORATIONS, craftingTable.asItem())
 								.group("crafting_table")
 								.define('#', planks)
@@ -86,22 +88,6 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 								.save(configuredOutput(requiredOptions));
 					}
 				}
-			}
-
-			private static List<String> getRequiredOptions(Identifier boatId) {
-				return getRequiredOptions(List.of(), boatId);
-			}
-
-			private static List<String> getRequiredOptions(List<String> of, Identifier itemId) {
-				List<String> requiredOptions = new ArrayList<>(of);
-				if (itemId.toString().contains("azalea")) {
-					requiredOptions.add("azalea");
-				} else if (itemId.toString().contains("mushroom")) {
-					requiredOptions.add("mushrooms");
-				} else if (itemId.toString().contains("glow_stained") || itemId.toString().contains("honey_stained") || itemId.toString().contains("star_stained") || itemId.toString().contains("dragon_stained") || itemId.toString().contains("poisonous_stained") || itemId.toString().contains("rose_stained")) {
-					requiredOptions.add("oddities");
-				}
-				return requiredOptions;
 			}
 
 			private Item getItem(Identifier id) {

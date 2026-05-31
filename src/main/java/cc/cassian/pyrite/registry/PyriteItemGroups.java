@@ -175,7 +175,7 @@ public class PyriteItemGroups {
                     final var concrete = dye+"_concrete";
                     final Block stairs = get(concrete + "_stairs");
                     final Block slab = get(concrete + "_slab");
-                    if (!namespace.equals(MOD_ID) || stairs.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
+                    if (!namespace.equals(MOD_ID) || ModHelpers.enabled(stairs.asItem().getDefaultInstance()))
                         addAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)).asItem(), List.of(new ItemStack(stairs), new ItemStack(slab)), event);
                 }
 			} else if (key.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
@@ -416,7 +416,7 @@ public class PyriteItemGroups {
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
                     for (BlockEntry<?> block : blocks) {
-                        if (block.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED))
+                        if (ModHelpers.enabled(block))
                             entries.accept(block.get());
                     }
                 })
@@ -521,7 +521,7 @@ public class PyriteItemGroups {
         for (Map.Entry<Block, BlockEntry<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
-            if (value.asItem().getDefaultInstance().is(PyriteItemTags.ENABLED)) {
+            if (ModHelpers.enabled(value.asItem().getDefaultInstance())) {
                 if (anchor != null) {
                     addAfter(anchor.asItem(), new ItemStack(value), event);
                 } else
@@ -534,7 +534,7 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (PyriteEntry block : items) {
             var stack = block.asItem().getDefaultInstance();
-            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
+            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && ModHelpers.enabled(stack)) {
                 stacks.add(stack);
             } else {
 //                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
@@ -547,7 +547,7 @@ public class PyriteItemGroups {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         for (ItemEntry<Item> item : items) {
             var stack = item.get().getDefaultInstance();
-            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && stack.is(PyriteItemTags.ENABLED)) {
+            if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && ModHelpers.enabled(stack)) {
                 stacks.add(stack);
             } else {
 //                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");

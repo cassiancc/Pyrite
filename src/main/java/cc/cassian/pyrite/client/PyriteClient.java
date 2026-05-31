@@ -2,6 +2,7 @@ package cc.cassian.pyrite.client;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
+import cc.cassian.pyrite.functions.ModHelpers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.block.BlockTintSources;
@@ -22,7 +23,7 @@ public class PyriteClient {
 
 	public static void addTooltip(List<Component> lines, ItemStack stack) {
 		if (Pyrite.CONFIG.disabledContentTooltip) {
-			if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID) && !stack.is(PyriteItemTags.ENABLED)) {
+			if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID) && !ModHelpers.enabled(stack)) {
 				lines.add(Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED));
 			}
 		}
