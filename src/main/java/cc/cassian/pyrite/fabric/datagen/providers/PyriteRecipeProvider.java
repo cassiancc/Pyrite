@@ -36,6 +36,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LadderBlock;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -90,8 +91,9 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Identifier torchId = Pyrite.of(dye + "_torch");
 					shapeless(RecipeCategory.DECORATIONS, getItem(torchId)).group("torch").requires(dyeTag).requires(Items.TORCH).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
 					Identifier torchLeverId = Pyrite.of(dye + "_torch_lever");
-					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
+					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torch_levers"));
 					var wool = getItemOrVanilla(Pyrite.of(dye + "_wool"));
+					requiredOptions.add("wool_stairs_and_slabs");
 					slab(getItem(Pyrite.of(dye+"_wool_slab")), wool, requiredOptions);
 					stairs(getItem(Pyrite.of(dye+"_wool_stairs")), wool, requiredOptions);
 				}
@@ -215,13 +217,18 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(configuredOutput(requiredOptions));
 			}
 
+
+
 			private RecipeOutput configuredOutput(Identifier id) {
-				return withConditions(configuredOutput(getRequiredOptions(id)));
+				List<String> requiredOptions = getRequiredOptions(id);
+				return withConditions(configuredOutput(requiredOptions));
 			}
 
-			private RecipeOutput configuredOutput(List<String> requiredOptions) {
-				if (requiredOptions.isEmpty()) return output;
-				return withConditions(output, PyriteResourceConditions.config(requiredOptions));
+			private RecipeOutput configuredOutput(List<String> requiredOptions, String... additionalOptionsArray) {
+				var options = new ArrayList<>(requiredOptions);
+				options.addAll(Arrays.stream(additionalOptionsArray).toList());
+				if (options.isEmpty()) return output;
+				return withConditions(output, PyriteResourceConditions.config(options));
 			}
 
 			public final void sign(final ItemLike result, final Item planks, List<String> requiredOptions) {

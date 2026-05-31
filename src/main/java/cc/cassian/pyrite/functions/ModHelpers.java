@@ -62,8 +62,14 @@ public class ModHelpers {
             requiredOptions.add("azalea");
         } else if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
-        } else if (path.contains("glow_stained") || path.contains("honey_stained") || path.contains("nostalgia_stained") || path.contains("star_stained") || path.contains("dragon_stained") || path.contains("poisonous_stained") || path.contains("rose_stained")) {
+        } else if (path.contains("glow") || path.contains("honey") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
             requiredOptions.add("oddities");
+        }
+        if (path.contains("torch_lever")) {
+            requiredOptions.add("torch_levers");
+        }
+        if (path.contains("wool_stair") || path.contains("wool_slab")) {
+            requiredOptions.add("wool_stairs_and_slabs");
         }
         return requiredOptions;
     }
