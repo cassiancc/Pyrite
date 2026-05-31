@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "torch",
+  "ingredients": [
+    "#c:dyes/pink",
+    "minecraft:torch"
+  ],
+  "result": {
+    "id": "pyrite:pink_torch"
+  }
+}

@@ -123,7 +123,11 @@ public class Pyrite {
 			// Dyed Concrete Stairs
 			createPyriteBlock(dye+"_concrete_stairs", "stairs", Blocks.WHITE_CONCRETE, color, blockLux, "concrete_stairs");
 			// Dyed Concrete Slab
-			createPyriteBlock(dye+"_concrete_slab", "slab", Blocks.WHITE_CONCRETE, color, blockLux, "concrete_slab");
+			createPyriteBlock(dye+"_concrete_slab", "slab", Blocks.WHITE_WOOL, color, blockLux, "concrete_slab");
+			// Dyed Wool Stairs
+//			createPyriteBlock(dye+"_wool_stairs", "stairs", Blocks.WHITE_WOOL, color, blockLux, "wool_stairs");
+			// Dyed Wool Slab
+//			createPyriteBlock(dye+"_wool_slab", "slab", Blocks.WHITE_WOOL, color, blockLux, "wool_slab");
 			//Dyed Planks and plank products
 			createWoodSet(dye + "_stained", color, blockLux, "dyed_wood");
 			// Dyed Bricks and brick products

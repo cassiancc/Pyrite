@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "torch_lever",
+  "ingredients": [
+    "pyrite:poisonous_torch",
+    "minecraft:lever"
+  ],
+  "result": {
+    "id": "pyrite:poisonous_torch_lever"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "torch_lever",
+  "ingredients": [
+    "pyrite:brown_torch",
+    "minecraft:lever"
+  ],
+  "result": {
+    "id": "pyrite:brown_torch_lever"
+  }
+}

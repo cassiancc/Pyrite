@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "torch",
+  "ingredients": [
+    "#c:dyes/blue",
+    "minecraft:torch"
+  ],
+  "result": {
+    "id": "pyrite:blue_torch"
+  }
+}

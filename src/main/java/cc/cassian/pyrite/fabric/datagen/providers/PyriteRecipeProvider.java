@@ -8,6 +8,7 @@ import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
+import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -78,6 +79,19 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						hangingSign(sign.value(), getItem(signId.withPath(p -> p.replace("hanging_sign", "planks"))), getRequiredOptions(signId));
 					}
 				}
+
+				for (String dye : ModLists.DYES) {
+					var dyeTag = TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+dye));
+					List<String> requiredOptions = new ArrayList<>();
+					if (ModLists.PYRITE_DYES.contains(dye)) {
+						requiredOptions.add("oddities");
+					}
+					Identifier torchId = Pyrite.of(dye + "_torch");
+					shapeless(RecipeCategory.DECORATIONS, getItem(torchId)).group("torch").requires(dyeTag).requires(Items.TORCH).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
+					Identifier torchLeverId = Pyrite.of(dye + "_torch_lever");
+					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
+				}
+
 				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
 					Identifier blockId = entry.getId();
 					List<String> requiredOptions = getRequiredOptions(blockId);
@@ -115,9 +129,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						}
 					} else if (entry.getId().getPath().contains("_wood")) {
 						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
-					} else if (entry.getId().getPath().contains("_torch") && !entry.getId().getPath().contains("lever")) {
-						shapeless(RecipeCategory.DECORATIONS, entry.asItem()).group("torch").requires(getDyeTag(blockId.withPath(p -> p.replace("_torch", ""))));
 					}
+//					else if (entry.getId().getPath().contains("_torch") && !entry.getId().getPath().contains("lever")) {
+//						shapeless(RecipeCategory.DECORATIONS, entry.asItem()).group("torch").requires(getDyeTag(blockId.withPath(p -> p.replace("_torch", ""))));
+//					}
 				}
 			}
 
@@ -187,6 +202,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.group("chest_boat")
 						.unlockedBy("has_boat", this.has(ItemTags.BOATS))
 						.save(configuredOutput(requiredOptions));
+			}
+
+			private RecipeOutput configuredOutput(Identifier id) {
+				return withConditions(configuredOutput(getRequiredOptions(id)));
 			}
 
 			private RecipeOutput configuredOutput(List<String> requiredOptions) {
