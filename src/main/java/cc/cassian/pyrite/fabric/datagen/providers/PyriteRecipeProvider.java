@@ -95,6 +95,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					slab(getItem(Pyrite.of(dye+"_wool_slab")), wool, requiredOptions);
 					stairs(getItem(Pyrite.of(dye+"_wool_stairs")), wool, requiredOptions);
 				}
+				// torch lever
+				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(output);
 
 				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
 					Identifier blockId = entry.getId();
