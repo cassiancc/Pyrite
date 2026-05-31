@@ -52,10 +52,10 @@ public class ModPillar extends RotatedPillarBlock {
     /*ItemInteractionResult
     *///?}
     useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!world.isClientSide()) {
-            if (stack.is(ItemTags.AXES) && !player.getOffhandItem().is(PyriteItemTags.SHIELDS)) {
-                Identifier id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
-                Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());
+        if (stack.is(ItemTags.AXES) && !player.getOffhandItem().is(PyriteItemTags.SHIELDS)) {
+            Identifier id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
+            Block strippedBlock = ModHelpers.getBlock("stripped_"+ id.getPath());
+            if (!world.isClientSide()) {
                 if (!strippedBlock.equals(Blocks.AIR)) {
                     world.setBlockAndUpdate(pos, strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS)));
                     //? if >1.21.4 {
@@ -63,9 +63,13 @@ public class ModPillar extends RotatedPillarBlock {
                     //?} else {
                     /*return ItemInteractionResult.SUCCESS;
                     *///?}
-
                 }
             }
+            //? if >1.21.4 {
+            return InteractionResult.SUCCESS;
+            //?} else {
+            /*return ItemInteractionResult.SUCCESS;
+             *///?}
         }
         //? if >1.21.4 {
         return InteractionResult.PASS;
