@@ -23,7 +23,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -54,13 +54,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				}
 				for (ItemEntry<Item> boat : PyriteItemGroups.BOATS) {
 					Identifier boatId = boat.getId();
-					List<String> requiredOptions = new ArrayList<>(List.of());
-					if (boatId.toString().contains("azalea")) {
-						requiredOptions.add("azalea");
-					}
-					else if (boatId.toString().contains("mushroom")) {
-						requiredOptions.add("mushrooms");
-					}
+					List<String> requiredOptions = getRequiredOptions(boatId);
 					if (!boatId.toString().contains("chest")) {
 						Item planks = getItem(boatId.withPath(p -> p.replace("boat", "planks")));
 						woodenBoat(boat.value(), planks, requiredOptions);
@@ -68,26 +62,20 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						chestBoat(boat.value(), getItem(boatId.withPath(p -> p.replace("chest_boat", "planks"))), requiredOptions);
 					}
 				}
-				for (ItemEntry<Item> boat : PyriteItemGroups.SIGNS) {
-					Identifier boatId = boat.getId();
-					if (!boatId.toString().contains("hanging")) {
-						Item planks = getItem(boatId.withPath(p -> p.replace("sign", "planks")));
-						signBuilder(boat.value(), Ingredient.of(planks));
+				for (ItemEntry<Item> sign : PyriteItemGroups.SIGNS) {
+					Identifier signId = sign.getId();
+					if (!signId.toString().contains("hanging")) {
+						Item planks = getItem(signId.withPath(p -> p.replace("sign", "planks")));
+						sign(sign.value(), planks, getRequiredOptions(signId));
 					} else {
-						hangingSign(boat.value(), getItem(boatId.withPath(p -> p.replace("hanging_sign", "planks"))));
+						hangingSign(sign.value(), getItem(signId.withPath(p -> p.replace("hanging_sign", "planks"))), getRequiredOptions(List.of(), signId));
 					}
 				}
 				for (BlockEntry<Block> craftingTable : BlockCreator.BLOCKS) {
 					if (craftingTable.value() instanceof ModCraftingTable) {
 						Identifier tableId = craftingTable.getId();
 						Item planks = getItemOrVanilla(tableId.withPath(p -> p.replace("crafting_table", "planks")));
-						List<String> requiredOptions = new ArrayList<>(List.of("crafting_tables"));
-						if (tableId.toString().contains("azalea")) {
-							requiredOptions.add("azalea");
-						}
-						else if (tableId.toString().contains("mushroom")) {
-							requiredOptions.add("mushrooms");
-						}
+						List<String> requiredOptions = getRequiredOptions(List.of("crafting_tables"), tableId);
 						this.shaped(RecipeCategory.DECORATIONS, craftingTable.asItem())
 								.group("crafting_table")
 								.define('#', planks)
@@ -100,7 +88,23 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				}
 			}
 
-            private Item getItem(Identifier id) {
+			private static List<String> getRequiredOptions(Identifier boatId) {
+				return getRequiredOptions(List.of(), boatId);
+			}
+
+			private static List<String> getRequiredOptions(List<String> of, Identifier itemId) {
+				List<String> requiredOptions = new ArrayList<>(of);
+				if (itemId.toString().contains("azalea")) {
+					requiredOptions.add("azalea");
+				} else if (itemId.toString().contains("mushroom")) {
+					requiredOptions.add("mushrooms");
+				} else if (itemId.toString().contains("glow_stained") || itemId.toString().contains("honey_stained") || itemId.toString().contains("star_stained") || itemId.toString().contains("dragon_stained") || itemId.toString().contains("poisonous_stained") || itemId.toString().contains("rose_stained")) {
+					requiredOptions.add("oddities");
+				}
+				return requiredOptions;
+			}
+
+			private Item getItem(Identifier id) {
                 return registries.getOrThrow(ResourceKey.create(Registries.ITEM, id)).value();
             }
 
@@ -128,6 +132,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			private RecipeOutput configuredOutput(List<String> requiredOptions) {
 				if (requiredOptions.isEmpty()) return output;
 				return withConditions(output, PyriteResourceConditions.config(requiredOptions));
+			}
+
+			public final void sign(final ItemLike result, final Item planks, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.DECORATIONS, result, 3).group("sign").define('#', planks).define('X', Items.STICK).pattern("###").pattern("###").pattern(" X ").unlockedBy("has_planks", this.has(planks)).save(configuredOutput(requiredOptions));
+			}
+
+			public void hangingSign(final ItemLike result, final Item planks, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', planks).define('X', Items.IRON_CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", this.has(planks)).save(configuredOutput(requiredOptions));
 			}
 
 			public void generateRecipes(final BlockFamily family) {
