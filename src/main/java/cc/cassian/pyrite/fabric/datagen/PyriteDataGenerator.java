@@ -14,6 +14,7 @@ public class PyriteDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(NeoForgeDataMapProvider::new);
 		pack.addProvider(PyriteLootTableProvider::new);
 		pack.addProvider(PyriteRecipeProvider::new);
+		pack.addProvider(PyriteModelProvider::new);
 	}
 }
 //?}

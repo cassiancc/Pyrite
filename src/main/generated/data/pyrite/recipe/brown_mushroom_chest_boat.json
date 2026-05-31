@@ -11,8 +11,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    "minecraft:chest",
-    "pyrite:brown_mushroom_planks"
+    "#c:chests/wooden",
+    "pyrite:brown_mushroom_boat"
   ],
   "result": {
     "id": "pyrite:brown_mushroom_chest_boat"

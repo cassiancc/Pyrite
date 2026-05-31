@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ladder",
+  "key": {
+    "#": "pyrite:yellow_stained_planks",
+    "S": "#c:rods/wooden"
+  },
+  "pattern": [
+    "S S",
+    "S#S",
+    "S S"
+  ],
+  "result": {
+    "count": 3,
+    "id": "pyrite:yellow_stained_ladder"
+  }
+}

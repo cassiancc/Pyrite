@@ -3,8 +3,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    "minecraft:chest",
-    "pyrite:yellow_stained_planks"
+    "#c:chests/wooden",
+    "pyrite:yellow_stained_boat"
   ],
   "result": {
     "id": "pyrite:yellow_stained_chest_boat"

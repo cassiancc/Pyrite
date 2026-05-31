@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "blue_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:blue_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:blue_stained_ladder"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "blue_stained_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:blue_stained_ladder"
+    ]
+  }
+}

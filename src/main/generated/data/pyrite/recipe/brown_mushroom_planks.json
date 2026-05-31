@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#pyrite:azalea_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "pyrite:brown_mushroom_planks"
+  }
+}

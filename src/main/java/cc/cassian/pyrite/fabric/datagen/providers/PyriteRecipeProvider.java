@@ -5,12 +5,14 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.ModCraftingTable;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
+import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.advancements.criterion.PlayerTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -22,11 +24,14 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LadderBlock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +66,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						Item planks = getItem(boatId.withPath(p -> p.replace("boat", "planks")));
 						woodenBoat(boat.value(), planks, requiredOptions);
 					} else {
-						chestBoat(boat.value(), getItem(boatId.withPath(p -> p.replace("chest_boat", "planks"))), requiredOptions);
+						chestBoat(boat.value(), getItem(boatId.withPath(p -> p.replace("chest_", ""))), requiredOptions);
 					}
 				}
 				for (ItemEntry<Item> sign : PyriteItemGroups.SIGNS) {
@@ -73,12 +78,12 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						hangingSign(sign.value(), getItem(signId.withPath(p -> p.replace("hanging_sign", "planks"))), getRequiredOptions(signId));
 					}
 				}
-				for (BlockEntry<Block> craftingTable : BlockCreator.BLOCKS) {
-					if (craftingTable.value() instanceof ModCraftingTable) {
-						Identifier tableId = craftingTable.getId();
-						Item planks = getItemOrVanilla(tableId.withPath(p -> p.replace("crafting_table", "planks")));
-						List<String> requiredOptions = getRequiredOptions(tableId);
-						this.shaped(RecipeCategory.DECORATIONS, craftingTable.asItem())
+				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
+					Identifier blockId = entry.getId();
+					List<String> requiredOptions = getRequiredOptions(blockId);
+					if (entry.value() instanceof ModCraftingTable) {
+						Item planks = getItemOrVanilla(blockId.withPath(p -> p.replace("crafting_table", "planks")));
+						this.shaped(RecipeCategory.DECORATIONS, entry.asItem())
 								.group("crafting_table")
 								.define('#', planks)
 								.pattern("##")
@@ -86,8 +91,66 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 								.unlockedBy("unlock_right_away", PlayerTrigger.TriggerInstance.tick())
 								.showNotification(false)
 								.save(configuredOutput(requiredOptions));
+					} else if (entry.value() instanceof LadderBlock) {
+						Item planks = getItemOrVanilla(blockId.withPath(p -> p.replace("ladder", "planks")));
+						this.shaped(RecipeCategory.DECORATIONS, entry.asItem(), 3)
+								.group("ladder")
+								.define('#', planks)
+								.define('S', ConventionalItemTags.WOODEN_RODS)
+								.pattern("S S")
+								.pattern("S#S")
+								.pattern("S S")
+								.unlockedBy(getItemName(planks), has(planks))
+								.save(configuredOutput(requiredOptions));
+					} else if (entry.getId().getPath().contains("_planks")) {
+						if (entry.getId().getPath().contains("brown_mushroom")) {
+							planksFromLogs(entry.value(), PyriteBlockItemTags.AZALEA_LOGS.item(), 4);
+						} else if (entry.getId().getPath().contains("red_mushroom")) {
+							planksFromLogs(entry.value(), getItem(Pyrite.of("red_mushroom_stem")), 4, requiredOptions);
+						}else if (entry.getId().getPath().contains("azalea")) {
+							planksFromLogs(entry.value(), getItem(Pyrite.of("brown_mushroom_stem")), 4, requiredOptions);
+						} else {
+							Ingredient dye = getDyeTag(blockId.withPath(p -> p.replace("_stained_planks", "")));
+							this.coloredBaseBlockFromBaseBlockAndDye(entry.value(), dye, ingredientOf(ItemTags.PLANKS), requiredOptions);
+						}
+					} else if (entry.getId().getPath().contains("_wood")) {
+						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
+					} else if (entry.getId().getPath().contains("_torch") && !entry.getId().getPath().contains("lever")) {
+						shapeless(RecipeCategory.DECORATIONS, entry.asItem()).group("torch").requires(getDyeTag(blockId.withPath(p -> p.replace("_torch", ""))));
 					}
 				}
+			}
+
+            private Ingredient getDyeTag(Identifier stainedPlanks) {
+                return ingredientOf(TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+stainedPlanks.getPath())));
+            }
+
+			public void planksFromLogs(final ItemLike result, final TagKey<Item> logs, final int count, List<String> requiredOptions) {
+				this.shapeless(RecipeCategory.BUILDING_BLOCKS, result, count).requires(logs).group("planks").unlockedBy("has_logs", this.has(logs)).save(configuredOutput(requiredOptions));
+			}
+
+			public void planksFromLogs(final ItemLike result, final Item logs, final int count, List<String> requiredOptions) {
+				this.shapeless(RecipeCategory.BUILDING_BLOCKS, result, count).requires(logs).group("planks").unlockedBy("has_logs", this.has(logs)).save(configuredOutput(requiredOptions));
+			}
+
+			public void woodFromLogs(final ItemLike result, final ItemLike log, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 3).define('#', log).pattern("##").pattern("##").group("bark").unlockedBy("has_log", this.has(log)).save(configuredOutput(requiredOptions));
+			}
+
+			private Ingredient ingredientOf(TagKey<Item> planks) {
+                return Ingredient.of(registries.getOrThrow(planks));
+            }
+
+			public void coloredBaseBlockFromBaseBlockAndDye(final ItemLike result, final Ingredient dye, Ingredient baseBlock, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 8)
+						.define('#', baseBlock)
+						.define('X', dye)
+						.pattern("###")
+						.pattern("#X#")
+						.pattern("###")
+						.group("planks")
+						.unlockedBy("has_base", this.has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
+						.save(configuredOutput(requiredOptions));
 			}
 
 			private Item getItem(Identifier id) {
@@ -108,11 +171,22 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
             }
 
 			public void woodenBoat(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.TRANSPORTATION, result).define('#', planks).pattern("# #").pattern("###").group("boat").unlockedBy("in_water", insideOf(Blocks.WATER)).save(configuredOutput(requiredOptions));
+				this.shaped(RecipeCategory.TRANSPORTATION, result)
+						.define('#', planks)
+						.pattern("# #")
+						.pattern("###")
+						.group("boat")
+						.unlockedBy("in_water", insideOf(Blocks.WATER))
+						.save(configuredOutput(requiredOptions));
 			}
 
 			public void chestBoat(final ItemLike chestBoat, final ItemLike boat, List<String> requiredOptions) {
-				this.shapeless(RecipeCategory.TRANSPORTATION, chestBoat).requires(Blocks.CHEST).requires(boat).group("chest_boat").unlockedBy("has_boat", this.has(ItemTags.BOATS)).save(configuredOutput(requiredOptions));
+				this.shapeless(RecipeCategory.TRANSPORTATION, chestBoat)
+						.requires(ConventionalItemTags.WOODEN_CHESTS)
+						.requires(boat)
+						.group("chest_boat")
+						.unlockedBy("has_boat", this.has(ItemTags.BOATS))
+						.save(configuredOutput(requiredOptions));
 			}
 
 			private RecipeOutput configuredOutput(List<String> requiredOptions) {

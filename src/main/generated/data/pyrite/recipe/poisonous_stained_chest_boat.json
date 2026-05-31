@@ -1,10 +1,18 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    "minecraft:chest",
-    "pyrite:poisonous_stained_planks"
+    "#c:chests/wooden",
+    "pyrite:poisonous_stained_boat"
   ],
   "result": {
     "id": "pyrite:poisonous_stained_chest_boat"

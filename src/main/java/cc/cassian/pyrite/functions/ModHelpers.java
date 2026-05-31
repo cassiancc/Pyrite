@@ -62,7 +62,7 @@ public class ModHelpers {
             requiredOptions.add("azalea");
         } else if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
-        } else if (path.contains("glow_stained") || path.contains("honey_stained") || path.contains("star_stained") || path.contains("dragon_stained") || path.contains("poisonous_stained") || path.contains("rose_stained")) {
+        } else if (path.contains("glow_stained") || path.contains("honey_stained") || path.contains("nostalgia_stained") || path.contains("star_stained") || path.contains("dragon_stained") || path.contains("poisonous_stained") || path.contains("rose_stained")) {
             requiredOptions.add("oddities");
         }
         return requiredOptions;

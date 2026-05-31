@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "azalea"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "pyrite:brown_mushroom_stem"
+  ],
+  "result": {
+    "count": 4,
+    "id": "pyrite:azalea_planks"
+  }
+}

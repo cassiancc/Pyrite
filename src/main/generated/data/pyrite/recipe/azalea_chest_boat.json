@@ -11,8 +11,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    "minecraft:chest",
-    "pyrite:azalea_planks"
+    "#c:chests/wooden",
+    "pyrite:azalea_boat"
   ],
   "result": {
     "id": "pyrite:azalea_chest_boat"

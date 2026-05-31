@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ladder",
+  "key": {
+    "#": "pyrite:poisonous_stained_planks",
+    "S": "#c:rods/wooden"
+  },
+  "pattern": [
+    "S S",
+    "S#S",
+    "S S"
+  ],
+  "result": {
+    "count": 3,
+    "id": "pyrite:poisonous_stained_ladder"
+  }
+}

@@ -11,8 +11,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    "minecraft:chest",
-    "pyrite:honey_stained_planks"
+    "#c:chests/wooden",
+    "pyrite:honey_stained_boat"
   ],
   "result": {
     "id": "pyrite:honey_stained_chest_boat"
