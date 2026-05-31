@@ -183,6 +183,14 @@
     {
       "id": "pyrite:brown_torch_lever",
       "required": false
+    },
+    {
+      "id": "pyrite:brown_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_wool_stairs",
+      "required": false
     }
   ]
 }

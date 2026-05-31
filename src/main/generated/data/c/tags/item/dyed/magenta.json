@@ -123,6 +123,14 @@
     {
       "id": "pyrite:magenta_torch_lever",
       "required": false
+    },
+    {
+      "id": "pyrite:magenta_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_wool_stairs",
+      "required": false
     }
   ]
 }

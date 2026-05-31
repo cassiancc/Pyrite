@@ -15,6 +15,7 @@ public class PyriteDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(PyriteLootTableProvider::new);
 		pack.addProvider(PyriteRecipeProvider::new);
 		pack.addProvider(PyriteModelProvider::new);
+		pack.addProvider(PyriteLangProvider::new);
 	}
 }
 //?}

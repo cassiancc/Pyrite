@@ -123,6 +123,14 @@
     {
       "id": "pyrite:green_torch_lever",
       "required": false
+    },
+    {
+      "id": "pyrite:green_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:green_wool_stairs",
+      "required": false
     }
   ]
 }

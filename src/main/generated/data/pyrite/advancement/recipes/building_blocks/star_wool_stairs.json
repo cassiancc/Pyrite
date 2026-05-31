@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:star_wool_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "star_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:star_wool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "star_wool"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:star_wool_stairs"
+    ]
+  }
+}

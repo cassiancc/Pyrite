@@ -125,6 +125,14 @@
       "required": false
     },
     {
+      "id": "pyrite:gray_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:gray_wool_stairs",
+      "required": false
+    },
+    {
       "id": "pyrite:light_gray_brick_slab",
       "required": false
     },
@@ -246,6 +254,14 @@
     },
     {
       "id": "pyrite:light_gray_torch_lever",
+      "required": false
+    },
+    {
+      "id": "pyrite:light_gray_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:light_gray_wool_stairs",
       "required": false
     }
   ]

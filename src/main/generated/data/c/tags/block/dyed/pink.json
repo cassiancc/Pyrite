@@ -131,6 +131,14 @@
     {
       "id": "pyrite:pink_torch_lever",
       "required": false
+    },
+    {
+      "id": "pyrite:pink_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_wool_stairs",
+      "required": false
     }
   ]
 }

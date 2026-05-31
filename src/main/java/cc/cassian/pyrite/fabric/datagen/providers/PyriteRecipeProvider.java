@@ -19,6 +19,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
+import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -90,6 +91,9 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					shapeless(RecipeCategory.DECORATIONS, getItem(torchId)).group("torch").requires(dyeTag).requires(Items.TORCH).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
 					Identifier torchLeverId = Pyrite.of(dye + "_torch_lever");
 					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
+					var wool = getItemOrVanilla(Pyrite.of(dye + "_wool"));
+					slab(getItem(Pyrite.of(dye+"_wool_slab")), wool, requiredOptions);
+					stairs(getItem(Pyrite.of(dye+"_wool_stairs")), wool, requiredOptions);
 				}
 
 				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
@@ -130,10 +134,15 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					} else if (entry.getId().getPath().contains("_wood")) {
 						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
 					}
-//					else if (entry.getId().getPath().contains("_torch") && !entry.getId().getPath().contains("lever")) {
-//						shapeless(RecipeCategory.DECORATIONS, entry.asItem()).group("torch").requires(getDyeTag(blockId.withPath(p -> p.replace("_torch", ""))));
-//					}
 				}
+			}
+
+			public void slab(final ItemLike result, final ItemLike base, List<String> requiredOptions) {
+				this.slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), this.has(base)).unlockedBy(getItemName(base), has(base)).save(configuredOutput(requiredOptions));
+			}
+
+			public void stairs(final ItemLike result, final Item base, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', base).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getItemName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
             private Ingredient getDyeTag(Identifier stainedPlanks) {

@@ -127,6 +127,14 @@
     {
       "id": "pyrite:white_torch_lever",
       "required": false
+    },
+    {
+      "id": "pyrite:white_wool_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:white_wool_stairs",
+      "required": false
     }
   ]
 }
