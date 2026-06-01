@@ -64,6 +64,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					}
 				}
 
+				for (Block wall : ModLists.getVanillaWalls()) {
+					Identifier wallId = wall.properties().blockId().identifier();
+					Item wallGate = getItem(Pyrite.of(wallId.getPath()+"_gate"));
+					wallGate(wallGate,
+							getItem(wallId.withPath(block-> block.replace("_wall", "").replace("brick", "bricks").replace("tile", "tiles"))),
+							wall.asItem(), List.of("wall_gates"));
+				}
+
 				for (Block resourceBlock : ModLists.getVanillaResourceBlocks()) {
 					var id = ModHelpers.findVanillaBlockID(resourceBlock);
 					var requiredOptions = getRequiredOptions(Pyrite.of(id));
@@ -199,7 +207,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				// torch lever
 				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(List.of("torch_levers")));
 				// framed glass
-				shaped(RecipeCategory.BUILDING_BLOCKS, baseFramedGlass).group("framed_glass")
+				shaped(RecipeCategory.BUILDING_BLOCKS, baseFramedGlass)
+						.group("framed_glass")
 						.pattern("X#X")
 						.pattern("#X#")
 						.pattern("X#X")
@@ -402,7 +411,6 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public void generateRecipes(final BlockFamily family) {
-
 				family.getVariants().forEach((variant, result) -> {
 					if (family.shouldGenerateCraftingRecipe()) {
 						ItemLike base = this.getBaseBlockForCrafting(family, variant);
@@ -437,25 +445,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					builder.save(configuredOutput(requiredOptions));
 				}
 			}
-
-			public final void generateStonecutterRecipe(final BlockFamily family, final BlockFamily.Variant variant, final Block base, List<String> requiredOptions) {
-				FamilyStonecutterRecipeProvider recipeFunction = STONECUTTER_RECIPE_BUILDERS.get(variant);
-				if (recipeFunction != null) {
-					recipeFunction.create(this, family.get(variant), base);
-				}
-
-				if (variant == BlockFamily.Variant.POLISHED || variant == BlockFamily.Variant.CUT || variant == BlockFamily.Variant.BRICKS || variant == BlockFamily.Variant.TILES || variant == BlockFamily.Variant.COBBLED) {
-					BlockFamily childVariantFamily = BlockFamilies.getFamily(family.get(variant));
-					if (childVariantFamily != null) {
-						childVariantFamily.getVariants().forEach((childVariant, r) -> this.generateStonecutterRecipe(childVariantFamily, childVariant, base, requiredOptions));
-					}
-				}
-
-			}
 		};
 	}
-
-
 
 	@Override
 	public String getName() {

@@ -76,6 +76,9 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable Pyrite Torch Levers.")
    public boolean torch_levers = true;
 
+   @Comment("Enable Wall Gates, a decorative block like fence gates, but for walls.")
+   public boolean wall_gates = true;
+
    @Comment("Enable Pyrite's Backport of Wool Stairs and Slabs.")
    public boolean wool_stairs_and_slabs = true;
 
