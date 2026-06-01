@@ -3,7 +3,8 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "azalea"
+        "azalea",
+        "ladders"
       ]
     }
   ],

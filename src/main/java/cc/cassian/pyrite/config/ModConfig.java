@@ -45,6 +45,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Iron.")
    public boolean iron = true;
 
+   @DisplayName("Variant Ladders")
+   @Comment("Enable variant Ladders for Pyrite dyed wood.")
+   public boolean ladders = true;
+
    @DisplayName("Lapis Block Set")
    @Comment("Completes the block set for Lapis Lazuli.")
    public boolean lapis = true;

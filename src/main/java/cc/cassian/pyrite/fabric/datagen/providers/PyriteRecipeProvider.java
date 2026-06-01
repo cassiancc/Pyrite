@@ -222,6 +222,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 								.showNotification(false)
 								.save(configuredOutput(requiredOptions));
 					} else if (entry.value() instanceof LadderBlock) {
+						var ladderOptions = new ArrayList<>(requiredOptions);
+						ladderOptions.add("ladders");
 						Item planks = getItemOrVanilla(blockId.withPath(p -> p.replace("ladder", "planks")));
 						this.shaped(RecipeCategory.DECORATIONS, entry.asItem(), 3)
 								.group("ladder")
@@ -231,7 +233,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 								.pattern("S#S")
 								.pattern("S S")
 								.unlockedBy(getItemName(planks), has(planks))
-								.save(configuredOutput(requiredOptions));
+								.save(configuredOutput(ladderOptions));
 					} else if (entry.getId().getPath().contains("_planks")) {
 						if (entry.getId().getPath().contains("brown_mushroom")) {
 							planksFromLogs(entry.value(), PyriteBlockItemTags.AZALEA_LOGS.item(), 4);
