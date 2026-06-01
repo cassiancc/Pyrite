@@ -1,9 +1,17 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "lapis"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:stick",
-    "W": "minecraft:lapis_block"
+    "#": "pyrite:cut_lapis_wall",
+    "W": "pyrite:cut_lapis"
   },
   "pattern": [
     "#W#",

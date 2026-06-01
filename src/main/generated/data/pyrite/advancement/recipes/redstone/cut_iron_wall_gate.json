@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "iron"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_block": {
+    "cut_iron": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_block"
+            "items": "pyrite:cut_iron"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iron_block"
+      "cut_iron"
     ]
   ],
   "rewards": {

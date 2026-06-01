@@ -1,8 +1,16 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "emerald"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:stick",
+    "#": "pyrite:smooth_emerald_wall",
     "W": "pyrite:smooth_emerald"
   },
   "pattern": [

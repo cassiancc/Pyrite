@@ -1,3 +1,6 @@
-accessWidener v2 named
+accessWidener v2 official
 
-
+accessible field net/minecraft/data/recipes/RecipeProvider SHAPE_BUILDERS Ljava/util/Map;
+accessible class net/minecraft/data/recipes/RecipeProvider$FamilyCraftingRecipeProvider
+accessible field net/minecraft/data/recipes/RecipeProvider STONECUTTER_RECIPE_BUILDERS Ljava/util/Map;
+accessible class net/minecraft/data/recipes/RecipeProvider$FamilyStonecutterRecipeProvider

@@ -1,8 +1,16 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "lapis"
+      ]
+    }
+  ],
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:lapis_block",
   "result": {
-    "count": 2,
+    "count": 8,
     "id": "pyrite:cut_lapis_slab"
   }
 }

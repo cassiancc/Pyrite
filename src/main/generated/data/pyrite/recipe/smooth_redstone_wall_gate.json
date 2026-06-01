@@ -1,8 +1,16 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "redstone"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:stick",
+    "#": "pyrite:smooth_redstone_wall",
     "W": "pyrite:smooth_redstone"
   },
   "pattern": [

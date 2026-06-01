@@ -1,7 +1,16 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:exposed_copper",
   "result": {
+    "count": 8,
     "id": "pyrite:exposed_copper_bricks"
   }
 }

@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "concrete_stairs_and_slabs"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:honey_concrete_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "honey_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:honey_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "honey_concrete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:honey_concrete_stairs"
+    ]
+  }
+}

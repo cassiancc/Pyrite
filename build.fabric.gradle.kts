@@ -33,9 +33,9 @@ tasks.named("processResources") {
 version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
 base.archivesName = property("mod.id") as String
 
-//loom {
-//    accessWidenerPath = rootProject.file("src/main/resources/${property("mod.id")}.accesswidener")
-//}
+loom {
+    accessWidenerPath = rootProject.file("src/main/resources/${property("mod.id")}.accesswidener")
+}
 
 jsonlang {
     languageDirectories = listOf("assets/${property("mod.id")}/lang")

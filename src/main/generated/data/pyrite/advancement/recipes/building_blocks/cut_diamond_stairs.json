@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "diamond"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_diamond_block": {
+    "cut_diamond": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:diamond_block"
+            "items": "pyrite:cut_diamond"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_diamond_block"
+      "cut_diamond"
     ]
   ],
   "rewards": {

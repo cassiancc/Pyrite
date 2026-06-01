@@ -4,7 +4,7 @@
       "model": "pyrite:block/light_blue_wool_slab"
     },
     "type=double": {
-      "model": "minecraft:block/light_blue_wool"
+      "model": "minecraft:light_blue_wool"
     },
     "type=top": {
       "model": "pyrite:block/light_blue_wool_slab_top"

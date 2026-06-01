@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "quartz"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_quartz_block": {
+    "cut_quartz": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:quartz_block"
+            "items": "pyrite:cut_quartz"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_quartz_block"
+      "cut_quartz"
     ]
   ],
   "rewards": {

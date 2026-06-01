@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "amethyst"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_amethyst_block": {
+    "cut_amethyst": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:amethyst_block"
+            "items": "pyrite:cut_amethyst"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_amethyst_block"
+      "cut_amethyst"
     ]
   ],
   "rewards": {

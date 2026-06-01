@@ -1,7 +1,16 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "redstone"
+      ]
+    }
+  ],
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:redstone_block",
   "result": {
+    "count": 8,
     "id": "pyrite:redstone_bricks"
   }
 }

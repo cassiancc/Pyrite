@@ -1,8 +1,18 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "redstone"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
+  "group": "button",
   "ingredients": [
-    "minecraft:redstone_block"
+    "minecraft:redstone_block",
+    "#minecraft:buttons"
   ],
   "result": {
     "id": "pyrite:redstone_button"

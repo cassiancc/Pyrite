@@ -1,6 +1,24 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "glow_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:glow_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_glow_stained_planks": {
       "conditions": {
         "items": [
@@ -21,7 +39,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glow_stained_planks"
+      "has_glow_stained_planks",
+      "glow_stained_planks"
     ]
   ],
   "rewards": {

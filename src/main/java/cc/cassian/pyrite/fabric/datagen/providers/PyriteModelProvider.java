@@ -9,35 +9,70 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamily;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import org.jspecify.annotations.NullMarked;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @NullMarked
 public class PyriteModelProvider extends FabricModelProvider {
+    @SuppressWarnings("all")
+    private BlockModelGenerators blockModelGenerators;
+
     public PyriteModelProvider(FabricPackOutput output) {
         super(output);
     }
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+        this.blockModelGenerators = blockModelGenerators;
         for (String dye : ModLists.DYES) {
             var wool = getBlockOrVanilla(Pyrite.of(dye + "_wool"));
-            blockModelGenerators.family(wool).stairs(getBlock(Pyrite.of(dye+"_wool_stairs"))).slab(getBlock(Pyrite.of(dye+"_wool_slab")));
+            var stairs = getBlock(Pyrite.of(dye+"_wool_stairs"));
+            var slab = getBlock(Pyrite.of(dye+"_wool_slab"));
+            stairs(stairs, wool);
+            slab(slab, wool);
         }
+    }
+
+    public void stairs(final Block stairs, Block baseBlock) {
+        MultiVariant inner = BlockModelGenerators.plainVariant(this.getOrCreateModel(ModelTemplates.STAIRS_INNER, stairs, baseBlock));
+        Identifier straight = this.getOrCreateModel(ModelTemplates.STAIRS_STRAIGHT, stairs, baseBlock);
+        MultiVariant outer = BlockModelGenerators.plainVariant(this.getOrCreateModel(ModelTemplates.STAIRS_OUTER, stairs, baseBlock));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, inner, BlockModelGenerators.plainVariant(straight), outer));
+        blockModelGenerators.registerSimpleItemModel(stairs, straight);
+    }
+
+    public void slab(final Block slab, Block baseBlock) {
+        Identifier bottom = this.getOrCreateModel(ModelTemplates.SLAB_BOTTOM, slab, baseBlock);
+        MultiVariant top = BlockModelGenerators.plainVariant(this.getOrCreateModel(ModelTemplates.SLAB_TOP, slab, baseBlock));
+        blockModelGenerators.blockStateOutput
+                .accept(BlockModelGenerators.createSlab(slab, BlockModelGenerators.plainVariant(bottom), top, BlockModelGenerators.variant(new Variant(baseBlock.properties().blockId().identifier()))));
+        blockModelGenerators.registerSimpleItemModel(slab, bottom);
+    }
+
+    private Identifier getOrCreateModel(final ModelTemplate modelTemplate, final Block block, Block baseBlock) {
+        return modelTemplate.create(block, getMapping(baseBlock), blockModelGenerators.modelOutput);
+    }
+
+    private TextureMapping getMapping(Block baseBlock) {
+        return TexturedModel.CUBE.get(baseBlock).getMapping();
     }
 
     private Block getBlock(Identifier id) {

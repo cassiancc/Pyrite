@@ -399,7 +399,7 @@ public class PyriteItemGroups {
             case "colored_blocks":
                 COLORED_BLOCKS.put(copyBlock, newBlock);
                 break;
-            case "concrete_stairs", "concrete_slab":
+            case "concrete_stairs", "concrete_slab", "wool_slab", "wool_stairs":
                 break;
             default:
                 ModHelpers.log("%s provided group %s".formatted(newBlock.getPath(), group));

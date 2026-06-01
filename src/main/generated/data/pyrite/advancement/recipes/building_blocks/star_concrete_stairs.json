@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "concrete_stairs_and_slabs"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:star_concrete_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "star_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:star_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "star_concrete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:star_concrete_stairs"
+    ]
+  }
+}

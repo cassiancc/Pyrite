@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "emerald"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_emerald_block": {
+    "cut_emerald": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:emerald_block"
+            "items": "pyrite:cut_emerald"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_emerald_block"
+      "cut_emerald"
     ]
   ],
   "rewards": {

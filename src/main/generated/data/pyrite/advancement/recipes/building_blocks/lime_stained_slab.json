@@ -16,12 +16,23 @@
         "recipe": "pyrite:lime_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "lime_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:lime_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_lime_stained_planks"
+      "has_lime_stained_planks",
+      "lime_stained_planks"
     ]
   ],
   "rewards": {

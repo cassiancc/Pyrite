@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "redstone"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
@@ -9,7 +17,6 @@
     "##"
   ],
   "result": {
-    "count": 4,
     "id": "pyrite:redstone_bricks"
   }
 }

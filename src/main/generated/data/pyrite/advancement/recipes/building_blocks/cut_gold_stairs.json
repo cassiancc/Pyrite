@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "gold"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gold_block": {
+    "cut_gold": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:gold_block"
+            "items": "pyrite:cut_gold"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_gold_block"
+      "cut_gold"
     ]
   ],
   "rewards": {

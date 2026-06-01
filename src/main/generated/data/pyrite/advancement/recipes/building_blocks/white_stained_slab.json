@@ -16,12 +16,23 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "white_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:white_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_white_stained_planks"
+      "has_white_stained_planks",
+      "white_stained_planks"
     ]
   ],
   "rewards": {

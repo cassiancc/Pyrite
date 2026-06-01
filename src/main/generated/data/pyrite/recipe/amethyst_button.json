@@ -1,8 +1,18 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "amethyst"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
+  "group": "button",
   "ingredients": [
-    "minecraft:amethyst_block"
+    "minecraft:amethyst_block",
+    "#minecraft:buttons"
   ],
   "result": {
     "id": "pyrite:amethyst_button"

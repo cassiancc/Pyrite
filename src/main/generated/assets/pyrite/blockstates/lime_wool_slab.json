@@ -4,7 +4,7 @@
       "model": "pyrite:block/lime_wool_slab"
     },
     "type=double": {
-      "model": "minecraft:block/lime_wool"
+      "model": "minecraft:lime_wool"
     },
     "type=top": {
       "model": "pyrite:block/lime_wool_slab_top"

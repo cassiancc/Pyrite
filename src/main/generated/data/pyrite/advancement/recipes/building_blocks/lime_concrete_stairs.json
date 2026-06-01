@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "concrete_stairs_and_slabs"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:lime_concrete_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "lime_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:lime_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "lime_concrete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:lime_concrete_stairs"
+    ]
+  }
+}

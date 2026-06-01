@@ -1,9 +1,17 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "quartz"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:stick",
-    "W": "minecraft:quartz_block"
+    "#": "pyrite:cut_quartz_wall",
+    "W": "pyrite:cut_quartz"
   },
   "pattern": [
     "#W#",

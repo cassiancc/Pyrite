@@ -16,12 +16,23 @@
         "recipe": "pyrite:magenta_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "magenta_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:magenta_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_magenta_stained_planks"
+      "has_magenta_stained_planks",
+      "magenta_stained_planks"
     ]
   ],
   "rewards": {

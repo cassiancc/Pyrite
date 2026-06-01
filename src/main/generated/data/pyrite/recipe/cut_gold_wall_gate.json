@@ -1,9 +1,17 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "gold"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:stick",
-    "W": "minecraft:gold_block"
+    "#": "pyrite:cut_gold_wall",
+    "W": "pyrite:cut_gold"
   },
   "pattern": [
     "#W#",

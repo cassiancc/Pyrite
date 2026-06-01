@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "gray_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:gray_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_gray_stained_planks": {
       "conditions": {
         "items": [
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_gray_stained_planks"
+      "has_gray_stained_planks",
+      "gray_stained_planks"
     ]
   ],
   "rewards": {

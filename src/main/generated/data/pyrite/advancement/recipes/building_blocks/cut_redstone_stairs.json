@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "redstone"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_redstone_block": {
+    "cut_redstone": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:redstone_block"
+            "items": "pyrite:cut_redstone"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_redstone_block"
+      "cut_redstone"
     ]
   ],
   "rewards": {

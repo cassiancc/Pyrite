@@ -71,6 +71,13 @@ public class ModHelpers {
         if (path.contains("wool_stair") || path.contains("wool_slab")) {
             requiredOptions.add("wool_stairs_and_slabs");
         }
+        for (Block vanillaResourceBlock : ModLists.getVanillaResourceBlocks()) {
+            var resourceBlockPath = vanillaResourceBlock.builtInRegistryHolder().key().identifier().getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
+            if (path.contains(resourceBlockPath)) {
+                if (!requiredOptions.contains(resourceBlockPath))
+                    requiredOptions.add(resourceBlockPath);
+            }
+        }
         return requiredOptions;
     }
 
@@ -83,11 +90,7 @@ public class ModHelpers {
     }
 
     public static boolean enabled(Identifier itemId) {
-        for (String option : getRequiredOptions(itemId)) {
-            var value = ((TrackedValue<Boolean>) Pyrite.CONFIG.getValue(List.of(option))).value();
-            if (value == false) return false;
-        }
-        return true;
+        return enabled(getRequiredOptions(itemId));
     }
 
     public static boolean enabled(ItemStack stack) {

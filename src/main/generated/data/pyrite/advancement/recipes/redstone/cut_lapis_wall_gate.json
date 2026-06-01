@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "lapis"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lapis_block": {
+    "cut_lapis": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:lapis_block"
+            "items": "pyrite:cut_lapis"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_lapis_block"
+      "cut_lapis"
     ]
   ],
   "rewards": {

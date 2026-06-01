@@ -4,7 +4,7 @@
       "model": "pyrite:block/rose_wool_slab"
     },
     "type=double": {
-      "model": "pyrite:block/rose_wool"
+      "model": "pyrite:rose_wool"
     },
     "type=top": {
       "model": "pyrite:block/rose_wool_slab_top"

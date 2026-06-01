@@ -4,7 +4,7 @@
       "model": "pyrite:block/purple_wool_slab"
     },
     "type=double": {
-      "model": "minecraft:block/purple_wool"
+      "model": "minecraft:purple_wool"
     },
     "type=top": {
       "model": "pyrite:block/purple_wool_slab_top"

@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_honey_stained_planks": {
@@ -16,12 +24,23 @@
         "recipe": "pyrite:honey_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "honey_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:honey_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_stained_planks"
+      "has_honey_stained_planks",
+      "honey_stained_planks"
     ]
   ],
   "rewards": {

@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "netherite"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_netherite_block": {
+    "cut_netherite": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:netherite_block"
+            "items": "pyrite:cut_netherite"
           }
         ]
       },
@@ -21,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_netherite_block"
+      "cut_netherite"
     ]
   ],
   "rewards": {

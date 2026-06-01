@@ -1,9 +1,17 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "amethyst"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:stick",
-    "W": "minecraft:amethyst_block"
+    "#": "pyrite:cut_amethyst_wall",
+    "W": "pyrite:cut_amethyst"
   },
   "pattern": [
     "#W#",
