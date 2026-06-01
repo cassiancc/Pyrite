@@ -63,7 +63,7 @@ public class PyriteModelProvider extends FabricModelProvider {
         Identifier bottom = this.getOrCreateModel(ModelTemplates.SLAB_BOTTOM, slab, baseBlock);
         MultiVariant top = BlockModelGenerators.plainVariant(this.getOrCreateModel(ModelTemplates.SLAB_TOP, slab, baseBlock));
         blockModelGenerators.blockStateOutput
-                .accept(BlockModelGenerators.createSlab(slab, BlockModelGenerators.plainVariant(bottom), top, BlockModelGenerators.variant(new Variant(baseBlock.properties().blockId().identifier()))));
+                .accept(BlockModelGenerators.createSlab(slab, BlockModelGenerators.plainVariant(bottom), top, BlockModelGenerators.variant(new Variant(baseBlock.properties().blockIdOrThrow().identifier()))));
         blockModelGenerators.registerSimpleItemModel(slab, bottom);
     }
 

@@ -71,6 +71,12 @@ public class ModHelpers {
         if (path.contains("wool_stair") || path.contains("wool_slab")) {
             requiredOptions.add("wool_stairs_and_slabs");
         }
+        if (path.contains("concrete_stair") || path.contains("concrete_slab")) {
+            requiredOptions.add("concrete_stairs_and_slabs");
+        }
+        if (path.contains("framed_glass")) {
+            requiredOptions.add("framed_glass");
+        }
         for (Block vanillaResourceBlock : ModLists.getVanillaResourceBlocks()) {
             var resourceBlockPath = vanillaResourceBlock.builtInRegistryHolder().key().identifier().getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
             if (path.contains(resourceBlockPath)) {

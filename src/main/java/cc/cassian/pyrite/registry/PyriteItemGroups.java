@@ -95,6 +95,8 @@ public class PyriteItemGroups {
     public static final ArrayList<BlockEntry<Block>> WOOD = new ArrayList<>();
     public static final ArrayList<BlockEntry<Block>> RED_MUSHROOM = new ArrayList<>();
     public static final ArrayList<BlockEntry<Block>> BROWN_MUSHROOM = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WOOL_STAIRS = new ArrayList<>();
+    public static final ArrayList<BlockEntry<Block>> WOOL_SLAB = new ArrayList<>();
     public static final LinkedHashMap<Block, BlockEntry<Block>> FUNCTIONAL = new LinkedHashMap<>();
     public static final LinkedHashMap<Block, BlockEntry<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
     public static final LinkedHashMap<Block, BlockEntry<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
@@ -158,7 +160,10 @@ public class PyriteItemGroups {
                 addAfter(Blocks.PINK_TERRACOTTA, getBlockCollectionList(TERRACOTTA), event);
                 addBefore(Blocks.WHITE_CONCRETE, getBlockCollectionList(TERRACOTTA_BRICKS), event);
                 addMapToItemGroup(event, COLORED_BLOCKS);
-                addAfter(Blocks.PINK_CARPET, getBlockCollectionList(CARPET), event);
+                Collection<ItemStack> blocksAfterCarpet = getBlockCollectionList(CARPET);
+                blocksAfterCarpet.addAll(getBlockCollectionList(WOOL_SLAB));
+                blocksAfterCarpet.addAll(getBlockCollectionList(WOOL_STAIRS));
+                addAfter(Blocks.PINK_CARPET, blocksAfterCarpet, event);
                 addAfter(Blocks.PINK_SHULKER_BOX, getBlockCollectionList(DYED_BRICKS), event);
                 event.acceptAll(getBlockCollectionList(DYED_WOOD));
                 addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(LAMPS), event);
@@ -399,7 +404,11 @@ public class PyriteItemGroups {
             case "colored_blocks":
                 COLORED_BLOCKS.put(copyBlock, newBlock);
                 break;
-            case "concrete_stairs", "concrete_slab", "wool_slab", "wool_stairs":
+            case "wool_stairs":
+                WOOL_STAIRS.add(newBlock);
+            case "wool_slab":
+                WOOL_SLAB.add(newBlock);
+            case "concrete_stairs", "concrete_slab":
                 break;
             default:
                 ModHelpers.log("%s provided group %s".formatted(newBlock.getPath(), group));

@@ -33,6 +33,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Emerald.")
    public boolean emerald = true;
 
+   @DisplayName("Framed Glass")
+   @Comment("Adds a decorative block set made of Iron and Glass.")
+   public boolean framed_glass = true;
+
    @DisplayName("Gold Block Set")
    @Comment("Completes the block set for Gold.")
    public boolean gold = true;

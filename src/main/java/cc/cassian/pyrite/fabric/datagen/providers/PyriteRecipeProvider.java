@@ -167,6 +167,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 
 				for (String dye : ModLists.DYES) {
 					var dyeTag = TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+dye));
+					Ingredient dyeIngredient = ingredientOf(dyeTag);
 					List<String> requiredOptions = new ArrayList<>();
 					if (ModLists.PYRITE_DYES.contains(dye)) {
 						requiredOptions.add("oddities");
@@ -187,10 +188,22 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					concreteOptions.add("concrete_stairs_and_slabs");
 					slab(getItem(Pyrite.of(dye+"_concrete_slab")), concrete, concreteOptions);
 					stairs(getItem(Pyrite.of(dye+"_concrete_stairs")), concrete, concreteOptions);
-
+					// framed glass
+					var framedGlassOptions = new ArrayList<>(requiredOptions);
+					framedGlassOptions.add("framed_glass");
+					coloredBaseBlockFromBaseBlockAndDye(getItem(Pyrite.of(dye+"_framed_glass")), dyeIngredient, Ingredient.of(getItem(Pyrite.of("framed_glass"))), framedGlassOptions);
 				}
 				// torch lever
-				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(output);
+				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(List.of("torch_levers")));
+				// framed glass
+				shaped(RecipeCategory.BUILDING_BLOCKS, getItem(Pyrite.of("framed_glass"))).group("framed_glass")
+						.pattern("X#X")
+						.pattern("#X#")
+						.pattern("X#X")
+						.define('#', Items.GLASS)
+						.define('X', Items.IRON_NUGGET)
+						.unlockedBy(getItemName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+						.save(configuredOutput(List.of("framed_glass")));
 
 				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
 					Identifier blockId = entry.getId();
@@ -328,8 +341,6 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.unlockedBy("has_boat", this.has(ItemTags.BOATS))
 						.save(configuredOutput(requiredOptions));
 			}
-
-
 
 			private RecipeOutput configuredOutput(Identifier id) {
 				List<String> requiredOptions = getRequiredOptions(id);

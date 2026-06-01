@@ -3,38 +3,38 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "torch_levers"
+        "framed_glass"
       ]
     }
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "pyrite:torch_lever"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "torch": {
+    "has_base": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:torch"
+            "items": "minecraft:oak_planks"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:yellow_framed_glass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "torch"
+      "has_base"
     ]
   ],
   "rewards": {
     "recipes": [
-      "pyrite:torch_lever"
+      "pyrite:yellow_framed_glass"
     ]
   }
 }

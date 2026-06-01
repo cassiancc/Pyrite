@@ -3,7 +3,7 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "torch_levers"
+        "framed_glass"
       ]
     }
   ],
@@ -11,15 +11,15 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pyrite:torch_lever"
+        "recipe": "pyrite:framed_glass"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "torch": {
+    "iron_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:torch"
+            "items": "minecraft:iron_ingot"
           }
         ]
       },
@@ -29,12 +29,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "torch"
+      "iron_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "pyrite:torch_lever"
+      "pyrite:framed_glass"
     ]
   }
 }
