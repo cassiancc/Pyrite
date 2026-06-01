@@ -62,7 +62,7 @@ public class ModHelpers {
             requiredOptions.add("azalea");
         } else if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
-        } else if (path.contains("glow") || path.contains("honey") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
+        } else if (path.contains("glow") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
             requiredOptions.add("oddities");
         }
         if (path.contains("torch_lever")) {

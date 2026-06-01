@@ -165,6 +165,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					}
 				}
 
+				Item baseFramedGlass = getItem(Pyrite.of("framed_glass"));
 				for (String dye : ModLists.DYES) {
 					var dyeTag = TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+dye));
 					Ingredient dyeIngredient = ingredientOf(dyeTag);
@@ -191,12 +192,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					// framed glass
 					var framedGlassOptions = new ArrayList<>(requiredOptions);
 					framedGlassOptions.add("framed_glass");
-					coloredBaseBlockFromBaseBlockAndDye(getItem(Pyrite.of(dye+"_framed_glass")), dyeIngredient, Ingredient.of(getItem(Pyrite.of("framed_glass"))), framedGlassOptions);
+					Item dyedFramedGlass = getItem(Pyrite.of(dye + "_framed_glass"));
+					coloredBaseBlockFromBaseBlockAndDye(dyedFramedGlass, dyeIngredient, Ingredient.of(baseFramedGlass), framedGlassOptions);
+					stainedGlassPaneFromStainedGlass(getItem(dye+"_framed_glass_pane"), dyedFramedGlass, framedGlassOptions);
 				}
 				// torch lever
 				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(List.of("torch_levers")));
 				// framed glass
-				shaped(RecipeCategory.BUILDING_BLOCKS, getItem(Pyrite.of("framed_glass"))).group("framed_glass")
+				shaped(RecipeCategory.BUILDING_BLOCKS, baseFramedGlass).group("framed_glass")
 						.pattern("X#X")
 						.pattern("#X#")
 						.pattern("X#X")
@@ -301,6 +304,17 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.unlockedBy("has_base", this.has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
 						.save(configuredOutput(requiredOptions));
 			}
+
+			public void stainedGlassPaneFromStainedGlass(final ItemLike result, final ItemLike stainedGlass, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.DECORATIONS, result, 16)
+						.define('#', stainedGlass)
+						.pattern("###")
+						.pattern("###")
+						.group("stained_glass_pane")
+						.unlockedBy("has_glass", this.has(stainedGlass))
+						.save(configuredOutput(requiredOptions));
+			}
+
 
 			private Item getItem(Identifier id) {
                 return registries.getOrThrow(ResourceKey.create(Registries.ITEM, id)).value();
