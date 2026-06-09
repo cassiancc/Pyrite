@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mossy_calcite_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:mossy_calcite_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mossy_calcite_brick_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "mossy_calcite_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:mossy_calcite_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mossy_calcite_bricks",
+      "mossy_calcite_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:mossy_calcite_brick_slab"
+    ]
+  }
+}

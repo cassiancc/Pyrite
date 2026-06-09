@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:rose_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "rose_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:rose_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "rose_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:rose_brick_stairs"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:star_terracotta_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "star_terracotta_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:star_terracotta_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "star_terracotta_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:star_terracotta_brick_stairs"
+    ]
+  }
+}

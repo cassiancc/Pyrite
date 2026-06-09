@@ -11,6 +11,7 @@ import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
+import cc.cassian.pyrite.util.BrickSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
@@ -40,6 +41,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
+import static cc.cassian.pyrite.registry.BlockCreator.BRICK_SETS;
 
 @SuppressWarnings("all")
 public class PyriteRecipeProvider extends FabricRecipeProvider {
@@ -64,12 +66,25 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					}
 				}
 
+				for (BrickSet brickSet : BRICK_SETS) {
+					List<String> requiredOptions = getRequiredOptions(Pyrite.of(brickSet.blockID()));
+					slab(brickSet.slab(), brickSet.base(), requiredOptions);
+					stairs(brickSet.stairs(), brickSet.base().asItem(), requiredOptions);
+					wall(brickSet.wall(), brickSet.base().asItem(), requiredOptions);
+					wallGate(brickSet.wallGate(), brickSet.base().asItem(), brickSet.wall().asItem(), requiredOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.slab(), brickSet.base(), 2, requiredOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.stairs(), brickSet.base(), requiredOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.wall(), brickSet.base(), requiredOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.wallGate(), brickSet.base(), requiredOptions);
+				}
+
+
 				for (Block wall : ModLists.getVanillaWalls()) {
 					Identifier wallId = wall.properties().blockId().identifier();
 					Item wallGate = getItem(Pyrite.of(wallId.getPath()+"_gate"));
-					wallGate(wallGate,
-							getItem(wallId.withPath(block-> block.replace("_wall", "").replace("brick", "bricks").replace("tile", "tiles"))),
-							wall.asItem(), List.of("wall_gates"));
+					Item base = getItem(wallId.withPath(block -> block.replace("_wall", "").replace("brick", "bricks").replace("tile", "tiles")));
+					wallGate(wallGate, base, wall, List.of("wall_gates"));
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallGate, base, List.of("wall_gates"));
 				}
 
 				for (Block resourceBlock : ModLists.getVanillaResourceBlocks()) {
@@ -195,8 +210,12 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					var concrete = getItemOrVanilla(Pyrite.of(dye + "_concrete"));
 					var concreteOptions = new ArrayList<>(requiredOptions);
 					concreteOptions.add("concrete_stairs_and_slabs");
-					slab(getItem(Pyrite.of(dye+"_concrete_slab")), concrete, concreteOptions);
-					stairs(getItem(Pyrite.of(dye+"_concrete_stairs")), concrete, concreteOptions);
+					Item concreteSlab = getItem(Pyrite.of(dye + "_concrete_slab"));
+					slab(concreteSlab, concrete, concreteOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, concreteSlab, concrete, 2, concreteOptions);
+					Item concreteStairs = getItem(Pyrite.of(dye + "_concrete_stairs"));
+					stairs(concreteStairs, concrete, concreteOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, concreteStairs, concrete, 1, concreteOptions);
 					// framed glass
 					var framedGlassOptions = new ArrayList<>(requiredOptions);
 					framedGlassOptions.add("framed_glass");
@@ -276,7 +295,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				this.wallBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), this.has(base)).save(configuredOutput(requiredOptions));
 			}
 
-			public void wallGate(final ItemLike result, final Item base, final Item wall, List<String> requiredOptions) {
+			public void wallGate(final ItemLike result, final ItemLike base, final ItemLike wall, List<String> requiredOptions) {
 				this.shaped(RecipeCategory.REDSTONE, result)
 						.define('#', wall)
 						.define('W', base)

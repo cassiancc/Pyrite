@@ -77,8 +77,11 @@ public class ModHelpers {
         if (path.contains("framed_glass")) {
             requiredOptions.add("framed_glass");
         }
+        if (path.contains("wall_gate")) {
+            requiredOptions.add("wall_gates");
+        }
         for (Block vanillaResourceBlock : ModLists.getVanillaResourceBlocks()) {
-            var resourceBlockPath = vanillaResourceBlock.builtInRegistryHolder().key().identifier().getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
+            var resourceBlockPath = BuiltInRegistries.BLOCK.getKey(vanillaResourceBlock).getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
             if (path.contains(resourceBlockPath)) {
                 if (!requiredOptions.contains(resourceBlockPath))
                     requiredOptions.add(resourceBlockPath);
@@ -89,6 +92,7 @@ public class ModHelpers {
 
     public static boolean enabled(List<String> options) {
         for (String option : options) {
+            @SuppressWarnings("all")
             var value = ((TrackedValue<Boolean>) Pyrite.CONFIG.getValue(List.of(option))).value();
             if (value == false) return false;
         }
@@ -100,10 +104,10 @@ public class ModHelpers {
     }
 
     public static boolean enabled(ItemStack stack) {
-        return enabled(stack.getItem().builtInRegistryHolder().key().identifier());
+        return enabled(BuiltInRegistries.ITEM.getKey(stack.getItem()));
     }
 
-    public static boolean enabled(BlockEntry stack) {
+    public static boolean enabled(BlockEntry<?> stack) {
         return enabled(stack.getId());
     }
 
@@ -278,6 +282,7 @@ public class ModHelpers {
         TRANSLUCENT_BLOCKS.add(newBlock);
     }
 
+    @SuppressWarnings("all")
     public static void addSupportedBlock(Supplier<?> be, Block block) {
         SUPPORTED_BLOCKS.put((Supplier<BlockEntityType<?>>) be, block);
     }

@@ -9,11 +9,13 @@ import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
+import cc.cassian.pyrite.util.BrickSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
@@ -48,6 +50,8 @@ public class BlockCreator {
     // All items and their IDs.
     public static final LinkedHashMap<String, Item> ITEMS = new LinkedHashMap<>();
     public static final ArrayList<BlockFamily> FAMILIES = new ArrayList<>();
+    public static final ArrayList<BrickSet> BRICK_SETS = new ArrayList<>();
+
     /**
      * This registers a basic item with no additional settings - primarily used for Dye.
      */
@@ -532,15 +536,16 @@ public class BlockCreator {
         if (group == null)
             group = blockID;
         //Bricks
-        createPyriteBlock( blockID+"s", "block", copyBlock, color, lux, group);
+        var base = createPyriteBlock( blockID+"s", "block", copyBlock, color, lux, group);
         //Brick Stairs
-        createPyriteBlock( blockID+"_stairs", "stairs", copyBlock, color, lux, group);
+        var stairs = createPyriteBlock( blockID+"_stairs", "stairs", copyBlock, color, lux, group);
         //Brick Slab
-        createPyriteBlock( blockID+"_slab", "slab", copyBlock, color, lux, group);
+        var slab = createPyriteBlock( blockID+"_slab", "slab", copyBlock, color, lux, group);
         //Brick Wall
-        createPyriteBlock( blockID+"_wall", "wall", copyBlock, color, lux, group);
+        var wall = createPyriteBlock( blockID+"_wall", "wall", copyBlock, color, lux, group);
         //Brick Wall Gate
-        createPyriteBlock(blockID+"_wall_gate","wall_gate", copyBlock, BlockSetType.STONE, group);
+        var wallGate = createPyriteBlock(blockID+"_wall_gate","wall_gate", copyBlock, BlockSetType.STONE, group);
+        BRICK_SETS.add(new BrickSet(blockID, base, stairs, slab, wall, wallGate));
     }
 
     public static void generateBrickSet(String blockID, Block copyBlock, MapColor color) {

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:sandstone_bricks",
+  "result": {
+    "count": 2,
+    "id": "pyrite:sandstone_brick_slab"
+  }
+}

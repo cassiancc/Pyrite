@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:black_bricks",
+  "result": {
+    "count": 2,
+    "id": "pyrite:black_brick_slab"
+  }
+}

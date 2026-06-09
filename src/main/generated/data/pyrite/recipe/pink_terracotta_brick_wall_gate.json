@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:pink_terracotta_brick_wall",
+    "W": "pyrite:pink_terracotta_bricks"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "pyrite:pink_terracotta_brick_wall_gate"
+  }
+}

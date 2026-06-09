@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:light_gray_terracotta_brick_wall",
+    "W": "pyrite:light_gray_terracotta_bricks"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "pyrite:light_gray_terracotta_brick_wall_gate"
+  }
+}

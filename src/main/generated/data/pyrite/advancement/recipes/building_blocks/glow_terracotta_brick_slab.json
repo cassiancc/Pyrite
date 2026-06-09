@@ -1,0 +1,51 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "glow_terracotta_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:glow_terracotta_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_glow_terracotta_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:glow_terracotta_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:glow_terracotta_brick_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glow_terracotta_bricks",
+      "glow_terracotta_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:glow_terracotta_brick_slab"
+    ]
+  }
+}

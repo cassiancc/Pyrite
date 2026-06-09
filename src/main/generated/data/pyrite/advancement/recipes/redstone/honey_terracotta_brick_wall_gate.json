@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:honey_terracotta_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "honey_terracotta_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:honey_terracotta_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "honey_terracotta_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:honey_terracotta_brick_wall_gate"
+    ]
+  }
+}

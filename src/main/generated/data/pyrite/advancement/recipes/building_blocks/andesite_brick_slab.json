@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "andesite_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:andesite_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_andesite_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:andesite_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:andesite_brick_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_andesite_bricks",
+      "andesite_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:andesite_brick_slab"
+    ]
+  }
+}

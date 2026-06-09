@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:nostalgia_terracotta_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "nostalgia_terracotta_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:nostalgia_terracotta_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "nostalgia_terracotta_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:nostalgia_terracotta_brick_stairs"
+    ]
+  }
+}

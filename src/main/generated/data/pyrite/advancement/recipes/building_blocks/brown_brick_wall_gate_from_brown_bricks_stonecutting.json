@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brown_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:brown_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:brown_brick_wall_gate_from_brown_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brown_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:brown_brick_wall_gate_from_brown_bricks_stonecutting"
+    ]
+  }
+}

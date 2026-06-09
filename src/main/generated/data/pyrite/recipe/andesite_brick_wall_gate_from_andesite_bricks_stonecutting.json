@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:andesite_bricks",
+  "result": {
+    "id": "pyrite:andesite_brick_wall_gate"
+  }
+}

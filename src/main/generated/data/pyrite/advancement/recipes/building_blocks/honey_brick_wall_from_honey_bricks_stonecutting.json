@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_honey_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:honey_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:honey_brick_wall_from_honey_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_honey_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:honey_brick_wall_from_honey_bricks_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:cobbled_deepslate_brick_wall",
+    "W": "pyrite:cobbled_deepslate_bricks"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "pyrite:cobbled_deepslate_brick_wall_gate"
+  }
+}

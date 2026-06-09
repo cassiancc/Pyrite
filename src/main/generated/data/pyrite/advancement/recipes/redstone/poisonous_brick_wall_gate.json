@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:poisonous_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "poisonous_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:poisonous_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "poisonous_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:poisonous_brick_wall_gate"
+    ]
+  }
+}

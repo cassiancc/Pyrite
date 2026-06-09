@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:mossy_diorite_brick_wall",
+    "W": "pyrite:mossy_diorite_bricks"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "pyrite:mossy_diorite_brick_wall_gate"
+  }
+}

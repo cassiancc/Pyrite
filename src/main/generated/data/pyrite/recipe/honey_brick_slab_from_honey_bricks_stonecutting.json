@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:honey_bricks",
+  "result": {
+    "count": 2,
+    "id": "pyrite:honey_brick_slab"
+  }
+}
