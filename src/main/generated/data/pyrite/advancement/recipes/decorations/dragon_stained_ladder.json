@@ -4,6 +4,7 @@
       "condition": "pyrite:config",
       "options": [
         "oddities",
+        "ladders",
         "ladders"
       ]
     }

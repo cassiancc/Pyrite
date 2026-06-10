@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "charred_nether_bricks": {

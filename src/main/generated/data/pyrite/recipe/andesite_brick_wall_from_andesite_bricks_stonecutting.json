@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "andesite_bricks"
+      ]
+    }
+  ],
   "type": "minecraft:stonecutting",
   "ingredient": "pyrite:andesite_bricks",
   "result": {

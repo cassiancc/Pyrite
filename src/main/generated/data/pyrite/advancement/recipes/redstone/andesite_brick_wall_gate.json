@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "andesite_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "andesite_bricks": {

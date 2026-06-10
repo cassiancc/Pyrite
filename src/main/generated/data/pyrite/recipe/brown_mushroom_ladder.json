@@ -4,6 +4,7 @@
       "condition": "pyrite:config",
       "options": [
         "mushrooms",
+        "ladders",
         "ladders"
       ]
     }

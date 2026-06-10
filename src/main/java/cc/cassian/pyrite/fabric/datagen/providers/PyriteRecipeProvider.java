@@ -34,14 +34,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LadderBlock;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
 import static cc.cassian.pyrite.registry.BlockCreator.BRICK_SETS;
+import static net.minecraft.world.item.Items.COBBLESTONE;
 
 @SuppressWarnings("all")
 public class PyriteRecipeProvider extends FabricRecipeProvider {
@@ -71,11 +69,13 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					slab(brickSet.slab(), brickSet.base(), requiredOptions);
 					stairs(brickSet.stairs(), brickSet.base().asItem(), requiredOptions);
 					wall(brickSet.wall(), brickSet.base().asItem(), requiredOptions);
-					wallGate(brickSet.wallGate(), brickSet.base().asItem(), brickSet.wall().asItem(), requiredOptions);
+					var wallGateOptions = new ArrayList<>(requiredOptions);
+					wallGateOptions.add("wall_gates");
+					wallGate(brickSet.wallGate(), brickSet.base().asItem(), brickSet.wall().asItem(), wallGateOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.slab(), brickSet.base(), 2, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.stairs(), brickSet.base(), requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.wall(), brickSet.base(), requiredOptions);
-					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.wallGate(), brickSet.base(), requiredOptions);
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.wallGate(), brickSet.base(), wallGateOptions);
 				}
 
 
@@ -85,6 +85,17 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Item base = getItem(wallId.withPath(block -> block.replace("_wall", "").replace("brick", "bricks").replace("tile", "tiles")));
 					wallGate(wallGate, base, wall, List.of("wall_gates"));
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallGate, base, List.of("wall_gates"));
+				}
+
+				for (String s : List.of(
+						"cobblestone", "cobbled_deepslate", "smooth_stone", "andesite", "diorite", "calcite", "granite", "sandstone", "red_sandstone"
+				)) {
+					Item base = getItem(Identifier.withDefaultNamespace(s));
+					Item bricks = getItem(s + "_bricks");
+					List<String> options = List.of(s + "_bricks");
+					if (!s.contains("sandstone"))
+						bricksBuilder(RecipeCategory.BUILDING_BLOCKS, bricks, Ingredient.of(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options));
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, bricks, base, options);
 				}
 
 				for (Block resourceBlock : ModLists.getVanillaResourceBlocks()) {
@@ -197,9 +208,9 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						requiredOptions.add("oddities");
 					}
 					Identifier torchId = Pyrite.of(dye + "_torch");
-					shapeless(RecipeCategory.DECORATIONS, getItem(torchId)).group("torch").requires(dyeTag).requires(Items.TORCH).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions));
+					shapeless(RecipeCategory.DECORATIONS, getItem(torchId)).group("torch").requires(dyeTag).requires(Items.TORCH).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torches"));
 					Identifier torchLeverId = Pyrite.of(dye + "_torch_lever");
-					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torch_levers"));
+					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torch_levers", "torches"));
 					// wool
 					var wool = getItemOrVanilla((dye + "_wool"));
 					var woolOptions = new ArrayList<>(requiredOptions);
@@ -230,6 +241,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					coloredBaseBlockFromBaseBlockAndDye(terracottaBricks, dyeIngredient, Ingredient.of(getItem("terracotta_bricks")), terracottaOptions);
 					bricksBuilder(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, Ingredient.of(terracotta)).unlockedBy(getHasName(terracotta), has(terracotta)).save(configuredOutput(terracottaOptions), dye+"_terracotta_bricks_from_terracotta");
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, terracotta, terracottaOptions);
+					//TODO dyed bricks
+					//TODO dyed lamps
+					//TODO dyed torches
+					//TODO dyed shelves
+					//TODO dyed chests
 				}
 				// terracotta
 				Item terracotta = getItemOrVanilla("terracotta");

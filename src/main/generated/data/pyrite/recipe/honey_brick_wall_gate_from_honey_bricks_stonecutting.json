@@ -3,7 +3,8 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "oddities"
+        "oddities",
+        "wall_gates"
       ]
     }
   ],

@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "terracotta_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
   "type": "minecraft:stonecutting",
   "ingredient": "pyrite:light_blue_terracotta_bricks",
   "result": {

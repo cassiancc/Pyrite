@@ -4,7 +4,8 @@
       "condition": "pyrite:config",
       "options": [
         "oddities",
-        "torch_levers"
+        "torch_levers",
+        "torches"
       ]
     }
   ],

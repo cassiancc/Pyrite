@@ -3,7 +3,9 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "oddities"
+        "oddities",
+        "terracotta_bricks",
+        "wall_gates"
       ]
     }
   ],

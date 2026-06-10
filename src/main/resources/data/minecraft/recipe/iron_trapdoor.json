@@ -1,15 +1,23 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-      "DDD",
-      "DDD"
-    ],
-    "key": {
-      "D": "minecraft:iron_ingot"
-    },
-    "result": {
-      "item": "minecraft:iron_trapdoor",
-      "id": "minecraft:iron_trapdoor",
-      "count": 2
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "iron"
+      ]
     }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DDD"
+  ],
+  "key": {
+    "D": "minecraft:iron_ingot"
+  },
+  "result": {
+    "item": "minecraft:iron_trapdoor",
+    "id": "minecraft:iron_trapdoor",
+    "count": 2
+  }
 }

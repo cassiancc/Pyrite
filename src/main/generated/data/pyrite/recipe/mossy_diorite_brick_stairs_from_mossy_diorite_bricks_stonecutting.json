@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "diorite_bricks"
+      ]
+    }
+  ],
   "type": "minecraft:stonecutting",
   "ingredient": "pyrite:mossy_diorite_bricks",
   "result": {

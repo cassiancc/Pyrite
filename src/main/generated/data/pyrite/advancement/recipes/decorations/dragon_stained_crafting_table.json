@@ -3,8 +3,8 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "crafting_tables",
-        "oddities"
+        "oddities",
+        "crafting_tables"
       ]
     }
   ],

@@ -1,1 +1,15 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["##","##"],"key":{"#":"minecraft:deepslate"},"result":{"id":"minecraft:polished_deepslate","count":4}}
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": "minecraft:deepslate"
+  },
+  "result": {
+    "id": "minecraft:polished_deepslate",
+    "count": 4
+  }
+}

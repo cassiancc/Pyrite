@@ -1,1 +1,36 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["SCS","SCS"],"key":{"C":"aether:holystone_bricks","S":"aether:holystone_brick_wall"},"fabric:load_conditions":[{"condition":"fabric:all_mods_loaded","values":["aether"]}],"neoforge:conditions":[{"type":"neoforge:mod_loaded","modid":"aether"}],"result":{"id":"pyrite:holystone_brick_wall_gate","count":6}}
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "SCS",
+    "SCS"
+  ],
+  "key": {
+    "C": "aether:holystone_bricks",
+    "S": "aether:holystone_brick_wall"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "aether"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates"
+      ]
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "result": {
+    "id": "pyrite:holystone_brick_wall_gate",
+    "count": 6
+  }
+}

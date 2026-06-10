@@ -6,6 +6,9 @@ import folk.sisby.kaleido.lib.quiltconfig.api.annotations.DisplayName;
 
 public class ModConfig extends WrappedConfig {
 
+   @Comment("Enable a block set for Andesite Bricks.")
+   public boolean andesite_bricks = true;
+
    @DisplayName("Amethyst Block Set")
    @Comment("Completes the block set for Amethyst.")
    public boolean amethyst = true;
@@ -13,6 +16,15 @@ public class ModConfig extends WrappedConfig {
    @DisplayName("Azalea Wood Set")
    @Comment("Enable Pyrite Azalea Trees and their wood set.")
    public boolean azalea = true;
+
+   @Comment("Enable a block set for Calcite Bricks.")
+   public boolean calcite_bricks = true;
+
+   @Comment("Enable a block set for Cobblestone Bricks.")
+   public boolean cobblestone_bricks = true;
+
+   @Comment("Enable a block set for Cobbled Deepslate Bricks.")
+   public boolean cobbled_deepslate_bricks = true;
 
    @Comment("Enable Pyrite's Concrete Stairs and Slabs.")
    public boolean concrete_stairs_and_slabs = true;
@@ -29,6 +41,9 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Diamond.")
    public boolean diamond = true;
 
+   @Comment("Enable a block set for Diorite Bricks.")
+   public boolean diorite_bricks = true;
+
    @DisplayName("Emerald Block Set")
    @Comment("Completes the block set for Emerald.")
    public boolean emerald = true;
@@ -36,6 +51,9 @@ public class ModConfig extends WrappedConfig {
    @DisplayName("Framed Glass")
    @Comment("Adds a decorative block set made of Iron and Glass.")
    public boolean framed_glass = true;
+
+   @Comment("Enable a block set for Granite Bricks.")
+   public boolean granite_bricks = true;
 
    @DisplayName("Gold Block Set")
    @Comment("Completes the block set for Gold.")
@@ -72,8 +90,20 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Redstone.")
    public boolean redstone = true;
 
+   @Comment("Enable a block set for Red Sandstone Bricks.")
+   public boolean red_sandstone_bricks = true;
+
+   @Comment("Enable a block set for Sandstone Bricks.")
+   public boolean sandstone_bricks = true;
+
+   @Comment("Enable a block set for Smooth Stone Bricks.")
+   public boolean smooth_stone_bricks = true;
+
    @Comment("Enable a block set for Terracotta Bricks.")
    public boolean terracotta_bricks = true;
+
+   @Comment("Enable Dyed Torches.")
+   public boolean torches = true;
 
    @DisplayName("Torch Levers")
    @Comment("Enable Pyrite Torch Levers.")

@@ -55,9 +55,6 @@ public class ModHelpers {
     public static List<String> getRequiredOptions(Identifier itemId) {
         List<String> requiredOptions = new ArrayList<>();
         String path = itemId.getPath();
-        if (path.contains("crafting_table")) {
-            requiredOptions.add("crafting_tables");
-        }
         if (path.contains("azalea")) {
             requiredOptions.add("azalea");
         } else if (path.contains("mushroom")) {
@@ -65,20 +62,60 @@ public class ModHelpers {
         } else if (path.contains("glow") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
             requiredOptions.add("oddities");
         }
-        if (path.contains("torch_lever")) {
-            requiredOptions.add("torch_levers");
-        }
         if (path.contains("wool_stair") || path.contains("wool_slab")) {
             requiredOptions.add("wool_stairs_and_slabs");
         }
-        if (path.contains("concrete_stair") || path.contains("concrete_slab")) {
+        else if (path.contains("concrete_stair") || path.contains("concrete_slab")) {
             requiredOptions.add("concrete_stairs_and_slabs");
         }
-        if (path.contains("framed_glass")) {
+        else if (path.contains("torch_lever")) {
+            requiredOptions.add("torch_levers");
+        }
+        else if (path.contains("torch")) {
+            requiredOptions.add("torches");
+        }
+        else if (path.contains("framed_glass")) {
             requiredOptions.add("framed_glass");
+        }
+        else if (path.contains("ladder")) {
+            requiredOptions.add("ladders");
+        }
+        else if (path.contains("crafting_table")) {
+            requiredOptions.add("crafting_tables");
         }
         if (path.contains("wall_gate")) {
             requiredOptions.add("wall_gates");
+        }
+        if (path.contains("terracotta_brick")) {
+            requiredOptions.add("terracotta_bricks");
+        }
+        else if (path.contains("calcite_brick")) {
+            requiredOptions.add("calcite_bricks");
+        }
+        else if (path.contains("granite_brick")) {
+            requiredOptions.add("granite_bricks");
+        }
+        else if (path.contains("diorite_brick")) {
+            requiredOptions.add("diorite_bricks");
+        }
+        else if (path.contains("andesite_brick")) {
+            requiredOptions.add("andesite_bricks");
+        }
+        else if (path.contains("cobblestone_brick")) {
+            requiredOptions.add("cobblestone_bricks");
+        }
+        else if (path.contains("cobbled_deepslate_brick")) {
+            requiredOptions.add("cobbled_deepslate_bricks");
+        }
+        else if (path.contains("smooth_stone_brick")) {
+            requiredOptions.add("smooth_stone_bricks");
+        }
+        else if (path.contains("sandstone_brick")) {
+            if (path.contains("red")) {
+                requiredOptions.add("red_sandstone_bricks");
+            } else {
+                requiredOptions.add("sandstone_bricks");
+            }
         }
         for (Block vanillaResourceBlock : ModLists.getVanillaResourceBlocks()) {
             var resourceBlockPath = BuiltInRegistries.BLOCK.getKey(vanillaResourceBlock).getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
@@ -92,8 +129,13 @@ public class ModHelpers {
 
     public static boolean enabled(List<String> options) {
         for (String option : options) {
+            TrackedValue<?> value1 = CONFIG.getValue(List.of(option));
+            if (value1 == null) {
+				LOGGER.error("{} does not exist in Pyrite's config!", option);
+                return false;
+            }
             @SuppressWarnings("all")
-            var value = ((TrackedValue<Boolean>) Pyrite.CONFIG.getValue(List.of(option))).value();
+            var value = ((TrackedValue<Boolean>) value1).value();
             if (value == false) return false;
         }
         return true;

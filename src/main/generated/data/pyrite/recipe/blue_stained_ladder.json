@@ -3,6 +3,7 @@
     {
       "condition": "pyrite:config",
       "options": [
+        "ladders",
         "ladders"
       ]
     }
