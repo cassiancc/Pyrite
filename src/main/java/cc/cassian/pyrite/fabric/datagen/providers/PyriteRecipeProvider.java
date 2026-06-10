@@ -19,7 +19,6 @@ import net.minecraft.advancements.criterion.PlayerTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
@@ -39,7 +38,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
 import static cc.cassian.pyrite.registry.BlockCreator.BRICK_SETS;
-import static net.minecraft.world.item.Items.COBBLESTONE;
 
 @SuppressWarnings("all")
 public class PyriteRecipeProvider extends FabricRecipeProvider {
@@ -93,10 +91,16 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Item base = getItem(Identifier.withDefaultNamespace(s));
 					Item bricks = getItem(s + "_bricks");
 					List<String> options = List.of(s + "_bricks");
-					if (!s.contains("sandstone"))
+					if (!s.contains("sandstone")) {
 						bricksBuilder(RecipeCategory.BUILDING_BLOCKS, bricks, Ingredient.of(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options));
+						shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_"+s+"_bricks")).requires(bricks).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options), "mossy_"+s+"_bricks_from_moss");
+						shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_"+s+"_bricks")).requires(bricks).requires(Items.VINE).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options), "mossy_"+s+"_bricks_from_vine");
+					}
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, bricks, base, options);
 				}
+				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_moss");
+				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_vine");
+
 
 				for (Block resourceBlock : ModLists.getVanillaResourceBlocks()) {
 					var id = ModHelpers.findVanillaBlockID(resourceBlock);

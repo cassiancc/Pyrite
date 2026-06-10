@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "diorite_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pyrite:diorite_bricks",
+    "minecraft:moss_block"
+  ],
+  "result": {
+    "id": "pyrite:mossy_diorite_bricks"
+  }
+}

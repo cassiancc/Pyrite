@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "calcite_bricks"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_calcite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:calcite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mossy_calcite_bricks_from_vine"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_calcite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:mossy_calcite_bricks_from_vine"
+    ]
+  }
+}
