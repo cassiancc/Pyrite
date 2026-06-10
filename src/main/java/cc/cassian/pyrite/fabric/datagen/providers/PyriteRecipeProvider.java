@@ -201,13 +201,13 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Identifier torchLeverId = Pyrite.of(dye + "_torch_lever");
 					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torch_levers"));
 					// wool
-					var wool = getItemOrVanilla(Pyrite.of(dye + "_wool"));
+					var wool = getItemOrVanilla((dye + "_wool"));
 					var woolOptions = new ArrayList<>(requiredOptions);
 					woolOptions.add("wool_stairs_and_slabs");
 					slab(getItem(Pyrite.of(dye+"_wool_slab")), wool, woolOptions);
 					stairs(getItem(Pyrite.of(dye+"_wool_stairs")), wool, woolOptions);
 					// concrete
-					var concrete = getItemOrVanilla(Pyrite.of(dye + "_concrete"));
+					var concrete = getItemOrVanilla(dye + "_concrete");
 					var concreteOptions = new ArrayList<>(requiredOptions);
 					concreteOptions.add("concrete_stairs_and_slabs");
 					Item concreteSlab = getItem(Pyrite.of(dye + "_concrete_slab"));
@@ -222,7 +222,20 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Item dyedFramedGlass = getItem(Pyrite.of(dye + "_framed_glass"));
 					coloredBaseBlockFromBaseBlockAndDye(dyedFramedGlass, dyeIngredient, Ingredient.of(baseFramedGlass), framedGlassOptions);
 					stainedGlassPaneFromStainedGlass(getItem(dye+"_framed_glass_pane"), dyedFramedGlass, framedGlassOptions);
+					// terracotta bricks
+					var terracottaOptions = new ArrayList<>(requiredOptions);
+					terracottaOptions.add("terracotta_bricks");
+					Item terracotta = getItemOrVanilla(dye + "_terracotta");
+					Item terracottaBricks = getItem(dye + "_terracotta_bricks");
+					coloredBaseBlockFromBaseBlockAndDye(terracottaBricks, dyeIngredient, Ingredient.of(getItem("terracotta_bricks")), terracottaOptions);
+					bricksBuilder(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, Ingredient.of(terracotta)).unlockedBy(getHasName(terracotta), has(terracotta)).save(configuredOutput(terracottaOptions), dye+"_terracotta_bricks_from_terracotta");
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, terracotta, terracottaOptions);
 				}
+				// terracotta
+				Item terracotta = getItemOrVanilla("terracotta");
+				Item terracottaBricks = getItem("terracotta_bricks");
+				bricksBuilder(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, Ingredient.of(terracotta)).unlockedBy(getHasName(terracotta), has(terracotta)).save(configuredOutput(List.of("terracotta_bricks")));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, terracotta, List.of("terracotta_bricks"));
 				// torch lever
 				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(List.of("torch_levers")));
 				// framed glass
@@ -354,13 +367,17 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				return registries.getOrThrow(ResourceKey.create(Registries.ITEM, Pyrite.of(id))).value();
 			}
 
-			private Item getItemOrVanilla(Identifier id) {
-				ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
+			private Item getItemOrVanilla(String id) {
+				ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Pyrite.of(id));
 				if (registries.get(key).isPresent()) {
 					return registries.getOrThrow(key).value();
 				} else {
-					return registries.getOrThrow(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace(id.getPath()))).value();
+					return registries.getOrThrow(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace(id))).value();
 				}
+			}
+
+			private Item getItemOrVanilla(Identifier id) {
+				return getItemOrVanilla(id.getPath());
 			}
 
 			private boolean is(Holder<Block> holder, PyriteBlockItemTags.BlockItemTagId planks) {

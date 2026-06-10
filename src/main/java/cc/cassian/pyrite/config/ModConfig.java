@@ -72,6 +72,9 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Redstone.")
    public boolean redstone = true;
 
+   @Comment("Enable a block set for Terracotta Bricks.")
+   public boolean terracotta_bricks = true;
+
    @DisplayName("Torch Levers")
    @Comment("Enable Pyrite Torch Levers.")
    public boolean torch_levers = true;
