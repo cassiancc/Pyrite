@@ -10,12 +10,12 @@ import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.util.BrickSet;
+import cc.cassian.pyrite.util.WoodSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
@@ -51,6 +51,7 @@ public class BlockCreator {
     public static final LinkedHashMap<String, Item> ITEMS = new LinkedHashMap<>();
     public static final ArrayList<BlockFamily> FAMILIES = new ArrayList<>();
     public static final ArrayList<BrickSet> BRICK_SETS = new ArrayList<>();
+    public static final ArrayList<WoodSet> WOOD_SETS = new ArrayList<>();
 
     /**
      * This registers a basic item with no additional settings - primarily used for Dye.
@@ -146,7 +147,7 @@ public class BlockCreator {
                 ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
                 break;
             case "chest":
-                if (Platform.INSTANCE.isModLoaded("lolmcv")) {
+                if (ModHelpers.generateChests()) {
                     newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
                     ModHelpers.addSupportedBlock(()->BlockEntityType.CHEST, newBlock);
                 }
@@ -609,10 +610,10 @@ public class BlockCreator {
         var button = createPyriteBlock("%s_button".formatted(blockID), "button", Blocks.OAK_BUTTON, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Crafting Tables
-        createPyriteBlock("%s_crafting_table".formatted(blockID), "crafting", Blocks.CRAFTING_TABLE, color, blockLux, group);
+        var craftingTable = createPyriteBlock("%s_crafting_table".formatted(blockID), "crafting", Blocks.CRAFTING_TABLE, color, blockLux, group);
 
         // Ladders
-        createPyriteBlock("%s_ladder".formatted(blockID), "ladder", Blocks.LADDER, color, blockLux, group);
+        var ladder = createPyriteBlock("%s_ladder".formatted(blockID), "ladder", Blocks.LADDER, color, blockLux, group);
 
         // Signs
         var sign = createPyriteBlock("%s_sign".formatted(blockID), "sign", Blocks.OAK_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
@@ -621,15 +622,16 @@ public class BlockCreator {
         var hangingSign = createPyriteBlock("%s_hanging_sign".formatted(blockID), "hanging_sign", Blocks.OAK_HANGING_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Chest
-        if (Platform.INSTANCE.isModLoaded("lolmcv"))
-            createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        Block chest = null;
+        if (ModHelpers.generateChests())
+			chest = createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Cabinet
         if (Platform.INSTANCE.isModLoaded("farmersdelight"))
             createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Shelf
-        createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
+        var shelf = createPyriteBlock("%s_shelf".formatted(blockID), "shelf", Blocks.OAK_SHELF, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Boat
         EntityType<Boat> boatEntityType = ModEntities.registerBoat(blockID, () -> BuiltInRegistries.ITEM.getValue(Pyrite.of("%s_boat".formatted(blockID))));
@@ -641,6 +643,7 @@ public class BlockCreator {
 
         var family = new BlockFamily.Builder(planks).slab(slab).stairs(stairs).trapdoor(trapdoor).door(door).button(button).fence(fence).pressurePlate(pressurePlate).fenceGate(fenceGate).getFamily();
         FAMILIES.add(family);
+        WOOD_SETS.add(new WoodSet(blockID, GENERATED_SET, GENERATED_TYPE, planks, stairs, slab, fence, fenceGate, door, trapdoor, pressurePlate, button, craftingTable, ladder, sign, hangingSign, shelf, boat, chestBoat, chest));
     }
 
     /**

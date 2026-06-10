@@ -332,4 +332,8 @@ public class ModHelpers {
     public static void addSupportedBlock(BlockEntityType<?> be, Block block) {
         SUPPORTED_BLOCKS.put(()->be, block);
     }
+
+	public static boolean generateChests() {
+		return Platform.INSTANCE.isModLoaded("lolmcv") || Platform.INSTANCE.isDevEnvironment();
+	}
 }

@@ -12,9 +12,11 @@ import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.BrickSet;
+import cc.cassian.pyrite.util.WoodSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedResourceCondition;
 import net.minecraft.advancements.criterion.PlayerTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -38,6 +40,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
 import static cc.cassian.pyrite.registry.BlockCreator.BRICK_SETS;
+import static cc.cassian.pyrite.registry.BlockCreator.WOOD_SETS;
 
 @SuppressWarnings("all")
 public class PyriteRecipeProvider extends FabricRecipeProvider {
@@ -60,6 +63,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 							Pyrite.LOGGER.info(e.getMessage() + family.getBaseBlock().getName());
 						}
 					}
+				}
+				for (WoodSet woodSet : WOOD_SETS) {
+					shelf(woodSet.shelf(), woodSet.planks(), getRequiredOptions(Pyrite.of(woodSet.blockID())));
+					chest(woodSet.chest(), woodSet.planks(), getRequiredOptions(Pyrite.of(woodSet.blockID())));
 				}
 
 				for (BrickSet brickSet : BRICK_SETS) {
@@ -335,6 +342,29 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.pattern("#W#")
 						.pattern("#W#").unlockedBy(getItemName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
+
+			public void shelf(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.DECORATIONS, result, 2)
+						.define('#', planks)
+						.pattern("###")
+						.pattern("   ")
+						.pattern("###")
+						.group("shelf")
+						.unlockedBy(getHasName(planks), this.has(planks))
+						.save(configuredOutput(requiredOptions));
+			}
+
+			public void chest(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.DECORATIONS, result, 1)
+						.define('#', planks)
+						.pattern("###")
+						.pattern("# #")
+						.pattern("###")
+						.group("chest")
+						.unlockedBy(getHasName(planks), this.has(planks))
+						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("lolmcv"))));
+			}
+
 
 			private Ingredient getDyeTag(Identifier stainedPlanks) {
                 return ingredientOf(TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+stainedPlanks.getPath())));
