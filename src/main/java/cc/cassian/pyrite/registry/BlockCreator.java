@@ -52,6 +52,7 @@ public class BlockCreator {
     public static final ArrayList<BlockFamily> FAMILIES = new ArrayList<>();
     public static final ArrayList<BrickSet> BRICK_SETS = new ArrayList<>();
     public static final ArrayList<WoodSet> WOOD_SETS = new ArrayList<>();
+    public static final ArrayList<TurfSet> TURF_SETS = new ArrayList<>();
 
     /**
      * This registers a basic item with no additional settings - primarily used for Dye.
@@ -160,7 +161,6 @@ public class BlockCreator {
                 break;
             case "ladder":
                 newBlock = new LadderBlock(blockSettings);
-                addTransparentBlock(newBlock);
                 break;
             case "carpet":
                 newBlock = new ModCarpet(blockSettings);
@@ -233,23 +233,18 @@ public class BlockCreator {
                     putBlock(entry);
                     PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
-                    addTransparentBlock(waxed);
                 } else {
                     newBlock = new ModPane(blockSettings, power);
                 }
-                addTransparentBlock(newBlock);
                 break;
             case "stained_framed_glass_pane":
                 newBlock = new StainedGlassPaneBlock(getDyeColorFromFramedId(blockID), blockSettings);
-                addTranslucentBlock(newBlock);
                 break;
             case "glass":
                 newBlock = new ModGlass(blockSettings);
-                addTransparentBlock(newBlock);
                 break;
             case "stained_framed_glass":
                 newBlock = new StainedFramedGlass(getDyeColorFromFramedId(blockID), blockSettings);
-                addTranslucentBlock(newBlock);
                 break;
             case "gravel":
                 newBlock = new GravelBlock(blockSettings);
@@ -257,12 +252,10 @@ public class BlockCreator {
             case "flower":
                 // register flower
                 newBlock = new FlowerBlock(MobEffects.NIGHT_VISION, 5, blockSettings);
-                addTransparentBlock(newBlock);
                 // register flower pot
                 final FlowerPotBlock FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
                 PyriteItemGroups.POTTED_FLOWERS.put(blockID, new BlockEntry<>("potted_"+blockID, FLOWER_POTTED));
-                addTransparentBlock(FLOWER_POTTED);
                 break;
             case "fence_gate":
                 newBlock = new FenceGateBlock(woodType, blockSettings);
@@ -315,7 +308,6 @@ public class BlockCreator {
                 }
                 else
                     newBlock = new DoorBlock(blockSetType, blockSettings.noOcclusion());
-                addTransparentBlock(newBlock);
                 break;
             case "trapdoor":
                 if (isCopper(blockID)) {
@@ -327,7 +319,6 @@ public class BlockCreator {
                 }
                 else
                     newBlock = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
-                addTransparentBlock(newBlock);
                 break;
             case "button":
                 newBlock = new ModWoodenButton(blockSettings, blockSetType);
@@ -344,18 +335,15 @@ public class BlockCreator {
                 if (Platform.INSTANCE.isModLoaded("totally_lit") && !ModLists.PYRITE_DYES.contains(blockID.replace("_torch", "")))
                     TotallyLitCompat.registerTorch("unlit_"+blockID, blockSettings.noOcclusion(), "unlit_torch", newBlock);
                 //?}
-                addTransparentBlock(newBlock);
                 break;
             case "torch_lever":
                 newBlock = new TorchLever(blockSettings.noOcclusion(), particle);
-                addTransparentBlock(newBlock);
                 break;
             case "concrete_powder":
                 newBlock = new ConcretePowderBlock(getLastBlock(), blockSettings);
                 break;
             case "switchable_glass":
                 newBlock = new SwitchableGlass(blockSettings);
-                addTranslucentBlock(newBlock);
                 break;
             default:
                 log("%s created as a generic block, block provided: %s".formatted(blockID, blockType));
@@ -520,7 +508,7 @@ public class BlockCreator {
     }
 
     public static void generateTurfSets() {
-        for (Map.Entry<String, Block> entry : TURF_SETS.entrySet()) {
+        for (Map.Entry<String, Block> entry : ModLists.TURF_SETS.entrySet()) {
             createTurfSet(entry.getKey(), entry.getValue());
         }
     }
@@ -532,7 +520,7 @@ public class BlockCreator {
         createPyriteBlock("nostalgia_gravel", "gravel", Blocks.GRAVEL, "gravel");
     }
 
-    //Generate an entire brick set.
+    /// Generate an entire brick set.
     public static void generateBrickSet(String blockID, Block copyBlock, MapColor color, int lux, @Nullable String group) {
         if (group == null)
             group = blockID;
@@ -567,17 +555,16 @@ public class BlockCreator {
         generateBrickSet(blockID, copyBlock, color, generateMossySet, blockID);
     }
 
-        //Generate a Turf block set - including block and its slab, stair, and carpet variants.
+    /// Generate a Turf block set - including block and its slab, stair, and carpet variants.
     public static void createTurfSet(String blockID, Block copyBlock) {
-        createPyriteBlock( blockID+"_turf", "block", copyBlock, blockID);
-        createStair(blockID, copyBlock, blockID);
-        createSlab(blockID, copyBlock, blockID);
-        createCarpet(blockID+"_carpet", blockID);
+        var turf = createPyriteBlock( blockID+"_turf", "block", copyBlock, blockID);
+        var stair = createStair(blockID, copyBlock, blockID);
+        var slab = createSlab(blockID, copyBlock, blockID);
+        var carpet = createCarpet(blockID+"_carpet", blockID);
+        TURF_SETS.add(new TurfSet(blockID, copyBlock, turf, stair, slab, carpet));
     }
 
-    /**
-     * Generate an entire wood set.
-     */
+    /// Generate an entire wood set.
     public static void createWoodSet(String blockID, MapColor color, int blockLux, String group) {
         BlockSetType GENERATED_SET = new BlockSetType(blockID);
         WoodType GENERATED_TYPE = Platform.INSTANCE.createWoodType(blockID, GENERATED_SET);

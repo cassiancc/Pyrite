@@ -48,18 +48,23 @@ import static cc.cassian.pyrite.Pyrite.*;
 public class ModHelpers {
 
     public static final ArrayList<Block> GRASS_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Block> TRANSPARENT_BLOCKS = new ArrayList<>();
-    public static final ArrayList<Block> TRANSLUCENT_BLOCKS = new ArrayList<>();
     public static final LinkedHashMultimap<Supplier<BlockEntityType<?>>, Block> SUPPORTED_BLOCKS = LinkedHashMultimap.create();
 
     public static List<String> getRequiredOptions(Identifier itemId) {
         List<String> requiredOptions = new ArrayList<>();
         String path = itemId.getPath();
+        // wood types
         if (path.contains("azalea")) {
             requiredOptions.add("azalea");
-        } else if (path.contains("mushroom")) {
+        }
+        // wall gates
+        if (path.contains("wall_gate")) {
+            requiredOptions.add("wall_gates");
+        }
+        else if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
-        } else if (path.contains("glow") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
+        }
+        else if (path.contains("glow") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
             requiredOptions.add("oddities");
         }
         if (path.contains("wool_stair") || path.contains("wool_slab")) {
@@ -67,9 +72,6 @@ public class ModHelpers {
         }
         else if (path.contains("concrete_stair") || path.contains("concrete_slab")) {
             requiredOptions.add("concrete_stairs_and_slabs");
-        }
-        else if (path.contains("torch_lever")) {
-            requiredOptions.add("torch_levers");
         }
         else if (path.contains("torch")) {
             requiredOptions.add("torches");
@@ -115,6 +117,13 @@ public class ModHelpers {
                 requiredOptions.add("red_sandstone_bricks");
             } else {
                 requiredOptions.add("sandstone_bricks");
+            }
+        }
+        else if ((path.contains("grass") || path.contains("path") || path.contains("mycelium") || path.contains("podzol")) && !path.contains("nostalgia")) {
+            if (path.contains("turf")) {
+                requiredOptions.add(path);
+            } else {
+                requiredOptions.add(path.split("_")[0] + "_turf");
             }
         }
         for (Block vanillaResourceBlock : ModLists.getVanillaResourceBlocks()) {
@@ -314,14 +323,6 @@ public class ModHelpers {
     public static void addAlias(String id) {
         BuiltInRegistries.BLOCK.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
         BuiltInRegistries.ITEM.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
-    }
-
-
-    public static void addTransparentBlock(Block newBlock) {
-        TRANSPARENT_BLOCKS.add(newBlock);
-    }
-    public static void addTranslucentBlock(Block newBlock) {
-        TRANSLUCENT_BLOCKS.add(newBlock);
     }
 
     @SuppressWarnings("all")

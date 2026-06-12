@@ -92,8 +92,6 @@ public final class PyriteNeoForge {
                 event.addPackFinders(Pyrite.of("resourcepacks/"+key), PackType.SERVER_DATA, Component.literal(key), PackSource.BUILT_IN, true, Pack.Position.TOP);
             }
         });
-        if (Pyrite.CONFIG.crafting_tables)
-            event.addPackFinders(Pyrite.of("resourcepacks/pyrite_crafting_tables"), PackType.CLIENT_RESOURCES, Component.literal("pyrite/pyrite_crafting_tables"), PackSource.BUILT_IN, true, Pack.Position.TOP);
     }
 
     @SubscribeEvent

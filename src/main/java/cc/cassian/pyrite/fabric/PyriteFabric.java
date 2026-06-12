@@ -16,6 +16,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 //? if >26  {
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.registry.FuelValueEvents;
 //?} else {
 /*import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
@@ -26,6 +27,9 @@ import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import static net.fabricmc.fabric.api.resource.v1.pack.PackActivationType.DEFAULT_ENABLED;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
 import java.util.HashMap;
@@ -63,6 +67,13 @@ public class PyriteFabric implements ModInitializer {
                 PyriteRRVPlugin.hideStacks();
             }
         }));
+
+        DefaultItemComponentEvents.MODIFY.register(m->{
+            m.modify(Items.CRAFTING_TABLE, ((builder, lookupProvider, item) -> {
+                if (Pyrite.CONFIG.crafting_tables)
+                    builder.set(DataComponents.ITEM_NAME, Component.translatable("block.pyrite.oak_crafting_table"));
+            }));
+        });
     }
 
     public static final HashMap<Block, Integer> FUEL_BLOCKS = new HashMap<>();

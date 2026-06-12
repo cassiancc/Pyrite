@@ -17,15 +17,19 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable Pyrite Azalea Trees and their wood set.")
    public boolean azalea = true;
 
+   @DisplayName("Calcite Bricks")
    @Comment("Enable a block set for Calcite Bricks.")
    public boolean calcite_bricks = true;
 
+   @DisplayName("Cobblestone Bricks")
    @Comment("Enable a block set for Cobblestone Bricks.")
    public boolean cobblestone_bricks = true;
 
+   @DisplayName("Cobbled Deepslate Bricks")
    @Comment("Enable a block set for Cobbled Deepslate Bricks.")
    public boolean cobbled_deepslate_bricks = true;
 
+   @DisplayName("Concrete Stairs and Slabs")
    @Comment("Enable Pyrite's Concrete Stairs and Slabs.")
    public boolean concrete_stairs_and_slabs = true;
 
@@ -41,6 +45,7 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Diamond.")
    public boolean diamond = true;
 
+   @DisplayName("Diorite Bricks")
    @Comment("Enable a block set for Diorite Bricks.")
    public boolean diorite_bricks = true;
 
@@ -52,6 +57,7 @@ public class ModConfig extends WrappedConfig {
    @Comment("Adds a decorative block set made of Iron and Glass.")
    public boolean framed_glass = true;
 
+   @DisplayName("Granite Bricks")
    @Comment("Enable a block set for Granite Bricks.")
    public boolean granite_bricks = true;
 
@@ -59,11 +65,15 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Gold.")
    public boolean gold = true;
 
+   @DisplayName("Grass Turf")
+   @Comment("Adds a block set for Grass Blocks.")
+   public boolean grass_turf = true;
+
    @DisplayName("Iron Block Set")
    @Comment("Completes the block set for Iron.")
    public boolean iron = true;
 
-   @DisplayName("Variant Ladders")
+   @DisplayName("Ladder Variants")
    @Comment("Enable variant Ladders for Pyrite dyed wood.")
    public boolean ladders = true;
 
@@ -74,6 +84,10 @@ public class ModConfig extends WrappedConfig {
    @DisplayName("Mushroom Wood Sets")
    @Comment("Enable Pyrite Tall Mushrooms and their wood set.")
    public boolean mushrooms = true;
+
+   @DisplayName("Mycelium Turf")
+   @Comment("Adds a block set for Mycelium.")
+   public boolean mycelium_turf = true;
 
    @DisplayName("Netherite Block Set")
    @Comment("Completes the block set for Netherite.")
@@ -86,22 +100,35 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Quartz.")
    public boolean quartz = true;
 
+   @DisplayName("Path Turf")
+   @Comment("Adds a block set for Dirt Paths.")
+   public boolean path_turf = true;
+
+   @DisplayName("Podzol Turf")
+   @Comment("Adds a block set for Podzol.")
+   public boolean podzol_turf = true;
+
    @DisplayName("Redstone Block Set")
    @Comment("Completes the block set for Redstone.")
    public boolean redstone = true;
 
+   @DisplayName("Red Sandstone Bricks")
    @Comment("Enable a block set for Red Sandstone Bricks.")
    public boolean red_sandstone_bricks = true;
 
+   @DisplayName("Sandstone Bricks")
    @Comment("Enable a block set for Sandstone Bricks.")
    public boolean sandstone_bricks = true;
 
+   @DisplayName("Smooth Stone Bricks")
    @Comment("Enable a block set for Smooth Stone Bricks.")
    public boolean smooth_stone_bricks = true;
 
+   @DisplayName("Terracotta Bricks")
    @Comment("Enable a block set for Terracotta Bricks.")
    public boolean terracotta_bricks = true;
 
+   @DisplayName("Dyed Torches")
    @Comment("Enable Dyed Torches.")
    public boolean torches = true;
 
@@ -109,9 +136,11 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable Pyrite Torch Levers.")
    public boolean torch_levers = true;
 
+   @DisplayName("Wall Gates")
    @Comment("Enable Wall Gates, a decorative block like fence gates, but for walls.")
    public boolean wall_gates = true;
 
+   @DisplayName("Wool Stairs and Slabs")
    @Comment("Enable Pyrite's Backport of Wool Stairs and Slabs.")
    public boolean wool_stairs_and_slabs = true;
 

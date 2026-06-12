@@ -56,6 +56,7 @@ public class PyriteLootTableProvider extends FabricBlockLootSubProvider {
 					case "DoorBlock": add(value, createDoorTable(value)); break;
 					case "FlowerPotBlock": dropPottedContents(value); break;
 					case "ModGlass", "StainedFramedGlass", "StainedGlassPaneBlock": dropWhenSilkTouch(value); break;
+					case "PyriteStandingSignBlock": break;
 					default: {
 						dropSelf(value);
 						Pyrite.LOGGER.error("Loot table for %s not implemented!".formatted(value.getClass().getSimpleName().toString()));

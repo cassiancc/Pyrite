@@ -11,6 +11,7 @@ import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
+import cc.cassian.pyrite.registry.TurfSet;
 import cc.cassian.pyrite.util.BrickSet;
 import cc.cassian.pyrite.util.WoodSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -39,8 +40,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
-import static cc.cassian.pyrite.registry.BlockCreator.BRICK_SETS;
-import static cc.cassian.pyrite.registry.BlockCreator.WOOD_SETS;
+import static cc.cassian.pyrite.registry.BlockCreator.*;
 
 @SuppressWarnings("all")
 public class PyriteRecipeProvider extends FabricRecipeProvider {
@@ -67,6 +67,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				for (WoodSet woodSet : WOOD_SETS) {
 					shelf(woodSet.shelf(), woodSet.planks(), getRequiredOptions(Pyrite.of(woodSet.blockID())));
 					chest(woodSet.chest(), woodSet.planks(), getRequiredOptions(Pyrite.of(woodSet.blockID())));
+				}
+
+				for (TurfSet turfSet : TURF_SETS) {
+					List<String> requiredOptions = getRequiredOptions(Pyrite.of(turfSet.name() + "_turf"));
+					twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, turfSet.turf(), turfSet.grassBlock(), requiredOptions);
+					slab(turfSet.slab(), turfSet.turf(), requiredOptions);
+					stairs(turfSet.stair(), turfSet.turf(), requiredOptions);
+					carpet(turfSet.carpet(), turfSet.turf(), requiredOptions);
 				}
 
 				for (BrickSet brickSet : BRICK_SETS) {
@@ -323,11 +331,20 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
                 return registries.get(ResourceKey.create(Registries.ITEM, Pyrite.of(doorId))).map(Holder::value);
             }
 
+			public void carpet(final ItemLike result, final ItemLike sourceItem, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.DECORATIONS, result, 3)
+						.define('#', sourceItem)
+						.pattern("##")
+						.group("carpet")
+						.unlockedBy(getHasName(sourceItem), this.has(sourceItem))
+						.save(configuredOutput(requiredOptions));
+			}
+
 			public void slab(final ItemLike result, final ItemLike base, List<String> requiredOptions) {
 				this.slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), this.has(base)).unlockedBy(getItemName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
-			public void stairs(final ItemLike result, final Item base, List<String> requiredOptions) {
+			public void stairs(final ItemLike result, final ItemLike base, List<String> requiredOptions) {
 				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', base).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getItemName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
@@ -474,7 +491,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public void twoByTwoPacker(final RecipeCategory category, final ItemLike result, final ItemLike ingredient, List<String> requiredOptions) {
-				this.shaped(category, result, 1)
+				twoByTwoPacker(category, result, ingredient, 1, requiredOptions);
+			}
+
+			public void twoByTwoPacker(final RecipeCategory category, final ItemLike result, final ItemLike ingredient, int count, List<String> requiredOptions) {
+				this.shaped(category, result, count)
 						.define('#', ingredient)
 						.pattern("##")
 						.pattern("##")

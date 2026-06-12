@@ -25,7 +25,6 @@ public class TotallyLitCompat {
         PyriteItemGroups.match(new BlockEntry<>(blockID, block), copyBlock, group);
         //? <26
         //TotallyLit.TORCH_MAP.put(copyBlock, block);
-        ModHelpers.addTransparentBlock(block);
     }
 
     public static void add(Block newBlock) {
