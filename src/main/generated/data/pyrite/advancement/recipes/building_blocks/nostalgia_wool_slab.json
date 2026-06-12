@@ -25,23 +25,12 @@
         "recipe": "pyrite:nostalgia_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "nostalgia_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:nostalgia_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_nostalgia_wool",
-      "nostalgia_wool"
+      "has_nostalgia_wool"
     ]
   ],
   "rewards": {

@@ -9,16 +9,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "andesite_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:andesite_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_andesite_bricks": {
       "conditions": {
         "items": [
@@ -39,8 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_andesite_bricks",
-      "andesite_bricks"
+      "has_andesite_bricks"
     ]
   ],
   "rewards": {

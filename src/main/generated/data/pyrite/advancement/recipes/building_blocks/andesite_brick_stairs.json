@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "andesite_bricks": {
+    "has_andesite_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "andesite_bricks"
+      "has_andesite_bricks"
     ]
   ],
   "rewards": {

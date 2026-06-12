@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "black_terracotta_bricks": {
+    "has_black_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "black_terracotta_bricks"
+      "has_black_terracotta_bricks"
     ]
   ],
   "rewards": {

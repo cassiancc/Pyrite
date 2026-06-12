@@ -24,23 +24,12 @@
         "recipe": "pyrite:red_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "red_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:red_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_red_concrete",
-      "red_concrete"
+      "has_red_concrete"
     ]
   ],
   "rewards": {

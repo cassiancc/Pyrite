@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cut_redstone": {
+    "has_cut_redstone": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cut_redstone"
+      "has_cut_redstone"
     ]
   ],
   "rewards": {

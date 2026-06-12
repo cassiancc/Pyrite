@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cyan_terracotta_bricks": {
+    "has_cyan_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cyan_terracotta_bricks"
+      "has_cyan_terracotta_bricks"
     ]
   ],
   "rewards": {

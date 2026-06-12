@@ -15,7 +15,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "yellow_concrete": {
+    "has_yellow_concrete": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "yellow_concrete"
+      "has_yellow_concrete"
     ]
   ],
   "rewards": {

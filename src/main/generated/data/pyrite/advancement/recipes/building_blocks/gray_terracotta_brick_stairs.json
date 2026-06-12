@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "gray_terracotta_bricks": {
+    "has_gray_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gray_terracotta_bricks"
+      "has_gray_terracotta_bricks"
     ]
   ],
   "rewards": {

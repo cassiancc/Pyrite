@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "gray_concrete": {
+    "has_gray_concrete": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gray_concrete"
+      "has_gray_concrete"
     ]
   ],
   "rewards": {

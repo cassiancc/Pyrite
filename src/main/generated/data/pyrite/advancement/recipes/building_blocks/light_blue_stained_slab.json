@@ -16,23 +16,12 @@
         "recipe": "pyrite:light_blue_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "light_blue_stained_planks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:light_blue_stained_planks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_light_blue_stained_planks",
-      "light_blue_stained_planks"
+      "has_light_blue_stained_planks"
     ]
   ],
   "rewards": {

@@ -25,23 +25,12 @@
         "recipe": "pyrite:honey_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "honey_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:honey_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_wool",
-      "honey_wool"
+      "has_honey_wool"
     ]
   ],
   "rewards": {

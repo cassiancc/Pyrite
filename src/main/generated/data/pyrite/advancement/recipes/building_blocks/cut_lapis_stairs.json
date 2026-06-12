@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cut_lapis": {
+    "has_cut_lapis": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cut_lapis"
+      "has_cut_lapis"
     ]
   ],
   "rewards": {

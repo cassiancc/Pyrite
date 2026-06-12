@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "dragon_bricks": {
+    "has_dragon_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "dragon_bricks"
+      "has_dragon_bricks"
     ]
   ],
   "rewards": {

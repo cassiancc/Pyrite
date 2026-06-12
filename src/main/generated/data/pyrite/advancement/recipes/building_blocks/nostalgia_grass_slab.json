@@ -24,23 +24,12 @@
         "recipe": "pyrite:nostalgia_grass_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "nostalgia_grass_turf": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:nostalgia_grass_turf"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_nostalgia_grass_turf",
-      "nostalgia_grass_turf"
+      "has_nostalgia_grass_turf"
     ]
   ],
   "rewards": {

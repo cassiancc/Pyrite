@@ -24,23 +24,12 @@
         "recipe": "pyrite:rose_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "rose_stained_planks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:rose_stained_planks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_rose_stained_planks",
-      "rose_stained_planks"
+      "has_rose_stained_planks"
     ]
   ],
   "rewards": {

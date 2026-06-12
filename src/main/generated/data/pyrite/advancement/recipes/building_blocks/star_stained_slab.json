@@ -24,23 +24,12 @@
         "recipe": "pyrite:star_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "star_stained_planks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:star_stained_planks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_star_stained_planks",
-      "star_stained_planks"
+      "has_star_stained_planks"
     ]
   ],
   "rewards": {

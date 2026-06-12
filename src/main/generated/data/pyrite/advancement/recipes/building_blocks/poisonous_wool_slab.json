@@ -25,23 +25,12 @@
         "recipe": "pyrite:poisonous_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "poisonous_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:poisonous_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_poisonous_wool",
-      "poisonous_wool"
+      "has_poisonous_wool"
     ]
   ],
   "rewards": {

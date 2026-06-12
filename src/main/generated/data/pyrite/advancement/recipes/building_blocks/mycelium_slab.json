@@ -24,23 +24,12 @@
         "recipe": "pyrite:mycelium_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "mycelium_turf": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:mycelium_turf"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_mycelium_turf",
-      "mycelium_turf"
+      "has_mycelium_turf"
     ]
   ],
   "rewards": {

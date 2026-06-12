@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "black_bricks": {
+    "has_black_bricks": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "black_bricks"
+      "has_black_bricks"
     ]
   ],
   "rewards": {

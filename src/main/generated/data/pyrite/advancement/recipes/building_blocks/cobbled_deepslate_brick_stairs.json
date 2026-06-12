@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cobbled_deepslate_bricks": {
+    "has_cobbled_deepslate_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cobbled_deepslate_bricks"
+      "has_cobbled_deepslate_bricks"
     ]
   ],
   "rewards": {

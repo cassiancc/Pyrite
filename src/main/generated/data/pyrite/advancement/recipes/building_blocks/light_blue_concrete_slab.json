@@ -24,23 +24,12 @@
         "recipe": "pyrite:light_blue_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "light_blue_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:light_blue_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_light_blue_concrete",
-      "light_blue_concrete"
+      "has_light_blue_concrete"
     ]
   ],
   "rewards": {

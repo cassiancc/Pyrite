@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "grass_turf": {
+    "has_grass_turf": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "grass_turf"
+      "has_grass_turf"
     ]
   ],
   "rewards": {

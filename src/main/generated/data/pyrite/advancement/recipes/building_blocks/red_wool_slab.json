@@ -24,23 +24,12 @@
         "recipe": "pyrite:red_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "red_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:red_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_red_wool",
-      "red_wool"
+      "has_red_wool"
     ]
   ],
   "rewards": {

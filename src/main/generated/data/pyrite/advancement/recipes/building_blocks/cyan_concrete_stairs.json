@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cyan_concrete": {
+    "has_cyan_concrete": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cyan_concrete"
+      "has_cyan_concrete"
     ]
   ],
   "rewards": {

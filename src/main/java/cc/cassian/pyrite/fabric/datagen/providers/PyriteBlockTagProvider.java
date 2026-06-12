@@ -4,12 +4,12 @@ package cc.cassian.pyrite.fabric.datagen.providers;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
-import cc.cassian.pyrite.core.PyriteBlockTags;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
-import cc.cassian.pyrite.entries.PyriteEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
+import cc.cassian.pyrite.util.ResourceBlockSet;
+import cc.cassian.pyrite.util.WoodSet;
 import dev.lieonlion.quad.tags.QuadBlockTags;
 import net.fabricmc.fabric.api.block.v1.BlockFunctionalityTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -18,7 +18,6 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -30,8 +29,6 @@ import net.minecraft.world.level.block.*;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
 public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
@@ -145,43 +142,34 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(BlockTags.WALL_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).map(blockResourceKey -> of(blockResourceKey.identifier().withPath(path->path.replace("hanging_sign","hanging_wall_sign")))));
 		optionalBuilder(BlockTags.WOOL, "wool");
 		builder(BlockTags.STANDING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->!contains(key, "hanging_sign")));
-		builder(BlockTags.WOODEN_SHELVES).addAll(get(ShelfBlock.class));
 		builder(BlockTags.WALLS).addAll(get(ModWall.class));
 
-		for (BlockFamily family : BlockCreator.FAMILIES) {
-			if (family.getBaseBlock().builtInRegistryHolder().key().identifier().getPath().contains("planks")) {
-				valueLookupBuilder(PyriteBlockItemTags.PLANKS.block()).add(family.getBaseBlock());
-				family.getVariants().forEach((variant, block) -> {
-					if (block == null) return;
-					switch (variant) {
-						case BUTTON -> valueLookupBuilder(BlockTags.WOODEN_BUTTONS).add(block);
-						case DOOR -> valueLookupBuilder(BlockTags.WOODEN_DOORS).add(block);
-						case FENCE -> valueLookupBuilder(BlockTags.WOODEN_FENCES).add(block);
-						case FENCE_GATE -> valueLookupBuilder(BlockTags.FENCE_GATES).add(block);
-						case PRESSURE_PLATE -> valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(block);
-						case SIGN -> valueLookupBuilder(BlockTags.SIGNS).add(block);
-						case SLAB -> valueLookupBuilder(BlockTags.WOODEN_SLABS).add(block);
-						case STAIRS -> valueLookupBuilder(BlockTags.WOODEN_STAIRS).add(block);
-						case TRAPDOOR -> valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS).add(block);
-					}
-				});
-			} else {
-				family.getVariants().forEach((variant, block) -> {
-					if (block == null) return;
-					switch (variant) {
-						case BUTTON -> valueLookupBuilder(BlockTags.BUTTONS).add(block);
-						case CUSTOM_FENCE_GATE -> valueLookupBuilder(PyriteBlockItemTags.WALL_GATES.block()).add(block);
-						case DOOR -> valueLookupBuilder(BlockTags.DOORS).add(block);
-						case FENCE -> valueLookupBuilder(BlockTags.FENCES).add(block);
-						case PRESSURE_PLATE -> valueLookupBuilder(BlockTags.PRESSURE_PLATES).add(block);
-						case SIGN -> valueLookupBuilder(BlockTags.SIGNS).add(block);
-						case SLAB -> valueLookupBuilder(BlockTags.SLABS).add(block);
-						case STAIRS -> valueLookupBuilder(BlockTags.STAIRS).add(block);
-						case TRAPDOOR -> valueLookupBuilder(BlockTags.TRAPDOORS).add(block);
-					}
-				});
-			}
+		for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
+			builder(BlockTags.FENCE_GATES).add(woodSet.fenceGate().resourceKey());
+			builder(BlockTags.SIGNS).add(woodSet.sign().resourceKey());
+			add(PyriteBlockItemTags.PLANKS, woodSet.planks());
+			builder(BlockTags.WOODEN_BUTTONS).add(woodSet.button().resourceKey());
+			builder(BlockTags.WOODEN_DOORS).add(woodSet.door().resourceKey());
+			builder(BlockTags.WOODEN_FENCES).add(woodSet.fence().resourceKey());
+			builder(BlockTags.WOODEN_PRESSURE_PLATES).add(woodSet.pressurePlate().resourceKey());
+			builder(BlockTags.WOODEN_SLABS).add(woodSet.slab().resourceKey());
+			builder(BlockTags.WOODEN_STAIRS).add(woodSet.stairs().resourceKey());
+			builder(BlockTags.WOODEN_SHELVES).add(woodSet.shelf().resourceKey());
+			builder(BlockTags.WOODEN_TRAPDOORS).add(woodSet.trapdoor().resourceKey());
 		}
+
+		for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
+			add(BlockTags.BUTTONS, resourceBlockSet.button());
+			add(BlockTags.WOODEN_DOORS, resourceBlockSet.door());
+			add(BlockTags.WALLS, resourceBlockSet.smoothBlocks().wall(), resourceBlockSet.cutBlocks().wall());
+			add(BlockTags.PRESSURE_PLATES, resourceBlockSet.pressurePlate());
+			add(BlockTags.SLABS, resourceBlockSet.cutBlocks().slab(), resourceBlockSet.smoothBlocks().slab());
+			add(BlockTags.STAIRS, resourceBlockSet.cutBlocks().stairs(), resourceBlockSet.smoothBlocks().stairs());
+			add(BlockTags.TRAPDOORS, resourceBlockSet.trapdoor());
+			add(BlockTags.DOORS, resourceBlockSet.door());
+			add(PyriteBlockItemTags.WALL_GATES, resourceBlockSet.cutBlocks().wallGate(), resourceBlockSet.smoothBlocks().wallGate());
+		}
+
 		builder(BlockTags.SLABS).addAll(get(ModSlab.class));
 		builder(BlockTags.SLABS).addAll(get(WeatheringCopperSlabBlock.class));
 
@@ -196,7 +184,19 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(QuadBlockTags.CATS_ON_BLOCKS_SIT).addTag(PyriteBlockItemTags.CHESTS.block());
 	}
 
-    private boolean contains(ResourceKey<Block> key, String hangingSign) {
+	private void add(TagKey<Block> woodenDoors, BlockEntry<Block>... blocks) {
+		for (BlockEntry<Block> block : blocks) {
+			if (block != null && !block.isVanilla()) {
+				builder(woodenDoors).add(block.resourceKey());
+			}
+		}
+	}
+
+	private void add(PyriteBlockItemTags.BlockItemTagId woodenDoors, BlockEntry<Block>... blocks) {
+		add(woodenDoors.block(), blocks);
+	}
+
+	private boolean contains(ResourceKey<Block> key, String hangingSign) {
         return key.identifier().toString().contains(hangingSign);
     }
 

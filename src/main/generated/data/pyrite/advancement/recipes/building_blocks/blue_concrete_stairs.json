@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "blue_concrete": {
+    "has_blue_concrete": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "blue_concrete"
+      "has_blue_concrete"
     ]
   ],
   "rewards": {

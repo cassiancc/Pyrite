@@ -25,23 +25,12 @@
         "recipe": "pyrite:rose_terracotta_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "rose_terracotta_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:rose_terracotta_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_rose_terracotta_bricks",
-      "rose_terracotta_bricks"
+      "has_rose_terracotta_bricks"
     ]
   ],
   "rewards": {

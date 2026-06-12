@@ -10,7 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "glow_wool": {
+    "has_glow_wool": {
       "conditions": {
         "items": [
           {
@@ -30,7 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "glow_wool"
+      "has_glow_wool"
     ]
   ],
   "rewards": {

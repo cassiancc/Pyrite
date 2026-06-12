@@ -24,23 +24,12 @@
         "recipe": "pyrite:orange_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "orange_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:orange_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_orange_wool",
-      "orange_wool"
+      "has_orange_wool"
     ]
   ],
   "rewards": {

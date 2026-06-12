@@ -16,23 +16,12 @@
         "recipe": "pyrite:purple_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "purple_stained_planks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:purple_stained_planks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_purple_stained_planks",
-      "purple_stained_planks"
+      "has_purple_stained_planks"
     ]
   ],
   "rewards": {

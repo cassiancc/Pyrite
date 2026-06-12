@@ -24,23 +24,12 @@
         "recipe": "pyrite:terracotta_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "terracotta_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:terracotta_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_terracotta_bricks",
-      "terracotta_bricks"
+      "has_terracotta_bricks"
     ]
   ],
   "rewards": {

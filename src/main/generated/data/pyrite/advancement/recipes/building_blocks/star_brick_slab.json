@@ -24,23 +24,12 @@
         "recipe": "pyrite:star_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "star_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:star_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_star_bricks",
-      "star_bricks"
+      "has_star_bricks"
     ]
   ],
   "rewards": {

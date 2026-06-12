@@ -24,23 +24,12 @@
         "recipe": "pyrite:pink_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "pink_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:pink_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_pink_concrete",
-      "pink_concrete"
+      "has_pink_concrete"
     ]
   ],
   "rewards": {

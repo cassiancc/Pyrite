@@ -24,23 +24,12 @@
         "recipe": "pyrite:smooth_redstone_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "smooth_redstone": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:smooth_redstone"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_smooth_redstone",
-      "smooth_redstone"
+      "has_smooth_redstone"
     ]
   ],
   "rewards": {

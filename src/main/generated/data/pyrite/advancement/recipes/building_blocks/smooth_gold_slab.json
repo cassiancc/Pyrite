@@ -24,23 +24,12 @@
         "recipe": "pyrite:smooth_gold_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "smooth_gold": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:smooth_gold"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_smooth_gold",
-      "smooth_gold"
+      "has_smooth_gold"
     ]
   ],
   "rewards": {

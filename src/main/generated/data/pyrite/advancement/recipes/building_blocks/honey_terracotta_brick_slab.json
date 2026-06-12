@@ -25,23 +25,12 @@
         "recipe": "pyrite:honey_terracotta_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "honey_terracotta_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:honey_terracotta_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_terracotta_bricks",
-      "honey_terracotta_bricks"
+      "has_honey_terracotta_bricks"
     ]
   ],
   "rewards": {

@@ -24,23 +24,12 @@
         "recipe": "pyrite:mossy_cobblestone_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "mossy_cobblestone_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:mossy_cobblestone_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_mossy_cobblestone_bricks",
-      "mossy_cobblestone_bricks"
+      "has_mossy_cobblestone_bricks"
     ]
   ],
   "rewards": {

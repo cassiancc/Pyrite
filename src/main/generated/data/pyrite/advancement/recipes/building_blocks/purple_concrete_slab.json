@@ -24,23 +24,12 @@
         "recipe": "pyrite:purple_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "purple_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:purple_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_purple_concrete",
-      "purple_concrete"
+      "has_purple_concrete"
     ]
   ],
   "rewards": {

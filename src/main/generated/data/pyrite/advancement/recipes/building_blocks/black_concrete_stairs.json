@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "black_concrete": {
+    "has_black_concrete": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "black_concrete"
+      "has_black_concrete"
     ]
   ],
   "rewards": {

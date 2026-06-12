@@ -16,23 +16,12 @@
         "recipe": "pyrite:pink_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "pink_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:pink_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_pink_bricks",
-      "pink_bricks"
+      "has_pink_bricks"
     ]
   ],
   "rewards": {

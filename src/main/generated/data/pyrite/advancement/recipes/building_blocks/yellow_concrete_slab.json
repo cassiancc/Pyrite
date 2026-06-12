@@ -24,23 +24,12 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "yellow_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:yellow_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_yellow_concrete",
-      "yellow_concrete"
+      "has_yellow_concrete"
     ]
   ],
   "rewards": {

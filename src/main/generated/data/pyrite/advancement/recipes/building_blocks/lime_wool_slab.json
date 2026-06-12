@@ -24,23 +24,12 @@
         "recipe": "pyrite:lime_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "lime_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:lime_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_lime_wool",
-      "lime_wool"
+      "has_lime_wool"
     ]
   ],
   "rewards": {

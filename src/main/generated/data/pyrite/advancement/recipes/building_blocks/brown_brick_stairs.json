@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "brown_bricks": {
+    "has_brown_bricks": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "brown_bricks"
+      "has_brown_bricks"
     ]
   ],
   "rewards": {

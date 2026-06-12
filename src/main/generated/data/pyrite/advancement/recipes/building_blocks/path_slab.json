@@ -24,23 +24,12 @@
         "recipe": "pyrite:path_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "path_turf": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:path_turf"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_path_turf",
-      "path_turf"
+      "has_path_turf"
     ]
   ],
   "rewards": {

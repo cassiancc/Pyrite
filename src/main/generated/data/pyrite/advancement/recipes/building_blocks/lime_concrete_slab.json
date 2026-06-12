@@ -24,23 +24,12 @@
         "recipe": "pyrite:lime_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "lime_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:lime_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_lime_concrete",
-      "lime_concrete"
+      "has_lime_concrete"
     ]
   ],
   "rewards": {

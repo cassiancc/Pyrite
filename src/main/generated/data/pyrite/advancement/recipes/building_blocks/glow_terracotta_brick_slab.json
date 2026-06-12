@@ -10,16 +10,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "glow_terracotta_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:glow_terracotta_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_glow_terracotta_bricks": {
       "conditions": {
         "items": [
@@ -40,8 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glow_terracotta_bricks",
-      "glow_terracotta_bricks"
+      "has_glow_terracotta_bricks"
     ]
   ],
   "rewards": {

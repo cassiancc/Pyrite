@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cyan_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:cyan_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_cyan_bricks": {
       "conditions": {
         "items": [
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cyan_bricks",
-      "cyan_bricks"
+      "has_cyan_bricks"
     ]
   ],
   "rewards": {

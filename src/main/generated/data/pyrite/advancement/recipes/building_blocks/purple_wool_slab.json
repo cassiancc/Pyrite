@@ -24,23 +24,12 @@
         "recipe": "pyrite:purple_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "purple_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:purple_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_purple_wool",
-      "purple_wool"
+      "has_purple_wool"
     ]
   ],
   "rewards": {

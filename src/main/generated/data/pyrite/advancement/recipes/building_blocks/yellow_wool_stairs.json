@@ -15,7 +15,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "yellow_wool": {
+    "has_yellow_wool": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "yellow_wool"
+      "has_yellow_wool"
     ]
   ],
   "rewards": {

@@ -25,23 +25,12 @@
         "recipe": "pyrite:nostalgia_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "nostalgia_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:nostalgia_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_nostalgia_concrete",
-      "nostalgia_concrete"
+      "has_nostalgia_concrete"
     ]
   ],
   "rewards": {

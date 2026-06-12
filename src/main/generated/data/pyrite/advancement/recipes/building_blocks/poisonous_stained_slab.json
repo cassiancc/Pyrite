@@ -24,23 +24,12 @@
         "recipe": "pyrite:poisonous_stained_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "poisonous_stained_planks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:poisonous_stained_planks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_poisonous_stained_planks",
-      "poisonous_stained_planks"
+      "has_poisonous_stained_planks"
     ]
   ],
   "rewards": {

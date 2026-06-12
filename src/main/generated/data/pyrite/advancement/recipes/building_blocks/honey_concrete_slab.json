@@ -25,23 +25,12 @@
         "recipe": "pyrite:honey_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "honey_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:honey_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_concrete",
-      "honey_concrete"
+      "has_honey_concrete"
     ]
   ],
   "rewards": {

@@ -10,7 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "glow_terracotta_bricks": {
+    "has_glow_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -30,7 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "glow_terracotta_bricks"
+      "has_glow_terracotta_bricks"
     ]
   ],
   "rewards": {

@@ -9,16 +9,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cut_iron": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:cut_iron"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_cut_iron": {
       "conditions": {
         "items": [
@@ -39,8 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cut_iron",
-      "cut_iron"
+      "has_cut_iron"
     ]
   ],
   "rewards": {

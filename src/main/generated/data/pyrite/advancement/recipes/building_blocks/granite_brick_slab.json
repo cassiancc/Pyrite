@@ -9,16 +9,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "granite_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:granite_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_granite_bricks": {
       "conditions": {
         "items": [
@@ -39,8 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_granite_bricks",
-      "granite_bricks"
+      "has_granite_bricks"
     ]
   ],
   "rewards": {

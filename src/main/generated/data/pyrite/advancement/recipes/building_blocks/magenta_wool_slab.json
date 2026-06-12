@@ -24,23 +24,12 @@
         "recipe": "pyrite:magenta_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "magenta_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:magenta_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_magenta_wool",
-      "magenta_wool"
+      "has_magenta_wool"
     ]
   ],
   "rewards": {

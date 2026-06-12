@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "gray_wool": {
+    "has_gray_wool": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gray_wool"
+      "has_gray_wool"
     ]
   ],
   "rewards": {

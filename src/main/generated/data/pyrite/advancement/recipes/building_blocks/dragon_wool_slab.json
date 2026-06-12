@@ -10,16 +10,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "dragon_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:dragon_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_dragon_wool": {
       "conditions": {
         "items": [
@@ -40,8 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dragon_wool",
-      "dragon_wool"
+      "has_dragon_wool"
     ]
   ],
   "rewards": {

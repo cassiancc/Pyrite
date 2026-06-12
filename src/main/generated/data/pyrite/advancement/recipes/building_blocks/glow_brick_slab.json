@@ -9,16 +9,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "glow_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:glow_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_glow_bricks": {
       "conditions": {
         "items": [
@@ -39,8 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glow_bricks",
-      "glow_bricks"
+      "has_glow_bricks"
     ]
   ],
   "rewards": {

@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "glow_bricks": {
+    "has_glow_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "glow_bricks"
+      "has_glow_bricks"
     ]
   ],
   "rewards": {

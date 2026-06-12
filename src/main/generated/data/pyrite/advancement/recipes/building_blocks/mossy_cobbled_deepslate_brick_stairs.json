@@ -9,13 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "pyrite:mossy_cobbled_deepslate_brick_stairs"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "mossy_cobbled_deepslate_bricks": {
+    "has_mossy_cobbled_deepslate_bricks": {
       "conditions": {
         "items": [
           {
@@ -24,12 +18,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mossy_cobbled_deepslate_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "mossy_cobbled_deepslate_bricks"
+      "has_mossy_cobbled_deepslate_bricks"
     ]
   ],
   "rewards": {

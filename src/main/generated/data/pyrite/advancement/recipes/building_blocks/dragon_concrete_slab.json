@@ -10,16 +10,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "dragon_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:dragon_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_dragon_concrete": {
       "conditions": {
         "items": [
@@ -40,8 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dragon_concrete",
-      "dragon_concrete"
+      "has_dragon_concrete"
     ]
   ],
   "rewards": {

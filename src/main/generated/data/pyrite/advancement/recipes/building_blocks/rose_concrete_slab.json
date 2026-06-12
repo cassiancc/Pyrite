@@ -25,23 +25,12 @@
         "recipe": "pyrite:rose_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "rose_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:rose_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_rose_concrete",
-      "rose_concrete"
+      "has_rose_concrete"
     ]
   ],
   "rewards": {

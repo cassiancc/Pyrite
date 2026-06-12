@@ -25,23 +25,12 @@
         "recipe": "pyrite:poisonous_terracotta_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "poisonous_terracotta_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:poisonous_terracotta_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_poisonous_terracotta_bricks",
-      "poisonous_terracotta_bricks"
+      "has_poisonous_terracotta_bricks"
     ]
   ],
   "rewards": {

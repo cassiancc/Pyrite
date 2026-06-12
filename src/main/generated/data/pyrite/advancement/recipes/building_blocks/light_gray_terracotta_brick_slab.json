@@ -24,23 +24,12 @@
         "recipe": "pyrite:light_gray_terracotta_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "light_gray_terracotta_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:light_gray_terracotta_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_light_gray_terracotta_bricks",
-      "light_gray_terracotta_bricks"
+      "has_light_gray_terracotta_bricks"
     ]
   ],
   "rewards": {

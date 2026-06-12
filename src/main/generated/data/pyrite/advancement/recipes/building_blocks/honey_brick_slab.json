@@ -24,23 +24,12 @@
         "recipe": "pyrite:honey_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "honey_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:honey_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_bricks",
-      "honey_bricks"
+      "has_honey_bricks"
     ]
   ],
   "rewards": {

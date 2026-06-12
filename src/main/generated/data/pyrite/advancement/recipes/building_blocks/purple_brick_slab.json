@@ -16,23 +16,12 @@
         "recipe": "pyrite:purple_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "purple_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:purple_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_purple_bricks",
-      "purple_bricks"
+      "has_purple_bricks"
     ]
   ],
   "rewards": {

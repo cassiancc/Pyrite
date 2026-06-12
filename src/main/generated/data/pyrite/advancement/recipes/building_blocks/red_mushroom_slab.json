@@ -24,23 +24,12 @@
         "recipe": "pyrite:red_mushroom_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "red_mushroom_planks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:red_mushroom_planks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_red_mushroom_planks",
-      "red_mushroom_planks"
+      "has_red_mushroom_planks"
     ]
   ],
   "rewards": {

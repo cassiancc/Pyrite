@@ -10,7 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "dragon_terracotta_bricks": {
+    "has_dragon_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -30,7 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "dragon_terracotta_bricks"
+      "has_dragon_terracotta_bricks"
     ]
   ],
   "rewards": {

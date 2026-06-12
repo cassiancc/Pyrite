@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "diorite_bricks": {
+    "has_diorite_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "diorite_bricks"
+      "has_diorite_bricks"
     ]
   ],
   "rewards": {

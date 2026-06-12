@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cut_emerald": {
+    "has_cut_emerald": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cut_emerald"
+      "has_cut_emerald"
     ]
   ],
   "rewards": {

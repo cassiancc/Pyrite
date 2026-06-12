@@ -25,23 +25,12 @@
         "recipe": "pyrite:poisonous_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "poisonous_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:poisonous_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_poisonous_concrete",
-      "poisonous_concrete"
+      "has_poisonous_concrete"
     ]
   ],
   "rewards": {

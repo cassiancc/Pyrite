@@ -10,7 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "dragon_concrete": {
+    "has_dragon_concrete": {
       "conditions": {
         "items": [
           {
@@ -30,7 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "dragon_concrete"
+      "has_dragon_concrete"
     ]
   ],
   "rewards": {

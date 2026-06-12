@@ -9,13 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "pyrite:sandstone_brick_stairs"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "sandstone_bricks": {
+    "has_sandstone_bricks": {
       "conditions": {
         "items": [
           {
@@ -24,12 +18,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:sandstone_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "sandstone_bricks"
+      "has_sandstone_bricks"
     ]
   ],
   "rewards": {

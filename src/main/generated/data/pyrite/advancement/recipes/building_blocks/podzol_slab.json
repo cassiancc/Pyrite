@@ -24,23 +24,12 @@
         "recipe": "pyrite:podzol_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "podzol_turf": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:podzol_turf"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_podzol_turf",
-      "podzol_turf"
+      "has_podzol_turf"
     ]
   ],
   "rewards": {

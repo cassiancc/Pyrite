@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "blue_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:blue_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_blue_bricks": {
       "conditions": {
         "items": [
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_blue_bricks",
-      "blue_bricks"
+      "has_blue_bricks"
     ]
   ],
   "rewards": {

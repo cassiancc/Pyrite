@@ -9,16 +9,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cobbled_deepslate_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:cobbled_deepslate_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_cobbled_deepslate_bricks": {
       "conditions": {
         "items": [
@@ -39,8 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobbled_deepslate_bricks",
-      "cobbled_deepslate_bricks"
+      "has_cobbled_deepslate_bricks"
     ]
   ],
   "rewards": {

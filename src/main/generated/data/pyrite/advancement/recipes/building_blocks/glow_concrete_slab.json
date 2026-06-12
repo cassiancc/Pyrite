@@ -10,16 +10,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "glow_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:glow_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_glow_concrete": {
       "conditions": {
         "items": [
@@ -40,8 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glow_concrete",
-      "glow_concrete"
+      "has_glow_concrete"
     ]
   ],
   "rewards": {

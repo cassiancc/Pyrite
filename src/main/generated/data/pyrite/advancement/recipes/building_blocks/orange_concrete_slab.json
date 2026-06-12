@@ -24,23 +24,12 @@
         "recipe": "pyrite:orange_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "orange_concrete": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:orange_concrete"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_orange_concrete",
-      "orange_concrete"
+      "has_orange_concrete"
     ]
   ],
   "rewards": {

@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "granite_bricks": {
+    "has_granite_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "granite_bricks"
+      "has_granite_bricks"
     ]
   ],
   "rewards": {

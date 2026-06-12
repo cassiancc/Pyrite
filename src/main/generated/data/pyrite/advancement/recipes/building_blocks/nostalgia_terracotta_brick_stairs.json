@@ -10,13 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "pyrite:nostalgia_terracotta_brick_stairs"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "nostalgia_terracotta_bricks": {
+    "has_nostalgia_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -25,12 +19,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:nostalgia_terracotta_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "nostalgia_terracotta_bricks"
+      "has_nostalgia_terracotta_bricks"
     ]
   ],
   "rewards": {

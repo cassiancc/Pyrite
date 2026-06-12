@@ -10,7 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "dragon_wool": {
+    "has_dragon_wool": {
       "conditions": {
         "items": [
           {
@@ -30,7 +30,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "dragon_wool"
+      "has_dragon_wool"
     ]
   ],
   "rewards": {

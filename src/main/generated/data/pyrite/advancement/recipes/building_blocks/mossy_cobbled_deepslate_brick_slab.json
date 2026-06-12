@@ -24,23 +24,12 @@
         "recipe": "pyrite:mossy_cobbled_deepslate_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "mossy_cobbled_deepslate_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:mossy_cobbled_deepslate_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_mossy_cobbled_deepslate_bricks",
-      "mossy_cobbled_deepslate_bricks"
+      "has_mossy_cobbled_deepslate_bricks"
     ]
   ],
   "rewards": {

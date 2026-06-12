@@ -10,13 +10,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "pyrite:poisonous_concrete_stairs"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "poisonous_concrete": {
+    "has_poisonous_concrete": {
       "conditions": {
         "items": [
           {
@@ -25,12 +19,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:poisonous_concrete_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "poisonous_concrete"
+      "has_poisonous_concrete"
     ]
   ],
   "rewards": {

@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.entries;
 
 import cc.cassian.pyrite.Pyrite;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -23,6 +24,15 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
     public BlockEntry(Identifier id, T raw) {
         this.id = id;
         this.raw = raw;
+    }
+
+    public BlockEntry(ResourceKey<Block> id, T raw) {
+        this.id = id.identifier();
+        this.raw = raw;
+    }
+
+    public BlockEntry(T vanillaBlock) {
+        this(BuiltInRegistries.BLOCK.getKey(vanillaBlock), vanillaBlock);
     }
 
     @Override

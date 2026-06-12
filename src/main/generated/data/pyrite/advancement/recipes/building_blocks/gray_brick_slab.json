@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "gray_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:gray_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_gray_bricks": {
       "conditions": {
         "items": [
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_gray_bricks",
-      "gray_bricks"
+      "has_gray_bricks"
     ]
   ],
   "rewards": {

@@ -9,16 +9,6 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "grass_turf": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pyrite:grass_turf"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_grass_turf": {
       "conditions": {
         "items": [
@@ -39,8 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_grass_turf",
-      "grass_turf"
+      "has_grass_turf"
     ]
   ],
   "rewards": {

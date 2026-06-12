@@ -9,7 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cut_gold": {
+    "has_cut_gold": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "cut_gold"
+      "has_cut_gold"
     ]
   ],
   "rewards": {

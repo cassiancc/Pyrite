@@ -25,6 +25,14 @@
     "pyrite:dragon_stained_door",
     "pyrite:magenta_stained_door",
     "pyrite:rose_stained_door",
-    "pyrite:pink_stained_door"
+    "pyrite:pink_stained_door",
+    "pyrite:gold_door",
+    "pyrite:emerald_door",
+    "pyrite:lapis_door",
+    "pyrite:redstone_door",
+    "pyrite:diamond_door",
+    "pyrite:netherite_door",
+    "pyrite:quartz_door",
+    "pyrite:amethyst_door"
   ]
 }

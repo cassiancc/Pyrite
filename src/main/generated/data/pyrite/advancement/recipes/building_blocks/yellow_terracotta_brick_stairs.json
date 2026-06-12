@@ -15,7 +15,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "yellow_terracotta_bricks": {
+    "has_yellow_terracotta_bricks": {
       "conditions": {
         "items": [
           {
@@ -29,7 +29,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "yellow_terracotta_bricks"
+      "has_yellow_terracotta_bricks"
     ]
   ],
   "rewards": {

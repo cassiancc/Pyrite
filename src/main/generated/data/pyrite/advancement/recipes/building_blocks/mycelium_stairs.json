@@ -9,13 +9,7 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "pyrite:mycelium_stairs"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "mycelium_turf": {
+    "has_mycelium_turf": {
       "conditions": {
         "items": [
           {
@@ -24,12 +18,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mycelium_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "mycelium_turf"
+      "has_mycelium_turf"
     ]
   ],
   "rewards": {
