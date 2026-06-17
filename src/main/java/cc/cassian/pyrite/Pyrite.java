@@ -2,8 +2,8 @@ package cc.cassian.pyrite;
 
 import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.functions.ModLists;
-import cc.cassian.pyrite.util.ColoredSet;
+import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.sets.ColoredSet;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.Identifier;
@@ -18,15 +18,16 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static cc.cassian.pyrite.registry.BlockCreator.*;
-import static cc.cassian.pyrite.functions.ModLists.*;
-import static cc.cassian.pyrite.functions.ModHelpers.*;
+import static cc.cassian.pyrite.util.ModLists.*;
+import static cc.cassian.pyrite.util.ModHelpers.*;
+import static cc.cassian.pyrite.util.VanillaConstants.*;
 
 public class Pyrite {
 	public static final String MOD_ID = "pyrite";
 	public static final Logger LOGGER = LogManager.getLogger("Pyrite");
 	public static final ModConfig CONFIG = ModConfig.createToml(Platform.INSTANCE.getConfigDir(), "", MOD_ID, ModConfig.class);
 
-    public static void init() {
+	public static void init() {
 		ModLists.populateLinkedHashMaps();
 		// Framed Glass
 		createPyriteBlock("framed_glass","glass", 2.0f, MapColor.NONE, 0, "framed_glass");
@@ -116,23 +117,30 @@ public class Pyrite {
 				// Dye items.
 				registerPyriteItem(dye + "_dye");
 				// Dyed Wool
-				wool = createPyriteBlock(dye + "_wool", "block", WOOL_MATCH.getOrDefault(dye, Blocks.WHITE_WOOL), color, blockLux, "colored_blocks");
+				wool = createPyriteBlock(dye + "_wool", "block", WOOL_MATCH.get(dye), color, blockLux, "colored_blocks");
 				// Dyed Carpet
-				carpet = createPyriteBlock(dye + "_carpet", "carpet", CARPET_MATCH.getOrDefault(dye, Blocks.WHITE_CARPET), color, blockLux, "colored_blocks");
+				carpet = createPyriteBlock(dye + "_carpet", "carpet", CARPET_MATCH.get(dye), color, blockLux, "colored_blocks");
 				// Dyed Concrete
-				createPyriteBlock(dye+"_concrete", "block", CONCRETE_MATCH.getOrDefault(dye, Blocks.WHITE_CONCRETE), color, blockLux, "concrete");
+				createPyriteBlock(dye+"_concrete", "block", CONCRETE_MATCH.get(dye), color, blockLux, "concrete");
 				// Dyed Concrete Powder
-				createPyriteBlock(dye+"_concrete_powder", "concrete_powder", Blocks.WHITE_CONCRETE_POWDER, color, blockLux, "concrete_powder");
+				createPyriteBlock(dye+"_concrete_powder", "concrete_powder", WHITE_CONCRETE_POWDER, color, blockLux, "concrete_powder");
 			}
 			// Dyed Concrete Stairs
-			createPyriteBlock(dye+"_concrete_stairs", "stairs", Blocks.WHITE_CONCRETE, color, blockLux, "concrete_stairs");
+			createPyriteBlock(dye+"_concrete_stairs", "stairs", WHITE_CONCRETE, color, blockLux, "concrete_stairs");
 			// Dyed Concrete Slab
-			createPyriteBlock(dye+"_concrete_slab", "slab", Blocks.WHITE_WOOL, color, blockLux, "concrete_slab");
+			createPyriteBlock(dye+"_concrete_slab", "slab", WHITE_WOOL, color, blockLux, "concrete_slab");
+
+			//? if >26.2 {
+			/*ModHelpers.addAlias(dye+"_wool_slab");
+			ModHelpers.addAlias(dye+"_wool_stairs");
+			*///?} else {
 			// Dyed Wool Stairs
-			var woolStairs = createPyriteBlock(dye+"_wool_stairs", "stairs", Blocks.WHITE_WOOL, color, blockLux, "wool_stairs");
+			var woolStairs = createPyriteBlock(dye+"_wool_stairs", "stairs", WHITE_WOOL, color, blockLux, "wool_stairs");
 			// Dyed Wool Slab
-			var woolSlab = createPyriteBlock(dye+"_wool_slab", "slab", Blocks.WHITE_WOOL, color, blockLux, "wool_slab");
+			var woolSlab = createPyriteBlock(dye+"_wool_slab", "slab", WHITE_WOOL, color, blockLux, "wool_slab");
 			WOOL_SETS.add(new ColoredSet(dye, Optional.ofNullable(wool), Optional.ofNullable(carpet), woolStairs, woolSlab));
+			//?}
+
 			//Dyed Planks and plank products
 			createWoodSet(dye + "_stained", color, blockLux, "dyed_wood");
 			// Dyed Bricks and brick products
@@ -163,7 +171,7 @@ public class Pyrite {
 			createTorchLever(dye+"_torch_lever", Blocks.TORCH, getTorchParticle(dye));
 		}
 		// Autogenerate Wall Gates
-		for (Block wallsBlock : getVanillaWalls()) {
+		for (Block wallsBlock : ModLists.VANILLA_WALLS) {
 			//Find block ID
 			String block = findVanillaBlockID(wallsBlock);
 			//If the block provided isn't a wall block, add the wall tag.

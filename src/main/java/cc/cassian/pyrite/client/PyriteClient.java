@@ -1,8 +1,7 @@
 package cc.cassian.pyrite.client;
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.core.PyriteItemTags;
-import cc.cassian.pyrite.functions.ModHelpers;
+import cc.cassian.pyrite.util.ModHelpers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.block.BlockTintSources;

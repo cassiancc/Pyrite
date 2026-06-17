@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
 import static cc.cassian.pyrite.entity.ModEntities.CHEST_BOATS;
-import static cc.cassian.pyrite.functions.ModHelpers.*;
+import static cc.cassian.pyrite.util.ModHelpers.*;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import static net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry.registerModelLayer;
 

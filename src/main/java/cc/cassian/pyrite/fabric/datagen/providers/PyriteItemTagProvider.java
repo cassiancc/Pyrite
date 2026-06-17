@@ -14,6 +14,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+//~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
+import cc.cassian.pyrite.util.BlockItemTagId;
+//~}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -100,6 +103,14 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		// fd
 		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden"));
 		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets"));
+		// dyes
+		builder(PyriteItemTags.DRAGON_DYES).addAll(get("dragon_dye"));
+		builder(PyriteItemTags.POISONOUS_DYES).addAll(get("poisonous_dye"));
+		builder(PyriteItemTags.ROSE_DYES).addAll(get("rose_dye"));
+		builder(PyriteItemTags.HONEY_DYES).addAll(get("honey_dye"));
+		builder(PyriteItemTags.GLOW_DYES).addAll(get("glow_dye"));
+		builder(PyriteItemTags.STAR_DYES).addAll(get("star_dye"));
+		builder(PyriteItemTags.NOSTALGIA_DYES).addAll(get("nostalgia_dye"));
 	}
 
     private void copy(TagKey<Block> blockTag) {
@@ -110,35 +121,37 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(TagKey.create(Registries.BLOCK, id), TagKey.create(Registries.ITEM, id));
 	}
 
-	private void copy(PyriteBlockItemTags.BlockItemTagId tagId) {
+	private void copy(BlockItemTagId tagId) {
 		copy(tagId.block(), tagId.item());
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(TagKey<Item> tag, String id) {
+	//~ if >26.1 'ResourceKey<Item>, Item' -> 'Item' {
+	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(TagKey<ResourceKey<Item>, Item> tag, String id) {
 		TagAppender<ResourceKey<Item>, Item> builder = builder(tag);
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(TagKey<Item> tag, String id) {
+	private TagAppender<ResourceKey<Item>, Item> builder(TagKey<ResourceKey<Item>, Item> tag, String id) {
 		TagAppender<ResourceKey<Item>, Item> builder = builder(tag);
 		get(id).forEach(builder::add);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(PyriteBlockItemTags.BlockItemTagId tag, Class<? extends Item> aClass) {
+	private TagAppender<ResourceKey<Item>, Item> builder(BlockResourceKey<Item>, ItemTagId tag, Class<? extends ResourceKey<Item>, Item> aClass) {
 		return builder(tag.item()).addAll(get(aClass));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(PyriteBlockItemTags.BlockItemTagId tag, String id) {
+	private TagAppender<ResourceKey<Item>, Item> builder(BlockResourceKey<Item>, ItemTagId tag, String id) {
 		return builder(tag.item()).addAll(get(id));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(PyriteBlockItemTags.BlockItemTagId tag, String id) {
+	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(BlockResourceKey<Item>, ItemTagId tag, String id) {
 		TagAppender<ResourceKey<Item>, Item> builder = builder(tag.item());
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
+	//~}
 
 	private List<ResourceKey<Item>> get(String id) {
 		return BlockCreator.ITEMS.entrySet().stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();

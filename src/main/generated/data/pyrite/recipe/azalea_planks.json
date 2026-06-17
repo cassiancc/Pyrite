@@ -11,7 +11,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    "pyrite:brown_mushroom_stem"
+    "#pyrite:azalea_logs"
   ],
   "result": {
     "count": 4,

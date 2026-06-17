@@ -2,7 +2,7 @@ package cc.cassian.pyrite.condition;
 
 import java.util.List;
 
-import cc.cassian.pyrite.functions.ModHelpers;
+import cc.cassian.pyrite.util.ModHelpers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.ExtraCodecs;

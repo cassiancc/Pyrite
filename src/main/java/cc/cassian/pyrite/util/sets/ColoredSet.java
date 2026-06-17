@@ -1,9 +1,8 @@
-package cc.cassian.pyrite.util;
+package cc.cassian.pyrite.util.sets;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.entries.BlockEntry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;

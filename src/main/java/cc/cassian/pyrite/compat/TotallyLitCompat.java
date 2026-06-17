@@ -4,7 +4,6 @@ package cc.cassian.pyrite.compat;
 
 import cc.cassian.pyrite.blocks.ModWallMounted;
 import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 //? <26

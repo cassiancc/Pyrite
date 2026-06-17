@@ -1,4 +1,4 @@
-package cc.cassian.pyrite.functions;
+package cc.cassian.pyrite.util;
 
 import cc.cassian.pyrite.Pyrite;
 import java.util.LinkedHashMap;
@@ -64,7 +64,7 @@ public class ModLists {
             "pink",
     };
     //List of Vanilla wood types.
-    private final static Block[] VANILLA_WOOD = {
+    public final static Block[] VANILLA_WOOD = {
             Blocks.SPRUCE_PLANKS,
             Blocks.BIRCH_PLANKS,
             Blocks.JUNGLE_PLANKS,
@@ -81,7 +81,7 @@ public class ModLists {
     };
 
     //List of Wall Blocks to generated Wall Gates for.
-    private final static Block[] VANILLA_WALLS = {
+    public final static Block[] VANILLA_WALLS = {
             Blocks.COBBLESTONE_WALL,
             Blocks.MOSSY_COBBLESTONE_WALL,
             Blocks.STONE_BRICK_WALL,
@@ -109,23 +109,6 @@ public class ModLists {
             Blocks.TUFF_WALL,
             //? if >1.21.4
             Blocks.RESIN_BRICK_WALL
-    };
-
-    final private static Block[] VANILLA_RESOURCE_BLOCKS = {
-            Blocks.IRON_BLOCK,
-            Blocks.GOLD_BLOCK,
-            Blocks.EMERALD_BLOCK,
-            Blocks.LAPIS_BLOCK,
-            Blocks.REDSTONE_BLOCK,
-            Blocks.DIAMOND_BLOCK,
-            Blocks.NETHERITE_BLOCK,
-            Blocks.QUARTZ_BLOCK,
-            Blocks.AMETHYST_BLOCK,
-            Blocks.COPPER_BLOCK,
-            Blocks.EXPOSED_COPPER,
-            Blocks.WEATHERED_COPPER,
-            Blocks.OXIDIZED_COPPER
-
     };
 
     public static final Map<String, Block> TURF_SETS = Map.of(
@@ -160,50 +143,34 @@ public class ModLists {
         FLOWERS.put("buttercup", Blocks.PEONY);
         FLOWERS.put("pink_daisy", Blocks.PEONY);
 
-        WOOL_MATCH.put("glow", Blocks.GREEN_WOOL);
-        WOOL_MATCH.put("dragon", Blocks.PURPLE_WOOL);
-        WOOL_MATCH.put("star", Blocks.CYAN_WOOL);
-        WOOL_MATCH.put("honey", Blocks.ORANGE_WOOL);
-        WOOL_MATCH.put("rose", Blocks.MAGENTA_WOOL);
-        WOOL_MATCH.put("poisonous", Blocks.YELLOW_WOOL);
-        WOOL_MATCH.put("nostalgia", Blocks.CYAN_WOOL);
+        WOOL_MATCH.put("glow", VanillaConstants.GREEN_WOOL);
+        WOOL_MATCH.put("dragon", VanillaConstants.PURPLE_WOOL);
+        WOOL_MATCH.put("star", VanillaConstants.CYAN_WOOL);
+        WOOL_MATCH.put("honey", VanillaConstants.ORANGE_WOOL);
+        WOOL_MATCH.put("rose", VanillaConstants.MAGENTA_WOOL);
+        WOOL_MATCH.put("poisonous", VanillaConstants.YELLOW_WOOL);
+        WOOL_MATCH.put("nostalgia", VanillaConstants.CYAN_WOOL);
 
-        CARPET_MATCH.put("glow", Blocks.GREEN_CARPET);
-        CARPET_MATCH.put("dragon", Blocks.PURPLE_CARPET);
-        CARPET_MATCH.put("star", Blocks.CYAN_CARPET);
-        CARPET_MATCH.put("honey", Blocks.ORANGE_CARPET);
-        CARPET_MATCH.put("rose", Blocks.MAGENTA_CARPET);
-        CARPET_MATCH.put("poisonous", Blocks.YELLOW_CARPET);
-        CARPET_MATCH.put("nostalgia", Blocks.CYAN_CARPET);
+        CARPET_MATCH.put("glow", VanillaConstants.GREEN_CARPET);
+        CARPET_MATCH.put("dragon", VanillaConstants.PURPLE_CARPET);
+        CARPET_MATCH.put("star", VanillaConstants.CYAN_CARPET);
+        CARPET_MATCH.put("honey", VanillaConstants.ORANGE_CARPET);
+        CARPET_MATCH.put("rose", VanillaConstants.MAGENTA_CARPET);
+        CARPET_MATCH.put("poisonous", VanillaConstants.YELLOW_CARPET);
+        CARPET_MATCH.put("nostalgia", VanillaConstants.CYAN_CARPET);
 
-        CONCRETE_MATCH.put("glow", Blocks.GREEN_CONCRETE);
-        CONCRETE_MATCH.put("dragon", Blocks.PURPLE_CONCRETE);
-        CONCRETE_MATCH.put("star", Blocks.LIGHT_BLUE_CONCRETE);
-        CONCRETE_MATCH.put("honey", Blocks.ORANGE_CONCRETE);
-        CONCRETE_MATCH.put("rose", Blocks.MAGENTA_CONCRETE);
-        CONCRETE_MATCH.put("poisonous", Blocks.YELLOW_CONCRETE);
-        CONCRETE_MATCH.put("nostalgia", Blocks.CYAN_CONCRETE);
+        CONCRETE_MATCH.put("glow", VanillaConstants.GREEN_CONCRETE);
+        CONCRETE_MATCH.put("dragon", VanillaConstants.PURPLE_CONCRETE);
+        CONCRETE_MATCH.put("star", VanillaConstants.LIGHT_BLUE_CONCRETE);
+        CONCRETE_MATCH.put("honey", VanillaConstants.ORANGE_CONCRETE);
+        CONCRETE_MATCH.put("rose", VanillaConstants.MAGENTA_CONCRETE);
+        CONCRETE_MATCH.put("poisonous", VanillaConstants.YELLOW_CONCRETE);
+        CONCRETE_MATCH.put("nostalgia", VanillaConstants.CYAN_CONCRETE);
 
         DATAPACKS.put("pyrite_oddities", Pyrite.CONFIG.oddities);
         DATAPACKS.put("pyrite_azalea", Pyrite.CONFIG.azalea);
         DATAPACKS.put("pyrite_mushrooms", Pyrite.CONFIG.mushrooms);
         DATAPACKS.put("pyrite_crafting_tables", Pyrite.CONFIG.crafting_tables);
 
-    }
-
-    public static String[] getDyes() {
-        return DYES;
-    }
-
-    public static Block[] getVanillaWood() {
-        return VANILLA_WOOD;
-    }
-
-    public static Block[] getVanillaWalls() {
-        return VANILLA_WALLS;
-    }
-
-    public static Block[] getVanillaResourceBlocks() {
-        return VANILLA_RESOURCE_BLOCKS;
     }
 }

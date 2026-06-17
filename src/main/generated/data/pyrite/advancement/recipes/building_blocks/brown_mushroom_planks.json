@@ -1,11 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mushrooms"
+      ]
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_logs": {
       "conditions": {
         "items": [
           {
-            "items": "#pyrite:azalea_logs"
+            "items": "pyrite:brown_mushroom_stem"
           }
         ]
       },

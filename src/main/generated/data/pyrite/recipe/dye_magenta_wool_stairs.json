@@ -11,7 +11,7 @@
   "category": "building",
   "group": "wool_stairs",
   "ingredients": [
-    "#c:dyes/star",
+    "#c:dyes/magenta",
     [
       "pyrite:white_wool_stairs",
       "pyrite:light_gray_wool_stairs",

@@ -11,7 +11,7 @@
   "category": "building",
   "group": "wool_slab",
   "ingredients": [
-    "#c:dyes/poisonous",
+    "#c:dyes/blue",
     [
       "pyrite:white_wool_slab",
       "pyrite:light_gray_wool_slab",

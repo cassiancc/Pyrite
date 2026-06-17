@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.blocks;
 
 import cc.cassian.pyrite.core.PyriteItemTags;
-import cc.cassian.pyrite.functions.ModHelpers;
+import cc.cassian.pyrite.util.ModHelpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;

@@ -22,7 +22,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
 import static cc.cassian.pyrite.entity.ModEntities.CHEST_BOATS;
-import static cc.cassian.pyrite.functions.ModHelpers.GRASS_BLOCKS;
+import static cc.cassian.pyrite.util.ModHelpers.GRASS_BLOCKS;
 
 @Mod(value = MOD_ID, dist = Dist.CLIENT)
 @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)

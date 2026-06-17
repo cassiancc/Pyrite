@@ -5,15 +5,12 @@ package cc.cassian.pyrite.compat;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.blocks.OxidizableColumnBlock;
-import cc.cassian.pyrite.entries.ItemEntry;
-import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
+import cc.cassian.pyrite.util.ModHelpers;
 import io.github.haykam821.columns.block.ColumnBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-
-import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 
 public class ColumnsCompat {
     public static void registerCopperColumn(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {

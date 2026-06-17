@@ -1,4 +1,4 @@
-package cc.cassian.pyrite.util;
+package cc.cassian.pyrite.util.sets;
 
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;

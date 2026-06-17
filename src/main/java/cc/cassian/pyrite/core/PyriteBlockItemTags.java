@@ -1,11 +1,9 @@
 package cc.cassian.pyrite.core;
 
-import cc.cassian.pyrite.Pyrite;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
+//~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
+import cc.cassian.pyrite.util.BlockItemTagId;
+//~}
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 
@@ -50,25 +48,9 @@ public class PyriteBlockItemTags {
     }
 
     public static BlockItemTagId tagKey(String namespace, String id) {
-        return BlockItemTagId.create(Identifier.fromNamespaceAndPath(namespace, id));
+        Identifier identifier = Identifier.fromNamespaceAndPath(namespace, id);
+        return BlockItemTagId.create(identifier, identifier);
     }
 
-    public record BlockItemTagId(TagKey<Block> block, TagKey<Item> item) {
-        public static BlockItemTagId create(final Identifier blockId, final Identifier itemId) {
-            return new BlockItemTagId(TagKey.create(Registries.BLOCK, blockId), TagKey.create(Registries.ITEM, itemId));
-        }
 
-        public static BlockItemTagId create(final String blockName, final String itemName) {
-            return create(Pyrite.of(blockName), Pyrite.of(itemName));
-        }
-
-        public static BlockItemTagId create(final String name) {
-            Identifier id = Pyrite.of(name);
-            return create(id, id);
-        }
-
-        public static BlockItemTagId create(final Identifier id) {
-            return create(id, id);
-        }
-    }
 }

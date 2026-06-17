@@ -6,24 +6,30 @@ import cc.cassian.pyrite.blocks.ModCraftingTable;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.functions.ModHelpers;
-import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.TurfSet;
-import cc.cassian.pyrite.util.BrickSet;
-import cc.cassian.pyrite.util.ResourceBlockSet;
-import cc.cassian.pyrite.util.WoodSet;
+import cc.cassian.pyrite.util.ModHelpers;
+import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.sets.BrickSet;
+import cc.cassian.pyrite.util.sets.ResourceBlockSet;
+import cc.cassian.pyrite.util.sets.WoodSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedResourceCondition;
+//~ if >26.1 'criterion' -> 'triggers' {
 import net.minecraft.advancements.criterion.PlayerTrigger;
+//~}
+//~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
+import cc.cassian.pyrite.util.BlockItemTagId;
+//~}
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -39,7 +45,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
-import static cc.cassian.pyrite.functions.ModHelpers.getRequiredOptions;
+import static cc.cassian.pyrite.util.ModHelpers.getRequiredOptions;
 import static cc.cassian.pyrite.registry.BlockCreator.*;
 
 @SuppressWarnings("all")
@@ -96,7 +102,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSet.wallGate(), brickSet.base(), wallGateOptions);
 				}
 
-				for (Block wall : ModLists.getVanillaWalls()) {
+				for (Block wall : ModLists.VANILLA_WALLS) {
 					Identifier wallId = wall.properties().blockId().identifier();
 					Item wallGate = getItem(Pyrite.of(wallId.getPath()+"_gate"));
 					Item base = getItem(wallId.withPath(block -> block.replace("_wall", "").replace("brick", "bricks").replace("tile", "tiles")));
@@ -185,7 +191,9 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					});
 					// button
 					var buttonId = resourceBlockSet.button();
+					//~ if >26.1 'ItemTags.BUTTONS' -> 'BlockItemTags.BUTTONS.item()' {
 					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(ItemTags.BUTTONS).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
+					//~}
 					// door
 					var door = resourceBlockSet.door();
 					if (!door.isVanilla()) {
@@ -213,16 +221,13 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 
 				Item baseFramedGlass = getItem(Pyrite.of("framed_glass"));
 				Item glowstoneLamp = getItem(Pyrite.of("glowstone_lamp"));
-				List<TagKey<Item>> vanillaDyes = Arrays.stream(ModLists.VANILLA_DYES).map(s->TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+s))).toList();
 				List<TagKey<Item>> pyriteDyes = ModLists.PYRITE_DYES.stream().map(s->TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+s))).toList();
-				var dyes = new ArrayList<TagKey<Item>>(vanillaDyes);
-				dyes.addAll(pyriteDyes);
 
-				colorItemWithDye(dyes, WOOL_SETS.stream().map(c->c.slab().asItem()).toList(), "wool_slab", RecipeCategory.BUILDING_BLOCKS, List.of("wool_stairs_and_slabs"));
-				colorItemWithDye(dyes, WOOL_SETS.stream().map(c->c.stairs().asItem()).toList(), "wool_stairs", RecipeCategory.BUILDING_BLOCKS, List.of("wool_stairs_and_slabs"));
-				// fixme dyeing recipes from vanilla wool
-				colorItemWithDye(pyriteDyes, WOOL_SETS.stream().filter(c->c.base().isPresent()).map(c->c.base().get().asItem()).toList(), "wool", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
-				colorItemWithDye(pyriteDyes, WOOL_SETS.stream().filter(c->c.carpet().isPresent()).map(c->c.carpet().get().asItem()).toList(), "wool_carpet", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
+
+				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.slab().asItem()).toList(), "wool_slab", RecipeCategory.BUILDING_BLOCKS, List.of("wool_stairs_and_slabs"));
+				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.stairs().asItem()).toList(), "wool_stairs", RecipeCategory.BUILDING_BLOCKS, List.of("wool_stairs_and_slabs"));
+				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.base().orElse(new BlockEntry<>(Blocks.AIR)).asItem()).toList(), "wool", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
+				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.carpet().orElse(new BlockEntry<>(Blocks.AIR)).asItem()).toList(), "wool_carpet", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
 
 				for (String dye : ModLists.DYES) {
 					var dyeTag = TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+dye));
@@ -258,7 +263,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					framedGlassOptions.add("framed_glass");
 					Item dyedFramedGlass = getItem(Pyrite.of(dye + "_framed_glass"));
 					coloredBaseBlockFromBaseBlockAndDye(dyedFramedGlass, dyeIngredient, baseFramedGlass, framedGlassOptions, "framed_glass");
-					stainedGlassPaneFromStainedGlass(getItem(dye+"_framed_glass_pane"), dyedFramedGlass, framedGlassOptions);
+					paneFromGlass(getItem(dye+"_framed_glass_pane"), dyedFramedGlass, framedGlassOptions);
 					// terracotta bricks
 					var terracottaOptions = new ArrayList<>(requiredOptions);
 					terracottaOptions.add("terracotta_bricks");
@@ -293,6 +298,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.define('X', Items.IRON_NUGGET)
 						.unlockedBy(getItemName(Items.IRON_INGOT), has(Items.IRON_INGOT))
 						.save(configuredOutput(List.of("framed_glass")));
+				paneFromGlass(getItem("framed_glass_pane"), baseFramedGlass, List.of("framed_glass"));
 				// lamps
 				shaped(RecipeCategory.BUILDING_BLOCKS, glowstoneLamp, 4)
 						.group("framed_glass")
@@ -324,11 +330,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 								.unlockedBy(getItemName(planks), has(planks))
 								.save(configuredOutput(ladderOptions));
 					} else if (entry.getId().getPath().contains("_planks")) {
-						if (entry.getId().getPath().contains("brown_mushroom")) {
-							planksFromLogs(entry.value(), PyriteBlockItemTags.AZALEA_LOGS.item(), 4);
+						if (entry.getId().getPath().contains("azalea")) {
+							planksFromLogs(entry.value(), PyriteBlockItemTags.AZALEA_LOGS.item(), 4, requiredOptions);
 						} else if (entry.getId().getPath().contains("red_mushroom")) {
 							planksFromLogs(entry.value(), getItem(Pyrite.of("red_mushroom_stem")), 4, requiredOptions);
-						}else if (entry.getId().getPath().contains("azalea")) {
+						}else if (entry.getId().getPath().contains("brown_mushroom")) {
 							planksFromLogs(entry.value(), getItem(Pyrite.of("brown_mushroom_stem")), 4, requiredOptions);
 						} else {
 							Ingredient dye = getDyeTag(blockId.withPath(p -> p.replace("_stained_planks", "")));
@@ -367,12 +373,13 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				for(int dyeIndex = 0; dyeIndex < dyes.size(); ++dyeIndex) {
 					TagKey<Item> dye = dyes.get(dyeIndex);
 					Item dyedItem = (Item)dyedItems.get(dyeIndex);
-					Stream<Item> sourceItems = dyedItems.stream().filter((b) -> !b.equals(dyedItem));
+					Stream<Item> sourceItems = dyedItems.stream().filter((b) -> !b.equals(dyedItem)).filter(b->!b.equals(Items.AIR));
 					if (uncoloredItem != null) {
 						sourceItems = Stream.concat(sourceItems, Stream.of(uncoloredItem));
 					}
 
-					this.shapeless(category, (ItemLike)dyedItem).requires(dye).requires(Ingredient.of(sourceItems)).group(groupName).unlockedBy("has_needed_dye", this.has(dye)).save(configuredOutput(requiredOptions), "dye_" + getItemName(dyedItem));
+					if (dyedItem != Items.AIR)
+						this.shapeless(category, (ItemLike)dyedItem).requires(dye).requires(Ingredient.of(sourceItems)).group(groupName).unlockedBy("has_needed_dye", this.has(dye)).save(configuredOutput(requiredOptions), "dye_" + getItemName(dyedItem));
 				}
 
 			}
@@ -465,13 +472,13 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(configuredOutput(requiredOptions));
 			}
 
-			public void stainedGlassPaneFromStainedGlass(final ItemLike result, final ItemLike stainedGlass, List<String> requiredOptions) {
+			public void paneFromGlass(final ItemLike result, final ItemLike glass, List<String> requiredOptions) {
 				this.shaped(RecipeCategory.DECORATIONS, result, 16)
-						.define('#', stainedGlass)
+						.define('#', glass)
 						.pattern("###")
 						.pattern("###")
-						.group("stained_glass_pane")
-						.unlockedBy("has_glass", this.has(stainedGlass))
+						.group("glass_pane")
+						.unlockedBy("has_glass", this.has(glass))
 						.save(configuredOutput(requiredOptions));
 			}
 
@@ -497,7 +504,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				return getItemOrVanilla(id.getPath());
 			}
 
-			private boolean is(Holder<Block> holder, PyriteBlockItemTags.BlockItemTagId planks) {
+			private boolean is(Holder<Block> holder, BlockItemTagId planks) {
                 return holder.is(planks.block());
             }
 

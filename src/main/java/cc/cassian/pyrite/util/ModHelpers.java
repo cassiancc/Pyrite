@@ -1,4 +1,4 @@
-package cc.cassian.pyrite.functions;
+package cc.cassian.pyrite.util;
 
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
@@ -85,9 +85,6 @@ public class ModHelpers {
         else if (path.contains("crafting_table")) {
             requiredOptions.add("crafting_tables");
         }
-        if (path.contains("wall_gate")) {
-            requiredOptions.add("wall_gates");
-        }
         if (path.contains("lamp")) {
             requiredOptions.add("lamps");
         }
@@ -129,7 +126,7 @@ public class ModHelpers {
                 requiredOptions.add(path.split("_")[0] + "_turf");
             }
         }
-        for (Block vanillaResourceBlock : ModLists.getVanillaResourceBlocks()) {
+        for (Block vanillaResourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
             var resourceBlockPath = BuiltInRegistries.BLOCK.getKey(vanillaResourceBlock).getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
             if (path.contains(resourceBlockPath)) {
                 if (!requiredOptions.contains(resourceBlockPath))

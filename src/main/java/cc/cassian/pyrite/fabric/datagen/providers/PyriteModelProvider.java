@@ -3,8 +3,8 @@ package cc.cassian.pyrite.fabric.datagen.providers;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
-import cc.cassian.pyrite.functions.ModLists;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
+import cc.cassian.pyrite.util.ModLists;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -23,7 +23,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NullMarked;
 
-import static cc.cassian.pyrite.functions.ModHelpers.getBlockEntry;
+import static cc.cassian.pyrite.util.ModHelpers.getBlockEntry;
 
 @NullMarked
 public class PyriteModelProvider extends FabricModelProvider {

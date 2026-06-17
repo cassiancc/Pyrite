@@ -6,8 +6,8 @@ package cc.cassian.pyrite.neoforge;
 import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.functions.ModHelpers;
-import cc.cassian.pyrite.functions.ModLists;
+import cc.cassian.pyrite.util.ModHelpers;
+import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.registry.BlockCreator;
 import net.minecraft.core.registries.Registries;
@@ -36,7 +36,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static cc.cassian.pyrite.functions.ModHelpers.SUPPORTED_BLOCKS;
+import static cc.cassian.pyrite.util.ModHelpers.SUPPORTED_BLOCKS;
 import static cc.cassian.pyrite.registry.PyriteItemGroups.POTTED_FLOWERS;
 
 

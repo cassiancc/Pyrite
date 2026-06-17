@@ -7,9 +7,10 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
-import cc.cassian.pyrite.functions.ModHelpers;
-import cc.cassian.pyrite.functions.ModLists;
-import cc.cassian.pyrite.util.*;
+import cc.cassian.pyrite.util.ModHelpers;
+import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.VanillaConstants;
+import cc.cassian.pyrite.util.sets.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
@@ -25,7 +26,9 @@ import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
+//~ if >26.1 'BlockEntityType' -> 'BlockEntityTypes' {
 import net.minecraft.world.level.block.entity.BlockEntityType;
+//~}
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -39,8 +42,8 @@ import java.util.function.Function;
 
 //? fabric
 import static cc.cassian.pyrite.fabric.PyriteFabric.FUEL_BLOCKS;
-import static cc.cassian.pyrite.functions.ModHelpers.*;
-import static cc.cassian.pyrite.functions.ModLists.*;
+import static cc.cassian.pyrite.util.ModHelpers.*;
+import static cc.cassian.pyrite.util.ModLists.*;
 
 public class BlockCreator {
     // All blocks and their IDs.
@@ -116,7 +119,6 @@ public class BlockCreator {
         PyriteItemGroups.addItemGroup("pyrite_group", "glowstone_lamp", BLOCKS);
     }
 
-    final static Block[] vanillaWood = getVanillaWood();
     public static BlockEntry<Block> platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
@@ -152,7 +154,7 @@ public class BlockCreator {
             case "chest":
                 if (ModHelpers.generateChests()) {
                     newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
-                    ModHelpers.addSupportedBlock(()->BlockEntityType.CHEST, newBlock);
+                    ModHelpers.addSupportedBlock(()-> BlockEntityType.CHEST, newBlock);
                 }
                 break;
             case "cabinet":
@@ -382,7 +384,7 @@ public class BlockCreator {
     }
 
     public static void generateResourceBlocks() {
-        for (Block resourceBlock : getVanillaResourceBlocks()) {
+        for (Block resourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
             String block = findVanillaBlockID(resourceBlock);
             //If the block provided isn't a wall block, add the wall tag.
             if (block.contains("block")) {
@@ -401,7 +403,7 @@ public class BlockCreator {
 
     public static void generateVanillaCraftingTables() {
         //Autogenerate Vanilla Crafting Tables
-        for (Block plankBlock : vanillaWood) {
+        for (Block plankBlock : VANILLA_WOOD) {
             //Find block ID
             String block = findVanillaBlockID(plankBlock);
             //If the block provided isn't a wall block, add the wall tag.

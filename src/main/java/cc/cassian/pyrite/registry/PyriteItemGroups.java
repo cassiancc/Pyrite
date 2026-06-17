@@ -5,33 +5,32 @@ import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.entries.PyriteEntry;
-import cc.cassian.pyrite.functions.ModHelpers;
-import cc.cassian.pyrite.functions.ModLists;
 //? if fabric && <26.1 {
 /*import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 *///?} else if fabric {
+import cc.cassian.pyrite.util.ModHelpers;
+import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.VanillaConstants;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 //?} else {
 /*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 *///?}
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 
 
 import java.util.*;
-import java.util.function.Supplier;
 
-import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
-import static cc.cassian.pyrite.functions.ModLists.VANILLA_DYES;
+import static cc.cassian.pyrite.util.ModLists.VANILLA_DYES;
 
 public class PyriteItemGroups {
     public static final ArrayList<BlockEntry<Block>> REDSTONE_BLOCKS = new ArrayList<>();
@@ -128,14 +127,14 @@ public class PyriteItemGroups {
                 addAfter(Items.NETHERITE_BLOCK, (NETHERITE_BLOCKS), event);
                 addAfter(Items.QUARTZ_BLOCK, (QUARTZ_BLOCKS), event);
                 addAfter(Items.AMETHYST_BLOCK, (AMETHYST_BLOCKS), event);
-                addAfter(Items.CUT_COPPER_SLAB, (COPPER_BLOCKS), event);
-                addAfter(Items.EXPOSED_CUT_COPPER_SLAB, (EXPOSED_COPPER_BLOCKS), event);
-                addAfter(Items.WEATHERED_CUT_COPPER_SLAB, (WEATHERED_COPPER_BLOCKS), event);
-                addAfter(Items.OXIDIZED_CUT_COPPER_SLAB, (OXIDIZED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_CUT_COPPER_SLAB, (WAXED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, (WAXED_EXPOSED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, (WAXED_WEATHERED_COPPER_BLOCKS), event);
-                addAfter(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, (WAXED_OXIDIZED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.CUT_COPPER_SLAB, (COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.EXPOSED_CUT_COPPER_SLAB, (EXPOSED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.WEATHERED_CUT_COPPER_SLAB, (WEATHERED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.OXIDIZED_CUT_COPPER_SLAB, (OXIDIZED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.WAXED_CUT_COPPER_SLAB, (WAXED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.WAXED_EXPOSED_CUT_COPPER_SLAB, (WAXED_EXPOSED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.WAXED_WEATHERED_CUT_COPPER_SLAB, (WAXED_WEATHERED_COPPER_BLOCKS), event);
+                addAfter(VanillaConstants.WAXED_OXIDIZED_CUT_COPPER_SLAB, (WAXED_OXIDIZED_COPPER_BLOCKS), event);
                 addAfter(Items.RED_NETHER_BRICK_WALL, (COLOURED_NETHER_BRICKS), event);
                 addAfter(Items.COBBLESTONE_WALL, (COBBLESTONE), event);
                 addAfter(Items.COBBLED_DEEPSLATE_WALL, (COBBLED_DEEPSLATE), event);
@@ -151,20 +150,20 @@ public class PyriteItemGroups {
                 addMapToItemGroup(event, BUILDING_BLOCKS);
                 addAfter(Items.CHERRY_BUTTON, (WOOD), event);
 			} else if (key.equals(CreativeModeTabs.COLORED_BLOCKS)) {
-                addAfter(Blocks.PINK_STAINED_GLASS, getBlockCollectionList(STAINED_GLASS), event);
-                addAfter(Blocks.PINK_STAINED_GLASS_PANE, getBlockCollectionList(STAINED_GLASS_PANES), event);
+                addAfter(VanillaConstants.PINK_STAINED_GLASS, getBlockCollectionList(STAINED_GLASS), event);
+                addAfter(VanillaConstants.PINK_STAINED_GLASS_PANE, getBlockCollectionList(STAINED_GLASS_PANES), event);
                 addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(FRAMED_GLASS), event);
                 addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(FRAMED_GLASS_PANES), event);
-                addAfter(Blocks.PINK_CONCRETE, getBlockCollectionList(CONCRETE), event);
-                addAfter(Blocks.PINK_CONCRETE_POWDER, getBlockCollectionList(CONCRETE_POWDER), event);
-                addAfter(Blocks.PINK_TERRACOTTA, getBlockCollectionList(TERRACOTTA), event);
-                addBefore(Blocks.WHITE_CONCRETE, getBlockCollectionList(TERRACOTTA_BRICKS), event);
+                addAfter(VanillaConstants.PINK_CONCRETE, getBlockCollectionList(CONCRETE), event);
+                addAfter(VanillaConstants.PINK_CONCRETE_POWDER, getBlockCollectionList(CONCRETE_POWDER), event);
+                addAfter(VanillaConstants.PINK_TERRACOTTA, getBlockCollectionList(TERRACOTTA), event);
+                addBefore(VanillaConstants.WHITE_CONCRETE, getBlockCollectionList(TERRACOTTA_BRICKS), event);
                 addMapToItemGroup(event, COLORED_BLOCKS);
                 Collection<ItemStack> blocksAfterCarpet = getBlockCollectionList(CARPET);
                 blocksAfterCarpet.addAll(getBlockCollectionList(WOOL_SLAB));
                 blocksAfterCarpet.addAll(getBlockCollectionList(WOOL_STAIRS));
-                addAfter(Blocks.PINK_CARPET, blocksAfterCarpet, event);
-                addAfter(Blocks.PINK_SHULKER_BOX, getBlockCollectionList(DYED_BRICKS), event);
+                addAfter(VanillaConstants.PINK_CARPET, blocksAfterCarpet, event);
+                addAfter(VanillaConstants.PINK_SHULKER_BOX, getBlockCollectionList(DYED_BRICKS), event);
                 event.acceptAll(getBlockCollectionList(DYED_WOOD));
                 addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(LAMPS), event);
 
@@ -204,7 +203,7 @@ public class PyriteItemGroups {
                 addAfter(Items.REDSTONE_BLOCK, (REDSTONE_RESOURCE_BLOCKS), event);
                 addAfter(Items.LEVER, (TORCH_LEVER), event);
 			} else if (key.equals(CreativeModeTabs.INGREDIENTS)) {
-                addAfter(Items.PINK_DYE, getItemCollectionList(DYES), event);
+                addAfter(VanillaConstants.PINK_DYE, getItemCollectionList(DYES), event);
 			} else if (key.equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
                 addAfter(Items.PALE_OAK_CHEST_BOAT, getItemCollectionList(BOATS), event);
             }
@@ -428,7 +427,7 @@ public class PyriteItemGroups {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
     }
 
-    private static void addAfter(Item anchor, ArrayList<? extends PyriteEntry> blockCollectionList,
+    private static void addAfter(ItemLike anchor, ArrayList<? extends PyriteEntry> blockCollectionList,
                                  //? if fabric
                                  FabricCreativeModeTabOutput event
                                  //? if neoforge
@@ -437,7 +436,7 @@ public class PyriteItemGroups {
         addAfter(anchor, getBlockCollectionList(blockCollectionList), event);
     }
 
-    private static void addAfter(Item anchor, Collection<ItemStack> blockCollectionList,
+    private static void addAfter(ItemLike anchor, Collection<ItemStack> blockCollectionList,
                                  //? if fabric
                                  FabricCreativeModeTabOutput event
                                  //? if neoforge
@@ -448,16 +447,16 @@ public class PyriteItemGroups {
         }
     }
 
-    private static void addAfter(Item anchor, ItemStack itemStack,
+    private static void addAfter(ItemLike anchor, ItemStack itemStack,
                                  //? if fabric
                                 FabricCreativeModeTabOutput event
                                  //? if neoforge
                                  //BuildCreativeModeTabContentsEvent event
     ) {
         //? if neoforge {
-        /*event.insertAfter(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        /*event.insertAfter(anchor.asItem().getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
          *///?} else {
-        event.insertAfter(anchor.getDefaultInstance(), itemStack);
+        event.insertAfter(anchor.asItem().getDefaultInstance(), itemStack);
          //?}
     }
 

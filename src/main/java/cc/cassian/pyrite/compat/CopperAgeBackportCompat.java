@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.compat;
 
 //? =1.21.1 {
-/*import cc.cassian.pyrite.functions.ModHelpers;
+/*import cc.cassian.pyrite.util.ModHelpers;
 import com.github.smallinger.copperagebackport.block.shelf.ShelfBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;

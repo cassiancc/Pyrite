@@ -9,7 +9,7 @@
   ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "stained_glass_pane",
+  "group": "glass_pane",
   "key": {
     "#": "pyrite:orange_framed_glass"
   },

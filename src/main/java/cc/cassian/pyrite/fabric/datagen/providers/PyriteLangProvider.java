@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.functions.ModLists;
+import cc.cassian.pyrite.util.ModLists;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
