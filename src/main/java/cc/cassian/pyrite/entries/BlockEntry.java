@@ -17,8 +17,7 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
     private final T raw;
 
     public BlockEntry(String id, T supplier) {
-        this.id = Pyrite.of(id);
-        this.raw = supplier;
+        this(Pyrite.of(id), supplier);
     }
 
     public BlockEntry(Identifier id, T raw) {
@@ -27,12 +26,11 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
     }
 
     public BlockEntry(ResourceKey<Block> id, T raw) {
-        this.id = id.identifier();
-        this.raw = raw;
+        this(id.identifier(), raw);
     }
 
     public BlockEntry(T vanillaBlock) {
-        this(BuiltInRegistries.BLOCK.getKey(vanillaBlock), vanillaBlock);
+        this(vanillaBlock.properties().blockIdOrThrow(), vanillaBlock);
     }
 
     @Override

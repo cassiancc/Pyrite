@@ -8,6 +8,7 @@ import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +25,16 @@ public class PyriteClient {
 	public static void addTooltip(List<Component> lines, ItemStack stack) {
 		if (Pyrite.CONFIG.disabledContentTooltip) {
 			if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID) && !ModHelpers.enabled(stack)) {
-				lines.add(Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED));
+				MutableComponent e = Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED);
+				lines.add(e);
+				//? fabric {
+				if (net.fabricmc.loader.api.FabricLoader.getInstance().isDevelopmentEnvironment()) {
+					e.append(", requires all of: ");
+					for (String requiredOption : ModHelpers.getRequiredOptions(BuiltInRegistries.ITEM.getKey(stack.getItem()))) {
+						e.append(requiredOption);
+					}
+				}
+				//?}
 			}
 		}
 	}

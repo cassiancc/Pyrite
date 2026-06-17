@@ -4,7 +4,7 @@
       "model": "pyrite:block/honey_wool_slab"
     },
     "type=double": {
-      "model": "pyrite:honey_wool"
+      "model": "pyrite:block/honey_wool"
     },
     "type=top": {
       "model": "pyrite:block/honey_wool_slab_top"

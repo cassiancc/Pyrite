@@ -77,6 +77,9 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable variant Ladders for Pyrite dyed wood.")
    public boolean ladders = true;
 
+   @Comment("Adds glowstone lamps and dyed lamps.")
+   public boolean lamps = true;
+
    @DisplayName("Lapis Block Set")
    @Comment("Completes the block set for Lapis Lazuli.")
    public boolean lapis = true;

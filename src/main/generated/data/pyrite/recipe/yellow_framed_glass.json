@@ -9,7 +9,7 @@
   ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "planks",
+  "group": "framed_glass",
   "key": {
     "#": "pyrite:framed_glass",
     "X": "#c:dyes/yellow"

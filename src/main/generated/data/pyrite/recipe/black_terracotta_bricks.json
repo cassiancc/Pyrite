@@ -9,7 +9,7 @@
   ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "planks",
+  "group": "terracotta_bricks",
   "key": {
     "#": "pyrite:terracotta_bricks",
     "X": "#c:dyes/black"

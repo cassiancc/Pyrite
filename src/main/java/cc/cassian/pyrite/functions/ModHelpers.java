@@ -64,7 +64,7 @@ public class ModHelpers {
         else if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
         }
-        else if (path.contains("glow") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
+        else if (path.contains("glow_") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
             requiredOptions.add("oddities");
         }
         if (path.contains("wool_stair") || path.contains("wool_slab")) {
@@ -87,6 +87,9 @@ public class ModHelpers {
         }
         if (path.contains("wall_gate")) {
             requiredOptions.add("wall_gates");
+        }
+        if (path.contains("lamp")) {
+            requiredOptions.add("lamps");
         }
         if (path.contains("terracotta_brick")) {
             requiredOptions.add("terracotta_bricks");
@@ -200,6 +203,24 @@ public class ModHelpers {
 
     public static Block getBlock(String id) {
         return getBlock(of(id));
+    }
+
+    public static BlockEntry<Block> getBlockEntry(String id) {
+        return getBlockEntry(of(id));
+    }
+
+    public static BlockEntry<Block> getBlockEntry(Identifier id) {
+        return new BlockEntry<>(id, getBlock(id));
+    }
+
+    public static BlockEntry<Block> getBlockOrVanilla(String id) {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Pyrite.of(id));
+        if (BuiltInRegistries.BLOCK.get(key).isPresent()) {
+            return new BlockEntry<>(id, BuiltInRegistries.BLOCK.getValue(key));
+        } else {
+            Identifier location = Identifier.withDefaultNamespace(id);
+            return new BlockEntry<>(location, BuiltInRegistries.BLOCK.getValue(ResourceKey.create(Registries.BLOCK, location)));
+        }
     }
 
     public static Block getBlock(Identifier id) {

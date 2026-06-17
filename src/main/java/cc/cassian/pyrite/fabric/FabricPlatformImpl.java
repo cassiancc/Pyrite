@@ -3,6 +3,7 @@ package cc.cassian.pyrite.fabric;
 //? fabric {
 import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.entries.BlockEntry;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -22,9 +23,9 @@ public class FabricPlatformImpl implements Platform {
     public static Map<Identifier, Identifier> OXIDIZABLES = new HashMap<>();
 
     @Override
-    public void registerWaxableBlockPair(Block newBlock, Block waxed) {
-        OxidizableBlocksRegistry.registerWaxable(newBlock, waxed);
-        WAXABLES.put(newBlock.properties().blockId().identifier(),  waxed.properties().blockId().identifier());
+    public void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {
+        OxidizableBlocksRegistry.registerWaxable(newBlock.get(), waxed.get());
+        WAXABLES.put(newBlock.getId(),  waxed.getId());
     }
 
     @Override
@@ -53,9 +54,9 @@ public class FabricPlatformImpl implements Platform {
     }
 
     @Override
-    public void registerOxidizableBlockPair(Block block, Block block1) {
-        OxidizableBlocksRegistry.registerNextStage(block, block1);
-        OXIDIZABLES.put(block.properties().blockId().identifier(),  block1.properties().blockId().identifier());
+    public void registerOxidizableBlockPair(BlockEntry<?> block, BlockEntry<?> block1) {
+        OxidizableBlocksRegistry.registerNextStage(block.get(), block1.get());
+        OXIDIZABLES.put(block.getId(),  block1.getId());
     }
 
 }

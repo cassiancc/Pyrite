@@ -4,7 +4,7 @@
       "model": "pyrite:block/glow_wool_slab"
     },
     "type=double": {
-      "model": "pyrite:glow_wool"
+      "model": "pyrite:block/glow_wool"
     },
     "type=top": {
       "model": "pyrite:block/glow_wool_slab_top"

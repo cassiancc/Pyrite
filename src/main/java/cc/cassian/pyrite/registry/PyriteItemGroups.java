@@ -211,11 +211,6 @@ public class PyriteItemGroups {
         }
     }
 
-    @Deprecated
-    public static void match(Supplier<Block> newBlock, Block copyBlock, String group, String blockID) {
-        match(new BlockEntry<>(blockID, newBlock.get()), copyBlock, group);
-    }
-
     public static <T extends Block> void match(BlockEntry<T> entry, Block copyBlock, String group) {
         var newBlock = (BlockEntry<Block>) entry;
         if (newBlock.getPath().equals("glowstone_lamp"))

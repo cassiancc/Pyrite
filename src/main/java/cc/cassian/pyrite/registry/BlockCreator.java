@@ -9,10 +9,7 @@ import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.functions.ModHelpers;
 import cc.cassian.pyrite.functions.ModLists;
-import cc.cassian.pyrite.util.BrickSet;
-import cc.cassian.pyrite.util.ResourceBlockSet;
-import cc.cassian.pyrite.util.ResourceBlockSubSet;
-import cc.cassian.pyrite.util.WoodSet;
+import cc.cassian.pyrite.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
@@ -56,6 +53,7 @@ public class BlockCreator {
     public static final ArrayList<WoodSet> WOOD_SETS = new ArrayList<>();
     public static final ArrayList<TurfSet> TURF_SETS = new ArrayList<>();
     public static final ArrayList<ResourceBlockSet> RESOURCE_BLOCK_SETS = new ArrayList<>();
+    public static final ArrayList<ColoredSet> WOOL_SETS = new ArrayList<>();
 
     /**
      * This registers a basic item with no additional settings - primarily used for Dye.
@@ -105,13 +103,13 @@ public class BlockCreator {
 
 
         for (BlockEntry<Block> entry : PyriteItemGroups.COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue(), getBlock(entry.getKey().replace("copper", "exposed_copper")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getKey().replace("copper", "exposed_copper")));
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue(), getBlock(entry.getKey().replace("exposed", "weathered")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getKey().replace("exposed", "weathered")));
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry.getValue(), getBlock(entry.getKey().replace("weathered", "oxidized")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getKey().replace("weathered", "oxidized")));
         }
 
         // Register item group.
@@ -129,9 +127,10 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
                     var waxedBlock = new ModBlock(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    putBlock("waxed_"+blockID, waxedBlock);
-                    PyriteItemGroups.match(()->waxedBlock, copyBlock, "waxed_"+group,"waxed_"+ blockID);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxedBlock);
+                    BlockEntry<ModBlock> waxedBlockEntry = new BlockEntry<>("waxed_"+ blockID, waxedBlock);
+                    putBlock(waxedBlockEntry);
+                    PyriteItemGroups.match(waxedBlockEntry, copyBlock, "waxed_"+group);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxedBlockEntry);
                 }
                 else
                     newBlock = new ModBlock(blockSettings, power);
@@ -172,18 +171,19 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModSlab(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    putBlock("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    var waxedEntry =  new BlockEntry<>("waxed_" + blockID, waxed);
+                    putBlock(waxedEntry);
+                    PyriteItemGroups.match(waxedEntry, copyBlock, "waxed_"+group);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxedEntry);
                 } else
                     newBlock = new ModSlab(blockSettings, power);
                 break;
             case "stairs":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings);
-                    Block waxed = new ModStairs(copyBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    putBlock("waxed_"+blockID, waxed);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    var waxed = new BlockEntry<Block>("waxed_"+ blockID, new ModStairs(copyBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID))));
+                    putBlock(waxed);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
                 } else
                     newBlock = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
                 break;
@@ -192,9 +192,10 @@ public class BlockCreator {
                     // wall
                     newBlock = new OxidizableWallBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModWall(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    putBlock("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(new BlockEntry<>("waxed_" + blockID, waxed), copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    BlockEntry<Block> waxedEntry = new BlockEntry<>("waxed_" + blockID, waxed);
+                    putBlock(waxedEntry);
+                    PyriteItemGroups.match(waxedEntry, copyBlock, "waxed_"+group);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxedEntry);
                     // column
                     //? fabric {
                     if (Platform.INSTANCE.isModLoaded("columns"))
@@ -218,7 +219,7 @@ public class BlockCreator {
                     BlockEntry<Block> entry = new BlockEntry<>("waxed_" + blockID, waxed);
                     putBlock(entry);
                     PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), entry);
                 } else
                     newBlock = new ModPillar(blockSettings, power);
                 break;
@@ -235,7 +236,7 @@ public class BlockCreator {
                     var entry =  new BlockEntry<>("waxed_" + blockID, waxed);
                     putBlock(entry);
                     PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), entry);
                 } else {
                     newBlock = new ModPane(blockSettings, power);
                 }
@@ -267,9 +268,10 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new WallGateBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    putBlock("waxed_" + blockID, waxed);
-                    PyriteItemGroups.match(()->waxed, copyBlock, "waxed_"+group, "waxed_" + blockID);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    var entry = new BlockEntry<>("waxed_" + blockID, waxed);
+                    putBlock(entry);
+                    PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), entry);
                 } else
                     newBlock = new WallGateBlock(blockSetType, blockSettings);
                 break;
@@ -307,7 +309,7 @@ public class BlockCreator {
                     var waxed = new BlockEntry<>("waxed_" + blockID, new DoorBlock(blockSetType, blockSettings.noOcclusion()));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
                 }
                 else
                     newBlock = new DoorBlock(blockSetType, blockSettings.noOcclusion());
@@ -318,7 +320,7 @@ public class BlockCreator {
                     var waxed = new BlockEntry<>("waxed_"+blockID, new TrapDoorBlock(blockSetType, blockSettings.noOcclusion()));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(newBlock, waxed);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
                 }
                 else
                     newBlock = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
@@ -356,7 +358,7 @@ public class BlockCreator {
         if (newBlock == null)
             return null;
         if (!blockType.contains("sign")) {
-            putBlock(blockID, newBlock);
+            putBlock(new BlockEntry<>(blockID, newBlock));
         }
         if (blockID.contains("grass")) {
             addGrassBlock();
@@ -366,12 +368,8 @@ public class BlockCreator {
         return entry;
     }
 
-    public static void putBlock(String s, Block waxed) {
-        BLOCKS.add(new BlockEntry<>(s, waxed));
-    }
-
     @SuppressWarnings("all")
-    private static void putBlock(BlockEntry<?> entry) {
+	public static void putBlock(BlockEntry<?> entry) {
         BLOCKS.add((BlockEntry<Block>) entry);
     }
 

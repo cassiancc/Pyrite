@@ -18,21 +18,21 @@ import static cc.cassian.pyrite.registry.BlockCreator.BLOCKS;
 public class ColumnsCompat {
     public static void registerCopperColumn(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         String columnID = blockID.replace("wall", "column");
-        String waxedColumnID = "waxed_"+columnID;
-        var column = new OxidizableColumnBlock(ModHelpers.getOxidizationState(blockID), blockSettings);
-        BlockCreator.putBlock(columnID, column);
-        Block waxed_column = new ColumnBlock(blockSettings);
-        BlockCreator.putBlock(waxedColumnID, waxed_column);
-        PyriteItemGroups.match(new BlockEntry<>(columnID, column), copyBlock, group);
-        PyriteItemGroups.match(new BlockEntry<>(waxedColumnID, waxed_column), copyBlock, "waxed_"+group);
-        Platform.INSTANCE.registerWaxableBlockPair(column, waxed_column);
+        BlockEntry<OxidizableColumnBlock> column = new BlockEntry<>(columnID, new OxidizableColumnBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+        BlockCreator.putBlock(column);
+        BlockEntry<Block> waxedColumn = new BlockEntry<>("waxed_"+columnID, new ColumnBlock(blockSettings));
+        BlockCreator.putBlock(waxedColumn);
+        PyriteItemGroups.match(column, copyBlock, group);
+        PyriteItemGroups.match(waxedColumn, copyBlock, "waxed_"+group);
+        Platform.INSTANCE.registerWaxableBlockPair(column, waxedColumn);
     }
 
     public static void registerColumn(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         String columnID = blockID.replace("wall", "column");
         Block column = new ColumnBlock(blockSettings);
-        BlockCreator.putBlock(columnID, column);
-        PyriteItemGroups.match(new BlockEntry<>(columnID, column), copyBlock, group);
+        BlockEntry<Block> entry = new BlockEntry<>(columnID, column);
+        BlockCreator.putBlock(entry);
+        PyriteItemGroups.match(entry, copyBlock, group);
     }
 }
 

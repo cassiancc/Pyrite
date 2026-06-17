@@ -30,13 +30,9 @@ public interface Platform {
     boolean isDevEnvironment();
     Path getConfigDir();
 
-    void registerOxidizableBlockPair(Block block, Block block1);
+    void registerOxidizableBlockPair(BlockEntry<?> block, BlockEntry<?> block1);
 
-    void registerWaxableBlockPair(Block newBlock, Block waxed);
-
-    default void registerWaxableBlockPair(Block newBlock, BlockEntry<?> waxed) {
-        registerWaxableBlockPair(newBlock, waxed.get());
-    }
+    void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed);
 
     WoodType createWoodType(String blockID, BlockSetType setType);
 }

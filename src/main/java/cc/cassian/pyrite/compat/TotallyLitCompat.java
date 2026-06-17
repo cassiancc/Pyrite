@@ -20,9 +20,10 @@ public class TotallyLitCompat {
 
     public static void registerTorch(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         var block = new ModWallMounted(blockSettings.lightLevel((state)->0));
-        BlockCreator.putBlock(blockID, block);
+        BlockEntry<ModWallMounted> entry = new BlockEntry<>(blockID, block);
+        BlockCreator.putBlock(entry);
         add(block);
-        PyriteItemGroups.match(new BlockEntry<>(blockID, block), copyBlock, group);
+        PyriteItemGroups.match(entry, copyBlock, group);
         //? <26
         //TotallyLit.TORCH_MAP.put(copyBlock, block);
     }
