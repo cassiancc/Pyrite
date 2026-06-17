@@ -13,6 +13,6 @@ public class FarmersDelightCompat {
     }
 
     public static void add(Block newBlock) {
-        ModHelpers.addSupportedBlock(ModBlockEntityType.CABINET, newBlock);
+        ModHelpers.addSupportedBlock(ModBlockEntityTypes.CABINET, newBlock);
     }
 }

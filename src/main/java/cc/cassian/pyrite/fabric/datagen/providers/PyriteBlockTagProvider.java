@@ -10,7 +10,6 @@ import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import cc.cassian.pyrite.util.sets.WoodSet;
-import dev.lieonlion.quad.tags.QuadBlockTags;
 import net.fabricmc.fabric.api.block.v1.BlockFunctionalityTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -24,7 +23,9 @@ import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import cc.cassian.pyrite.util.BlockItemTagId;
 //~}
-import net.minecraft.tags.BlockItemTags;
+//? if >26.1 {
+/*import net.minecraft.tags.BlockItemTags;
+*///?}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -135,8 +136,10 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(BlockTags.INFINIBURN_END).addAll(get("netherrack"));
 		builder(BlockTags.INFINIBURN_OVERWORLD).addAll(get("netherrack"));
 		builder(BlockTags.INFINIBURN_NETHER).addAll(get("netherrack"));
+		//~ if >26.1 'BlockTags.CONCRETE_POWDER' -> 'BlockItemTags.CONCRETE_POWDERS' {
+		optionalBuilder(BlockTags.CONCRETE_POWDER, "concrete_powder");
+		//~}
 		//~ if >26.1 'BlockTags' -> 'BlockItemTags' {
-		optionalBuilder(BlockTags.CONCRETE_POWDERS, "concrete_powder");
 		optionalBuilder(BlockTags.LOGS_THAT_BURN, "log");
 		optionalBuilder(BlockTags.LOGS_THAT_BURN, "stem");
 		//~}
@@ -187,7 +190,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets")), "cabinet");
 
 		// quad tags
-		builder(QuadBlockTags.CATS_ON_BLOCKS_SIT).addTag(PyriteBlockItemTags.CHESTS.block());
+		builder(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("quad", "cats_on_blocks/sit"))).addTag(PyriteBlockItemTags.CHESTS.block());
 	}
 
 	private void add(TagKey<Block> woodenDoors, BlockEntry<Block>... blocks) {
@@ -216,28 +219,29 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		return blocks;
     }
 
-	//~ if >26.1 'ResourceKey<Block>, Block' -> 'Block' {
-	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(TagKey<ResourceKey<Block>, Block> tag, String id) {
+	//~ if >26.1 'TagAppender<ResourceKey<Block>, Block>' -> 'TagAppender<Block>' {
+
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(TagKey<Block> tag, String id) {
 		TagAppender<ResourceKey<Block>, Block> builder = builder(tag);
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Block>, Block> builder(ResourceKey<Block>, BlockItemTagId fences, Class<? extends ResourceKey<Block>, Block> aClass) {
+	private TagAppender<ResourceKey<Block>, Block> builder(BlockItemTagId fences, Class<? extends Block> aClass) {
 		return builder(fences.block()).addAll(get(aClass));
 	}
 
-	private TagAppender<ResourceKey<Block>, Block> builder(ResourceKey<Block>, BlockItemTagId fences, String id) {
+	private TagAppender<ResourceKey<Block>, Block> builder(BlockItemTagId fences, String id) {
 		return builder(fences.block()).addAll(get(id));
 	}
 
-	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(ResourceKey<Block>, BlockItemTagId tag, String id) {
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(BlockItemTagId tag, String id) {
 		TagAppender<ResourceKey<Block>, Block> builder = builder(tag.block());
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(ResourceKey<Block>, BlockItemTagId tag, Collection<ResourceKey<ResourceKey<Block>, Block>> id) {
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(BlockItemTagId tag, Collection<ResourceKey<Block>> id) {
 		TagAppender<ResourceKey<Block>, Block> builder = builder(tag.block());
 		id.forEach(builder::addOptional);
 		return builder;

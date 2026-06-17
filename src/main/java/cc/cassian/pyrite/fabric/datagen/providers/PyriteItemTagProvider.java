@@ -125,28 +125,28 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(tagId.block(), tagId.item());
 	}
 
-	//~ if >26.1 'ResourceKey<Item>, Item' -> 'Item' {
-	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(TagKey<ResourceKey<Item>, Item> tag, String id) {
+	//~ if >26.1 'TagAppender<ResourceKey<Item>, Item>' -> 'TagAppender<Item>' {
+	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(TagKey<Item> tag, String id) {
 		TagAppender<ResourceKey<Item>, Item> builder = builder(tag);
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(TagKey<ResourceKey<Item>, Item> tag, String id) {
+	private TagAppender<ResourceKey<Item>, Item> builder(TagKey<Item> tag, String id) {
 		TagAppender<ResourceKey<Item>, Item> builder = builder(tag);
 		get(id).forEach(builder::add);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(BlockResourceKey<Item>, ItemTagId tag, Class<? extends ResourceKey<Item>, Item> aClass) {
+	private TagAppender<ResourceKey<Item>, Item> builder(BlockItemTagId tag, Class<? extends Item> aClass) {
 		return builder(tag.item()).addAll(get(aClass));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(BlockResourceKey<Item>, ItemTagId tag, String id) {
+	private TagAppender<ResourceKey<Item>, Item> builder(BlockItemTagId tag, String id) {
 		return builder(tag.item()).addAll(get(id));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(BlockResourceKey<Item>, ItemTagId tag, String id) {
+	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(BlockItemTagId tag, String id) {
 		TagAppender<ResourceKey<Item>, Item> builder = builder(tag.item());
 		get(id).forEach(builder::addOptional);
 		return builder;

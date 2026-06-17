@@ -152,6 +152,12 @@ dependencies {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }
+    if (stonecutter.eval(mcVersion, "=26.1")) {
+        localRuntime("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
+            exclude(group = "net.fabricmc")
+            exclude(group = "me.shedaniel")
+        }
+    }
 
     implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}") {
         isTransitive = false
@@ -174,10 +180,6 @@ stonecutter {
     replacements.string {
         direction = eval(current.version, ">1.21")
         replace("ResourceLocation", "Identifier")
-    }
-    replacements.string {
-        direction = eval(current.version, ">26.1")
-        replace("BlockEntityType.", "BlockEntityTypes.")
     }
 }
 

@@ -29,7 +29,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockItemTags;
+//? if >26.1 {
+/*import net.minecraft.tags.BlockItemTags;
+ *///?}
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;

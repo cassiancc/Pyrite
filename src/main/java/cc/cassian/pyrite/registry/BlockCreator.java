@@ -119,6 +119,7 @@ public class BlockCreator {
         PyriteItemGroups.addItemGroup("pyrite_group", "glowstone_lamp", BLOCKS);
     }
 
+    //~ if >26.1 'BlockEntityType' -> 'BlockEntityTypes' {
     public static BlockEntry<Block> platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
@@ -369,6 +370,7 @@ public class BlockCreator {
         PyriteItemGroups.match(entry, copyBlock, group);
         return entry;
     }
+    //~}
 
     @SuppressWarnings("all")
 	public static void putBlock(BlockEntry<?> entry) {

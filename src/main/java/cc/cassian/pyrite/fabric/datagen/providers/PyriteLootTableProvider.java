@@ -46,21 +46,27 @@ public class PyriteLootTableProvider extends FabricBlockLootSubProvider {
 			var key = blockEntry.getKey();
 			if (key.identifier().getNamespace().equals(Pyrite.MOD_ID)) {
 				var value = blockEntry.getValue();
-				switch (value.getClass().getSimpleName()) {
-					case "Block", "ModBlock", "ModWood", "ModCraftingTable", "SwitchableGlass", "OxidizableWallBlock", "OxidizablePillarBlock", "ModFacingBlock", "WallHangingSignBlock", "GravelBlock", "OxidizableWallGateBlock", "FenceGateBlock", "ModTorch", "ModCarpet", "TorchLever", "FlowerBlock", "FenceBlock", "ModWoodenButton", "ModPillar", "WallSignBlock", "LadderBlock", "TrapDoorBlock", "ConcretePowderBlock", "WeatheringCopperFullBlock", "ChestBlock", "ModStairs", "WeatheringCopperStairBlock", "ModPressurePlate", "ShelfBlock", "PyriteWallHangingSignBlock", "ModWall", "WallGateBlock", "PyriteWallSignBlock", "CabinetBlock": dropSelf(value); break;
-					case "ModPane": {
-						if (key.identifier().toString().contains("pane")) dropWhenSilkTouch(value);
-						else dropSelf(value);
-					} break;
-					case "ModSlab", "WeatheringCopperSlabBlock": add(value, createSlabItemTable(value)); break;
-					case "DoorBlock": add(value, createDoorTable(value)); break;
-					case "FlowerPotBlock": dropPottedContents(value); break;
-					case "ModGlass", "StainedFramedGlass", "StainedGlassPaneBlock": dropWhenSilkTouch(value); break;
-					case "PyriteStandingSignBlock": break;
-					default: {
-						dropSelf(value);
-						Pyrite.LOGGER.error("Loot table for %s not implemented!".formatted(value.getClass().getSimpleName().toString()));
+				String id = blockEntry.getKey().identifier().getPath();
+				try {
+					switch (value.getClass().getSimpleName()) {
+						case "Block", "ModBlock", "ModWood", "ModCraftingTable", "SwitchableGlass", "OxidizableWallBlock", "OxidizablePillarBlock", "ModFacingBlock", "WallHangingSignBlock", "GravelBlock", "OxidizableWallGateBlock", "FenceGateBlock", "ModTorch", "ModCarpet", "TorchLever", "FlowerBlock", "FenceBlock", "ModWoodenButton", "ModPillar", "WallSignBlock", "LadderBlock", "TrapDoorBlock", "ConcretePowderBlock", "WeatheringCopperFullBlock", "ChestBlock", "ModStairs", "WeatheringCopperStairBlock", "ModPressurePlate", "ShelfBlock", "PyriteWallHangingSignBlock", "ModWall", "WallGateBlock", "PyriteWallSignBlock", "CabinetBlock":
+							dropSelf(value); break;
+						case "ModPane": {
+							if (key.identifier().toString().contains("pane")) dropWhenSilkTouch(value);
+							else dropSelf(value);
+						} break;
+						case "ModSlab", "WeatheringCopperSlabBlock": add(value, createSlabItemTable(value)); break;
+						case "DoorBlock": add(value, createDoorTable(value)); break;
+						case "FlowerPotBlock": dropPottedContents(value); break;
+						case "ModGlass", "StainedFramedGlass", "StainedGlassPaneBlock": dropWhenSilkTouch(value); break;
+						case "PyriteStandingSignBlock": break;
+						default: {
+							dropSelf(value);
+							Pyrite.LOGGER.error("Loot table for %s not implemented!".formatted(value.getClass().getSimpleName().toString()));
+						}
 					}
+				} catch (Exception ex) {
+					Pyrite.LOGGER.error("Failed to generate loot table for %s!".formatted(id));
 				}
 			}
 		});

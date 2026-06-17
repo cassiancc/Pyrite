@@ -1,19 +1,21 @@
 package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.blocks.PyriteStandingSignBlock;
+import cc.cassian.pyrite.blocks.PyriteWallSignBlock;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
+import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.sets.WoodSet;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -21,6 +23,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HangingSignBlock;
 import org.jspecify.annotations.NullMarked;
 
 import static cc.cassian.pyrite.util.ModHelpers.getBlockEntry;
@@ -44,6 +47,41 @@ public class PyriteModelProvider extends FabricModelProvider {
             stairs(stairs, wool);
             slab(slab, wool);
         }
+
+        //? if >26.1 {
+
+        /*for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
+            var sign = woodSet.sign().get();
+            TextureMapping mapping = (new TextureMapping()).put(TextureSlot.ALL, TextureMapping.getBlockTexture(sign)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(woodSet.planks().get()));
+            MultiVariant standingRot0 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(sign, "_rot_0"), mapping, blockModelGenerators.modelOutput));
+            MultiVariant standingRot1 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(sign, "_rot_1"), mapping, blockModelGenerators.modelOutput));
+            MultiVariant standingRot2 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(sign, "_rot_2"), mapping, blockModelGenerators.modelOutput));
+            MultiVariant standingRot3 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(sign, "_rot_3"), mapping, blockModelGenerators.modelOutput));
+            blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSign(sign, standingRot0, standingRot1, standingRot2, standingRot3));
+
+        }
+
+
+        BuiltInRegistries.BLOCK.entrySet().forEach((entry)->{
+            var block = entry.getValue();
+            var name = entry.getKey().identifier().getPath();
+            if (block instanceof PyriteWallSignBlock wallSign) {
+                TextureMapping mapping = (new TextureMapping()).put(TextureSlot.ALL, TextureMapping.getBlockTexture(getSign(name))).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(getBaseBlock(name)));
+                MultiVariant wallModel = BlockModelGenerators.plainVariant(ModelTemplates.WALL_SIGN.create(wallSign, mapping, blockModelGenerators.modelOutput));
+                blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
+            } else if (block instanceof HangingSignBlock hangingSignBlock) {
+
+            }
+        });
+        *///?}
+    }
+
+    private static Block getBaseBlock(String sign) {
+        return BuiltInRegistries.BLOCK.getValue(Pyrite.of(sign.replace("_sign", "_planks")));
+    }
+
+    private static Block getSign(String sign) {
+        return BuiltInRegistries.BLOCK.getValue(Pyrite.of(sign.replace("_wall_", "")));
     }
 
     public void stairs(final BlockEntry<Block> stairs, BlockEntry<Block> baseBlock) {
