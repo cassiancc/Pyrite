@@ -88,6 +88,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Lapis Lazuli.")
    public boolean lapis = true;
 
+   @DisplayName("Lit Redstone Lamp")
+   @Comment("Enable Lit Redstone Lamps.")
+   public boolean lit_redstone_lamp = true;
+
    @DisplayName("Mushroom Wood Sets")
    @Comment("Enable Pyrite Tall Mushrooms and their wood set.")
    public boolean mushrooms = true;

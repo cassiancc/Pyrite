@@ -61,6 +61,15 @@ public class ModHelpers {
         if (path.contains("wall_gate")) {
             requiredOptions.add("wall_gates");
         }
+        else if (path.contains("redstone_torch_lever") || path.contains("soul_torch_lever")) {
+            return List.of("torch_levers");
+        }
+        else if (path.equals("lit_redstone_lamp")) {
+            return List.of("lit_redstone_lamp");
+        }
+        else if (path.contains("torch_lever")) {
+            requiredOptions.add("torch_levers");
+        }
         if (path.contains("nether_brick_fence_gate")) {
             return List.of("nether_brick_fence_gate");
         }
@@ -82,7 +91,7 @@ public class ModHelpers {
         else if (path.contains("concrete_stair") || path.contains("concrete_slab")) {
             requiredOptions.add("concrete_stairs_and_slabs");
         }
-        else if (path.contains("torch")) {
+        else if (path.contains("_torch")) {
             requiredOptions.add("torches");
         }
         else if (path.contains("framed_glass")) {
@@ -137,10 +146,8 @@ public class ModHelpers {
         }
         for (BlockEntry<?> vanillaResourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
             var resourceBlockPath = vanillaResourceBlock.getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
-            if (path.contains(resourceBlockPath)) {
-                if (!requiredOptions.contains(resourceBlockPath))
-                    requiredOptions.add(resourceBlockPath);
-            }
+			if (path.contains(resourceBlockPath) && !requiredOptions.contains(resourceBlockPath))
+		        requiredOptions.add(resourceBlockPath);
         }
         return requiredOptions;
     }

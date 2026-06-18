@@ -67,6 +67,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				stairs(getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, List.of("smooth_stone_stairs"));
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, 1, List.of("smooth_stone_stairs"));
 
+				shapeless(RecipeCategory.REDSTONE, getItem("lit_redstone_lamp")).requires(Items.REDSTONE_LAMP).requires(Items.REDSTONE_TORCH).unlockedBy(getHasName(Items.REDSTONE_LAMP), has(Items.REDSTONE_LAMP)).save(configuredOutput(List.of("lit_redstone_lamp")));
+
 				for (WoodSet woodSet : WOOD_SETS) {
 					List<String> requiredOptions = getRequiredOptions(woodSet.planks().getId());
 					addAll(requiredOptions, getRequiredOptions(Pyrite.of(woodSet.blockID())));
