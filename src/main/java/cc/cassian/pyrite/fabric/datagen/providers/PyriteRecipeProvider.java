@@ -302,7 +302,6 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					var brickOptions = new ArrayList<>(requiredOptions);
 					brickOptions.add("dyed_bricks");
 					coloredBaseBlockFromBaseBlockAndDye(getItem(dye + "_bricks"), dyeIngredient, getItemOrVanilla("bricks"), brickOptions, "dyed_bricks");
-					//TODO dyed chests
 				}
 				// terracotta
 				Item terracotta = getItemOrVanilla("terracotta");
