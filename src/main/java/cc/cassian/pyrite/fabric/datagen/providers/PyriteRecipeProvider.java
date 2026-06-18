@@ -285,8 +285,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					dyedLampOptions.add("lamps");
 					Item dyedLamp = getItem(Pyrite.of(dye + "_lamp"));
 					coloredBaseBlockFromBaseBlockAndDye(dyedLamp, dyeIngredient, glowstoneLamp, dyedLampOptions, "lamps");
-					//TODO dyed bricks
-					//TODO dyed torches
+					// dyed bricks
+					var brickOptions = new ArrayList<>(requiredOptions);
+					brickOptions.add("dyed_bricks");
+					coloredBaseBlockFromBaseBlockAndDye(getItem(dye + "_bricks"), dyeIngredient, getItemOrVanilla("bricks"), brickOptions, "dyed_bricks");
 					//TODO dyed chests
 				}
 				// terracotta

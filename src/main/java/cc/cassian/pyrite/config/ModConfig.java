@@ -49,6 +49,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable a block set for Diorite Bricks.")
    public boolean diorite_bricks = true;
 
+   @DisplayName("Dyed Bricks")
+   @Comment("Enable a block set for dyed Bricks.")
+   public boolean dyed_bricks = true;
+
    @DisplayName("Dyed Planks")
    @Comment("Adds dyed planks.")
    public boolean dyed_planks = true;

@@ -5,6 +5,8 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.registry.BlockCreator;
+import cc.cassian.pyrite.util.sets.BrickSet;
+import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
@@ -89,6 +91,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(BlockTags.GUARDED_BY_PIGLINS);
 		copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 		builder(ItemTags.PIGLIN_LOVED).addAll(get("gold"));
+		copy(BlockTags.PLANKS);
 		copy(BlockTags.SIGNS);
 		copy(BlockTags.STAIRS);
 		copy(BlockTags.SLABS);
@@ -100,9 +103,12 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(BlockTags.WOODEN_STAIRS);
 		copy(BlockTags.WOODEN_TRAPDOORS);
 		copy(BlockTags.WOODEN_SHELVES);
+		copy(BlockTags.WOOL);
+
 		// fd
 		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden"));
 		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets"));
+
 		// dyes
 		builder(PyriteItemTags.DRAGON_DYES).addAll(get("dragon_dye"));
 		builder(PyriteItemTags.POISONOUS_DYES).addAll(get("poisonous_dye"));
@@ -111,6 +117,16 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		builder(PyriteItemTags.GLOW_DYES).addAll(get("glow_dye"));
 		builder(PyriteItemTags.STAR_DYES).addAll(get("star_dye"));
 		builder(PyriteItemTags.NOSTALGIA_DYES).addAll(get("nostalgia_dye"));
+
+		//? if >26.1 {
+		/*for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
+			builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT).add(resourceBlockSet.smoothBlocks().block().itemKey()).add(resourceBlockSet.pillar().itemKey()).add(resourceBlockSet.cutBlocks().block().itemKey()).add(resourceBlockSet.bricks().itemKey()).add(resourceBlockSet.chiseled().itemKey());
+		}
+		for (BrickSet brickSet : BlockCreator.BRICK_SETS) {
+			builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY).add(brickSet.base().itemKey());
+		}
+		builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY).addAll(get("nether_bricks")).addAll(get("terracotta_bricks"));
+		*///?}
 	}
 
     private void copy(TagKey<Block> blockTag) {
