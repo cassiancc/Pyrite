@@ -58,7 +58,7 @@ public class ModHelpers {
             requiredOptions.add("azalea");
         }
         // dyed bricks
-        if (path.contains("brick") && !path.contains("terracotta")) {
+        if (path.contains("brick") && !path.contains("terracotta") && !path.contains("sandstone")) {
             for (String dye : ModLists.DYES) {
                 if (path.contains(dye)) {
                     requiredOptions.add("dyed_bricks");

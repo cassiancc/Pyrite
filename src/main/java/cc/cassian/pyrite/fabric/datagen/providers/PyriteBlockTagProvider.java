@@ -101,7 +101,11 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(ConventionalBlockTags.GLASS_BLOCKS_TINTED).addTag(PyriteBlockItemTags.STAINED_GLASS.block()).addTag(PyriteBlockItemTags.STAINED_FRAMED_GLASS.block());
 		optionalBuilder(ConventionalBlockTags.BLACK_DYED, "black_");
 		optionalBuilder(ConventionalBlockTags.BLUE_DYED, "blue_");
-		optionalBuilder(ConventionalBlockTags.BROWN_DYED, "brown_");
+		optionalBuilder(ConventionalBlockTags.BROWN_DYED, get("brown_").stream().filter(c-> {
+			String path = c.identifier().getPath();
+			if (path.contains("mushroom")) return false;
+			return true;
+		}).toList());
 		optionalBuilder(ConventionalBlockTags.CYAN_DYED, "cyan_");
 		optionalBuilder(ConventionalBlockTags.GRAY_DYED, "gray_");
 		optionalBuilder(ConventionalBlockTags.GREEN_DYED, "green_");
@@ -112,7 +116,13 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(ConventionalBlockTags.ORANGE_DYED, "orange_");
 		optionalBuilder(ConventionalBlockTags.PURPLE_DYED, "purple_");
 		optionalBuilder(ConventionalBlockTags.PINK_DYED, "pink_");
-		optionalBuilder(ConventionalBlockTags.RED_DYED, "red_");
+		optionalBuilder(ConventionalBlockTags.RED_DYED, get("red_").stream().filter(c-> {
+			String path = c.identifier().getPath();
+			if (path.contains("sandstone")) return false;
+			else if (path.contains("mushroom")) return false;
+			else if (path.contains("copper")) return false;
+			return true;
+		}).toList());
 		optionalBuilder(ConventionalBlockTags.WHITE_DYED, "white_");
 		optionalBuilder(ConventionalBlockTags.YELLOW_DYED, "yellow_");
 
@@ -243,6 +253,12 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 
 	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(BlockItemTagId tag, Collection<ResourceKey<Block>> id) {
 		TagAppender<ResourceKey<Block>, Block> builder = builder(tag.block());
+		id.forEach(builder::addOptional);
+		return builder;
+	}
+
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(TagKey<Block> tag, Collection<ResourceKey<Block>> id) {
+		TagAppender<ResourceKey<Block>, Block> builder = builder(tag);
 		id.forEach(builder::addOptional);
 		return builder;
 	}

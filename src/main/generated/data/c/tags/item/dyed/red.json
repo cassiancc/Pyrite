@@ -21,18 +21,6 @@
       "required": false
     },
     {
-      "id": "pyrite:cut_weathered_copper_wall",
-      "required": false
-    },
-    {
-      "id": "pyrite:cut_weathered_copper_wall_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:nostalgia_weathered_copper_block",
-      "required": false
-    },
-    {
       "id": "pyrite:red_brick_slab",
       "required": false
     },
@@ -73,91 +61,7 @@
       "required": false
     },
     {
-      "id": "pyrite:red_mushroom_button",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_cabinet",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_chest",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_crafting_table",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_door",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_fence",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_fence_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_ladder",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_planks",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_pressure_plate",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_shelf",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_slab",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_stairs",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_stem",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_mushroom_trapdoor",
-      "required": false
-    },
-    {
       "id": "pyrite:red_nether_brick_wall_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_sandstone_brick_slab",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_sandstone_brick_stairs",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_sandstone_brick_wall",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_sandstone_brick_wall_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_sandstone_bricks",
-      "required": false
-    },
-    {
-      "id": "pyrite:red_sandstone_wall_gate",
       "required": false
     },
     {
@@ -250,82 +154,6 @@
     },
     {
       "id": "pyrite:red_wool_stairs",
-      "required": false
-    },
-    {
-      "id": "pyrite:smooth_weathered_copper",
-      "required": false
-    },
-    {
-      "id": "pyrite:smooth_weathered_copper_slab",
-      "required": false
-    },
-    {
-      "id": "pyrite:smooth_weathered_copper_stairs",
-      "required": false
-    },
-    {
-      "id": "pyrite:smooth_weathered_copper_wall",
-      "required": false
-    },
-    {
-      "id": "pyrite:smooth_weathered_copper_wall_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_cut_weathered_copper_wall",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_cut_weathered_copper_wall_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_nostalgia_weathered_copper_block",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_smooth_weathered_copper",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_smooth_weathered_copper_slab",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_smooth_weathered_copper_stairs",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_smooth_weathered_copper_wall",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_smooth_weathered_copper_wall_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_weathered_copper_bricks",
-      "required": false
-    },
-    {
-      "id": "pyrite:waxed_weathered_copper_pillar",
-      "required": false
-    },
-    {
-      "id": "pyrite:weathered_copper_bricks",
-      "required": false
-    },
-    {
-      "id": "pyrite:weathered_copper_button",
-      "required": false
-    },
-    {
-      "id": "pyrite:weathered_copper_pillar",
-      "required": false
-    },
-    {
-      "id": "pyrite:weathered_copper_pressure_plate",
       "required": false
     }
   ]

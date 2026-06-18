@@ -26,15 +26,21 @@ public class PyriteClient {
 		Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
 		if ((Pyrite.CONFIG.disabledContentTooltip || Pyrite.CONFIG.enabledContentTooltip) && id.getNamespace().equals(MOD_ID)) {
 			boolean enabled = ModHelpers.enabled(id);
-			if (enabled && Pyrite.CONFIG.enabledContentTooltip)
+			if (enabled && Pyrite.CONFIG.enabledContentTooltip) {
 				lines.add(Component.translatable("config.pyrite.enabled").withStyle(ChatFormatting.GREEN));
+				addRequiredOptions(lines, id);
+			}
 			if (!enabled && Pyrite.CONFIG.disabledContentTooltip) {
 				lines.add(Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED));
+				addRequiredOptions(lines, id);
 			}
-			for (String requiredOption : ModHelpers.getRequiredOptions(id)) {
-				var color = ModHelpers.enabled(List.of(requiredOption)) ? ChatFormatting.GREEN : ChatFormatting.RED;
-				lines.add(Component.literal("  - " + requiredOption).withStyle(color));
-			}
+		}
+	}
+
+	private static void addRequiredOptions(List<Component> lines, Identifier id) {
+		for (String requiredOption : ModHelpers.getRequiredOptions(id)) {
+			var color = ModHelpers.enabled(List.of(requiredOption)) ? ChatFormatting.GREEN : ChatFormatting.RED;
+			lines.add(Component.literal("  - " + requiredOption).withStyle(color));
 		}
 	}
 }

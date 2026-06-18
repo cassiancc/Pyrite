@@ -6,6 +6,7 @@ import folk.sisby.kaleido.lib.quiltconfig.api.annotations.DisplayName;
 
 public class ModConfig extends WrappedConfig {
 
+   @DisplayName("Andesite Bricks")
    @Comment("Enable a block set for Andesite Bricks.")
    public boolean andesite_bricks = true;
 
@@ -85,6 +86,7 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable variant Ladders for Pyrite dyed wood.")
    public boolean ladders = true;
 
+   @DisplayName("Lamps")
    @Comment("Adds glowstone lamps and dyed lamps.")
    public boolean lamps = true;
 
@@ -112,6 +114,7 @@ public class ModConfig extends WrappedConfig {
    @Comment("Completes the block set for Netherite.")
    public boolean netherite = true;
 
+   @DisplayName("Oddities")
    @Comment("Enable the Oddities - removed features from Pyrite")
    public boolean oddities = false;
 
@@ -167,7 +170,8 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable Pyrite's Backport of Wool Stairs and Slabs.")
    public boolean wool_stairs_and_slabs = true;
 
-   @Comment("Add items to vanilla item groups.")
+   @DisplayName("Add Items to Vanilla Creative Tabs")
+   @Comment("Whether Pyrite items should be added to vanilla's creative tabs. Disable to only see Pyrite's creative tab.")
    public boolean addToVanillaItemGroups = true;
 
    @Comment("Add a tooltip on disabled items.")

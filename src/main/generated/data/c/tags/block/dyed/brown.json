@@ -41,66 +41,6 @@
       "required": false
     },
     {
-      "id": "pyrite:brown_mushroom_button",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_cabinet",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_chest",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_crafting_table",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_door",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_fence",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_fence_gate",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_ladder",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_planks",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_pressure_plate",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_shelf",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_slab",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_stairs",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_stem",
-      "required": false
-    },
-    {
-      "id": "pyrite:brown_mushroom_trapdoor",
-      "required": false
-    },
-    {
       "id": "pyrite:brown_stained_button",
       "required": false
     },

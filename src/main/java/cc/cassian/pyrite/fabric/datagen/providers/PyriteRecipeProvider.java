@@ -73,7 +73,6 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					List<String> requiredOptions = getRequiredOptions(woodSet.planks().getId());
 					addAll(requiredOptions, getRequiredOptions(Pyrite.of(woodSet.blockID())));
 					boat(woodSet.boat(), woodSet.planks(), requiredOptions);
-					chest(woodSet.chest(), woodSet.planks(), requiredOptions);
 					chestBoat(woodSet.chestBoat().value(), woodSet.boat(), requiredOptions);
 					fenceBuilder(woodSet.fence(), Ingredient.of(woodSet.planks())).unlockedBy(getHasName(woodSet.planks()), has(woodSet.planks())).save(configuredOutput(requiredOptions));
 					fenceGateBuilder(woodSet.fenceGate(), Ingredient.of(woodSet.planks())).unlockedBy(getHasName(woodSet.planks()), has(woodSet.planks())).save(configuredOutput(requiredOptions));
@@ -86,6 +85,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					doorBuilder(woodSet.door(), Ingredient.of(woodSet.planks())).unlockedBy(getHasName(woodSet.planks()), has(woodSet.planks())).save(configuredOutput(requiredOptions));
 					buttonBuilder(woodSet.button(), Ingredient.of(woodSet.planks())).unlockedBy(getHasName(woodSet.planks()), has(woodSet.planks())).save(configuredOutput(requiredOptions));
 					pressurePlateBuilder(RecipeCategory.REDSTONE, woodSet.pressurePlate(), Ingredient.of(woodSet.planks())).unlockedBy(getHasName(woodSet.planks()), has(woodSet.planks())).save(configuredOutput(requiredOptions));
+
+					// compat
+					chest(woodSet.chest(), woodSet.planks(), requiredOptions);
+					cabinet(woodSet.cabinet(), woodSet.slab(), woodSet.trapdoor(), requiredOptions);
+
 				}
 
 				for (TurfSet turfSet : TURF_SETS) {
@@ -478,6 +482,17 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("lolmcv"))));
 			}
 
+			public void cabinet(final ItemLike result, final ItemLike slab, BlockEntry<Block> trapdoor, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.MISC, result, 1)
+						.define('D', trapdoor)
+						.define('_', slab)
+						.pattern("___")
+						.pattern("D D")
+						.pattern("___")
+						.group("fd_cabinet")
+						.unlockedBy(getHasName(slab), this.has(slab))
+						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("farmersdelight"))));
+			}
 
 			private Ingredient getDyeTag(Identifier stainedPlanks) {
                 return ingredientOf(TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+stainedPlanks.getPath())));
