@@ -32,8 +32,13 @@ public class PyriteClient {
 				if (enabled)
 					e = Component.literal("Enabled by current configuration").withStyle(ChatFormatting.GREEN);
 				e.append(", requires all of: ");
+				boolean first = true;
 				for (String requiredOption : ModHelpers.getRequiredOptions(BuiltInRegistries.ITEM.getKey(stack.getItem()))) {
+					if (!first) {
+						e.append(", ");
+					}
 					e.append(requiredOption);
+					first = false;
 				}
 			}
 			if (e != null)
