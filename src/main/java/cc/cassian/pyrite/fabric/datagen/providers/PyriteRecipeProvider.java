@@ -63,10 +63,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 		return new RecipeProvider(registries, output) {
 			@Override
 			public void buildRecipes() {
+				// one-off recipes
 				fenceGate(getItem("nether_brick_fence_gate"), Ingredient.of(Items.NETHER_BRICKS), Ingredient.of(Items.NETHER_BRICK), (List.of("nether_brick_fence_gate")));
 				stairs(getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, List.of("smooth_stone_stairs"));
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, 1, List.of("smooth_stone_stairs"));
-
 				shapeless(RecipeCategory.REDSTONE, getItem("lit_redstone_lamp")).requires(Items.REDSTONE_LAMP).requires(Items.REDSTONE_TORCH).unlockedBy(getHasName(Items.REDSTONE_LAMP), has(Items.REDSTONE_LAMP)).save(configuredOutput(List.of("lit_redstone_lamp")));
 
 				for (WoodSet woodSet : WOOD_SETS) {
@@ -133,6 +133,16 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				}
 				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_moss");
 				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_vine");
+				// shortcuts
+				twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_cobblestone_bricks"), Items.MOSSY_COBBLESTONE, 4, List.of("cobblestone_bricks"));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_bricks"), Items.DEEPSLATE, 1, List.of("cobbled_deepslate_bricks"));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_brick_stairs"), Items.DEEPSLATE, 1, List.of("cobbled_deepslate_bricks"));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_brick_slab"), Items.DEEPSLATE, 2, List.of("cobbled_deepslate_bricks"));
+
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobblestone_bricks"), Items.STONE, 1, List.of("cobblestone_bricks"));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobblestone_brick_slab"), Items.STONE, 2, List.of("cobblestone_bricks"));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobblestone_brick_stairs"), Items.STONE, 1, List.of("cobblestone_bricks"));
+
 
 				for (ResourceBlockSet resourceBlockSet : RESOURCE_BLOCK_SETS) {
 					var id = ModHelpers.findVanillaBlockID(resourceBlockSet.block());

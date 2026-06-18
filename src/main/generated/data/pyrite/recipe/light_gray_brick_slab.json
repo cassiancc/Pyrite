@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks",
+        "dyed_bricks"
+      ]
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {

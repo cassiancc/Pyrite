@@ -3,6 +3,7 @@
     {
       "condition": "pyrite:config",
       "options": [
+        "dyed_bricks",
         "oddities",
         "wall_gates"
       ]
