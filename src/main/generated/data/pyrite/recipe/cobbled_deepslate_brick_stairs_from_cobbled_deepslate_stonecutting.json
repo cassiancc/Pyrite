@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "cobbled_deepslate_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:cobbled_deepslate",
+  "result": {
+    "id": "pyrite:cobbled_deepslate_brick_stairs"
+  }
+}

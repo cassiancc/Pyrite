@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "quartz"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:quartz_block",
+  "result": {
+    "id": "minecraft:chiseled_quartz_block"
+  }
+}

@@ -173,4 +173,7 @@ public class ModConfig extends WrappedConfig {
    @Comment("Add a tooltip on disabled items.")
    public boolean disabledContentTooltip = true;
 
+   @Comment("Add a tooltip on enabled items.")
+   public boolean enabledContentTooltip = false;
+
 }

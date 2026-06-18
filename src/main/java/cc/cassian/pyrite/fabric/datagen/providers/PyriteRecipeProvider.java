@@ -118,30 +118,27 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallGate, base, List.of("wall_gates"));
 				}
 
-				for (String s : List.of(
+				for (String name : List.of(
 						"cobblestone", "cobbled_deepslate", "smooth_stone", "andesite", "diorite", "calcite", "granite", "sandstone", "red_sandstone"
 				)) {
-					Item base = getItem(Identifier.withDefaultNamespace(s));
-					Item bricks = getItem(s + "_bricks");
-					List<String> options = List.of(s + "_bricks");
-					if (!s.contains("sandstone")) {
+					Item base = getItem(Identifier.withDefaultNamespace(name));
+					Item bricks = getItem(name + "_bricks");
+					List<String> options = List.of(name + "_bricks");
+					if (!name.contains("sandstone")) {
 						bricksBuilder(RecipeCategory.BUILDING_BLOCKS, bricks, Ingredient.of(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options));
-						shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_"+s+"_bricks")).requires(bricks).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options), "mossy_"+s+"_bricks_from_moss");
-						shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_"+s+"_bricks")).requires(bricks).requires(Items.VINE).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options), "mossy_"+s+"_bricks_from_vine");
+						shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_"+name+"_bricks")).requires(bricks).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options), "mossy_"+name+"_bricks_from_moss");
+						shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_"+name+"_bricks")).requires(bricks).requires(Items.VINE).unlockedBy(getHasName(base), has(base)).save(configuredOutput(options), "mossy_"+name+"_bricks_from_vine");
 					}
-					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, bricks, base, options);
+					stoneStonecuttingShortcut(name, bricks, base);
 				}
 				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_moss");
 				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_vine");
 				// shortcuts
 				twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_cobblestone_bricks"), Items.MOSSY_COBBLESTONE, 4, List.of("cobblestone_bricks"));
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_bricks"), Items.DEEPSLATE, 1, List.of("cobbled_deepslate_bricks"));
-				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_brick_stairs"), Items.DEEPSLATE, 1, List.of("cobbled_deepslate_bricks"));
-				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_brick_slab"), Items.DEEPSLATE, 2, List.of("cobbled_deepslate_bricks"));
-
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobblestone_bricks"), Items.STONE, 1, List.of("cobblestone_bricks"));
-				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobblestone_brick_slab"), Items.STONE, 2, List.of("cobblestone_bricks"));
-				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobblestone_brick_stairs"), Items.STONE, 1, List.of("cobblestone_bricks"));
+				stoneStonecuttingShortcut("smooth_stone", getItem("smooth_stone_bricks"), Items.STONE);
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.STONE, 1, List.of("smooth_stone_stairs"));
 
 
 				for (ResourceBlockSet resourceBlockSet : RESOURCE_BLOCK_SETS) {
@@ -207,6 +204,12 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, brickBlock, baseBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickBlock, baseBlock, 8, requiredOptions);
 					});
+
+					// chiseled
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, resourceBlockSet.chiseled(), baseBlock, 1, requiredOptions);
+					// pillar
+					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, resourceBlockSet.pillar(), baseBlock, 1, requiredOptions);
+
 					// button
 					var buttonId = resourceBlockSet.button();
 					//~ if >26.1 'ItemTags.BUTTONS' -> 'BlockItemTags.BUTTONS.item()' {
@@ -372,6 +375,15 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
 					}
 				}
+			}
+
+			private void stoneStonecuttingShortcut(String name, Item bricks, Item stone) {
+				var options = List.of(name+"_bricks");
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, bricks, stone, options);
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem(name +"_brick_stairs"), stone, options);
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem(name +"_brick_slab"), stone, 2, options);
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem(name +"_brick_wall"), stone, options);
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem(name +"_brick_wall_gate"), stone, List.of(name+"_bricks", "wall_gates"));
 			}
 
 			private void addAll(List<String> requiredOptions, List<String> requiredOptions1) {

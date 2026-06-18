@@ -4,12 +4,17 @@ package cc.cassian.pyrite.fabric.client;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.client.PyriteClient;
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.object.boat.BoatModel;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Block;
 import static cc.cassian.pyrite.entity.ModEntities.BOATS;
 import static cc.cassian.pyrite.entity.ModEntities.CHEST_BOATS;
@@ -28,6 +33,12 @@ public class PyriteFabricClient implements ClientModInitializer {
         if (Pyrite.CONFIG.disabledContentTooltip) {
             ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) -> PyriteClient.addTooltip(lines, stack)));
         }
+        Pyrite.CONFIG.registerCallback((config)->{
+            LocalPlayer player = Minecraft.getInstance().player;
+            if (player != null) {
+                player.sendSystemMessage(Component.translatable("config.pyrite.changed").withStyle(ChatFormatting.GREEN));
+            }
+        });
 
         BOATS.forEach((id, entityType) -> {
             var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");

@@ -9,6 +9,7 @@ import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import java.util.Collections;
 import java.util.List;
@@ -22,27 +23,18 @@ public class PyriteClient {
 	}
 
 	public static void addTooltip(List<Component> lines, ItemStack stack) {
-		if (Pyrite.CONFIG.disabledContentTooltip && BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID)) {
-			boolean enabled = ModHelpers.enabled(stack);
-			MutableComponent e = null;
-			if (!enabled) {
-				e = Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED);
+		Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+		if ((Pyrite.CONFIG.disabledContentTooltip || Pyrite.CONFIG.enabledContentTooltip) && id.getNamespace().equals(MOD_ID)) {
+			boolean enabled = ModHelpers.enabled(id);
+			if (enabled && Pyrite.CONFIG.enabledContentTooltip)
+				lines.add(Component.translatable("config.pyrite.enabled").withStyle(ChatFormatting.GREEN));
+			if (!enabled && Pyrite.CONFIG.disabledContentTooltip) {
+				lines.add(Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED));
 			}
-			if (Platform.INSTANCE.isDevEnvironment()) {
-				if (enabled)
-					e = Component.literal("Enabled by current configuration").withStyle(ChatFormatting.GREEN);
-				e.append(", requires all of: ");
-				boolean first = true;
-				for (String requiredOption : ModHelpers.getRequiredOptions(BuiltInRegistries.ITEM.getKey(stack.getItem()))) {
-					if (!first) {
-						e.append(", ");
-					}
-					e.append(requiredOption);
-					first = false;
-				}
+			for (String requiredOption : ModHelpers.getRequiredOptions(id)) {
+				var color = ModHelpers.enabled(List.of(requiredOption)) ? ChatFormatting.GREEN : ChatFormatting.RED;
+				lines.add(Component.literal("  - " + requiredOption).withStyle(color));
 			}
-			if (e != null)
-				lines.add(e);
 		}
 	}
 }
