@@ -120,7 +120,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(BlockTags.BEACON_BASE_BLOCKS).addAll(BlockCreator.BLOCKS.stream().filter(blockEntry -> {
 			var b = blockEntry.getValue().getClass().equals(ModBlock.class) || blockEntry.getValue().getClass().equals(ModPillar.class);
 			if (!b) return false;
-			var key = blockEntry.getKey();
+			var key = blockEntry.getPath();
 			if (key.contains("diamond") || key.contains("emerald") || key.contains("iron") || key.contains("gold") || key.contains("netherite")) {
 				return true;
 			}
@@ -250,7 +250,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 
 
 	private List<ResourceKey<Block>> get(String id) {
-		return BlockCreator.BLOCKS.stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(stringItemEntry -> stringItemEntry.getPath().contains(id)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private List<ResourceKey<Block>> get(Class<? extends Block> block) {

@@ -410,11 +410,9 @@ public class PyriteItemGroups {
     }
 
     public static void addItemGroup(String id, String icon, ArrayList<BlockEntry<Block>> blocks) {
-        //? if fabric {
-        CreativeModeTab group = FabricCreativeModeTab.builder()
-        //?} else {
-        /*CreativeModeTab group = CreativeModeTab.builder()
-        *///?}
+        //~ if neoforge 'FabricCreativeModeTab' -> 'CreativeModeTab' {
+        var group = FabricCreativeModeTab.builder()
+        //~}
                 .icon(() -> new ItemStack(BuiltInRegistries.ITEM.getValue(Pyrite.of(icon))))
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
@@ -427,32 +425,18 @@ public class PyriteItemGroups {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
     }
 
-    private static void addAfter(ItemLike anchor, ArrayList<? extends PyriteEntry> blockCollectionList,
-                                 //? if fabric
-                                 FabricCreativeModeTabOutput event
-                                 //? if neoforge
-                                 //BuildCreativeModeTabContentsEvent event
-    ) {
+    //~ if neoforge 'FabricCreativeModeTabOutput' -> 'BuildCreativeModeTabContentsEvent' {
+    private static void addAfter(ItemLike anchor, ArrayList<? extends PyriteEntry> blockCollectionList, FabricCreativeModeTabOutput event) {
         addAfter(anchor, getBlockCollectionList(blockCollectionList), event);
     }
 
-    private static void addAfter(ItemLike anchor, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric
-                                 FabricCreativeModeTabOutput event
-                                 //? if neoforge
-                                 //BuildCreativeModeTabContentsEvent event
-    ) {
+    private static void addAfter(ItemLike anchor, Collection<ItemStack> blockCollectionList, FabricCreativeModeTabOutput event) {
         for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
             addAfter(anchor, itemStack, event);
         }
     }
 
-    private static void addAfter(ItemLike anchor, ItemStack itemStack,
-                                 //? if fabric
-                                FabricCreativeModeTabOutput event
-                                 //? if neoforge
-                                 //BuildCreativeModeTabContentsEvent event
-    ) {
+    private static void addAfter(ItemLike anchor, ItemStack itemStack, FabricCreativeModeTabOutput event) {
         //? if neoforge {
         /*event.insertAfter(anchor.asItem().getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
          *///?} else {
@@ -460,67 +444,33 @@ public class PyriteItemGroups {
          //?}
     }
 
-    private static void addAfter(Block block, Collection<ItemStack> blockCollectionList,
-                                 //? if fabric
-                                 FabricCreativeModeTabOutput event
-                                 //? if neoforge
-                                 //BuildCreativeModeTabContentsEvent event
-    ) {
-        addAfter(block.asItem(), blockCollectionList, event);
-    }
-
-    private static void addBefore(Block block, Collection<ItemStack> blockCollectionList,
-                                  //? if fabric
-                                    FabricCreativeModeTabOutput event
-                                  //? if neoforge
-                                  //BuildCreativeModeTabContentsEvent event
-    ) {
+    private static void addBefore(ItemLike block, Collection<ItemStack> blockCollectionList, FabricCreativeModeTabOutput event) {
         addBefore(block.asItem(), blockCollectionList, event);
     }
 
-    private static void addBefore(Item anchor, ItemStack itemStack,
-                                  //? if fabric {
-                                FabricCreativeModeTabOutput event
-                                 //?} else if neoforge
-                                  //BuildCreativeModeTabContentsEvent event
-    ) {
+    private static void addBefore(ItemLike anchor, ItemStack itemStack, FabricCreativeModeTabOutput event) {
         //? if fabric {
         event.insertBefore(anchor, itemStack);
          //?} else {
-        /*event.insertBefore(anchor.getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        /*event.insertBefore(anchor.asItem().getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
          *///?}
     }
 
-    private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList,
-                                  //? if fabric {
-                                    FabricCreativeModeTabOutput event
-                                     //?} else if neoforge
-                                  //BuildCreativeModeTabContentsEvent event
-    ) {
+    private static void addBefore(Item anchor, Collection<ItemStack> blockCollectionList, FabricCreativeModeTabOutput event) {
         for (ItemStack itemStack : blockCollectionList.stream().toList().reversed()) {
             addBefore(anchor, itemStack, event);
         }
     }
 
-    private static void addBefore(Item anchor, Item item,
-                                  //? if fabric {
-                                    FabricCreativeModeTabOutput event
-                                     //?} else  if neoforge
-                                  //BuildCreativeModeTabContentsEvent event
-    ) {
+    private static void addBefore(ItemLike anchor, ItemLike item, FabricCreativeModeTabOutput event) {
         //? if fabric {
         event.insertBefore(anchor, item);
          //?} else {
-        /*event.insertBefore(anchor.getDefaultInstance(), item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        /*event.insertBefore(anchor.asItem().getDefaultInstance(), item.asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
          *///?}
     }
 
-    public static void addMapToItemGroup(
-            //? if fabric && >26 {
-            FabricCreativeModeTabOutput event
-             //?} else if neoforge
-            //BuildCreativeModeTabContentsEvent event
-            , LinkedHashMap<Block, BlockEntry<Block>> map) {
+    public static void addMapToItemGroup(FabricCreativeModeTabOutput event, LinkedHashMap<Block, BlockEntry<Block>> map) {
         for (Map.Entry<Block, BlockEntry<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
@@ -532,6 +482,7 @@ public class PyriteItemGroups {
             }
         }
     }
+    //~}
 
     public static Collection<ItemStack> getBlockCollectionList(Collection<? extends PyriteEntry> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
@@ -539,8 +490,6 @@ public class PyriteItemGroups {
             var stack = block.asItem().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && ModHelpers.enabled(stack)) {
                 stacks.add(stack);
-            } else {
-//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
             }
         }
         return stacks;
@@ -552,8 +501,6 @@ public class PyriteItemGroups {
             var stack = item.get().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && ModHelpers.enabled(stack)) {
                 stacks.add(stack);
-            } else {
-//                ModHelpers.log(stack.getName().getString() + " was not added to its item group as it was disabled!");
             }
         }
         return stacks;

@@ -126,8 +126,8 @@ public class ModHelpers {
                 requiredOptions.add(path.split("_")[0] + "_turf");
             }
         }
-        for (Block vanillaResourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
-            var resourceBlockPath = BuiltInRegistries.BLOCK.getKey(vanillaResourceBlock).getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
+        for (BlockEntry<?> vanillaResourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
+            var resourceBlockPath = vanillaResourceBlock.getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
             if (path.contains(resourceBlockPath)) {
                 if (!requiredOptions.contains(resourceBlockPath))
                     requiredOptions.add(resourceBlockPath);

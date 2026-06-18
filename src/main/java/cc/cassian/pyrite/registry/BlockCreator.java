@@ -9,7 +9,6 @@ import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
-import cc.cassian.pyrite.util.VanillaConstants;
 import cc.cassian.pyrite.util.sets.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -87,7 +86,7 @@ public class BlockCreator {
         //Register blocks and block items.
         for (BlockEntry<Block> entry : BLOCKS) {
             final Block block = entry.getValue();
-            final String blockID = entry.getKey();
+            final String blockID = entry.getPath();
             Registry.register(BuiltInRegistries.BLOCK, Pyrite.of(blockID), block);
             Registry.register(BuiltInRegistries.ITEM, Pyrite.of(blockID), addBlockItem(blockID, block).get());
         }
@@ -106,13 +105,13 @@ public class BlockCreator {
 
 
         for (BlockEntry<Block> entry : PyriteItemGroups.COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getKey().replace("copper", "exposed_copper")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getPath().replace("copper", "exposed_copper")));
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getKey().replace("exposed", "weathered")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getPath().replace("exposed", "weathered")));
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getKey().replace("weathered", "oxidized")));
+            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getPath().replace("weathered", "oxidized")));
         }
 
         // Register item group.
@@ -386,14 +385,7 @@ public class BlockCreator {
     }
 
     public static void generateResourceBlocks() {
-        for (Block resourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
-            String block = findVanillaBlockID(resourceBlock);
-            //If the block provided isn't a wall block, add the wall tag.
-            if (block.contains("block")) {
-                block = block.substring(0, block.indexOf("_block"));
-            }
-            createResourceBlockSet(block, resourceBlock);
-        }
+
     }
 
     public static void createTorchLever(String blockID, Block baseTorch, ParticleOptions particle) {
@@ -555,10 +547,9 @@ public class BlockCreator {
     }
 
     public static void generateBrickSet(String blockID, Block copyBlock, MapColor color, boolean generateMossySet, String group) {
-		ArrayList<BrickSet> list = new ArrayList<>();
-        list.add(generateBrickSet(blockID, copyBlock, color, 0, group));
+        generateBrickSet(blockID, copyBlock, color, 0, group);
         if (generateMossySet)
-            list.add(generateBrickSet("mossy_"+blockID, copyBlock, color, 0, null));
+            generateBrickSet("mossy_"+blockID, copyBlock, color, 0, null);
     }
 
     public static void generateBrickSet(String blockID, Block copyBlock, MapColor color, boolean generateMossySet) {
@@ -638,7 +629,6 @@ public class BlockCreator {
         var chestBoat = registerPyriteItem("%s_chest_boat".formatted(blockID), (prop)-> new BoatItem(chestBoatEntityType, prop.stacksTo(1)));
         PyriteItemGroups.BOATS.add(chestBoat);
 
-        var family = new BlockFamily.Builder(planks.value()).slab(slab.value()).stairs(stairs.value()).trapdoor(trapdoor.value()).door(door.value()).button(button.value()).fence(fence.value()).pressurePlate(pressurePlate.value()).fenceGate(fenceGate.value()).getFamily();
         WOOD_SETS.add(new WoodSet(blockID, GENERATED_SET, GENERATED_TYPE, planks, stairs, slab, fence, fenceGate, door, trapdoor, pressurePlate, button, craftingTable, ladder, sign, hangingSign, shelf, boat, chestBoat, chest));
     }
 
@@ -698,7 +688,6 @@ public class BlockCreator {
 
     //Create a set of Resource Blocks
     public static void createResourceBlockSet(String blockID, Block block) {
-        BlockFamily.Builder family = new BlockFamily.Builder(block);
         //Create Cut Blocks for those that don't already exist (Copper)
         var cutBlocks = createCutBlocks(blockID, block);
         //Create Bricks/Chiseled/Pillar/Smooth for those that don't already exist (Quartz)

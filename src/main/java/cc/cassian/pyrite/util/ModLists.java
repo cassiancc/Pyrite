@@ -4,6 +4,8 @@ import cc.cassian.pyrite.Pyrite;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import cc.cassian.pyrite.entries.BlockEntry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -128,9 +130,9 @@ public class ModLists {
 
     public final static Map<String, Boolean> DATAPACKS = new LinkedHashMap<>();
 
-    public final static Map<String, Block> WOOL_MATCH = new LinkedHashMap<>();
-    public final static Map<String, Block> CARPET_MATCH = new LinkedHashMap<>();
-    public final static Map<String, Block> CONCRETE_MATCH = new LinkedHashMap<>();
+    public final static Map<String, BlockEntry<Block>> WOOL_MATCH = new LinkedHashMap<>();
+    public final static Map<String, BlockEntry<Block>> CARPET_MATCH = new LinkedHashMap<>();
+    public final static Map<String, BlockEntry<Block>> CONCRETE_MATCH = new LinkedHashMap<>();
 
     public static final LinkedHashMap<String, Block> FLOWERS = new LinkedHashMap<>();
     public static void populateLinkedHashMaps() {

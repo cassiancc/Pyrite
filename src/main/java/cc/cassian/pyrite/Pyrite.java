@@ -3,6 +3,7 @@ package cc.cassian.pyrite;
 import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.VanillaConstants;
 import cc.cassian.pyrite.util.sets.ColoredSet;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -64,7 +65,14 @@ public class Pyrite {
 		// Nether Brick Fence Gate
 		createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE, "building_blocks");
 		// Resource Blocks
-		generateResourceBlocks();
+		for (BlockEntry<?> resourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
+			String block = resourceBlock.getPath();
+			//If the block provided isn't a wall block, add the wall tag.
+			if (block.contains("block")) {
+				block = block.substring(0, block.indexOf("_block"));
+			}
+			createResourceBlockSet(block, resourceBlock.get());
+		}
 		// Torch Levers
 		createTorchLever("torch_lever", Blocks.TORCH, ParticleTypes.FLAME);
 		createTorchLever("redstone_torch_lever", Blocks.SOUL_TORCH, DustParticleOptions.REDSTONE);
@@ -117,27 +125,27 @@ public class Pyrite {
 				// Dye items.
 				registerPyriteItem(dye + "_dye");
 				// Dyed Wool
-				wool = createPyriteBlock(dye + "_wool", "block", WOOL_MATCH.get(dye), color, blockLux, "colored_blocks");
+				wool = createPyriteBlock(dye + "_wool", "block", WOOL_MATCH.get(dye).value(), color, blockLux, "colored_blocks");
 				// Dyed Carpet
-				carpet = createPyriteBlock(dye + "_carpet", "carpet", CARPET_MATCH.get(dye), color, blockLux, "colored_blocks");
+				carpet = createPyriteBlock(dye + "_carpet", "carpet", CARPET_MATCH.get(dye).value(), color, blockLux, "colored_blocks");
 				// Dyed Concrete
-				createPyriteBlock(dye+"_concrete", "block", CONCRETE_MATCH.get(dye), color, blockLux, "concrete");
+				createPyriteBlock(dye+"_concrete", "block", CONCRETE_MATCH.get(dye).value(), color, blockLux, "concrete");
 				// Dyed Concrete Powder
-				createPyriteBlock(dye+"_concrete_powder", "concrete_powder", WHITE_CONCRETE_POWDER, color, blockLux, "concrete_powder");
+				createPyriteBlock(dye+"_concrete_powder", "concrete_powder", WHITE_CONCRETE_POWDER.value(), color, blockLux, "concrete_powder");
 			}
 			// Dyed Concrete Stairs
-			createPyriteBlock(dye+"_concrete_stairs", "stairs", WHITE_CONCRETE, color, blockLux, "concrete_stairs");
+			createPyriteBlock(dye+"_concrete_stairs", "stairs", WHITE_CONCRETE.value(), color, blockLux, "concrete_stairs");
 			// Dyed Concrete Slab
-			createPyriteBlock(dye+"_concrete_slab", "slab", WHITE_WOOL, color, blockLux, "concrete_slab");
+			createPyriteBlock(dye+"_concrete_slab", "slab", WHITE_WOOL.value(), color, blockLux, "concrete_slab");
 
 			//? if >26.2 {
 			/*ModHelpers.addAlias(dye+"_wool_slab");
 			ModHelpers.addAlias(dye+"_wool_stairs");
 			*///?} else {
 			// Dyed Wool Stairs
-			var woolStairs = createPyriteBlock(dye+"_wool_stairs", "stairs", WHITE_WOOL, color, blockLux, "wool_stairs");
+			var woolStairs = createPyriteBlock(dye+"_wool_stairs", "stairs", WHITE_WOOL.value(), color, blockLux, "wool_stairs");
 			// Dyed Wool Slab
-			var woolSlab = createPyriteBlock(dye+"_wool_slab", "slab", WHITE_WOOL, color, blockLux, "wool_slab");
+			var woolSlab = createPyriteBlock(dye+"_wool_slab", "slab", WHITE_WOOL.value(), color, blockLux, "wool_slab");
 			WOOL_SETS.add(new ColoredSet(dye, Optional.ofNullable(wool), Optional.ofNullable(carpet), woolStairs, woolSlab));
 			//?}
 
