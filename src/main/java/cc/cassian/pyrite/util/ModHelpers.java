@@ -61,7 +61,16 @@ public class ModHelpers {
         if (path.contains("wall_gate")) {
             requiredOptions.add("wall_gates");
         }
-        else if (path.contains("mushroom")) {
+        if (path.contains("nether_brick_fence_gate")) {
+            return List.of("nether_brick_fence_gate");
+        }
+        else if (path.contains("smooth_stone_stairs")) {
+            return List.of("smooth_stone_stairs");
+        }
+        else if (path.contains("stained_") && (path.contains("door") || path.contains("planks") || path.contains("trapdoor")|| path.contains("chest") || path.contains("cabinet") || path.contains("boat") || path.contains("shelf") || path.contains("stairs") || path.contains("slab") || path.contains("crafting_table") || path.contains("fence") || path.contains("pressure_plate") || path.contains("sign") || path.contains("button"))) {
+            requiredOptions.add("dyed_planks");
+        }
+        if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
         }
         else if (path.contains("glow_") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {

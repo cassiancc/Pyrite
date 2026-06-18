@@ -63,9 +63,13 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 		return new RecipeProvider(registries, output) {
 			@Override
 			public void buildRecipes() {
+				fenceGate(getItem("nether_brick_fence_gate"), Ingredient.of(Items.NETHER_BRICKS), Ingredient.of(Items.NETHER_BRICK), (List.of("nether_brick_fence_gate")));
+				stairs(getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, List.of("smooth_stone_stairs"));
+				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, 1, List.of("smooth_stone_stairs"));
 
 				for (WoodSet woodSet : WOOD_SETS) {
-					List<String> requiredOptions = getRequiredOptions(Pyrite.of(woodSet.blockID()));
+					List<String> requiredOptions = getRequiredOptions(woodSet.planks().getId());
+					addAll(requiredOptions, getRequiredOptions(Pyrite.of(woodSet.blockID())));
 					boat(woodSet.boat(), woodSet.planks(), requiredOptions);
 					chest(woodSet.chest(), woodSet.planks(), requiredOptions);
 					chestBoat(woodSet.chestBoat().value(), woodSet.boat(), requiredOptions);
@@ -356,6 +360,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				}
 			}
 
+			private void addAll(List<String> requiredOptions, List<String> requiredOptions1) {
+				for (String s : requiredOptions1) {
+					if (!requiredOptions.contains(s)) {
+						requiredOptions.add(s);
+					}
+				}
+			}
+
 			private void craftingTable(ItemLike entry, ItemLike planks, List<String> requiredOptions) {
 				this.shaped(RecipeCategory.DECORATIONS, entry.asItem())
 						.group("crafting_table")
@@ -539,6 +551,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				options.addAll(Arrays.stream(additionalOptionsArray).toList());
 				if (options.isEmpty()) return output;
 				return withConditions(output, PyriteResourceConditions.config(options));
+			}
+
+			public final void fenceGate(final ItemLike result, final Ingredient planks, final Ingredient stick, List<String> requiredOptions) {
+				this.shaped(RecipeCategory.REDSTONE, result).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(configuredOutput(requiredOptions));
 			}
 
 			public final void sign(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {

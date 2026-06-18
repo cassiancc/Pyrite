@@ -49,6 +49,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable a block set for Diorite Bricks.")
    public boolean diorite_bricks = true;
 
+   @DisplayName("Dyed Planks")
+   @Comment("Adds dyed planks.")
+   public boolean dyed_planks = true;
+
    @DisplayName("Emerald Block Set")
    @Comment("Completes the block set for Emerald.")
    public boolean emerald = true;
@@ -92,6 +96,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Adds a block set for Mycelium.")
    public boolean mycelium_turf = true;
 
+   @DisplayName("Nether Brick Fence Gate")
+   @Comment("Adds the missing Nether Brick Fence Gate.")
+   public boolean nether_brick_fence_gate = true;
+
    @DisplayName("Netherite Block Set")
    @Comment("Completes the block set for Netherite.")
    public boolean netherite = true;
@@ -126,6 +134,10 @@ public class ModConfig extends WrappedConfig {
    @DisplayName("Smooth Stone Bricks")
    @Comment("Enable a block set for Smooth Stone Bricks.")
    public boolean smooth_stone_bricks = true;
+
+   @DisplayName("Smooth Stone Stairs")
+   @Comment("Adds the missing Smooth Stone Stairs.")
+   public boolean smooth_stone_stairs = true;
 
    @DisplayName("Terracotta Bricks")
    @Comment("Enable a block set for Terracotta Bricks.")

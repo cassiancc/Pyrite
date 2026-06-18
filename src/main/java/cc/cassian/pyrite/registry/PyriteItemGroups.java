@@ -210,6 +210,10 @@ public class PyriteItemGroups {
         }
     }
 
+    public static <T extends Block> void match(BlockEntry<T> entry, Block copyBlock, ArrayList<BlockEntry<Block>> group) {
+        group.add((BlockEntry<Block>) entry);
+    }
+
     public static <T extends Block> void match(BlockEntry<T> entry, Block copyBlock, String group) {
         var newBlock = (BlockEntry<Block>) entry;
         if (newBlock.getPath().equals("glowstone_lamp"))

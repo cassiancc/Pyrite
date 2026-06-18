@@ -48,12 +48,9 @@ public class NeoForgeDataMapProvider implements DataProvider {
 
 
     private static void strippables(BiConsumer<String, JsonElement> consumer) {
-        /*
-        ModWoodSetup.init();
         Codec<Identifier> value = Identifier.CODEC.fieldOf("stripped_block").codec();
         Codec<Map<Identifier, Identifier>> mapCodec = Codec.unboundedMap(Identifier.CODEC, value).fieldOf("values").codec();
-        consumer.accept("block/strippables", mapCodec.encodeStart(JsonOps.INSTANCE, ModWoodSetup.strippables).getOrThrow());
-         */
+        consumer.accept("block/strippables", mapCodec.encodeStart(JsonOps.INSTANCE, FabricPlatformImpl.STRIPPABLES).getOrThrow());
     }
 
     private static void oxidizables(BiConsumer<String, JsonElement> consumer) {

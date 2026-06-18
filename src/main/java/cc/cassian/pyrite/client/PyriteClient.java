@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.client;
 
+import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.util.ModHelpers;
 import net.minecraft.ChatFormatting;
@@ -20,21 +21,23 @@ public class PyriteClient {
 		return Collections.singletonList(BlockTintSources.grassBlock());
 	}
 
-
 	public static void addTooltip(List<Component> lines, ItemStack stack) {
-		if (Pyrite.CONFIG.disabledContentTooltip) {
-			if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID) && !ModHelpers.enabled(stack)) {
-				MutableComponent e = Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED);
-				lines.add(e);
-				//? fabric {
-				if (net.fabricmc.loader.api.FabricLoader.getInstance().isDevelopmentEnvironment()) {
-					e.append(", requires all of: ");
-					for (String requiredOption : ModHelpers.getRequiredOptions(BuiltInRegistries.ITEM.getKey(stack.getItem()))) {
-						e.append(requiredOption);
-					}
-				}
-				//?}
+		if (Pyrite.CONFIG.disabledContentTooltip && BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MOD_ID)) {
+			boolean enabled = ModHelpers.enabled(stack);
+			MutableComponent e = null;
+			if (!enabled) {
+				e = Component.translatable("config.pyrite.disabled").withStyle(ChatFormatting.RED);
 			}
+			if (Platform.INSTANCE.isDevEnvironment()) {
+				if (enabled)
+					e = Component.literal("Enabled by current configuration").withStyle(ChatFormatting.GREEN);
+				e.append(", requires all of: ");
+				for (String requiredOption : ModHelpers.getRequiredOptions(BuiltInRegistries.ITEM.getKey(stack.getItem()))) {
+					e.append(requiredOption);
+				}
+			}
+			if (e != null)
+				lines.add(e);
 		}
 	}
 }

@@ -6,6 +6,7 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.entries.BlockEntry;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
@@ -21,11 +22,18 @@ public class FabricPlatformImpl implements Platform {
 
     public static Map<Identifier, Identifier> WAXABLES = new HashMap<>();
     public static Map<Identifier, Identifier> OXIDIZABLES = new HashMap<>();
+    public static Map<Identifier, Identifier> STRIPPABLES = new HashMap<>();
 
     @Override
     public void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {
         OxidizableBlocksRegistry.registerWaxable(newBlock.get(), waxed.get());
         WAXABLES.put(newBlock.getId(),  waxed.getId());
+    }
+
+    @Override
+    public void registerStrippableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {
+        StrippableBlockRegistry.register(newBlock.get(), waxed.get());
+        STRIPPABLES.put(newBlock.getId(),  waxed.getId());
     }
 
     @Override

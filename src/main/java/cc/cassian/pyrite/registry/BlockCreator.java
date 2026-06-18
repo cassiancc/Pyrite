@@ -634,10 +634,12 @@ public class BlockCreator {
 
     /// Generate an entire wood set, alongside Logs, Wood, and Stripped Logs/Wood.
     public static void createWoodSetWithLog(String blockID, MapColor color, int blockLux) {
-        createPyriteBlock("%s_log".formatted(blockID), "log", Blocks.OAK_LOG, color, blockLux, "wood");
-        createPyriteBlock("stripped_%s_log".formatted(blockID), "log", Blocks.STRIPPED_OAK_LOG, color, blockLux, "wood");
-        createPyriteBlock("%s_wood".formatted(blockID), "wood", Blocks.OAK_WOOD, color, blockLux, "wood");
-        createPyriteBlock("stripped_%s_wood".formatted(blockID), "wood", Blocks.STRIPPED_OAK_WOOD, color, blockLux, "wood");
+        var log = createPyriteBlock("%s_log".formatted(blockID), "log", Blocks.OAK_LOG, color, blockLux, "wood");
+        var strippedLog = createPyriteBlock("stripped_%s_log".formatted(blockID), "log", Blocks.STRIPPED_OAK_LOG, color, blockLux, "wood");
+        var wood = createPyriteBlock("%s_wood".formatted(blockID), "wood", Blocks.OAK_WOOD, color, blockLux, "wood");
+        var strippedWood = createPyriteBlock("stripped_%s_wood".formatted(blockID), "wood", Blocks.STRIPPED_OAK_WOOD, color, blockLux, "wood");
+        Platform.INSTANCE.registerStrippableBlockPair(log, strippedLog);
+        Platform.INSTANCE.registerStrippableBlockPair(wood, strippedWood);
         createWoodSet(blockID, color, blockLux, "wood");
     }
 

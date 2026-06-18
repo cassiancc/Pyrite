@@ -34,5 +34,7 @@ public interface Platform {
 
     void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed);
 
+    void registerStrippableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed);
+
     WoodType createWoodType(String blockID, BlockSetType setType);
 }

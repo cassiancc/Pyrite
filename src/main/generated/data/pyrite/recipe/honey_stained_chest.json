@@ -9,6 +9,7 @@
     {
       "condition": "pyrite:config",
       "options": [
+        "dyed_planks",
         "oddities"
       ]
     }
