@@ -118,6 +118,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		builder(PyriteItemTags.GLOW_DYES).addAll(get("glow_dye"));
 		builder(PyriteItemTags.STAR_DYES).addAll(get("star_dye"));
 		builder(PyriteItemTags.NOSTALGIA_DYES).addAll(get("nostalgia_dye"));
+		builder(ConventionalItemTags.DYES).addTag(PyriteItemTags.DRAGON_DYES).addTag(PyriteItemTags.POISONOUS_DYES).addTag(PyriteItemTags.ROSE_DYES).addTag(PyriteItemTags.HONEY_DYES).addTag(PyriteItemTags.GLOW_DYES).addTag(PyriteItemTags.STAR_DYES).addTag(PyriteItemTags.NOSTALGIA_DYES);
 
 		//? if >26.1 {
 		for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {

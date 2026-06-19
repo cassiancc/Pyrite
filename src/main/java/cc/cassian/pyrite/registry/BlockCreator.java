@@ -293,7 +293,7 @@ public class BlockCreator {
                 break;
             case "hanging_sign":
                 //Sign Blocks
-                newBlock = new PyriteWallHangingSignBlock(woodType, blockSettings, blockID);
+                newBlock = new CeilingHangingSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID, newBlock);
                 //Wall Sign Blocks
                 final WallHangingSignBlock HANGING_WALL_SIGN = new WallHangingSignBlock(woodType, blockSettings);

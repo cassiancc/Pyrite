@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_hanging_sign_rot_3",
+  "textures": {
+    "all": "pyrite:block/magenta_stained_hanging_sign",
+    "particle": "pyrite:block/magenta_stained_planks"
+  }
+}
