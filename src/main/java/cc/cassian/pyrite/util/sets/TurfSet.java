@@ -1,4 +1,4 @@
-package cc.cassian.pyrite.registry;
+package cc.cassian.pyrite.util.sets;
 
 import net.minecraft.world.level.block.Block;
 

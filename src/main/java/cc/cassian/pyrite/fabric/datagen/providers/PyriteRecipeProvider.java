@@ -7,7 +7,7 @@ import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
-import cc.cassian.pyrite.registry.TurfSet;
+import cc.cassian.pyrite.util.sets.TurfSet;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.sets.BrickSet;

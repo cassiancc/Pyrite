@@ -148,6 +148,7 @@ dependencies {
 
     compileOnly("maven.local:columns:1.12.0")
     implementation("maven.local:fabric_resource_conditions_api_v1:6.0.5")
+    jarJar("maven.local:fabric_resource_conditions_api_v1:6.0.5")
 }
 
 

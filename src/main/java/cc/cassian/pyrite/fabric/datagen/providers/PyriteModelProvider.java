@@ -1,3 +1,4 @@
+//? fabric {
 package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
@@ -125,3 +126,4 @@ public class PyriteModelProvider extends FabricModelProvider {
         }
     }
 }
+//?}

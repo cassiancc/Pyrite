@@ -5,13 +5,14 @@ import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.entries.PyriteEntry;
+import cc.cassian.pyrite.util.ModHelpers;
+import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.VanillaConstants;
 //? if fabric && <26.1 {
 /*import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 *///?} else if fabric {
-import cc.cassian.pyrite.util.ModHelpers;
-import cc.cassian.pyrite.util.ModLists;
-import cc.cassian.pyrite.util.VanillaConstants;
+
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 //?} else {
@@ -159,10 +160,13 @@ public class PyriteItemGroups {
                 addAfter(VanillaConstants.PINK_TERRACOTTA, getBlockCollectionList(TERRACOTTA), event);
                 addBefore(VanillaConstants.WHITE_CONCRETE, getBlockCollectionList(TERRACOTTA_BRICKS), event);
                 addMapToItemGroup(event, COLORED_BLOCKS);
+                //fixme
+                //? fabric {
                 Collection<ItemStack> blocksAfterCarpet = getBlockCollectionList(CARPET);
                 blocksAfterCarpet.addAll(getBlockCollectionList(WOOL_SLAB));
                 blocksAfterCarpet.addAll(getBlockCollectionList(WOOL_STAIRS));
                 addAfter(VanillaConstants.PINK_CARPET, blocksAfterCarpet, event);
+                //?}
                 addAfter(VanillaConstants.PINK_SHULKER_BOX, getBlockCollectionList(DYED_BRICKS), event);
                 event.acceptAll(getBlockCollectionList(DYED_WOOD));
                 addBefore(Blocks.SHULKER_BOX, getBlockCollectionList(LAMPS), event);

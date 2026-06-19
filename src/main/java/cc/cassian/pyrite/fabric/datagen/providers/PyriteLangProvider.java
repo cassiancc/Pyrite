@@ -1,3 +1,4 @@
+//? fabric {
 package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
@@ -72,3 +73,4 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         return BuiltInRegistries.BLOCK.getOrThrow(ResourceKey.create(Registries.BLOCK, id)).value();
     }
 }
+//?}

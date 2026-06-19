@@ -3,6 +3,7 @@ package cc.cassian.pyrite.neoforge;
 //? neoforge {
 /*import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
+import cc.cassian.pyrite.entries.BlockEntry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
@@ -19,7 +20,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class NeoForgePlatformImpl implements Platform {
-
 
     @Override
     public boolean isModLoaded(String modid) {
@@ -42,12 +42,13 @@ public class NeoForgePlatformImpl implements Platform {
     }
 
     @Override
-    public void registerOxidizableBlockPair(Block block, Block block1) {
-    }
+    public void registerOxidizableBlockPair(BlockEntry<?> block, BlockEntry<?> block1) {}
 
     @Override
-    public void registerWaxableBlockPair(Block newBlock, Block waxed) {
-    }
+    public void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {}
+
+    @Override
+    public void registerStrippableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {}
 
     @Override
     public WoodType createWoodType(String blockID, BlockSetType setType) {

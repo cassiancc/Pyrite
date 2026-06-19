@@ -9,13 +9,13 @@ import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.sets.TurfSet;
 import cc.cassian.pyrite.util.sets.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
@@ -359,6 +359,10 @@ public class BlockCreator {
         }
         if (newBlock == null)
             return null;
+		return register(blockID, blockType, copyBlock, group, newBlock);
+    }
+
+    private static BlockEntry<Block> register(String blockID, String blockType, Block copyBlock, String group, Block newBlock) {
         if (!blockType.contains("sign")) {
             putBlock(new BlockEntry<>(blockID, newBlock));
         }
