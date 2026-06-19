@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "group": "torch",
+  "ingredients": [
+    "#c:dyes/lime",
+    "minecraft:torch"
+  ],
+  "result": {
+    "id": "pyrite:lime_torch"
+  }
+}

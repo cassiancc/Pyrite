@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:tuff_bricks",
+    "minecraft:moss_block"
+  ],
+  "result": {
+    "id": "pyrite:mossy_tuff_bricks"
+  }
+}

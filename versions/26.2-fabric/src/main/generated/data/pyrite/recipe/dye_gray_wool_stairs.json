@@ -1,0 +1,43 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wool_stairs_and_slabs"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool_stairs",
+  "ingredients": [
+    "#c:dyes/gray",
+    [
+      "pyrite:white_wool_stairs",
+      "pyrite:light_gray_wool_stairs",
+      "pyrite:black_wool_stairs",
+      "pyrite:brown_wool_stairs",
+      "pyrite:red_wool_stairs",
+      "pyrite:orange_wool_stairs",
+      "pyrite:honey_wool_stairs",
+      "pyrite:yellow_wool_stairs",
+      "pyrite:poisonous_wool_stairs",
+      "pyrite:lime_wool_stairs",
+      "pyrite:green_wool_stairs",
+      "pyrite:glow_wool_stairs",
+      "pyrite:cyan_wool_stairs",
+      "pyrite:nostalgia_wool_stairs",
+      "pyrite:star_wool_stairs",
+      "pyrite:light_blue_wool_stairs",
+      "pyrite:blue_wool_stairs",
+      "pyrite:purple_wool_stairs",
+      "pyrite:dragon_wool_stairs",
+      "pyrite:magenta_wool_stairs",
+      "pyrite:rose_wool_stairs",
+      "pyrite:pink_wool_stairs"
+    ]
+  ],
+  "result": {
+    "id": "pyrite:gray_wool_stairs"
+  }
+}

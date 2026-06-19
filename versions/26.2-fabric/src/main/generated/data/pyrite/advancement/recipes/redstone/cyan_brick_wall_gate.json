@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "cyan_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:cyan_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:cyan_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "cyan_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:cyan_brick_wall_gate"
+    ]
+  }
+}

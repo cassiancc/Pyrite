@@ -17,7 +17,7 @@ import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import cc.cassian.pyrite.util.BlockItemTagId;
+import net.minecraft.tags.BlockItemTagId;
 //~}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -120,14 +120,14 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		builder(PyriteItemTags.NOSTALGIA_DYES).addAll(get("nostalgia_dye"));
 
 		//? if >26.1 {
-		/*for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
+		for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
 			builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT).add(resourceBlockSet.smoothBlocks().block().itemKey()).add(resourceBlockSet.pillar().itemKey()).add(resourceBlockSet.cutBlocks().block().itemKey()).add(resourceBlockSet.bricks().itemKey()).add(resourceBlockSet.chiseled().itemKey());
 		}
 		for (BrickSet brickSet : BlockCreator.BRICK_SETS) {
 			builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY).add(brickSet.base().itemKey());
 		}
 		builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY).addAll(get("nether_bricks")).addAll(get("terracotta_bricks"));
-		*///?}
+		//?}
 	}
 
     private void copy(TagKey<Block> blockTag) {
@@ -143,28 +143,28 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 	}
 
 	//~ if >26.1 'TagAppender<ResourceKey<Item>, Item>' -> 'TagAppender<Item>' {
-	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(TagKey<Item> tag, String id) {
-		TagAppender<ResourceKey<Item>, Item> builder = builder(tag);
+	private TagAppender<Item> optionalBuilder(TagKey<Item> tag, String id) {
+		TagAppender<Item> builder = builder(tag);
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(TagKey<Item> tag, String id) {
-		TagAppender<ResourceKey<Item>, Item> builder = builder(tag);
+	private TagAppender<Item> builder(TagKey<Item> tag, String id) {
+		TagAppender<Item> builder = builder(tag);
 		get(id).forEach(builder::add);
 		return builder;
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(BlockItemTagId tag, Class<? extends Item> aClass) {
+	private TagAppender<Item> builder(BlockItemTagId tag, Class<? extends Item> aClass) {
 		return builder(tag.item()).addAll(get(aClass));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> builder(BlockItemTagId tag, String id) {
+	private TagAppender<Item> builder(BlockItemTagId tag, String id) {
 		return builder(tag.item()).addAll(get(id));
 	}
 
-	private TagAppender<ResourceKey<Item>, Item> optionalBuilder(BlockItemTagId tag, String id) {
-		TagAppender<ResourceKey<Item>, Item> builder = builder(tag.item());
+	private TagAppender<Item> optionalBuilder(BlockItemTagId tag, String id) {
+		TagAppender<Item> builder = builder(tag.item());
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}

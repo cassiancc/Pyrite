@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "group": "torch",
+  "ingredients": [
+    "#c:dyes/star",
+    "minecraft:torch"
+  ],
+  "result": {
+    "id": "pyrite:star_torch"
+  }
+}

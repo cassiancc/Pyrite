@@ -2,8 +2,6 @@
 package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.blocks.PyriteStandingSignBlock;
-import cc.cassian.pyrite.blocks.PyriteWallSignBlock;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
@@ -24,7 +22,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HangingSignBlock;
 import org.jspecify.annotations.NullMarked;
 
 import static cc.cassian.pyrite.util.ModHelpers.getBlockEntry;
@@ -49,40 +46,47 @@ public class PyriteModelProvider extends FabricModelProvider {
             slab(slab, wool);
         }
 
-        //? if >26.1 {
-
-        /*for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
-            var sign = woodSet.sign().get();
-            TextureMapping mapping = (new TextureMapping()).put(TextureSlot.ALL, TextureMapping.getBlockTexture(sign)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(woodSet.planks().get()));
-            MultiVariant standingRot0 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(sign, "_rot_0"), mapping, blockModelGenerators.modelOutput));
-            MultiVariant standingRot1 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(sign, "_rot_1"), mapping, blockModelGenerators.modelOutput));
-            MultiVariant standingRot2 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(sign, "_rot_2"), mapping, blockModelGenerators.modelOutput));
-            MultiVariant standingRot3 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(sign, "_rot_3"), mapping, blockModelGenerators.modelOutput));
-            blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSign(sign, standingRot0, standingRot1, standingRot2, standingRot3));
-
+        for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
+            // sign
+            sign(woodSet);
+            // hanging sign
+            hangingSign(woodSet);
         }
+    }
 
-
-        BuiltInRegistries.BLOCK.entrySet().forEach((entry)->{
-            var block = entry.getValue();
-            var name = entry.getKey().identifier().getPath();
-            if (block instanceof PyriteWallSignBlock wallSign) {
-                TextureMapping mapping = (new TextureMapping()).put(TextureSlot.ALL, TextureMapping.getBlockTexture(getSign(name))).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(getBaseBlock(name)));
-                MultiVariant wallModel = BlockModelGenerators.plainVariant(ModelTemplates.WALL_SIGN.create(wallSign, mapping, blockModelGenerators.modelOutput));
-                blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
-            } else if (block instanceof HangingSignBlock hangingSignBlock) {
-
-            }
-        });
+    private void sign(WoodSet woodSet) {
+		Block sign = woodSet.sign().value();
+        Block wallSign = woodSet.wallSign().get();
+        TextureMapping mapping = new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(sign)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(woodSet.planks().get()));
+        //? if >26.1 {
+        MultiVariant standingRot0 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(sign, "_rot_0"), mapping, blockModelGenerators.modelOutput));
+        MultiVariant standingRot1 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(sign, "_rot_1"), mapping, blockModelGenerators.modelOutput));
+        MultiVariant standingRot2 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(sign, "_rot_2"), mapping, blockModelGenerators.modelOutput));
+        MultiVariant standingRot3 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(sign, "_rot_3"), mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSign(sign, standingRot0, standingRot1, standingRot2, standingRot3));
+        MultiVariant wallModel = BlockModelGenerators.plainVariant(ModelTemplates.WALL_SIGN.create(wallSign, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
+        //?} else {
+        
+        /*MultiVariant model = BlockModelGenerators.plainVariant(ModelTemplates.PARTICLE_ONLY.create(sign, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(sign, model));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallSign, model));
         *///?}
+        blockModelGenerators.registerSimpleFlatItemModel(sign.asItem());
     }
 
-    private static Block getBaseBlock(String sign) {
-        return BuiltInRegistries.BLOCK.getValue(Pyrite.of(sign.replace("_sign", "_planks")));
-    }
-
-    private static Block getSign(String sign) {
-        return BuiltInRegistries.BLOCK.getValue(Pyrite.of(sign.replace("_wall_", "")));
+    private void hangingSign(WoodSet woodSet) {
+        Block hangingSign = woodSet.hangingSign().value();
+        Block wallSign = woodSet.hangingWallSign().get();
+        TextureMapping mapping = new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(hangingSign)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(woodSet.planks().get()));
+        //? if >26.1 {
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createHangingSign(hangingSign, BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_0"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_1"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_2"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_3"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_0"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_1"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_2"), mapping, blockModelGenerators.modelOutput)), BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_3"), mapping, blockModelGenerators.modelOutput))));
+        MultiVariant wallModel = BlockModelGenerators.plainVariant(ModelTemplates.WALL_HANGING_SIGN.create(wallSign, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
+        blockModelGenerators.registerSimpleFlatItemModel(hangingSign.asItem());
+        //?} else {
+        /*blockModelGenerators.createHangingSign(woodSet.planks().get(), woodSet.hangingSign().get(), woodSet.hangingWallSign().get());
+        *///?}
     }
 
     public void stairs(final BlockEntry<Block> stairs, BlockEntry<Block> baseBlock) {

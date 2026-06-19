@@ -2,7 +2,7 @@ package cc.cassian.pyrite.core;
 
 import net.minecraft.resources.Identifier;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import cc.cassian.pyrite.util.BlockItemTagId;
+import net.minecraft.tags.BlockItemTagId;
 //~}
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;

@@ -195,6 +195,12 @@ val additionalVersions: List<String> = additionalVersionsStr
     ?.filter { it.isNotEmpty() }
     ?: emptyList()
 
+
+tasks.register<Sync>("syncDatagen") {
+    from(project(":26.1-fabric").tasks.named("runDatagen"))
+    into(file("src/main/generated/"))
+}
+
 publishMods {
     file = tasks.jar.map { it.archiveFile.get() }
     additionalFiles.from(tasks.named<org.gradle.jvm.tasks.Jar>("sourcesJar").map { it.archiveFile.get() })

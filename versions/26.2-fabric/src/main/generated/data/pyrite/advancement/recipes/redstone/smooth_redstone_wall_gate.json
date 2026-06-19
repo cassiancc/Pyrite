@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "redstone"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:smooth_redstone_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "smooth_redstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:smooth_redstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "smooth_redstone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:smooth_redstone_wall_gate"
+    ]
+  }
+}

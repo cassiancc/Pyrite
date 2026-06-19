@@ -1,0 +1,17 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "terracotta_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:nostalgia_terracotta_bricks",
+  "result": {
+    "count": 2,
+    "id": "pyrite:nostalgia_terracotta_brick_slab"
+  }
+}

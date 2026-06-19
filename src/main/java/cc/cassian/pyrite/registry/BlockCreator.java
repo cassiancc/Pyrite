@@ -26,7 +26,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 //~ if >26.1 'BlockEntityType' -> 'BlockEntityTypes' {
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 //~}
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -149,12 +149,12 @@ public class BlockCreator {
             case "shelf":
                 // Register Shelf
                 newBlock = new ShelfBlock(blockSettings);
-                ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.SHELF, newBlock);
                 break;
             case "chest":
                 if (ModHelpers.generateChests()) {
-                    newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
-                    ModHelpers.addSupportedBlock(()-> BlockEntityType.CHEST, newBlock);
+                    newBlock = new ChestBlock(()->BlockEntityTypes.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
+                    ModHelpers.addSupportedBlock(()-> BlockEntityTypes.CHEST, newBlock);
                 }
                 break;
             case "cabinet":
@@ -288,8 +288,8 @@ public class BlockCreator {
                 final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, SIGN_ITEM);
                 PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), new ItemEntry<>(blockID, SIGN_ITEM));
-                ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
-                ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.SIGN, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.SIGN, WALL_SIGN);
                 break;
             case "hanging_sign":
                 //Sign Blocks
@@ -302,8 +302,8 @@ public class BlockCreator {
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 PyriteItemGroups.SIGNS.add(new ItemEntry<>(blockID, HANGING_SIGN_ITEM));
-                ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
-                ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.HANGING_SIGN, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
             case "door":
                 if (isCopper(blockID)) {

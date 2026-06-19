@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "iron"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:smooth_iron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:smooth_iron_wall_gate_from_smooth_iron_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smooth_iron"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:smooth_iron_wall_gate_from_smooth_iron_stonecutting"
+    ]
+  }
+}

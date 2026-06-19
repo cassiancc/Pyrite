@@ -107,7 +107,6 @@ repositories {
 
 fabricApi {
     configureDataGeneration() {
-        outputDirectory = file("$rootDir/src/main/generated")
         client = true
         modId = "pyrite"
     }
@@ -134,29 +133,21 @@ dependencies {
             isTransitive = false
         }
     }
-    // Cloth Config
-    if (hasProperty("deps.cloth_version")) {
-        compileOnly("me.shedaniel.cloth:cloth-config-fabric:${property("deps.cloth_version")}")
-    } else {
-        compileOnly("me.shedaniel.cloth:cloth-config-neoforge:19.0.147")
-    }
     // Mod Menu
     if (hasProperty("deps.modmenu")) {
         compileOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
         runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
     } else {
-        compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.3")
+        compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.8")
     }
 
     compileOnly("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }
-    if (stonecutter.eval(mcVersion, "=26.1")) {
-        localRuntime("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
-            exclude(group = "net.fabricmc")
-            exclude(group = "me.shedaniel")
-        }
+    localRuntime("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
+        exclude(group = "net.fabricmc")
+        exclude(group = "me.shedaniel")
     }
 
     implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}") {

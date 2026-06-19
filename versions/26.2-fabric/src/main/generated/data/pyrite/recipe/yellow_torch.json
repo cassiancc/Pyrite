@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "group": "torch",
+  "ingredients": [
+    "#c:dyes/yellow",
+    "minecraft:torch"
+  ],
+  "result": {
+    "id": "pyrite:yellow_torch"
+  }
+}
