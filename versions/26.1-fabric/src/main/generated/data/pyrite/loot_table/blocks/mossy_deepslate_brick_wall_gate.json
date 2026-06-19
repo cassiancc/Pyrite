@@ -3,7 +3,8 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "wall_gates"
+        "wall_gates",
+        "mossy_deepslate_bricks"
       ]
     }
   ],

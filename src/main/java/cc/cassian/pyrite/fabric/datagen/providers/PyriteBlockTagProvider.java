@@ -49,7 +49,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(PyriteBlockItemTags.CHESTS, "_chest");
 		optionalBuilder(PyriteBlockItemTags.COPPER, get("copper").stream().filter(t->{
 			String string = t.identifier().toString();
-			if (string.contains("oxidized") || string.contains("weathered") || string.contains("exposed")) {
+			if (string.contains("oxidized") || string.contains("weathered") || string.contains("exposed") || string.contains("lever")) {
 				return false;
 			}
 			return true;

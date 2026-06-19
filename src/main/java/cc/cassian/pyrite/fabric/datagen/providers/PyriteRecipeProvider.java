@@ -35,6 +35,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -66,13 +67,16 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			public void buildRecipes() {
 				// one-off recipes
 				fenceGate(getItem("nether_brick_fence_gate"), Ingredient.of(Items.NETHER_BRICKS), Ingredient.of(Items.NETHER_BRICK), (List.of("nether_brick_fence_gate")));
+
 				stairs(getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, List.of("smooth_stone_stairs"));
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.SMOOTH_STONE, 1, List.of("smooth_stone_stairs"));
+
 				shapeless(RecipeCategory.REDSTONE, getItem("lit_redstone_lamp"))
 						.requires(Items.REDSTONE_LAMP)
 						.requires(Items.REDSTONE_TORCH)
 						.unlockedBy(getHasName(Items.REDSTONE_LAMP), has(Items.REDSTONE_LAMP))
 						.save(configuredOutput(List.of("lit_redstone_lamp")));
+
 				shaped(RecipeCategory.DECORATIONS, getItem("glowing_obsidian"))
 						.pattern("X#")
 						.pattern("#X")
@@ -80,6 +84,15 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.define('#', Items.MAGMA_BLOCK)
 						.unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
 						.save(configuredOutput(List.of("glowing_obsidian")));
+				smeltingResultFromBase(getItem("charred_nether_bricks"), Items.NETHER_BRICKS, List.of("charred_nether_bricks"));
+
+				shaped(RecipeCategory.DECORATIONS, getItem("blue_nether_bricks"))
+						.pattern("X#")
+						.pattern("#X")
+						.define('X', Items.WARPED_FUNGUS)
+						.define('#', Items.NETHER_BRICK)
+						.unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK))
+						.save(configuredOutput(List.of("blue_nether_bricks")));
 
 				for (WoodSet woodSet : WOOD_SETS) {
 					List<String> requiredOptions = getRequiredOptions(woodSet.planks().getId());
@@ -148,11 +161,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					stoneStonecuttingShortcut(name, bricks, base);
 				}
 				// mossy deepslate
-				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_moss"); //fixme add config
-				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of()), "mossy_deepslate_bricks_from_vine");
+				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of("mossy_deepslate_bricks")), "mossy_deepslate_bricks_from_moss");
+				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_deepslate_bricks")).requires(Items.DEEPSLATE_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.DEEPSLATE_BRICKS), has(Items.DEEPSLATE_BRICKS)).save(configuredOutput(List.of("mossy_deepslate_bricks")), "mossy_deepslate_bricks_from_vine");
 				// mossy tuff
-				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_tuff_bricks")).requires(Items.TUFF_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.TUFF_BRICKS), has(Items.TUFF_BRICKS)).save(configuredOutput(List.of()), "mossy_tuff_bricks_from_moss"); //fixme add config
-				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_tuff_bricks")).requires(Items.TUFF_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.TUFF_BRICKS), has(Items.TUFF_BRICKS)).save(configuredOutput(List.of()), "mossy_tuff_bricks_from_vine");
+				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_tuff_bricks")).requires(Items.TUFF_BRICKS).requires(Items.MOSS_BLOCK).unlockedBy(getHasName(Items.TUFF_BRICKS), has(Items.TUFF_BRICKS)).save(configuredOutput(List.of("mossy_tuff_bricks")), "mossy_tuff_bricks_from_moss");
+				shapeless(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_tuff_bricks")).requires(Items.TUFF_BRICKS).requires(Items.VINE).unlockedBy(getHasName(Items.TUFF_BRICKS), has(Items.TUFF_BRICKS)).save(configuredOutput(List.of("mossy_tuff_bricks")), "mossy_tuff_bricks_from_vine");
 				// shortcuts
 				twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, getItem("mossy_cobblestone_bricks"), Items.MOSSY_COBBLESTONE, 4, List.of("cobblestone_bricks"));
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("cobbled_deepslate_bricks"), Items.DEEPSLATE, 1, List.of("cobbled_deepslate_bricks"));
@@ -351,6 +364,9 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, terracottaBricks, terracotta, List.of("terracotta_bricks"));
 				// torch lever
 				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("torch_lever"))).group("torch_lever").requires(Items.TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(List.of("torch_levers")));
+				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("redstone_torch_lever"))).group("torch_lever").requires(Items.REDSTONE_TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.REDSTONE_TORCH), has(Items.REDSTONE_TORCH)).save(configuredOutput(List.of("torch_levers")));
+				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("soul_torch_lever"))).group("torch_lever").requires(Items.SOUL_TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.SOUL_TORCH), has(Items.SOUL_TORCH)).save(configuredOutput(List.of("torch_levers")));
+				shapeless(RecipeCategory.REDSTONE, getItem(Pyrite.of("copper_torch_lever"))).group("torch_lever").requires(Items.COPPER_TORCH).requires(Items.LEVER).unlockedBy(getItemName(Items.COPPER_TORCH), has(Items.COPPER_TORCH)).save(configuredOutput(List.of("torch_levers")));
 				// framed glass
 				shaped(RecipeCategory.BUILDING_BLOCKS, baseFramedGlass)
 						.group("framed_glass")
@@ -415,6 +431,10 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
 					}
 				}
+			}
+
+			private void smeltingResultFromBase(Item result, Item base, List<String> requiredOptions) {
+				SimpleCookingRecipeBuilder.smelting(Ingredient.of(base), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, result, 0.1F, 200).unlockedBy(getHasName(base), this.has(base)).save(configuredOutput(requiredOptions));
 			}
 
 			private ResourceBlockSubSet getWaxed(ResourceBlockSubSet resourceBlockSubSet) {

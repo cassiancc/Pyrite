@@ -58,7 +58,7 @@ public class ModHelpers {
             requiredOptions.add("azalea");
         }
         // dyed bricks
-        if (path.contains("brick") && !path.contains("terracotta") && !path.contains("sandstone")) {
+        if (path.contains("brick") && !path.contains("terracotta") && !path.contains("sandstone") && !path.contains("nether")) {
             for (String dye : ModLists.DYES) {
                 if (path.contains(dye)) {
                     requiredOptions.add("dyed_bricks");
@@ -69,7 +69,7 @@ public class ModHelpers {
         if (path.contains("wall_gate")) {
             requiredOptions.add("wall_gates");
         }
-        else if (path.contains("redstone_torch_lever") || path.contains("soul_torch_lever")) {
+        else if (path.contains("redstone_torch_lever") || path.contains("soul_torch_lever") || path.contains("copper_torch_lever")) {
             return List.of("torch_levers");
         }
         else if (path.equals("lit_redstone_lamp")) {
@@ -120,6 +120,12 @@ public class ModHelpers {
         if (path.contains("terracotta_brick")) {
             requiredOptions.add("terracotta_bricks");
         }
+        else if (path.contains("blue_nether_brick")) {
+            requiredOptions.add("blue_nether_bricks");
+        }
+        else if (path.contains("charred_nether_brick")) {
+            requiredOptions.add("charred_nether_bricks");
+        }
         else if (path.contains("calcite_brick")) {
             requiredOptions.add("calcite_bricks");
         }
@@ -134,6 +140,12 @@ public class ModHelpers {
         }
         else if (path.contains("cobblestone_brick")) {
             requiredOptions.add("cobblestone_bricks");
+        }
+        else if (path.contains("mossy_deepslate_brick")) {
+            requiredOptions.add("mossy_deepslate_bricks");
+        }
+        else if (path.contains("mossy_tuff_brick")) {
+            requiredOptions.add("mossy_tuff_bricks");
         }
         else if (path.contains("cobbled_deepslate_brick")) {
             requiredOptions.add("cobbled_deepslate_bricks");

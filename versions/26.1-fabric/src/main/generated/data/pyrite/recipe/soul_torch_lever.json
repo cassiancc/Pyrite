@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torch_levers"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "torch_lever",
+  "ingredients": [
+    "minecraft:soul_torch",
+    "minecraft:lever"
+  ],
+  "result": {
+    "id": "pyrite:soul_torch_lever"
+  }
+}

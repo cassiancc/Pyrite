@@ -1,7 +1,10 @@
 {
   "fabric:load_conditions": [
     {
-      "condition": "fabric:true"
+      "condition": "pyrite:config",
+      "options": [
+        "mossy_deepslate_bricks"
+      ]
     }
   ],
   "type": "minecraft:block",

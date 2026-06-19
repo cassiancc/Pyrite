@@ -308,7 +308,7 @@ public class BlockCreator {
             case "door":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
-                    var waxed = new BlockEntry<>("waxed_" + blockID, new DoorBlock(blockSetType, blockSettings.noOcclusion()));
+                    var waxed = new BlockEntry<>("waxed_" + blockID, new DoorBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID))));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
@@ -319,7 +319,7 @@ public class BlockCreator {
             case "trapdoor":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperTrapDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
-                    var waxed = new BlockEntry<>("waxed_"+blockID, new TrapDoorBlock(blockSetType, blockSettings.noOcclusion()));
+                    var waxed = new BlockEntry<>("waxed_"+blockID, new TrapDoorBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID))));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
@@ -330,7 +330,7 @@ public class BlockCreator {
             case "button":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableButtonBlock(blockSetType, getOxidizationState(blockID), blockSettings);
-                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModWoodenButton(blockSettings, blockSetType));
+                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModWoodenButton(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID)), blockSetType));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
@@ -341,7 +341,7 @@ public class BlockCreator {
             case "pressure_plate":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizablePressurePlateBlock(blockSetType, getOxidizationState(blockID), blockSettings);
-                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModPressurePlate(blockSettings, blockSetType));
+                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModPressurePlate(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID)), blockSetType));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
                     Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);

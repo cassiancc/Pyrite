@@ -3,8 +3,11 @@ package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.entity.ModEntities;
+import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
+import cc.cassian.pyrite.entries.PyriteEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
+import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.sets.ResourceBlockSet;
@@ -69,9 +72,14 @@ public class PyriteLangProvider extends FabricLanguageProvider {
                 lang.add(waxedPressurePlate.toLanguageKey("block"), name(waxedPressurePlate.getPath()));
             }
         }
+        for (BlockEntry<Block> entry : PyriteItemGroups.TORCH_LEVER) {
+            if (entry.getPath().contains("copper")) {
+                name(lang, entry);
+            }
+        }
     }
 
-    private void name(TranslationBuilder lang, ItemEntry<Item> entry) {
+    private void name(TranslationBuilder lang, PyriteEntry entry) {
         lang.add(entry.asItem(), name(entry.getPath()));
 	}
 

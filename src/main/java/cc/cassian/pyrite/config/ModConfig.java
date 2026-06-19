@@ -18,9 +18,17 @@ public class ModConfig extends WrappedConfig {
    @Comment("Enable Pyrite Azalea Trees and their wood set.")
    public boolean azalea = true;
 
+   @DisplayName("Blue Nether Bricks")
+   @Comment("Enable a block set for Blue Nether Bricks.")
+   public boolean blue_nether_bricks = true;
+
    @DisplayName("Calcite Bricks")
    @Comment("Enable a block set for Calcite Bricks.")
    public boolean calcite_bricks = true;
+
+   @DisplayName("Charred Nether Bricks")
+   @Comment("Enable a block set for Charred Nether Bricks.")
+   public boolean charred_nether_bricks = true;
 
    @DisplayName("Cobblestone Bricks")
    @Comment("Enable a block set for Cobblestone Bricks.")
@@ -101,6 +109,14 @@ public class ModConfig extends WrappedConfig {
    @DisplayName("Lit Redstone Lamp")
    @Comment("Enable Lit Redstone Lamps.")
    public boolean lit_redstone_lamp = true;
+
+   @DisplayName("Mossy Deepslate Bricks")
+   @Comment("Enable a block set for Mossy Deepslate Bricks.")
+   public boolean mossy_deepslate_bricks = true;
+
+   @DisplayName("Mossy Tuff Bricks")
+   @Comment("Enable a block set for Mossy Tuff Bricks.")
+   public boolean mossy_tuff_bricks = true;
 
    @DisplayName("Mushroom Wood Sets")
    @Comment("Enable Pyrite Tall Mushrooms and their wood set.")

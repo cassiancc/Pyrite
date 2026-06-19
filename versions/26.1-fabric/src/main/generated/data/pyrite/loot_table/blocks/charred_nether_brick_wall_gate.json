@@ -3,8 +3,8 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "dyed_bricks",
-        "wall_gates"
+        "wall_gates",
+        "charred_nether_bricks"
       ]
     }
   ],

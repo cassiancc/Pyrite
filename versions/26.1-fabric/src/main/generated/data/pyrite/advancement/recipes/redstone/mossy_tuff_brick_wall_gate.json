@@ -3,6 +3,7 @@
     {
       "condition": "pyrite:config",
       "options": [
+        "mossy_tuff_bricks",
         "wall_gates"
       ]
     }
