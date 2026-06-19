@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "netherite"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

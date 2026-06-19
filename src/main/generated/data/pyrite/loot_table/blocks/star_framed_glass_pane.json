@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "framed_glass"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

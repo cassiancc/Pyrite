@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "azalea",
+        "crafting_tables"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

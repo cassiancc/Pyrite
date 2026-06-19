@@ -1,4 +1,9 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:true"
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

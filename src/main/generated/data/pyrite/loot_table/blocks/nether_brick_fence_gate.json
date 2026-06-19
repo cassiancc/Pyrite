@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "nether_brick_fence_gate"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

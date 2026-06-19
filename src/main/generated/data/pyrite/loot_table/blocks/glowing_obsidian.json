@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "glowing_obsidian"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

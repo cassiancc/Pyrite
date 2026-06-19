@@ -67,6 +67,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		// conventional tags
 		copy(ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
+		copy(ConventionalBlockTags.OBSIDIANS);
 		copy(ConventionalBlockTags.BLACK_DYED);
 		copy(ConventionalBlockTags.BLUE_DYED);
 		copy(ConventionalBlockTags.BROWN_DYED);

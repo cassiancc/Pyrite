@@ -1,4 +1,14 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates",
+        "oddities",
+        "terracotta_bricks"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

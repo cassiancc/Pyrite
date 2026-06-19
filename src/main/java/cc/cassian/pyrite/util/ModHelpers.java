@@ -75,6 +75,9 @@ public class ModHelpers {
         else if (path.equals("lit_redstone_lamp")) {
             return List.of("lit_redstone_lamp");
         }
+        else if (path.contains("glowing_obsidian")) {
+            requiredOptions.add("glowing_obsidian");
+        }
         else if (path.contains("torch_lever")) {
             requiredOptions.add("torch_levers");
         }

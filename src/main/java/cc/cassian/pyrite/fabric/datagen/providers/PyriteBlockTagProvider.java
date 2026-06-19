@@ -94,6 +94,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		// conventional tag
 		builder(ConventionalBlockTags.WOODEN_CHESTS).addTag(PyriteBlockItemTags.CHESTS.block());
 		optionalBuilder(ConventionalBlockTags.CONCRETES, "concrete");
+		optionalBuilder(ConventionalBlockTags.OBSIDIANS, "obsidian");
 		builder(ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES).addTag(PyriteBlockItemTags.CRAFTING_TABLES.block());
 		builder(ConventionalBlockTags.GLASS_BLOCKS_COLORLESS).add(of("framed_glass"));
 		builder(ConventionalBlockTags.GLASS_PANES_COLORLESS).add(of("framed_glass_pane"));

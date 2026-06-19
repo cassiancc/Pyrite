@@ -1,4 +1,14 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "oddities",
+        "crafting_tables"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

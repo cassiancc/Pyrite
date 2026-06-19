@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates",
+        "diamond"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

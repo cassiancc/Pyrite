@@ -66,6 +66,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Adds a decorative block set made of Iron and Glass.")
    public boolean framed_glass = true;
 
+   @DisplayName("Glowing Obsidian")
+   @Comment("Adds a decorative counterpart to Crying Obsidian.")
+   public boolean glowing_obsidian = true;
+
    @DisplayName("Granite Bricks")
    @Comment("Enable a block set for Granite Bricks.")
    public boolean granite_bricks = true;

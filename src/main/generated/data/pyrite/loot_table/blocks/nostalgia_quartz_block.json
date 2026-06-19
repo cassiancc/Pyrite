@@ -1,4 +1,13 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "quartz"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

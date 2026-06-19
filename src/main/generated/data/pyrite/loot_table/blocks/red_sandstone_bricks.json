@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "red_sandstone_bricks"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {

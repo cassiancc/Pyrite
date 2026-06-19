@@ -1,4 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "lit_redstone_lamp"
+      ]
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {
