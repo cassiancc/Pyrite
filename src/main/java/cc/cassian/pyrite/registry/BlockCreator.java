@@ -328,10 +328,26 @@ public class BlockCreator {
                     newBlock = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
                 break;
             case "button":
-                newBlock = new ModWoodenButton(blockSettings, blockSetType);
+                if (isCopper(blockID)) {
+                    newBlock = new OxidizableButtonBlock(blockSetType, getOxidizationState(blockID), blockSettings);
+                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModWoodenButton(blockSettings, blockSetType));
+                    putBlock(waxed);
+                    PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                }
+                else
+                    newBlock = new ModWoodenButton(blockSettings, blockSetType);
                 break;
             case "pressure_plate":
-                newBlock = new ModPressurePlate(blockSettings, blockSetType);
+                if (isCopper(blockID)) {
+                    newBlock = new OxidizablePressurePlateBlock(blockSetType, getOxidizationState(blockID), blockSettings);
+                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModPressurePlate(blockSettings, blockSetType));
+                    putBlock(waxed);
+                    PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
+                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                }
+                else
+                    newBlock = new ModPressurePlate(blockSettings, blockSetType);
                 break;
             case "torch":
                 var torchParticle = particle;

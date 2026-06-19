@@ -41,4 +41,9 @@ public class ItemEntry<T extends Item> implements PyriteEntry {
     public boolean isIn(ItemStack heldItem) {
         return heldItem.is(this.raw.asItem());
     }
+
+    @Override
+    public String toString() {
+        return id.toString();
+    }
 }

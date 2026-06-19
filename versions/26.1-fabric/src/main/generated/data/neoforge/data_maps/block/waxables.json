@@ -3,8 +3,14 @@
     "pyrite:copper_bricks": {
       "waxed": "pyrite:waxed_copper_bricks"
     },
+    "pyrite:copper_button": {
+      "waxed": "pyrite:waxed_copper_button"
+    },
     "pyrite:copper_pillar": {
       "waxed": "pyrite:waxed_copper_pillar"
+    },
+    "pyrite:copper_pressure_plate": {
+      "waxed": "pyrite:waxed_copper_pressure_plate"
     },
     "pyrite:cut_copper_wall": {
       "waxed": "pyrite:waxed_cut_copper_wall"
@@ -33,8 +39,14 @@
     "pyrite:exposed_copper_bricks": {
       "waxed": "pyrite:waxed_exposed_copper_bricks"
     },
+    "pyrite:exposed_copper_button": {
+      "waxed": "pyrite:waxed_exposed_copper_button"
+    },
     "pyrite:exposed_copper_pillar": {
       "waxed": "pyrite:waxed_exposed_copper_pillar"
+    },
+    "pyrite:exposed_copper_pressure_plate": {
+      "waxed": "pyrite:waxed_exposed_copper_pressure_plate"
     },
     "pyrite:nostalgia_copper_block": {
       "waxed": "pyrite:waxed_nostalgia_copper_block"
@@ -51,8 +63,14 @@
     "pyrite:oxidized_copper_bricks": {
       "waxed": "pyrite:waxed_oxidized_copper_bricks"
     },
+    "pyrite:oxidized_copper_button": {
+      "waxed": "pyrite:waxed_oxidized_copper_button"
+    },
     "pyrite:oxidized_copper_pillar": {
       "waxed": "pyrite:waxed_oxidized_copper_pillar"
+    },
+    "pyrite:oxidized_copper_pressure_plate": {
+      "waxed": "pyrite:waxed_oxidized_copper_pressure_plate"
     },
     "pyrite:smooth_copper": {
       "waxed": "pyrite:waxed_smooth_copper"
@@ -117,8 +135,14 @@
     "pyrite:weathered_copper_bricks": {
       "waxed": "pyrite:waxed_weathered_copper_bricks"
     },
+    "pyrite:weathered_copper_button": {
+      "waxed": "pyrite:waxed_weathered_copper_button"
+    },
     "pyrite:weathered_copper_pillar": {
       "waxed": "pyrite:waxed_weathered_copper_pillar"
+    },
+    "pyrite:weathered_copper_pressure_plate": {
+      "waxed": "pyrite:waxed_weathered_copper_pressure_plate"
     }
   }
 }

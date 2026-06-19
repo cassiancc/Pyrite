@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:waxed_copper_block",
+  "result": {
+    "count": 4,
+    "id": "pyrite:waxed_smooth_copper_stairs"
+  }
+}

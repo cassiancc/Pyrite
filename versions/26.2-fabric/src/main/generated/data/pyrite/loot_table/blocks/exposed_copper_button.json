@@ -18,7 +18,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "pyrite:exposed_copper_button"
+          "name": "pyrite:waxed_exposed_copper_button"
         }
       ],
       "rolls": 1.0

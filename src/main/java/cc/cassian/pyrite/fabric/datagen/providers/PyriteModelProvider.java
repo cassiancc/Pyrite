@@ -6,7 +6,9 @@ import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
+import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import cc.cassian.pyrite.util.sets.WoodSet;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -20,10 +22,14 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NullMarked;
 
+import java.util.Map;
+
+import static cc.cassian.pyrite.registry.BlockCreator.RESOURCE_BLOCK_SETS;
 import static cc.cassian.pyrite.util.ModHelpers.getBlockEntry;
 
 @NullMarked
@@ -52,6 +58,30 @@ public class PyriteModelProvider extends FabricModelProvider {
             // hanging sign
             hangingSign(woodSet);
         }
+
+        for (ResourceBlockSet set : RESOURCE_BLOCK_SETS) {
+            var id = ModHelpers.findVanillaBlockID(set.block());
+            if (id.contains("copper")) {
+                button(HoneycombItem.getWaxed(set.button().defaultBlockState()).get().getBlock(), set.block());
+                pressurePlate(HoneycombItem.getWaxed(set.pressurePlate().defaultBlockState()).get().getBlock(), set.block());
+            }
+        }
+    }
+
+    public void pressurePlate(final Block block, final Block texture) {
+        TextureMapping mapping = new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(texture)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(texture));
+        MultiVariant off = BlockModelGenerators.plainVariant(ModelTemplates.PRESSURE_PLATE_UP.create(block, mapping, blockModelGenerators.modelOutput));
+        MultiVariant on = BlockModelGenerators.plainVariant(ModelTemplates.PRESSURE_PLATE_DOWN.create(block, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(block, off, on));
+    }
+    
+    private void button(final Block block, final Block texture) {
+        TextureMapping mapping = new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(texture)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(texture));
+        MultiVariant normal = BlockModelGenerators.plainVariant(ModelTemplates.BUTTON.create(block, mapping, blockModelGenerators.modelOutput));
+        MultiVariant pressed = BlockModelGenerators.plainVariant(ModelTemplates.BUTTON_PRESSED.create(block, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, normal, pressed));
+        Identifier inventory = ModelTemplates.BUTTON_INVENTORY.create(block, mapping, blockModelGenerators.modelOutput);
+        blockModelGenerators.registerSimpleItemModel(block, inventory);
     }
 
     private void sign(WoodSet woodSet) {

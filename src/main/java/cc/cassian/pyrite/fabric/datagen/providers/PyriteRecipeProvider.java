@@ -7,12 +7,9 @@ import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
-import cc.cassian.pyrite.util.sets.TurfSet;
+import cc.cassian.pyrite.util.sets.*;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
-import cc.cassian.pyrite.util.sets.BrickSet;
-import cc.cassian.pyrite.util.sets.ResourceBlockSet;
-import cc.cassian.pyrite.util.sets.WoodSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
@@ -21,6 +18,7 @@ import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedReso
 import net.minecraft.advancements.triggers.PlayerTrigger;
 //~}
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.BlockItemTagId;
 //~}
 import net.minecraft.core.Holder;
@@ -34,6 +32,7 @@ import net.minecraft.tags.BlockItemTags;
  //?}
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -41,12 +40,14 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LadderBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
+import static cc.cassian.pyrite.fabric.FabricPlatformImpl.WAXABLES;
 import static cc.cassian.pyrite.util.ModHelpers.getRequiredOptions;
 import static cc.cassian.pyrite.registry.BlockCreator.*;
 
@@ -160,7 +161,25 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.STONE, 1, List.of("smooth_stone_stairs"));
 
 
+				ArrayList<ResourceBlockSet> newSets = new ArrayList<>(RESOURCE_BLOCK_SETS);
 				for (ResourceBlockSet resourceBlockSet : RESOURCE_BLOCK_SETS) {
+					var id = ModHelpers.findVanillaBlockID(resourceBlockSet.block());
+					if (id.contains("copper")) {
+						var cutBlocks = getWaxed(resourceBlockSet.cutBlocks());
+						newSets.add(new ResourceBlockSet(getWaxed(resourceBlockSet.block()), getWaxed(cutBlocks), getWaxed(resourceBlockSet.smoothBlocks()), getWaxed(resourceBlockSet.bricks()), getWaxed(resourceBlockSet.chiseled()), getWaxed(resourceBlockSet.pillar()), getWaxed(resourceBlockSet.nostalgia()), getWaxed(resourceBlockSet.bars()), getWaxed(resourceBlockSet.door()), getWaxed(resourceBlockSet.trapdoor()), getWaxed(resourceBlockSet.pressurePlate()), getWaxed(resourceBlockSet.button())));
+					}
+				}
+
+				WAXABLES.forEach((rawId, waxedId)->{
+					Item waxedBlock = getItemOrVanilla(waxedId);
+					Item rawBlock = getItem(rawId);
+					this.shapeless(RecipeCategory.BUILDING_BLOCKS, (ItemLike) waxedBlock)
+							.requires(waxedBlock).requires(Items.HONEYCOMB)
+							.unlockedBy(getHasName(rawBlock), this.has(rawBlock))
+							.save(this.output, getConversionRecipeName(waxedBlock, Items.HONEYCOMB));
+				});
+
+				for (ResourceBlockSet resourceBlockSet : newSets) {
 					var id = ModHelpers.findVanillaBlockID(resourceBlockSet.block());
 					var requiredOptions = getRequiredOptions(Pyrite.of(id));
 					Block baseBlock = resourceBlockSet.block();
@@ -168,7 +187,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					if (!cutBlock.isVanilla()) { // copper
 						// cut
 						cut(RecipeCategory.BUILDING_BLOCKS, cutBlock, baseBlock, requiredOptions);
-						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, cutBlock, baseBlock, 8, requiredOptions);
+						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, cutBlock, baseBlock, 4, requiredOptions);
 						// cut slab
 						BlockEntry<Block> slab = resourceBlockSet.cutBlocks().slab();
 						slab(slab, cutBlock, requiredOptions);
@@ -225,9 +244,12 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					});
 
 					// chiseled
-					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, resourceBlockSet.chiseled(), baseBlock, 1, requiredOptions);
+					if (!resourceBlockSet.chiseled().isVanilla())
+						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, resourceBlockSet.chiseled(), baseBlock, 1, requiredOptions);
+
 					// pillar
-					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, resourceBlockSet.pillar(), baseBlock, 1, requiredOptions);
+					if (!resourceBlockSet.pillar().isVanilla())
+						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, resourceBlockSet.pillar(), baseBlock, 1, requiredOptions);
 
 					// button
 					var buttonId = resourceBlockSet.button();
@@ -393,6 +415,26 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
 					}
 				}
+			}
+
+			private ResourceBlockSubSet getWaxed(ResourceBlockSubSet resourceBlockSubSet) {
+				return new ResourceBlockSubSet(getWaxed(resourceBlockSubSet.block()), getWaxed(resourceBlockSubSet.stairs()), getWaxed(resourceBlockSubSet.slab()), getWaxed(resourceBlockSubSet.wall()), getWaxed(resourceBlockSubSet.wallGate()));
+			}
+
+			private BlockEntry<Block> getWaxed(BlockEntry<Block> block) {
+				if (block.getPath().contains("copper") && !block.getPath().contains("waxed")) {
+					Optional<BlockState> waxed = HoneycombItem.getWaxed(block.defaultBlockState());
+					if (waxed.isPresent())
+						return new BlockEntry<>(waxed.get().getBlock());
+					Identifier waxedId = block.getId().withPrefix("waxed_");
+					return new BlockEntry<>(waxedId, BuiltInRegistries.BLOCK.getValue(waxedId));
+				} else {
+					return block;
+				}
+			}
+
+			private Block getWaxed(Block block) {
+				return getWaxed(new BlockEntry<>(block)).value();
 			}
 
 			private void stoneStonecuttingShortcut(String name, Item bricks, Item stone) {

@@ -5,7 +5,9 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.entity.ModEntities;
 import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
+import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
+import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import cc.cassian.pyrite.util.sets.WoodSet;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -14,6 +16,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.apache.commons.lang3.text.WordUtils;
@@ -22,6 +25,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+
+import static cc.cassian.pyrite.registry.BlockCreator.RESOURCE_BLOCK_SETS;
 
 public class PyriteLangProvider extends FabricLanguageProvider {
     public PyriteLangProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
@@ -55,9 +60,18 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         ModEntities.CHEST_BOATS.forEach((name, entityType)->{
             lang.add(entityType, name(name + "_chest_boat"));
         });
+        for (ResourceBlockSet set : RESOURCE_BLOCK_SETS) {
+            var id = ModHelpers.findVanillaBlockID(set.block());
+            if (id.contains("copper")) {
+                Identifier waxedButton = set.button().getId().withPrefix("waxed_");
+                lang.add(waxedButton.toLanguageKey("block"), name(waxedButton.getPath()));
+                Identifier waxedPressurePlate = set.pressurePlate().getId().withPrefix("waxed_");
+                lang.add(waxedPressurePlate.toLanguageKey("block"), name(waxedPressurePlate.getPath()));
+            }
+        }
     }
 
-	private void name(TranslationBuilder lang, ItemEntry<Item> entry) {
+    private void name(TranslationBuilder lang, ItemEntry<Item> entry) {
         lang.add(entry.asItem(), name(entry.getPath()));
 	}
 

@@ -61,7 +61,15 @@
       "required": false
     },
     {
+      "id": "pyrite:waxed_exposed_copper_button",
+      "required": false
+    },
+    {
       "id": "pyrite:waxed_exposed_copper_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_exposed_copper_pressure_plate",
       "required": false
     },
     {

@@ -11,6 +11,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+
 public class BlockEntry<T extends Block> implements PyriteEntry {
 
     private final Identifier id;
@@ -31,6 +33,10 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
 
     public BlockEntry(T vanillaBlock) {
         this(BuiltInRegistries.BLOCK.getKey(vanillaBlock), vanillaBlock);
+    }
+
+    public BlockEntry(Map.Entry<ResourceKey<Block>, T> resourceKeyBlockEntry) {
+        this(resourceKeyBlockEntry.getKey(), resourceKeyBlockEntry.getValue());
     }
 
     @Override
@@ -69,5 +75,14 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
 
     public T value() {
         return get();
+    }
+
+	public BlockState defaultBlockState() {
+		return value().defaultBlockState();
+	}
+
+    @Override
+    public String toString() {
+        return id.toString();
     }
 }

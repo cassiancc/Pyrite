@@ -1,5 +1,6 @@
 ### Added
 - Every section of the mod's features now has a dedicated config option for enabling it.
+- Waxed versions of Copper Pressure Plates and Buttons.
 
 ### Fixed
 - Strange behaviour when stripping Azalea Wood.

@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:waxed_smooth_exposed_copper",
+  "result": {
+    "id": "pyrite:waxed_smooth_exposed_copper_wall_gate"
+  }
+}

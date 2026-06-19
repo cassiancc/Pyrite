@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:waxed_exposed_copper",
+  "result": {
+    "id": "pyrite:waxed_exposed_copper_pillar"
+  }
+}

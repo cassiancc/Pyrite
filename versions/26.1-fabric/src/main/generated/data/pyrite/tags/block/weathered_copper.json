@@ -69,7 +69,15 @@
       "required": false
     },
     {
+      "id": "pyrite:waxed_weathered_copper_button",
+      "required": false
+    },
+    {
       "id": "pyrite:waxed_weathered_copper_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:waxed_weathered_copper_pressure_plate",
       "required": false
     },
     {
