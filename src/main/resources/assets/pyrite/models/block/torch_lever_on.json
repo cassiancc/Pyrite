@@ -1,7 +1,1 @@
-{
-	"parent": "pyrite:block/template_torch_lever_on",
-	"textures": {
-		"texture": "minecraft:block/torch"
-	},
-	"render_type": "cutout"
-}
+{"parent":"pyrite:block/template_torch_lever_on","textures":{"texture":"minecraft:block/torch"},"render_type":"cutout"}

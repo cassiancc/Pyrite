@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/black_stained_cabinet"}}
+{"parent":"pyrite:block/black_stained_cabinet"}

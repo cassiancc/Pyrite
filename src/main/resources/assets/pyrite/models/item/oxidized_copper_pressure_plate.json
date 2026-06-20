@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/oxidized_copper_pressure_plate"}}
+{"parent":"pyrite:block/oxidized_copper_pressure_plate"}

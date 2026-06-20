@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/amethyst_bricks"}}
+{"parent":"pyrite:block/amethyst_bricks"}

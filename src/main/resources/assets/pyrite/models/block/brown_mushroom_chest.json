@@ -1,1 +1,1 @@
-{"textures":{"particle":"pyrite:block/brown_mushroom_planks"}}
+{"parent":"lolmcv:block/chests/chest_base","textures":{"wood_type":"pyrite:entity/chest/brown_mushroom","particle":"pyrite:block/brown_mushroom_planks"}}

@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/podzol_turf"}}
+{"parent":"pyrite:block/podzol_turf"}

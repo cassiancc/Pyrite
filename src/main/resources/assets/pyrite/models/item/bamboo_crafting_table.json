@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/bamboo_crafting_table"}}
+{"parent":"pyrite:block/bamboo_crafting_table"}

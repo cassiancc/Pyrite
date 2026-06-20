@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"pyrite:block/andesite_bricks"}}
+{"parent":"pyrite:block/andesite_bricks"}
