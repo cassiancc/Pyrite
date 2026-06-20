@@ -235,11 +235,10 @@ publishMods {
         minecraftVersions.add(property("deps.minecraft").toString())
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
-        if (hasProperty("deps.emi")) {
-            optional("emi")
-        }
         if (hasProperty("deps.rrv")) {
             optional("rrv")
         }
+        client = true
+        server = true
     }
 }
