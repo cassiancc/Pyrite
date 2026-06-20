@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "emerald"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:emerald_block",
+  "result": {
+    "count": 8,
+    "id": "pyrite:emerald_bricks"
+  }
+}

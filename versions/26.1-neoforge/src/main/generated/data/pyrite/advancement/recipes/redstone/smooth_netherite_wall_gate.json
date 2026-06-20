@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "netherite"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:smooth_netherite_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "smooth_netherite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:smooth_netherite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "smooth_netherite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:smooth_netherite_wall_gate"
+    ]
+  }
+}

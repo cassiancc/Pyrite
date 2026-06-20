@@ -1,0 +1,80 @@
+{
+  "values": [
+    {
+      "id": "pyrite:chiseled_lapis_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_lapis",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_lapis_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_lapis_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_lapis_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_lapis_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_bars",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:lapis_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_lapis_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_lapis",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_lapis_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_lapis_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_lapis_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_lapis_wall_gate",
+      "required": false
+    }
+  ]
+}

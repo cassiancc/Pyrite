@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "sandstone_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sandstone_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:sandstone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:sandstone_brick_wall_gate_from_sandstone_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sandstone_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:sandstone_brick_wall_gate_from_sandstone_bricks_stonecutting"
+    ]
+  }
+}

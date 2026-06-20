@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks",
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_poisonous_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:poisonous_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:poisonous_brick_slab_from_poisonous_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_poisonous_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:poisonous_brick_slab_from_poisonous_bricks_stonecutting"
+    ]
+  }
+}

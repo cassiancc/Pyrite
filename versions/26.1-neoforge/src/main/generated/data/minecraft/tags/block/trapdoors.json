@@ -1,0 +1,12 @@
+{
+  "values": [
+    "pyrite:gold_trapdoor",
+    "pyrite:emerald_trapdoor",
+    "pyrite:lapis_trapdoor",
+    "pyrite:redstone_trapdoor",
+    "pyrite:diamond_trapdoor",
+    "pyrite:netherite_trapdoor",
+    "pyrite:quartz_trapdoor",
+    "pyrite:amethyst_trapdoor"
+  ]
+}
