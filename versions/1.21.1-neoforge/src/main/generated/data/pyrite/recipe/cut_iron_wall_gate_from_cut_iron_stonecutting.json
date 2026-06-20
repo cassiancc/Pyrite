@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "iron"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:cut_iron"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:cut_iron_wall_gate"
+  }
+}

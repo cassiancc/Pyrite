@@ -78,6 +78,7 @@ repositories {
         url = uri("https://maven.terraformersmc.com/releases/")
         content {
             includeGroupAndSubgroups("com.terraformersmc")
+            includeGroupAndSubgroups("dev.emi")
         }
     }
     maven {
@@ -124,6 +125,13 @@ repositories {
             includeGroupAndSubgroups("thedarkcolour")
         }
     }
+    maven {
+        name = "Sinytra"
+        url = uri("https://maven.su5ed.dev/releases")
+        content {
+            includeGroupAndSubgroups("org.sinytra")
+        }
+    }
 
     flatDir { dirs(file("$rootDir/libs")) }
 }
@@ -141,14 +149,25 @@ dependencies {
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     jarJar("folk.sisby:kaleido-config:${property("deps.kaleido")}")
-    if (hasProperty("deps.rrv"))
-        implementation("cc.cassian.rrv:reliable-recipe-viewer-neoforge:${property("deps.rrv")}")
-
+    if (hasProperty("deps.emi")) {
+        compileOnly("dev.emi:emi-neoforge:${property("deps.emi")}+${property("deps.minecraft")}:api")
+        runtimeOnly("dev.emi:emi-neoforge:${property("deps.emi")}+${property("deps.minecraft")}")
+    }
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
-    compileOnly("maven.local:columns:1.12.0")
-    implementation("maven.local:fabric_resource_conditions_api_v1:6.0.5")
-    jarJar("maven.local:fabric_resource_conditions_api_v1:6.0.5")
+    if (hasProperty("deps.copper_age_backport")) {
+        implementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
+    }
+
+    implementation("org.sinytra.forgified-fabric-api:fabric-resource-conditions-api-v1:4.3.0+5bdd099819")
+    jarJar("org.sinytra.forgified-fabric-api:fabric-resource-conditions-api-v1:4.3.0+5bdd099819")
+    implementation("org.sinytra.forgified-fabric-api:fabric-api-base:0.4.42+d1308ded19")
+    jarJar("org.sinytra.forgified-fabric-api:fabric-api-base:0.4.42+d1308ded19")
+    implementation("org.sinytra:forgified-fabric-loader:2.5.68+0.18.4+1.21.1:full")
+    jarJar("org.sinytra:forgified-fabric-loader:2.5.68+0.18.4+1.21.1:full")
+
+    implementation("org.jspecify:jspecify:1.0.0")
+
 }
 
 
@@ -197,7 +216,7 @@ val additionalVersions: List<String> = additionalVersionsStr
 
 
 tasks.register<Sync>("syncDatagen") {
-    from(project(":26.1-fabric").tasks.named("runDatagen"))
+    from(project(":1.21.1-fabric").tasks.named("runDatagen"))
     into(file("src/main/generated/"))
 }
 

@@ -1,0 +1,90 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wool_stairs_and_slabs"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool_slab",
+  "ingredients": [
+    {
+      "tag": "c:dyes/lime"
+    },
+    [
+      {
+        "item": "pyrite:white_wool_slab"
+      },
+      {
+        "item": "pyrite:light_gray_wool_slab"
+      },
+      {
+        "item": "pyrite:gray_wool_slab"
+      },
+      {
+        "item": "pyrite:black_wool_slab"
+      },
+      {
+        "item": "pyrite:brown_wool_slab"
+      },
+      {
+        "item": "pyrite:red_wool_slab"
+      },
+      {
+        "item": "pyrite:orange_wool_slab"
+      },
+      {
+        "item": "pyrite:honey_wool_slab"
+      },
+      {
+        "item": "pyrite:yellow_wool_slab"
+      },
+      {
+        "item": "pyrite:poisonous_wool_slab"
+      },
+      {
+        "item": "pyrite:green_wool_slab"
+      },
+      {
+        "item": "pyrite:glow_wool_slab"
+      },
+      {
+        "item": "pyrite:cyan_wool_slab"
+      },
+      {
+        "item": "pyrite:nostalgia_wool_slab"
+      },
+      {
+        "item": "pyrite:star_wool_slab"
+      },
+      {
+        "item": "pyrite:light_blue_wool_slab"
+      },
+      {
+        "item": "pyrite:blue_wool_slab"
+      },
+      {
+        "item": "pyrite:purple_wool_slab"
+      },
+      {
+        "item": "pyrite:dragon_wool_slab"
+      },
+      {
+        "item": "pyrite:magenta_wool_slab"
+      },
+      {
+        "item": "pyrite:rose_wool_slab"
+      },
+      {
+        "item": "pyrite:pink_wool_slab"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:lime_wool_slab"
+  }
+}

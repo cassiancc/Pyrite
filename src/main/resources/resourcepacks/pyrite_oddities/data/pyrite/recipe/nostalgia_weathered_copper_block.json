@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:weathered_copper"],"result":{"id":"pyrite:nostalgia_weathered_copper_block","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items"},{"item":"minecraft:weathered_copper"}],"result":{"id":"pyrite:nostalgia_weathered_copper_block","count":1}}

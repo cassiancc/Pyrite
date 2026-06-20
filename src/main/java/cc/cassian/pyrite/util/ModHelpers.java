@@ -14,7 +14,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -50,7 +50,7 @@ public class ModHelpers {
     public static final ArrayList<Block> GRASS_BLOCKS = new ArrayList<>();
     public static final LinkedHashMultimap<Supplier<BlockEntityType<?>>, Block> SUPPORTED_BLOCKS = LinkedHashMultimap.create();
 
-    public static List<String> getRequiredOptions(Identifier itemId) {
+    public static List<String> getRequiredOptions(ResourceLocation itemId) {
         List<String> requiredOptions = new ArrayList<>();
         String path = itemId.getPath();
         // wood types
@@ -189,7 +189,7 @@ public class ModHelpers {
         return true;
     }
 
-    public static boolean enabled(Identifier itemId) {
+    public static boolean enabled(ResourceLocation itemId) {
         return enabled(getRequiredOptions(itemId));
     }
 
@@ -245,7 +245,7 @@ public class ModHelpers {
         return getBlockEntry(of(id));
     }
 
-    public static BlockEntry<Block> getBlockEntry(Identifier id) {
+    public static BlockEntry<Block> getBlockEntry(ResourceLocation id) {
         return new BlockEntry<>(id, getBlock(id));
     }
 
@@ -254,12 +254,12 @@ public class ModHelpers {
         if (BuiltInRegistries.BLOCK.getOptional(key).isPresent()) {
             return new BlockEntry<>(id, BuiltInRegistries.BLOCK.get(key));
         } else {
-            Identifier location = Identifier.withDefaultNamespace(id);
+            ResourceLocation location = ResourceLocation.withDefaultNamespace(id);
             return new BlockEntry<>(location, BuiltInRegistries.BLOCK.get(ResourceKey.create(Registries.BLOCK, location)));
         }
     }
 
-    public static Block getBlock(Identifier id) {
+    public static Block getBlock(ResourceLocation id) {
         return BuiltInRegistries.BLOCK.get(id);
     }
 
@@ -363,8 +363,8 @@ public class ModHelpers {
 
     public static InteractionResult updateTorchColour(ItemStack stack, BlockState state, Player player, Level world, BlockPos pos) {
         if (stack.is(PyriteItemTags.DYES)) {
-            Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            Block dyedTorch = getBlock(Identifier.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
+            ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            Block dyedTorch = getBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, id.getPath().replace("dye", "torch")));
             if (state.is(Blocks.TORCH)) {
                 world.setBlockAndUpdate(pos, dyedTorch.withPropertiesOf(state));
                 stack.consume(1, player);

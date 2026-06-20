@@ -3,7 +3,7 @@ package cc.cassian.pyrite.entries;
 import cc.cassian.pyrite.Pyrite;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,20 +15,20 @@ import java.util.Map;
 
 public class BlockEntry<T extends Block> implements PyriteEntry {
 
-    private final Identifier id;
+    private final ResourceLocation id;
     private final T raw;
 
     public BlockEntry(String id, T supplier) {
         this(Pyrite.of(id), supplier);
     }
 
-    public BlockEntry(Identifier id, T raw) {
+    public BlockEntry(ResourceLocation id, T raw) {
         this.id = id;
         this.raw = raw;
     }
 
     public BlockEntry(ResourceKey<Block> id, T raw) {
-        this(id.identifier(), raw);
+        this(id.location(), raw);
     }
 
     public BlockEntry(T vanillaBlock) {
@@ -40,7 +40,7 @@ public class BlockEntry<T extends Block> implements PyriteEntry {
     }
 
     @Override
-    public Identifier getId() {
+    public ResourceLocation getId() {
         return this.id;
     }
 

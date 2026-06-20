@@ -1,5 +1,3 @@
 accessWidener v2 named
 
 accessible field net/minecraft/data/recipes/RecipeProvider SHAPE_BUILDERS Ljava/util/Map;
-accessible field net/minecraft/data/recipes/RecipeProvider STONECUTTER_RECIPE_BUILDERS Ljava/util/Map;
-accessible field net/minecraft/client/data/models/BlockModelGenerators ROTATION_HORIZONTAL_FACING_ALT Lnet/minecraft/client/data/models/blockstates/PropertyDispatch;

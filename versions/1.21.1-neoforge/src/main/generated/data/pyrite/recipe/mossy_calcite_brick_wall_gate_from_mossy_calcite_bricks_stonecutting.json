@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "calcite_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:mossy_calcite_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:mossy_calcite_brick_wall_gate"
+  }
+}

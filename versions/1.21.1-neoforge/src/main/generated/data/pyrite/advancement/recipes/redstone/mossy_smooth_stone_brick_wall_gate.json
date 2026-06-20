@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "smooth_stone_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mossy_smooth_stone_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "mossy_smooth_stone_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:mossy_smooth_stone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "mossy_smooth_stone_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:mossy_smooth_stone_brick_wall_gate"
+    ]
+  }
+}

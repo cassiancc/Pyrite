@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:lime_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:lime_brick_wall_gate"
+  }
+}

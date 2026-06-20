@@ -116,18 +116,6 @@ repositories {
         }
     }
     flatDir { dirs(file("$rootDir/libs")) }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Gegy"
-                url = uri("https://maven.gegy.dev")
-            }
-        }
-        filter {
-            includeGroupAndSubgroups("dev.lambdaurora")
-            includeGroup("io.github.queerbric")
-        }
-    }
 }
 
 
@@ -143,7 +131,6 @@ dependencies {
     mappings(loom.layered {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${property("deps.parchment")}@zip")
-        mappings("dev.lambdaurora:yalmm-mojbackward:${property("deps.minecraft")}+build.${property("deps.mojbackward")}")
     })
     modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
@@ -196,7 +183,7 @@ dependencies {
 
 stonecutter {
     replacements.string {
-        direction = eval(current.version, ">1.21")
+        direction = eval(current.version, ">1.21.10")
         replace("ResourceLocation", "Identifier")
     }
 }

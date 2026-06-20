@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:mossy_cobblestone"],"result":{"id":"pyrite:nostalgia_mossy_cobblestone","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items"},{"item":"minecraft:mossy_cobblestone"}],"result":{"id":"pyrite:nostalgia_mossy_cobblestone","count":1}}

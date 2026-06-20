@@ -1,0 +1,42 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool",
+  "ingredients": [
+    {
+      "tag": "c:dyes/star"
+    },
+    [
+      {
+        "item": "pyrite:honey_wool"
+      },
+      {
+        "item": "pyrite:poisonous_wool"
+      },
+      {
+        "item": "pyrite:glow_wool"
+      },
+      {
+        "item": "pyrite:nostalgia_wool"
+      },
+      {
+        "item": "pyrite:dragon_wool"
+      },
+      {
+        "item": "pyrite:rose_wool"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:star_wool"
+  }
+}

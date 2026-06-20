@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:dragon_dye","#minecraft:wool"],"result":{"id":"pyrite:dragon_wool","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:dragon_dye"},{"tag":"minecraft:wool"}],"result":{"id":"pyrite:dragon_wool","count":1}}

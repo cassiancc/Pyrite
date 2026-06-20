@@ -8,7 +8,7 @@ import cc.cassian.pyrite.util.VanillaConstants;
 import cc.cassian.pyrite.util.sets.ColoredSet;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -204,11 +204,11 @@ public class Pyrite {
         addAlias("waxed_oxidized_copper_bars");
 	}
 
-    public static Identifier of(String namespace, String path) {
-        return Identifier.fromNamespaceAndPath(namespace, path);
+    public static ResourceLocation of(String namespace, String path) {
+        return ResourceLocation.fromNamespaceAndPath(namespace, path);
     }
 
-    public static Identifier of(String path) {
+    public static ResourceLocation of(String path) {
         return of(MOD_ID, path);
     }
 }

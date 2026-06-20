@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":"minecraft:copper_block","result":{"id":"pyrite:nostalgia_copper_block","count":1}}
+{"type":"minecraft:stonecutting","ingredient":{"item":"minecraft:copper_block"},"result":{"id":"pyrite:nostalgia_copper_block","count":1}}

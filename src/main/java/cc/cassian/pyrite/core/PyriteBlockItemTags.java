@@ -1,6 +1,6 @@
 package cc.cassian.pyrite.core;
 
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import cc.cassian.pyrite.util.BlockItemTagId;
 //~}
@@ -48,7 +48,7 @@ public class PyriteBlockItemTags {
     }
 
     public static BlockItemTagId tagKey(String namespace, String id) {
-        Identifier identifier = Identifier.fromNamespaceAndPath(namespace, id);
+        ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(namespace, id);
         return BlockItemTagId.create(identifier, identifier);
     }
 

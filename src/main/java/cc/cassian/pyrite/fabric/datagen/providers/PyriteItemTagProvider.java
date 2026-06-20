@@ -14,7 +14,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import cc.cassian.pyrite.util.BlockItemTagId;
@@ -62,7 +62,7 @@ public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		copy(PyriteBlockItemTags.TERRACOTTA);
 		copy(PyriteBlockItemTags.WALL_GATES);
 
-		builder(PyriteItemTags.BOATS).addAll(get("_boat").stream().filter(p->!p.identifier().getPath().contains("chest")).toList());
+		builder(PyriteItemTags.BOATS).addAll(get("_boat").stream().filter(p->!p.location().getPath().contains("chest")).toList());
 		builder(PyriteItemTags.CHEST_BOATS, "chest_boat");
 
 		// conventional tags
@@ -107,8 +107,8 @@ public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		copy(BlockTags.WOOL);
 
 		// fd
-		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden"));
-		copy(Identifier.fromNamespaceAndPath("farmersdelight", "cabinets"));
+		copy(ResourceLocation.fromNamespaceAndPath("farmersdelight", "cabinets/wooden"));
+		copy(ResourceLocation.fromNamespaceAndPath("farmersdelight", "cabinets"));
 
 		// dyes
 		builder(PyriteItemTags.DRAGON_DYES).addAll(get("dragon_dye"));
@@ -135,7 +135,7 @@ public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
         copy(blockTag, TagKey.create(Registries.ITEM, blockTag.location()));
     }
 
-	private void copy(Identifier id) {
+	private void copy(ResourceLocation id) {
 		copy(TagKey.create(Registries.BLOCK, id), TagKey.create(Registries.ITEM, id));
 	}
 
@@ -146,7 +146,7 @@ public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	//~ if <26.1 'TagAppender<ResourceKey<Item>, Item>' -> 'TagAppender<Item>' {
 	private TagAppender<Item> optionalBuilder(TagKey<Item> tag, String id) {
 		TagAppender<Item> builder = builder(tag);
-		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
+		get(id).stream().map(c->c.location()).forEach(builder::addOptional);
 		return builder;
 	}
 
@@ -166,7 +166,7 @@ public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 	private TagAppender<Item> optionalBuilder(BlockItemTagId tag, String id) {
 		TagAppender<Item> builder = builder(tag.item());
-		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
+		get(id).stream().map(c->c.location()).forEach(builder::addOptional);
 		return builder;
 	}
 
@@ -176,11 +176,11 @@ public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	//~}
 
 	private List<ResourceKey<Item>> get(String id) {
-		return BlockCreator.ITEMS.entrySet().stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.ITEMS.entrySet().stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::location)).toList();
 	}
 
 	private List<ResourceKey<Item>> get(Class<? extends Item> block) {
-		return BlockCreator.ITEMS.entrySet().stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.ITEMS.entrySet().stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::location)).toList();
 	}
 
 	private static ResourceKey<Item> of(Map.Entry<String, Item> e) {

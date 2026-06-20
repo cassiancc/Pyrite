@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:diamond_block"],"result":{"id":"pyrite:nostalgia_diamond_block","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items"},{"item":"minecraft:diamond"}],"result":{"id":"pyrite:nostalgia_diamond_block","count":1}}

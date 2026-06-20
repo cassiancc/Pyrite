@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "calcite_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:calcite_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:calcite_brick_wall"
+  }
+}

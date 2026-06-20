@@ -1,3 +1,4 @@
+//? fabric {
 package cc.cassian.pyrite.blocks;
 
 import io.github.haykam821.columns.block.ColumnBlock;
@@ -30,3 +31,4 @@ public class OxidizableColumnBlock extends ColumnBlock implements WeatheringCopp
         return oxidationLevel;
     }
 }
+//?}

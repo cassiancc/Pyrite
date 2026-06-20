@@ -13,7 +13,9 @@
     "DDD"
   ],
   "key": {
-    "D": "minecraft:iron_ingot"
+    "D": {
+      "item": "minecraft:iron_ingot"
+    }
   },
   "result": {
     "item": "minecraft:iron_trapdoor",

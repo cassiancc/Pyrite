@@ -136,7 +136,7 @@ public class TorchLever extends LeverBlock {
 
 
         world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
-        if (this.builtInRegistryHolder().key().identifier().getPath().contains("copper")) {
+        if (this.builtInRegistryHolder().key().location().getPath().contains("copper")) {
             CopperAgeBackportCompat.addParticle(world, xPlus, yPlus, zPlus);
         } else {
             world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);

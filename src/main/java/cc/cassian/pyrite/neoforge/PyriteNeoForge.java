@@ -3,7 +3,6 @@ package cc.cassian.pyrite.neoforge;
 //? if neoforge {
 
 /*import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.compat.PyriteRRVPlugin;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.util.ModHelpers;
@@ -16,6 +15,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.neoforged.bus.api.EventPriority;
@@ -82,7 +82,7 @@ public final class PyriteNeoForge {
     @SubscribeEvent
     private static void onUseWithItem(UseItemOnBlockEvent event) {
         InteractionResult actionResult = ModHelpers.updateTorchColour(event.getItemStack(), event.getPlayer(), event.getLevel(), event.getPos());
-        if (actionResult.equals(InteractionResult.SUCCESS)) event.cancelWithResult(InteractionResult.SUCCESS);
+        if (actionResult.equals(InteractionResult.SUCCESS)) event.cancelWithResult(ItemInteractionResult.SUCCESS);
     }
 
     @SubscribeEvent
@@ -92,13 +92,6 @@ public final class PyriteNeoForge {
                 event.addPackFinders(Pyrite.of("resourcepacks/"+key), PackType.SERVER_DATA, Component.literal(key), PackSource.BUILT_IN, true, Pack.Position.TOP);
             }
         });
-    }
-
-    @SubscribeEvent
-    private static void hideStacks(TagsUpdatedEvent commonSetupEvent) {
-        if (ModList.get().isLoaded("rrv")) {
-            PyriteRRVPlugin.hideStacks();
-        }
     }
 }
 

@@ -1,0 +1,42 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool_carpet",
+  "ingredients": [
+    {
+      "tag": "c:dyes/nostalgia"
+    },
+    [
+      {
+        "item": "pyrite:honey_carpet"
+      },
+      {
+        "item": "pyrite:poisonous_carpet"
+      },
+      {
+        "item": "pyrite:glow_carpet"
+      },
+      {
+        "item": "pyrite:star_carpet"
+      },
+      {
+        "item": "pyrite:dragon_carpet"
+      },
+      {
+        "item": "pyrite:rose_carpet"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:nostalgia_carpet"
+  }
+}

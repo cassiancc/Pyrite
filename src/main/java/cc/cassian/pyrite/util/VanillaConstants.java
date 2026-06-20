@@ -3,7 +3,7 @@ package cc.cassian.pyrite.util;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.entries.ItemEntry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -90,12 +90,12 @@ public class VanillaConstants {
 	};
 
 	private static BlockEntry<Block> vanillaBlock(String name) {
-		Identifier id = Identifier.withDefaultNamespace(name);
+		ResourceLocation id = ResourceLocation.withDefaultNamespace(name);
 		return new BlockEntry<>(id, BuiltInRegistries.BLOCK.get(id));
 	}
 
 	private static ItemEntry<Item> vanillaItem(String name) {
-		Identifier key = Identifier.withDefaultNamespace(name);
+		ResourceLocation key = ResourceLocation.withDefaultNamespace(name);
 		return new ItemEntry<>(key, BuiltInRegistries.ITEM.get(key));
 	}
 }

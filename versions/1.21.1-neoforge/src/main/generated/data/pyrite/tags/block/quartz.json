@@ -1,0 +1,56 @@
+{
+  "values": [
+    {
+      "id": "pyrite:cut_quartz",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_quartz_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_quartz_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_quartz_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_quartz_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_quartz_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:quartz_bars",
+      "required": false
+    },
+    {
+      "id": "pyrite:quartz_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:quartz_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:quartz_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:quartz_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_quartz_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_quartz_wall_gate",
+      "required": false
+    }
+  ]
+}

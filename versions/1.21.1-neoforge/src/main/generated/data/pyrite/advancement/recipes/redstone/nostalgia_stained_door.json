@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "oddities"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nostalgia_stained_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:nostalgia_stained_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:nostalgia_stained_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nostalgia_stained_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:nostalgia_stained_door"
+    ]
+  }
+}

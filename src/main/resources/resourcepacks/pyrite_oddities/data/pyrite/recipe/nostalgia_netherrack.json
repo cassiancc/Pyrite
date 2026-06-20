@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:netherrack"],"result":{"id":"pyrite:nostalgia_netherrack","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items"},{"item":"minecraft:netherrack"}],"result":{"id":"pyrite:nostalgia_netherrack","count":1}}

@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -20,9 +20,9 @@ import java.util.Map;
 
 public class FabricPlatformImpl implements Platform {
 
-    public static Map<Identifier, Identifier> WAXABLES = new HashMap<>();
-    public static Map<Identifier, Identifier> OXIDIZABLES = new HashMap<>();
-    public static Map<Identifier, Identifier> STRIPPABLES = new HashMap<>();
+    public static Map<ResourceLocation, ResourceLocation> WAXABLES = new HashMap<>();
+    public static Map<ResourceLocation, ResourceLocation> OXIDIZABLES = new HashMap<>();
+    public static Map<ResourceLocation, ResourceLocation> STRIPPABLES = new HashMap<>();
 
     @Override
     public void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {

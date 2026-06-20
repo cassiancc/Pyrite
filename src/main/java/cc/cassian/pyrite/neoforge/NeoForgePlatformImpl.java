@@ -33,7 +33,7 @@ public class NeoForgePlatformImpl implements Platform {
 
     @Override
     public boolean isDevEnvironment() {
-        return !FMLEnvironment.isProduction();
+        return !FMLEnvironment.production;
     }
 
     @Override

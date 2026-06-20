@@ -16,7 +16,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedResourceCondition;
 //~ if >26.1 'criterion' -> 'triggers' {
-import net.minecraft.advancements.criterion.PlayerTrigger;
+import net.minecraft.advancements.critereon.PlayerTrigger;
 //~}
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,7 +26,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 //? if >26.1 {
 /*import net.minecraft.tags.BlockItemTags;
@@ -144,7 +144,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				}
 
 				for (Block wall : ModLists.VANILLA_WALLS) {
-					Identifier wallId = BuiltInRegistries.BLOCK.getKey(wall);
+					ResourceLocation wallId = BuiltInRegistries.BLOCK.getKey(wall);
 					Item wallGate = getItem(Pyrite.of(wallId.getPath()+"_gate"));
 					Item base = getItem(wallId.withPath(block -> block.replace("_wall", "").replace("brick", "bricks").replace("tile", "tiles")));
 					wallGate(wallGate, base, wall, List.of("wall_gates"));
@@ -154,7 +154,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				for (String name : List.of(
 						"cobblestone", "cobbled_deepslate", "smooth_stone", "andesite", "diorite", "calcite", "granite", "sandstone", "red_sandstone"
 				)) {
-					Item base = getItem(Identifier.withDefaultNamespace(name));
+					Item base = getItem(ResourceLocation.withDefaultNamespace(name));
 					Item bricks = getItem(name + "_bricks");
 					List<String> options = List.of(name + "_bricks");
 					if (!name.contains("sandstone")) {
@@ -315,9 +315,9 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					if (ModLists.PYRITE_DYES.contains(dye)) {
 						requiredOptions.add("oddities");
 					}
-					Identifier torchId = Pyrite.of(dye + "_torch");
+					ResourceLocation torchId = Pyrite.of(dye + "_torch");
 					shapeless(RecipeCategory.DECORATIONS, getItem(torchId)).group("torch").requires(dyeTag).requires(Items.TORCH).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torches"));
-					Identifier torchLeverId = Pyrite.of(dye + "_torch_lever");
+					ResourceLocation torchLeverId = Pyrite.of(dye + "_torch_lever");
 					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torch_levers", "torches"));
 					// wool
 					var wool = getItemOrVanilla((dye + "_wool"));
@@ -394,7 +394,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(configuredOutput(List.of("lamps")));
 
 				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
-					Identifier blockId = entry.getId();
+					ResourceLocation blockId = entry.getId();
 					List<String> requiredOptions = getRequiredOptions(blockId);
 					if (entry.value() instanceof ModCraftingTable) {
 						Item planks = getItemOrVanilla(blockId.withPath(p -> p.replace("crafting_table", "planks")));
@@ -428,7 +428,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 									.pattern("#X#")
 									.pattern("###")
 									.group("planks")
-									.unlockedBy("has_base", this.has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
+									.unlockedBy("has_base", this.has(getItem(ResourceLocation.withDefaultNamespace("oak_planks"))))
 									.save(configuredOutput(requiredOptions));
 						}
 					} else if (entry.getId().getPath().contains("_wood")) {
@@ -454,7 +454,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Optional<BlockState> waxed = HoneycombItem.getWaxed(block.defaultBlockState());
 					if (waxed.isPresent())
 						return new BlockEntry<>(waxed.get().getBlock());
-					Identifier waxedId = block.getId().withPrefix("waxed_");
+					ResourceLocation waxedId = block.getId().withPrefix("waxed_");
 					return new BlockEntry<>(waxedId, BuiltInRegistries.BLOCK.get(waxedId));
 				} else {
 					return block;
@@ -579,7 +579,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("farmersdelight"))));
 			}
 
-			private Ingredient getDyeTag(Identifier stainedPlanks) {
+			private Ingredient getDyeTag(ResourceLocation stainedPlanks) {
                 return ingredientOf(TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+stainedPlanks.getPath())));
             }
 
@@ -607,7 +607,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.pattern("#X#")
 						.pattern("###")
 						.group(group)
-						.unlockedBy("has_base", this.has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
+						.unlockedBy("has_base", this.has(getItem(ResourceLocation.withDefaultNamespace("oak_planks"))))
 						.save(configuredOutput(requiredOptions));
 			}
 
@@ -622,7 +622,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 
-			private Item getItem(Identifier id) {
+			private Item getItem(ResourceLocation id) {
                 return BuiltInRegistries.ITEM.getHolderOrThrow(ResourceKey.create(Registries.ITEM, id)).value();
             }
 
@@ -635,11 +635,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				if (BuiltInRegistries.ITEM.getHolder(key).isPresent()) {
 					return BuiltInRegistries.ITEM.getHolderOrThrow(key).value();
 				} else {
-					return BuiltInRegistries.ITEM.getHolderOrThrow(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace(id))).value();
+					return BuiltInRegistries.ITEM.getHolderOrThrow(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(id))).value();
 				}
 			}
 
-			private Item getItemOrVanilla(Identifier id) {
+			private Item getItemOrVanilla(ResourceLocation id) {
 				return getItemOrVanilla(id.getPath());
 			}
 
@@ -666,7 +666,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(configuredOutput(requiredOptions));
 			}
 
-			private RecipeOutput configuredOutput(Identifier id) {
+			private RecipeOutput configuredOutput(ResourceLocation id) {
 				List<String> requiredOptions = getRequiredOptions(id);
 				return withConditions(configuredOutput(requiredOptions));
 			}

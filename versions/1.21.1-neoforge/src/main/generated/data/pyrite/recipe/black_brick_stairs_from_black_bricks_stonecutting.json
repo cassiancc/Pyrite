@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:black_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:black_brick_stairs"
+  }
+}

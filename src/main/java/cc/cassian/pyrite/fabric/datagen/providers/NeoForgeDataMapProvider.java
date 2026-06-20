@@ -17,7 +17,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 
@@ -40,7 +40,7 @@ public class NeoForgeDataMapProvider implements DataProvider {
         /*
         ModCompostable.register();
         Codec<Float> chance = ExtraCodecs.POSITIVE_FLOAT.fieldOf("chance").codec();
-        Codec<Map<Identifier, Float>> mapCodec = Codec.unboundedMap(Identifier.CODEC, chance).fieldOf("values").codec();
+        Codec<Map<ResourceLocation, Float>> mapCodec = Codec.unboundedMap(ResourceLocation.CODEC, chance).fieldOf("values").codec();
         consumer.accept("item/compostables", mapCodec.encodeStart(JsonOps.INSTANCE, ModCompostable.COMPOSTABLES).getOrThrow());
 
          */
@@ -48,20 +48,20 @@ public class NeoForgeDataMapProvider implements DataProvider {
 
 
     private static void strippables(BiConsumer<String, JsonElement> consumer) {
-        Codec<Identifier> value = Identifier.CODEC.fieldOf("stripped_block").codec();
-        Codec<Map<Identifier, Identifier>> mapCodec = Codec.unboundedMap(Identifier.CODEC, value).fieldOf("values").codec();
+        Codec<ResourceLocation> value = ResourceLocation.CODEC.fieldOf("stripped_block").codec();
+        Codec<Map<ResourceLocation, ResourceLocation>> mapCodec = Codec.unboundedMap(ResourceLocation.CODEC, value).fieldOf("values").codec();
         consumer.accept("block/strippables", mapCodec.encodeStart(JsonOps.INSTANCE, FabricPlatformImpl.STRIPPABLES).getOrThrow());
     }
 
     private static void oxidizables(BiConsumer<String, JsonElement> consumer) {
-        Codec<Identifier> value = Identifier.CODEC.fieldOf("next_oxidation_stage").codec();
-        Codec<Map<Identifier, Identifier>> mapCodec = Codec.unboundedMap(Identifier.CODEC, value).fieldOf("values").codec();
+        Codec<ResourceLocation> value = ResourceLocation.CODEC.fieldOf("next_oxidation_stage").codec();
+        Codec<Map<ResourceLocation, ResourceLocation>> mapCodec = Codec.unboundedMap(ResourceLocation.CODEC, value).fieldOf("values").codec();
         consumer.accept("block/oxidizables", mapCodec.encodeStart(JsonOps.INSTANCE, FabricPlatformImpl.OXIDIZABLES).getOrThrow());
     }
 
     private static void waxables(BiConsumer<String, JsonElement> consumer) {
-        Codec<Identifier> value = Identifier.CODEC.fieldOf("waxed").codec();
-        Codec<Map<Identifier, Identifier>> mapCodec = Codec.unboundedMap(Identifier.CODEC, value).fieldOf("values").codec();
+        Codec<ResourceLocation> value = ResourceLocation.CODEC.fieldOf("waxed").codec();
+        Codec<Map<ResourceLocation, ResourceLocation>> mapCodec = Codec.unboundedMap(ResourceLocation.CODEC, value).fieldOf("values").codec();
         consumer.accept("block/waxables", mapCodec.encodeStart(JsonOps.INSTANCE, FabricPlatformImpl.WAXABLES).getOrThrow());
     }
 
@@ -88,7 +88,7 @@ public class NeoForgeDataMapProvider implements DataProvider {
                                 DataProvider.saveStable(
                                         cache,
                                         x.getValue(),
-                                        paths.json(Identifier.fromNamespaceAndPath("neoforge", x.getKey()))
+                                        paths.json(ResourceLocation.fromNamespaceAndPath("neoforge", x.getKey()))
                                 )
                         )
                         .toArray(CompletableFuture[]::new)

@@ -7,13 +7,13 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 @EmiEntrypoint
 public class PyriteEMIPlugin implements EmiPlugin {
     public static void hideStacks(EmiRegistry emiRegistry) {
         BuiltInRegistries.ITEM.entrySet().forEach(((itemEntry) -> {
-            Identifier itemId = itemEntry.getKey().identifier();
+            ResourceLocation itemId = itemEntry.getKey().location();
             if (itemId.getNamespace().equals(Pyrite.MOD_ID) && !ModHelpers.enabled(itemId))
                 emiRegistry.removeEmiStacks(EmiStack.of(itemEntry.getValue()));
         }));

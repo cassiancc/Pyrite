@@ -9,7 +9,7 @@ import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -28,16 +28,16 @@ public class PyriteLootTableProvider extends FabricBlockLootTableProvider {
 	public void generate() {
 		BuiltInRegistries.BLOCK.entrySet().forEach(blockEntry -> {
 			var key = blockEntry.getKey();
-			if (key.identifier().getNamespace().equals(Pyrite.MOD_ID)) {
+			if (key.location().getNamespace().equals(Pyrite.MOD_ID)) {
 				var value = blockEntry.getValue();
-				Identifier id = blockEntry.getKey().identifier();
+				ResourceLocation id = blockEntry.getKey().location();
 				String name = id.getPath();
 				try {
 					switch (value.getClass().getSimpleName()) {
 						case "Block", "ModBlock", "ModWood", "ModCraftingTable", "SwitchableGlass", "OxidizableWallBlock", "OxidizablePillarBlock", "ModFacingBlock", "WallHangingSignBlock", "GravelBlock", "OxidizableWallGateBlock", "FenceGateBlock", "ModTorch", "ModCarpet", "TorchLever", "FlowerBlock", "FenceBlock", "ModWoodenButton", "ModPillar", "WallSignBlock", "LadderBlock", "TrapDoorBlock", "ConcretePowderBlock", "WeatheringCopperFullBlock", "ChestBlock", "ModStairs", "WeatheringCopperStairBlock", "ModPressurePlate", "ShelfBlock", "PyriteWallHangingSignBlock", "ModWall", "WallGateBlock", "PyriteWallSignBlock", "CabinetBlock":
 							configuredOutput(id).dropSelf(value); break;
 						case "ModPane": {
-							if (key.identifier().toString().contains("pane")) dropWhenSilkTouch(value);
+							if (key.location().toString().contains("pane")) dropWhenSilkTouch(value);
 							else configuredOutput(id).dropSelf(value);
 						} break;
 						case "ModSlab", "WeatheringCopperSlabBlock": add(value, configuredOutput(id).createSlabItemTable(value)); break;
@@ -57,7 +57,7 @@ public class PyriteLootTableProvider extends FabricBlockLootTableProvider {
 		});
 	}
 
-	private BlockLootSubProvider configuredOutput(Identifier id) {
+	private BlockLootSubProvider configuredOutput(ResourceLocation id) {
 		List<String> requiredOptions = getRequiredOptions(id);
 		return configuredOutput(requiredOptions);
 	}

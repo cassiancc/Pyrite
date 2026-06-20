@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":"minecraft:terracotta","D":"pyrite:dragon_dye"},"result":{"id":"pyrite:dragon_terracotta","count":8}}
+{"type":"minecraft:crafting_shaped","category":"building","pattern":["CCC","CDC","CCC"],"key":{"C":{"item":"minecraft:terracotta"},"D":{"tag":"c:dyes/dragon"}},"result":{"id":"pyrite:dragon_terracotta","count":8}}

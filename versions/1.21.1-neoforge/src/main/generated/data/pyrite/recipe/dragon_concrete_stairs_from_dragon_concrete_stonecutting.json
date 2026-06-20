@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "concrete_stairs_and_slabs"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:dragon_concrete"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:dragon_concrete_stairs"
+  }
+}

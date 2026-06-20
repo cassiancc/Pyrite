@@ -19,7 +19,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.*;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
@@ -69,17 +69,17 @@ public class PyriteModelProvider extends FabricModelProvider {
 
     public void pressurePlate(final Block block, final Block texture) {
         TextureMapping mapping = new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(texture)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(texture));
-        Identifier off = ModelTemplates.PRESSURE_PLATE_UP.create(block, mapping, blockModelGenerators.modelOutput);
-        Identifier on = ModelTemplates.PRESSURE_PLATE_DOWN.create(block, mapping, blockModelGenerators.modelOutput);
+        ResourceLocation off = ModelTemplates.PRESSURE_PLATE_UP.create(block, mapping, blockModelGenerators.modelOutput);
+        ResourceLocation on = ModelTemplates.PRESSURE_PLATE_DOWN.create(block, mapping, blockModelGenerators.modelOutput);
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(block, off, on));
     }
     
     private void button(final Block block, final Block texture) {
         TextureMapping mapping = new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(texture)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(texture));
-        Identifier normal = ModelTemplates.BUTTON.create(block, mapping, blockModelGenerators.modelOutput);
-        Identifier pressed = (ModelTemplates.BUTTON_PRESSED.create(block, mapping, blockModelGenerators.modelOutput));
+        ResourceLocation normal = ModelTemplates.BUTTON.create(block, mapping, blockModelGenerators.modelOutput);
+        ResourceLocation pressed = (ModelTemplates.BUTTON_PRESSED.create(block, mapping, blockModelGenerators.modelOutput));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, normal, pressed));
-        Identifier inventory = ModelTemplates.BUTTON_INVENTORY.create(block, mapping, blockModelGenerators.modelOutput);
+        ResourceLocation inventory = ModelTemplates.BUTTON_INVENTORY.create(block, mapping, blockModelGenerators.modelOutput);
         blockModelGenerators.delegateItemModel(block, inventory);
     }
 
@@ -97,7 +97,7 @@ public class PyriteModelProvider extends FabricModelProvider {
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
         *///?} else {
         
-        Identifier model = ModelTemplates.PARTICLE_ONLY.create(sign, mapping, blockModelGenerators.modelOutput);
+        ResourceLocation model = ModelTemplates.PARTICLE_ONLY.create(sign, mapping, blockModelGenerators.modelOutput);
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(sign, model));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallSign, model));
         //?}
@@ -119,22 +119,22 @@ public class PyriteModelProvider extends FabricModelProvider {
     }
 
     public void stairs(final BlockEntry<Block> stairs, BlockEntry<Block> baseBlock) {
-        Identifier inner = this.getOrCreateModel(ModelTemplates.STAIRS_INNER, stairs.get(), baseBlock.get());
-        Identifier straight = this.getOrCreateModel(ModelTemplates.STAIRS_STRAIGHT, stairs.get(), baseBlock.get());
-        Identifier outer = this.getOrCreateModel(ModelTemplates.STAIRS_OUTER, stairs.get(), baseBlock.get());
+        ResourceLocation inner = this.getOrCreateModel(ModelTemplates.STAIRS_INNER, stairs.get(), baseBlock.get());
+        ResourceLocation straight = this.getOrCreateModel(ModelTemplates.STAIRS_STRAIGHT, stairs.get(), baseBlock.get());
+        ResourceLocation outer = this.getOrCreateModel(ModelTemplates.STAIRS_OUTER, stairs.get(), baseBlock.get());
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs.get(), inner, straight, outer));
         blockModelGenerators.delegateItemModel(stairs.get(), straight);
     }
 
     public void slab(final BlockEntry<Block> slab, BlockEntry<Block> baseBlock) {
-        Identifier bottom = this.getOrCreateModel(ModelTemplates.SLAB_BOTTOM, slab.get(), baseBlock.get());
-        Identifier top = this.getOrCreateModel(ModelTemplates.SLAB_TOP, slab.get(), baseBlock.get());
+        ResourceLocation bottom = this.getOrCreateModel(ModelTemplates.SLAB_BOTTOM, slab.get(), baseBlock.get());
+        ResourceLocation top = this.getOrCreateModel(ModelTemplates.SLAB_TOP, slab.get(), baseBlock.get());
         blockModelGenerators.blockStateOutput
                 .accept(BlockModelGenerators.createSlab(slab.get(), bottom, top, baseBlock.getId().withPrefix("block/")));
         blockModelGenerators.delegateItemModel(slab.get(), bottom);
     }
 
-    private Identifier getOrCreateModel(final ModelTemplate modelTemplate, final Block block, Block baseBlock) {
+    private ResourceLocation getOrCreateModel(final ModelTemplate modelTemplate, final Block block, Block baseBlock) {
         return modelTemplate.create(block, getMapping(baseBlock), blockModelGenerators.modelOutput);
     }
 
@@ -142,12 +142,12 @@ public class PyriteModelProvider extends FabricModelProvider {
         return TexturedModel.CUBE.get(baseBlock).getMapping();
     }
 
-    private BlockEntry<Block> getBlockOrVanilla(Identifier id) {
+    private BlockEntry<Block> getBlockOrVanilla(ResourceLocation id) {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, id);
         if (BuiltInRegistries.BLOCK.getOptional(key).isPresent()) {
             return new BlockEntry<>(id, BuiltInRegistries.BLOCK.getHolderOrThrow(key).value());
         } else {
-            Identifier location = Identifier.withDefaultNamespace(id.getPath());
+            ResourceLocation location = ResourceLocation.withDefaultNamespace(id.getPath());
             return new BlockEntry<>(location, BuiltInRegistries.BLOCK.getHolderOrThrow(ResourceKey.create(Registries.BLOCK, location)).value());
         }
     }

@@ -13,7 +13,9 @@
     "DDD"
   ],
   "key": {
-    "D":  "pyrite:cut_iron"
+    "D": {
+      "item": "pyrite:cut_iron"
+    }
   },
   "result": {
     "item": "minecraft:iron_bars",

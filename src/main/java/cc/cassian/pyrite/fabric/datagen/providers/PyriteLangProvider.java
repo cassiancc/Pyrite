@@ -17,7 +17,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
@@ -66,9 +66,9 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         for (ResourceBlockSet set : RESOURCE_BLOCK_SETS) {
             var id = ModHelpers.findVanillaBlockID(set.block());
             if (id.contains("copper")) {
-                Identifier waxedButton = set.button().getId().withPrefix("waxed_");
+                ResourceLocation waxedButton = set.button().getId().withPrefix("waxed_");
                 lang.add(waxedButton.toLanguageKey("block"), name(waxedButton.getPath()));
-                Identifier waxedPressurePlate = set.pressurePlate().getId().withPrefix("waxed_");
+                ResourceLocation waxedPressurePlate = set.pressurePlate().getId().withPrefix("waxed_");
                 lang.add(waxedPressurePlate.toLanguageKey("block"), name(waxedPressurePlate.getPath()));
             }
         }
@@ -91,7 +91,7 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         return WordUtils.capitalizeFully(path.replace("_", " "));
     }
 
-    private Block getBlock(Identifier id) {
+    private Block getBlock(ResourceLocation id) {
         return BuiltInRegistries.BLOCK.get(ResourceKey.create(Registries.BLOCK, id));
     }
 }

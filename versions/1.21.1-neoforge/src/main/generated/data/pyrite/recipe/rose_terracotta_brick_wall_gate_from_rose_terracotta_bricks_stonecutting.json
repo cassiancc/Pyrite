@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "terracotta_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:rose_terracotta_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:rose_terracotta_brick_wall_gate"
+  }
+}

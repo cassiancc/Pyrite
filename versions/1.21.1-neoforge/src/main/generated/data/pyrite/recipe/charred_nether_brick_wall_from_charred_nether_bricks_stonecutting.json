@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "charred_nether_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:charred_nether_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:charred_nether_brick_wall"
+  }
+}

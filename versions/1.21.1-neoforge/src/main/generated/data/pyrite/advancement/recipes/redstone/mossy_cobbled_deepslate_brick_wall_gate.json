@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "cobbled_deepslate_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mossy_cobbled_deepslate_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "mossy_cobbled_deepslate_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:mossy_cobbled_deepslate_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "mossy_cobbled_deepslate_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:mossy_cobbled_deepslate_brick_wall_gate"
+    ]
+  }
+}

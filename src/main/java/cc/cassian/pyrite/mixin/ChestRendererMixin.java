@@ -9,6 +9,8 @@ import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,9 +21,14 @@ import static net.minecraft.client.renderer.Sheets.CHEST_SHEET;
 @Mixin(ChestRenderer.class)
 public class ChestRendererMixin {
 
+	//? fabric {
 	@WrapOperation(method = "render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/Sheets;chooseMaterial(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/level/block/state/properties/ChestType;Z)Lnet/minecraft/client/resources/model/Material;"))
 	private Material changeMaterial(BlockEntity blockEntity, ChestType chestType, boolean holiday, Operation<Material> original, @Local BlockState state) {
-		if (state.is(PyriteBlockTags.CHESTS)) {
+	//?} else {
+	/*@WrapOperation(method = "render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/blockentity/ChestRenderer;getMaterial(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/level/block/state/properties/ChestType;)Lnet/minecraft/client/resources/model/Material;"))
+	private <T extends BlockEntity & LidBlockEntity> Material changeMaterial(ChestRenderer<T> instance, T blockEntity, ChestType chestType, Operation<Material> original, @Local BlockState state) {
+	*///?}
+	if (state.is(PyriteBlockTags.CHESTS)) {
 			String variant = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath().replace("_chest", "");
 			String addon = switch (chestType) {
 				case LEFT -> "_left";
@@ -30,7 +37,10 @@ public class ChestRendererMixin {
 			};
 			return new Material(CHEST_SHEET, Pyrite.of("entity/chest/" + variant + addon));
 		}
+		//? fabric
 		return original.call(blockEntity, chestType, holiday);
+		//? neoforge
+		//return original.call(instance, blockEntity, chestType);
 	}
 
 }

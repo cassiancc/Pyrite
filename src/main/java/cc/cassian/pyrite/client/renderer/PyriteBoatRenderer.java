@@ -10,20 +10,20 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.ListModel;
 import net.minecraft.client.model.WaterPatchModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.object.boat.BoatModel;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.boat.Boat;
+import net.minecraft.world.entity.vehicle.Boat;
 import org.joml.Quaternionf;
 
 @Environment(EnvType.CLIENT)
@@ -78,7 +78,7 @@ public class PyriteBoatRenderer extends EntityRenderer<Boat> {
 		super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
 	}
 
-	public Identifier getTextureLocation(Boat entity) {
+	public ResourceLocation getTextureLocation(Boat entity) {
 		return layer.getModel().withPath(p->"textures/entity/"+p+".png");
 	}
 }

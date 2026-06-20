@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","pyrite:glowing_obsidian"],"result":{"id":"pyrite:nostalgia_glowing_obsidian","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"tag":"pyrite:antique_items"},{"item":"pyrite:glowing_obsidian"}],"result":{"id":"pyrite:nostalgia_glowing_obsidian","count":1}}

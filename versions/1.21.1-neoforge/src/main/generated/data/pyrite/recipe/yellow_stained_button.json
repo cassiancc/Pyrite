@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "pyrite:yellow_stained_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:yellow_stained_button"
+  }
+}

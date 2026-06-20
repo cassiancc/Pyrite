@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:tuff_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:tuff_brick_wall_gate"
+  }
+}

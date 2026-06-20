@@ -4,9 +4,10 @@ package cc.cassian.pyrite.neoforge.client;
 
 /*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.client.PyriteClient;
+import cc.cassian.pyrite.client.renderer.PyriteBoatRenderer;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
@@ -31,12 +32,21 @@ public class PyriteNeoForgeClient {
     public PyriteNeoForgeClient(IEventBus eventBus, ModContainer container) {
     }
 
-    @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {
-        for (Block pyriteBlock : GRASS_BLOCKS) {
-            event.register((PyriteClient.registerColor()), pyriteBlock);
-        }
-    }
+	@SubscribeEvent
+	public static void registerBlockColors(RegisterColorHandlersEvent.Block event){
+		for (Block pyriteBlock : GRASS_BLOCKS) {
+			event.register((PyriteClient::registerColor), pyriteBlock);
+
+		}
+	}
+
+	// Client-side mod bus event handler
+	@SubscribeEvent
+	public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+		for (Block pyriteBlock : GRASS_BLOCKS) {
+			event.register((stack, tintIndex) -> 9551193, pyriteBlock);
+		}
+	}
 
     @SubscribeEvent
     public static void disabledContentTooltip(ItemTooltipEvent event) {
@@ -47,16 +57,15 @@ public class PyriteNeoForgeClient {
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         BOATS.forEach((id, entityType) -> {
             var layer = new ModelLayerLocation(Pyrite.of("boat/" + id), "main");
-            event.registerLayerDefinition(layer, BoatModel::createBoatModel);
-            EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
+            event.registerLayerDefinition(layer, BoatModel::createBodyModel);
+            EntityRenderers.register(entityType, (context) -> new PyriteBoatRenderer(context, false, layer));
         });
 		CHEST_BOATS.forEach((id, entityType) -> {
 			var layer = new ModelLayerLocation(Pyrite.of("chest_boat/" + id), "main");
-			event.registerLayerDefinition(layer, BoatModel::createChestBoatModel);
-			EntityRenderers.register(entityType, (context) -> new BoatRenderer(context, layer));
+			event.registerLayerDefinition(layer, ChestBoatModel::createBodyModel);
+			EntityRenderers.register(entityType, (context) -> new PyriteBoatRenderer(context, true, layer));
 		});
     }
-
 }
 
 *///?}

@@ -14,7 +14,9 @@
     "##"
   ],
   "key": {
-    "#": "minecraft:deepslate"
+    "#": {
+      "item": "minecraft:deepslate"
+    }
   },
   "result": {
     "id": "minecraft:polished_deepslate",

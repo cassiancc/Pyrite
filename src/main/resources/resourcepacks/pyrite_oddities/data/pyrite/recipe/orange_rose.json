@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shapeless","category":"building","ingredients":["pyrite:nostalgia_dye","minecraft:orange_tulip"],"result":{"id":"pyrite:orange_rose","count":1}}
+{"type":"minecraft:crafting_shapeless","category":"building","ingredients":[{"item":"pyrite:nostalgia_dye"},{"item":"minecraft:orange_tulip"}],"result":{"id":"pyrite:orange_rose","count":1}}

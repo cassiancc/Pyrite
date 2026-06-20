@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mossy_deepslate_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:mossy_deepslate_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:mossy_deepslate_brick_wall_gate"
+  }
+}

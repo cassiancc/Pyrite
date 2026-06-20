@@ -18,7 +18,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import cc.cassian.pyrite.util.BlockItemTagId;
@@ -48,7 +48,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		builder(PyriteBlockItemTags.CARPET, ModCarpet.class);
 		optionalBuilder(PyriteBlockItemTags.CHESTS, "_chest");
 		optionalBuilder(PyriteBlockItemTags.COPPER, get("copper").stream().filter(t->{
-			String string = t.identifier().toString();
+			String string = t.location().toString();
 			if (string.contains("oxidized") || string.contains("weathered") || string.contains("exposed") || string.contains("lever")) {
 				return false;
 			}
@@ -74,18 +74,18 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		optionalBuilder(PyriteBlockItemTags.OXIDIZED_COPPER, "oxidized_copper");
 		optionalBuilder(PyriteBlockItemTags.REDSTONE, "redstone");
 		builder(PyriteBlockItemTags.STAINED_GLASS, "stained_glass");
-		builder(PyriteBlockItemTags.STAINED_FRAMED_GLASS.block()).addAll(get("_framed_glass").stream().filter(p->!p.identifier().getPath().contains("pane")).toList());
-		builder(PyriteBlockItemTags.TERRACOTTA.block()).addAll(get("terracotta").stream().filter(p->!p.identifier().getPath().contains("bricks")).toList());
+		builder(PyriteBlockItemTags.STAINED_FRAMED_GLASS.block()).addAll(get("_framed_glass").stream().filter(p->!p.location().getPath().contains("pane")).toList());
+		builder(PyriteBlockItemTags.TERRACOTTA.block()).addAll(get("terracotta").stream().filter(p->!p.location().getPath().contains("bricks")).toList());
 		builder(PyriteBlockItemTags.TERRACOTTA_BRICKS, "terracotta_bricks");
 		builder(PyriteBlockItemTags.WALL_GATES, "wall_gate")
-				.addOptional(of("holystone_wall_gate").identifier())
-				.addOptional(of("mossy_holystone_wall_gate").identifier())
-				.addOptional(of("holystone_brick_wall_gate").identifier())
-				.addOptional(of("icestone_wall_gate").identifier())
-				.addOptional(of("aerogel_wall_gate").identifier())
-				.addOptional(of("carved_wall_gate").identifier())
-				.addOptional(of("angelic_wall_gate").identifier())
-				.addOptional(of("hellfire_wall_gate").identifier());
+				.addOptional(of("holystone_wall_gate").location())
+				.addOptional(of("mossy_holystone_wall_gate").location())
+				.addOptional(of("holystone_brick_wall_gate").location())
+				.addOptional(of("icestone_wall_gate").location())
+				.addOptional(of("aerogel_wall_gate").location())
+				.addOptional(of("carved_wall_gate").location())
+				.addOptional(of("angelic_wall_gate").location())
+				.addOptional(of("hellfire_wall_gate").location());
 		optionalBuilder(PyriteBlockItemTags.WEATHERED_COPPER, "weathered_copper");
 
 		// fabric tags
@@ -103,7 +103,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		optionalBuilder(ConventionalBlockTags.BLACK_DYED, "black_");
 		optionalBuilder(ConventionalBlockTags.BLUE_DYED, "blue_");
 		optionalBuilder(ConventionalBlockTags.BROWN_DYED, get("brown_").stream().filter(c-> {
-			String path = c.identifier().getPath();
+			String path = c.location().getPath();
 			if (path.contains("mushroom")) return false;
 			return true;
 		}).toList());
@@ -118,7 +118,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		optionalBuilder(ConventionalBlockTags.PURPLE_DYED, "purple_");
 		optionalBuilder(ConventionalBlockTags.PINK_DYED, "pink_");
 		optionalBuilder(ConventionalBlockTags.RED_DYED, get("red_").stream().filter(c-> {
-			String path = c.identifier().getPath();
+			String path = c.location().getPath();
 			if (path.contains("sandstone")) return false;
 			else if (path.contains("mushroom")) return false;
 			else if (path.contains("copper")) return false;
@@ -136,7 +136,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				return true;
 			}
 			return false;
-		}).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList());
+		}).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::location)).toList());
 		builder(BlockTags.CEILING_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).toList());
 		builder(BlockTags.CLIMBABLE).addTag(PyriteBlockItemTags.LADDERS.block());
 		builder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).addTag(PyriteBlockItemTags.CARPET.block());
@@ -159,7 +159,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		builder(BlockTags.NEEDS_STONE_TOOL).addTag(PyriteBlockItemTags.IRON.block()).addTag(PyriteBlockItemTags.LAPIS.block()).addTag(PyriteBlockItemTags.COPPER.block()).addTag(PyriteBlockItemTags.EXPOSED_COPPER.block()).addTag(PyriteBlockItemTags.OXIDIZED_COPPER.block()).addTag(PyriteBlockItemTags.WEATHERED_COPPER.block());
 		builder(BlockTags.PLANKS).addTag(PyriteBlockItemTags.PLANKS.block());
 		optionalBuilder(BlockTags.BAMBOO_PLANTABLE_ON, "gravel");
-		builder(BlockTags.WALL_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).map(blockResourceKey -> of(blockResourceKey.identifier().withPath(path->path.replace("hanging_sign","hanging_wall_sign")))).toList());
+		builder(BlockTags.WALL_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).map(blockResourceKey -> of(blockResourceKey.location().withPath(path->path.replace("hanging_sign","hanging_wall_sign")))).toList());
 		optionalBuilder(BlockTags.WOOL, "wool");
 		builder(BlockTags.STANDING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->!contains(key, "hanging_sign")).toList());
 		builder(BlockTags.WALLS).addAll(get(ModWall.class));
@@ -197,11 +197,11 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		builder(BlockTags.STAIRS).addAll(get(WeatheringCopperStairBlock.class));
 
 		// fd tags
-		optionalBuilder(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets/wooden")), "cabinet");
-		optionalBuilder(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("farmersdelight", "cabinets")), "cabinet");
+		optionalBuilder(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("farmersdelight", "cabinets/wooden")), "cabinet");
+		optionalBuilder(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("farmersdelight", "cabinets")), "cabinet");
 
 		// quad tags
-		builder(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("quad", "cats_on_blocks/sit"))).addTag(PyriteBlockItemTags.CHESTS.block());
+		builder(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("quad", "cats_on_blocks/sit"))).addTag(PyriteBlockItemTags.CHESTS.block());
 	}
 
 	private void add(TagKey<Block> woodenDoors, BlockEntry<Block>... blocks) {
@@ -217,7 +217,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 	}
 
 	private boolean contains(ResourceKey<Block> key, String hangingSign) {
-        return key.identifier().toString().contains(hangingSign);
+        return key.location().toString().contains(hangingSign);
     }
 
 	private List<ResourceKey<Block>> get(ArrayList<ItemEntry<Item>> signs) {
@@ -234,7 +234,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 	private TagAppender<Block> optionalBuilder(TagKey<Block> tag, String id) {
 		TagAppender<Block> builder = builder(tag);
-		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
+		get(id).stream().map(c->c.location()).forEach(builder::addOptional);
 		return builder;
 	}
 
@@ -252,30 +252,30 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 	private TagAppender<Block> optionalBuilder(BlockItemTagId tag, String id) {
 		TagAppender<Block> builder = builder(tag.block());
-		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
+		get(id).stream().map(c->c.location()).forEach(builder::addOptional);
 		return builder;
 	}
 
 	private TagAppender<Block> optionalBuilder(BlockItemTagId tag, Collection<ResourceKey<Block>> id) {
 		TagAppender<Block> builder = builder(tag.block());
-		id.stream().map(c->c.identifier()).forEach(builder::addOptional);
+		id.stream().map(c->c.location()).forEach(builder::addOptional);
 		return builder;
 	}
 
 	private TagAppender<Block> optionalBuilder(TagKey<Block> tag, Collection<ResourceKey<Block>> id) {
 		TagAppender<Block> builder = builder(tag);
-		id.stream().map(c->c.identifier()).forEach(builder::addOptional);
+		id.stream().map(c->c.location()).forEach(builder::addOptional);
 		return builder;
 	}
 	//~}
 
 
 	private List<ResourceKey<Block>> get(String id) {
-		return BlockCreator.BLOCKS.stream().filter(stringItemEntry -> stringItemEntry.getPath().contains(id)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(stringItemEntry -> stringItemEntry.getPath().contains(id)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::location)).toList();
 	}
 
 	private List<ResourceKey<Block>> get(Class<? extends Block> block) {
-		return BlockCreator.BLOCKS.stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::location)).toList();
 	}
 
 	private static ResourceKey<Block> of(Map.Entry<String, Block> e) {
@@ -286,7 +286,7 @@ public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		return ResourceKey.create(Registries.BLOCK, Pyrite.of(e));
 	}
 
-	private static ResourceKey<Block> of(Identifier e) {
+	private static ResourceKey<Block> of(ResourceLocation e) {
 		return ResourceKey.create(Registries.BLOCK, e);
 	}
 }
