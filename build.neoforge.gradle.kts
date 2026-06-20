@@ -256,5 +256,7 @@ publishMods {
         if (hasProperty("deps.rrv")) {
             optional("rrv")
         }
+        client = true
+        server = true
     }
 }

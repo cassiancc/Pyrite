@@ -246,5 +246,7 @@ publishMods {
         if (hasProperty("deps.emi")) {
             optional("emi")
         }
+        client = true
+        server = true
     }
 }
