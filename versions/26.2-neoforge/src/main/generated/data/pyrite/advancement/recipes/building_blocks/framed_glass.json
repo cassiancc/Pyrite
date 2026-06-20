@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "framed_glass"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:framed_glass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "iron_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "iron_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:framed_glass"
+    ]
+  }
+}

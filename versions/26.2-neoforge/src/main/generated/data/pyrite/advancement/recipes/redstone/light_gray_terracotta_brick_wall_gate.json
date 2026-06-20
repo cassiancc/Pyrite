@@ -1,0 +1,41 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "terracotta_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:light_gray_terracotta_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "light_gray_terracotta_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:light_gray_terracotta_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "light_gray_terracotta_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:light_gray_terracotta_brick_wall_gate"
+    ]
+  }
+}

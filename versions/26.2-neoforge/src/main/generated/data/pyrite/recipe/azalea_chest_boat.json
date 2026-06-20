@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "azalea"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    "#c:chests/wooden",
+    "pyrite:azalea_boat"
+  ],
+  "result": {
+    "id": "pyrite:azalea_chest_boat"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "smooth_stone_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:smooth_stone",
+  "result": {
+    "id": "pyrite:smooth_stone_bricks"
+  }
+}

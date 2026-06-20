@@ -21,11 +21,11 @@ import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import net.minecraft.tags.BlockItemTagId;
+import cc.cassian.pyrite.util.BlockItemTagId;
 //~}
 //? if >26.1 {
-import net.minecraft.tags.BlockItemTags;
-//?}
+/*import net.minecraft.tags.BlockItemTags;
+*///?}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -148,11 +148,11 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(BlockTags.INFINIBURN_OVERWORLD).addAll(get("netherrack"));
 		builder(BlockTags.INFINIBURN_NETHER).addAll(get("netherrack"));
 		//~ if >26.1 'BlockTags.CONCRETE_POWDER' -> 'BlockItemTags.CONCRETE_POWDERS' {
-		optionalBuilder(BlockItemTags.CONCRETE_POWDERS, "concrete_powder");
+		optionalBuilder(BlockTags.CONCRETE_POWDER, "concrete_powder");
 		//~}
 		//~ if >26.1 'BlockTags' -> 'BlockItemTags' {
-		optionalBuilder(BlockItemTags.LOGS_THAT_BURN, "log");
-		optionalBuilder(BlockItemTags.LOGS_THAT_BURN, "stem");
+		optionalBuilder(BlockTags.LOGS_THAT_BURN, "log");
+		optionalBuilder(BlockTags.LOGS_THAT_BURN, "stem");
 		//~}
 		builder(BlockTags.NEEDS_DIAMOND_TOOL).addTag(PyriteBlockItemTags.OBSIDIAN.block()).addTag(PyriteBlockItemTags.NETHERITE.block());
 		builder(BlockTags.NEEDS_IRON_TOOL).addTag(PyriteBlockItemTags.GOLD.block()).addTag(PyriteBlockItemTags.DIAMOND.block()).addTag(PyriteBlockItemTags.EMERALD.block());
@@ -232,34 +232,34 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 
 	//~ if >26.1 'TagAppender<ResourceKey<Block>, Block>' -> 'TagAppender<Block>' {
 
-	private TagAppender<Block> optionalBuilder(TagKey<Block> tag, String id) {
-		TagAppender<Block> builder = builder(tag);
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(TagKey<Block> tag, String id) {
+		TagAppender<ResourceKey<Block>, Block> builder = builder(tag);
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<Block> builder(BlockItemTagId fences, Class<? extends Block> aClass) {
+	private TagAppender<ResourceKey<Block>, Block> builder(BlockItemTagId fences, Class<? extends Block> aClass) {
 		return builder(fences.block()).addAll(get(aClass));
 	}
 
-	private TagAppender<Block> builder(BlockItemTagId fences, String id) {
+	private TagAppender<ResourceKey<Block>, Block> builder(BlockItemTagId fences, String id) {
 		return builder(fences.block()).addAll(get(id));
 	}
 
-	private TagAppender<Block> optionalBuilder(BlockItemTagId tag, String id) {
-		TagAppender<Block> builder = builder(tag.block());
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(BlockItemTagId tag, String id) {
+		TagAppender<ResourceKey<Block>, Block> builder = builder(tag.block());
 		get(id).forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<Block> optionalBuilder(BlockItemTagId tag, Collection<ResourceKey<Block>> id) {
-		TagAppender<Block> builder = builder(tag.block());
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(BlockItemTagId tag, Collection<ResourceKey<Block>> id) {
+		TagAppender<ResourceKey<Block>, Block> builder = builder(tag.block());
 		id.forEach(builder::addOptional);
 		return builder;
 	}
 
-	private TagAppender<Block> optionalBuilder(TagKey<Block> tag, Collection<ResourceKey<Block>> id) {
-		TagAppender<Block> builder = builder(tag);
+	private TagAppender<ResourceKey<Block>, Block> optionalBuilder(TagKey<Block> tag, Collection<ResourceKey<Block>> id) {
+		TagAppender<ResourceKey<Block>, Block> builder = builder(tag);
 		id.forEach(builder::addOptional);
 		return builder;
 	}

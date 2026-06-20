@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "smooth_stone_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:smooth_stone_bricks",
+  "result": {
+    "id": "pyrite:smooth_stone_brick_wall_gate"
+  }
+}

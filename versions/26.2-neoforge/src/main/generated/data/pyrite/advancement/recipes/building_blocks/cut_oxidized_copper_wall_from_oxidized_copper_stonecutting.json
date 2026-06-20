@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_oxidized_copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:oxidized_copper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:cut_oxidized_copper_wall_from_oxidized_copper_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_oxidized_copper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:cut_oxidized_copper_wall_from_oxidized_copper_stonecutting"
+    ]
+  }
+}

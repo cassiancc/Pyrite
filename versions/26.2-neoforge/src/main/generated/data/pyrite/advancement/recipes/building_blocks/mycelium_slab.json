@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mycelium_turf"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mycelium_turf": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:mycelium_turf"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:mycelium_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mycelium_turf"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:mycelium_slab"
+    ]
+  }
+}

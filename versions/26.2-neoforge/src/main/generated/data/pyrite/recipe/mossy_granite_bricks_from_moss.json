@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "granite_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pyrite:granite_bricks",
+    "minecraft:moss_block"
+  ],
+  "result": {
+    "id": "pyrite:mossy_granite_bricks"
+  }
+}

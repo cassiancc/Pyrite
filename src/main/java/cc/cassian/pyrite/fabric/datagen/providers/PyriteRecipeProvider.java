@@ -15,11 +15,11 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedResourceCondition;
 //~ if >26.1 'criterion' -> 'triggers' {
-import net.minecraft.advancements.triggers.PlayerTrigger;
+import net.minecraft.advancements.criterion.PlayerTrigger;
 //~}
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.BlockItemTagId;
+import cc.cassian.pyrite.util.BlockItemTagId;
 //~}
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -28,8 +28,8 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //? if >26.1 {
-import net.minecraft.tags.BlockItemTags;
- //?}
+/*import net.minecraft.tags.BlockItemTags;
+ *///?}
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.HoneycombItem;
@@ -267,7 +267,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					// button
 					var buttonId = resourceBlockSet.button();
 					//~ if >26.1 'ItemTags.BUTTONS' -> 'BlockItemTags.BUTTONS.item()' {
-					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(BlockItemTags.BUTTONS.item()).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
+					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(ItemTags.BUTTONS).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
 					//~}
 					// door
 					var door = resourceBlockSet.door();

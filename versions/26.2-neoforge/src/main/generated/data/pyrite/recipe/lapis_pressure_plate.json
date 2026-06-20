@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "lapis"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:lapis_block"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:lapis_pressure_plate"
+  }
+}

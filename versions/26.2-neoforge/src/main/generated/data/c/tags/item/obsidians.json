@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "pyrite:glowing_obsidian",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_glowing_obsidian",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_exposed_copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pyrite:smooth_exposed_copper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:smooth_exposed_copper_wall_gate_from_smooth_exposed_copper_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smooth_exposed_copper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:smooth_exposed_copper_wall_gate_from_smooth_exposed_copper_stonecutting"
+    ]
+  }
+}

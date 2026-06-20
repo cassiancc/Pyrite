@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "pyrite:block/nostalgia_wool",
+    "side": "pyrite:block/nostalgia_wool",
+    "top": "pyrite:block/nostalgia_wool"
+  }
+}

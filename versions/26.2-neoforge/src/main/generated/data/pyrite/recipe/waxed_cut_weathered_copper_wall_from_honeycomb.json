@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pyrite:waxed_cut_weathered_copper_wall",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "id": "pyrite:waxed_cut_weathered_copper_wall"
+  }
+}

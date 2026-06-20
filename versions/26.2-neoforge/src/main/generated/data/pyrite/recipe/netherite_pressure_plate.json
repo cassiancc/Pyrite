@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "netherite"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:netherite_block"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:netherite_pressure_plate"
+  }
+}
