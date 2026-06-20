@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "terracotta_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:poisonous_terracotta_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:poisonous_terracotta_brick_stairs"
+  }
+}

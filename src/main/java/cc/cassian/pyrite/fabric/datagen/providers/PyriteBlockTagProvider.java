@@ -10,22 +10,22 @@ import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import cc.cassian.pyrite.util.sets.WoodSet;
+import com.github.smallinger.copperagebackport.ModTags;
 import net.fabricmc.fabric.api.block.v1.BlockFunctionalityTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import net.minecraft.tags.BlockItemTagId;
+import cc.cassian.pyrite.util.BlockItemTagId;
 //~}
 //? if >26.1 {
-import net.minecraft.tags.BlockItemTags;
-//?}
+/*import net.minecraft.tags.BlockItemTags;
+*///?}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -36,8 +36,8 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("all")
-public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
-	public PyriteBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+public class PyriteBlockTagProvider extends FabricTagProvider.BlockTagProvider {
+	public PyriteBlockTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
 		super(output, registryLookupFuture);
 	}
 
@@ -74,18 +74,18 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(PyriteBlockItemTags.OXIDIZED_COPPER, "oxidized_copper");
 		optionalBuilder(PyriteBlockItemTags.REDSTONE, "redstone");
 		builder(PyriteBlockItemTags.STAINED_GLASS, "stained_glass");
-		builder(PyriteBlockItemTags.STAINED_FRAMED_GLASS.block()).addAll(get("_framed_glass").stream().filter(p->!p.identifier().getPath().contains("pane")));
-		builder(PyriteBlockItemTags.TERRACOTTA.block()).addAll(get("terracotta").stream().filter(p->!p.identifier().getPath().contains("bricks")));
+		builder(PyriteBlockItemTags.STAINED_FRAMED_GLASS.block()).addAll(get("_framed_glass").stream().filter(p->!p.identifier().getPath().contains("pane")).toList());
+		builder(PyriteBlockItemTags.TERRACOTTA.block()).addAll(get("terracotta").stream().filter(p->!p.identifier().getPath().contains("bricks")).toList());
 		builder(PyriteBlockItemTags.TERRACOTTA_BRICKS, "terracotta_bricks");
 		builder(PyriteBlockItemTags.WALL_GATES, "wall_gate")
-				.addOptional(of("holystone_wall_gate"))
-				.addOptional(of("mossy_holystone_wall_gate"))
-				.addOptional(of("holystone_brick_wall_gate"))
-				.addOptional(of("icestone_wall_gate"))
-				.addOptional(of("aerogel_wall_gate"))
-				.addOptional(of("carved_wall_gate"))
-				.addOptional(of("angelic_wall_gate"))
-				.addOptional(of("hellfire_wall_gate"));
+				.addOptional(of("holystone_wall_gate").identifier())
+				.addOptional(of("mossy_holystone_wall_gate").identifier())
+				.addOptional(of("holystone_brick_wall_gate").identifier())
+				.addOptional(of("icestone_wall_gate").identifier())
+				.addOptional(of("aerogel_wall_gate").identifier())
+				.addOptional(of("carved_wall_gate").identifier())
+				.addOptional(of("angelic_wall_gate").identifier())
+				.addOptional(of("hellfire_wall_gate").identifier());
 		optionalBuilder(PyriteBlockItemTags.WEATHERED_COPPER, "weathered_copper");
 
 		// fabric tags
@@ -136,32 +136,32 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 				return true;
 			}
 			return false;
-		}).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)));
-		builder(BlockTags.CEILING_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")));
+		}).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList());
+		builder(BlockTags.CEILING_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).toList());
 		builder(BlockTags.CLIMBABLE).addTag(PyriteBlockItemTags.LADDERS.block());
 		builder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).addTag(PyriteBlockItemTags.CARPET.block());
 		builder(BlockTags.DIRT).addAll(get("turf"));
 		builder(BlockTags.DRAGON_IMMUNE).addTag(PyriteBlockItemTags.OBSIDIAN.block());
 		builder(BlockTags.GUARDED_BY_PIGLINS).addTag(PyriteBlockItemTags.CHESTS.block());
-		builder(BlockTags.FLOWER_POTS).addAll(PyriteItemGroups.POTTED_FLOWERS.values().stream().map(s->s.get().builtInRegistryHolder().key()));
+		builder(BlockTags.FLOWER_POTS).addAll(PyriteItemGroups.POTTED_FLOWERS.values().stream().map(s->s.get().builtInRegistryHolder().key()).toList());
 		builder(BlockTags.INFINIBURN_END).addAll(get("netherrack"));
 		builder(BlockTags.INFINIBURN_OVERWORLD).addAll(get("netherrack"));
 		builder(BlockTags.INFINIBURN_NETHER).addAll(get("netherrack"));
 		//~ if >26.1 'BlockTags.CONCRETE_POWDER' -> 'BlockItemTags.CONCRETE_POWDERS' {
-		optionalBuilder(BlockItemTags.CONCRETE_POWDERS, "concrete_powder");
+		optionalBuilder(BlockTags.CONCRETE_POWDER, "concrete_powder");
 		//~}
 		//~ if >26.1 'BlockTags' -> 'BlockItemTags' {
-		optionalBuilder(BlockItemTags.LOGS_THAT_BURN, "log");
-		optionalBuilder(BlockItemTags.LOGS_THAT_BURN, "stem");
+		optionalBuilder(BlockTags.LOGS_THAT_BURN, "log");
+		optionalBuilder(BlockTags.LOGS_THAT_BURN, "stem");
 		//~}
 		builder(BlockTags.NEEDS_DIAMOND_TOOL).addTag(PyriteBlockItemTags.OBSIDIAN.block()).addTag(PyriteBlockItemTags.NETHERITE.block());
 		builder(BlockTags.NEEDS_IRON_TOOL).addTag(PyriteBlockItemTags.GOLD.block()).addTag(PyriteBlockItemTags.DIAMOND.block()).addTag(PyriteBlockItemTags.EMERALD.block());
 		builder(BlockTags.NEEDS_STONE_TOOL).addTag(PyriteBlockItemTags.IRON.block()).addTag(PyriteBlockItemTags.LAPIS.block()).addTag(PyriteBlockItemTags.COPPER.block()).addTag(PyriteBlockItemTags.EXPOSED_COPPER.block()).addTag(PyriteBlockItemTags.OXIDIZED_COPPER.block()).addTag(PyriteBlockItemTags.WEATHERED_COPPER.block());
 		builder(BlockTags.PLANKS).addTag(PyriteBlockItemTags.PLANKS.block());
-		optionalBuilder(BlockTags.SUPPORTS_BAMBOO, "gravel");
-		builder(BlockTags.WALL_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).map(blockResourceKey -> of(blockResourceKey.identifier().withPath(path->path.replace("hanging_sign","hanging_wall_sign")))));
+		optionalBuilder(BlockTags.BAMBOO_PLANTABLE_ON, "gravel");
+		builder(BlockTags.WALL_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")).map(blockResourceKey -> of(blockResourceKey.identifier().withPath(path->path.replace("hanging_sign","hanging_wall_sign")))).toList());
 		optionalBuilder(BlockTags.WOOL, "wool");
-		builder(BlockTags.STANDING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->!contains(key, "hanging_sign")));
+		builder(BlockTags.STANDING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->!contains(key, "hanging_sign")).toList());
 		builder(BlockTags.WALLS).addAll(get(ModWall.class));
 
 		for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
@@ -174,7 +174,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 			builder(BlockTags.WOODEN_PRESSURE_PLATES).add(woodSet.pressurePlate().resourceKey());
 			builder(BlockTags.WOODEN_SLABS).add(woodSet.slab().resourceKey());
 			builder(BlockTags.WOODEN_STAIRS).add(woodSet.stairs().resourceKey());
-			builder(BlockTags.WOODEN_SHELVES).add(woodSet.shelf().resourceKey());
+			builder(ModTags.Blocks.WOODEN_SHELVES).add(woodSet.shelf().resourceKey());
 			builder(BlockTags.WOODEN_TRAPDOORS).add(woodSet.trapdoor().resourceKey());
 		}
 
@@ -230,12 +230,16 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		return blocks;
     }
 
-	//~ if >26.1 'TagAppender<ResourceKey<Block>, Block>' -> 'TagAppender<Block>' {
+	//~ if <26.1 'TagAppender<ResourceKey<Block>, Block>' -> 'TagAppender<Block>' {
 
 	private TagAppender<Block> optionalBuilder(TagKey<Block> tag, String id) {
 		TagAppender<Block> builder = builder(tag);
-		get(id).forEach(builder::addOptional);
+		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
 		return builder;
+	}
+
+	private TagAppender<Block> builder(TagKey<Block> tag) {
+		return getOrCreateTagBuilder(tag);
 	}
 
 	private TagAppender<Block> builder(BlockItemTagId fences, Class<? extends Block> aClass) {
@@ -248,19 +252,19 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 
 	private TagAppender<Block> optionalBuilder(BlockItemTagId tag, String id) {
 		TagAppender<Block> builder = builder(tag.block());
-		get(id).forEach(builder::addOptional);
+		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
 		return builder;
 	}
 
 	private TagAppender<Block> optionalBuilder(BlockItemTagId tag, Collection<ResourceKey<Block>> id) {
 		TagAppender<Block> builder = builder(tag.block());
-		id.forEach(builder::addOptional);
+		id.stream().map(c->c.identifier()).forEach(builder::addOptional);
 		return builder;
 	}
 
 	private TagAppender<Block> optionalBuilder(TagKey<Block> tag, Collection<ResourceKey<Block>> id) {
 		TagAppender<Block> builder = builder(tag);
-		id.forEach(builder::addOptional);
+		id.stream().map(c->c.identifier()).forEach(builder::addOptional);
 		return builder;
 	}
 	//~}

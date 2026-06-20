@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_sign_rot_3",
-  "textures": {
-    "all": "pyrite:block/red_mushroom_sign",
-    "particle": "pyrite:block/red_mushroom_planks"
-  }
-}

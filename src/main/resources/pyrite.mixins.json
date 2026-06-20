@@ -10,7 +10,6 @@
     "WallGateBlockMixin"
   ],
   "client": [
-    "ChestRendererMixin",
-    "ChestRenderStateMixin"
+    "ChestRendererMixin"
   ]
 }

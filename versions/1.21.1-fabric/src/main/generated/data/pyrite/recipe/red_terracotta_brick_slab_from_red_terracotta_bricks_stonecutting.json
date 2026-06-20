@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "terracotta_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:red_terracotta_bricks"
+  },
+  "result": {
+    "count": 2,
+    "id": "pyrite:red_terracotta_brick_slab"
+  }
+}

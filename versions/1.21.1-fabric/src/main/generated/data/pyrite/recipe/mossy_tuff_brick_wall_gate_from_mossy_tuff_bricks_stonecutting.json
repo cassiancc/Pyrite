@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mossy_tuff_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:mossy_tuff_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:mossy_tuff_brick_wall_gate"
+  }
+}

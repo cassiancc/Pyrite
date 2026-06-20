@@ -26,7 +26,7 @@ public class FabricPlatformImpl implements Platform {
 
     @Override
     public void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {
-        OxidizableBlocksRegistry.registerWaxable(newBlock.get(), waxed.get());
+        OxidizableBlocksRegistry.registerWaxableBlockPair(newBlock.get(), waxed.get());
         WAXABLES.put(newBlock.getId(),  waxed.getId());
     }
 
@@ -63,7 +63,7 @@ public class FabricPlatformImpl implements Platform {
 
     @Override
     public void registerOxidizableBlockPair(BlockEntry<?> block, BlockEntry<?> block1) {
-        OxidizableBlocksRegistry.registerNextStage(block.get(), block1.get());
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(block.get(), block1.get());
         OXIDIZABLES.put(block.getId(),  block1.getId());
     }
 

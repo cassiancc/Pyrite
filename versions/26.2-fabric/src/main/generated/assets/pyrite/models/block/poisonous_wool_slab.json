@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "pyrite:block/poisonous_wool",
-    "side": "pyrite:block/poisonous_wool",
-    "top": "pyrite:block/poisonous_wool"
-  }
-}

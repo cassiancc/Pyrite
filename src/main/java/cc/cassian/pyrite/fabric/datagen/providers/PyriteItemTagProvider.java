@@ -7,17 +7,17 @@ import cc.cassian.pyrite.core.PyriteItemTags;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.util.sets.BrickSet;
 import cc.cassian.pyrite.util.sets.ResourceBlockSet;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import com.github.smallinger.copperagebackport.ModTags;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import net.minecraft.tags.BlockItemTagId;
+import cc.cassian.pyrite.util.BlockItemTagId;
 //~}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -32,10 +32,10 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("all")
-public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
+public class PyriteItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 
-	public PyriteItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture, @Nullable BlockTagsProvider blockTagsProvider) {
+	public PyriteItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture, @Nullable BlockTagProvider blockTagsProvider) {
 		super(output, registryLookupFuture, blockTagsProvider);
 	}
 
@@ -62,7 +62,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(PyriteBlockItemTags.TERRACOTTA);
 		copy(PyriteBlockItemTags.WALL_GATES);
 
-		builder(PyriteItemTags.BOATS).addAll(get("_boat").stream().filter(p->!p.identifier().getPath().contains("chest")));
+		builder(PyriteItemTags.BOATS).addAll(get("_boat").stream().filter(p->!p.identifier().getPath().contains("chest")).toList());
 		builder(PyriteItemTags.CHEST_BOATS, "chest_boat");
 
 		// conventional tags
@@ -103,7 +103,7 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(BlockTags.WOODEN_SLABS);
 		copy(BlockTags.WOODEN_STAIRS);
 		copy(BlockTags.WOODEN_TRAPDOORS);
-		copy(BlockTags.WOODEN_SHELVES);
+		copy(ModTags.Blocks.WOODEN_SHELVES);
 		copy(BlockTags.WOOL);
 
 		// fd
@@ -121,14 +121,14 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		builder(ConventionalItemTags.DYES).addTag(PyriteItemTags.DRAGON_DYES).addTag(PyriteItemTags.POISONOUS_DYES).addTag(PyriteItemTags.ROSE_DYES).addTag(PyriteItemTags.HONEY_DYES).addTag(PyriteItemTags.GLOW_DYES).addTag(PyriteItemTags.STAR_DYES).addTag(PyriteItemTags.NOSTALGIA_DYES);
 
 		//? if >26.1 {
-		for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
+		/*for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
 			builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT).add(resourceBlockSet.smoothBlocks().block().itemKey()).add(resourceBlockSet.pillar().itemKey()).add(resourceBlockSet.cutBlocks().block().itemKey()).add(resourceBlockSet.bricks().itemKey()).add(resourceBlockSet.chiseled().itemKey());
 		}
 		for (BrickSet brickSet : BlockCreator.BRICK_SETS) {
 			builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY).add(brickSet.base().itemKey());
 		}
 		builder(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY).addAll(get("nether_bricks")).addAll(get("terracotta_bricks"));
-		//?}
+		*///?}
 	}
 
     private void copy(TagKey<Block> blockTag) {
@@ -143,10 +143,10 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		copy(tagId.block(), tagId.item());
 	}
 
-	//~ if >26.1 'TagAppender<ResourceKey<Item>, Item>' -> 'TagAppender<Item>' {
+	//~ if <26.1 'TagAppender<ResourceKey<Item>, Item>' -> 'TagAppender<Item>' {
 	private TagAppender<Item> optionalBuilder(TagKey<Item> tag, String id) {
 		TagAppender<Item> builder = builder(tag);
-		get(id).forEach(builder::addOptional);
+		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
 		return builder;
 	}
 
@@ -166,8 +166,12 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 	private TagAppender<Item> optionalBuilder(BlockItemTagId tag, String id) {
 		TagAppender<Item> builder = builder(tag.item());
-		get(id).forEach(builder::addOptional);
+		get(id).stream().map(c->c.identifier()).forEach(builder::addOptional);
 		return builder;
+	}
+
+	private TagAppender<Item> builder(TagKey<Item> item) {
+		return getOrCreateTagBuilder(item);
 	}
 	//~}
 

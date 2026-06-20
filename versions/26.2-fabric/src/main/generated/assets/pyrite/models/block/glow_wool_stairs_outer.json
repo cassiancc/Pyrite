@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "pyrite:block/glow_wool",
-    "side": "pyrite:block/glow_wool",
-    "top": "pyrite:block/glow_wool"
-  }
-}

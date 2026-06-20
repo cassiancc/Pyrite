@@ -1,0 +1,28 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "amethyst"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "pyrite:cut_amethyst_wall"
+    },
+    "W": {
+      "item": "pyrite:cut_amethyst"
+    }
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "count": 6,
+    "id": "pyrite:cut_amethyst_wall_gate"
+  }
+}

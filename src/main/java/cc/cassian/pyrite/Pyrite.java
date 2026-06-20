@@ -1,5 +1,6 @@
 package cc.cassian.pyrite;
 
+import cc.cassian.pyrite.compat.CopperAgeBackportCompat;
 import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.util.ModLists;
@@ -77,7 +78,8 @@ public class Pyrite {
 		createTorchLever("torch_lever", Blocks.TORCH, ParticleTypes.FLAME);
 		createTorchLever("redstone_torch_lever", Blocks.SOUL_TORCH, DustParticleOptions.REDSTONE);
 		createTorchLever("soul_torch_lever", Blocks.SOUL_TORCH, ParticleTypes.SOUL_FIRE_FLAME);
-		createTorchLever("copper_torch_lever", Blocks.COPPER_TORCH, ParticleTypes.COPPER_FIRE_FLAME);
+		if (Platform.INSTANCE.isModLoaded("copperagebackport"))
+			CopperAgeBackportCompat.registerTorch();
 		// Lamps
 		createPyriteBlock("lit_redstone_lamp", "lamp", Blocks.REDSTONE_LAMP, 15, "functional");
 		createPyriteBlock("glowstone_lamp","lamp", Blocks.GLOWSTONE, 15, "functional");

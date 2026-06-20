@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mushrooms",
+        "ladders",
+        "ladders"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ladder",
+  "key": {
+    "#": {
+      "item": "pyrite:brown_mushroom_planks"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "S S",
+    "S#S",
+    "S S"
+  ],
+  "result": {
+    "count": 3,
+    "id": "pyrite:brown_mushroom_ladder"
+  }
+}

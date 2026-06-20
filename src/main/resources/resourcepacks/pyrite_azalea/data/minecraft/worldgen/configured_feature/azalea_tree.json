@@ -2,7 +2,7 @@
   "type": "minecraft:tree",
   "config": {
     "decorators": [],
-    "below_trunk_provider": {
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
         "Name": "minecraft:rooted_dirt"

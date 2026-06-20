@@ -12,7 +12,7 @@ import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import cc.cassian.pyrite.util.sets.WoodSet;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -32,14 +32,14 @@ import java.util.concurrent.CompletableFuture;
 import static cc.cassian.pyrite.registry.BlockCreator.RESOURCE_BLOCK_SETS;
 
 public class PyriteLangProvider extends FabricLanguageProvider {
-    public PyriteLangProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+    public PyriteLangProvider(FabricDataOutput packOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(packOutput, registryLookup);
     }
 
     @Override
     public void generateTranslations(HolderLookup.Provider registries, TranslationBuilder lang) {
         try {
-            Optional<Path> path = packOutput.getModContainer().findPath("assets/pyrite/lang/en_us.base.json");
+            Optional<Path> path = dataOutput.getModContainer().findPath("assets/pyrite/lang/en_us.base.json");
             if (path.isPresent()) {
                 lang.add(path.get());
             } else {
@@ -92,7 +92,7 @@ public class PyriteLangProvider extends FabricLanguageProvider {
     }
 
     private Block getBlock(Identifier id) {
-        return BuiltInRegistries.BLOCK.getOrThrow(ResourceKey.create(Registries.BLOCK, id)).value();
+        return BuiltInRegistries.BLOCK.get(ResourceKey.create(Registries.BLOCK, id));
     }
 }
 //?}

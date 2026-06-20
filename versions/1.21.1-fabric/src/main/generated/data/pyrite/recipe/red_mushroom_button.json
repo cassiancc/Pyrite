@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mushrooms"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "pyrite:red_mushroom_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:red_mushroom_button"
+  }
+}

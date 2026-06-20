@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks",
+        "oddities",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:honey_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:honey_brick_wall_gate"
+  }
+}

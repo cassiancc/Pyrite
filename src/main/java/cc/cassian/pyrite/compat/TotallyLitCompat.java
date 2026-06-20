@@ -7,7 +7,7 @@ import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 //? <26
-//import io.github.realguyman.totally_lit.TotallyLit;
+import io.github.realguyman.totally_lit.TotallyLit;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -24,7 +24,7 @@ public class TotallyLitCompat {
         add(block);
         PyriteItemGroups.match(entry, copyBlock, group);
         //? <26
-        //TotallyLit.TORCH_MAP.put(copyBlock, block);
+        TotallyLit.TORCH_MAP.put(copyBlock, block);
     }
 
     public static void add(Block newBlock) {

@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "amethyst"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:cut_amethyst"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:cut_amethyst_wall_gate"
+  }
+}

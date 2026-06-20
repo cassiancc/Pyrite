@@ -3,8 +3,8 @@ package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,10 +17,10 @@ import java.util.concurrent.CompletableFuture;
 import static cc.cassian.pyrite.util.ModHelpers.getRequiredOptions;
 
 @SuppressWarnings("all")
-public class PyriteLootTableProvider extends FabricBlockLootSubProvider {
+public class PyriteLootTableProvider extends FabricBlockLootTableProvider {
 
 
-	public PyriteLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+	public PyriteLootTableProvider(FabricDataOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(packOutput, registriesFuture);
 	}
 

@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.blocks;
 
+import cc.cassian.pyrite.compat.CopperAgeBackportCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -7,6 +8,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeverBlock;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.function.Supplier;
 
 public class TorchLever extends LeverBlock {
     private final ParticleOptions particle;
@@ -133,6 +136,11 @@ public class TorchLever extends LeverBlock {
 
 
         world.addParticle(ParticleTypes.SMOKE, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
-        world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        if (this.builtInRegistryHolder().key().identifier().getPath().contains("copper")) {
+            CopperAgeBackportCompat.addParticle(world, xPlus, yPlus, zPlus);
+        } else {
+            world.addParticle(particle, xPlus, yPlus, zPlus, 0.0, 0.0, 0.0);
+        }
+
     }
 }

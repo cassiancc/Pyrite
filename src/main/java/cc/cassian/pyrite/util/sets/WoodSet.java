@@ -22,11 +22,11 @@ public record WoodSet(String blockID, BlockSetType blockSetType, WoodType woodTy
 
 	public BlockEntry<Block> wallSign() {
 		Identifier key = sign().resourceKey().identifier().withPath(p -> p.replace("sign", "wall_sign"));
-		return new BlockEntry<>(key, BuiltInRegistries.BLOCK.getValue(key));
+		return new BlockEntry<>(key, BuiltInRegistries.BLOCK.get(key));
 	}
 
 	public BlockEntry<Block> hangingWallSign() {
 		Identifier key = hangingSign().resourceKey().identifier().withPath(p -> p.replace("sign", "wall_sign"));
-		return new BlockEntry<>(key, BuiltInRegistries.BLOCK.getValue(key));
+		return new BlockEntry<>(key, BuiltInRegistries.BLOCK.get(key));
 	}
 }

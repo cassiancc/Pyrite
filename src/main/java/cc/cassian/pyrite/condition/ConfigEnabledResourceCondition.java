@@ -5,6 +5,7 @@ import java.util.List;
 import cc.cassian.pyrite.util.ModHelpers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.util.ExtraCodecs;
 import org.jspecify.annotations.Nullable;
 
@@ -28,7 +29,7 @@ public record ConfigEnabledResourceCondition(List<String> options) implements Re
     }
 
     @Override
-    public boolean test(RegistryOps.@Nullable RegistryInfoLookup registryInfo) {
+    public boolean test(HolderLookup.@org.jetbrains.annotations.Nullable Provider registryLookup) {
         return ModHelpers.enabled(options);
     }
 }

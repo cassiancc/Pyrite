@@ -22,6 +22,9 @@
     ],
     "fabric-datagen": [
       "cc.cassian.pyrite.fabric.datagen.PyriteDataGenerator"
+    ],
+    "emi": [
+      "cc.cassian.pyrite.compat.PyriteEMIPlugin"
     ]
   },
   "mixins": [

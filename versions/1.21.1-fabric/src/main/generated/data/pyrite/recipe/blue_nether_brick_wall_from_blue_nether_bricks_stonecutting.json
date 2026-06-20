@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "blue_nether_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:blue_nether_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:blue_nether_brick_wall"
+  }
+}

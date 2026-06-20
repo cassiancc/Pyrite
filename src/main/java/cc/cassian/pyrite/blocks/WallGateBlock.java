@@ -22,8 +22,8 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 //? if >1.21.4 {
-import net.minecraft.world.level.redstone.Orientation;
-//?}
+/*import net.minecraft.world.level.redstone.Orientation;
+*///?}
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -74,17 +74,17 @@ public class WallGateBlock extends HorizontalDirectionalBlock {
 
 
     //? if >1.21.4 {
-    protected BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource randomSource) {
-    //?} else {
-    /*protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
-        *///?}
+    /*protected BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource randomSource) {
+    *///?} else {
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+        //?}
         Direction.Axis axis = direction.getAxis();
         if (state.getValue(FACING).getClockWise().getAxis() != axis) {
             //? if >1.21.4 {
-            return super.updateShape(state, world, scheduledTickAccess, pos, direction, neighborPos, neighborState, randomSource);
-             //?} else {
-            /*return super.updateShape(state, direction, neighborState, world, pos, neighborPos);
-            *///?}
+            /*return super.updateShape(state, world, scheduledTickAccess, pos, direction, neighborPos, neighborState, randomSource);
+             *///?} else {
+            return super.updateShape(state, direction, neighborState, world, pos, neighborPos);
+            //?}
         } else {
             boolean bl = this.isWall(neighborState) || this.isWall(world.getBlockState(pos.relative(direction.getOpposite())));
             return state.setValue(IN_WALL, bl);
@@ -111,10 +111,10 @@ public class WallGateBlock extends HorizontalDirectionalBlock {
 
     @Override
     //? if >1.21.4 {
-    protected VoxelShape getOcclusionShape(BlockState state) {
-    //?} else {
-    /*protected VoxelShape getOcclusionShape(BlockState state, BlockGetter level, BlockPos pos) {
-        *///?}
+    /*protected VoxelShape getOcclusionShape(BlockState state) {
+    *///?} else {
+    protected VoxelShape getOcclusionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        //?}
         if (state.getValue(IN_WALL)) {
             return state.getValue(FACING).getAxis() == Direction.Axis.X ? IN_WALL_X_AXIS_CULL_SHAPE : IN_WALL_Z_AXIS_CULL_SHAPE;
         } else {
@@ -168,18 +168,18 @@ public class WallGateBlock extends HorizontalDirectionalBlock {
         world.playSound(player, pos, bl ? this.type.doorOpen() : this.type.doorClose(), SoundSource.BLOCKS, 1.0F, world.getRandom().nextFloat() * 0.1F + 0.9F);
         world.gameEvent(player, bl ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
         //? if >1.21.4 {
-        return InteractionResult.SUCCESS_SERVER;
-        //?} else {
-        /*return InteractionResult.SUCCESS;
-        *///?}
+        /*return InteractionResult.SUCCESS_SERVER;
+        *///?} else {
+        return InteractionResult.SUCCESS;
+        //?}
     }
 
     @Override
     //? if >1.21.4 {
-    protected void onExplosionHit(BlockState state, ServerLevel world, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
-    //?} else {
-    /*protected void onExplosionHit(BlockState state, Level world, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
-    *///?}
+    /*protected void onExplosionHit(BlockState state, ServerLevel world, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
+    *///?} else {
+    protected void onExplosionHit(BlockState state, Level world, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
+    //?}
         if (explosion.canTriggerBlocks() && !(Boolean)state.getValue(POWERED)) {
             boolean bl = state.getValue(OPEN);
             world.setBlockAndUpdate(pos, state.setValue(OPEN, !bl));
@@ -192,10 +192,10 @@ public class WallGateBlock extends HorizontalDirectionalBlock {
 
     @Override
     //? if >1.21.4 {
-    protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
-    //?} else {
-    /*protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-    *///?}
+    /*protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
+    *///?} else {
+    protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+    //?}
         if (!world.isClientSide()) {
             boolean bl = world.hasNeighborSignal(pos);
             if (state.getValue(POWERED) != bl) {

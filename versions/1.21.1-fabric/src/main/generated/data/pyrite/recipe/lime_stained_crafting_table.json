@@ -1,0 +1,28 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "crafting_tables"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "crafting_table",
+  "key": {
+    "#": {
+      "item": "pyrite:lime_stained_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:lime_stained_crafting_table"
+  },
+  "show_notification": false
+}

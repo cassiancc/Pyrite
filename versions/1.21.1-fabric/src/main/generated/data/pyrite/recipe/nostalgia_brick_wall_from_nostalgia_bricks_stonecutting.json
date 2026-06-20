@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks",
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:nostalgia_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:nostalgia_brick_wall"
+  }
+}

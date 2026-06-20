@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torch_levers",
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "torch_lever",
+  "ingredients": [
+    {
+      "item": "pyrite:magenta_torch"
+    },
+    {
+      "item": "minecraft:lever"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:magenta_torch_lever"
+  }
+}

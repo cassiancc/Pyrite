@@ -19,13 +19,13 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 
 /// There's something deeply funny about using Fabric's data generator for NeoForge data.
 public class NeoForgeDataMapProvider implements DataProvider {
-    private final FabricPackOutput output;
+    private final FabricDataOutput output;
 
-    public NeoForgeDataMapProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+    public NeoForgeDataMapProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         this.output = output;
     }
 

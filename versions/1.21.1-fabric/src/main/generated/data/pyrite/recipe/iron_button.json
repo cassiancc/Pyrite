@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "iron"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_block"
+    },
+    {
+      "tag": "minecraft:buttons"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:iron_button"
+  }
+}

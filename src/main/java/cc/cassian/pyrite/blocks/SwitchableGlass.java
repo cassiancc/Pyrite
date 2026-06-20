@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.Orientation;
 import org.jetbrains.annotations.Nullable;
 
 public class SwitchableGlass extends TransparentBlock {
@@ -40,7 +39,7 @@ public class SwitchableGlass extends TransparentBlock {
     }
 
     @Override
-    protected int getLightDampening(BlockState state) {
+    protected int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
         if (state.getValue(POWERED)) {
             return 15;
         }
@@ -53,7 +52,7 @@ public class SwitchableGlass extends TransparentBlock {
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @org.jspecify.annotations.Nullable Orientation orientation, boolean movedByPiston) {
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean movedByPiston) {
         if (!level.isClientSide()) {
             boolean currentlyPowered = state.getValue(POWERED);
             if (currentlyPowered != level.hasNeighborSignal(pos)) {

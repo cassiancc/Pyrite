@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_sign_rot_1",
-  "textures": {
-    "all": "pyrite:block/black_stained_sign",
-    "particle": "pyrite:block/black_stained_planks"
-  }
-}

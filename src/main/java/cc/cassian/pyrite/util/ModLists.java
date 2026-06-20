@@ -78,8 +78,8 @@ public class ModLists {
             Blocks.CRIMSON_PLANKS,
             Blocks.WARPED_PLANKS,
             //? if >1.21.4 {
-            Blocks.PALE_OAK_PLANKS
-            //?}
+            /*Blocks.PALE_OAK_PLANKS
+            *///?}
     };
 
     //List of Wall Blocks to generated Wall Gates for.
@@ -110,7 +110,7 @@ public class ModLists {
             Blocks.TUFF_BRICK_WALL,
             Blocks.TUFF_WALL,
             //? if >1.21.4
-            Blocks.RESIN_BRICK_WALL
+            //Blocks.RESIN_BRICK_WALL
     };
 
     public static final Map<String, Block> TURF_SETS = Map.of(

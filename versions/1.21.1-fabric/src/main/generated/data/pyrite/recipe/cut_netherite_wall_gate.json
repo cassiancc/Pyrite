@@ -1,0 +1,28 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "netherite"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "pyrite:cut_netherite_wall"
+    },
+    "W": {
+      "item": "pyrite:cut_netherite"
+    }
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "count": 6,
+    "id": "pyrite:cut_netherite_wall_gate"
+  }
+}

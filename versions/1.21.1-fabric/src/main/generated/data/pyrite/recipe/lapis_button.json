@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "lapis"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "tag": "minecraft:buttons"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:lapis_button"
+  }
+}

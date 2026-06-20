@@ -1,10 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("net.fabricmc.fabric-loom")
+    id("fabric-loom")
     id("dev.kikugie.postprocess.jsonlang")
     id("me.modmuss50.mod-publish-plugin")
-    id("maven-publish")
 }
 
 val minecraft = stonecutter.current.version
@@ -44,6 +43,12 @@ jsonlang {
 
 repositories {
     mavenLocal()
+    maven( "https://jitpack.io/") {
+        content {
+            includeGroup("com.github.Chocohead")
+            name = "Jitpack (Fabric ASM)"
+        }
+    }
     maven {
         name = "shedaniel (Cloth Config)"
         url = uri("https://maven.shedaniel.me/")
@@ -56,6 +61,7 @@ repositories {
         url = uri("https://maven.terraformersmc.com/releases/")
         content {
             includeGroupAndSubgroups("com.terraformersmc")
+            includeGroupAndSubgroups("dev.emi")
         }
     }
     maven {
@@ -73,9 +79,17 @@ repositories {
         }
     }
     maven {
+        name = "Parchment Mappings"
+        url = uri("https://maven.parchmentmc.org")
+        content {
+            includeGroupAndSubgroups("org.parchmentmc")
+        }
+    }
+    maven {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
         content {
+            includeGroupAndSubgroups("dev.isxander")
             includeGroupAndSubgroups("org.quiltmc.parsers")
         }
     }
@@ -102,6 +116,18 @@ repositories {
         }
     }
     flatDir { dirs(file("$rootDir/libs")) }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Gegy"
+                url = uri("https://maven.gegy.dev")
+            }
+        }
+        filter {
+            includeGroupAndSubgroups("dev.lambdaurora")
+            includeGroup("io.github.queerbric")
+        }
+    }
 }
 
 
@@ -114,57 +140,58 @@ fabricApi {
 
 dependencies {
     minecraft("com.mojang:minecraft:${property("deps.minecraft")}")
-    implementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
+    mappings(loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${property("deps.parchment")}@zip")
+        mappings("dev.lambdaurora:yalmm-mojbackward:${property("deps.minecraft")}+build.${property("deps.mojbackward")}")
+    })
+    modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
 
-    implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
+    // Mod Menu
+    if (hasProperty("deps.modmenu")) {
+        modApi("com.terraformersmc:modmenu:${property("deps.modmenu")}") {
+            exclude(group = "net.fabricmc")
+        }
+    }
+    modImplementation("maven.modrinth:mcqoy:17CKhwqV")
+
+    // YACL
+    if (hasProperty("deps.yacl")) {
+        modApi("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric") {
+            exclude(group = "net.fabricmc")
+        }
+    }
+
+    modImplementation("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}-Fabric")
+    modImplementation("maven.modrinth:quad:${property("deps.quad")}-Fabric")
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     include("folk.sisby:kaleido-config:${property("deps.kaleido")}")
 
-    compileOnly("maven.local:columns:1.12.0")
+    modCompileOnly("maven.modrinth:columns:${property("deps.columns")}")
 
-    // YACL
-    if (hasProperty("deps.yacl")) {
-        compileOnly("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric")
-        localRuntime("dev.isxander:yet-another-config-lib:${property("deps.yacl")}-fabric")
-        localRuntime("maven.modrinth:mcqoy:${property("deps.mcqoy")}")
-    } else {
-        compileOnly("dev.isxander:yet-another-config-lib:3.7.1+1.21.6-neoforge") {
-            isTransitive = false
-        }
+    if (hasProperty("deps.emi")) {
+        modCompileOnly("dev.emi:emi-fabric:${property("deps.emi")}+${property("deps.minecraft")}:api")
+        modLocalRuntime("dev.emi:emi-fabric:${property("deps.emi")}+${property("deps.minecraft")}")
     }
-    // Mod Menu
-    if (hasProperty("deps.modmenu")) {
-        compileOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
-        runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
-    } else {
-        compileOnly("com.terraformersmc:modmenu:18.0.0-alpha.8")
-    }
-
-    compileOnly("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
-        exclude(group = "net.fabricmc")
-        exclude(group = "me.shedaniel")
-    }
-    localRuntime("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
-        exclude(group = "net.fabricmc")
-        exclude(group = "me.shedaniel")
-    }
-
-    implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${property("deps.rrv")}") {
+    modCompileOnly("maven.modrinth:totally-lit:${property("deps.totally_lit")}")
+    modLocalRuntime("cc.cassian.item-descriptions:item-descriptions-fabric:${property("deps.item_descriptions")}") {
         isTransitive = false
     }
-    compileOnly("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}") {
+
+    modImplementation("maven.modrinth:farmers-delight-refabricated:${property("deps.fd")}") {
         exclude(group = "net.fabricmc")
         exclude(group = "me.shedaniel")
     }
-    compileOnly("maven.modrinth:quad:${property("deps.quad")}")
-
-}
-
-configurations.all {
-    resolutionStrategy {
-        force("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
+    modImplementation("com.github.Chocohead:Fabric-ASM:${property("deps.fabric_asm")}") {
+        exclude (group = "net.fabricmc.fabric-api")
     }
+
+    if (hasProperty("deps.copper_age_backport")) {
+        modImplementation("maven.modrinth:backport-copper-age:${property("deps.copper_age_backport")}")
+    }
+    implementation("org.jspecify:jspecify:1.0.0")
 }
 
 stonecutter {
@@ -181,20 +208,17 @@ tasks {
 
     register<Copy>("buildAndCollect") {
         group = "build"
-        from(jar.map { it.archiveFile })
+        from(remapJar.map { it.archiveFile })
         into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
         dependsOn("build")
     }
 }
 
-loom.runs.named("server") {
-    isIdeConfigGenerated = false
-}
-
 java {
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
+    val javaCompat = JavaVersion.VERSION_21
+    sourceCompatibility = javaCompat
+    targetCompatibility = javaCompat
 }
 
 val additionalVersionsStr = findProperty("publish.additionalVersions") as String?
@@ -205,10 +229,9 @@ val additionalVersions: List<String> = additionalVersionsStr
     ?: emptyList()
 
 publishMods {
-    file = tasks.jar.map { it.archiveFile.get() }
-    additionalFiles.from(tasks.named<org.gradle.jvm.tasks.Jar>("sourcesJar").map { it.archiveFile.get() })
+    file = tasks.remapJar.map { it.archiveFile.get() }
+    additionalFiles.from(tasks.remapSourcesJar.map { it.archiveFile.get() })
 
-    // one of BETA, ALPHA, STABLE
     type = STABLE
     displayName = "${property("mod.name")} ${property("mod.version")} for ${stonecutter.current.version} Fabric"
     version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
@@ -218,28 +241,23 @@ publishMods {
     modrinth {
         projectId = property("publish.modrinth") as String
         accessToken = env.MODRINTH_API_KEY.orNull()
-        minecraftVersions.add(property("deps.minecraft").toString())
+        minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
-        if (hasProperty("deps.emi")) {
-            optional("emi")
-        }
-        if (hasProperty("deps.rrv")) {
-            optional("rrv")
-        }
+        optional("mcqoy")
+        optional("emi")
+        optional("vanillabackport")
+        optional("backport-copper-age")
     }
 
     curseforge {
         projectId = property("publish.curseforge") as String
         accessToken = env.CURSEFORGE_API_KEY.orNull()
-        minecraftVersions.add(property("deps.minecraft").toString())
+        minecraftVersions.add(stonecutter.current.version)
         minecraftVersions.addAll(additionalVersions)
         requires("fabric-api")
         if (hasProperty("deps.emi")) {
             optional("emi")
-        }
-        if (hasProperty("deps.rrv")) {
-            optional("rrv")
         }
     }
 }

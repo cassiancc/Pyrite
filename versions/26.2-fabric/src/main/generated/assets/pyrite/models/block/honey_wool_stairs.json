@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "pyrite:block/honey_wool",
-    "side": "pyrite:block/honey_wool",
-    "top": "pyrite:block/honey_wool"
-  }
-}

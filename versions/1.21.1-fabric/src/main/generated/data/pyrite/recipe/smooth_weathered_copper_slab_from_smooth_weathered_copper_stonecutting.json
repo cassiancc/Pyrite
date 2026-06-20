@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:smooth_weathered_copper"
+  },
+  "result": {
+    "count": 2,
+    "id": "pyrite:smooth_weathered_copper_slab"
+  }
+}

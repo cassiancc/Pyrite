@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "concrete_stairs_and_slabs"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:glow_concrete"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:glow_concrete_stairs"
+  }
+}

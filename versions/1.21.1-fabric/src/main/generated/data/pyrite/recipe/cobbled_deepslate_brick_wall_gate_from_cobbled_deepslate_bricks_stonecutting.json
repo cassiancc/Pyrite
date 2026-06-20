@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "cobbled_deepslate_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:cobbled_deepslate_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:cobbled_deepslate_brick_wall_gate"
+  }
+}

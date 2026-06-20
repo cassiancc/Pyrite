@@ -1,0 +1,37 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "fd_cabinet",
+  "key": {
+    "D": {
+      "item": "pyrite:rose_stained_trapdoor"
+    },
+    "_": {
+      "item": "pyrite:rose_stained_slab"
+    }
+  },
+  "pattern": [
+    "___",
+    "D D",
+    "___"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:rose_stained_cabinet"
+  }
+}

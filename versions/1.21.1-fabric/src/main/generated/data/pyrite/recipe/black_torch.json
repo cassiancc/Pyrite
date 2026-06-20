@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "torch",
+  "ingredients": [
+    {
+      "tag": "c:dyes/black"
+    },
+    {
+      "item": "minecraft:torch"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pyrite:black_torch"
+  }
+}

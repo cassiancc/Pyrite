@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "terracotta_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:cyan_terracotta_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:cyan_terracotta_brick_wall_gate"
+  }
+}

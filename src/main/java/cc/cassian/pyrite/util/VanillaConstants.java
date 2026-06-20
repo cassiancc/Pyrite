@@ -91,11 +91,11 @@ public class VanillaConstants {
 
 	private static BlockEntry<Block> vanillaBlock(String name) {
 		Identifier id = Identifier.withDefaultNamespace(name);
-		return new BlockEntry<>(id, BuiltInRegistries.BLOCK.getValue(id));
+		return new BlockEntry<>(id, BuiltInRegistries.BLOCK.get(id));
 	}
 
 	private static ItemEntry<Item> vanillaItem(String name) {
 		Identifier key = Identifier.withDefaultNamespace(name);
-		return new ItemEntry<>(key, BuiltInRegistries.ITEM.getValue(key));
+		return new ItemEntry<>(key, BuiltInRegistries.ITEM.get(key));
 	}
 }

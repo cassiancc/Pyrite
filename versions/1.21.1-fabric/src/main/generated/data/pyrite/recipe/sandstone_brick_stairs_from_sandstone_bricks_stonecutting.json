@@ -1,0 +1,18 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "sandstone_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:sandstone_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:sandstone_brick_stairs"
+  }
+}

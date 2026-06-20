@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "concrete_stairs_and_slabs"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "pyrite:nostalgia_concrete"
+  },
+  "result": {
+    "count": 1,
+    "id": "pyrite:nostalgia_concrete_stairs"
+  }
+}

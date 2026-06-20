@@ -1,25 +1,40 @@
 package cc.cassian.pyrite.client;
 
-import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.util.ModHelpers;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.ChestRaftModel;
+import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.object.boat.BoatModel;
+import net.minecraft.client.model.object.boat.RaftModel;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.vehicle.boat.Boat;
 import net.minecraft.world.item.ItemStack;
-import java.util.Collections;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.state.BlockState;
+
 import java.util.List;
 
 import static cc.cassian.pyrite.Pyrite.MOD_ID;
 
 public class PyriteClient {
 
-	public static List<BlockTintSource> registerColor() {
-		return Collections.singletonList(BlockTintSources.grassBlock());
+	public static int registerColor(BlockState state, BlockAndTintGetter view, BlockPos pos, int tintIndex) {
+		if (view == null  || pos == null) return 9551193;
+		return BiomeColors.getAverageGrassColor(view, pos);
+	}
+
+	public static int registerColor(ItemStack stack, int i) {
+		return 9551193;
 	}
 
 	public static void addTooltip(List<Component> lines, ItemStack stack) {
@@ -41,6 +56,16 @@ public class PyriteClient {
 		for (String requiredOption : ModHelpers.getRequiredOptions(id)) {
 			var color = ModHelpers.enabled(List.of(requiredOption)) ? ChatFormatting.GREEN : ChatFormatting.RED;
 			lines.add(Component.literal("  - " + requiredOption).withStyle(color));
+		}
+	}
+
+	public static ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, Boat.Type type, boolean chestBoat) {
+		ModelLayerLocation modelLayerLocation = chestBoat ? ModelLayers.createChestBoatModelName(type) : ModelLayers.createBoatModelName(type);
+		ModelPart modelPart = context.bakeLayer(modelLayerLocation);
+		if (type == Boat.Type.BAMBOO) {
+			return chestBoat ? new ChestRaftModel(modelPart) : new RaftModel(modelPart);
+		} else {
+			return chestBoat ? new ChestBoatModel(modelPart) : new BoatModel(modelPart);
 		}
 	}
 }
