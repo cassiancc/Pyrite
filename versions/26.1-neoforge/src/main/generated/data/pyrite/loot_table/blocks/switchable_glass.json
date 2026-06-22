@@ -3,7 +3,7 @@
     {
       "condition": "pyrite:config",
       "options": [
-        "oddities"
+        "switchable_glass"
       ]
     }
   ],

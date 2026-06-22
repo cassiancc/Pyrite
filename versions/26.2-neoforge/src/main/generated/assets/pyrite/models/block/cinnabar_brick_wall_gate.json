@@ -1,0 +1,7 @@
+{
+  "parent": "pyrite:block/template_wall_gate",
+  "textures": {
+    "particle": "minecraft:block/cinnabar_bricks",
+    "texture": "minecraft:block/cinnabar_bricks"
+  }
+}

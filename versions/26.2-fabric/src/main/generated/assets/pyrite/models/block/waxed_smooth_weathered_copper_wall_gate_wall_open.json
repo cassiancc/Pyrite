@@ -1,0 +1,7 @@
+{
+  "parent": "pyrite:block/template_wall_gate_wall_open",
+  "textures": {
+    "particle": "pyrite:block/smooth_weathered_copper",
+    "texture": "pyrite:block/smooth_weathered_copper"
+  }
+}

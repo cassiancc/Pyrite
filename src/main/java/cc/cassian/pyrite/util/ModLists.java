@@ -110,7 +110,15 @@ public class ModLists {
             Blocks.TUFF_BRICK_WALL,
             Blocks.TUFF_WALL,
             //? if >1.21.4
-            Blocks.RESIN_BRICK_WALL
+            Blocks.RESIN_BRICK_WALL,
+            //? if >26.1 {
+            Blocks.SULFUR_WALL,
+            Blocks.SULFUR_BRICK_WALL,
+            Blocks.POLISHED_SULFUR_WALL,
+            Blocks.CINNABAR_WALL,
+            Blocks.CINNABAR_BRICK_WALL,
+            Blocks.POLISHED_CINNABAR_WALL,
+            //?}
     };
 
     public static final Map<String, Block> TURF_SETS = Map.of(

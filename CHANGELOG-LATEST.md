@@ -1,11 +1,7 @@
 ### Added
-- Every section of the mod's features now has a dedicated config option for enabling it. This new configuration allows you to easily pick and choose what features you want, optionally allowing you to disable the entire mod.
-- Waxed versions of Copper Pressure Plates and Buttons.
-- Copper Torch Levers.
+- Wall Gates for Cinnabar and Sulfur walls introduced in 26.2.
+- Switchable Glass has been separated from the Oddities and is now easier to use.
 
-### Fixed
-- Strange behaviour when stripping Azalea Wood.
-- Wall Gates not connecting to walls.
-- Config-enabled features requiring multiple configs (e.g. Azalea Crafting Tables) now applies.
-- Fixed Azalea Tree generation.
-- Redstone Torch Lever now better matches the newer Redstone Torch texture.
+### Changed
+- Wall Gates now have a more fitting item model.
+- Removed Aether compatibility, as the Aether is not available on 26.1+.

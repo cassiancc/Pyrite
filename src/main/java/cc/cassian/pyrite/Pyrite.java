@@ -95,7 +95,7 @@ public class Pyrite {
 		// Vanilla Crafting Tables
 		generateVanillaCraftingTables();
 		// Modded Crafting Tables
-		if (Platform.INSTANCE.isModLoaded("aether")) {
+		/*if (Platform.INSTANCE.isModLoaded("aether")) {
 			createPyriteBlock("skyroot_crafting_table","crafting", Blocks.CRAFTING_TABLE, "crafting_table");
 			createPyriteBlock( "holystone_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 			createPyriteBlock( "mossy_holystone_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
@@ -106,6 +106,7 @@ public class Pyrite {
 			createPyriteBlock( "angelic_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 			createPyriteBlock( "hellfire_wall_gate","wall_gate", Blocks.STONE, BlockSetType.STONE, "misc");
 		}
+		 */
 		// Red Mushroom Wood Set
 		createPyriteBlock("red_mushroom_stem", "log", Blocks.MUSHROOM_STEM, "red_mushroom");
 		createWoodSet("red_mushroom", MapColor.COLOR_RED, 0, "wood");

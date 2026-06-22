@@ -6,6 +6,7 @@ import cc.cassian.pyrite.blocks.ModCraftingTable;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.pyrite.fabric.datagen.PyriteDataGeneratorUtil;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.util.sets.*;
 import cc.cassian.pyrite.util.ModHelpers;
@@ -15,11 +16,11 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedResourceCondition;
 //~ if >26.1 'criterion' -> 'triggers' {
-import net.minecraft.advancements.criterion.PlayerTrigger;
+import net.minecraft.advancements.triggers.PlayerTrigger;
 //~}
 //~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
 import net.minecraft.core.registries.BuiltInRegistries;
-import cc.cassian.pyrite.util.BlockItemTagId;
+import net.minecraft.tags.BlockItemTagId;
 //~}
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -28,11 +29,10 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //? if >26.1 {
-/*import net.minecraft.tags.BlockItemTags;
- *///?}
+import net.minecraft.tags.BlockItemTags;
+ //?}
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
@@ -182,26 +182,16 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 				stoneStonecuttingShortcut("smooth_stone", getItem("smooth_stone_bricks"), Items.STONE);
 				stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, getItem("smooth_stone_stairs"), Items.STONE, 1, List.of("smooth_stone_stairs"));
 
-
-				ArrayList<ResourceBlockSet> newSets = new ArrayList<>(RESOURCE_BLOCK_SETS);
-				for (ResourceBlockSet resourceBlockSet : RESOURCE_BLOCK_SETS) {
-					var id = ModHelpers.findVanillaBlockID(resourceBlockSet.block());
-					if (id.contains("copper")) {
-						var cutBlocks = getWaxed(resourceBlockSet.cutBlocks());
-						newSets.add(new ResourceBlockSet(getWaxed(resourceBlockSet.block()), getWaxed(cutBlocks), getWaxed(resourceBlockSet.smoothBlocks()), getWaxed(resourceBlockSet.bricks()), getWaxed(resourceBlockSet.chiseled()), getWaxed(resourceBlockSet.pillar()), getWaxed(resourceBlockSet.nostalgia()), getWaxed(resourceBlockSet.bars()), getWaxed(resourceBlockSet.door()), getWaxed(resourceBlockSet.trapdoor()), getWaxed(resourceBlockSet.pressurePlate()), getWaxed(resourceBlockSet.button())));
-					}
-				}
-
 				WAXABLES.forEach((rawId, waxedId)->{
 					Item waxedBlock = getItemOrVanilla(waxedId);
 					Item rawBlock = getItem(rawId);
-					this.shapeless(RecipeCategory.BUILDING_BLOCKS, (ItemLike) waxedBlock)
+					shapeless(RecipeCategory.BUILDING_BLOCKS, (ItemLike) waxedBlock)
 							.requires(waxedBlock).requires(Items.HONEYCOMB)
-							.unlockedBy(getHasName(rawBlock), this.has(rawBlock))
-							.save(this.output, getConversionRecipeName(waxedBlock, Items.HONEYCOMB));
+							.unlockedBy(getHasName(rawBlock), has(rawBlock))
+							.save(output, getConversionRecipeName(waxedBlock, Items.HONEYCOMB));
 				});
 
-				for (ResourceBlockSet resourceBlockSet : newSets) {
+				for (ResourceBlockSet resourceBlockSet : PyriteDataGeneratorUtil.getResourceBlockSets()) {
 					var id = ModHelpers.findVanillaBlockID(resourceBlockSet.block());
 					var requiredOptions = getRequiredOptions(Pyrite.of(id));
 					Block baseBlock = resourceBlockSet.block();
@@ -276,7 +266,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					// button
 					var buttonId = resourceBlockSet.button();
 					//~ if >26.1 'ItemTags.BUTTONS' -> 'BlockItemTags.BUTTONS.item()' {
-					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(ItemTags.BUTTONS).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
+					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(BlockItemTags.BUTTONS.item()).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
 					//~}
 					// door
 					var door = resourceBlockSet.door();
@@ -408,7 +398,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						var ladderOptions = new ArrayList<>(requiredOptions);
 						ladderOptions.add("ladders");
 						Item planks = getItemOrVanilla(blockId.withPath(p -> p.replace("ladder", "planks")));
-						this.shaped(RecipeCategory.DECORATIONS, entry.asItem(), 3)
+						shaped(RecipeCategory.DECORATIONS, entry.asItem(), 3)
 								.group("ladder")
 								.define('#', planks)
 								.define('S', ConventionalItemTags.WOODEN_RODS)
@@ -426,14 +416,14 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 							planksFromLogs(entry.value(), getItem(Pyrite.of("brown_mushroom_stem")), 4, requiredOptions);
 						} else {
 							Ingredient dye = getDyeTag(blockId.withPath(p -> p.replace("_stained_planks", "")));
-							this.shaped(RecipeCategory.BUILDING_BLOCKS, entry.value(), 8)
+							shaped(RecipeCategory.BUILDING_BLOCKS, entry.value(), 8)
 									.define('#', ItemTags.PLANKS)
 									.define('X', dye)
 									.pattern("###")
 									.pattern("#X#")
 									.pattern("###")
 									.group("planks")
-									.unlockedBy("has_base", this.has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
+									.unlockedBy("has_base", has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
 									.save(configuredOutput(requiredOptions));
 						}
 					} else if (entry.getId().getPath().contains("_wood")) {
@@ -443,27 +433,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			private void smeltingResultFromBase(Item result, Item base, List<String> requiredOptions) {
-				SimpleCookingRecipeBuilder.smelting(Ingredient.of(base), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, result, 0.1F, 200).unlockedBy(getHasName(base), this.has(base)).save(configuredOutput(requiredOptions));
-			}
-
-			private ResourceBlockSubSet getWaxed(ResourceBlockSubSet resourceBlockSubSet) {
-				return new ResourceBlockSubSet(getWaxed(resourceBlockSubSet.block()), getWaxed(resourceBlockSubSet.stairs()), getWaxed(resourceBlockSubSet.slab()), getWaxed(resourceBlockSubSet.wall()), getWaxed(resourceBlockSubSet.wallGate()));
-			}
-
-			private BlockEntry<Block> getWaxed(BlockEntry<Block> block) {
-				if (block.getPath().contains("copper") && !block.getPath().contains("waxed")) {
-					Optional<BlockState> waxed = HoneycombItem.getWaxed(block.defaultBlockState());
-					if (waxed.isPresent())
-						return new BlockEntry<>(waxed.get().getBlock());
-					Identifier waxedId = block.getId().withPrefix("waxed_");
-					return new BlockEntry<>(waxedId, BuiltInRegistries.BLOCK.getValue(waxedId));
-				} else {
-					return block;
-				}
-			}
-
-			private Block getWaxed(Block block) {
-				return getWaxed(new BlockEntry<>(block)).value();
+				SimpleCookingRecipeBuilder.smelting(Ingredient.of(base), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, result, 0.1F, 200).unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
 			private void stoneStonecuttingShortcut(String name, Item bricks, Item stone) {
@@ -484,7 +454,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			private void craftingTable(ItemLike entry, ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, entry.asItem())
+				shaped(RecipeCategory.DECORATIONS, entry.asItem())
 						.group("crafting_table")
 						.define('#', planks)
 						.pattern("##")
@@ -495,7 +465,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public void colorItemWithDye(final List<TagKey<Item>> dyes, final List<Item> items, final String groupName, final RecipeCategory category, List<String> requiredOptions) {
-				this.colorWithDye(dyes, items, (Item)null, groupName, category, requiredOptions);
+				colorWithDye(dyes, items, (Item)null, groupName, category, requiredOptions);
 			}
 
 			public void colorWithDye(final List<TagKey<Item>> dyes, final List<Item> dyedItems, final @Nullable Item uncoloredItem, final String groupName, final RecipeCategory category, List<String> requiredOptions) {
@@ -508,7 +478,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					}
 
 					if (dyedItem != Items.AIR)
-						this.shapeless(category, (ItemLike)dyedItem).requires(dye).requires(Ingredient.of(sourceItems)).group(groupName).unlockedBy("has_needed_dye", this.has(dye)).save(configuredOutput(requiredOptions), "dye_" + getItemName(dyedItem));
+						shapeless(category, (ItemLike)dyedItem).requires(dye).requires(Ingredient.of(sourceItems)).group(groupName).unlockedBy("has_needed_dye", has(dye)).save(configuredOutput(requiredOptions), "dye_" + getItemName(dyedItem));
 				}
 
 			}
@@ -518,28 +488,28 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
             }
 
 			public void carpet(final ItemLike result, final ItemLike sourceItem, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, result, 3)
+				shaped(RecipeCategory.DECORATIONS, result, 3)
 						.define('#', sourceItem)
 						.pattern("##")
 						.group("carpet")
-						.unlockedBy(getHasName(sourceItem), this.has(sourceItem))
+						.unlockedBy(getHasName(sourceItem), has(sourceItem))
 						.save(configuredOutput(requiredOptions));
 			}
 
 			public void slab(final ItemLike result, final ItemLike base, List<String> requiredOptions) {
-				this.slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), this.has(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
+				slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), has(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
 			public void stairs(final ItemLike result, final ItemLike base, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', base).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
+				shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', base).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
 			public void wall(final ItemLike result, final ItemLike base, List<String> requiredOptions) {
-				this.wallBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), this.has(base)).save(configuredOutput(requiredOptions));
+				wallBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 
 			public void wallGate(final ItemLike result, final ItemLike base, final ItemLike wall, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.REDSTONE, result, 6)
+				shaped(RecipeCategory.REDSTONE, result, 6)
 						.define('#', wall)
 						.define('W', base)
 						.pattern("#W#")
@@ -547,36 +517,36 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public void shelf(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, result, 2)
+				shaped(RecipeCategory.DECORATIONS, result, 2)
 						.define('#', planks)
 						.pattern("###")
 						.pattern("   ")
 						.pattern("###")
 						.group("shelf")
-						.unlockedBy(getHasName(planks), this.has(planks))
+						.unlockedBy(getHasName(planks), has(planks))
 						.save(configuredOutput(requiredOptions));
 			}
 
 			public void chest(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, result, 1)
+				shaped(RecipeCategory.DECORATIONS, result, 1)
 						.define('#', planks)
 						.pattern("###")
 						.pattern("# #")
 						.pattern("###")
 						.group("chest")
-						.unlockedBy(getHasName(planks), this.has(planks))
+						.unlockedBy(getHasName(planks), has(planks))
 						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("lolmcv"))));
 			}
 
 			public void cabinet(final ItemLike result, final ItemLike slab, BlockEntry<Block> trapdoor, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.MISC, result, 1)
+				shaped(RecipeCategory.MISC, result, 1)
 						.define('D', trapdoor)
 						.define('_', slab)
 						.pattern("___")
 						.pattern("D D")
 						.pattern("___")
 						.group("fd_cabinet")
-						.unlockedBy(getHasName(slab), this.has(slab))
+						.unlockedBy(getHasName(slab), has(slab))
 						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("farmersdelight"))));
 			}
 
@@ -585,15 +555,15 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
             }
 
 			public void planksFromLogs(final ItemLike result, final TagKey<Item> logs, final int count, List<String> requiredOptions) {
-				this.shapeless(RecipeCategory.BUILDING_BLOCKS, result, count).requires(logs).group("planks").unlockedBy("has_logs", this.has(logs)).save(configuredOutput(requiredOptions));
+				shapeless(RecipeCategory.BUILDING_BLOCKS, result, count).requires(logs).group("planks").unlockedBy("has_logs", has(logs)).save(configuredOutput(requiredOptions));
 			}
 
 			public void planksFromLogs(final ItemLike result, final Item logs, final int count, List<String> requiredOptions) {
-				this.shapeless(RecipeCategory.BUILDING_BLOCKS, result, count).requires(logs).group("planks").unlockedBy("has_logs", this.has(logs)).save(configuredOutput(requiredOptions));
+				shapeless(RecipeCategory.BUILDING_BLOCKS, result, count).requires(logs).group("planks").unlockedBy("has_logs", has(logs)).save(configuredOutput(requiredOptions));
 			}
 
 			public void woodFromLogs(final ItemLike result, final ItemLike log, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 3).define('#', log).pattern("##").pattern("##").group("bark").unlockedBy("has_log", this.has(log)).save(configuredOutput(requiredOptions));
+				shaped(RecipeCategory.BUILDING_BLOCKS, result, 3).define('#', log).pattern("##").pattern("##").group("bark").unlockedBy("has_log", has(log)).save(configuredOutput(requiredOptions));
 			}
 
 			private Ingredient ingredientOf(TagKey<Item> planks) {
@@ -601,24 +571,24 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
             }
 
 			public void coloredBaseBlockFromBaseBlockAndDye(final ItemLike result, final Ingredient dye, ItemLike baseBlock, List<String> requiredOptions, String group) {
-				this.shaped(RecipeCategory.BUILDING_BLOCKS, result, 8)
+				shaped(RecipeCategory.BUILDING_BLOCKS, result, 8)
 						.define('#', baseBlock)
 						.define('X', dye)
 						.pattern("###")
 						.pattern("#X#")
 						.pattern("###")
 						.group(group)
-						.unlockedBy("has_base", this.has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
+						.unlockedBy("has_base", has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
 						.save(configuredOutput(requiredOptions));
 			}
 
 			public void paneFromGlass(final ItemLike result, final ItemLike glass, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, result, 16)
+				shaped(RecipeCategory.DECORATIONS, result, 16)
 						.define('#', glass)
 						.pattern("###")
 						.pattern("###")
 						.group("glass_pane")
-						.unlockedBy("has_glass", this.has(glass))
+						.unlockedBy("has_glass", has(glass))
 						.save(configuredOutput(requiredOptions));
 			}
 
@@ -649,7 +619,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
             }
 
 			public void boat(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.TRANSPORTATION, result)
+				shaped(RecipeCategory.TRANSPORTATION, result)
 						.define('#', planks)
 						.pattern("# #")
 						.pattern("###")
@@ -659,11 +629,11 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public void chestBoat(final ItemLike chestBoat, final ItemLike boat, List<String> requiredOptions) {
-				this.shapeless(RecipeCategory.TRANSPORTATION, chestBoat)
+				shapeless(RecipeCategory.TRANSPORTATION, chestBoat)
 						.requires(ConventionalItemTags.WOODEN_CHESTS)
 						.requires(boat)
 						.group("chest_boat")
-						.unlockedBy("has_boat", this.has(ItemTags.BOATS))
+						.unlockedBy("has_boat", has(ItemTags.BOATS))
 						.save(configuredOutput(requiredOptions));
 			}
 
@@ -680,15 +650,15 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public final void fenceGate(final ItemLike result, final Ingredient planks, final Ingredient stick, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.REDSTONE, result).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(configuredOutput(requiredOptions));
+				shaped(RecipeCategory.REDSTONE, result).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(configuredOutput(requiredOptions));
 			}
 
 			public final void sign(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, result, 3).group("sign").define('#', planks).define('X', Items.STICK).pattern("###").pattern("###").pattern(" X ").unlockedBy("has_planks", this.has(planks)).save(configuredOutput(requiredOptions));
+				shaped(RecipeCategory.DECORATIONS, result, 3).group("sign").define('#', planks).define('X', Items.STICK).pattern("###").pattern("###").pattern(" X ").unlockedBy("has_planks", has(planks)).save(configuredOutput(requiredOptions));
 			}
 
 			public void hangingSign(final ItemLike result, final ItemLike planks, List<String> requiredOptions) {
-				this.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', planks).define('X', Items.IRON_CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", this.has(planks)).save(configuredOutput(requiredOptions));
+				shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', planks).define('X', Items.IRON_CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(planks)).save(configuredOutput(requiredOptions));
 			}
 
 			public void twoByTwoPacker(final RecipeCategory category, final ItemLike result, final ItemLike ingredient, List<String> requiredOptions) {
@@ -696,26 +666,26 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 			}
 
 			public void twoByTwoPacker(final RecipeCategory category, final ItemLike result, final ItemLike ingredient, int count, List<String> requiredOptions) {
-				this.shaped(category, result, count)
+				shaped(category, result, count)
 						.define('#', ingredient)
 						.pattern("##")
 						.pattern("##")
-						.unlockedBy(getHasName(ingredient), this.has(ingredient))
+						.unlockedBy(getHasName(ingredient), has(ingredient))
 						.save(configuredOutput(requiredOptions));
 			}
 
 			public void stonecutterResultFromBase(final RecipeCategory category, final ItemLike result, final ItemLike base, List<String> requiredOptions) {
-				this.stonecutterResultFromBase(category, result, base, 1, requiredOptions);
+				stonecutterResultFromBase(category, result, base, 1, requiredOptions);
 			}
 
 			public void stonecutterResultFromBase(final RecipeCategory category, final ItemLike result, final ItemLike base, final int count, List<String> requiredOptions) {
 				SingleItemRecipeBuilder.stonecutting(Ingredient.of(base), category, result, count)
-						.unlockedBy(getHasName(base), this.has(base))
+						.unlockedBy(getHasName(base), has(base))
 						.save(configuredOutput(requiredOptions), getConversionRecipeName(result, base) + "_stonecutting");
 			}
 
 			public void cut(final RecipeCategory category, final ItemLike result, final ItemLike base, List<String> requiredOptions) {
-				this.cutBuilder(category, result, Ingredient.of(base)).unlockedBy(getHasName(base), this.has(base)).save(configuredOutput(requiredOptions));
+				cutBuilder(category, result, Ingredient.of(base)).unlockedBy(getHasName(base), has(base)).save(configuredOutput(requiredOptions));
 			}
 		};
 	}

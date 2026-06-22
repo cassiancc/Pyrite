@@ -1,0 +1,7 @@
+{
+  "parent": "pyrite:block/template_wall_gate_wall",
+  "textures": {
+    "particle": "pyrite:block/cut_netherite",
+    "texture": "pyrite:block/cut_netherite"
+  }
+}

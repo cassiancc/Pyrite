@@ -19,12 +19,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -50,12 +48,12 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         }
 
         for (String dye : ModLists.DYES) {
-            name(lang, dye + "_wool_slab");
-            name(lang, dye + "_wool_stairs");
+            add(lang, dye + "_wool_slab");
+            add(lang, dye + "_wool_stairs");
         }
         for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
-            name(lang, woodSet.boat());
-            name(lang, woodSet.chestBoat());
+            add(lang, woodSet.boat());
+            add(lang, woodSet.chestBoat());
         }
         ModEntities.BOATS.forEach((name, entityType)->{
             lang.add(entityType, name(name + "_boat"));
@@ -74,16 +72,27 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         }
         for (BlockEntry<Block> entry : PyriteItemGroups.TORCH_LEVER) {
             if (entry.getPath().contains("copper")) {
-                name(lang, entry);
+                add(lang, entry);
             }
+        }
+
+        for (Block wall : ModLists.VANILLA_WALLS) {
+            Identifier wallId = wall.properties().blockId().identifier();
+            Identifier id = Pyrite.of(wallId.getPath() + "_gate");
+            Item wallGate = getItem(id);
+            add(lang, new ItemEntry<>(id, wallGate));
         }
     }
 
-    private void name(TranslationBuilder lang, PyriteEntry entry) {
+    private Item getItem(Identifier id) {
+        return BuiltInRegistries.ITEM.getOrThrow(ResourceKey.create(Registries.ITEM, id)).value();
+    }
+
+    private void add(TranslationBuilder lang, PyriteEntry entry) {
         lang.add(entry.asItem(), name(entry.getPath()));
 	}
 
-    private void name(TranslationBuilder lang, String name) {
+    private void add(TranslationBuilder lang, String name) {
         lang.add(getBlock(Pyrite.of(name)), name(name));
     }
 

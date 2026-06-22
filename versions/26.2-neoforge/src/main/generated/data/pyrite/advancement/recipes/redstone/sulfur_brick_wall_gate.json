@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:sulfur_brick_wall_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "sulfur_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:sulfur_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "sulfur_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:sulfur_brick_wall_gate"
+    ]
+  }
+}

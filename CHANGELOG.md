@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.18.0]
+
+### Added
+- Every section of the mod's features now has a dedicated config option for enabling it. This new configuration allows you to easily pick and choose what features you want, optionally allowing you to disable the entire mod.
+- Waxed versions of Copper Pressure Plates and Buttons.
+- Copper Torch Levers.
+
+### Fixed
+- Strange behaviour when stripping Azalea Wood.
+- Wall Gates not connecting to walls.
+- Config-enabled features requiring multiple configs (e.g. Azalea Crafting Tables) now applies.
+- Fixed Azalea Tree generation.
+- Redstone Torch Lever now better matches the newer Redstone Torch texture.
+
 ## [0.17.2]
 
 ### Fixed
