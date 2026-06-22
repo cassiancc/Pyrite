@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "switchable_glass"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pyrite:switchable_glass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tinted_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:tinted_glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "tinted_glass"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pyrite:switchable_glass"
+    ]
+  }
+}

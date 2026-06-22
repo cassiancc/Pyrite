@@ -93,8 +93,11 @@ public class ModHelpers {
         if (path.contains("mushroom")) {
             requiredOptions.add("mushrooms");
         }
-        else if (path.contains("glow_") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("switchable_glass") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
+        else if (path.contains("glow_") || path.contains("honey") || path.equals("locked_chest") || path.contains("nostalgia") || path.contains("rose") || path.contains("paeonia") || path.contains("buttercup") || path.contains("pink_daisy") || path.contains("star_") || path.contains("dragon_") || path.contains("poisonous_")) {
             requiredOptions.add("oddities");
+        }
+        else if (path.contains("switchable_glass")) {
+            requiredOptions.add("switchable_glass");
         }
         if (path.contains("wool_stair") || path.contains("wool_slab")) {
             requiredOptions.add("wool_stairs_and_slabs");

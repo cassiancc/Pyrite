@@ -170,6 +170,10 @@ public class ModConfig extends WrappedConfig {
    @Comment("Adds the missing Smooth Stone Stairs.")
    public boolean smooth_stone_stairs = true;
 
+   @DisplayName("Switchable Glass")
+   @Comment("Adds a new glass block that is opaque when powered by Redstone Signal.")
+   public boolean switchable_glass = false;
+
    @DisplayName("Terracotta Bricks")
    @Comment("Enable a block set for Terracotta Bricks.")
    public boolean terracotta_bricks = true;

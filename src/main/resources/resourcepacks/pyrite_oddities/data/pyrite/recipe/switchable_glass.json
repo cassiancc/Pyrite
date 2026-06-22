@@ -1,1 +1,0 @@
-{"type":"minecraft:crafting_shaped","category":"building","pattern":[" R ","RGR"," R "],"key":{"G":"minecraft:tinted_glass","R":"minecraft:redstone"},"result":{"id":"pyrite:switchable_glass","count":2}}

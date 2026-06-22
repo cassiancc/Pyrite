@@ -2392,10 +2392,6 @@
     {
       "id": "pyrite:nostalgia_gravel",
       "required": false
-    },
-    {
-      "id": "pyrite:switchable_glass",
-      "required": false
     }
   ]
 }

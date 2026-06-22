@@ -94,6 +94,15 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK))
 						.save(configuredOutput(List.of("blue_nether_bricks")));
 
+				shaped(RecipeCategory.REDSTONE, getItem("switchable_glass"), 4)
+						.pattern(" X ")
+						.pattern("X#X")
+						.pattern(" X ")
+						.define('#', Items.TINTED_GLASS)
+						.define('X', Items.REDSTONE)
+						.unlockedBy(getItemName(Items.TINTED_GLASS), has(Items.TINTED_GLASS))
+						.save(configuredOutput(List.of("switchable_glass")));
+
 				for (WoodSet woodSet : WOOD_SETS) {
 					List<String> requiredOptions = getRequiredOptions(woodSet.planks().getId());
 					addAll(requiredOptions, getRequiredOptions(Pyrite.of(woodSet.blockID())));
