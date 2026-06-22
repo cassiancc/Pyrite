@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:mycelium_stairs"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "mycelium_turf"

@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:poisonous_terracotta_brick_wall_gate"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "wall_gates",

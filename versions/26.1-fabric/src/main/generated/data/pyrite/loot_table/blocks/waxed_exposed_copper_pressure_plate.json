@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:waxed_exposed_copper_pressure_plate"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "copper"

@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:gray_stained_crafting_table"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "dyed_planks",

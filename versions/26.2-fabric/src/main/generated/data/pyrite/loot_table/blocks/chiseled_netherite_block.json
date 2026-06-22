@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:chiseled_netherite_block"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "netherite"

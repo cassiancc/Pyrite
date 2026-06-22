@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:cobblestone_bricks"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "cobblestone_bricks"

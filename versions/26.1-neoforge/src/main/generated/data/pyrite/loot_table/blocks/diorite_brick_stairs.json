@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:diorite_brick_stairs"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "diorite_bricks"

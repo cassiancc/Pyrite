@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:potted_orange_rose"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "oddities"

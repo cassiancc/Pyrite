@@ -8,8 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -59,7 +61,7 @@ public class PyriteLootTableProvider extends FabricBlockLootSubProvider {
 
 	private BlockLootSubProvider configuredOutput(Identifier id) {
 		List<String> requiredOptions = getRequiredOptions(id);
-		return configuredOutput(requiredOptions);
+		return configuredOutput(requiredOptions).withConditions(ResourceConditions.registryContains(ResourceKey.create(Registries.BLOCK, id)));
 	}
 
 	private BlockLootSubProvider configuredOutput(List<String> requiredOptions, String... additionalOptionsArray) {

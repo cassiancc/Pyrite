@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:purple_wool_stairs"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "wool_stairs_and_slabs"

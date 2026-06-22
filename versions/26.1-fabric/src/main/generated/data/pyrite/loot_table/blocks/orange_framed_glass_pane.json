@@ -1,6 +1,13 @@
 {
   "fabric:load_conditions": [
     {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:orange_framed_glass_pane"
+      ]
+    },
+    {
       "condition": "pyrite:config",
       "options": [
         "framed_glass"
