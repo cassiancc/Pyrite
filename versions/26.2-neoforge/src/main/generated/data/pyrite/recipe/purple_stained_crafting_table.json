@@ -9,7 +9,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "crafting_table",
   "key": {
     "#": "pyrite:purple_stained_planks"

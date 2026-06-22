@@ -14,7 +14,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "chest",
   "key": {
     "#": "pyrite:azalea_planks"

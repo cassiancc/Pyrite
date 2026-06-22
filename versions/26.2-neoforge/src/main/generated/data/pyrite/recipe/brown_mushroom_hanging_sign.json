@@ -8,7 +8,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "hanging_sign",
   "key": {
     "#": "pyrite:brown_mushroom_planks",

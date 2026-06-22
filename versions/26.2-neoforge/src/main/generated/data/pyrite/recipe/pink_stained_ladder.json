@@ -9,7 +9,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "ladder",
   "key": {
     "#": "pyrite:pink_stained_planks",

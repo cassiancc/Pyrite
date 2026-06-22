@@ -15,7 +15,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "chest",
   "key": {
     "#": "pyrite:glow_stained_planks"

@@ -8,7 +8,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "minecraft:stick",
     "W": "pyrite:red_stained_planks"

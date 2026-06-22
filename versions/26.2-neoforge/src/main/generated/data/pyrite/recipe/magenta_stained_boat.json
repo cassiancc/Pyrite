@@ -8,7 +8,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "boat",
   "key": {
     "#": "pyrite:magenta_stained_planks"

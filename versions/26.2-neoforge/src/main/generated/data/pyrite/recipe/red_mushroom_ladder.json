@@ -10,7 +10,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "ladder",
   "key": {
     "#": "pyrite:red_mushroom_planks",

@@ -14,7 +14,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "fd_cabinet",
   "key": {
     "D": "pyrite:light_blue_stained_trapdoor",

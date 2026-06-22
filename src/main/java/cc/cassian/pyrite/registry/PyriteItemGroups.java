@@ -445,6 +445,10 @@ public class PyriteItemGroups {
     }
 
     private static void addAfter(ItemLike anchor, ItemStack itemStack, FabricCreativeModeTabOutput event) {
+        if (anchor.asItem().getDefaultInstance().isEmpty() || itemStack == null) {
+            return;
+        }
+
         //? if neoforge {
         /*event.insertAfter(anchor.asItem().getDefaultInstance(), itemStack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
          *///?} else {

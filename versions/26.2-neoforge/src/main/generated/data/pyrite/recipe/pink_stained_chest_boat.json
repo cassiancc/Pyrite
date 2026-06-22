@@ -8,7 +8,6 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "group": "chest_boat",
   "ingredients": [
     "#c:chests/wooden",

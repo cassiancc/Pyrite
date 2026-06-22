@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_sign",
+  "textures": {
+    "all": "pyrite:block/azalea_sign",
+    "particle": "pyrite:block/azalea_planks"
+  }
+}

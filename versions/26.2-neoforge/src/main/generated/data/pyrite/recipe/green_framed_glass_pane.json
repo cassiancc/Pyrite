@@ -8,7 +8,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "glass_pane",
   "key": {
     "#": "pyrite:green_framed_glass"

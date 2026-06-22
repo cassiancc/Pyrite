@@ -9,7 +9,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "crafting_table",
   "key": {
     "#": "pyrite:light_blue_stained_planks"

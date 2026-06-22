@@ -9,7 +9,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "sign",
   "key": {
     "#": "pyrite:rose_stained_planks",

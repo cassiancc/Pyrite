@@ -197,7 +197,7 @@ val additionalVersions: List<String> = additionalVersionsStr
 
 
 tasks.register<Sync>("syncDatagen") {
-    from(project(":26.1-fabric").tasks.named("runDatagen"))
+    from(project(":${minecraft}-fabric").tasks.named("runDatagen"))
     into(file("src/main/generated/"))
 }
 

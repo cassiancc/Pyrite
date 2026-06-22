@@ -15,7 +15,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "fd_cabinet",
   "key": {
     "D": "pyrite:poisonous_stained_trapdoor",

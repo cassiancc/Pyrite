@@ -10,7 +10,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "ladder",
   "key": {
     "#": "pyrite:honey_stained_planks",

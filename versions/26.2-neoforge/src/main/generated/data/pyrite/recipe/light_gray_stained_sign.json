@@ -8,7 +8,6 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "sign",
   "key": {
     "#": "pyrite:light_gray_stained_planks",
