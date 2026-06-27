@@ -9,8 +9,11 @@ import static cc.cassian.pyrite.Pyrite.MOD_ID;
 
 public class PyriteBlockTags {
     public static final TagKey<Block> CHESTS = tagKey("chests");
+	public static final TagKey<Block> SHEARS_EXTREME_BREAKING_SPEED = tagKey("minecraft","shears_extreme_breaking_speed");
+	public static final TagKey<Block> SHEARS_MAJOR_BREAKING_SPEED = tagKey("minecraft","shears_major_breaking_speed");
+	public static final TagKey<Block> SHEARS_MINOR_BREAKING_SPEED = tagKey("minecraft","shears_minor_breaking_speed");
 
-    public static TagKey<Block> tagKey(String id) {
+	public static TagKey<Block> tagKey(String id) {
         return tagKey(MOD_ID, id);
     }
 

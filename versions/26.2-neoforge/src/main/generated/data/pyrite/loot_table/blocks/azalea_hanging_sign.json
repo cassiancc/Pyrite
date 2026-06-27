@@ -4,7 +4,7 @@
       "condition": "fabric:registry_contains",
       "registry": "minecraft:block",
       "values": [
-        "pyrite:azalea_hanging_sign"
+        "pyrite:azalea_hanging_wall_sign"
       ]
     },
     {

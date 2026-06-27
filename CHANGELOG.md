@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.18.1]
+
+### Added
+- Wall Gates for Cinnabar and Sulfur walls introduced in 26.2.
+- Switchable Glass has been separated from the Oddities and is now easier to use.
+
+### Changed
+- Wall Gates now have a more fitting item model.
+- Removed Aether compatibility, as the Aether is not available on 26.1+.
+
 ## [0.18.0]
 
 ### Added

@@ -4,7 +4,7 @@
       "condition": "fabric:registry_contains",
       "registry": "minecraft:block",
       "values": [
-        "pyrite:light_gray_stained_hanging_sign"
+        "pyrite:light_gray_stained_hanging_wall_sign"
       ]
     },
     {

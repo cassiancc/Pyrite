@@ -125,6 +125,15 @@ repositories {
         }
     }
 
+    maven {
+        name = "Sinytra"
+        url = uri("https://maven.su5ed.dev/releases")
+        content {
+            includeGroupAndSubgroups("org.sinytra")
+        }
+    }
+
+
     flatDir { dirs(file("$rootDir/libs")) }
 }
 
@@ -147,8 +156,12 @@ dependencies {
     compileOnly("maven.modrinth:farmers-delight:${property("deps.fd")}")
 
     compileOnly("maven.local:columns:1.12.0")
-    implementation("maven.local:fabric_resource_conditions_api_v1:6.0.5")
-    jarJar("maven.local:fabric_resource_conditions_api_v1:6.0.5")
+    implementation("org.sinytra.forgified-fabric-api:fabric-resource-conditions-api-v1:6.1.0+9c23ee634c")
+    jarJar("org.sinytra.forgified-fabric-api:fabric-resource-conditions-api-v1:6.1.0+9c23ee634c")
+    implementation("org.sinytra.forgified-fabric-api:fabric-api-base:2.0.3+b11575294c")
+    jarJar("org.sinytra.forgified-fabric-api:fabric-api-base:2.0.3+b11575294c")
+    implementation("org.sinytra:forgified-fabric-loader:2.5.75+0.18.4+26.1")
+    jarJar("org.sinytra:forgified-fabric-loader:2.5.75+0.18.4+26.1")
 }
 
 
