@@ -1,6 +1,7 @@
 package cc.cassian.pyrite;
 
 import cc.cassian.mru.Platform;
+import cc.cassian.mru.util.CommonUtils;
 import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.config.ModConfig;
 import cc.cassian.pyrite.util.ModLists;
@@ -138,10 +139,16 @@ public class Pyrite {
 				// Dyed Concrete Powder
 				createPyriteBlock(dye+"_concrete_powder", "concrete_powder", WHITE_CONCRETE_POWDER.value(), color, blockLux, "concrete_powder");
 			}
+
+			//? if >26.2 {
+			/*ModHelpers.addAlias(dye+"_concrete_slab");
+			ModHelpers.addAlias(dye+"_concrete_stairs");
+			*///?} else {
 			// Dyed Concrete Stairs
 			createPyriteBlock(dye+"_concrete_stairs", "stairs", WHITE_CONCRETE.value(), color, blockLux, "concrete_stairs");
 			// Dyed Concrete Slab
 			createPyriteBlock(dye+"_concrete_slab", "slab", WHITE_WOOL.value(), color, blockLux, "concrete_slab");
+			//?}
 
 			//? if >26.2 {
 			/*ModHelpers.addAlias(dye+"_wool_slab");
@@ -206,12 +213,8 @@ public class Pyrite {
         addAlias("waxed_oxidized_copper_bars");
 	}
 
-    public static Identifier of(String namespace, String path) {
-        return Identifier.fromNamespaceAndPath(namespace, path);
-    }
-
     public static Identifier of(String path) {
-        return of(MOD_ID, path);
+        return CommonUtils.id(MOD_ID, path);
     }
 
 	public static <T extends ItemLike> ItemLikeEntry<T> entryOf(String columnID, T itemlike) {

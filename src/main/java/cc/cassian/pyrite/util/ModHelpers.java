@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.util;
 
 import cc.cassian.mru.Platform;
+import cc.cassian.mru.util.CommonUtils;
 import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.PyritePlatform;
 import cc.cassian.pyrite.Pyrite;
@@ -382,8 +383,8 @@ public class ModHelpers {
     }
 
     public static void addAlias(String id) {
-        BuiltInRegistries.BLOCK.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
-        BuiltInRegistries.ITEM.addAlias(Pyrite.of(id), Pyrite.of("minecraft", id));
+        BuiltInRegistries.BLOCK.addAlias(Pyrite.of(id), CommonUtils.id("minecraft", id));
+        BuiltInRegistries.ITEM.addAlias(Pyrite.of(id), CommonUtils.id("minecraft", id));
     }
 
     @SuppressWarnings("all")

@@ -1,5 +1,6 @@
 package cc.cassian.pyrite.registry;
 
+import cc.cassian.mru.util.CommonUtils;
 import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
@@ -182,7 +183,7 @@ public class PyriteItemGroups {
                     final Block stairs = get(concrete + "_stairs");
                     final Block slab = get(concrete + "_slab");
                     if (!namespace.equals(MOD_ID) || ModHelpers.enabled(stairs.asItem().getDefaultInstance()))
-                        addAfter(ModHelpers.getBlock(Pyrite.of(namespace, concrete)).asItem(), List.of(new ItemStack(stairs), new ItemStack(slab)), event);
+                        addAfter(ModHelpers.getBlock(CommonUtils.id(namespace, concrete)).asItem(), List.of(new ItemStack(stairs), new ItemStack(slab)), event);
                 }
 			} else if (key.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
                 addAfter(Items.WITHER_ROSE, FLOWERS, event);
@@ -428,7 +429,7 @@ public class PyriteItemGroups {
                     }
                 })
                 .build();
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(MOD_ID, id), group);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Pyrite.of(id), group);
     }
 
     //~ if neoforge 'FabricCreativeModeTabOutput' -> 'BuildCreativeModeTabContentsEvent' {
