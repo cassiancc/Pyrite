@@ -28,11 +28,11 @@ public class PyriteLootTableProvider extends FabricBlockLootSubProvider {
 
 	@Override
 	public void generate() {
-		BuiltInRegistries.BLOCK.entrySet().forEach(blockEntry -> {
-			var key = blockEntry.getKey();
+		BuiltInRegistries.BLOCK.entrySet().forEach(ItemLikeEntry -> {
+			var key = ItemLikeEntry.getKey();
 			if (key.identifier().getNamespace().equals(Pyrite.MOD_ID)) {
-				var value = blockEntry.getValue();
-				Identifier id = blockEntry.getKey().identifier();
+				var value = ItemLikeEntry.getValue();
+				Identifier id = ItemLikeEntry.getKey().identifier();
 				String name = id.getPath();
 				try {
 					switch (value.getClass().getSimpleName()) {

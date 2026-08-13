@@ -5,7 +5,7 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.ModCraftingTable;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
-import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.fabric.datagen.PyriteDataGeneratorUtil;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.util.sets.*;
@@ -18,9 +18,9 @@ import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedReso
 //~ if >26.1 'criterion' -> 'triggers' {
 import net.minecraft.advancements.criterion.PlayerTrigger;
 //~}
-//~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
+//~ if >26.1 'cc.cassian.mru.util' -> 'net.minecraft.tags' {
 import net.minecraft.core.registries.BuiltInRegistries;
-import cc.cassian.pyrite.util.BlockItemTagId;
+import cc.cassian.mru.util.BlockItemTagId;
 //~}
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -104,7 +104,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(configuredOutput(List.of("switchable_glass")));
 
 				for (WoodSet woodSet : WOOD_SETS) {
-					List<String> requiredOptions = getRequiredOptions(woodSet.planks().getId());
+					List<String> requiredOptions = getRequiredOptions(woodSet.planks().id());
 					addAll(requiredOptions, getRequiredOptions(Pyrite.of(woodSet.blockID())));
 					boat(woodSet.boat(), woodSet.planks(), requiredOptions);
 					chestBoat(woodSet.chestBoat().value(), woodSet.boat(), requiredOptions);
@@ -201,23 +201,23 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						cut(RecipeCategory.BUILDING_BLOCKS, cutBlock, baseBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, cutBlock, baseBlock, 4, requiredOptions);
 						// cut slab
-						BlockEntry<Block> slab = resourceBlockSet.cutBlocks().slab();
+						ItemLikeEntry<Block> slab = resourceBlockSet.cutBlocks().slab();
 						slab(slab, cutBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slab, cutBlock, 2, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slab, baseBlock, 8, requiredOptions);
 						// cut stairs
-						BlockEntry<Block> stairs = resourceBlockSet.cutBlocks().stairs();
+						ItemLikeEntry<Block> stairs = resourceBlockSet.cutBlocks().stairs();
 						stairs(stairs, cutBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairs, cutBlock, 1, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairs, baseBlock, 4, requiredOptions);
 					}
 					// cut wall
-					BlockEntry<Block> wall = resourceBlockSet.cutBlocks().wall();
+					ItemLikeEntry<Block> wall = resourceBlockSet.cutBlocks().wall();
 					wall(wall, cutBlock, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wall, cutBlock, 1, requiredOptions);
 //					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wall, baseBlock, 4, requiredOptions); FIXME
 					// cut wall gate
-					BlockEntry<Block> wallGate = resourceBlockSet.cutBlocks().wallGate();
+					ItemLikeEntry<Block> wallGate = resourceBlockSet.cutBlocks().wallGate();
 					wallGate(wallGate, cutBlock, wall, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallGate, cutBlock, 1, requiredOptions);
 //					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallGate, baseBlock, 4, requiredOptions); FIXME
@@ -228,23 +228,23 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, smoothBlock, baseBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, smoothBlock, baseBlock, 8, requiredOptions);
 						// smooth slab
-						BlockEntry<Block> slab = resourceBlockSet.smoothBlocks().slab();
+						ItemLikeEntry<Block> slab = resourceBlockSet.smoothBlocks().slab();
 						slab(slab, smoothBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slab, smoothBlock, 2, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slab, baseBlock, 8, requiredOptions);
 						// smooth stairs
-						BlockEntry<Block> stairs = resourceBlockSet.smoothBlocks().stairs();
+						ItemLikeEntry<Block> stairs = resourceBlockSet.smoothBlocks().stairs();
 						stairs(stairs, smoothBlock, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairs, smoothBlock, 1, requiredOptions);
 						stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairs, baseBlock, 4, requiredOptions);
 					}
 					// smooth wall
-					BlockEntry<Block> smoothWall = resourceBlockSet.smoothBlocks().wall();
+					ItemLikeEntry<Block> smoothWall = resourceBlockSet.smoothBlocks().wall();
 					wall(smoothWall, smoothBlock, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, smoothWall, smoothBlock, 1, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, smoothWall, baseBlock, 4, requiredOptions);
 					// smooth wall gate
-					BlockEntry<Block> smoothWallGate = resourceBlockSet.smoothBlocks().wallGate();
+					ItemLikeEntry<Block> smoothWallGate = resourceBlockSet.smoothBlocks().wallGate();
 					wallGate(smoothWallGate, smoothBlock, smoothWall, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, smoothWallGate, smoothBlock, 1, requiredOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, smoothWallGate, baseBlock, 4, requiredOptions);
@@ -300,8 +300,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 
 				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.slab().asItem()).toList(), "wool_slab", RecipeCategory.BUILDING_BLOCKS, List.of("wool_stairs_and_slabs"));
 				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.stairs().asItem()).toList(), "wool_stairs", RecipeCategory.BUILDING_BLOCKS, List.of("wool_stairs_and_slabs"));
-				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.base().orElse(new BlockEntry<>(Blocks.AIR)).asItem()).toList(), "wool", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
-				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.carpet().orElse(new BlockEntry<>(Blocks.AIR)).asItem()).toList(), "wool_carpet", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
+				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.base().orElse(Pyrite.entryOf(Blocks.AIR)).asItem()).toList(), "wool", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
+				colorItemWithDye(WOOL_SETS.stream().map(c->c.dyeTag()).toList(), WOOL_SETS.stream().map(c->c.carpet().orElse(Pyrite.entryOf(Blocks.AIR)).asItem()).toList(), "wool_carpet", RecipeCategory.BUILDING_BLOCKS, List.of("oddities"));
 
 				for (String dye : ModLists.DYES) {
 					var dyeTag = TagKey.create(Registries.ITEM, Pyrite.of("c", "dyes/"+dye));
@@ -388,8 +388,8 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.unlockedBy(getItemName(Items.IRON_INGOT), has(Items.IRON_INGOT))
 						.save(configuredOutput(List.of("lamps")));
 
-				for (BlockEntry<Block> entry : BlockCreator.BLOCKS) {
-					Identifier blockId = entry.getId();
+				for (ItemLikeEntry<Block> entry : BlockCreator.BLOCKS) {
+					Identifier blockId = entry.id();
 					List<String> requiredOptions = getRequiredOptions(blockId);
 					if (entry.value() instanceof ModCraftingTable) {
 						Item planks = getItemOrVanilla(blockId.withPath(p -> p.replace("crafting_table", "planks")));
@@ -407,12 +407,12 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 								.pattern("S S")
 								.unlockedBy(getItemName(planks), has(planks))
 								.save(configuredOutput(ladderOptions));
-					} else if (entry.getId().getPath().contains("_planks")) {
-						if (entry.getId().getPath().contains("azalea")) {
+					} else if (entry.id().getPath().contains("_planks")) {
+						if (entry.id().getPath().contains("azalea")) {
 							planksFromLogs(entry.value(), PyriteBlockItemTags.AZALEA_LOGS.item(), 4, requiredOptions);
-						} else if (entry.getId().getPath().contains("red_mushroom")) {
+						} else if (entry.id().getPath().contains("red_mushroom")) {
 							planksFromLogs(entry.value(), getItem(Pyrite.of("red_mushroom_stem")), 4, requiredOptions);
-						}else if (entry.getId().getPath().contains("brown_mushroom")) {
+						}else if (entry.id().getPath().contains("brown_mushroom")) {
 							planksFromLogs(entry.value(), getItem(Pyrite.of("brown_mushroom_stem")), 4, requiredOptions);
 						} else {
 							Ingredient dye = getDyeTag(blockId.withPath(p -> p.replace("_stained_planks", "")));
@@ -426,7 +426,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 									.unlockedBy("has_base", has(getItem(Identifier.withDefaultNamespace("oak_planks"))))
 									.save(configuredOutput(requiredOptions));
 						}
-					} else if (entry.getId().getPath().contains("_wood")) {
+					} else if (entry.id().getPath().contains("_wood")) {
 						woodFromLogs(entry.value(), getItem(Pyrite.of(entry.getPath().replace("wood", "log"))), requiredOptions);
 					}
 				}
@@ -538,7 +538,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 						.save(withConditions(configuredOutput(requiredOptions), new AllModsLoadedResourceCondition(List.of("lolmcv"))));
 			}
 
-			public void cabinet(final ItemLike result, final ItemLike slab, BlockEntry<Block> trapdoor, List<String> requiredOptions) {
+			public void cabinet(final ItemLike result, final ItemLike slab, ItemLikeEntry<Block> trapdoor, List<String> requiredOptions) {
 				shaped(RecipeCategory.MISC, result, 1)
 						.define('D', trapdoor)
 						.define('_', slab)

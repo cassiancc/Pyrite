@@ -1,13 +1,16 @@
 package cc.cassian.pyrite;
 
+import cc.cassian.mru.Platform;
+import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.config.ModConfig;
-import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.VanillaConstants;
 import cc.cassian.pyrite.util.sets.ColoredSet;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -26,7 +29,7 @@ import static cc.cassian.pyrite.util.VanillaConstants.*;
 public class Pyrite {
 	public static final String MOD_ID = "pyrite";
 	public static final Logger LOGGER = LogManager.getLogger("Pyrite");
-	public static final ModConfig CONFIG = ModConfig.createToml(Platform.INSTANCE.getConfigDir(), "", MOD_ID, ModConfig.class);
+	public static final ModConfig CONFIG = ModConfig.createToml(Platform.INSTANCE.configPath(), "", MOD_ID, ModConfig.class);
 
 	public static void init() {
 		ModLists.populateLinkedHashMaps();
@@ -65,13 +68,13 @@ public class Pyrite {
 		// Nether Brick Fence Gate
 		createPyriteBlock("nether_brick_fence_gate","fence_gate", Blocks.NETHER_BRICK_FENCE, "building_blocks");
 		// Resource Blocks
-		for (BlockEntry<?> resourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
+		for (ItemLikeEntry<?> resourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
 			String block = resourceBlock.getPath();
 			//If the block provided isn't a wall block, add the wall tag.
 			if (block.contains("block")) {
 				block = block.substring(0, block.indexOf("_block"));
 			}
-			createResourceBlockSet(block, resourceBlock.get());
+			createResourceBlockSet(block, (Block) resourceBlock.get());
 		}
 		// Torch Levers
 		createTorchLever("torch_lever", Blocks.TORCH, ParticleTypes.FLAME);
@@ -121,8 +124,8 @@ public class Pyrite {
 			int blockLux = checkDyeLux(dye);
 			MapColor color = checkDyeMapColour(dye);
 			final boolean VANILLA_DYE = Arrays.asList(VANILLA_DYES).contains(dye);
-			BlockEntry<Block> wool = null;
-			BlockEntry<Block> carpet = null;
+			ItemLikeEntry<Block> wool = null;
+			ItemLikeEntry<Block> carpet = null;
 			if (!VANILLA_DYE) {
 				// Dye items.
 				registerPyriteItem(dye + "_dye");
@@ -210,4 +213,12 @@ public class Pyrite {
     public static Identifier of(String path) {
         return of(MOD_ID, path);
     }
+
+	public static <T extends ItemLike> ItemLikeEntry<T> entryOf(String columnID, T itemlike) {
+		return new ItemLikeEntry<>(Pyrite.of(columnID), itemlike);
+	}
+
+	public static ItemLikeEntry<Block> entryOf(Block vanillaBlock) {
+		return new ItemLikeEntry<>(BuiltInRegistries.BLOCK.getKey(vanillaBlock), vanillaBlock);
+	}
 }

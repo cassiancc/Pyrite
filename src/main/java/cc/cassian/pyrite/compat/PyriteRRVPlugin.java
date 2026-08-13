@@ -8,10 +8,10 @@ import net.minecraft.resources.Identifier;
 
 public class PyriteRRVPlugin {
     public static void hideStacks() {
-        BuiltInRegistries.ITEM.entrySet().forEach(((itemEntry) -> {
-            Identifier itemId = itemEntry.getKey().identifier();
+        BuiltInRegistries.ITEM.entrySet().forEach(((ItemLikeEntry) -> {
+            Identifier itemId = ItemLikeEntry.getKey().identifier();
             if (itemId.getNamespace().equals(Pyrite.MOD_ID) && !ModHelpers.enabled(itemId))
-                ItemView.excludeItem(itemEntry.getValue());
+                ItemView.excludeItem(ItemLikeEntry.getValue());
         }));
     }
 }

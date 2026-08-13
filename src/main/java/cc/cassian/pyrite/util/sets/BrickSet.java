@@ -1,7 +1,7 @@
 package cc.cassian.pyrite.util.sets;
 
-import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import net.minecraft.world.level.block.Block;
 
-public record BrickSet(String blockID, BlockEntry<Block> base, BlockEntry<Block> stairs, BlockEntry<Block> slab, BlockEntry<Block> wall, BlockEntry<Block> wallGate) {
+public record BrickSet(String blockID, ItemLikeEntry<Block> base, ItemLikeEntry<Block> stairs, ItemLikeEntry<Block> slab, ItemLikeEntry<Block> wall, ItemLikeEntry<Block> wallGate) {
 }

@@ -2,7 +2,8 @@ package cc.cassian.pyrite.fabric;
 
 //? fabric {
 
-import cc.cassian.pyrite.Platform;
+import cc.cassian.mru.Platform;
+import cc.cassian.pyrite.PyritePlatform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.condition.PyriteResourceConditions;
@@ -63,7 +64,7 @@ public class PyriteFabric implements ModInitializer {
         });
 
         CommonLifecycleEvents.TAGS_LOADED.register(((registryAccess, bl) -> {
-            if (Platform.INSTANCE.isModLoaded("rrv")) {
+            if (Platform.INSTANCE.isLoaded("rrv")) {
                 PyriteRRVPlugin.hideStacks();
             }
         }));

@@ -1,6 +1,7 @@
 package cc.cassian.pyrite.fabric.datagen;
 
-import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.sets.ResourceBlockSet;
 import cc.cassian.pyrite.util.sets.ResourceBlockSubSet;
@@ -36,29 +37,29 @@ public class PyriteDataGeneratorUtil {
 		return new ResourceBlockSubSet(getWaxed(resourceBlockSubSet.block()), getWaxed(resourceBlockSubSet.stairs()), getWaxed(resourceBlockSubSet.slab()), getWaxed(resourceBlockSubSet.wall()), getWaxed(resourceBlockSubSet.wallGate()));
 	}
 
-	public static BlockEntry<Block> getWaxed(BlockEntry<Block> block) {
+	public static ItemLikeEntry<Block> getWaxed(ItemLikeEntry<Block> block) {
 		if (block.getPath().contains("copper") && !block.getPath().contains("waxed")) {
 			Optional<BlockState> waxed = HoneycombItem.getWaxed(block.defaultBlockState());
 			if (waxed.isPresent())
-				return new BlockEntry<>(waxed.get().getBlock());
-			Identifier waxedId = block.getId().withPrefix("waxed_");
-			return new BlockEntry<>(waxedId, BuiltInRegistries.BLOCK.getValue(waxedId));
+				return Pyrite.entryOf(waxed.get().getBlock());
+			Identifier waxedId = block.id().withPrefix("waxed_");
+			return new ItemLikeEntry<>(waxedId, BuiltInRegistries.BLOCK.getValue(waxedId));
 		} else {
 			return block;
 		}
 	}
 
 	public static Block getWaxed(Block block) {
-		return getWaxed(new BlockEntry<>(block)).value();
+		return getWaxed(Pyrite.entryOf(block)).value();
 	}
 
-	public static BlockEntry<Block> getBlockOrVanilla(Identifier id) {
+	public static ItemLikeEntry<Block> getBlockOrVanilla(Identifier id) {
 		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, id);
 		if (BuiltInRegistries.BLOCK.get(key).isPresent()) {
-			return new BlockEntry<>(id, BuiltInRegistries.BLOCK.getOrThrow(key).value());
+			return new ItemLikeEntry<>(id, BuiltInRegistries.BLOCK.getOrThrow(key).value());
 		} else {
 			Identifier location = Identifier.withDefaultNamespace(id.getPath());
-			return new BlockEntry<>(location, BuiltInRegistries.BLOCK.getOrThrow(ResourceKey.create(Registries.BLOCK, location)).value());
+			return new ItemLikeEntry<>(location, BuiltInRegistries.BLOCK.getOrThrow(ResourceKey.create(Registries.BLOCK, location)).value());
 		}
 	}
 }

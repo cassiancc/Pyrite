@@ -1,9 +1,10 @@
 package cc.cassian.pyrite.util;
 
-import cc.cassian.pyrite.Platform;
+import cc.cassian.mru.Platform;
+import cc.cassian.mru.util.ItemLikeEntry;
+import cc.cassian.pyrite.PyritePlatform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
-import cc.cassian.pyrite.entries.BlockEntry;
 import com.google.common.collect.LinkedHashMultimap;
 import folk.sisby.kaleido.lib.quiltconfig.api.values.TrackedValue;
 import net.minecraft.core.BlockPos;
@@ -170,7 +171,7 @@ public class ModHelpers {
                 requiredOptions.add(path.split("_")[0] + "_turf");
             }
         }
-        for (BlockEntry<?> vanillaResourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
+        for (ItemLikeEntry<?> vanillaResourceBlock : VanillaConstants.RESOURCE_BLOCKS) {
             var resourceBlockPath = vanillaResourceBlock.getPath().replace("_block", "").replace("weathered_", "").replace("oxidized_", "").replace("exposed_", "");
 			if (path.contains(resourceBlockPath) && !requiredOptions.contains(resourceBlockPath))
 		        requiredOptions.add(resourceBlockPath);
@@ -200,8 +201,8 @@ public class ModHelpers {
         return enabled(BuiltInRegistries.ITEM.getKey(stack.getItem()));
     }
 
-    public static boolean enabled(BlockEntry<?> stack) {
-        return enabled(stack.getId());
+    public static boolean enabled(ItemLikeEntry<?> stack) {
+        return enabled(stack.id());
     }
 
     public static BlockBehaviour.Properties copyBlock(Block copyBlock) {
@@ -244,21 +245,21 @@ public class ModHelpers {
         return getBlock(of(id));
     }
 
-    public static BlockEntry<Block> getBlockEntry(String id) {
-        return getBlockEntry(of(id));
+    public static ItemLikeEntry<Block> getItemLikeEntry(String id) {
+        return getItemLikeEntry(of(id));
     }
 
-    public static BlockEntry<Block> getBlockEntry(Identifier id) {
-        return new BlockEntry<>(id, getBlock(id));
+    public static ItemLikeEntry<Block> getItemLikeEntry(Identifier id) {
+        return new ItemLikeEntry<>(id, getBlock(id));
     }
 
-    public static BlockEntry<Block> getBlockOrVanilla(String id) {
+    public static ItemLikeEntry<Block> getBlockOrVanilla(String id) {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Pyrite.of(id));
         if (BuiltInRegistries.BLOCK.get(key).isPresent()) {
-            return new BlockEntry<>(id, BuiltInRegistries.BLOCK.getValue(key));
+            return Pyrite.entryOf(id, BuiltInRegistries.BLOCK.getValue(key));
         } else {
             Identifier location = Identifier.withDefaultNamespace(id);
-            return new BlockEntry<>(location, BuiltInRegistries.BLOCK.getValue(ResourceKey.create(Registries.BLOCK, location)));
+            return new ItemLikeEntry<>(location, BuiltInRegistries.BLOCK.getValue(ResourceKey.create(Registries.BLOCK, location)));
         }
     }
 
@@ -348,7 +349,7 @@ public class ModHelpers {
     }
 
     public static void log(String log) {
-        if (Platform.INSTANCE.isDevEnvironment())
+        if (Platform.INSTANCE.isDeveloperEnvironment())
             LOGGER.info(log);
     }
 
@@ -395,6 +396,6 @@ public class ModHelpers {
     }
 
 	public static boolean generateChests() {
-		return Platform.INSTANCE.isModLoaded("lolmcv") || Platform.INSTANCE.isDevEnvironment();
+		return Platform.INSTANCE.isLoaded("lolmcv") || Platform.INSTANCE.isDeveloperEnvironment();
 	}
 }

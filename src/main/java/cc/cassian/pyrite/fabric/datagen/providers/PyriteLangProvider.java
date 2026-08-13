@@ -3,9 +3,7 @@ package cc.cassian.pyrite.fabric.datagen.providers;
 
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.entity.ModEntities;
-import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.entries.ItemEntry;
-import cc.cassian.pyrite.entries.PyriteEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.ModHelpers;
@@ -64,13 +62,13 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         for (ResourceBlockSet set : RESOURCE_BLOCK_SETS) {
             var id = ModHelpers.findVanillaBlockID(set.block());
             if (id.contains("copper")) {
-                Identifier waxedButton = set.button().getId().withPrefix("waxed_");
+                Identifier waxedButton = set.button().id().withPrefix("waxed_");
                 lang.add(waxedButton.toLanguageKey("block"), name(waxedButton.getPath()));
-                Identifier waxedPressurePlate = set.pressurePlate().getId().withPrefix("waxed_");
+                Identifier waxedPressurePlate = set.pressurePlate().id().withPrefix("waxed_");
                 lang.add(waxedPressurePlate.toLanguageKey("block"), name(waxedPressurePlate.getPath()));
             }
         }
-        for (BlockEntry<Block> entry : PyriteItemGroups.TORCH_LEVER) {
+        for (ItemLikeEntry<Block> entry : PyriteItemGroups.TORCH_LEVER) {
             if (entry.getPath().contains("copper")) {
                 add(lang, entry);
             }
@@ -80,7 +78,7 @@ public class PyriteLangProvider extends FabricLanguageProvider {
             Identifier wallId = wall.properties().blockId().identifier();
             Identifier id = Pyrite.of(wallId.getPath() + "_gate");
             Item wallGate = getItem(id);
-            add(lang, new ItemEntry<>(id, wallGate));
+            add(lang, new ItemLikeEntry<>(id, wallGate));
         }
     }
 
@@ -88,7 +86,7 @@ public class PyriteLangProvider extends FabricLanguageProvider {
         return BuiltInRegistries.ITEM.getOrThrow(ResourceKey.create(Registries.ITEM, id)).value();
     }
 
-    private void add(TranslationBuilder lang, PyriteEntry entry) {
+    private void add(TranslationBuilder lang, ItemLikeEntry entry) {
         lang.add(entry.asItem(), name(entry.getPath()));
 	}
 

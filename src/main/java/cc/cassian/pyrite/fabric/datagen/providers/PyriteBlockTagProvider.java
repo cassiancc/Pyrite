@@ -1,12 +1,13 @@
 //? fabric {
 package cc.cassian.pyrite.fabric.datagen.providers;
 
+import cc.cassian.mru.fabric.datagen.MultiversionedBlockTagsProvider;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.core.PyriteBlockTags;
-import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.entries.ItemEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
+
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 import cc.cassian.pyrite.util.sets.ColoredSet;
@@ -22,8 +23,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-//~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import cc.cassian.pyrite.util.BlockItemTagId;
+//~ if >26.1 'cc.cassian.mru.util' -> 'net.minecraft.tags' {
+import cc.cassian.mru.util.BlockItemTagId;
 //~}
 //? if >26.1 {
 /*import net.minecraft.tags.BlockItemTags;
@@ -38,7 +39,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("all")
-public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
+public class PyriteBlockTagProvider extends MultiversionedBlockTagsProvider {
 	public PyriteBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
 		super(output, registryLookupFuture);
 	}
@@ -130,15 +131,15 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		optionalBuilder(ConventionalBlockTags.YELLOW_DYED, "yellow_");
 
 		// minecraft tags
-		builder(BlockTags.BEACON_BASE_BLOCKS).addAll(BlockCreator.BLOCKS.stream().filter(blockEntry -> {
-			var b = blockEntry.getValue().getClass().equals(ModBlock.class) || blockEntry.getValue().getClass().equals(ModPillar.class);
+		builder(BlockTags.BEACON_BASE_BLOCKS).addAll(BlockCreator.BLOCKS.stream().filter(ItemLikeEntry -> {
+			var b = ItemLikeEntry.get().getClass().equals(ModBlock.class) || ItemLikeEntry.get().getClass().equals(ModPillar.class);
 			if (!b) return false;
-			var key = blockEntry.getPath();
+			var key = ItemLikeEntry.getPath();
 			if (key.contains("diamond") || key.contains("emerald") || key.contains("iron") || key.contains("gold") || key.contains("netherite")) {
 				return true;
 			}
 			return false;
-		}).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)));
+		}).map(ItemLikeEntry::blockKey).sorted(Comparator.comparing(ResourceKey::identifier)));
 		builder(BlockTags.CEILING_HANGING_SIGNS).addAll(get(PyriteItemGroups.SIGNS).stream().filter(key->contains(key, "hanging_sign")));
 		builder(BlockTags.CLIMBABLE).addTag(PyriteBlockItemTags.LADDERS.block());
 		builder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).addTag(PyriteBlockItemTags.CARPET.block());
@@ -167,17 +168,17 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(BlockTags.WALLS).addAll(get(ModWall.class));
 
 		for (WoodSet woodSet : BlockCreator.WOOD_SETS) {
-			builder(BlockTags.FENCE_GATES).add(woodSet.fenceGate().resourceKey());
-			builder(BlockTags.SIGNS).add(woodSet.sign().resourceKey());
+			tagBuilder(BlockTags.FENCE_GATES).add(woodSet.fenceGate());
+			tagBuilder(BlockTags.SIGNS).add(woodSet.sign());
 			add(PyriteBlockItemTags.PLANKS, woodSet.planks());
-			builder(BlockTags.WOODEN_BUTTONS).add(woodSet.button().resourceKey());
-			builder(BlockTags.WOODEN_DOORS).add(woodSet.door().resourceKey());
-			builder(BlockTags.WOODEN_FENCES).add(woodSet.fence().resourceKey());
-			builder(BlockTags.WOODEN_PRESSURE_PLATES).add(woodSet.pressurePlate().resourceKey());
-			builder(BlockTags.WOODEN_SLABS).add(woodSet.slab().resourceKey());
-			builder(BlockTags.WOODEN_STAIRS).add(woodSet.stairs().resourceKey());
-			builder(BlockTags.WOODEN_SHELVES).add(woodSet.shelf().resourceKey());
-			builder(BlockTags.WOODEN_TRAPDOORS).add(woodSet.trapdoor().resourceKey());
+			tagBuilder(BlockTags.WOODEN_BUTTONS).add(woodSet.button());
+			tagBuilder(BlockTags.WOODEN_DOORS).add(woodSet.door());
+			tagBuilder(BlockTags.WOODEN_FENCES).add(woodSet.fence());
+			tagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(woodSet.pressurePlate());
+			tagBuilder(BlockTags.WOODEN_SLABS).add(woodSet.slab());
+			tagBuilder(BlockTags.WOODEN_STAIRS).add(woodSet.stairs());
+			tagBuilder(BlockTags.WOODEN_SHELVES).add(woodSet.shelf());
+			tagBuilder(BlockTags.WOODEN_TRAPDOORS).add(woodSet.trapdoor());
 		}
 
 		for (ResourceBlockSet resourceBlockSet : BlockCreator.RESOURCE_BLOCK_SETS) {
@@ -199,8 +200,8 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(BlockTags.STAIRS).addAll(get(WeatheringCopperStairBlock.class));
 
 		for (ColoredSet woolSet : BlockCreator.WOOL_SETS) {
-			builder(BlockTags.DAMPENS_VIBRATIONS).add(woolSet.slab().resourceKey()).add(woolSet.stairs().resourceKey());
-			builder(PyriteBlockTags.SHEARS_MAJOR_BREAKING_SPEED).add(woolSet.slab().resourceKey()).add(woolSet.stairs().resourceKey());
+			tagBuilder(BlockTags.DAMPENS_VIBRATIONS).add(woolSet.slab()).add(woolSet.stairs());
+			tagBuilder(PyriteBlockTags.SHEARS_MAJOR_BREAKING_SPEED).add(woolSet.slab()).add(woolSet.stairs());
 		}
 
 		// fd tags
@@ -211,15 +212,15 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 		builder(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("quad", "cats_on_blocks/sit"))).addTag(PyriteBlockItemTags.CHESTS.block());
 	}
 
-	private void add(TagKey<Block> woodenDoors, BlockEntry<Block>... blocks) {
-		for (BlockEntry<Block> block : blocks) {
+	private void add(TagKey<Block> woodenDoors, ItemLikeEntry<Block>... blocks) {
+		for (ItemLikeEntry<Block> block : blocks) {
 			if (block != null && !block.isVanilla()) {
-				builder(woodenDoors).add(block.resourceKey());
+				tagBuilder(woodenDoors).add(block);
 			}
 		}
 	}
 
-	private void add(BlockItemTagId woodenDoors, BlockEntry<Block>... blocks) {
+	private void add(BlockItemTagId woodenDoors, ItemLikeEntry<Block>... blocks) {
 		add(woodenDoors.block(), blocks);
 	}
 
@@ -227,7 +228,7 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
         return key.identifier().toString().contains(hangingSign);
     }
 
-	private List<ResourceKey<Block>> get(ArrayList<ItemEntry<Item>> signs) {
+	private List<ResourceKey<Block>> get(ArrayList<ItemLikeEntry<Item>> signs) {
         List<ResourceKey<Block>> blocks = new ArrayList<>();
 		signs.forEach(sign -> {
 			if (sign.get() instanceof BlockItem blockItem) {
@@ -274,11 +275,11 @@ public class PyriteBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
 
 
 	private List<ResourceKey<Block>> get(String id) {
-		return BlockCreator.BLOCKS.stream().filter(stringItemEntry -> stringItemEntry.getPath().contains(id)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(stringItemLikeEntry -> stringItemLikeEntry.getPath().contains(id)).map(ItemLikeEntry::blockKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private List<ResourceKey<Block>> get(Class<? extends Block> block) {
-		return BlockCreator.BLOCKS.stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(BlockEntry::resourceKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.BLOCKS.stream().filter(ItemLikeEntry -> ItemLikeEntry.get().getClass().equals(block)).map(ItemLikeEntry::blockKey).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private static ResourceKey<Block> of(Map.Entry<String, Block> e) {

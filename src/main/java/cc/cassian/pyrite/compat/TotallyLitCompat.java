@@ -2,8 +2,9 @@ package cc.cassian.pyrite.compat;
 
 //? if fabric {
 
+import cc.cassian.mru.util.ItemLikeEntry;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.ModWallMounted;
-import cc.cassian.pyrite.entries.BlockEntry;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
 //? <26
@@ -19,7 +20,7 @@ public class TotallyLitCompat {
 
     public static void registerTorch(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         var block = new ModWallMounted(blockSettings.lightLevel((state)->0));
-        BlockEntry<ModWallMounted> entry = new BlockEntry<>(blockID, block);
+        ItemLikeEntry<ModWallMounted> entry = Pyrite.entryOf(blockID, block);
         BlockCreator.putBlock(entry);
         add(block);
         PyriteItemGroups.match(entry, copyBlock, group);

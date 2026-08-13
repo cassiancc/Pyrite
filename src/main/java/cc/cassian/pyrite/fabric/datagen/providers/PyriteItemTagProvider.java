@@ -1,6 +1,7 @@
 //? fabric {
 package cc.cassian.pyrite.fabric.datagen.providers;
 
+import cc.cassian.mru.fabric.datagen.MultiversionedItemTagsProvider;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteBlockItemTags;
 import cc.cassian.pyrite.core.PyriteItemTags;
@@ -16,8 +17,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-//~ if >26.1 'cc.cassian.pyrite.util' -> 'net.minecraft.tags' {
-import cc.cassian.pyrite.util.BlockItemTagId;
+//~ if >26.1 'cc.cassian.mru.util' -> 'net.minecraft.tags' {
+import cc.cassian.mru.util.BlockItemTagId;
 //~}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -32,7 +33,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("all")
-public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
+public class PyriteItemTagProvider extends MultiversionedItemTagsProvider {
 
 
 	public PyriteItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture, @Nullable BlockTagsProvider blockTagsProvider) {
@@ -173,11 +174,11 @@ public class PyriteItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 	//~}
 
 	private List<ResourceKey<Item>> get(String id) {
-		return BlockCreator.ITEMS.entrySet().stream().filter(stringItemEntry -> stringItemEntry.getKey().contains(id)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.ITEMS.entrySet().stream().filter(stringItemLikeEntry -> stringItemLikeEntry.getKey().contains(id)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private List<ResourceKey<Item>> get(Class<? extends Item> block) {
-		return BlockCreator.ITEMS.entrySet().stream().filter(blockEntry -> blockEntry.getValue().getClass().equals(block)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
+		return BlockCreator.ITEMS.entrySet().stream().filter(ItemLikeEntry -> ItemLikeEntry.getValue().getClass().equals(block)).map(PyriteItemTagProvider::of).sorted(Comparator.comparing(ResourceKey::identifier)).toList();
 	}
 
 	private static ResourceKey<Item> of(Map.Entry<String, Item> e) {

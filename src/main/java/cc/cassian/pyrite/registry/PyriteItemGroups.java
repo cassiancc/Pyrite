@@ -1,10 +1,8 @@
 package cc.cassian.pyrite.registry;
 
-import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.entries.ItemEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.core.PyriteItemTags;
-import cc.cassian.pyrite.entries.PyriteEntry;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.VanillaConstants;
@@ -34,73 +32,73 @@ import static cc.cassian.pyrite.Pyrite.MOD_ID;
 import static cc.cassian.pyrite.util.ModLists.VANILLA_DYES;
 
 public class PyriteItemGroups {
-    public static final ArrayList<BlockEntry<Block>> REDSTONE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<ItemEntry<Item>> SIGNS = new ArrayList<>();
-    public static final ArrayList<ItemEntry<Item>> BOATS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> CRAFTING_TABLES = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> FLOWERS = new ArrayList<>();
-    public static final LinkedHashMap<String, BlockEntry<FlowerPotBlock>> POTTED_FLOWERS = new LinkedHashMap<>();
-    public static final ArrayList<ItemEntry<Item>> DYES = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> IRON_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> GOLD_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> EMERALD_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> LAPIS_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> REDSTONE_RESOURCE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> DIAMOND_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> NETHERITE_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> QUARTZ_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> AMETHYST_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> EXPOSED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WEATHERED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> OXIDIZED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WAXED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WAXED_EXPOSED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WAXED_WEATHERED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WAXED_OXIDIZED_COPPER_BLOCKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> COLOURED_NETHER_BRICKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> COBBLESTONE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> SMOOTH_STONE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> ANDESITE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> GRANITE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> DIORITE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> CALCITE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> TUFF = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> DEEPSLATE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> COBBLED_DEEPSLATE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> SANDSTONE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> RED_SANDSTONE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> STAINED_GLASS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> STAINED_GLASS_PANES = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> FRAMED_GLASS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> FRAMED_GLASS_PANES = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> CONCRETE = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> CONCRETE_POWDER = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WOOL = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> CARPET = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> TERRACOTTA = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> TERRACOTTA_BRICKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> TORCH = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> TORCH_LEVER = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> GRASS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> NOSTALGIA_GRASS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> GRAVEL = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> PODZOL = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> MYCELIUM = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> DIRT_PATH = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> LAMPS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> OBSIDIAN = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> DYED_BRICKS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> DYED_WOOD = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WOOD = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> RED_MUSHROOM = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> BROWN_MUSHROOM = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WOOL_STAIRS = new ArrayList<>();
-    public static final ArrayList<BlockEntry<Block>> WOOL_SLAB = new ArrayList<>();
-    public static final LinkedHashMap<Block, BlockEntry<Block>> FUNCTIONAL = new LinkedHashMap<>();
-    public static final LinkedHashMap<Block, BlockEntry<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<Block, BlockEntry<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<Block, BlockEntry<Block>> NATURAL = new LinkedHashMap<>();
+    public static final ArrayList<ItemLikeEntry<Block>> REDSTONE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Item>> SIGNS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Item>> BOATS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> CRAFTING_TABLES = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> FLOWERS = new ArrayList<>();
+    public static final LinkedHashMap<String, ItemLikeEntry<FlowerPotBlock>> POTTED_FLOWERS = new LinkedHashMap<>();
+    public static final ArrayList<ItemLikeEntry<Item>> DYES = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> IRON_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> GOLD_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> EMERALD_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> LAPIS_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> REDSTONE_RESOURCE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> DIAMOND_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> NETHERITE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> QUARTZ_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> AMETHYST_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> EXPOSED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WEATHERED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> OXIDIZED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WAXED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WAXED_EXPOSED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WAXED_WEATHERED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WAXED_OXIDIZED_COPPER_BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> COLOURED_NETHER_BRICKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> COBBLESTONE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> SMOOTH_STONE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> ANDESITE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> GRANITE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> DIORITE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> CALCITE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> TUFF = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> DEEPSLATE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> COBBLED_DEEPSLATE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> SANDSTONE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> RED_SANDSTONE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> STAINED_GLASS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> STAINED_GLASS_PANES = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> FRAMED_GLASS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> FRAMED_GLASS_PANES = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> CONCRETE = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> CONCRETE_POWDER = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WOOL = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> CARPET = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> TERRACOTTA = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> TERRACOTTA_BRICKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> TORCH = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> TORCH_LEVER = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> GRASS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> NOSTALGIA_GRASS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> GRAVEL = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> PODZOL = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> MYCELIUM = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> DIRT_PATH = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> LAMPS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> OBSIDIAN = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> DYED_BRICKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> DYED_WOOD = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WOOD = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> RED_MUSHROOM = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> BROWN_MUSHROOM = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WOOL_STAIRS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> WOOL_SLAB = new ArrayList<>();
+    public static final LinkedHashMap<Block, ItemLikeEntry<Block>> FUNCTIONAL = new LinkedHashMap<>();
+    public static final LinkedHashMap<Block, ItemLikeEntry<Block>> BUILDING_BLOCKS = new LinkedHashMap<>();
+    public static final LinkedHashMap<Block, ItemLikeEntry<Block>> COLORED_BLOCKS = new LinkedHashMap<>();
+    public static final LinkedHashMap<Block, ItemLikeEntry<Block>> NATURAL = new LinkedHashMap<>();
     private static Block get(String id) {
         return BuiltInRegistries.BLOCK.getValue(Pyrite.of(id));
     };
@@ -214,12 +212,12 @@ public class PyriteItemGroups {
         }
     }
 
-    public static <T extends Block> void match(BlockEntry<T> entry, Block copyBlock, ArrayList<BlockEntry<Block>> group) {
-        group.add((BlockEntry<Block>) entry);
+    public static <T extends Block> void match(ItemLikeEntry<T> entry, Block copyBlock, ArrayList<ItemLikeEntry<Block>> group) {
+        group.add((ItemLikeEntry<Block>) entry);
     }
 
-    public static <T extends Block> void match(BlockEntry<T> entry, Block copyBlock, String group) {
-        var newBlock = (BlockEntry<Block>) entry;
+    public static <T extends Block> void match(ItemLikeEntry<T> entry, Block copyBlock, String group) {
+        var newBlock = (ItemLikeEntry<Block>) entry;
         if (newBlock.getPath().equals("glowstone_lamp"))
             LAMPS.add(newBlock);
         switch (group) {
@@ -417,14 +415,14 @@ public class PyriteItemGroups {
         }
     }
 
-    public static void addItemGroup(String id, String icon, ArrayList<BlockEntry<Block>> blocks) {
+    public static void addItemGroup(String id, String icon, ArrayList<ItemLikeEntry<Block>> blocks) {
         //~ if neoforge 'FabricCreativeModeTab' -> 'CreativeModeTab' {
         var group = FabricCreativeModeTab.builder()
         //~}
                 .icon(() -> new ItemStack(BuiltInRegistries.ITEM.getValue(Pyrite.of(icon))))
                 .title(Component.translatable("itemGroup.pyrite." + id))
                 .displayItems((context, entries) -> {
-                    for (BlockEntry<?> block : blocks) {
+                    for (ItemLikeEntry<?> block : blocks) {
                         if (ModHelpers.enabled(block))
                             entries.accept(block.get());
                     }
@@ -434,7 +432,7 @@ public class PyriteItemGroups {
     }
 
     //~ if neoforge 'FabricCreativeModeTabOutput' -> 'BuildCreativeModeTabContentsEvent' {
-    private static void addAfter(ItemLike anchor, ArrayList<? extends PyriteEntry> blockCollectionList, FabricCreativeModeTabOutput event) {
+    private static void addAfter(ItemLike anchor, ArrayList<? extends ItemLikeEntry> blockCollectionList, FabricCreativeModeTabOutput event) {
         addAfter(anchor, getBlockCollectionList(blockCollectionList), event);
     }
 
@@ -482,8 +480,8 @@ public class PyriteItemGroups {
          *///?}
     }
 
-    public static void addMapToItemGroup(FabricCreativeModeTabOutput event, LinkedHashMap<Block, BlockEntry<Block>> map) {
-        for (Map.Entry<Block, BlockEntry<Block>> entry : map.entrySet()) {
+    public static void addMapToItemGroup(FabricCreativeModeTabOutput event, LinkedHashMap<Block, ItemLikeEntry<Block>> map) {
+        for (Map.Entry<Block, ItemLikeEntry<Block>> entry : map.entrySet()) {
             Block anchor = entry.getKey();
             Block value = entry.getValue().get();
             if (ModHelpers.enabled(value.asItem().getDefaultInstance())) {
@@ -496,9 +494,9 @@ public class PyriteItemGroups {
     }
     //~}
 
-    public static Collection<ItemStack> getBlockCollectionList(Collection<? extends PyriteEntry> items) {
+    public static Collection<ItemStack> getBlockCollectionList(Collection<? extends ItemLikeEntry> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
-        for (PyriteEntry block : items) {
+        for (ItemLikeEntry block : items) {
             var stack = block.asItem().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && ModHelpers.enabled(stack)) {
                 stacks.add(stack);
@@ -507,9 +505,9 @@ public class PyriteItemGroups {
         return stacks;
     }
 
-    public static Collection<ItemStack> getItemCollectionList(ArrayList<ItemEntry<Item>> items) {
+    public static Collection<ItemStack> getItemCollectionList(ArrayList<ItemLikeEntry<Item>> items) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
-        for (ItemEntry<Item> item : items) {
+        for (ItemLikeEntry<Item> item : items) {
             var stack = item.get().getDefaultInstance();
             if (!stack.is(PyriteItemTags.HIDDEN_FROM_RECIPE_VIEWERS) && ModHelpers.enabled(stack)) {
                 stacks.add(stack);

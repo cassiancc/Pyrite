@@ -2,8 +2,9 @@ package cc.cassian.pyrite.compat;
 
 //? if fabric {
 
-import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.Platform;
+import cc.cassian.mru.util.ItemLikeEntry;
+import cc.cassian.pyrite.PyritePlatform;
+import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.OxidizableColumnBlock;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -15,19 +16,19 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 public class ColumnsCompat {
     public static void registerCopperColumn(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         String columnID = blockID.replace("wall", "column");
-        BlockEntry<OxidizableColumnBlock> column = new BlockEntry<>(columnID, new OxidizableColumnBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
+        ItemLikeEntry<OxidizableColumnBlock> column = Pyrite.entryOf(columnID, new OxidizableColumnBlock(ModHelpers.getOxidizationState(blockID), blockSettings));
         BlockCreator.putBlock(column);
-        BlockEntry<Block> waxedColumn = new BlockEntry<>("waxed_"+columnID, new ColumnBlock(blockSettings));
+        ItemLikeEntry<Block> waxedColumn = Pyrite.entryOf("waxed_"+columnID, new ColumnBlock(blockSettings));
         BlockCreator.putBlock(waxedColumn);
         PyriteItemGroups.match(column, copyBlock, group);
         PyriteItemGroups.match(waxedColumn, copyBlock, "waxed_"+group);
-        Platform.INSTANCE.registerWaxableBlockPair(column, waxedColumn);
+        PyritePlatform.INSTANCE.registerWaxableBlockPair(column, waxedColumn);
     }
 
     public static void registerColumn(String blockID, BlockBehaviour.Properties blockSettings, String group, Block copyBlock) {
         String columnID = blockID.replace("wall", "column");
         Block column = new ColumnBlock(blockSettings);
-        BlockEntry<Block> entry = new BlockEntry<>(columnID, column);
+        ItemLikeEntry<Block> entry = Pyrite.entryOf(columnID, column);
         BlockCreator.putBlock(entry);
         PyriteItemGroups.match(entry, copyBlock, group);
     }

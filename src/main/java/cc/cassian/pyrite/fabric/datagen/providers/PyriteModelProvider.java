@@ -1,9 +1,8 @@
 //? fabric {
 package cc.cassian.pyrite.fabric.datagen.providers;
 
+import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.entries.ItemEntry;
 import cc.cassian.pyrite.fabric.datagen.PyriteModelTemplates;
 import cc.cassian.pyrite.registry.BlockCreator;
 import cc.cassian.pyrite.registry.PyriteItemGroups;
@@ -32,7 +31,7 @@ import static cc.cassian.pyrite.fabric.datagen.PyriteDataGeneratorUtil.*;
 import static cc.cassian.pyrite.registry.BlockCreator.BRICK_SETS;
 import static cc.cassian.pyrite.registry.BlockCreator.RESOURCE_BLOCK_SETS;
 import static cc.cassian.pyrite.util.ModHelpers.getBlock;
-import static cc.cassian.pyrite.util.ModHelpers.getBlockEntry;
+import static cc.cassian.pyrite.util.ModHelpers.getItemLikeEntry;
 import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
 
 @NullMarked
@@ -49,8 +48,8 @@ public class PyriteModelProvider extends FabricModelProvider {
         this.blockModelGenerators = blockModelGenerators;
         for (String dye : ModLists.DYES) {
             var wool = getBlockOrVanilla(Pyrite.of(dye + "_wool"));
-			BlockEntry<Block> stairs = getBlockEntry(Pyrite.of(dye+"_wool_stairs"));
-			BlockEntry<Block> slab = getBlockEntry(Pyrite.of(dye+"_wool_slab"));
+			ItemLikeEntry<Block> stairs = getItemLikeEntry(Pyrite.of(dye+"_wool_stairs"));
+			ItemLikeEntry<Block> slab = getItemLikeEntry(Pyrite.of(dye+"_wool_slab"));
             stairs(stairs, wool);
             slab(slab, wool);
         }
@@ -148,7 +147,7 @@ public class PyriteModelProvider extends FabricModelProvider {
         //?}
     }
 
-    public void stairs(final BlockEntry<Block> stairs, BlockEntry<Block> baseBlock) {
+    public void stairs(final ItemLikeEntry<Block> stairs, ItemLikeEntry<Block> baseBlock) {
         var inner = plainVariant(this.getOrCreateModel(ModelTemplates.STAIRS_INNER, stairs.get(), baseBlock.get()));
         var straight = this.getOrCreateModel(ModelTemplates.STAIRS_STRAIGHT, stairs.get(), baseBlock.get());
         var outer = plainVariant(this.getOrCreateModel(ModelTemplates.STAIRS_OUTER, stairs.get(), baseBlock.get()));
@@ -156,11 +155,11 @@ public class PyriteModelProvider extends FabricModelProvider {
         blockModelGenerators.registerSimpleItemModel(stairs.get(), straight);
     }
 
-    public void slab(final BlockEntry<Block> slab, BlockEntry<Block> baseBlock) {
+    public void slab(final ItemLikeEntry<Block> slab, ItemLikeEntry<Block> baseBlock) {
         var bottom = this.getOrCreateModel(ModelTemplates.SLAB_BOTTOM, slab.get(), baseBlock.get());
         var top = plainVariant(this.getOrCreateModel(ModelTemplates.SLAB_TOP, slab.get(), baseBlock.get()));
         blockModelGenerators.blockStateOutput
-                .accept(BlockModelGenerators.createSlab(slab.get(), plainVariant(bottom), top, BlockModelGenerators.variant(new Variant(baseBlock.getId().withPrefix("block/")))));
+                .accept(BlockModelGenerators.createSlab(slab.get(), plainVariant(bottom), top, BlockModelGenerators.variant(new Variant(baseBlock.id().withPrefix("block/")))));
         blockModelGenerators.registerSimpleItemModel(slab.get(), bottom);
     }
 
@@ -193,7 +192,7 @@ public class PyriteModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        for (ItemEntry<Item> boat : PyriteItemGroups.BOATS) {
+        for (ItemLikeEntry<Item> boat : PyriteItemGroups.BOATS) {
             itemModelGenerators.generateFlatItem(boat.asItem(), ModelTemplates.FLAT_ITEM);
         }
     }

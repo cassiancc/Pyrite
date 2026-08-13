@@ -3,7 +3,7 @@ package cc.cassian.pyrite.neoforge;
 //? neoforge {
 /*import cc.cassian.pyrite.Platform;
 import cc.cassian.pyrite.Pyrite;
-import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
@@ -22,33 +22,13 @@ import java.util.LinkedHashMap;
 public class NeoForgePlatformImpl implements Platform {
 
     @Override
-    public boolean isModLoaded(String modid) {
-        return ModList.get().isLoaded(modid);
-    }
+    public void registerOxidizableBlockPair(ItemLikeEntry<?> block, ItemLikeEntry<?> block1) {}
 
     @Override
-    public String loader() {
-        return "neoforge";
-    }
+    public void registerWaxableBlockPair(ItemLikeEntry<?> newBlock, ItemLikeEntry<?> waxed) {}
 
     @Override
-    public boolean isDevEnvironment() {
-        return !FMLEnvironment.isProduction();
-    }
-
-    @Override
-    public Path getConfigDir() {
-        return FMLPaths.CONFIGDIR.get();
-    }
-
-    @Override
-    public void registerOxidizableBlockPair(BlockEntry<?> block, BlockEntry<?> block1) {}
-
-    @Override
-    public void registerWaxableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {}
-
-    @Override
-    public void registerStrippableBlockPair(BlockEntry<?> newBlock, BlockEntry<?> waxed) {}
+    public void registerStrippableBlockPair(ItemLikeEntry<?> newBlock, ItemLikeEntry<?> waxed) {}
 
     @Override
     public WoodType createWoodType(String blockID, BlockSetType setType) {

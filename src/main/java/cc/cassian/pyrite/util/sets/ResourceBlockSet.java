@@ -1,10 +1,10 @@
 package cc.cassian.pyrite.util.sets;
 
-import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import net.minecraft.world.level.block.Block;
 
 public record ResourceBlockSet(Block block, ResourceBlockSubSet cutBlocks, ResourceBlockSubSet smoothBlocks,
-                               BlockEntry<Block> bricks, BlockEntry<Block> chiseled, BlockEntry<Block> pillar,
-                               BlockEntry<Block> nostalgia, BlockEntry<Block> bars, BlockEntry<Block> door,
-                               BlockEntry<Block> trapdoor, BlockEntry<Block> pressurePlate, BlockEntry<Block> button) {
+							   ItemLikeEntry<Block> bricks, ItemLikeEntry<Block> chiseled, ItemLikeEntry<Block> pillar,
+							   ItemLikeEntry<Block> nostalgia, ItemLikeEntry<Block> bars, ItemLikeEntry<Block> door,
+							   ItemLikeEntry<Block> trapdoor, ItemLikeEntry<Block> pressurePlate, ItemLikeEntry<Block> button) {
 }

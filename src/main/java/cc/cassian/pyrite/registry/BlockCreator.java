@@ -1,8 +1,8 @@
 package cc.cassian.pyrite.registry;
 
-import cc.cassian.pyrite.entries.BlockEntry;
-import cc.cassian.pyrite.entries.ItemEntry;
-import cc.cassian.pyrite.Platform;
+import cc.cassian.mru.Platform;
+import cc.cassian.mru.util.ItemLikeEntry;
+import cc.cassian.pyrite.PyritePlatform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.*;
@@ -46,7 +46,7 @@ import static cc.cassian.pyrite.util.ModLists.*;
 
 public class BlockCreator {
     // All blocks and their IDs.
-    public static final ArrayList<BlockEntry<Block>> BLOCKS = new ArrayList<>();
+    public static final ArrayList<ItemLikeEntry<Block>> BLOCKS = new ArrayList<>();
     // All blocks without block items and their IDs.
     public static final LinkedHashMap<String, Block> ITEMLESS_BLOCKS = new LinkedHashMap<>();
     // All items and their IDs.
@@ -63,29 +63,29 @@ public class BlockCreator {
     public static void registerPyriteItem(String itemID) {
         var item = new Item(newItemSettings(itemID));
         ITEMS.put(itemID, item);
-        PyriteItemGroups.DYES.add(new ItemEntry<>(itemID, item));
+        PyriteItemGroups.DYES.add(Pyrite.entryOf(itemID, item));
     }
 
     /**
      * This registers a custom item.
      */
-    public static ItemEntry<Item> registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
+    public static ItemLikeEntry<Item> registerPyriteItem(String itemID, Function<Item.Properties, Item> itemFactory) {
         var item = itemFactory.apply(newItemSettings(itemID));
         ITEMS.put(itemID, item);
-        return new ItemEntry<>(itemID, item);
+        return Pyrite.entryOf(itemID, item);
     }
 
-    public static ItemEntry<Item> addBlockItem(String blockID, Block block) {
+    public static ItemLikeEntry<Item> addBlockItem(String blockID, Block block) {
         Item.Properties settings = newBlockItemSettings(blockID);
         if (blockID.contains("netherite"))
             settings = settings.fireResistant();
-        return new ItemEntry<>(blockID, new BlockItem(block, settings));
+        return Pyrite.entryOf(blockID, new BlockItem(block, settings));
     }
 
     public static void register() {
         //Register blocks and block items.
-        for (BlockEntry<Block> entry : BLOCKS) {
-            final Block block = entry.getValue();
+        for (ItemLikeEntry<Block> entry : BLOCKS) {
+            final Block block = entry.get();
             final String blockID = entry.getPath();
             Registry.register(BuiltInRegistries.BLOCK, Pyrite.of(blockID), block);
             Registry.register(BuiltInRegistries.ITEM, Pyrite.of(blockID), addBlockItem(blockID, block).get());
@@ -104,14 +104,14 @@ public class BlockCreator {
         }
 
 
-        for (BlockEntry<Block> entry : PyriteItemGroups.COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getPath().replace("copper", "exposed_copper")));
+        for (ItemLikeEntry<Block> entry : PyriteItemGroups.COPPER_BLOCKS) {
+            PyritePlatform.INSTANCE.registerOxidizableBlockPair(entry, getItemLikeEntry(entry.getPath().replace("copper", "exposed_copper")));
         }
-        for (BlockEntry<Block> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getPath().replace("exposed", "weathered")));
+        for (ItemLikeEntry<Block> entry : PyriteItemGroups.EXPOSED_COPPER_BLOCKS) {
+            PyritePlatform.INSTANCE.registerOxidizableBlockPair(entry, getItemLikeEntry(entry.getPath().replace("exposed", "weathered")));
         }
-        for (BlockEntry<Block> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS) {
-            Platform.INSTANCE.registerOxidizableBlockPair(entry, getBlockEntry(entry.getPath().replace("weathered", "oxidized")));
+        for (ItemLikeEntry<Block> entry : PyriteItemGroups.WEATHERED_COPPER_BLOCKS) {
+            PyritePlatform.INSTANCE.registerOxidizableBlockPair(entry, getItemLikeEntry(entry.getPath().replace("weathered", "oxidized")));
         }
 
         // Register item group.
@@ -119,7 +119,7 @@ public class BlockCreator {
     }
 
     //~ if >26.1 'BlockEntityType' -> 'BlockEntityTypes' {
-    public static BlockEntry<Block> platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
+    public static ItemLikeEntry<Block> platformRegister(String blockID, String blockType, BlockBehaviour.Properties blockSettings, WoodType woodType, BlockSetType blockSetType, ParticleOptions particle, Block copyBlock, String group, MapColor color) {
         int power = power(blockID);
         Block newBlock = null;
         blockSettings = blockSettings.setId(registryKeyBlock(blockID));
@@ -129,10 +129,10 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperFullBlock(getOxidizationState(blockID), blockSettings.randomTicks());
                     var waxedBlock = new ModBlock(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BlockEntry<ModBlock> waxedBlockEntry = new BlockEntry<>("waxed_"+ blockID, waxedBlock);
-                    putBlock(waxedBlockEntry);
-                    PyriteItemGroups.match(waxedBlockEntry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxedBlockEntry);
+                    ItemLikeEntry<ModBlock> waxedItemLikeEntry = Pyrite.entryOf("waxed_"+ blockID, waxedBlock);
+                    putBlock(waxedItemLikeEntry);
+                    PyriteItemGroups.match(waxedItemLikeEntry, copyBlock, "waxed_"+group);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxedItemLikeEntry);
                 }
                 else
                     newBlock = new ModBlock(blockSettings, power);
@@ -158,7 +158,7 @@ public class BlockCreator {
                 }
                 break;
             case "cabinet":
-                if (Platform.INSTANCE.isModLoaded("farmersdelight")) {
+                if (Platform.INSTANCE.isLoaded("farmersdelight")) {
                     newBlock = FarmersDelightCompat.registerCabinet(blockID, blockSettings, group, copyBlock);
                     FarmersDelightCompat.add(newBlock);
                 }
@@ -173,19 +173,19 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperSlabBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModSlab(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    var waxedEntry =  new BlockEntry<>("waxed_" + blockID, waxed);
+                    var waxedEntry =  Pyrite.entryOf("waxed_" + blockID, waxed);
                     putBlock(waxedEntry);
                     PyriteItemGroups.match(waxedEntry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxedEntry);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxedEntry);
                 } else
                     newBlock = new ModSlab(blockSettings, power);
                 break;
             case "stairs":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperStairBlock(getOxidizationState(blockID), copyBlock.defaultBlockState(), blockSettings);
-                    var waxed = new BlockEntry<Block>("waxed_"+ blockID, new ModStairs(copyBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID))));
+                    var waxed = Pyrite.entryOf("waxed_"+ blockID, new ModStairs(copyBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID))));
                     putBlock(waxed);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxed);
                 } else
                     newBlock = new ModStairs(copyBlock.defaultBlockState(), blockSettings);
                 break;
@@ -194,19 +194,19 @@ public class BlockCreator {
                     // wall
                     newBlock = new OxidizableWallBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModWall(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BlockEntry<Block> waxedEntry = new BlockEntry<>("waxed_" + blockID, waxed);
+                    ItemLikeEntry<Block> waxedEntry = Pyrite.entryOf("waxed_" + blockID, waxed);
                     putBlock(waxedEntry);
                     PyriteItemGroups.match(waxedEntry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxedEntry);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxedEntry);
                     // column
                     //? fabric {
-                    if (Platform.INSTANCE.isModLoaded("columns"))
+                    if (Platform.INSTANCE.isLoaded("columns"))
                         ColumnsCompat.registerCopperColumn(blockID, blockSettings, group, copyBlock);
                     //?}
                 } else {
                     newBlock = new ModWall(blockSettings, power);
                     //? fabric {
-                    if (Platform.INSTANCE.isModLoaded("columns"))
+                    if (Platform.INSTANCE.isLoaded("columns"))
                         ColumnsCompat.registerColumn(blockID.replace("wall", "column"), blockSettings, group, copyBlock);
                     //?}
                 }
@@ -218,10 +218,10 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizablePillarBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPillar(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    BlockEntry<Block> entry = new BlockEntry<>("waxed_" + blockID, waxed);
+                    ItemLikeEntry<Block> entry = Pyrite.entryOf("waxed_" + blockID, waxed);
                     putBlock(entry);
                     PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), entry);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), entry);
                 } else
                     newBlock = new ModPillar(blockSettings, power);
                 break;
@@ -235,10 +235,10 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableBarsBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new ModPane(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    var entry =  new BlockEntry<>("waxed_" + blockID, waxed);
+                    var entry =  Pyrite.entryOf("waxed_" + blockID, waxed);
                     putBlock(entry);
                     PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), entry);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), entry);
                 } else {
                     newBlock = new ModPane(blockSettings, power);
                 }
@@ -261,7 +261,7 @@ public class BlockCreator {
                 // register flower pot
                 final FlowerPotBlock FLOWER_POTTED = new FlowerPotBlock(newBlock, flowerPotProperties(registryKeyBlock("potted_"+blockID)));
                 ITEMLESS_BLOCKS.put("potted_"+blockID, FLOWER_POTTED);
-                PyriteItemGroups.POTTED_FLOWERS.put(blockID, new BlockEntry<>("potted_"+blockID, FLOWER_POTTED));
+                PyriteItemGroups.POTTED_FLOWERS.put(blockID, Pyrite.entryOf("potted_"+blockID, FLOWER_POTTED));
                 break;
             case "fence_gate":
                 newBlock = new FenceGateBlock(woodType, blockSettings);
@@ -270,10 +270,10 @@ public class BlockCreator {
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableWallGateBlock(getOxidizationState(blockID), blockSettings);
                     Block waxed = new WallGateBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_"+ blockID)));
-                    var entry = new BlockEntry<>("waxed_" + blockID, waxed);
+                    var entry = Pyrite.entryOf("waxed_" + blockID, waxed);
                     putBlock(entry);
                     PyriteItemGroups.match(entry, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), entry);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), entry);
                 } else
                     newBlock = new WallGateBlock(blockSetType, blockSettings);
                 break;
@@ -287,7 +287,7 @@ public class BlockCreator {
                 // Register item for signs.
                 final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, SIGN_ITEM);
-                PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), new ItemEntry<>(blockID, SIGN_ITEM));
+                PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), Pyrite.entryOf(blockID, SIGN_ITEM));
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
                 break;
@@ -301,17 +301,17 @@ public class BlockCreator {
                 // Register item for signs.
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
-                PyriteItemGroups.SIGNS.add(new ItemEntry<>(blockID, HANGING_SIGN_ITEM));
+                PyriteItemGroups.SIGNS.add(Pyrite.entryOf(blockID, HANGING_SIGN_ITEM));
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
                 ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
             case "door":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
-                    var waxed = new BlockEntry<>("waxed_" + blockID, new DoorBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID))));
+                    var waxed = Pyrite.entryOf("waxed_" + blockID, new DoorBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID))));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxed);
                 }
                 else
                     newBlock = new DoorBlock(blockSetType, blockSettings.noOcclusion());
@@ -319,10 +319,10 @@ public class BlockCreator {
             case "trapdoor":
                 if (isCopper(blockID)) {
                     newBlock = new WeatheringCopperTrapDoorBlock(blockSetType, getOxidizationState(blockID), blockSettings.noOcclusion());
-                    var waxed = new BlockEntry<>("waxed_"+blockID, new TrapDoorBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID))));
+                    var waxed = Pyrite.entryOf("waxed_"+blockID, new TrapDoorBlock(blockSetType, BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID))));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxed);
                 }
                 else
                     newBlock = new TrapDoorBlock(blockSetType, blockSettings.noOcclusion());
@@ -330,10 +330,10 @@ public class BlockCreator {
             case "button":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizableButtonBlock(blockSetType, getOxidizationState(blockID), blockSettings);
-                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModWoodenButton(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID)), blockSetType));
+                    var waxed = Pyrite.entryOf("waxed_" + blockID, new ModWoodenButton(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID)), blockSetType));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxed);
                 }
                 else
                     newBlock = new ModWoodenButton(blockSettings, blockSetType);
@@ -341,10 +341,10 @@ public class BlockCreator {
             case "pressure_plate":
                 if (isCopper(blockID)) {
                     newBlock = new OxidizablePressurePlateBlock(blockSetType, getOxidizationState(blockID), blockSettings);
-                    var waxed = new BlockEntry<>("waxed_" + blockID, new ModPressurePlate(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID)), blockSetType));
+                    var waxed = Pyrite.entryOf("waxed_" + blockID, new ModPressurePlate(BlockBehaviour.Properties.ofFullCopy(newBlock).setId(registryKeyBlock("waxed_" + blockID)), blockSetType));
                     putBlock(waxed);
                     PyriteItemGroups.match(waxed, copyBlock, "waxed_"+group);
-                    Platform.INSTANCE.registerWaxableBlockPair(new BlockEntry<>(blockID, newBlock), waxed);
+                    PyritePlatform.INSTANCE.registerWaxableBlockPair(Pyrite.entryOf(blockID, newBlock), waxed);
                 }
                 else
                     newBlock = new ModPressurePlate(blockSettings, blockSetType);
@@ -355,7 +355,7 @@ public class BlockCreator {
                     torchParticle = ParticleTypes.FLAME;
                 newBlock = new ModTorch(blockSettings.noOcclusion(), torchParticle);
                 //? fabric {
-                if (Platform.INSTANCE.isModLoaded("totally_lit") && !ModLists.PYRITE_DYES.contains(blockID.replace("_torch", "")))
+                if (Platform.INSTANCE.isLoaded("totally_lit") && !ModLists.PYRITE_DYES.contains(blockID.replace("_torch", "")))
                     TotallyLitCompat.registerTorch("unlit_"+blockID, blockSettings.noOcclusion(), "unlit_torch", newBlock);
                 //?}
                 break;
@@ -378,26 +378,26 @@ public class BlockCreator {
 		return register(blockID, blockType, copyBlock, group, newBlock);
     }
 
-    private static BlockEntry<Block> register(String blockID, String blockType, Block copyBlock, String group, Block newBlock) {
+    private static ItemLikeEntry<Block> register(String blockID, String blockType, Block copyBlock, String group, Block newBlock) {
         if (!blockType.contains("sign")) {
-            putBlock(new BlockEntry<>(blockID, newBlock));
+            putBlock(Pyrite.entryOf(blockID, newBlock));
         }
         if (blockID.contains("grass")) {
             addGrassBlock();
         }
-        BlockEntry<Block> entry = new BlockEntry<>(blockID, newBlock);
+        ItemLikeEntry<Block> entry = Pyrite.entryOf(blockID, newBlock);
         PyriteItemGroups.match(entry, copyBlock, group);
         return entry;
     }
     //~}
 
     @SuppressWarnings("all")
-	public static void putBlock(BlockEntry<?> entry) {
-        BLOCKS.add((BlockEntry<Block>) entry);
+	public static void putBlock(ItemLikeEntry<?> entry) {
+        BLOCKS.add((ItemLikeEntry<Block>) entry);
     }
 
     public static Block getLastBlock() {
-        return BLOCKS.getLast().getValue();
+        return BLOCKS.getLast().get();
     }
 
     public static void addGrassBlock() {
@@ -430,7 +430,7 @@ public class BlockCreator {
     }
 
     //Primarily used for Framed Glass, Glowstone/Dyed Lamps, Glowing Obsidian
-    public static BlockEntry<Block> createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel, String group) {
         BlockBehaviour.Properties settings = BlockBehaviour.Properties.of().strength(strength).lightLevel(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "obsidian")) {
             return sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pushReaction(PushReaction.BLOCK), group);
@@ -448,54 +448,54 @@ public class BlockCreator {
     }
 
     //Create and then add carpets
-    private static BlockEntry<Block> createCarpet(String blockID, String group) {
+    private static ItemLikeEntry<Block> createCarpet(String blockID, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(Blocks.MOSS_CARPET);
         return sendToRegistry(blockID, "carpet", blockSettings, group);
     }
 
     //Create and then add most of the manually generated blocks.
-    public static BlockEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, String group) {
         return platformRegister(blockID, blockType, copyBlock(copyBlock), WoodType.CRIMSON, BlockSetType.IRON, null, copyBlock, group, null);
     }
 
     //Create a slab from the last block added.
-    public static BlockEntry<Block> createStair(String blockID, Block copyBlock, String group) {
+    public static ItemLikeEntry<Block> createStair(String blockID, Block copyBlock, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock);
         return sendToRegistry(blockID+"_stairs", copyBlock, blockSettings, group);
     }
 
     //Create a slab from the last block added.
-    public static BlockEntry<Block> createSlab(String blockID, Block copyBlock, String group) {
+    public static ItemLikeEntry<Block> createSlab(String blockID, Block copyBlock, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock);
         return sendToRegistry(blockID+"_slab", "slab", blockSettings, group);
     }
 
     //Create blocks that require a change in light level, e.g. Locked Chests
-    public static BlockEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, int lux, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).lightLevel(parseLux(lux));
         return platformRegister(blockID, blockType, blockSettings, null, null, null, copyBlock, group, null);
     }
 
-    private static BlockEntry<Block> sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, String group) {
+    private static ItemLikeEntry<Block> sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, String group) {
         return platformRegister(blockID, blockType, blockSettings, null, null, null, null, group, null);
 
     }
-    private static BlockEntry<Block> sendToRegistry(String blockID, Block copyBlock, BlockBehaviour.Properties blockSettings, String group) {
+    private static ItemLikeEntry<Block> sendToRegistry(String blockID, Block copyBlock, BlockBehaviour.Properties blockSettings, String group) {
         return platformRegister(blockID, "stairs", blockSettings,  null, null, null, copyBlock, group, null);
     }
     
     //Add blocks with particles - Torches/Torch Levers
-    private static BlockEntry<Block> sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, ParticleOptions particle, String group) {
+    private static ItemLikeEntry<Block> sendToRegistry(String blockID, String blockType, BlockBehaviour.Properties blockSettings, ParticleOptions particle, String group) {
         return platformRegister(blockID, blockType, blockSettings, null, null, particle, null, group, null);
     }
 
     //Create blocks that require a Block Set.
-    public static BlockEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, BlockSetType set, String group) {
         return platformRegister(blockID, blockType, copyBlock(copyBlock),  null, set, null, copyBlock, group, null);
     }
 
     //Create most of the generic Stained Blocks, then add them.
-    public static BlockEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).mapColor(color).lightLevel(parseLux(lux));
         if ((copyBlock.equals(Blocks.OAK_PLANKS)) || (copyBlock.equals(Blocks.OAK_SLAB) || (copyBlock.equals(Blocks.OAK_STAIRS)))) {
             blockSettings = blockSettings.ignitedByLava();
@@ -504,13 +504,13 @@ public class BlockCreator {
     }
 
     //Create basic blocks.
-    public static BlockEntry<Block> createPyriteBlock(String blockID, Block copyBlock, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, Block copyBlock, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock);
         return platformRegister(blockID, "block", blockSettings,  null, null, null, null, group, null);
     }
 
     //Create Stained blocks that require a wood set or wood type, then add them.
-    public static BlockEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type, String group) {
+    public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Block copyBlock, MapColor color, int lux, BlockSetType set, WoodType type, String group) {
         BlockBehaviour.Properties blockSettings = copyBlock(copyBlock).mapColor(color).lightLevel(parseLux(lux));
         if (!blockType.equals("button")) {
             blockSettings = blockSettings.ignitedByLava();
@@ -588,7 +588,7 @@ public class BlockCreator {
     /// Generate an entire wood set.
     public static void createWoodSet(String blockID, MapColor color, int blockLux, String group) {
         BlockSetType GENERATED_SET = new BlockSetType(blockID);
-        WoodType GENERATED_TYPE = Platform.INSTANCE.createWoodType(blockID, GENERATED_SET);
+        WoodType GENERATED_TYPE = PyritePlatform.INSTANCE.createWoodType(blockID, GENERATED_SET);
 
         // Planks
         var planks = createPyriteBlock("%s_planks".formatted(blockID), "block", Blocks.OAK_PLANKS, color, blockLux, group);
@@ -630,13 +630,13 @@ public class BlockCreator {
         var hangingSign = createPyriteBlock("%s_hanging_sign".formatted(blockID), "hanging_sign", Blocks.OAK_HANGING_SIGN, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Chest
-        BlockEntry<Block> chest = null;
+        ItemLikeEntry<Block> chest = null;
         if (ModHelpers.generateChests())
 			chest = createPyriteBlock("%s_chest".formatted(blockID), "chest", Blocks.CHEST, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Cabinet
-        BlockEntry<Block> cabinet = null;
-        if (Platform.INSTANCE.isModLoaded("farmersdelight"))
+        ItemLikeEntry<Block> cabinet = null;
+        if (Platform.INSTANCE.isLoaded("farmersdelight"))
             cabinet = createPyriteBlock("%s_cabinet".formatted(blockID), "cabinet", Blocks.BARREL, color, blockLux, GENERATED_SET, GENERATED_TYPE, group);
 
         // Shelf
@@ -659,17 +659,17 @@ public class BlockCreator {
         var strippedLog = createPyriteBlock("stripped_%s_log".formatted(blockID), "log", Blocks.STRIPPED_OAK_LOG, color, blockLux, "wood");
         var wood = createPyriteBlock("%s_wood".formatted(blockID), "wood", Blocks.OAK_WOOD, color, blockLux, "wood");
         var strippedWood = createPyriteBlock("stripped_%s_wood".formatted(blockID), "wood", Blocks.STRIPPED_OAK_WOOD, color, blockLux, "wood");
-        Platform.INSTANCE.registerStrippableBlockPair(log, strippedLog);
-        Platform.INSTANCE.registerStrippableBlockPair(wood, strippedWood);
+        PyritePlatform.INSTANCE.registerStrippableBlockPair(log, strippedLog);
+        PyritePlatform.INSTANCE.registerStrippableBlockPair(wood, strippedWood);
         createWoodSet(blockID, color, blockLux, "wood");
     }
 
     /// Generate an entire Cut Block set.
     public static ResourceBlockSubSet createCutBlocks(String blockID, Block block) {
         String cutBlockID = "cut_" + blockID;
-        BlockEntry<Block> cutBlock = new BlockEntry<>(block);
-        BlockEntry<Block> cutStairs = new BlockEntry<>(block);
-        BlockEntry<Block> cutSlab = new BlockEntry<>(block);
+        ItemLikeEntry<Block> cutBlock = Pyrite.entryOf(block);
+        ItemLikeEntry<Block> cutStairs = Pyrite.entryOf(block);
+        ItemLikeEntry<Block> cutSlab = Pyrite.entryOf(block);
         if (!blockID.contains("copper")) {
             //Cut Block
             cutBlock = createPyriteBlock(cutBlockID, block, blockID);
@@ -690,9 +690,9 @@ public class BlockCreator {
      * @return A record containing all blocks generated by this method.
      */
     public static ResourceBlockSubSet createSmoothBlocks(String blockID, Block block) {
-        BlockEntry<Block> smoothBlock = new BlockEntry<>(Identifier.withDefaultNamespace("smooth_quartz"), Blocks.SMOOTH_QUARTZ);
-        BlockEntry<Block> stair = new BlockEntry<>(Identifier.withDefaultNamespace("smooth_quartz_stairs"), Blocks.SMOOTH_QUARTZ_STAIRS);
-        BlockEntry<Block> slab = new BlockEntry<>(Identifier.withDefaultNamespace("smooth_quartz_slab"), Blocks.SMOOTH_QUARTZ_SLAB);
+        ItemLikeEntry<Block> smoothBlock = new ItemLikeEntry<>(Identifier.withDefaultNamespace("smooth_quartz"), Blocks.SMOOTH_QUARTZ);
+        ItemLikeEntry<Block> stair = new ItemLikeEntry<>(Identifier.withDefaultNamespace("smooth_quartz_stairs"), Blocks.SMOOTH_QUARTZ_STAIRS);
+        ItemLikeEntry<Block> slab = new ItemLikeEntry<>(Identifier.withDefaultNamespace("smooth_quartz_slab"), Blocks.SMOOTH_QUARTZ_SLAB);
         String smoothBlockID = "smooth_" + blockID;
         if (!Objects.equals(blockID, "quartz")) {
             //Smooth Block
@@ -714,13 +714,13 @@ public class BlockCreator {
         //Create Cut Blocks for those that don't already exist (Copper)
         var cutBlocks = createCutBlocks(blockID, block);
         //Create Bricks/Chiseled/Pillar/Smooth for those that don't already exist (Quartz)
-        BlockEntry<Block> bricks = new BlockEntry<>(Blocks.QUARTZ_BRICKS);
-        BlockEntry<Block> chiseled = new BlockEntry<>(Blocks.CHISELED_QUARTZ_BLOCK);
-        BlockEntry<Block> pillar = new BlockEntry<>(Blocks.QUARTZ_PILLAR);
-        BlockEntry<Block> bars = new BlockEntry<>(Blocks.IRON_BARS);
-        BlockEntry<Block> door = new BlockEntry<>(Blocks.IRON_DOOR);
-        BlockEntry<Block> trapdoor = new BlockEntry<>(Blocks.IRON_TRAPDOOR);
-        BlockEntry<Block> pressurePlate = new BlockEntry<>(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE);
+        ItemLikeEntry<Block> bricks = Pyrite.entryOf(Blocks.QUARTZ_BRICKS);
+        ItemLikeEntry<Block> chiseled = Pyrite.entryOf(Blocks.CHISELED_QUARTZ_BLOCK);
+        ItemLikeEntry<Block> pillar = Pyrite.entryOf(Blocks.QUARTZ_PILLAR);
+        ItemLikeEntry<Block> bars = Pyrite.entryOf(Blocks.IRON_BARS);
+        ItemLikeEntry<Block> door = Pyrite.entryOf(Blocks.IRON_DOOR);
+        ItemLikeEntry<Block> trapdoor = Pyrite.entryOf(Blocks.IRON_TRAPDOOR);
+        ItemLikeEntry<Block> pressurePlate = Pyrite.entryOf(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE);
         if (!Objects.equals(blockID, "quartz")) {
             //Brick Blocks
             bricks = createPyriteBlock("%s_bricks".formatted(blockID), block, blockID);

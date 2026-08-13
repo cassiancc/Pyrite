@@ -2,5 +2,5 @@ package cc.cassian.pyrite.util.sets;
 
 import net.minecraft.world.level.block.Block;
 
-public record TurfSet(String name, Block grassBlock, cc.cassian.pyrite.entries.BlockEntry<Block> turf, cc.cassian.pyrite.entries.BlockEntry<Block> stair, cc.cassian.pyrite.entries.BlockEntry<Block> slab, cc.cassian.pyrite.entries.BlockEntry<Block> carpet) {
+public record TurfSet(String name, Block grassBlock, cc.cassian.mru.util.ItemLikeEntry<Block> turf, cc.cassian.mru.util.ItemLikeEntry<Block> stair, cc.cassian.mru.util.ItemLikeEntry<Block> slab, cc.cassian.mru.util.ItemLikeEntry<Block> carpet) {
 }

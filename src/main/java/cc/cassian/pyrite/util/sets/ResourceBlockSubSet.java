@@ -1,8 +1,8 @@
 package cc.cassian.pyrite.util.sets;
 
-import cc.cassian.pyrite.entries.BlockEntry;
+import cc.cassian.mru.util.ItemLikeEntry;
 import net.minecraft.world.level.block.Block;
 
-public record ResourceBlockSubSet(BlockEntry<Block> block, BlockEntry<Block> stairs, BlockEntry<Block> slab,
-                                  BlockEntry<Block> wall, BlockEntry<Block> wallGate) {
+public record ResourceBlockSubSet(ItemLikeEntry<Block> block, ItemLikeEntry<Block> stairs, ItemLikeEntry<Block> slab,
+								  ItemLikeEntry<Block> wall, ItemLikeEntry<Block> wallGate) {
 }

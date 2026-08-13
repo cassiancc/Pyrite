@@ -145,6 +145,9 @@ dependencies {
         implementation("maven.modrinth:mcqoy:yHGo6VsD")
     }
 
+    implementation("cc.cassian.mru:mru-neoforge:${property("deps.mru")}+${property("deps.minecraft")}")
+    jarJar("cc.cassian.mru:mru-neoforge:${property("deps.mru")}+${property("deps.minecraft")}")
+
     implementation("maven.modrinth:more-chest-variants-lieonlion:${property("deps.lolmcv")}")
     implementation("maven.modrinth:quad:${property("deps.quad")}")
 
