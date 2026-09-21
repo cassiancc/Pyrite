@@ -154,7 +154,7 @@ public class BlockCreator {
             case "chest":
                 if (ModHelpers.generateChests()) {
                     newBlock = new ChestBlock(()->BlockEntityTypes.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
-                    ModHelpers.addSupportedBlock(()-> BlockEntityTypes.CHEST, newBlock);
+                    ModHelpers.addSupportedBlock(BlockEntityTypes.CHEST, newBlock);
                 }
                 break;
             case "cabinet":
