@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "diorite_bricks",
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:diorite",
+  "result": {
+    "id": "pyrite:diorite_brick_wall_gate"
+  }
+}

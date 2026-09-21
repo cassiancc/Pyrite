@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:switchable_glass"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "switchable_glass"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:switchable_glass"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

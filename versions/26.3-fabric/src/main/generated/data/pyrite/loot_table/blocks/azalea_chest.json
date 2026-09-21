@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:azalea_chest"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "azalea"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:azalea_chest"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

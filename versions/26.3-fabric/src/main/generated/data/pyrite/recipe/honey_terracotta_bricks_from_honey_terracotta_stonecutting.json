@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "terracotta_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:honey_terracotta",
+  "result": {
+    "id": "pyrite:honey_terracotta_bricks"
+  }
+}

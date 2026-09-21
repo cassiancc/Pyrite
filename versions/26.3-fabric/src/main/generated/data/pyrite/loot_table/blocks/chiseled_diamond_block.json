@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:chiseled_diamond_block"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "diamond"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:chiseled_diamond_block"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

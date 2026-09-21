@@ -1,0 +1,10 @@
+{
+  "values": {
+    "pyrite:azalea_log": {
+      "stripped_block": "pyrite:stripped_azalea_log"
+    },
+    "pyrite:azalea_wood": {
+      "stripped_block": "pyrite:stripped_azalea_wood"
+    }
+  }
+}

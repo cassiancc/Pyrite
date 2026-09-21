@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "netherite"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:netherite_block",
+  "result": {
+    "count": 4,
+    "id": "pyrite:smooth_netherite_wall_gate"
+  }
+}

@@ -23,9 +23,8 @@ public class SwitchableGlass extends TransparentBlock {
     private static final int TICK_DELAY = 1;
     public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, SIGNAL_DECAY_DISTANCE);
 
-    @Override
 	public MapCodec<? extends TransparentBlock> codec() {
-		return simpleCodec(SwitchableGlass::new);
+		return null;
 	}
 
 	public SwitchableGlass(final BlockBehaviour.Properties properties) {

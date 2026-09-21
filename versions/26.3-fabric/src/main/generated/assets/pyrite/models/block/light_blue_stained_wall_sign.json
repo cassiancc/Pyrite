@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_sign",
+  "textures": {
+    "all": "pyrite:block/light_blue_stained_sign",
+    "particle": "pyrite:block/light_blue_stained_planks"
+  }
+}

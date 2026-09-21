@@ -22,7 +22,6 @@ public class ModFacingBlock extends HorizontalDirectionalBlock {
 
     }
 
-    @Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return null;
     }

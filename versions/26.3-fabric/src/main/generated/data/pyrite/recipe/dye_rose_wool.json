@@ -1,0 +1,27 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool",
+  "ingredients": [
+    "#c:dyes/rose",
+    [
+      "pyrite:honey_wool",
+      "pyrite:poisonous_wool",
+      "pyrite:glow_wool",
+      "pyrite:nostalgia_wool",
+      "pyrite:star_wool",
+      "pyrite:dragon_wool"
+    ]
+  ],
+  "result": {
+    "id": "pyrite:rose_wool"
+  }
+}

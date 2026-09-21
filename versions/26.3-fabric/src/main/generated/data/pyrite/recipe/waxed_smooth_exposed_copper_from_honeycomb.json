@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pyrite:waxed_smooth_exposed_copper",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "id": "pyrite:waxed_smooth_exposed_copper"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "copper"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:waxed_weathered_copper"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:waxed_weathered_copper_pressure_plate"
+  }
+}

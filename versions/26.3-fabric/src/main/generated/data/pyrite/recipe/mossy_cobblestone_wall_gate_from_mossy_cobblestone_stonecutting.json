@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "wall_gates"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:mossy_cobblestone",
+  "result": {
+    "id": "pyrite:mossy_cobblestone_wall_gate"
+  }
+}

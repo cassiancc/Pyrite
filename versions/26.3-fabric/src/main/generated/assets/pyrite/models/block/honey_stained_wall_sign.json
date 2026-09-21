@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_sign",
+  "textures": {
+    "all": "pyrite:block/honey_stained_sign",
+    "particle": "pyrite:block/honey_stained_planks"
+  }
+}

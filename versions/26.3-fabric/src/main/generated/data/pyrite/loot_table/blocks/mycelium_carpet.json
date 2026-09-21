@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:mycelium_carpet"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mycelium_turf"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:mycelium_carpet"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

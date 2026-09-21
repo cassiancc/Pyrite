@@ -1,0 +1,116 @@
+{
+  "values": [
+    {
+      "id": "pyrite:dragon_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_concrete_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_powder",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_concrete_stairs",
+      "required": false
+    }
+  ]
+}

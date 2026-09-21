@@ -4,6 +4,7 @@ import cc.cassian.mru.Platform;
 import cc.cassian.mru.util.CommonUtils;
 import cc.cassian.mru.util.ItemLikeEntry;
 import cc.cassian.pyrite.config.ModConfig;
+import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.VanillaConstants;
 import cc.cassian.pyrite.util.sets.ColoredSet;
@@ -141,25 +142,40 @@ public class Pyrite {
 			}
 
 			//? if >26.2 {
-			/*ModHelpers.addAlias(dye+"_concrete_slab");
-			ModHelpers.addAlias(dye+"_concrete_stairs");
-			*///?} else {
-			// Dyed Concrete Stairs
+			if (!VANILLA_DYE) {
+				// Dyed Concrete Stairs
+				createPyriteBlock(dye+"_concrete_stairs", "stairs", WHITE_CONCRETE.value(), color, blockLux, "concrete_stairs");
+				// Dyed Concrete Slab
+				createPyriteBlock(dye+"_concrete_slab", "slab", WHITE_WOOL.value(), color, blockLux, "concrete_slab");
+			} else {
+				ModHelpers.addAlias(dye+"_concrete_slab");
+				ModHelpers.addAlias(dye+"_concrete_stairs");
+			}
+			//?} else {
+			/*// Dyed Concrete Stairs
 			createPyriteBlock(dye+"_concrete_stairs", "stairs", WHITE_CONCRETE.value(), color, blockLux, "concrete_stairs");
 			// Dyed Concrete Slab
 			createPyriteBlock(dye+"_concrete_slab", "slab", WHITE_WOOL.value(), color, blockLux, "concrete_slab");
-			//?}
+			*///?}
 
 			//? if >26.2 {
-			/*ModHelpers.addAlias(dye+"_wool_slab");
-			ModHelpers.addAlias(dye+"_wool_stairs");
-			*///?} else {
-			// Dyed Wool Stairs
+			if (!VANILLA_DYE) {
+				// Dyed Wool Stairs
+				var woolStairs = createPyriteBlock(dye+"_wool_stairs", "stairs", WHITE_WOOL.value(), color, blockLux, "wool_stairs");
+				// Dyed Wool Slab
+				var woolSlab = createPyriteBlock(dye+"_wool_slab", "slab", WHITE_WOOL.value(), color, blockLux, "wool_slab");
+				WOOL_SETS.add(new ColoredSet(dye, Optional.ofNullable(wool), Optional.ofNullable(carpet), woolStairs, woolSlab));
+			} else {
+				ModHelpers.addAlias(dye+"_wool_slab");
+				ModHelpers.addAlias(dye+"_wool_stairs");
+			}
+			//?} else {
+			/*// Dyed Wool Stairs
 			var woolStairs = createPyriteBlock(dye+"_wool_stairs", "stairs", WHITE_WOOL.value(), color, blockLux, "wool_stairs");
 			// Dyed Wool Slab
 			var woolSlab = createPyriteBlock(dye+"_wool_slab", "slab", WHITE_WOOL.value(), color, blockLux, "wool_slab");
 			WOOL_SETS.add(new ColoredSet(dye, Optional.ofNullable(wool), Optional.ofNullable(carpet), woolStairs, woolSlab));
-			//?}
+			*///?}
 
 			//Dyed Planks and plank products
 			createWoodSet(dye + "_stained", color, blockLux, "dyed_wood");

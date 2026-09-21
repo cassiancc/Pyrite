@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "smooth_stone_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pyrite:smooth_stone_bricks",
+    "minecraft:vine"
+  ],
+  "result": {
+    "id": "pyrite:mossy_smooth_stone_bricks"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "pyrite:star_stained_planks"
+  ],
+  "result": {
+    "id": "pyrite:star_stained_button"
+  }
+}

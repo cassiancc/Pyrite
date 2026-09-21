@@ -1,0 +1,31 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:dragon_framed_glass_pane"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities",
+        "framed_glass"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": "minecraft:tool/can_silk_touch",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:dragon_framed_glass_pane"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

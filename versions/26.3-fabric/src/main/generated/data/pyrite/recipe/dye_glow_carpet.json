@@ -1,0 +1,27 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool_carpet",
+  "ingredients": [
+    "#c:dyes/glow",
+    [
+      "pyrite:honey_carpet",
+      "pyrite:poisonous_carpet",
+      "pyrite:nostalgia_carpet",
+      "pyrite:star_carpet",
+      "pyrite:dragon_carpet",
+      "pyrite:rose_carpet"
+    ]
+  ],
+  "result": {
+    "id": "pyrite:glow_carpet"
+  }
+}

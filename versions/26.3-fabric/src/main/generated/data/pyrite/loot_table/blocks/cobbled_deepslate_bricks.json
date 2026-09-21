@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:cobbled_deepslate_bricks"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "cobbled_deepslate_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:cobbled_deepslate_bricks"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "group": "chest_boat",
+  "ingredients": [
+    "#c:chests/wooden",
+    "pyrite:light_blue_stained_boat"
+  ],
+  "result": {
+    "id": "pyrite:light_blue_stained_chest_boat"
+  }
+}

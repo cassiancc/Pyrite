@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pyrite:block/nostalgia_wool_slab"
+    },
+    "type=double": {
+      "model": "pyrite:block/nostalgia_wool"
+    },
+    "type=top": {
+      "model": "pyrite:block/nostalgia_wool_slab_top"
+    }
+  }
+}

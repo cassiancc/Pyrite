@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "group": "sign",
+  "key": {
+    "#": "pyrite:dragon_stained_planks",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
+  "result": {
+    "count": 3,
+    "id": "pyrite:dragon_stained_sign"
+  }
+}

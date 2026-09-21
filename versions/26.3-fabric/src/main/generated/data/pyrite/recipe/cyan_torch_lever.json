@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torch_levers",
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "torch_lever",
+  "ingredients": [
+    "pyrite:cyan_torch",
+    "minecraft:lever"
+  ],
+  "result": {
+    "id": "pyrite:cyan_torch_lever"
+  }
+}

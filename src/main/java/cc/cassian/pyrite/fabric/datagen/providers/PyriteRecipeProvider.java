@@ -17,11 +17,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.fabricmc.fabric.impl.resource.conditions.conditions.AllModsLoadedResourceCondition;
 //~ if >26.1 'criterion' -> 'triggers' {
-import net.minecraft.advancements.criterion.PlayerTrigger;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.triggers.PlayerTrigger;
 //~}
 //~ if >26.1 'cc.cassian.mru.util' -> 'net.minecraft.tags' {
 import net.minecraft.core.registries.BuiltInRegistries;
-import cc.cassian.mru.util.BlockItemTagId;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.tags.BlockItemTagId;
 //~}
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -30,14 +32,15 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 //? if >26.1 {
-/*import net.minecraft.tags.BlockItemTags;
- *///?}
+import net.minecraft.tags.BlockItemTags;
+ //?}
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -61,9 +64,16 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 		super(packOutput, registriesFuture);
 	}
 
+	//? if >26.2 {
 	@Override
+	protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, BootstrapContext<Recipe<?>> bootstrapContext, BootstrapContext<Advancement> bootstrapContext1) {
+		return new RecipeProvider(bootstrapContext, bootstrapContext1) {
+	//?} else {
+
+	/*@Override
 	protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
 		return new RecipeProvider(registries, output) {
+	*///?}
 			@Override
 			public void buildRecipes() {
 				// one-off recipes
@@ -267,7 +277,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					// button
 					var buttonId = resourceBlockSet.button();
 					//~ if >26.1 'ItemTags.BUTTONS' -> 'BlockItemTags.BUTTONS.item()' {
-					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(ItemTags.BUTTONS).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
+					shapeless(RecipeCategory.REDSTONE, resourceBlockSet.button()).group("button").requires(baseBlock).requires(BlockItemTags.BUTTONS.item()).unlockedBy(getHasName(baseBlock), has(baseBlock)).save(configuredOutput(requiredOptions));
 					//~}
 					// door
 					var door = resourceBlockSet.door();
@@ -317,7 +327,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					shapeless(RecipeCategory.REDSTONE, getItem(torchLeverId)).group("torch_lever").requires(getItem(torchId)).requires(Items.LEVER).unlockedBy(getItemName(Items.TORCH), has(Items.TORCH)).save(configuredOutput(requiredOptions, "torch_levers", "torches"));
 					// wool
 					//? if <26.3 {
-					var wool = getItemOrVanilla((dye + "_wool"));
+					/*var wool = getItemOrVanilla((dye + "_wool"));
 					var woolOptions = new ArrayList<>(requiredOptions);
 					woolOptions.add("wool_stairs_and_slabs");
 					Item woolSlab = getItem(Pyrite.of(dye + "_wool_slab"));
@@ -334,7 +344,7 @@ public class PyriteRecipeProvider extends FabricRecipeProvider {
 					Item concreteStairs = getItem(Pyrite.of(dye + "_concrete_stairs"));
 					stairs(concreteStairs, concrete, concreteOptions);
 					stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, concreteStairs, concrete, 1, concreteOptions);
-					//?}
+					*///?}
 					// framed glass
 					var framedGlassOptions = new ArrayList<>(requiredOptions);
 					framedGlassOptions.add("framed_glass");

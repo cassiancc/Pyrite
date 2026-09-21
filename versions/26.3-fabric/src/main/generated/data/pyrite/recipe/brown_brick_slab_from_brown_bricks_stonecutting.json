@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "pyrite:brown_bricks",
+  "result": {
+    "count": 2,
+    "id": "pyrite:brown_brick_slab"
+  }
+}

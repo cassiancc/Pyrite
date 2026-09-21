@@ -9,15 +9,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.swing.text.html.BlockView;
 
 public class GravelBlock extends FallingBlock {
-    public static final MapCodec<GravelBlock> CODEC = simpleCodec(GravelBlock::new);
 
     public GravelBlock(Properties settings) {
         super(settings);
     }
 
-    @Override
     protected MapCodec<? extends FallingBlock> codec() {
-        return CODEC;
+        return null;
     }
 
     @Override

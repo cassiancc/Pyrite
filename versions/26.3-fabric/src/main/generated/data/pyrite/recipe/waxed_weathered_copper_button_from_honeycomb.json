@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pyrite:waxed_weathered_copper_button",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "id": "pyrite:waxed_weathered_copper_button"
+  }
+}

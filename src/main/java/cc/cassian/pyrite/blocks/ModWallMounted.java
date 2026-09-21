@@ -34,8 +34,6 @@ public class ModWallMounted extends FaceAttachedHorizontalDirectionalBlock {
         builder.add(FACE, FACING);
     }
 
-
-    @Override
     protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
         return null;
     }

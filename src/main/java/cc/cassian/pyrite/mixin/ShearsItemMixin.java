@@ -20,7 +20,7 @@ import java.util.List;
 @Mixin(ShearsItem.class)
 public class ShearsItemMixin {
 	//? <26.2 {
-	@ModifyReturnValue(method = "createToolProperties", at = @At(value = "RETURN"))
+	/*@ModifyReturnValue(method = "createToolProperties", at = @At(value = "RETURN"))
 	private static Tool extendShears(Tool original, @Local HolderGetter<Block> registrationLookup) {
 		var rules = new ArrayList<>(List.of(
 				Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(PyriteBlockTags.SHEARS_EXTREME_BREAKING_SPEED), 15.0F),
@@ -30,5 +30,5 @@ public class ShearsItemMixin {
 		rules.addAll(original.rules());
 		return new Tool(rules, original.defaultMiningSpeed(), original.damagePerBlock(), original.canDestroyBlocksInCreative());
 	}
-	//?}
+	*///?}
 }

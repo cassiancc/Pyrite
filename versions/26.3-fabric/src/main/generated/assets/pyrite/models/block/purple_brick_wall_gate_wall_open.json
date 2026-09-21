@@ -1,0 +1,7 @@
+{
+  "parent": "pyrite:block/template_wall_gate_wall_open",
+  "textures": {
+    "particle": "pyrite:block/purple_bricks",
+    "texture": "pyrite:block/purple_bricks"
+  }
+}

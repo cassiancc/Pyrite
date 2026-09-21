@@ -58,7 +58,6 @@ public class WallGateBlock extends HorizontalDirectionalBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(OPEN, false).setValue(POWERED, false).setValue(IN_WALL, false));
     }
 
-    @Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return null;
     }

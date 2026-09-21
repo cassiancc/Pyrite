@@ -1,0 +1,34 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:dragon_torch_lever"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "torch_levers",
+        "oddities",
+        "torches"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:dragon_torch_lever"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

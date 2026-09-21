@@ -18,7 +18,8 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 //? if >26  {
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
-import net.fabricmc.fabric.api.registry.FuelValueEvents;
+//? if <26.3
+//import net.fabricmc.fabric.api.registry.FuelValueEvents;
 //?} else {
 /*import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
@@ -26,12 +27,19 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 *///?}
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import static net.fabricmc.fabric.api.resource.v1.pack.PackActivationType.DEFAULT_ENABLED;
-
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+
 import net.minecraft.world.level.block.Block;
+//? if >26.2 {
+import net.minecraft.world.item.component.CookingFuel;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ResolvableFloat;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
+//?}
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,9 +89,17 @@ public class PyriteFabric implements ModInitializer {
 
     public static void registerFuelBlocks() {
         for (Map.Entry<Block, Integer> fuelBlock : FUEL_BLOCKS.entrySet()) {
-            FuelValueEvents.BUILD.register((builder, context) -> {
+            //? if >26.2 {
+            DefaultItemComponentEvents.MODIFY.register((builder) -> {
+                builder.modify(fuelBlock.getKey().asItem(), (DefaultItemComponentEvents.ModifyConsumer) (builder1, provider, item) -> {
+					builder1.set(DataComponents.COOKING_FUEL, new CookingFuel(new ResolvableInt.Constant(fuelBlock.getValue()), ResolvableFloat.fromKey(ContextFloatProviders.COOKING_DEFAULT_SPEED_MULTIPLIER)));
+				});
+            });
+            //?} else {
+            /*FuelValueEvents.BUILD.register((builder, context) -> {
                 builder.add(fuelBlock.getKey(), fuelBlock.getValue());
             });
+            *///?}
         }
     }
 }

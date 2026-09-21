@@ -1,0 +1,15 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "quartz"
+      ]
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:smooth_quartz",
+  "result": {
+    "id": "pyrite:smooth_quartz_wall"
+  }
+}

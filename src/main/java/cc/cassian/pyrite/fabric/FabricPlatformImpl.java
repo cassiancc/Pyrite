@@ -1,13 +1,12 @@
 package cc.cassian.pyrite.fabric;
 
 //? fabric {
+import cc.cassian.mru.fabric.VersionedUtil;
 import cc.cassian.pyrite.PyritePlatform;
 import cc.cassian.pyrite.Pyrite;
 import cc.cassian.mru.util.ItemLikeEntry;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -31,7 +30,7 @@ public class FabricPlatformImpl implements PyritePlatform {
 
     @Override
     public void registerStrippableBlockPair(ItemLikeEntry<?> newBlock, ItemLikeEntry<?> waxed) {
-        StrippableBlockRegistry.register((Block) newBlock.get(), (Block) waxed.get());
+        VersionedUtil.registerStrippable((Block) newBlock.get(), (Block) waxed.get());
         STRIPPABLES.put(newBlock.id(),  waxed.id());
     }
 

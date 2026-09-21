@@ -1,0 +1,112 @@
+{
+  "values": [
+    {
+      "id": "pyrite:azalea_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:black_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:blue_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_mushroom_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:brown_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:cyan_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:dragon_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:glow_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:gray_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:green_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:honey_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:light_blue_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:light_gray_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:lime_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:locked_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:magenta_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:orange_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:pink_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:poisonous_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:purple_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:red_mushroom_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:red_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:rose_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:star_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:white_stained_chest",
+      "required": false
+    },
+    {
+      "id": "pyrite:yellow_stained_chest",
+      "required": false
+    }
+  ]
+}

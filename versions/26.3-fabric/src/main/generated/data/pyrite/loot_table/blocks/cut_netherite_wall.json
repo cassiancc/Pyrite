@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:cut_netherite_wall"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "netherite"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:cut_netherite_wall"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

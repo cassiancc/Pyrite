@@ -1,0 +1,23 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "oddities"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "key": {
+    "#": "pyrite:rose_stained_planks"
+  },
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "result": {
+    "id": "pyrite:rose_stained_boat"
+  }
+}

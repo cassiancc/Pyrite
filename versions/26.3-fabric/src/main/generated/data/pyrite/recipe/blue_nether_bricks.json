@@ -1,0 +1,22 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "blue_nether_bricks"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:nether_brick",
+    "X": "minecraft:warped_fungus"
+  },
+  "pattern": [
+    "X#",
+    "#X"
+  ],
+  "result": {
+    "id": "pyrite:blue_nether_bricks"
+  }
+}

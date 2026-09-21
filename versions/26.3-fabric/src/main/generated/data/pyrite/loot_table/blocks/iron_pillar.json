@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:iron_pillar"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "iron"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:iron_pillar"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "values": [
+    {
+      "id": "pyrite:chiseled_netherite_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_netherite",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_netherite_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_netherite_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_netherite_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:cut_netherite_wall_gate",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_bars",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_bricks",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_button",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_door",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_pillar",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "pyrite:netherite_trapdoor",
+      "required": false
+    },
+    {
+      "id": "pyrite:nostalgia_netherite_block",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_netherite",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_netherite_slab",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_netherite_stairs",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_netherite_wall",
+      "required": false
+    },
+    {
+      "id": "pyrite:smooth_netherite_wall_gate",
+      "required": false
+    }
+  ]
+}

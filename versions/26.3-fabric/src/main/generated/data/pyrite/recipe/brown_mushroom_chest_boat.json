@@ -1,0 +1,19 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "mushrooms"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "group": "chest_boat",
+  "ingredients": [
+    "#c:chests/wooden",
+    "pyrite:brown_mushroom_boat"
+  ],
+  "result": {
+    "id": "pyrite:brown_mushroom_chest_boat"
+  }
+}

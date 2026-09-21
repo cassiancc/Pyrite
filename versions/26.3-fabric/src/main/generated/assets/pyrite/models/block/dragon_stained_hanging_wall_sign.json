@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_hanging_sign",
+  "textures": {
+    "all": "pyrite:block/dragon_stained_hanging_sign",
+    "particle": "pyrite:block/dragon_stained_planks"
+  }
+}

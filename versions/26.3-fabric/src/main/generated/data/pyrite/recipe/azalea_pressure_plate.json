@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "azalea"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "pyrite:azalea_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "pyrite:azalea_pressure_plate"
+  }
+}

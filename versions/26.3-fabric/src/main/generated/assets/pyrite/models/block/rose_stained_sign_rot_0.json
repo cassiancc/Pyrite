@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_sign_rot_0",
+  "textures": {
+    "all": "pyrite:block/rose_stained_sign",
+    "particle": "pyrite:block/rose_stained_planks"
+  }
+}

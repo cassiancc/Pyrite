@@ -19,7 +19,7 @@ public interface PyritePlatform {
 
 	//?}
     //? neoforge {
-    /*Platform INSTANCE = new NeoForgePlatformImpl();
+    /*PyritePlatform INSTANCE = new NeoForgePlatformImpl();
     *///?}
 
     void registerOxidizableBlockPair(ItemLikeEntry<?> block, ItemLikeEntry<?> block1);

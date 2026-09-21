@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "pyrite:block/cut_redstone_wall_gate"
+  }
+}

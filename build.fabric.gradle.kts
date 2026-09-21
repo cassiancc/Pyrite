@@ -76,6 +76,7 @@ repositories {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
         content {
+            includeGroupAndSubgroups("dev.isxander")
             includeGroupAndSubgroups("org.quiltmc.parsers")
         }
     }
@@ -117,8 +118,8 @@ dependencies {
     implementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
 
     implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
-    implementation("cc.cassian.mru:mru-fabric:${property("deps.mru")}+${property("deps.minecraft")}")
-    include("cc.cassian.mru:mru-fabric:${property("deps.mru")}+${property("deps.minecraft")}")
+    implementation("cc.cassian.mru:mru-fabric:${property("deps.mru")}+26.3-rc-1")
+    include("cc.cassian.mru:mru-fabric:${property("deps.mru")}+26.3-rc-1")
 
     implementation("folk.sisby:kaleido-config:${property("deps.kaleido")}")
     include("folk.sisby:kaleido-config:${property("deps.kaleido")}")

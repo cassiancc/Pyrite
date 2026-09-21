@@ -1,0 +1,33 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:block",
+      "values": [
+        "pyrite:lime_stained_crafting_table"
+      ]
+    },
+    {
+      "condition": "pyrite:config",
+      "options": [
+        "dyed_planks",
+        "crafting_tables"
+      ]
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pyrite:lime_stained_crafting_table"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

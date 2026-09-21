@@ -7,6 +7,7 @@ import cc.cassian.pyrite.Pyrite;
 import cc.cassian.pyrite.blocks.*;
 import cc.cassian.pyrite.compat.*;
 import cc.cassian.pyrite.entity.ModEntities;
+import cc.cassian.pyrite.item.ModSignItem;
 import cc.cassian.pyrite.util.ModHelpers;
 import cc.cassian.pyrite.util.ModLists;
 import cc.cassian.pyrite.util.sets.TurfSet;
@@ -26,7 +27,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 //~ if >26.1 'BlockEntityType' -> 'BlockEntityTypes' {
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 //~}
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -141,7 +142,6 @@ public class BlockCreator {
                 // Register Crafting table.
                 if (burnable) {
                     newBlock = new ModCraftingTable(blockSettings.ignitedByLava());
-                    //? fabric
                     FUEL_BLOCKS.put(newBlock, 300);
                 } else
                     newBlock = new ModCraftingTable(blockSettings);
@@ -149,12 +149,12 @@ public class BlockCreator {
             case "shelf":
                 // Register Shelf
                 newBlock = new ShelfBlock(blockSettings);
-                ModHelpers.addSupportedBlock(BlockEntityType.SHELF, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.SHELF, newBlock);
                 break;
             case "chest":
                 if (ModHelpers.generateChests()) {
-                    newBlock = new ChestBlock(()->BlockEntityType.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
-                    ModHelpers.addSupportedBlock(()-> BlockEntityType.CHEST, newBlock);
+                    newBlock = new ChestBlock(()->BlockEntityTypes.CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, blockSettings);
+                    ModHelpers.addSupportedBlock(()-> BlockEntityTypes.CHEST, newBlock);
                 }
                 break;
             case "cabinet":
@@ -285,11 +285,11 @@ public class BlockCreator {
                 final WallSignBlock WALL_SIGN = new WallSignBlock(woodType, blockSettings);
                 ITEMLESS_BLOCKS.put(blockID.replace("_sign", "_wall_sign"), WALL_SIGN);
                 // Register item for signs.
-                final Item SIGN_ITEM = new SignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
+                final Item SIGN_ITEM = new ModSignItem(newBlock, WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, SIGN_ITEM);
                 PyriteItemGroups.SIGNS.add(PyriteItemGroups.SIGNS.size(), Pyrite.entryOf(blockID, SIGN_ITEM));
-                ModHelpers.addSupportedBlock(BlockEntityType.SIGN, newBlock);
-                ModHelpers.addSupportedBlock(BlockEntityType.SIGN, WALL_SIGN);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.SIGN, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.SIGN, WALL_SIGN);
                 break;
             case "hanging_sign":
                 //Sign Blocks
@@ -302,8 +302,8 @@ public class BlockCreator {
                 final Item HANGING_SIGN_ITEM = new HangingSignItem(newBlock, HANGING_WALL_SIGN, newBlockItemSettings(blockID).stacksTo(16));
                 ITEMS.put(blockID, HANGING_SIGN_ITEM);
                 PyriteItemGroups.SIGNS.add(Pyrite.entryOf(blockID, HANGING_SIGN_ITEM));
-                ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, newBlock);
-                ModHelpers.addSupportedBlock(BlockEntityType.HANGING_SIGN, HANGING_WALL_SIGN);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.HANGING_SIGN, newBlock);
+                ModHelpers.addSupportedBlock(BlockEntityTypes.HANGING_SIGN, HANGING_WALL_SIGN);
                 break;
             case "door":
                 if (isCopper(blockID)) {
@@ -433,7 +433,8 @@ public class BlockCreator {
     public static ItemLikeEntry<Block> createPyriteBlock(String blockID, String blockType, Float strength, MapColor color, int lightLevel, String group) {
         BlockBehaviour.Properties settings = BlockBehaviour.Properties.of().strength(strength).lightLevel(state -> lightLevel).mapColor(color);
         if (Objects.equals(blockType, "obsidian")) {
-            return sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pushReaction(PushReaction.BLOCK), group);
+            //~ if >26.2 '.BLOCK'->'.IMMOVEABLE'
+            return sendToRegistry(blockID, "block", settings.strength(strength, 1200f).pushReaction(PushReaction.IMMOVEABLE), group);
         }
         else if (blockType.equals("lamp")) {
             return sendToRegistry(blockID, blockType, settings.sound(SoundType.GLASS), group);
