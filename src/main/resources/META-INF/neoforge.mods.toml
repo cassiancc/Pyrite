@@ -11,6 +11,7 @@ description = '''
 Variations of Vanilla blocks, including dyed wood, dyed bricks, new material blocks and more to complete your colourful builds.
 '''
 logoFile = "assets/pyrite/icon.png"
+iconFile = "assets/pyrite/icon.png"
 issueTrackerURL = "https://github.com/cassiancc/Pyrite/issues"
 displayURL = "https://pyrite.cassian.cc"
 
