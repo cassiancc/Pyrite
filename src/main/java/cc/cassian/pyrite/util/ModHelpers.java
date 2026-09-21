@@ -394,6 +394,8 @@ public class ModHelpers {
 
     public static void addSupportedBlock(BlockEntityType<?> be, Block block) {
         SUPPORTED_BLOCKS.put(()->be, block);
+        //? fabric
+        be.addValidBlock(block);
     }
 
 	public static boolean generateChests() {
