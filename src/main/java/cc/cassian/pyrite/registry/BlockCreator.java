@@ -142,6 +142,7 @@ public class BlockCreator {
                 // Register Crafting table.
                 if (burnable) {
                     newBlock = new ModCraftingTable(blockSettings.ignitedByLava());
+                    //? fabric
                     FUEL_BLOCKS.put(newBlock, 300);
                 } else
                     newBlock = new ModCraftingTable(blockSettings);

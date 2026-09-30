@@ -1,9 +1,9 @@
 package cc.cassian.pyrite.neoforge;
 
 //? neoforge {
-/*import cc.cassian.pyrite.Platform;
-import cc.cassian.pyrite.Pyrite;
+/*import cc.cassian.pyrite.Pyrite;
 import cc.cassian.mru.util.ItemLikeEntry;
+import cc.cassian.pyrite.PyritePlatform;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
@@ -19,7 +19,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class NeoForgePlatformImpl implements Platform {
+public class NeoForgePlatformImpl implements PyritePlatform {
 
     @Override
     public void registerOxidizableBlockPair(ItemLikeEntry<?> block, ItemLikeEntry<?> block1) {}

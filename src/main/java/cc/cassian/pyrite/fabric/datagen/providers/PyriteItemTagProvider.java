@@ -141,6 +141,12 @@ public class PyriteItemTagProvider extends MultiversionedItemTagsProvider {
 		copy(TagKey.create(Registries.BLOCK, id), TagKey.create(Registries.ITEM, id));
 	}
 
+	//? if <26.2 {
+	/*public void copy(BlockItemTagId id) {
+		copy(id.block(), id.item());
+	}
+	*///?}
+
 	//~ if >26.1 'TagAppender<ResourceKey<Item>, Item>' -> 'TagAppender<Item>' {
 	private TagAppender<Item> optionalBuilder(TagKey<Item> tag, String id) {
 		TagAppender<Item> builder = builder(tag);
